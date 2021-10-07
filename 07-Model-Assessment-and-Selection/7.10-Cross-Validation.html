@@ -1,0 +1,1379 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.10 交叉验证 &#8212; 统计学习精要(中文)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.11 自助法" href="7.11-Bootstrap-Methods.html" />
+    <link rel="prev" title="7.9 VC维" href="7.9-Vapnik-Chervonenkis-Dimension.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">统计学习精要(中文)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Introduction/1.1-Introduction.html">
+   第一章 引言
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.0-Overview.html">
+   第二章 监督学习概览
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.1-Introduction.html">
+     2.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.2-Variable-Types-and-Terminology.html">
+     2.2 变量类型和术语
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.3-Two-Simple-Approaches-to-Prediction.html">
+     2.3 两种简单的预测方式：最小二乘和最近邻
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.4-Statistical-Decision-Theory.html">
+     2.4 统计判别理论
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.5-Local-Methods-in-High-Dimensions.html">
+     2.5 高维问题的局部方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.7-Structured-Regression-Models.html">
+     2.7 结构化的回归模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.8-Classes-of-Restricted-Estimators.html">
+     2.8 限制性估计的种类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html">
+     2.9 模型选择和偏差-方差的权衡
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/Bibliographic-Notes.html">
+     2.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.0-Overview.html">
+   第三章 线性回归模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.1-Introduction.html">
+     3.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.2-Linear-Regression-Models-and-Least-Squares.html">
+     3.2 线性回归模型和最小二乘法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
+     3.3 子集的选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.4-Shrinkage-Methods.html">
+     3.4 收缩的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.5-Methods-Using-Derived-Input-Directions.html">
+     3.5 运用派生输入方向的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html">
+     3.6 讨论：选择和收缩方法的比较
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
+     3.7 多重输出的收缩和选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html">
+     3.8 Lasso 和相关路径算法的补充
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.9-Computational-Considerations.html">
+     3.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/Bibliographic-Notes.html">
+     3.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.0-Overview.html">
+   第四章 线性分类模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.1-Introduction.html">
+     4.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.2-Linear-Regression-of-an-Indicator-Matrix.html">
+     4.2 指示矩阵的线性回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis.html">
+     4.3 线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.4-Logistic-Regression.html">
+     4.4 逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes.html">
+     4.5 分离超平面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/Bibliographic-Notes.html">
+     4.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.0-Overview.html">
+   第五章 基展开与正则化
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.1-Introduction.html">
+     5.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.2-Piecewise-Polynomials-and-Splines.html">
+     5.2 分段多项式和样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.3-Filtering-and-Feature-Extraction.html">
+     5.3 过滤和特征提取
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
+     5.4 光滑样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
+     5.5 光滑参数的自动选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.6-Nonparametric-Logistic-Regression.html">
+     5.6 非参逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.7-Multidimensional-Splines.html">
+     5.7 多维样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.8-Regularization-and-Reproducing-Kernel-Hibert-Spaces.html">
+     5.8 正则化和再生核希尔伯特空间理论
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
+     5.9 小波光滑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Bibliographic-Notes.html">
+     5.10 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Appendix-Computations-for-B-splines.html">
+     附录
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.0-Overview.html">
+   第六章 核平滑方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
+     6.1 一维核光滑器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.2-Selecting-the-Width-of-the-Kernel.html">
+     6.2 选择核的宽度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
+     6.3
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中的局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中结构化局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
+     局部似然和其他模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.6-Kernel-Density-Estimation-and-Classification.html">
+     6.6 核密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.7-Radial-Basis-Functions-and-Kernels.html">
+     6.7 径向基函数和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.8-Mixture-Models-for-Density-Estimation-and-Classification.html">
+     6.8 混合模型的密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.9-Computational-Consoderations.html">
+     6.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/Bibliographic-Notes.html">
+     6.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="7.0-Overview.html">
+   第七章 模型评估与选择
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.1-Introduction.html">
+     7.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
+     7.2 偏差，方差和模型复杂度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.3-The-Bias-Variance-Decomposition.html">
+     7.3 偏差-方差分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
+     7.4 训练误差率的 optimism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.5-Estimates-of-In-Sample-Prediction-Error.html">
+     7.5 样本内误差的估计
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.6-The-Effective-Number-of-Parameters.html">
+     7.6 参数的有效个数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.7-The-Bayesian-Approach-and-BIC.html">
+     7.7 贝叶斯方法和 BIC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.8-Minimum-Description-Length.html">
+     7.8 最小描述长度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.9-Vapnik-Chervonenkis-Dimension.html">
+     7.9 VC维
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.10 交叉验证
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.11-Bootstrap-Methods.html">
+     7.11 自助法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.12-Conditional-or-Expected-Test-Error.html">
+     7.12 条件测试误差或期望测试误差？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bibliographic-Notes.html">
+     7.13 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.0-Overview.html">
+   第八章 模型推断与模型平均
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.1-Introduction.html">
+     8.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
+     8.2 自助法和最大似然法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
+     8.3 贝叶斯方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
+     8.4 自助法和贝叶斯推断之间的关系
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
+     8.5 EM 算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.6-MCMC-for-Sampling-from-the-Posterior.html">
+     8.6 从后验分布采样的 MCMC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.7-Bagging.html">
+     8.7 Bagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
+     8.8 模型平均和堆栈
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.9-Stochastic-Search.html">
+     8.9 随机搜索： Bumping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/Bibliographic-Notes.html">
+     8.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.0-Overview.html">
+   第九章 加法模型、树及相关方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models.html">
+     9.1 广义可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.2-Tree-Based-Methods.html">
+     9.2 基于树的方法(CART)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.3-PRIM.html">
+     9.3 PRIM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.4-MARS.html">
+     9.4 MARS: 多变量自适应回归样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.5-Hierarchical-Mixtures-of-Experts.html">
+     9.5 专家的分层混合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.6-Missing-Data.html">
+     9.6 缺失数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.7-Computational-Considerations.html">
+     9.7 计算的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/Bibliographic-Notes.html">
+     9.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.0-Overview.html">
+   第十章 提升方法和加法树
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.1-Boosting-Methods.html">
+     10.1 boosting方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.2-Boosting-Fits-an-Additive-Model.html">
+     10.2 Boosting 拟合可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.3-Forward-Stagewise-Additive-Modeling.html">
+     10.3 向前逐步加法建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.4-Exponential-Loss-and-AdaBoost.html">
+     10.4 指数损失和AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.5-Why-Exponential-Loss.html">
+     10.5 为什么是指数损失？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.6-Loss-Functions-and-Robustness.html">
+     10.6 损失函数和鲁棒性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.7-Off-the-Shelf-Procedures-for-Data-Mining.html">
+     10.7 数据挖掘的现货方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.8-Spam-Data.html">
+     10.8 例子: 垃圾邮件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.9-Boosting-Trees.html">
+     10.9 Boosting 树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.10-Numerical-Optimization-via-Gradient-Boosting.html">
+     10.10 Gradient Boosting的数值优化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.11-Right-Sized-Trees-for-Boosting.html">
+     10.11 大小合适的boosting树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.12-Regularization.html">
+     10.12 正则化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.13-Interpretation.html">
+     10.13 解释性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.14-Illustrations.html">
+     10.14 例子
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/Bibliographic-Notes.html">
+     10.15 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11-Neural-Networks/11.0-Overview.html">
+   第十一章 神经网络
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.1-Introduction.html">
+     11.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.2-Projection-Pursuit-Regression.html">
+     11.2 投影寻踪回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.3-Neural-Networks.html">
+     11.3 神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.4-Fitting-Neural-Networks.html">
+     11.4 拟合神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.5-Some-Issues-in-Training-Neural-Networks.html">
+     11.5 训练神经网络的一些问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.6-Example-of-Simulated-Data.html">
+     11.6 例子：模拟数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.7-Example-ZIP-Code-Data.html">
+     11.7 例子：邮编数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/Bibliographic-Notes.html">
+     11.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.0-Overview.html">
+   第十二章 支持向量机与柔性判别分析
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.1-Introduction.html">
+     12.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.2-The-Support-Vector-Classifier.html">
+     12.2 支持向量分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.3-Support-Vector-Machines-and-Kernels.html">
+     12.3 支持向量机和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.4-Generalizing-Linear-Discriminant-Analysis.html">
+     12.4 广义线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.5-Flexible-Disciminant-Analysis.html">
+     12.5 FDA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.6-Penalized-Discriminant-Analysis.html">
+     12.6 惩罚判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.7-Mixture-Discriminant-Analysis.html">
+     12.7 混合判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Bibliographic-Notes.html">
+     12.8 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Computational-Considerations.html">
+     计算上的考虑
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.0-Overview.html">
+   第十三章 原型方法与最近邻方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.1-Introduction.html">
+     13.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.2-Prototype-Methods.html">
+     13.2 原型方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.3-k-Nearest-Neighbor-Classifiers.html">
+     13.3 k最近邻分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.4-Adaptive-Nearest-Neighbor-Methods.html">
+     13.4 自适应最近邻方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.5-Computational-Considerations.html">
+     13.5 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/Bibliographic-Notes.html">
+     13.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../14-Unsupervised-Learning/14.0-Overview.html">
+   第十四章 非监督学习
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.1-Introduction.html">
+     14.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.2-Association-Rules.html">
+     14.2 关联规则
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.3-Cluster-Analysis.html">
+     14.3 聚类分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.4-Self-Organizing-Maps.html">
+     14.4 自组织图
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.5-Principal-Components-Curves-and-Surfaces.html">
+     14.5 主成分，主曲线和主曲面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.6-Non-negative-Matrix-Factorization.html">
+     14.6 非负矩阵分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html">
+     14.7 独立成分分析和探索投影寻踪
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.8-Multidimensional-Scaling.html">
+     14.8 多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.9-Nonlinear-Dimension-Reduction-and-Local-Multidimensional-Scaling.html">
+     14.9 非线性降维和局部多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.10-The-Google-PageRank-Algorithm.html">
+     14.10 谷歌的PageRank算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/Bibliographic-Notes.html">
+     14.11 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../15-Random-Forests/15.0-Overview.html">
+   第十五章 随机森林
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.1-Introduction.html">
+     15.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.2-Definition-of-Random-Forests.html">
+     15.2 随机森林的定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.3-Details-of-Random-Forests.html">
+     15.3 随机森林的细节
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.4-Analysis-of-Random-Forests.html">
+     15.4 随机森林的分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/Bibliographic-Notes.html">
+     15.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../16-Ensemble-Learning/16.0-Overview.html">
+   第十六章 集成学习
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.1-Introduction.html">
+     16.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.2-Boosting-and-Regularization-Paths.html">
+     16.2 Boosting 和正则化路径
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.3-Learning-Ensembles.html">
+     16.3 学习集成
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/Bibliographic-Notes.html">
+     16.4 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../17-Undirected-Graphical-Models/17.0-Overview.html">
+   第十七章 马尔科夫随机场
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.1-Introduction.html">
+     17.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.2-Markov-Graphs-and-Their-Properties.html">
+     17.2 马尔科夫图及其性质
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.3-Undirected-Graphical-Models-for-Continuous-Variables.html">
+     17.3 连续变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.4-Undirected-Graphical-Models-for-Discrete-Variables.html">
+     17.4 离散变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/Bibliographic-Notes.html">
+     17.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../18-High-Dimensional-Problems/18.0-Overview.html">
+   第十八章 高维度问题
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.1-When-p-is-Much-Bigger-than-N.html">
+     18.1 当p远大于N
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.2-Diagonal-Linear-Discriminant-Analysis-and-Nearest-Shrunken-Centroids.html">
+     18.2 对角线性判别分析和最近收缩重心
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.3-Linear-Classifiers-with-Quadratic-Regularization.html">
+     18.3 二次正则化的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html">
+     18.4
+     <span class="math notranslate nohighlight">
+      \(L_1\)
+     </span>
+     正则的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.5-Classification-When-Features-are-Unavailable.html">
+     18.5 当特征不可用时的分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.6-High-Dimensional-Regression.html">
+     18.6 高维回归: 有监督的主成分
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html">
+     18.7 特征评估和多重检验问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/Bioliographic-Notes.html">
+     18.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-Model-Assessment-and-Selection/7.10-Cross-Validation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning/issues/new?title=Issue%20on%20page%20%2F07-Model-Assessment-and-Selection/7.10-Cross-Validation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k">
+   K 折交叉验证
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   做交叉验证的错误与正确方式
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   交叉验证是否真的有用？
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>7.10 交叉验证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“更新笔记”
+Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info">HumanitiesSciences’s StatLearning</a> 课程是基于ISLR 这本书，其中有采用 cv 来解决具体问题的代码，可以在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/tree/master/code/Resampling">这里</a>找到。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@2018-01-12 更新 Ex. 7.7 的解答。
+</pre></div>
+</div>
+</div>
+<p>估计预测误差的最简单的并且使用最广泛的方法大概是交叉验证。这个方法直接估计 <strong>样本外 (extra-sample)</strong> 误差期望值 <span class="math notranslate nohighlight">\(\text{Err}=\E[L(Y,\hat f(X))]\)</span>，当方法 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 应用到与 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 联合分布独立采样的测试样本中，该值是广义误差的平均值。正如前面提到的，我们可能希望交叉验证估计当测试集 <span class="math notranslate nohighlight">\(\cal T\)</span> 固定时的条件误差。但是正如我们将在 7.12 节看到的那样，交叉验证一般仅仅对预测误差的期望值有良好的估计。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>在 7.2 节，详细讨论了我们实际上最需要当训练集
+```{math}
+\cal T 
+``` 
+固定时的条件误差，而非预测误差的期望值。
+</pre></div>
+</div>
+</div>
+<div class="section" id="k">
+<h2>K 折交叉验证<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h2>
+<p>理论上，如果我们有足够的数据，我们可以设置一个验证集并且用它去评估我们预测模型的好坏。因为数据经常是稀缺的，所以这种方式通常是不可能的。为了巧妙地解决这个问题，<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证采用部分可用数据去拟合模型，然后用不同的部分数据去测试。我们将数据分成 <span class="math notranslate nohighlight">\(K\)</span> 个大致相等的部分；举个例子，当 <span class="math notranslate nohighlight">\(K=5\)</span>，情形就像这样：</p>
+<p><img alt="" src="../_images/pic1.png" /></p>
+<p>对于第 <span class="math notranslate nohighlight">\(k\)</span> 部分（上面的第三个），我们用剩下的 <span class="math notranslate nohighlight">\(K-1\)</span> 个部分数据来拟合模型，然后计算预测第 <span class="math notranslate nohighlight">\(k\)</span> 部分的数据时模型的预测误差。对 <span class="math notranslate nohighlight">\(k=1,2,\ldots,K\)</span> 做类似的工作并且将 <span class="math notranslate nohighlight">\(K\)</span> 个预测误差的估计值结合起来。</p>
+<p>下面介绍更多的细节。令 <span class="math notranslate nohighlight">\(\kappa:\\{1,\ldots,N\\}\mapsto\\{1,\ldots,K\\}\)</span> 是指示函数，它指示了观测值 <span class="math notranslate nohighlight">\(i\)</span> 被随机分配到哪的划分。用 <span class="math notranslate nohighlight">\(\hat f^{-k}(x)\)</span> 记拟合函数，是利用除掉第 <span class="math notranslate nohighlight">\(k\)</span> 部分的数据计算得到的。则预测误差的交叉验证估计为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{CV}(\hat f)=\frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f^{-\kappa (i)}(x_i))\tag{7.48}
+\]</div>
+<p>一般地选择 <span class="math notranslate nohighlight">\(K\)</span> 为 5 或 10（见下）。<span class="math notranslate nohighlight">\(K=N\)</span> 的情形也称作 <strong>舍一法交叉验证</strong>。在 <span class="math notranslate nohighlight">\(\kappa(i)=i\)</span> 的情形中，对于第<span class="math notranslate nohighlight">\(i\)</span> 个观测的拟合是利用不包含第 <span class="math notranslate nohighlight">\(i\)</span> 个观测的全部数据进行计算的。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>“weiya 注：LOOCV”
+一般地，舍一法交叉验证缩写为 LOOCV，在 R 等机器学习包中，经常作为参数，比如 <code class="docutils literal notranslate"><span class="pre">caret</span></code> 包中采用舍一法交叉验证的参数形式为<code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">&quot;LOOCV&quot;</span></code></p>
+</div>
+<p>给出一系列模型 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span>，它是由调整参数 <span class="math notranslate nohighlight">\(\alpha\)</span> 来编号，记 <span class="math notranslate nohighlight">\(\hat f^{-k}(x,\alpha)\)</span> 为去除第 <span class="math notranslate nohighlight">\(k\)</span> 部分数据的第 <span class="math notranslate nohighlight">\(\alpha\)</span> 个模型的拟合。则对于这一系列模型我们定义</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{CV}(\hat f,\alpha)=\frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f^{-\kappa (i)}(x_i,\alpha))\tag{7.49}
+\]</div>
+<p>函数 <span class="math notranslate nohighlight">\(\mathrm{CV}(\hat f,\alpha)\)</span> 给出了测试误差曲线的一个估计，而且我们可以找到调整参数 <span class="math notranslate nohighlight">\(\hat\alpha\)</span> 使其最小化。我们最终选择的模型是 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span>，接着我们对所有数据进行拟合。</p>
+<p>有趣的是，<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证估计的到底是什么量。<span class="math notranslate nohighlight">\(K=5\)</span> 或 <span class="math notranslate nohighlight">\(10\)</span> 时，我们可能猜测它估计了期望误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，因为每一折的训练集不同于原始训练集。另一方面，如果 <span class="math notranslate nohighlight">\(K=N\)</span> 我们可能会猜测交叉验证估计了条件误差 <span class="math notranslate nohighlight">\(\text{Err}_{\cal T}\)</span>。事实是交叉验证仅仅有效地估计出平均误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，正如将在 7.12 节讨论的那样。</p>
+<p>那我们应该为 <span class="math notranslate nohighlight">\(K\)</span> 取什么值呢？<span class="math notranslate nohighlight">\(K=N\)</span> 时，交叉验证估计对于真实（期望的）预测误差近似无偏的，但是可能导致高方差，因为 <span class="math notranslate nohighlight">\(N\)</span> 个训练集彼此是很相似的。计算量也是很大的，要应用该学习方法 <span class="math notranslate nohighlight">\(N\)</span> 次。在特定的问题中，这个计算可以很快地完成——见练习 7.3 和练习 5.13。</p>
+<p>另一方面，比如 <span class="math notranslate nohighlight">\(K=5\)</span> 时，交叉验证有较低的方差。但是偏差便是一个问题了，这取决于当训练集大小变化时学习方法的表现效果。图 7.8 显示了在给定任务下某分类器的假定的“学习曲线”，<span class="math notranslate nohighlight">\(1-\text{Err}\)</span> 关于训练集大小 <span class="math notranslate nohighlight">\(N\)</span> 的曲线。当训练集大小增长到 100 前观测时分类器的效果不断在改善；当增长到 200 个观测时改进的效果很小。如果我们的训练集有 200 个观测，5 折交叉验证会估计 160 个训练样本时分类器的效果，从图 7.8 可以看到同训练集大小为 200 时的效果是一样的。因此交叉验证不会有太大的偏差。然而，如果训练集只有 50 个观测，5 折交叉验证会估计 40 个训练样本时分类器的效果，而且从图中可以看出对 <span class="math notranslate nohighlight">\(1-\text{Err}\)</span> 会有一个偏低的估计。因此作为 <span class="math notranslate nohighlight">\(\text{Err}\)</span> 的估计，交叉验证会有上偏。</p>
+<p><img alt="" src="../_images/fig7.8.png" /></p>
+<blockquote>
+<div><p>图 7.8. 在给定任务下某分类器假定的学习曲线：<span class="math notranslate nohighlight">\(1-\text{Err}\)</span> 关于训练集大小 <span class="math notranslate nohighlight">\(N\)</span> 的曲线。含有 200 个观测的数据集，5 折交叉验证会使用大小为 160 的训练集，这与全数据集表现很相似。然而，含有 50 个观测的数据集，5 折交叉验证会使用大小为 40 的训练集，这会导致预测误差有一个相当大的高估。</p>
+</div></blockquote>
+<p>总结一下，如果学习曲线在给定训练集大小处有相当大的斜率，5 或 10 折交叉验证将会高估真实的预测误差。实际问题中偏差是否是一个缺点取决于目标。另一方面，舍一法交叉验证有低偏差但会有高方差。总的来说，5 或 10 折交叉验证是推荐的一个好的妥协方式：见Breiman and Spector（1992）<a class="footnote-reference brackets" href="#id7" id="id2">1</a>以及 Kohavi（1995）<a class="footnote-reference brackets" href="#id8" id="id3">2</a>。</p>
+<p>图 7.9 显示了预测误差和从单个训练集估计的 10 折交叉验证曲线，这来源于图 7.3 右下图的情形。这是两个类别的分类问题，采用子集大小为 <span class="math notranslate nohighlight">\(p\)</span> 的最优子集回归的线性模型。图中显示了标准差，它是 10 个部分中的单个部分的个体误分类误差率的标准差。两条曲线都在 <span class="math notranslate nohighlight">\(p=10\)</span> 处有最小值，尽管 CV 曲线在 10 以后更加平坦。经常将**“一个标准差（one-standard error）”**准则和交叉验证一起使用，我们选择最简模型，它的误差不超过最佳模型的误差以上的一个标准差。这里看起来像是选择 <span class="math notranslate nohighlight">\(p=9\)</span> 个预测变量的模型，而真实模型采用 <span class="math notranslate nohighlight">\(p=10\)</span>。</p>
+<p><img alt="" src="../_images/fig7.9.png" /></p>
+<blockquote>
+<div><p>图 7.9. 预测误差（橘黄色）和从单个训练集估计的10折交叉验证曲线（蓝色），来自图7.3中右下图的情形。</p>
+</div></blockquote>
+<p>对于在平方误差损失下的线性拟合，广义交叉验证提供了舍一法交叉验证的一个方便的估计。正如在 7.6 节中定义的，线性拟合方法可以写成：</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{\hat y=Sy}\tag{7.50}
+\]</div>
+<p>现在对于许多线性拟合方法，</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{N}\sum_{i=1}^N\left[y_i-\hat f^{-i}(x_i)\right]^2 = \frac{1}{N}\sum_{i=1}^N\left[\frac{y_i-\hat f(x_i)}{1-S_{ii}}\right]^2\tag{7.51}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(S_{ii}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 个对角元（见 练习 7.3 ）。GCV 近似为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{GCV}(\hat f)=\frac{1}{N}\sum_{i=1}^N\left[\frac{y_i-\hat f(x_i)}{1-trace(\mathbf{S})/N}\right]^2\tag{7.52}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\text{trace}(\mathbf{S})\)</span> 的值是有效参数个数，在 7.6 节定义。</p>
+<p>GCV 在一些设定下有计算上的优点，其中 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 的迹计算起来比单个元素 <span class="math notranslate nohighlight">\(S_{ii}\)</span> 更简单。在光滑问题中，GCV也可以减轻交叉验证趋向于**欠光滑 (undersmooth) **的趋势。GCV 和 AIC 的相似性可以从近似等式 <span class="math notranslate nohighlight">\(1/(1-x)^2\approx 1+2x\)</span> 得到（ 练习 7.7 ）。</p>
+</div>
+<div class="section" id="id4">
+<h2>做交叉验证的错误与正确方式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>考虑有许多预测变量的分类问题，举个例子，可能在基因与蛋白质的应用中。一般的分析技巧或许如下：</p>
+<ol class="simple">
+<li><p>筛选预测变量：选择与类别有着相当强（单变量）相关性的“好”预测变量的一个子集</p></li>
+<li><p>运用这个预测变量的子集，建立多维变量分类器。</p></li>
+<li><p>采用交叉验证来估计未知调整参数并且估计最终模型的预测误差。</p></li>
+</ol>
+<p>这是正确地应用交叉验证吗？考虑 <span class="math notranslate nohighlight">\(N=50\)</span> 样本的情形，这些样本分成两个相同大小的类别，而且有 <span class="math notranslate nohighlight">\(p=5000\)</span> 个独立于类别的定量预测变量（标准高斯分布）。真实的（测试）误差是 <span class="math notranslate nohighlight">\(50\%\)</span>。我们应用上面的方法，步骤（1）中选择 100 个与类别有强相关性的预测变量，然后在步骤（2）中仅仅基于 100 个预测变量采用 1 最近邻分类器。对这个设定下的 50 个仿真数据求平均得到平均 CV 误差为 <span class="math notranslate nohighlight">\(3\%\)</span>。这远远低于真实预测误差率 <span class="math notranslate nohighlight">\(50\%\)</span>。</p>
+<p>发生了什么？问题在于预测变量有着不公平的优势，因为在步骤（1）中选择它们是基于所有的样本。在选择变量后丢弃样本不能正确地模拟分类器对完全独立的测试集的应用，因为这些预测变量“已经看到了”丢弃的样本。</p>
+<p><img alt="" src="../_images/fig7.10.png" /></p>
+<blockquote>
+<div><p>图 7.10 交叉验证的错误和正确方式：直方图显示了10个随机选择的样本中，类别标签的相关性，以及采用不正确（上图红色）和正确（下图绿色）的交叉验证选择的100个预测变量。</p>
+</div></blockquote>
+<p>图 7.10（上）说明了这个问题。我们选择 100 个在 50 个样本上与类别标签有着最大相关性的预测变量。因为我们将要做 5 折交叉验证，所以随机选择 10 个样本，然后计算预先选择的 100 个预测变量仅仅在 10 个样本上与类别标签的相关性（上图）。我们看到平均相关性大约为 0.28，而不是期望中的 0。</p>
+<p>下面是在这个例子中正确使用交叉验证的方式：</p>
+<ol class="simple">
+<li><p>将样本随机分成 <span class="math notranslate nohighlight">\(K\)</span> 个交叉验证折（群）。</p></li>
+<li><p>对于每一折 <span class="math notranslate nohighlight">\(k=1,2,\ldots,K\)</span></p>
+<ol class="simple">
+<li><p>利用除了第 <span class="math notranslate nohighlight">\(k\)</span> 折的所有样本找到与类别标签有相对强（单变量）的相关性的“好”预测变量的一个子集。</p></li>
+<li><p>利用除了第 <span class="math notranslate nohighlight">\(k\)</span> 折的所有样本仅仅运用找到的预测变量来建立多元分类器。</p></li>
+<li><p>运用分类器来预测第 <span class="math notranslate nohighlight">\(k\)</span> 折中样本的类别。</p></li>
+</ol>
+</li>
+</ol>
+<p>在第 2(c) 步的误差估计接着在所有 <span class="math notranslate nohighlight">\(K\)</span> 折上进行累积，得到预测误差的交叉验证估计。图 7.10 的下图显示了在某个特定的 <span class="math notranslate nohighlight">\(k\)</span> 折样本上，正确步骤的第 2(a) 步选择的 100 个预测变量与类别的相关性。我们看到它们平均值近似为 0，恰恰是它们应该取的值。</p>
+<p>一般地，在多步建模过程中，交叉验证必须应用到整个模型步骤的序列中。特别地，“丢弃”样本必须在任何选择或者过滤之前。有一个条件：初始非监督筛选步骤可以在丢弃样本之前完成。举个例子，开始交叉验证前，我们可以选择 1000 个在 50 个样本上有着最大方差的预测变量。因为这个过滤不涉及到类别，所以它不会给预测变量不公平的好处。</p>
+<p>尽管这点对于读者来说是显然的，但是我们看到这个错误在顶级期刊中发表的文章中犯了很多次。因为大量预测变量在基因和其他领域是很常见的，这个错误潜在的后果也显著增加；见 Ambroise and McLachlan(2002)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 对这个问题的详细讨论。</p>
+</div>
+<div class="section" id="id6">
+<h2>交叉验证是否真的有用？<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>我们再一次在高维分类问题中检验交叉验证的效果。考虑 <span class="math notranslate nohighlight">\(N=20\)</span> 个样本的情形，样本被均分为两个类别，而且有 <span class="math notranslate nohighlight">\(p=500\)</span> 个与类别独立的定量变量。同样，任一分类器的真实误差率为 <span class="math notranslate nohighlight">\(50\%\)</span>。考虑一个简单的单变量分类器：最小化误差率的单分割（“stump”）。Stumps 是一棵单分割的树，而且应用在增强方法中（ 第 10 章 ）。一个简单的论断称交叉验证在这种设定下不会很好地起作用</p>
+<blockquote>
+<div><p>对全数据集进行拟合，我们将会发现一个对数据集分离得很好的预测变量。如果我们做 5 折交叉验证，同样的预测变量应该对数据的 4/5 和 1/5 都分离得很好，因此交叉验证误差率会很小（远远小于 <span class="math notranslate nohighlight">\(50\%\)</span> ）。因此 CV 不能给出一个准确的误差估计。</p>
+</div></blockquote>
+<div class="highlight-{ notranslate"><div class="highlight"><pre><span></span>    这个论断是在蛋白质实验室会议上一名科学家向我们提出来的，于是便有了这一节的内容。
+</pre></div>
+</div>
+<p>为了研究该论断是否正确，图 7.11 展示了该设定下的仿真结果。500 个预测变量和 20 个样本，两个类别大小相同，所有预测变量服从标准正态分布。左上图显示了对训练数据的 500 个 stumps 的每个训练错误的个数。我们已经用颜色标记了 6 个产生最小误差的预测变量。在右上图中，显示了对数据随机的 4/5 处划分（16 个样本）的 stump 拟合的测试误差，以及在剩下 1/5（4 个样本）中的测试误差。<!--用相同颜色标记的点表示与左上图中同种颜色点对应的预测变量-->每种颜色的点与左上图对应颜色的预测变量相对应。我们看到对于蓝色预测变量的 stump（它的 stump 在左上图中是最好的），得到 2/4 的测试误差（50%），但这并不比随机选择更好。</p>
+<p><img alt="" src="../_images/fig7.11.png" /></p>
+<blockquote>
+<div><p>图 11.7 在预测变量独立于类别标签的高维问题中，通过仿真来研究交叉验证的表现。左上图显示了通过在全数据集（20 个观测）应用单个 stump 分类器的误差个数。右上图显示了在随机分成的 4/5 数据集（16 个观测）上训练的 stump 的误差以及在剩下 1/5 数据集上测试的误差（4 个观测）。最优的预测变量都用颜色标出来了。左下图显示了对每一折重新估计分离点的效果：带颜色的点对应与 4/5 部分的验证集的 4 个样本。从全数据集导出的分离点正确将四个点分类正确，但是当分离点是在 4/5 的数据上重新估计的（正如它应该有的表现一样），在 4 个验证样本点上有两个误差点。在右下图中我们看到对 50 个仿真的数据集应用 5 折交叉验证的整体结果。平均误差率大概为 50%，正如它应该有的误差率一样。</p>
+</div></blockquote>
+<p>发生了什么？先前的论断忽略了交叉验证的事实——对每一折，模型必须全部重新训练。当前例子中，这意味着最优预测变量和对应的分离点是在 4/5 的数据中找到的。选择这个预测变量的效果可以在左上图中看出来。因为类别标签是独立于预测变量的，在 4/5 的训练数据上的 stump 的表现不包含它在剩余 1/5 中表现的信息。分离点选择的效果显示在左下图中。这里我们看到第 436 个预测变量的数据，对应左上图的蓝色点。带颜色的点表示 1/5 的数据，而剩余数据表示 4/5 的部分。图中标出来该预测变量基于全训练集和基于 4/5 部分的训练集得到的最优分离点。基于全数据的分类点在 1/5 的数据上没有作出错误预测。但是交叉验证必须基于 4/5 的数据点上得到分离点，这在4 个样本中作出了两个错误预测。</p>
+<p>对 50 个仿真的数据集的每一个数据集应用 5 折交叉验证的结果显示在右下图中。正如我们希望的那样，平均交叉验证误差在 <span class="math notranslate nohighlight">\(50\%\)</span> 附近，这也是该分类器的真实预测误差的期望值。因此交叉验证表现出它应有的样子。另一方面，误差有相当大的易变性，强调了报告 CV 估计的标准误差估计的重要性。这个问题的另一个变形见 练习 7.10 。</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Breiman, L. and Spector, P. (1992). Submodel selection and evaluation in regression: the X-random case, International Statistical Review 60: 291–319.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection, International Joint Conference on Artificial Intelligence (IJCAI), Morgan Kaufmann, pp. 1137–1143.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>Ambroise, C. and McLachlan, G. (2002). Selection bias in gene extraction on the basis of microarray gene-expression data, Proceedings of the National Academy of Sciences 99: 6562–6566.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-Model-Assessment-and-Selection"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="7.9-Vapnik-Chervonenkis-Dimension.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">7.9 VC维</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="7.11-Bootstrap-Methods.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">7.11 自助法</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

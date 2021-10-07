@@ -1,0 +1,1332 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.5 高维问题的局部方法 &#8212; 统计学习精要(中文)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7 结构化的回归模型" href="2.7-Structured-Regression-Models.html" />
+    <link rel="prev" title="2.4 统计判别理论" href="2.4-Statistical-Decision-Theory.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">统计学习精要(中文)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Introduction/1.1-Introduction.html">
+   第一章 引言
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="2.0-Overview.html">
+   第二章 监督学习概览
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.1-Introduction.html">
+     2.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.2-Variable-Types-and-Terminology.html">
+     2.2 变量类型和术语
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.3-Two-Simple-Approaches-to-Prediction.html">
+     2.3 两种简单的预测方式：最小二乘和最近邻
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.4-Statistical-Decision-Theory.html">
+     2.4 统计判别理论
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.5 高维问题的局部方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.7-Structured-Regression-Models.html">
+     2.7 结构化的回归模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.8-Classes-of-Restricted-Estimators.html">
+     2.8 限制性估计的种类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html">
+     2.9 模型选择和偏差-方差的权衡
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bibliographic-Notes.html">
+     2.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.0-Overview.html">
+   第三章 线性回归模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.1-Introduction.html">
+     3.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.2-Linear-Regression-Models-and-Least-Squares.html">
+     3.2 线性回归模型和最小二乘法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
+     3.3 子集的选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.4-Shrinkage-Methods.html">
+     3.4 收缩的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.5-Methods-Using-Derived-Input-Directions.html">
+     3.5 运用派生输入方向的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html">
+     3.6 讨论：选择和收缩方法的比较
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
+     3.7 多重输出的收缩和选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html">
+     3.8 Lasso 和相关路径算法的补充
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.9-Computational-Considerations.html">
+     3.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/Bibliographic-Notes.html">
+     3.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.0-Overview.html">
+   第四章 线性分类模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.1-Introduction.html">
+     4.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.2-Linear-Regression-of-an-Indicator-Matrix.html">
+     4.2 指示矩阵的线性回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis.html">
+     4.3 线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.4-Logistic-Regression.html">
+     4.4 逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes.html">
+     4.5 分离超平面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/Bibliographic-Notes.html">
+     4.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.0-Overview.html">
+   第五章 基展开与正则化
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.1-Introduction.html">
+     5.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.2-Piecewise-Polynomials-and-Splines.html">
+     5.2 分段多项式和样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.3-Filtering-and-Feature-Extraction.html">
+     5.3 过滤和特征提取
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
+     5.4 光滑样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
+     5.5 光滑参数的自动选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.6-Nonparametric-Logistic-Regression.html">
+     5.6 非参逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.7-Multidimensional-Splines.html">
+     5.7 多维样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.8-Regularization-and-Reproducing-Kernel-Hibert-Spaces.html">
+     5.8 正则化和再生核希尔伯特空间理论
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
+     5.9 小波光滑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Bibliographic-Notes.html">
+     5.10 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Appendix-Computations-for-B-splines.html">
+     附录
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.0-Overview.html">
+   第六章 核平滑方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
+     6.1 一维核光滑器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.2-Selecting-the-Width-of-the-Kernel.html">
+     6.2 选择核的宽度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
+     6.3
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中的局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中结构化局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
+     局部似然和其他模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.6-Kernel-Density-Estimation-and-Classification.html">
+     6.6 核密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.7-Radial-Basis-Functions-and-Kernels.html">
+     6.7 径向基函数和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.8-Mixture-Models-for-Density-Estimation-and-Classification.html">
+     6.8 混合模型的密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.9-Computational-Consoderations.html">
+     6.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/Bibliographic-Notes.html">
+     6.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.0-Overview.html">
+   第七章 模型评估与选择
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.1-Introduction.html">
+     7.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
+     7.2 偏差，方差和模型复杂度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.3-The-Bias-Variance-Decomposition.html">
+     7.3 偏差-方差分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
+     7.4 训练误差率的 optimism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.5-Estimates-of-In-Sample-Prediction-Error.html">
+     7.5 样本内误差的估计
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.6-The-Effective-Number-of-Parameters.html">
+     7.6 参数的有效个数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.7-The-Bayesian-Approach-and-BIC.html">
+     7.7 贝叶斯方法和 BIC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.8-Minimum-Description-Length.html">
+     7.8 最小描述长度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.9-Vapnik-Chervonenkis-Dimension.html">
+     7.9 VC维
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
+     7.10 交叉验证
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
+     7.11 自助法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
+     7.12 条件测试误差或期望测试误差？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/Bibliographic-Notes.html">
+     7.13 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.0-Overview.html">
+   第八章 模型推断与模型平均
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.1-Introduction.html">
+     8.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
+     8.2 自助法和最大似然法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
+     8.3 贝叶斯方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
+     8.4 自助法和贝叶斯推断之间的关系
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
+     8.5 EM 算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.6-MCMC-for-Sampling-from-the-Posterior.html">
+     8.6 从后验分布采样的 MCMC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.7-Bagging.html">
+     8.7 Bagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
+     8.8 模型平均和堆栈
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.9-Stochastic-Search.html">
+     8.9 随机搜索： Bumping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/Bibliographic-Notes.html">
+     8.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.0-Overview.html">
+   第九章 加法模型、树及相关方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models.html">
+     9.1 广义可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.2-Tree-Based-Methods.html">
+     9.2 基于树的方法(CART)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.3-PRIM.html">
+     9.3 PRIM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.4-MARS.html">
+     9.4 MARS: 多变量自适应回归样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.5-Hierarchical-Mixtures-of-Experts.html">
+     9.5 专家的分层混合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.6-Missing-Data.html">
+     9.6 缺失数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.7-Computational-Considerations.html">
+     9.7 计算的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/Bibliographic-Notes.html">
+     9.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.0-Overview.html">
+   第十章 提升方法和加法树
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.1-Boosting-Methods.html">
+     10.1 boosting方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.2-Boosting-Fits-an-Additive-Model.html">
+     10.2 Boosting 拟合可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.3-Forward-Stagewise-Additive-Modeling.html">
+     10.3 向前逐步加法建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.4-Exponential-Loss-and-AdaBoost.html">
+     10.4 指数损失和AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.5-Why-Exponential-Loss.html">
+     10.5 为什么是指数损失？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.6-Loss-Functions-and-Robustness.html">
+     10.6 损失函数和鲁棒性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.7-Off-the-Shelf-Procedures-for-Data-Mining.html">
+     10.7 数据挖掘的现货方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.8-Spam-Data.html">
+     10.8 例子: 垃圾邮件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.9-Boosting-Trees.html">
+     10.9 Boosting 树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.10-Numerical-Optimization-via-Gradient-Boosting.html">
+     10.10 Gradient Boosting的数值优化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.11-Right-Sized-Trees-for-Boosting.html">
+     10.11 大小合适的boosting树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.12-Regularization.html">
+     10.12 正则化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.13-Interpretation.html">
+     10.13 解释性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.14-Illustrations.html">
+     10.14 例子
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/Bibliographic-Notes.html">
+     10.15 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11-Neural-Networks/11.0-Overview.html">
+   第十一章 神经网络
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.1-Introduction.html">
+     11.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.2-Projection-Pursuit-Regression.html">
+     11.2 投影寻踪回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.3-Neural-Networks.html">
+     11.3 神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.4-Fitting-Neural-Networks.html">
+     11.4 拟合神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.5-Some-Issues-in-Training-Neural-Networks.html">
+     11.5 训练神经网络的一些问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.6-Example-of-Simulated-Data.html">
+     11.6 例子：模拟数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.7-Example-ZIP-Code-Data.html">
+     11.7 例子：邮编数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/Bibliographic-Notes.html">
+     11.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.0-Overview.html">
+   第十二章 支持向量机与柔性判别分析
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.1-Introduction.html">
+     12.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.2-The-Support-Vector-Classifier.html">
+     12.2 支持向量分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.3-Support-Vector-Machines-and-Kernels.html">
+     12.3 支持向量机和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.4-Generalizing-Linear-Discriminant-Analysis.html">
+     12.4 广义线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.5-Flexible-Disciminant-Analysis.html">
+     12.5 FDA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.6-Penalized-Discriminant-Analysis.html">
+     12.6 惩罚判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.7-Mixture-Discriminant-Analysis.html">
+     12.7 混合判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Bibliographic-Notes.html">
+     12.8 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Computational-Considerations.html">
+     计算上的考虑
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.0-Overview.html">
+   第十三章 原型方法与最近邻方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.1-Introduction.html">
+     13.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.2-Prototype-Methods.html">
+     13.2 原型方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.3-k-Nearest-Neighbor-Classifiers.html">
+     13.3 k最近邻分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.4-Adaptive-Nearest-Neighbor-Methods.html">
+     13.4 自适应最近邻方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.5-Computational-Considerations.html">
+     13.5 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/Bibliographic-Notes.html">
+     13.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../14-Unsupervised-Learning/14.0-Overview.html">
+   第十四章 非监督学习
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.1-Introduction.html">
+     14.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.2-Association-Rules.html">
+     14.2 关联规则
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.3-Cluster-Analysis.html">
+     14.3 聚类分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.4-Self-Organizing-Maps.html">
+     14.4 自组织图
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.5-Principal-Components-Curves-and-Surfaces.html">
+     14.5 主成分，主曲线和主曲面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.6-Non-negative-Matrix-Factorization.html">
+     14.6 非负矩阵分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html">
+     14.7 独立成分分析和探索投影寻踪
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.8-Multidimensional-Scaling.html">
+     14.8 多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.9-Nonlinear-Dimension-Reduction-and-Local-Multidimensional-Scaling.html">
+     14.9 非线性降维和局部多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/14.10-The-Google-PageRank-Algorithm.html">
+     14.10 谷歌的PageRank算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../14-Unsupervised-Learning/Bibliographic-Notes.html">
+     14.11 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../15-Random-Forests/15.0-Overview.html">
+   第十五章 随机森林
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.1-Introduction.html">
+     15.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.2-Definition-of-Random-Forests.html">
+     15.2 随机森林的定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.3-Details-of-Random-Forests.html">
+     15.3 随机森林的细节
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.4-Analysis-of-Random-Forests.html">
+     15.4 随机森林的分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/Bibliographic-Notes.html">
+     15.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../16-Ensemble-Learning/16.0-Overview.html">
+   第十六章 集成学习
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.1-Introduction.html">
+     16.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.2-Boosting-and-Regularization-Paths.html">
+     16.2 Boosting 和正则化路径
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.3-Learning-Ensembles.html">
+     16.3 学习集成
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/Bibliographic-Notes.html">
+     16.4 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../17-Undirected-Graphical-Models/17.0-Overview.html">
+   第十七章 马尔科夫随机场
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.1-Introduction.html">
+     17.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.2-Markov-Graphs-and-Their-Properties.html">
+     17.2 马尔科夫图及其性质
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.3-Undirected-Graphical-Models-for-Continuous-Variables.html">
+     17.3 连续变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.4-Undirected-Graphical-Models-for-Discrete-Variables.html">
+     17.4 离散变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/Bibliographic-Notes.html">
+     17.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../18-High-Dimensional-Problems/18.0-Overview.html">
+   第十八章 高维度问题
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.1-When-p-is-Much-Bigger-than-N.html">
+     18.1 当p远大于N
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.2-Diagonal-Linear-Discriminant-Analysis-and-Nearest-Shrunken-Centroids.html">
+     18.2 对角线性判别分析和最近收缩重心
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.3-Linear-Classifiers-with-Quadratic-Regularization.html">
+     18.3 二次正则化的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html">
+     18.4
+     <span class="math notranslate nohighlight">
+      \(L_1\)
+     </span>
+     正则的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.5-Classification-When-Features-are-Unavailable.html">
+     18.5 当特征不可用时的分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.6-High-Dimensional-Regression.html">
+     18.6 高维回归: 有监督的主成分
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html">
+     18.7 特征评估和多重检验问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/Bioliographic-Notes.html">
+     18.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02-Overview-of-Supervised-Learning/2.5-Local-Methods-in-High-Dimensions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning/issues/new?title=Issue%20on%20page%20%2F02-Overview-of-Supervised-Learning/2.5-Local-Methods-in-High-Dimensions.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>2.5 高维问题的局部方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>原文     | <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=41">The Elements of Statistical Learning</a>
+—|—
+翻译     | szcf-weiya
+发布 | 2016-09-30
+校订   |  2017-09-10</p>
+<p>至今为止我们已经仔细讨论了两个关于预测的学习方法：稳定但是有偏差的线性模型和不稳定但显然偏差较小的 <span class="math notranslate nohighlight">\(k\)</span>-最近邻估计．当有充分大的训练数据，我们似乎总会选择 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均来近似理论上的最优条件期望，因为我们能够找到一个相当大的离 <span class="math notranslate nohighlight">\(x\)</span> 近的观测构成的邻域并且平均里面的观测值．在高维情形下这种方法以及我们的直觉都没有用，而且这种现象通常被称作 <strong>维度的诅咒 (curse of dimensionality)</strong> (Bellman, 1961<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)．关于这个问题有很多的证明，我们将要仔细讨论一些．</p>
+<p>!!! note “weiya 注:”
+查阅<a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%BB%B4%E6%95%B0%E7%81%BE%E9%9A%BE">维基百科</a>，“curse of dimensionality” 可以翻译成 <strong>维数灾难</strong> 或 <strong>维度的诅咒</strong>．</p>
+<p>正如图 2.6 显示的那样，我们考虑输入在 <span class="math notranslate nohighlight">\(p\)</span> 维单位超立方体均匀分布的最近邻过程．假设我们在某个目标点构造超立方体的邻域来捕获观测值的一个小部分 <span class="math notranslate nohighlight">\(r\)</span>．因为这个邻域对应单位体积的比例 <span class="math notranslate nohighlight">\(r\)</span>，则边长的期望值为 <span class="math notranslate nohighlight">\(e_p(r)=r^{1/p}\)</span>．在 <span class="math notranslate nohighlight">\(10\)</span> 维空间下 <span class="math notranslate nohighlight">\(e_{10}(0.01)=0.63\)</span>,<span class="math notranslate nohighlight">\(e_{10}(0.1)=0.80\)</span>，而每个输入的全部范围为 <span class="math notranslate nohighlight">\(1.0\)</span>．所以选取 <span class="math notranslate nohighlight">\(1\%\)</span> 或 <span class="math notranslate nohighlight">\(10\%\)</span> 的数据去形成局部均值，我们必须在每个输入变量上覆盖到 <span class="math notranslate nohighlight">\(63\%\)</span> 或者 <span class="math notranslate nohighlight">\(80\%\)</span>．这样的邻域不再是局部的．显著地降低 <span class="math notranslate nohighlight">\(r\)</span> 并没有作用，因为我们选取去平均的观测值越少，我们拟合的方差也会越大．</p>
+<p><img alt="" src="../_images/fig2.6.png" /></p>
+<blockquote>
+<div><p>图 2.6:一个输入为均匀分布数据的单位立方体的子立方体邻域, 它很好地展现出了维数的灾难．右边的图显示了不同维数 <span class="math notranslate nohighlight">\(p\)</span> 下，为了捕捉一小部分的数据 <span class="math notranslate nohighlight">\(r\)</span>，子立方体的所需要的边长．在 <span class="math notranslate nohighlight">\(10\)</span> 维的情况下，为了捕捉 <span class="math notranslate nohighlight">\(10\%\)</span> 的数据，我们需要包括每个坐标取值范围的 <span class="math notranslate nohighlight">\(80\%\)</span>．</p>
+</div></blockquote>
+<p>高维下的稀疏取样的另外一个后果是所有的样本点离样本的某一边很近．考虑在 <span class="math notranslate nohighlight">\(p\)</span> 维以原点为中心的单位球中均匀分布的 <span class="math notranslate nohighlight">\(N\)</span> 个数据点．假设我们考虑原点处的最近邻估计．距离原点最近的数据点距离的中位数由下式给出（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/60">练习 2.3</a>）</p>
+<div class="math notranslate nohighlight">
+\[
+d(p,N)=(1-(\frac{1}{2})^{1/N})^{1/p}\tag{2.24}\label{2.24}
+\]</div>
+<p>!!! note “weiya 注”
+我们可以这样得到 \eqref{2.24} 式：
+将数据点与原点的距离看成随机变量<span class="math notranslate nohighlight">\(X\)</span>，因为数据点均匀分布，则 <span class="math notranslate nohighlight">\(X\)</span> 的分布函数为
+$<span class="math notranslate nohighlight">\(
+    F(X &lt; x)=x^p, \; x\in [0,1]
+    \)</span><span class="math notranslate nohighlight">\(
+    则最近距离为次序统计量\)</span>X_{(1)}<span class="math notranslate nohighlight">\(，其分布函数为
+    \)</span><span class="math notranslate nohighlight">\(
+    F_1(x)=1-(1-F(x))^N
+    \)</span><span class="math notranslate nohighlight">\(
+    最近距离的中位数满足 \)</span>F_1(d(p,N))=\frac{1}{2}$，于是可以得到 \eqref{2.24} 式．</p>
+<p>距离原点最近的数据点的距离的均值表达式更加复杂．当 <span class="math notranslate nohighlight">\(N=500,p=10,d(p,N)\approx 0.52\)</span>，比到边界的距离的一半还要大．因此大部分的数据点离样本空间的边界比其他任何的数据点更近．这里产生问题的原因是对于训练样本中靠近的边的预测更加困难．一定要从样本点的邻域外推而不是在中间插入．</p>
+<p>另外一个证明这个灾难是取样密度是跟 <span class="math notranslate nohighlight">\(N^{1/p}\)</span> 成比例，其中 <span class="math notranslate nohighlight">\(p\)</span> 为输入空间的维数，<span class="math notranslate nohighlight">\(N\)</span> 为样本的规模．因此，如果 <span class="math notranslate nohighlight">\(N_1=100\)</span> 表示对于单输入问题的大密度取样，然后 <span class="math notranslate nohighlight">\(N_{10}=100^{10}\)</span> 是 <span class="math notranslate nohighlight">\(10\)</span> 个输入时取样密度同上面相同时所需要的样本规模大小．因此在高维空间中所有可行的训练样本在输入空间中很稀少．</p>
+<p>让我们构造另一个均匀分布的例子．假设我们有从 <span class="math notranslate nohighlight">\([-1,1]^p\)</span> 中均匀产生的 <span class="math notranslate nohighlight">\(1000\)</span> 个训练样本 <span class="math notranslate nohighlight">\(x_i\)</span>．假设没有任何测量错误，<span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 之间真正的关系是</p>
+<div class="math notranslate nohighlight">
+\[
+Y = f(X) = e^{−8\mid \mid X\mid \mid ^2},
+\]</div>
+<p>我们采用 <span class="math notranslate nohighlight">\(1\)</span>-最近邻规则去预测测试点 <span class="math notranslate nohighlight">\(x_0=0\)</span> 的值 <span class="math notranslate nohighlight">\(y_0\)</span>．记训练集为 <span class="math notranslate nohighlight">\({\cal{T}}\)</span>．对于我们的过程，可以通过平均所有的大小为 <span class="math notranslate nohighlight">\(1000\)</span> 的样本来计算在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的预测偏差的期望值．因为这个问题是确定性的，下面是估计 <span class="math notranslate nohighlight">\(f(0)\)</span> 的均方误差 <span class="math notranslate nohighlight">\(\MSE\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\MSE(x_0)&amp;=\E_{\cal{T}}[f(x_0)-\hat{y}_0]^2\notag\\
+&amp;=\E_{\cal{T}}[\hat{y}_0-E_{\cal{T}}(\hat{y}_0)]^2+[\E_{\cal T}(\hat y_0)-f(x_0)]^2\notag\\
+&amp;=\Var_{\cal{T}}(\hat{y}_0)+Bias^2(\hat{y}_0)\tag{2.25}
+\end{align*}
+\end{split}\]</div>
+<p>图 2.7 显示了这个设定．我们已经把 <span class="math notranslate nohighlight">\(\MSE\)</span> 分解成两个部分，随着我们继续讨论，会越来越熟悉这两个部分，这两部分分别是方差和偏差平方．这一分解总是可行的而且经常有用，并且这一分解被称为 <strong>偏差-方差分解 (bias-variance decomposition)</strong>．除非最近邻在 <span class="math notranslate nohighlight">\(0\)</span> 处，这一例子中 <span class="math notranslate nohighlight">\(\hat{y}_0\)</span> 会比 <span class="math notranslate nohighlight">\(f(0)\)</span> 小，而且平均估计会向下偏．方差是因为 <span class="math notranslate nohighlight">\(1\)</span>-最近邻取样的方差．在低维度以及 <span class="math notranslate nohighlight">\(N=1000\)</span> 情况下，最近邻非常接近 <span class="math notranslate nohighlight">\(0\)</span>，于是偏差和方差都会非常小．当维数增大，最近邻有从目标点远离的趋势，而且都会带来偏差跟方差．<span class="math notranslate nohighlight">\(p=10\)</span> 时，超过 <span class="math notranslate nohighlight">\(99\%\)</span> 的样本的最近邻距离原点大于 <span class="math notranslate nohighlight">\(0.5\)</span>．因此，当 <span class="math notranslate nohighlight">\(p\)</span> 增长时，估计值多半有趋势趋于 <span class="math notranslate nohighlight">\(0\)</span>，因此 <span class="math notranslate nohighlight">\(\MSE\)</span> 保持在 <span class="math notranslate nohighlight">\(1.0\)</span> 附近，偏差也是如此，方差开始下降（这个例子的衍生）．</p>
+<p><img alt="" src="../_images/fig2.7.png" /></p>
+<blockquote>
+<div><p>图 2.7：一个模拟的例子，证明维数的灾难以及其在 <span class="math notranslate nohighlight">\(\MSE\)</span>，偏差和方差的影响．输入的特征在 <span class="math notranslate nohighlight">\([-1,1]^p,p=1,\ldots,10\)</span> 上均匀分布．左上角显示了在 <span class="math notranslate nohighlight">\(\IR\)</span> 上的目标函数（无噪声）：<span class="math notranslate nohighlight">\(f(X)=e^{-8\mid \mid X\mid \mid ^2}\)</span>，而且展示了 <span class="math notranslate nohighlight">\(1\)</span>-最近邻在估计 <span class="math notranslate nohighlight">\(f(0)\)</span> 时的误差．训练点用蓝色的记号表示．右上角显示了为什么 <span class="math notranslate nohighlight">\(1\)</span>-最近邻的半径随着维数 <span class="math notranslate nohighlight">\(p\)</span> 的增加而增加．左下角显示了 <span class="math notranslate nohighlight">\(1\)</span>-最近邻的平均半径．右下角显示了 <span class="math notranslate nohighlight">\(\MSE\)</span>，偏差平方和方差关于维数 <span class="math notranslate nohighlight">\(p\)</span> 的函数曲线．</p>
+</div></blockquote>
+<p><img alt="" src="../_images/fig2.8.png" /></p>
+<blockquote>
+<div><p>图 2.8：同图 2.7一样的配置的模拟例子．函数除了一个维数外都为常数，该维数下 <span class="math notranslate nohighlight">\(F(X)=\frac{1}{2}(X_1+1)^3\)</span>．方差占主导地位．</p>
+</div></blockquote>
+<p>尽管这是一个非常不自然的例子，类型的情形发生的更一般．多变量的函数复杂度随着维数呈指数增长，而且如果我们希望以在低维中以相同的精度来估计高维中的函数，我们将会需要呈指数增长规模的训练集．在这个例子中，函数是所有 <span class="math notranslate nohighlight">\(p\)</span> 个变量参与的复杂交互．</p>
+<p>偏差项关于距离的依赖性取决于真实值，而且在 <span class="math notranslate nohighlight">\(1\)</span>-最近邻情况它并不总是占主要部分．举个例子，如果像图 2.8 一样函数总是仅仅与少量的维度有关，方差便会占主要部分．</p>
+<p>另一方面假设我们知道 <span class="math notranslate nohighlight">\(Y\)</span> 与 <span class="math notranslate nohighlight">\(X\)</span> 之间的关系为线性的</p>
+<div class="math notranslate nohighlight">
+\[
+Y = X^T\beta + \varepsilon\tag{2.26}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\varepsilon \sim N(0,\sigma^2)\)</span>，而且我们用最小二乘对训练数据进行拟合模型．对于任意测试点 <span class="math notranslate nohighlight">\(x_0\)</span>，我们有 <span class="math notranslate nohighlight">\(\hat y_0=x_0^T\hat{\beta}\)</span>，可以写成 <span class="math notranslate nohighlight">\(\hat y_0=x_0^T\beta+\sum_{i=1}^N\ell_i(x_0)\epsilon_i\)</span>，其中 <span class="math notranslate nohighlight">\(\ell_i(x_0)\)</span> 是 <span class="math notranslate nohighlight">\({\mathbf{X(X^TX)}}^{-1}x_0\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 个元素．因为在这个模型下，最小二乘估计是无偏的，我们发现</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\EPE(x_0) &amp;= \E_{y_0\mid x_0}\E_{{\cal T}}(y_0-\hat{y}_0)^2\notag\\
+&amp;={\color{red} {\E_{y_0\mid x_0}\E_{\cal T}(x_0^T\beta+\varepsilon-\hat{y}_0)^2}}\notag\\
+&amp;={\color{red} {\E_{y_0\mid x_0}\E_{\cal T}[(x_0^T\beta-\hat{y}_0)^2+2\varepsilon (x_0^T\beta-\hat{y}_0)+\varepsilon ^2]}}\notag\\
+&amp;={\color{red} {\E_{y_0\mid x_0}\varepsilon ^2+\E_{\cal T}(x_0^T\beta-\hat{y}_0)^2\qquad\qquad \because \E_{y_0\mid x_0}\varepsilon = 0}}\notag\\
+&amp;=\Var(y_0\mid x_0)+\E_{\cal T}[\hat{y}_0-\E_{\cal T}\hat{y}_0]^2+[\E_{\cal T}\hat{y}_0-x_0^T\beta]^2\notag\\
+&amp;=\Var(y_0\mid x_0)+\Var_{\cal T}(\hat{y}_0)+\Bias^2(\hat{y}_0)\notag\\
+&amp;=\sigma^2+E_{\cal T}x_0^T(\mathbf{X^TX})^{-1}x_0\sigma^2+0^2\qquad\qquad\tag{2.27}\label{2.27}
+\end{align}
+\end{split}\]</div>
+<p>因为我们的目标不是确定的，所以在预测误差中带来了一个附加的方差<span class="math notranslate nohighlight">\(\sigma^2\)</span>．没有偏差，而且方差依赖于 <span class="math notranslate nohighlight">\(x_0\)</span>．如果 <span class="math notranslate nohighlight">\(N\)</span> 较大且 <span class="math notranslate nohighlight">\(\cal{T}\)</span> 随机选取，并且假设 <span class="math notranslate nohighlight">\(\E(X)=0\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf{X}^T\mathbf{X}\longrightarrow N\Cov(X)\)</span>，并且</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\E_{x_0}\EPE(x_0)&amp;\sim \E_{x_0}x_0^T\Cov(X)^{-1}x_0\sigma^2/N+\sigma^2\notag\\
+&amp;=\trace[\Cov(X)^{-1}\Cov(x_0)]\sigma^2/N+\sigma^2\notag\\
+&amp;=\sigma^2(p/N)+\sigma^2\qquad\qquad\tag{2.28}\label{2.28}
+\end{align*}
+\end{split}\]</div>
+<p>我们可以看到 <span class="math notranslate nohighlight">\(\EPE\)</span> 的期望作为 <span class="math notranslate nohighlight">\(p\)</span> 的函数线性增长，斜率 <span class="math notranslate nohighlight">\(\sigma^2/N\)</span>．如果 <span class="math notranslate nohighlight">\(N\)</span> 大且/或 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 小，方差的增长可以忽略（在确定情形下为 <span class="math notranslate nohighlight">\(0\)</span>）．通过在拟合的模型的类别上插入一些强的限制，我们避免了维数的灾难．式 \eqref{2.27} 和 \eqref{2.28} 中部分技巧细节的推导另见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">练习 2.5</a>．</p>
+<p>!!! info “Ex. 2.5”
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">Issue 160: Ex. 2.5</a>.</p>
+<p>图 2.9 在两种情形下比较 <span class="math notranslate nohighlight">\(1\)</span>-最近邻和最小二乘法，两种情形下形式均为 <span class="math notranslate nohighlight">\(Y=f(X)+\epsilon\)</span>，<span class="math notranslate nohighlight">\(X\)</span> 和前面一样都是均匀分布的，而且<span class="math notranslate nohighlight">\(\epsilon\sim N(0,1)\)</span>．样本规模为 <span class="math notranslate nohighlight">\(N=500\)</span>．对于橙色曲线，<span class="math notranslate nohighlight">\(f(X)\)</span> 关于第一个坐标是线性的，对于蓝色曲线，如图 2.8 中的三次函数．图中显示了相对于最小二乘而言，<span class="math notranslate nohighlight">\(1\)</span>-最近邻的相对 <span class="math notranslate nohighlight">\(\EPE\)</span> 值，线性情况下大概是从 <span class="math notranslate nohighlight">\(2\)</span> 开始．在这种情况下最小二乘是无偏的，而且如上面所讨论的，<span class="math notranslate nohighlight">\(\EPE\)</span> 略高于 <span class="math notranslate nohighlight">\(\sigma^2=1\)</span>．<span class="math notranslate nohighlight">\(1\)</span>-最近邻的 <span class="math notranslate nohighlight">\(\EPE\)</span> 总是大于 <span class="math notranslate nohighlight">\(2\)</span>，因为这种情形下 <span class="math notranslate nohighlight">\(\hat{f}_0\)</span> 的方差至少是 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，而且随着维数增长比率增加，因为随着维数增加最近邻会远离目标点．</p>
+<p>!!! note “weiya 注:”
+对于 1NN，
+$<span class="math notranslate nohighlight">\(
+    \EPE(x_0) = \sigma^2 + \Var_{\cal T}(\hat{y}_0)+\Bias^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
+    \)</span><span class="math notranslate nohighlight">\(
+    而对于 OLS,
+    \)</span><span class="math notranslate nohighlight">\(
+    \E_{x_0}\EPE(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
+    \)</span><span class="math notranslate nohighlight">\(
+    则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 \)</span>p<span class="math notranslate nohighlight">\( 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 \)</span>p$ 增长。</p>
+<p>对于三次函数，最小二乘是有偏的，这使得比率变得缓和．显然我们可以构造最小二乘的偏差主导方差的例子，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻就会变成胜利者．</p>
+<p><img alt="" src="../_images/fig2.9.png" /></p>
+<p>通过依赖严格的假设，线性模型没有偏差而且方差几乎可以忽略，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻的误差就会相当的大．然而，如果假设是错误的，所有的东西都不复存在，而 <span class="math notranslate nohighlight">\(1\)</span>-最近邻将占主导地位．我们将会看到介于严格的线性模型和非常灵活的 <span class="math notranslate nohighlight">\(1\)</span>-最近邻模型之间的模型谱，每个都有它们各自的假设和偏差，这些假设已经具体提到过，通过在很大程度上借鉴这些假设来避免高维下函数复杂度呈指数增长．</p>
+<p>在我们更加细致地探究下去之前，我们在统计模型的概念上进行详细说明，并且看一下他们怎么适应预测的框架．</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Bellman, R. E. (1961). Adaptive Control Processes, Princeton University Press.</p>
+</dd>
+</dl>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02-Overview-of-Supervised-Learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2.4-Statistical-Decision-Theory.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2.4 统计判别理论</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2.7-Structured-Regression-Models.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2.7 结构化的回归模型</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

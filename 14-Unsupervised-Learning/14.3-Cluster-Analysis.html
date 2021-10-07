@@ -1,0 +1,1721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14.3 聚类分析 &#8212; 统计学习精要(中文)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14.4 自组织图" href="14.4-Self-Organizing-Maps.html" />
+    <link rel="prev" title="14.2 关联规则" href="14.2-Association-Rules.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">统计学习精要(中文)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-Introduction/1.1-Introduction.html">
+   第一章 引言
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.0-Overview.html">
+   第二章 监督学习概览
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.1-Introduction.html">
+     2.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.2-Variable-Types-and-Terminology.html">
+     2.2 变量类型和术语
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.3-Two-Simple-Approaches-to-Prediction.html">
+     2.3 两种简单的预测方式：最小二乘和最近邻
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.4-Statistical-Decision-Theory.html">
+     2.4 统计判别理论
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.5-Local-Methods-in-High-Dimensions.html">
+     2.5 高维问题的局部方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.7-Structured-Regression-Models.html">
+     2.7 结构化的回归模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.8-Classes-of-Restricted-Estimators.html">
+     2.8 限制性估计的种类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html">
+     2.9 模型选择和偏差-方差的权衡
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02-Overview-of-Supervised-Learning/Bibliographic-Notes.html">
+     2.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.0-Overview.html">
+   第三章 线性回归模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.1-Introduction.html">
+     3.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.2-Linear-Regression-Models-and-Least-Squares.html">
+     3.2 线性回归模型和最小二乘法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
+     3.3 子集的选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.4-Shrinkage-Methods.html">
+     3.4 收缩的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.5-Methods-Using-Derived-Input-Directions.html">
+     3.5 运用派生输入方向的方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html">
+     3.6 讨论：选择和收缩方法的比较
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
+     3.7 多重输出的收缩和选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html">
+     3.8 Lasso 和相关路径算法的补充
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.9-Computational-Considerations.html">
+     3.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03-Linear-Methods-for-Regression/Bibliographic-Notes.html">
+     3.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.0-Overview.html">
+   第四章 线性分类模型
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.1-Introduction.html">
+     4.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.2-Linear-Regression-of-an-Indicator-Matrix.html">
+     4.2 指示矩阵的线性回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis.html">
+     4.3 线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.4-Logistic-Regression.html">
+     4.4 逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes.html">
+     4.5 分离超平面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04-Linear-Methods-for-Classification/Bibliographic-Notes.html">
+     4.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.0-Overview.html">
+   第五章 基展开与正则化
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.1-Introduction.html">
+     5.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.2-Piecewise-Polynomials-and-Splines.html">
+     5.2 分段多项式和样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.3-Filtering-and-Feature-Extraction.html">
+     5.3 过滤和特征提取
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
+     5.4 光滑样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
+     5.5 光滑参数的自动选择
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.6-Nonparametric-Logistic-Regression.html">
+     5.6 非参逻辑斯蒂回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.7-Multidimensional-Splines.html">
+     5.7 多维样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.8-Regularization-and-Reproducing-Kernel-Hibert-Spaces.html">
+     5.8 正则化和再生核希尔伯特空间理论
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
+     5.9 小波光滑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Bibliographic-Notes.html">
+     5.10 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/Appendix-Computations-for-B-splines.html">
+     附录
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.0-Overview.html">
+   第六章 核平滑方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
+     6.1 一维核光滑器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.2-Selecting-the-Width-of-the-Kernel.html">
+     6.2 选择核的宽度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
+     6.3
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中的局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     <span class="math notranslate nohighlight">
+      \(\IR^p\)
+     </span>
+     中结构化局部回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
+     局部似然和其他模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.6-Kernel-Density-Estimation-and-Classification.html">
+     6.6 核密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.7-Radial-Basis-Functions-and-Kernels.html">
+     6.7 径向基函数和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.8-Mixture-Models-for-Density-Estimation-and-Classification.html">
+     6.8 混合模型的密度估计和分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.9-Computational-Consoderations.html">
+     6.9 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06-Kernel-Smoothing-Methods/Bibliographic-Notes.html">
+     6.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.0-Overview.html">
+   第七章 模型评估与选择
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.1-Introduction.html">
+     7.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
+     7.2 偏差，方差和模型复杂度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.3-The-Bias-Variance-Decomposition.html">
+     7.3 偏差-方差分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
+     7.4 训练误差率的 optimism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.5-Estimates-of-In-Sample-Prediction-Error.html">
+     7.5 样本内误差的估计
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.6-The-Effective-Number-of-Parameters.html">
+     7.6 参数的有效个数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.7-The-Bayesian-Approach-and-BIC.html">
+     7.7 贝叶斯方法和 BIC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.8-Minimum-Description-Length.html">
+     7.8 最小描述长度
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.9-Vapnik-Chervonenkis-Dimension.html">
+     7.9 VC维
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
+     7.10 交叉验证
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
+     7.11 自助法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
+     7.12 条件测试误差或期望测试误差？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07-Model-Assessment-and-Selection/Bibliographic-Notes.html">
+     7.13 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.0-Overview.html">
+   第八章 模型推断与模型平均
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.1-Introduction.html">
+     8.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
+     8.2 自助法和最大似然法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
+     8.3 贝叶斯方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
+     8.4 自助法和贝叶斯推断之间的关系
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
+     8.5 EM 算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.6-MCMC-for-Sampling-from-the-Posterior.html">
+     8.6 从后验分布采样的 MCMC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.7-Bagging.html">
+     8.7 Bagging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
+     8.8 模型平均和堆栈
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.9-Stochastic-Search.html">
+     8.9 随机搜索： Bumping
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08-Model-Inference-and-Averaging/Bibliographic-Notes.html">
+     8.10 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.0-Overview.html">
+   第九章 加法模型、树及相关方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models.html">
+     9.1 广义可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.2-Tree-Based-Methods.html">
+     9.2 基于树的方法(CART)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.3-PRIM.html">
+     9.3 PRIM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.4-MARS.html">
+     9.4 MARS: 多变量自适应回归样条
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.5-Hierarchical-Mixtures-of-Experts.html">
+     9.5 专家的分层混合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.6-Missing-Data.html">
+     9.6 缺失数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/9.7-Computational-Considerations.html">
+     9.7 计算的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../09-Additive-Models-Trees-and-Related-Methods/Bibliographic-Notes.html">
+     9.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.0-Overview.html">
+   第十章 提升方法和加法树
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.1-Boosting-Methods.html">
+     10.1 boosting方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.2-Boosting-Fits-an-Additive-Model.html">
+     10.2 Boosting 拟合可加模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.3-Forward-Stagewise-Additive-Modeling.html">
+     10.3 向前逐步加法建模
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.4-Exponential-Loss-and-AdaBoost.html">
+     10.4 指数损失和AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.5-Why-Exponential-Loss.html">
+     10.5 为什么是指数损失？
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.6-Loss-Functions-and-Robustness.html">
+     10.6 损失函数和鲁棒性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.7-Off-the-Shelf-Procedures-for-Data-Mining.html">
+     10.7 数据挖掘的现货方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.8-Spam-Data.html">
+     10.8 例子: 垃圾邮件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.9-Boosting-Trees.html">
+     10.9 Boosting 树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.10-Numerical-Optimization-via-Gradient-Boosting.html">
+     10.10 Gradient Boosting的数值优化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.11-Right-Sized-Trees-for-Boosting.html">
+     10.11 大小合适的boosting树
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.12-Regularization.html">
+     10.12 正则化
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.13-Interpretation.html">
+     10.13 解释性
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/10.14-Illustrations.html">
+     10.14 例子
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../10-Boosting-and-Additive-Trees/Bibliographic-Notes.html">
+     10.15 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../11-Neural-Networks/11.0-Overview.html">
+   第十一章 神经网络
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.1-Introduction.html">
+     11.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.2-Projection-Pursuit-Regression.html">
+     11.2 投影寻踪回归
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.3-Neural-Networks.html">
+     11.3 神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.4-Fitting-Neural-Networks.html">
+     11.4 拟合神经网络
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.5-Some-Issues-in-Training-Neural-Networks.html">
+     11.5 训练神经网络的一些问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.6-Example-of-Simulated-Data.html">
+     11.6 例子：模拟数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/11.7-Example-ZIP-Code-Data.html">
+     11.7 例子：邮编数据
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../11-Neural-Networks/Bibliographic-Notes.html">
+     11.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.0-Overview.html">
+   第十二章 支持向量机与柔性判别分析
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.1-Introduction.html">
+     12.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.2-The-Support-Vector-Classifier.html">
+     12.2 支持向量分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.3-Support-Vector-Machines-and-Kernels.html">
+     12.3 支持向量机和核
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.4-Generalizing-Linear-Discriminant-Analysis.html">
+     12.4 广义线性判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.5-Flexible-Disciminant-Analysis.html">
+     12.5 FDA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.6-Penalized-Discriminant-Analysis.html">
+     12.6 惩罚判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.7-Mixture-Discriminant-Analysis.html">
+     12.7 混合判别分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Bibliographic-Notes.html">
+     12.8 文献笔记
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/Computational-Considerations.html">
+     计算上的考虑
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.0-Overview.html">
+   第十三章 原型方法与最近邻方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.1-Introduction.html">
+     13.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.2-Prototype-Methods.html">
+     13.2 原型方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.3-k-Nearest-Neighbor-Classifiers.html">
+     13.3 k最近邻分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.4-Adaptive-Nearest-Neighbor-Methods.html">
+     13.4 自适应最近邻方法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/13.5-Computational-Considerations.html">
+     13.5 计算上的考虑
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../13-Prototype-Methods-and-Nearest-Neighbors/Bibliographic-Notes.html">
+     13.6 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="14.0-Overview.html">
+   第十四章 非监督学习
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.1-Introduction.html">
+     14.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.2-Association-Rules.html">
+     14.2 关联规则
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     14.3 聚类分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.4-Self-Organizing-Maps.html">
+     14.4 自组织图
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.5-Principal-Components-Curves-and-Surfaces.html">
+     14.5 主成分，主曲线和主曲面
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.6-Non-negative-Matrix-Factorization.html">
+     14.6 非负矩阵分解
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html">
+     14.7 独立成分分析和探索投影寻踪
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.8-Multidimensional-Scaling.html">
+     14.8 多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.9-Nonlinear-Dimension-Reduction-and-Local-Multidimensional-Scaling.html">
+     14.9 非线性降维和局部多维缩放
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14.10-The-Google-PageRank-Algorithm.html">
+     14.10 谷歌的PageRank算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bibliographic-Notes.html">
+     14.11 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../15-Random-Forests/15.0-Overview.html">
+   第十五章 随机森林
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.1-Introduction.html">
+     15.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.2-Definition-of-Random-Forests.html">
+     15.2 随机森林的定义
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.3-Details-of-Random-Forests.html">
+     15.3 随机森林的细节
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/15.4-Analysis-of-Random-Forests.html">
+     15.4 随机森林的分析
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../15-Random-Forests/Bibliographic-Notes.html">
+     15.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../16-Ensemble-Learning/16.0-Overview.html">
+   第十六章 集成学习
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.1-Introduction.html">
+     16.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.2-Boosting-and-Regularization-Paths.html">
+     16.2 Boosting 和正则化路径
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/16.3-Learning-Ensembles.html">
+     16.3 学习集成
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../16-Ensemble-Learning/Bibliographic-Notes.html">
+     16.4 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../17-Undirected-Graphical-Models/17.0-Overview.html">
+   第十七章 马尔科夫随机场
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.1-Introduction.html">
+     17.1 导言
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.2-Markov-Graphs-and-Their-Properties.html">
+     17.2 马尔科夫图及其性质
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.3-Undirected-Graphical-Models-for-Continuous-Variables.html">
+     17.3 连续变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/17.4-Undirected-Graphical-Models-for-Discrete-Variables.html">
+     17.4 离散变量的无向图模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../17-Undirected-Graphical-Models/Bibliographic-Notes.html">
+     17.5 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../18-High-Dimensional-Problems/18.0-Overview.html">
+   第十八章 高维度问题
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.1-When-p-is-Much-Bigger-than-N.html">
+     18.1 当p远大于N
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.2-Diagonal-Linear-Discriminant-Analysis-and-Nearest-Shrunken-Centroids.html">
+     18.2 对角线性判别分析和最近收缩重心
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.3-Linear-Classifiers-with-Quadratic-Regularization.html">
+     18.3 二次正则化的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html">
+     18.4
+     <span class="math notranslate nohighlight">
+      \(L_1\)
+     </span>
+     正则的线性分类器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.5-Classification-When-Features-are-Unavailable.html">
+     18.5 当特征不可用时的分类
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.6-High-Dimensional-Regression.html">
+     18.6 高维回归: 有监督的主成分
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html">
+     18.7 特征评估和多重检验问题
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../18-High-Dimensional-Problems/Bioliographic-Notes.html">
+     18.8 文献笔记
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/14-Unsupervised-Learning/14.3-Cluster-Analysis.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xishansnow/ElementsOfStatisticalLearning/issues/new?title=Issue%20on%20page%20%2F14-Unsupervised-Learning/14.3-Cluster-Analysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proximity-matrices">
+   接近矩阵(proximity matrices)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   基于属性的不相似性
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     定量变量
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     有序变量
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     类别变量
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-dissimilarity">
+   样品的不相似性 (object dissimilarity)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   聚类算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   组合算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means">
+   K-means
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soft-k-means">
+   高斯混合作为 Soft K-means 聚类
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   向量量化
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-medoids">
+   K-medoids
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     例子：国家不相似性
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   实际问题
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id19">
+   系统聚类
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     合并聚类
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     例子：人类癌症微阵列数据（继续）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     分裂聚类
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1>14.3 聚类分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>原文</p></th>
+<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">The Elements of Statistical Learning</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>翻译</p></td>
+<td><p>szcf-weiya</p></td>
+</tr>
+<tr class="row-odd"><td><p>发布</p></td>
+<td><p>2016-09-30</p></td>
+</tr>
+<tr class="row-even"><td><p>更新</p></td>
+<td><p>2019-10-03 09:57:02</p></td>
+</tr>
+<tr class="row-odd"><td><p>状态</p></td>
+<td><p>Done</p></td>
+</tr>
+</tbody>
+</table>
+<!--
+!!! note "更新笔记"
+    @2017-12-31 大三上学期学过多元统计分析，其中有一次实验是聚类分析．实验报告参见[**这里**](http://rmd.hohoweiya.xyz/3140105707hw5.pdf)（下载[**数据**](http://rmd.hohoweiya.xyz/avenormal.xls)）
+-->
+<p>!!! note “更新笔记”
+&#64;2018-01-17 解决两个练习题．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">Ex. 14.1</a>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">Ex. 14.2</a></p>
+<p><strong>聚类分析 (cluster analysis)</strong>，也称作 <strong>数据分离 (data segmentation)</strong>，有多种不同的目标．所有的目标都与将 <strong>点集 (a collection of objects)</strong> 分成子集或者簇有关，使得同一个簇中的点比不在同一个簇的点彼此更接近．一个点可以用一系列度量来描述，或者通过与其它点的关系．另外，目标有时是将簇排列成自然分层的形式．这涉及到依次将簇本身进行分类使得在每一层次，同一类中的簇比不在同类的簇彼此更相似．</p>
+<p>!!! note “weiya 注：翻译”
+为了更好地表述，将上文中的 object 翻译成“点”．</p>
+<p>聚类分析也用来构造描述型统计量来确定数据点是否包含不同的子群，每个群表示有着显著不同特点的点集．这一目标需要评估被分到各自簇中的点集间的差异程度．</p>
+<p>!!! note “weiya 注”
+这里谈到了两个目标：第一个提到了 hierarchy，这与系统聚类相似；第二个提到用统计量衡量簇间的差异，如各种距离和相似系数．</p>
+<p>聚类分析的所有目标的核心是度量要聚类的单个点间相似（或不相似）的程度．聚类方法试图基于点间相似性的定义来将其分类．相似性的定义只能从关注的主题得到．某种程度上，这个情形与确定预测问题（监督学习）中的损失或花费函数相似．在预测问题中，损失函数与错误的预测有关，而错误的预测取决于数据之外的考虑．</p>
+<p>!!! note “weiya 注”
+简而言之，聚类方法中相似性的定义就如同监督学习问题中损失函数一样重要．</p>
+<p>图 14.4 显示了通过流行的 K-means 算法将一些模拟数据聚成三簇．这种情况下其中的两个簇不是很好地分离开，所以“分割（segmentation）”比“聚类（clustering）”能将这部分过程描述得更精确．K-means 聚类以猜三个聚类中心为开始．然后交替进行下面的步骤直到收敛：</p>
+<ul class="simple">
+<li><p>对于每个数据点，确定（欧式空间）中最近的聚类中心．</p></li>
+<li><p>每个聚类中心用与其最近的所有数据点的平均坐标来替换．</p></li>
+</ul>
+<p><img alt="" src="../_images/fig14.4.png" /></p>
+<blockquote>
+<div><p>图 14.4. 平面上的模拟数据，用 K-means 聚类算法聚成三类（分别用橘黄色，蓝色和绿色）．</p>
+</div></blockquote>
+<p>我们将在后面更详细地描述 K-means，包括怎样选取类别数目的问题（例子中是三个）．K-means 聚类是从上到下（top-down）的过程，而其他我们描述的分类方式是从下往上（bottom-up）的过程．所有聚类技巧的根本是两个点之间距离或者相似性的度量．我们在描述各种不同的聚类算法之前首先讨论距离的度量．</p>
+<div class="section" id="proximity-matrices">
+<h2>接近矩阵(proximity matrices)<a class="headerlink" href="#proximity-matrices" title="Permalink to this headline">¶</a></h2>
+<p>有时数据是直接用点对之间的接近（相似或亲近）来表示．这些可以是 <strong>相似性 (similarities)</strong> 或者 <strong>不相似性 (dissimilarities)</strong>（不同或者不够近似）．举个例子，在社会科学实验中，参与者被要求去判断特定的物品与另一个之间的差异程度．不相似性进一步可以对这些判断进行平均来计算．这种类型的数据可以表示成 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf D\)</span>，其中 <span class="math notranslate nohighlight">\(N\)</span> 为物品数目的个数，并且每个元素 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 记录了第 <span class="math notranslate nohighlight">\(i\)</span> 个和第 <span class="math notranslate nohighlight">\(i'\)</span> 个物品之间的接近程度．这个矩阵接着作为聚类算法的输入．</p>
+<p>大部分算法假定一个非负的不相似性矩阵，对角元素为 0：<span class="math notranslate nohighlight">\(d_{ii}=0,i=1,2,\ldots,N\)</span>．如果原始数据以相似性表示的，则某合适的非负单调下降函数可以用来将它们转换为不相似性．另外，大部分算法假定不相似性矩阵是对称的，所以如果原始矩阵 <span class="math notranslate nohighlight">\(\mathbf D\)</span> 不是对称的，则必须用 <span class="math notranslate nohighlight">\((\mathbf{D+D^T})/2\)</span> 来替换．在严格意义下主观判断的差异并不是距离（distances），因为三角不等式 <span class="math notranslate nohighlight">\(d_{ii'}\le d_{ik}+d_{i'k}\)</span> 对于所有的 <span class="math notranslate nohighlight">\(k\in\{1,\ldots,N\}\)</span> 不满足．因此，一些采用距离的算法不能用这些数据．</p>
+</div>
+<div class="section" id="id2">
+<h2>基于属性的不相似性<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>大部分情形下我们对变量 <span class="math notranslate nohighlight">\(j=1,\ldots,p\)</span>（也称为属性）在 <span class="math notranslate nohighlight">\(i=1,2,\ldots,N\)</span> 上有测量值 <span class="math notranslate nohighlight">\(x_{ij}\)</span>．因为大多数流行的聚类算法将不相似性矩阵作为输入，我们首先必须构造两个观测之间的成对不相似性．在大部分一般情形下，我们定义第 <span class="math notranslate nohighlight">\(j\)</span> 个属性上不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j})\)</span>，进一步定义
+$<span class="math notranslate nohighlight">\(
+D(x_i,x_{i'})=\sum\limits_{j=1}^pd_j(x_{ij},x_{i'j})\tag{14.20}\label{14.20}
+\)</span><span class="math notranslate nohighlight">\(
+作为第 \)</span>i<span class="math notranslate nohighlight">\( 和 \)</span>i’<span class="math notranslate nohighlight">\( 点的不相似性．至今为止最普遍的选择是平方距离
+\)</span><span class="math notranslate nohighlight">\(
+d_j(x_{ij},d_{i'j})=(x_{ij}-x_{i'j})^2\tag{14.21}
+\)</span>$
+然而，其它的情形也是可能的，而且可以导出潜在的不同的结果．对于非定量的属性（如类别型数据），平方距离可能不合适．另外的，有时候需要对属性赋予不同的权重，而不是像在 \eqref{14.20} 中赋予相等的权重．</p>
+<p>我们首先讨论关于属性类别的几种情况．</p>
+<div class="section" id="id3">
+<h3>定量变量<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>这种类型的变量（或属性）的度量用连续实值来表示．将它们间的“误差”定义为关于它们绝对差异的单调增加的函数是很自然的</p>
+<div class="math notranslate nohighlight">
+\[
+d(x_i,x_{i'})=l(\vert x_i-x_{i'}\vert)
+\]</div>
+<p>除了平方误差损失 <span class="math notranslate nohighlight">\((x_i-x_{i'})^2\)</span>，另一种普遍的选择是绝对误差．前者更加关注大的差异．另外，聚类可以基于相关系数</p>
+<div class="math notranslate nohighlight">
+\[
+\rho(x_i,x_{i'})=\frac{\sum_j(x_{ij}-\bar x_i)(x_{i'j}-\bar x_{i'})}{\sqrt{\sum_j(x_{ij}-\bar x_i)^2\sum_j(x_{i'j}-\bar x_{i'})^2}}\tag{14.22}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\bar x_i=\sum_jx_{ij}/p\)</span>．注意到这是在 <strong>变量</strong> 上平均，不是在观测上．如果输入已经标准化了，则 <span class="math notranslate nohighlight">\(\sum_j(x_{ij}-x_{i'j})^2\propto 2(1-\rho(x_i,x_{i'}))\)</span>．因此基于协方差（相似性）的分类与基于平方距离（不相似性）是等价的．</p>
+</div>
+<div class="section" id="id4">
+<h3>有序变量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>这种类型的变量经常表示成邻接整数，而且实现值也看成有序集．举些例子，如学业成绩 (A,B,C,D,F)，偏好程度 (can’t stand, dislike, OK, like, terrific)．排名数据是一类特别的有序数据．有序变量的误差度量一般通过将它们 <span class="math notranslate nohighlight">\(M\)</span> 个原始值（按照原始值规定的顺序）替换为下式来定义
+$<span class="math notranslate nohighlight">\(
+\frac{i-1/2}{M},i=1,\ldots,M\tag{14.23}
+\)</span>$</p>
+<p>于是它们接着可以看成这个尺度下的定量变量．</p>
+</div>
+<div class="section" id="id5">
+<h3>类别变量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>对于无序的类别（也称作名义(nomial)）变量，成对数据的差异程度必须明确地表示出来．如果假设变量有 <span class="math notranslate nohighlight">\(M\)</span> 个不同的值，可以排列成对称的 <span class="math notranslate nohighlight">\(M\times M\)</span> 矩阵，元素 <span class="math notranslate nohighlight">\(L_{rr'}=L_{r'r},L_{rr}=0,L_{rr'}\ge 0\)</span>．最普遍的选择对于所有 <span class="math notranslate nohighlight">\(r\neq r'\)</span> 取 <span class="math notranslate nohighlight">\(L_{rr'}=1\)</span>，而不相等的损失可以用来突出某些错误．</p>
+</div>
+</div>
+<div class="section" id="object-dissimilarity">
+<h2>样品的不相似性 (object dissimilarity)<a class="headerlink" href="#object-dissimilarity" title="Permalink to this headline">¶</a></h2>
+<p>接着我们定义将 <span class="math notranslate nohighlight">\(p\)</span> 个单属性不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j}),j=1,2,\ldots,p\)</span> 结合成一个单独的衡量整个不相似性的 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>，<span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span> 是两个有着各自属性值的点或观测 <span class="math notranslate nohighlight">\((x_i,x_{i'})\)</span> 之间的不相似性．这几乎总是通过加权平均（凸组合）的方式实现
+$<span class="math notranslate nohighlight">\(
+D(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot d_j(x_{ij},x_{i'j});\; \sum\limits_{j=1}^pw_j=1\tag{14.24}\label{14.24}
+\)</span><span class="math notranslate nohighlight">\(
+这里 \)</span>w_j<span class="math notranslate nohighlight">\( 是为了确定点间的整个不相似性对第 \)</span>j$ 个属性赋值的权重，权重表示了这个变量的相对影响．权重的选择取决于具体的问题．</p>
+<p>重要的是意识到，对每个变量的设定相同的权重 <span class="math notranslate nohighlight">\(w_j\)</span>（如，<span class="math notranslate nohighlight">\(w_j=1\;\forall j\)</span>）不一定对所有变量有相同的影响．第 <span class="math notranslate nohighlight">\(j\)</span> 个属性 <span class="math notranslate nohighlight">\(X_j\)</span> 在点的不相似性 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>\eqref{14.24} 上的影响取决于它的相对贡献，这个相对贡献是对数据集中所有的数据对的平均样品不相似性 <span class="math notranslate nohighlight">\(\bar D\)</span> 而言
+$<span class="math notranslate nohighlight">\(
+\bar D=\frac{1}{N^2}\sum_{i=1}^N\sum\limits_{i'=1}^ND(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot \bar d_j
+\)</span><span class="math notranslate nohighlight">\(
+其中，
+\)</span><span class="math notranslate nohighlight">\(
+\bar d_j=\frac{1}{N^2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nd_j(x_{ij},x_{i'j})\tag{14.25}\label{14.25}
+\)</span><span class="math notranslate nohighlight">\(
+是第 \)</span>j<span class="math notranslate nohighlight">\( 个属性的平均不相似性．因此，第 \)</span>j<span class="math notranslate nohighlight">\( 个变量的相对影响为 \)</span>w_j\cdot \bar d_j<span class="math notranslate nohighlight">\(，并且令 \)</span>w_j\sim 1/\bar d_j<span class="math notranslate nohighlight">\( 会让所有的属性在表征样品间整个不相似性中有相等的影响．举个例子，\)</span>p<span class="math notranslate nohighlight">\( 个定量变量以及对每个坐标使用平方误差距离，则 \eqref{14.24} 成为以定量变量为坐标轴的 \)</span>\IR^p<span class="math notranslate nohighlight">\( 空间中成对点的（加权）欧氏距离
+\)</span><span class="math notranslate nohighlight">\(
+D_I(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot (x_{ij}-x_{i'j})^2\tag{14.26}
+\)</span>$</p>
+<p>这种情形下 \eqref{14.25} 变成
+$<span class="math notranslate nohighlight">\(
+\bar d_j=\frac{1}{N^2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^N(x_{ij}-x_{x'j})^2=2\cdot var_j\tag{14.27}
+\)</span><span class="math notranslate nohighlight">\(
+其中 \)</span>\var_j<span class="math notranslate nohighlight">\( 为 \)</span>\Var(X_j)<span class="math notranslate nohighlight">\( 的样本估计．因此，每个这样变量的相对重要性与其在数据集上的方差成比例．一般地，对所有属性令 \)</span>w_j=1/\bar d_j<span class="math notranslate nohighlight">\( 会导致它们中的每一个在成对物体 \)</span>(x_i,x_{i’})$ 上的整体不相似性上有相等的影响．尽管这看起来或许合理，并且通常推荐这样做，但是会产生严重的不良后果．如果目标是将数据分割成相似样品的类，所有属性或许不会对样品之间的不相似性的（取决于问题）概念贡献相等．一些属性值的差异可能会在某问题领域反映更大的实际的样品不相似性．</p>
+<p>如果目标是发现数据的自然分类，一些属性或许比其他属性表现出更多的分类趋势．在分离类别时，越相关的变量越应该赋予更高的影响来定义 object dissimilarity．这种情况下给所有属性相等的影响会趋于隐藏掉这个类别，使得分类算法不能发现它们．图 14.5 展示了一个例子．</p>
+<p><img alt="" src="../_images/fig14.5.png" /></p>
+<blockquote>
+<div><p>图14.5. 模拟数据：左图对原始数据应用 K-means（K=2）分类．两种颜色表示类别的成员．右图，聚类之前对特征进行第一次标准化．这等价于使用特征权重 <span class="math notranslate nohighlight">\(1/[2\cdot var(X_j)]\)</span>．标准化模糊了两个能完美分离的类．注意到每张图的横纵坐标使用相同的单位长度．</p>
+</div></blockquote>
+<p>尽管选择单个属性不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j})\)</span> 和它们的权重 <span class="math notranslate nohighlight">\(w_j\)</span>的 简单的通用方法会令人愉快，但是在每个单个问题中，没有替代仔细思考的方式．确定一个合适的不相似性的度量远比选择聚类算法来得重要．该问题的这个方面在聚类领域比算法本身强调得少，因为它取决于特定的领域知识，并且不适合一般性的研究．</p>
+<p>最后，观测值经常在一个或多个属性中有 <strong>缺失值 (missing values)</strong>．将缺失值合并到不相似性的计算 \eqref{14.24} 中的最普遍方法是在计算观测 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 之间的不相似性时，省略掉至少有一个缺失值的观测对 <span class="math notranslate nohighlight">\(x_{ij},x_{i'j}\)</span>．这个方法在两个观测都没有共同测量值的情况中是不适用的．这种情况下，两个观测都会从分析中删掉．或者，可以使用每个属性未缺失值的平均值或中位数来插补缺失值．对于类别型变量，如果两个物体在相同变量上具有缺失值的情况下将两个对象视为相似是合理的，则可以将缺失值仅仅考虑成另一个类别值．</p>
+</div>
+<div class="section" id="id6">
+<h2>聚类算法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>聚类分析的目标是将观测进行分类使得分到同一类中的成对非相似性趋向于比在不同类中小．聚类算法可以分成三种不同的类别：<strong>组合算法 (combinatorial algorithms)</strong>，<strong>混合模型 (mixture modeling)</strong>，以及 <strong>模式寻找 (mode seeking)</strong>．</p>
+<p>组合算法直接对观测数据进行处理，而不直接引用潜在的概率模型．混合模型假设数据是从某概率密度函数对应的总体中抽取的独立同分布的样本．密度函数用参数化模型表征，该参数化模型为各组分密度函数的混合；每个组分密度表示其中的一类．这个模型接着利用极大似然或者对应的贝叶斯方式来拟合．模式寻找 (bump hunters) 采用非参数观点，试图直接估计不同的概率密度函数的模式．与每个单独的模式最接近的观测定义为单个簇．</p>
+<p>混合模型在 <span class="xref myst">6.8 节</span>中有讨论．在 <span class="xref myst">9.3</span> 和 <a class="reference external" href="../14-Unsupervised-Learning/14.2-Association-Rules/index.html#_4">14.2.5 节</a>中讨论的 PRIM 算法是模式寻找（或“bump hunters”）的例子．我们接下来讨论组合算法．</p>
+</div>
+<div class="section" id="id7">
+<h2>组合算法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>最受欢迎的聚类算法不考虑描述数据的概率模型而直接将每个观测划分为一类或一簇．每个观测用整数 <span class="math notranslate nohighlight">\(i\in\\{1,\cdots,N\\}\)</span> 来唯一标号．假定预先确定的类别个数 <span class="math notranslate nohighlight">\(K &lt; N\)</span>，并且每个编号为 <span class="math notranslate nohighlight">\(k\in\\{1,\ldots,K\\}\)</span>．每个观测仅仅分配到一个类中．这些分配可以表示为多对一映射，或者编码器 <span class="math notranslate nohighlight">\(k = C(i)\)</span>，将第 <span class="math notranslate nohighlight">\(i\)</span> 个观测分配到第 <span class="math notranslate nohighlight">\(k\)</span> 个类．基于每个观测对的不相似性 <span class="math notranslate nohighlight">\(d(x_i,x_{i'})\)</span> 来寻找特定的编码器 <span class="math notranslate nohighlight">\(\{C^\*(i)\}\)</span> 来实现要求的目标（细节在下面）．一般地，编码器 <span class="math notranslate nohighlight">\(C(i)\)</span> 通过给出每个观测 <span class="math notranslate nohighlight">\(i\)</span> 的值（类别分配）来显示描述．因此，过程的“参数”是 <span class="math notranslate nohighlight">\(N\)</span> 个观测中每个的类别分配．调整这些来最小化表征聚类目标没有达到的程度的“损失”函数．</p>
+<p>一种方式是直接确定数学上的损失函数并且试图通过一些组合优化算法来最小化．因为目标是将离得近的点分到同一类，一个自然的损失（或“能量”）函数会是
+$<span class="math notranslate nohighlight">\(
+W(C)=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}d(x_i,x_{i'})\tag{14.28}\label{14.28}
+\)</span><span class="math notranslate nohighlight">\(
+这个准则表征了分配到同一类的观测与另一个接近的程度．有时也被称作 **“类内”点散 (point scatter)**，因为
+\)</span><span class="math notranslate nohighlight">\(
+T=\frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nd_{ii'}=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\Big(\sum\limits_{C(i')=k}d_{ii'}+\sum\limits_{C(i')\neq k}d_{ii'}\Big)
+\)</span><span class="math notranslate nohighlight">\(
+或者
+\)</span><span class="math notranslate nohighlight">\(
+T=W(C)+B(C)
+\)</span><span class="math notranslate nohighlight">\(
+其中 \)</span>d_{ii’}=d(x_i,x_{i’})<span class="math notranslate nohighlight">\(．\)</span>T<span class="math notranslate nohighlight">\( 是总点散，给定数据后为常数，与类别分配是独立的．下面的 \)</span>B(C)<span class="math notranslate nohighlight">\( 值是类间点散．
+\)</span><span class="math notranslate nohighlight">\(
+B(C)=\frac{1}{2}\sum\limits_{k=1}\sum\limits_{C(i)=k}\sum\limits_{C(i')\neq k}d_{ii'}\tag{14.29}
+\)</span><span class="math notranslate nohighlight">\(
+当观测分到远离的不同类中时这个值趋向于大．因此有
+\)</span><span class="math notranslate nohighlight">\(
+W(C)=T-B(C)
+\)</span><span class="math notranslate nohighlight">\(
+并且最小化 \)</span>W(C)<span class="math notranslate nohighlight">\( 等价于最大化 \)</span>B(C)$.</p>
+<p>通过组合优化的聚类分析原则上是直接的．简单地在 <span class="math notranslate nohighlight">\(N\)</span> 个点分到 <span class="math notranslate nohighlight">\(K\)</span> 个类中的所有可能分配上最小化 <span class="math notranslate nohighlight">\(W\)</span> 或等价地最大化 <span class="math notranslate nohighlight">\(B\)</span>．不幸的是，这种穷举法的优化仅仅在非常小的数据集中才适用．不同的分配个数为（Jain and Dubes，1988<a class="footnote-reference brackets" href="#id27" id="id8">1</a>）
+$<span class="math notranslate nohighlight">\(
+S(N,K)=\frac{1}{K!}\sum\limits_{k=1}^K(-1)^{K-k}\binom{K}{k}k^N\tag{14.30}\label{14.30}
+\)</span><span class="math notranslate nohighlight">\(
+举个例子，\)</span>S(10,4)=34,105<span class="math notranslate nohighlight">\( 是可行的．但是 \)</span>S(N,K)<span class="math notranslate nohighlight">\( 随着变量值的增大迅速增大．\)</span>S(19,4)\simeq 10^{10}<span class="math notranslate nohighlight">\(，并且大多数聚类问题涉及比 \)</span>N=19<span class="math notranslate nohighlight">\( 更大的数据集．基于这个原因，实用的聚类算法只能验证所有可能编码 \)</span>k=C(i)$ 情形的非常小的一部分．目标是识别出可能包含最优解的小的子集，或者至少一个次优的划分．</p>
+<p>这些可行的策略是基于迭代贪婪下降．给定初始划分．每一步迭代，以某种方式来改变类别划分，这种方式使得某准则的值比上一步的值有所改善的．这个类别的聚类算法区别于在每一步迭代修改类别分配的方式．当这种方式不能再改善，算法以当前的分配为其解而终止．因为在任一步的迭代中的类别分配是对上一步类别分配的扰动，只有所有可能分配 \eqref{14.30} 的非常小的一部分被检查．然而，这些算法收敛到局部最优，与全局最优相比可能是高度次优的．</p>
+</div>
+<div class="section" id="k-means">
+<h2>K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<p>K-means 算法是最流行的迭代下降聚类方法之一．适用于所有变量都为定量的情形，且选择下式的平方欧式距离作为其不相似性的度量
+$<span class="math notranslate nohighlight">\(
+d(x_i,x_{i'})=\sum\limits_{j=1}^p(x_{ij}-x_{i'j})^2=\Vert x_i-x_{i'}\Vert^2
+\)</span><span class="math notranslate nohighlight">\(
+注意到加权欧式距离可以通过重新定义 \)</span>x_{ij}$ 来实现（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">练习 14.1</a>）</p>
+<p>!!! note “weiya 注: Ex. 14.1 “
+这个可以很容易计算．原问题及解答参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">Issues 42: Ex. 14.1</a></p>
+<p>类间点散 \eqref{14.28} 可以写成
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a4a9a808-b04c-4e5d-90d7-189d33c17cc8">
+<span class="eqno">(31)<a class="headerlink" href="#equation-a4a9a808-b04c-4e5d-90d7-189d33c17cc8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+W(C)&amp;=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}\Vert x_i-x_{i'}\Vert^2\notag\\
+&amp;=\sum\limits_{k=1}^KN_k\sum\limits_{C(i)=k}\Vert x_i-\bar x_k\Vert^2\qquad \tag{14.31}\label{14.31}
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+其中$\bar x_k=(\bar x_{1k},\ldots,\bar x_{pk})$是与第 $k$ 个类的均值向量，并且 $N_k=\sum_{i=1}^NI(C(i)=k)$．\\!!! note &quot;weiya 注：\eqref{14.31} 的推导&quot;
+    \end{aligned}\end{align} \]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{align*}
+&amp;\frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}\Vert x_i-x_{i&#39;}\Vert^2\\
+=&amp;\frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}\Vert x_i-\bar x_k+\bar x_k- x_{i&#39;}\Vert^2\\
+=&amp;\sum_{k=1}^K N_k \sum_{C(i)=k}\Vert x_i-\bar x_k\Vert^2 + \frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}(x_i-\bar x_k)(\bar x_k-x_{i&#39;})\,,
+\end{align*}
+$$
+而
+$$
+\begin{align*}
+&amp;\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}(x_i-\bar x_k)(\bar x_k-x_{i&#39;})\\
+=&amp;\sum_{k=1}^K\sum_{C(i)=k}(x_i-\bar x_k)\sum_{C(i&#39;)=k}(\bar x_k-x_{i&#39;})\\
+=&amp;0\,.
+\end{align*}
+$$
+</pre></div>
+</div>
+<p>因此，通过以某种方式将 <span class="math notranslate nohighlight">\(N\)</span> 个观测分配到 <span class="math notranslate nohighlight">\(K\)</span> 个类中来最小化该准则，该方式为最小化每个类中观测点与类别中心（用该类中的点定义）的不相似性的平均值．</p>
+<p>求解下列问题的迭代下降算法
+$<span class="math notranslate nohighlight">\(
+C^*=\underset{C}{\min}\sum_{k=1}^KN_k\sum_{C(i)=k}\Vert x_i-\bar x_k\Vert^2
+\)</span><span class="math notranslate nohighlight">\(
+可以通过注意到任意观测集 \)</span>S<span class="math notranslate nohighlight">\( 有下式而得到．
+\)</span><span class="math notranslate nohighlight">\(
+\bar x_S=\underset{m}{\text{argmin}}\;\sum\limits_{i\in S}\Vert x_i-m\Vert^2\tag{14.32}\label{14.32}
+\)</span><span class="math notranslate nohighlight">\(
+因此我们可以通过求解扩大的优化问题而得到 \)</span>C^*<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\underset{C,\{m_k\}_1^K}{\min}\;\sum\limits_{k=1}^KN_k\sum\limits_{C(i)=k}\Vert x_i-m_k\Vert^2\tag{14.33}\label{14.33}
+\)</span>$
+这个可以通过算法 14.1 给出的交替优化过程得以最小化．</p>
+<p><img alt="" src="../_images/alg14.1.png" /></p>
+<p>每个步骤 1 和步骤 2 都降低准则 \eqref{14.33} 的值，所以收敛性是保证的．然而，结果可能会表现出次优局部最小值．Hartigan and Wong (1979)<a class="footnote-reference brackets" href="#id28" id="id9">3</a>的算法进一步研究，并且保证了单个的一个观测从一个类转换到另一个类不会降低目标值．另外，应该用许多初始值的许多随机选择来开始算法，然后选择有最小目标函数的解．</p>
+<p>图 14.6 显示了图 14.4 的模拟数据的一些 K-means 迭代过，其中圆圈 O 表示重心．直线显示了点的划分，每个部分都是离重心最近的点的集合．这个划分也称为 Voronoi 曲面细分．20 次迭代之后收敛．</p>
+<p><img alt="" src="../_images/fig14.6.png" /></p>
+<blockquote>
+<div><p>图 14.6. 对于图 14.4 的模拟数据的 K-means 聚类算法的逐次迭代</p>
+</div></blockquote>
+</div>
+<div class="section" id="soft-k-means">
+<h2>高斯混合作为 Soft K-means 聚类<a class="headerlink" href="#soft-k-means" title="Permalink to this headline">¶</a></h2>
+<p>K-means 聚类算法与估计特定的高斯混合模型的 EM 算法有关（<span class="xref myst">6.8 节</span>和 <span class="xref myst">8.5.1 节</span>）．EM 算法的步骤 E 对每个数据点基于在每个混合部分中的相对密度来赋予“responsibilities”，而步骤 M 基于当前的 responsibilities 重新计算各组分的密度参数．假设明确了我们有 <span class="math notranslate nohighlight">\(K\)</span> 个混合组分，每个是有着标量协方差矩阵 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span> 的高斯密度．则在每个混合组分的相对密度是关于数据点到混合中心欧氏距离的单调函数．因此在这一步中 EM 是 soft 版本的 K-means 聚类，使得点以概率（而不是确定性地）分配到聚类中心．因为方差 <span class="math notranslate nohighlight">\(\sigma\rightarrow 0\)</span>，这些概率变成 0 和 1，两种方法也就一致．细节在 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">练习 14.2</a> 中给出．</p>
+<p>!!! note “weiya 注: Ex. 14.2”
+Ex. 14.2 讨论了 <span class="math notranslate nohighlight">\(k\)</span> 个高斯组分的混合模型，而算法 8.1 针对的是两组分的高斯混合模型，但主要思想是一致的．具体解题过程参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">Issues 43: Ex. 14.2</a></p>
+<p>图 14.7 说明了实线上两个聚类的结果．</p>
+<p><img alt="" src="../_images/fig14.7.png" /></p>
+<blockquote>
+<div><p>图 14.7. (左：)实线为两个高斯密度 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 和 <span class="math notranslate nohighlight">\(g_1(x)\)</span>（蓝色和橘黄色），以及 <span class="math notranslate nohighlight">\(x=0.5\)</span> 处的单个数据点（绿色圆点）．带颜色的方块画在<span class="math notranslate nohighlight">\(x=-1.0\)</span> 和 <span class="math notranslate nohighlight">\(x=1.0\)</span>处，它们是各自密度的均值．（右：）对于每个数据点，相对密度 <span class="math notranslate nohighlight">\(g_0(x)/(g_0(x)+g_1(x))\)</span> 和 <span class="math notranslate nohighlight">\(g_1(x)/(g_0(x)+g_1(x))\)</span> 称作每个聚类的“responsibilities”．上面一排的两张图，高斯标准误差为 <span class="math notranslate nohighlight">\(\sigma=1.0\)</span> 在下面的两张图中 <span class="math notranslate nohighlight">\(\sigma=0.2\)</span>．EM 算法用这些 responsibilities 来对每个数据点“soft”地分配到两个簇中．当 <span class="math notranslate nohighlight">\(\sigma\)</span> 相对大，responsibilities 可以接近 0.5，（右上图中为 0.36 和 0.64）．当 <span class="math notranslate nohighlight">\(\sigma\rightarrow 0\)</span> 时，responsibilities 接近 1，表示聚类中心离目标点很近，而剩下类别的 responsibility 接近 0．“hard”版本的分配如右下图所示．</p>
+</div></blockquote>
+<p>##　例子：人类肿瘤微阵列数据</p>
+<p>我们对第 １ 章描述的人类肿瘤微阵列数据应用 Ｋ-means 聚类．这是一个高维聚类的例子．数据为 <span class="math notranslate nohighlight">\(6830\times 64\)</span> 的实值矩阵，每个元素表示基因（行）和样本（列）的表达测量值．这里我们对样本进行聚类，每个都是长度为 6830 的向量，对应 6830 个基因的表达值．每个样本有像 breast(乳腺癌)， melanoma (黑素瘤) 等标签；聚类时，我们不会用这些标签，但是会验证哪个标签落入到哪个簇中．</p>
+<p>我们对从 1 到 10 的 <span class="math notranslate nohighlight">\(K\)</span> 应用 K-means 聚类，而且对每次聚类计算总类间平方和，如图 14.8 所示．一般地我们在平方和曲线中寻找一个结点来定位最优簇的个数（见14.3.11）．这里没有显然的指示：为了说明我们选择<span class="math notranslate nohighlight">\( K=3\)</span> 给出如表 14.2 所示的三个类．</p>
+<p><img alt="" src="../_images/fig14.8.png" /></p>
+<blockquote>
+<div><p>图14.8. 对人类种类微阵列数据应用K-means聚类的总簇间平方和．</p>
+</div></blockquote>
+<p><img alt="" src="../_images/tab14.2.png" /></p>
+<blockquote>
+<div><p>表14.2. 人类肿瘤数据：每种类型的癌症在由K-means聚类得到的三个类中的个数</p>
+</div></blockquote>
+<p>我们看到这个过程在聚集同样类型的癌症是很成功的．事实上，在第 2 类中的两个乳腺癌后来发现是误诊的，而是转移的<strong>黑素瘤 (melanomas)</strong>．然而，K-means 聚类在这个应用中有缺点．其中一个是，它没有给出簇中物体的线性顺序：我们仅仅以字母顺序列出来．第二，当聚类的数目 <span class="math notranslate nohighlight">\(K\)</span> 改变，簇中的成员以任意方式变化．也就是，如 4 个类，这些类不要求嵌套在上面的三个类中．基于这个原因，系统聚类可能在这个应用中更好．</p>
+</div>
+<div class="section" id="id10">
+<h2>向量量化<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>K-means 聚类算法是在图像和信号压缩的明显无关的区域中的关键工具，特别在 <strong>向量量化 (vector quantization)</strong> 或者 VQ（Gersho and Gray，1992<a class="footnote-reference brackets" href="#id29" id="id11">2</a>）中．图 14.9（本例由 Maya Gupta 准备）的左图像是著名的统计学家 Sir Ronald Fisher 的电子相片．它包含 <span class="math notranslate nohighlight">\(1024\times 1024\)</span> 个像素，每个像素是从 0 到 255 的灰度值，因此每个像素需要 8 位存储．整张图像占据 1M 的存储空间．中间图像是左边图像的 VQ 压缩版本，需要 0.239 的存储（质量上有一些损失）．右图压缩得更厉害，仅需要 0.0625 的存储空间（质量上有较大的损失）．</p>
+<p><img alt="" src="../_images/fig14.9.png" /></p>
+<blockquote>
+<div><p>图 14.9. Sir Ronald A.Fisher(1890-1962) 是现代统计学的创始人之一，极大似然法，充分性和许多其他基本概念都是归功于他．左边的图像是1024<span class="math notranslate nohighlight">\(\times\)</span>1024的灰度图像，每个像素为8位．中间图像是<span class="math notranslate nohighlight">\(2\times 2\)</span>VQ块的结果，采用200个编码向量，达到1.9bits/pixel的压缩率．右图像仅采用4个编码向量，压缩率为0.50bits/pixel．</p>
+</div></blockquote>
+<p>这里的 VQ 版本实现过程是首先将图像分成小块，这里是 <span class="math notranslate nohighlight">\(2\times 2\)</span> 的小块的像素．<span class="math notranslate nohighlight">\(512\times 512\)</span> 个 4 数目的块被视为 <span class="math notranslate nohighlight">\(\IR^4\)</span> 中的向量．在这个空间内运用 K-means 聚类算法（这种情形下也称为 Lloyd 算法）．图 14.9 的中间图像采用 <span class="math notranslate nohighlight">\(K=200\)</span>，而右边图像采用 <span class="math notranslate nohighlight">\(K=4\)</span>．<span class="math notranslate nohighlight">\(512\times 512\)</span> 个像素块中的每一个用它最近的类别中心近似，称为 codeword．聚类过程称为 <strong>编码 (encoding)</strong>，中心的集合称为<strong>码本 (codebook)</strong>．</p>
+<p>为了表示近似的图像，我们需要提供对每个块用码本中唯一的量来近似它的空间．每一块需要 <span class="math notranslate nohighlight">\(\log_2(K)\)</span> 位空间．我们也需要提供码本本身的存储空间，是一个 <span class="math notranslate nohighlight">\(K\times4\)</span> 的实值（一般忽略不计）．总的来说，压缩图像的空间为原图像的 <span class="math notranslate nohighlight">\(\log_2(K)/(4\cdot 8)\)</span>倍（<span class="math notranslate nohighlight">\(K=200\)</span> 时为 0.239，<span class="math notranslate nohighlight">\(K=4\)</span> 时为0.063）．通常表示成单位为 bits/pixel 的比率：<span class="math notranslate nohighlight">\(\log_2(K)/4\)</span>，分别是 1.91 和 0.50．从重心构造出近似的图像的过程称为<strong>解码 (decoding)</strong>．</p>
+<p>为什么我们期望 VQ 会有效果？原因是日常的图像比如照片，许多块看起来一样．这种情形下许多几乎是纯白的块，类似的不同阴影的纯灰度块．这些仅仅需要一个块来表示它们，以及指向这块的多个指针．</p>
+<p>我们描述的是被称作损失压缩，因为我们的图像是原图的退化版本．这种退化或者失真（distortion）通常用均值平方误差来衡量．这种情形下，<span class="math notranslate nohighlight">\(K=200\)</span> 时 <span class="math notranslate nohighlight">\(D=0.89\)</span>，<span class="math notranslate nohighlight">\(K=4\)</span> 时 <span class="math notranslate nohighlight">\(D=16.95\)</span>．更一般地，比率/失真曲线会用来衡量这种权衡．也可以使用块聚类来实现小损失（lossless）的压缩，并且仍然利用重复的模式．如果需要对原图像进行小损失的压缩，最好的选择是 4.48bits/pixel．</p>
+<p>我们在上面断言，码本中确定 <span class="math notranslate nohighlight">\(K\)</span> 个码字中的每一个需要 <span class="math notranslate nohighlight">\(\log_2(K)\)</span>位空间．这采用了固定长度编码，如果一些码字在图像中比其他的出现更频繁，这是无效的．采用 Shannon 编码理论，我们知道一般地可变长度的编码会更好，并且比率会变成 <span class="math notranslate nohighlight">\(-\sum_{k=1}^Kp_\ell \log_2(p_\ell)/4\)</span>．分子中的项是图像中 codeword 的分布 <span class="math notranslate nohighlight">\(p_\ell\)</span> 的熵．采用可变长度编码我们的比例会分别降至 1.42 和 0.39．最后，已经发展出很多 VQ 的推广：举个例子，树结构的 VQ 以自上而下、2-均值算法来寻找重心，如第 14.3.12 节所述．这允许压缩的逐步加细．更多细节或许可以在 Gersho and Gray(1992)<a class="footnote-reference brackets" href="#id29" id="id12">2</a> 的工作中找到．</p>
+</div>
+<div class="section" id="k-medoids">
+<h2>K-medoids<a class="headerlink" href="#k-medoids" title="Permalink to this headline">¶</a></h2>
+<p>如上所述，当相似性度量为欧氏距离的平方 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span> 时，K-means 是合适的．这要求所有的变量都为定量的．另外，平方的欧式距离会赋予离得更远的点更大的影响．这导致这个过程对于（距离非常大的）离群点缺乏鲁棒性．这些限制可以通过以计算为代价而消除．</p>
+<p>K-means 中唯一假设平方欧式距离的地方是最小化那一步 \eqref{14.32}；\eqref{14.33} 中的簇取为当前划到该簇的点的均值 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span>．这个算法可以推广为任意定义的不相似性，并且用关于 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span> 的显式优化来替换最小化．在大多数情形中，每个簇的中心限制为当前该簇中的其中一点，如算法 14.2 所示．这个算法假设带属性的数据，但是也可以应用到仅通过接近矩阵描述的数据．K-medoids 不需要显式地计算簇中心，仅需要跟踪它的指标 <span class="math notranslate nohighlight">\(i_k^*\)</span>．</p>
+<p><img alt="" src="../_images/alg14.2.png" /></p>
+<p>对于每个暂定的簇 <span class="math notranslate nohighlight">\(k\)</span> 求解 \eqref{14.32} 需要与划分到该簇的观测的个数成比例的计算量，而求解 <span class="math notranslate nohighlight">\((14.35)\)</span> 计算量增长到 <span class="math notranslate nohighlight">\(O(N_k^2)\)</span>. 给定簇中心，<span class="math notranslate nohighlight">\(\\{i_1,\ldots,i_k\\}\)</span>，得到新的类别划分</p>
+<div class="math notranslate nohighlight">
+\[
+C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}\label{14.37}
+\]</div>
+<p>和之前一样需要与 <span class="math notranslate nohighlight">\(K\cdot N\)</span> 成比例的计算量．因此，K-medoid 计算量比 K-means 更大．</p>
+<p>在 <span class="math notranslate nohighlight">\((14.35)\)</span> 和 \eqref{14.37} 间轮换是试图求解</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{C,\{i_k\}_1^K}\sum_{k=1}^K\sum_{C(i)=k}d_{ii_k}\tag{14.38}\label{14.38}
+\]</div>
+<p>的一种特定的启发式策略．Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id13">4</a> 提出另一种直接求解 \eqref{14.38} 的方式，它可以暂时交换每个簇中心 <span class="math notranslate nohighlight">\(i_k\)</span> 和当前不是簇中心的观测，所选的交换要使得准则 \eqref{14.38} 有最大的降低．重复这个步骤直至找不到有利的交换．Massart et al. (1983)<a class="footnote-reference brackets" href="#id31" id="id14">5</a> 导出了寻找 \eqref{14.38} 的全局最小值的 <strong>分枝定界组合算法 (branch-and-bound combinatorial method)</strong>，但实际中只适合非常小型的数据集．</p>
+<div class="section" id="id15">
+<h3>例子：国家不相似性<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>这个例子取自 Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id16">4</a>，在某项研究中，政治学的学生要求给出 12 个国家的成对不相似性度量：Belgium, Brazil, Chile, Cuba, Egypt,　France, India, Israel, United States, Union of Soviet Socialist Republics,　Yugoslavia and Zaire．平均不相似得分由表 14.3 给出．</p>
+<p><img alt="" src="../_images/tab14.3.png" /></p>
+<p>我们对这些不相似性应用 3-medoid 聚类算法．注意到 <span class="math notranslate nohighlight">\(K\)</span>-means 聚类无法应用，因为我们只有距离数据，而非原始观测值．图 14.10 的左图展示了根据 3-medoid 聚类重排列且方块化的不相似图．右图是 2 维多维缩放图，其中 3-medoid 簇的划分由颜色表示（多维缩放将在 14.8 节讨论）．两幅图都表现出了良好分割的簇，但是 MDS 表明 Egypt 落在两个簇的中间．</p>
+<p><img alt="" src="../_images/fig14.10.png" /></p>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>实际问题<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>为了应用 K-means 或者 K-medoids，需要选择簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 以及初始化．后者可以通过确定初始的簇中心的集合 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span> 或者 <span class="math notranslate nohighlight">\(\\{i_1,\ldots,i_K\\}\)</span>. 通常确定簇重心是很方便的，可以采用随机选择或者基于向前逐步划分的特定策略．在每一步，给定上一步选择好的簇中心 <span class="math notranslate nohighlight">\(i_1,\ldots,i_{k-1}\)</span> 选择中心 <span class="math notranslate nohighlight">\(i_k\)</span>　来最小化 \eqref{14.33} 或者 \eqref{14.38}. 重复 <span class="math notranslate nohighlight">\(K\)</span> 步，因此得到 <span class="math notranslate nohighlight">\(K\)</span> 个初始化中心，可以用它们开始优化算法．</p>
+<p>簇的个数 <span class="math notranslate nohighlight">\(K\)</span> 取决于目标．对于数据分割，<span class="math notranslate nohighlight">\(K\)</span> 通常在问题中有定义．举个例子，某公司可能需要招 <span class="math notranslate nohighlight">\(K\)</span> 个销售员，且目标是将用户数据库划分 <span class="math notranslate nohighlight">\(K\)</span> 份，每个销售员负责一份，划分要使得每一份的销售员尽可能相似．然而，聚类分析通常用来给出某个描述性统计量来确定构成数据库的观测值落到不同簇的程度．这里这样的簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 是未知的，并且需要像划分本身一样从数据中估计得到．</p>
+<p>用来估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的基于数据的方法一般需要研究类内不相似性 <span class="math notranslate nohighlight">\(W_K\)</span> 作为簇个数 <span class="math notranslate nohighlight">\(K\)</span> 的函数．对于 <span class="math notranslate nohighlight">\(K\in \\{1,2,\ldots,K_{\max}\\}\)</span> 有单独的解．对应的值 <span class="math notranslate nohighlight">\(\\{W_1,\ldots,W_\max\\}\)</span> 通常随着 <span class="math notranslate nohighlight">\(K\)</span> 的增长而降低．当在独立的测试集上测试时，结果也是这种情形，因为更多的簇中心会趋向于将特征空间填得很密，因此对于所有的数据点会比较近．因此交叉验证技巧，在非监督学习的模型选择很有用，但是无法用到这里．</p>
+<p>这种方法背后的直觉是，如果实际中有 <span class="math notranslate nohighlight">\(K^*\)</span> 个不同的数据簇（通过不相似性度量来定义），则对于 <span class="math notranslate nohighlight">\(K &lt; K^\*\)</span>　簇时，每个簇包含真实簇的部分子集．也就是，这个解不会将聚在一块的观测点划分到不同的估计的簇中．在这种情况下，解的准则值趋向于随着每一次指定的簇的个数的增加而显著降低，<span class="math notranslate nohighlight">\(W_{K+1} &lt;&lt; W_K\)</span>，因为不同的聚集块逐步划分到不同的簇中．当 <span class="math notranslate nohighlight">\(K &gt; K^\*\)</span>，其中一个簇一定至少将真实的某个簇分成了两个子簇．这趋向于随着 <span class="math notranslate nohighlight">\(K\)</span>　进一步增大，准则的降低量变得更小．将真实的簇（其中观测值彼此很接近）分成两部分，所带来的准则降低小于将两个分离的簇划分开所带来的准则降低．</p>
+<p>在这种情况下，准则值的差值 <span class="math notranslate nohighlight">\(W_K-W_{K+1}\)</span> 会在 <span class="math notranslate nohighlight">\(K=K^\*\)</span> 处有一个显著的降低．也就是，<span class="math notranslate nohighlight">\(\\{W_K-W_{K+1}\mid K&lt; K^\*\\} &gt;&gt; \\{W_K-W_{K+1}\mid K \ge K^\*\\}\)</span>．<span class="math notranslate nohighlight">\(K^\*\)</span> 的一个估计 <span class="math notranslate nohighlight">\(\hat K^*\)</span> 可以通过找出 <span class="math notranslate nohighlight">\(W_K\)</span> 关于 <span class="math notranslate nohighlight">\(K\)</span> 的曲线中的拐弯来得到．和距离过程的其他方面一样，这个方法有点启发式．</p>
+<p>最近提出的 Gap Statistic 比较曲线 <span class="math notranslate nohighlight">\(\log W_K\)</span> 和从包含数据的长方形区域中均匀采样得到的曲线 (Tibshirani et al. 2001b<a class="footnote-reference brackets" href="#id32" id="id18">6</a>)．它估计最优的簇的个数为两条曲线的差值最大的地方．本质上，这是一种自动化确定上文所说的拐弯点的方法．当数据落在一个簇里面时，这个方法也趋向于估计最优簇的个数为 1．这一点大部分的（跟该方法比较的）方法都失效了．</p>
+<p><img alt="" src="../_images/fig14.11.png" /></p>
+<p>图 14.11 展示了 Gap Statistic 应用于图 14.4 的模拟数据时的结果．左图展示了 <span class="math notranslate nohighlight">\(K=1,\ldots,8\)</span> 时 <span class="math notranslate nohighlight">\(\log W_K\)</span> 以及基于 20 次从均匀分布中模拟的数据得到的 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的期望值．右图展示了差值曲线，也就是期望的曲线减去观测的曲线．图中也展示了长度为 <span class="math notranslate nohighlight">\(s_k'=s_k\sqrt{1+1/20}\)</span> 的一半的误差区间，其中 <span class="math notranslate nohighlight">\(s_K\)</span> 是 20 次重复实验 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的标准差．差值曲线在 <span class="math notranslate nohighlight">\(K=2\)</span> 处达到最大．如果 <span class="math notranslate nohighlight">\(G(K)\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 个簇时的差值，则估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的正式规则为</p>
+<div class="math notranslate nohighlight">
+\[
+K^* = \argmin_K\{K\mid G(K)\ge G(K+1)-s_{K+1}'\}\tag{14.39}\label{14.39}\,.
+\]</div>
+<p>这得到 <span class="math notranslate nohighlight">\(K^*=2\)</span>, 从图 14.4 中看挺合理的．</p>
+</div>
+<div class="section" id="id19">
+<h2>系统聚类<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<p>K-means 或 K-medoids 的应用取决于簇的个数以及初始划分．相反地，系统聚类方法不需要这些指定．但他们需要基于两个簇间成对观测的不相似性，确定不同簇间的不相似性度量．如名字所表示的那样，这个算法得到簇的系统表示，在系统的每一层簇通过合并下一层的簇得到．在最低的那一层，每个簇包含单个观测值．在最高的那一层，只有一个包含所有观测的簇．</p>
+<p>系统聚类的策略可以分成两种基本范式：自下而上的合并法，自上而下的分裂法．合并策略从最底层开始，然后在每一层递归地将两个选定的簇合并成一个簇．这样在更高一层上得到少一个簇的聚类结果．需要合并的两个簇要选为簇间不相似性最小的一对．分裂法从最顶端开始，然后在每一层递归地将某个簇拆成两个新的簇．这个拆分要使得得到的两个新簇之间有最大的组间不相似性．两种范式都会得到 <span class="math notranslate nohighlight">\(N-1\)</span> 层．</p>
+<p>系统的每一层表示某个特定的将数据划分成不相交的簇的聚类．整个系统表示一个有序的聚类序列．用户需要在相同簇内的观测比不同簇内的观测足够地更相似的意义下，决定哪个层次实际上代表着真实的聚类．之前描述的 Gap 统计量也可以用到这里．</p>
+<p>递归二分或合并可以用带根的二叉树来表示．树的结点表示簇．根节点表示整个数据集．<span class="math notranslate nohighlight">\(N\)</span> 个终止结点每个表示单独的观测（单观测的簇）．每个非终止结点，即父节点，有两个子结点．对于分裂聚类，两个子结点表示对父节点划分得到的两个簇；对于合并聚类，两个子结点表示通过合并形成父节点的两个簇．</p>
+<p>大部分合并方法，以及一些分裂方法（当从下往上看时）都有单调性．也就是，合并的簇间的不相似性随着合并的层次增加而增加．因此二叉树中每个结点的高度可以画成与两个子结点间的组间不相似性成比例．表示单个观测的终止结点画在零高度上．这种类型的图称为 <strong>谱系图 (dendrogram)</strong>.</p>
+<p>谱系图用图的方式给出了系统聚类的高解释度的、完整的描述．这也是系统聚类方法很流行的主要原因之一．</p>
+<p><img alt="" src="../_images/fig14.12.png" /></p>
+<p>对于微阵列数据，图 14.12 展示了采用平均链接的合并法得到的谱系图．合并法和这个例子在这章后面还会有详细讨论．在某个特定的高度水平切开谱系图将数据分成不相交的簇，这些簇由与该水平线相交的垂直线来表示．这些簇可以通过当最优的组间不相似性超过该阈值时终止算法得到．相对于树中某簇包含的以相对低的合并值合并的子簇，该簇在更高值处合并，这是自然聚类的候选簇．注意到这个可以发生在不同的层次上，表明聚类的层次性：也就是，簇包含在簇里面．</p>
+<p>这样一个谱系图经常看成是数据本身的图示，而不是算法的结果描述．然而，这样的解释需要小心对待．首先，不同的层次方法，以及数据中的微小变化，都会导致非常不同的谱系图．另外，这样一个图示也只有在成对观测的不相似性满足由算法产生的层次结构才有用．系统聚类在数据上强加了某层次结构，不管这样的结构在数据中存不存在．</p>
+<p>通过谱系图生成的层次结构表示数据的程度可以用 <strong>共表型相关系数 (cophenetic correlation coefficient)</strong> 来刻画．这是 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 个成对观测的不相似性 <span class="math notranslate nohighlight">\(d_{ii'}\)</span>，即算法的输入值，与对应的从谱系图中导出的共表型不相似性 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 间的相关系数．两个观测 <span class="math notranslate nohighlight">\((i,i')\)</span> 间的共表型不相似性 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 是这两个观测 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(i'\)</span> 第一次在相同的簇中相连的簇间不相似性．</p>
+<p>共表型相似度是个非常局限的不相似性的度量．首先，观测上的 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 必须包含许多结，因为 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 种可能取值只有 <span class="math notranslate nohighlight">\(N-1\)</span> 种可以是不同的．同样这些不相似度需要遵循 <strong>超度量不等式 (ultrametric inequality)</strong>:　对于任意三个观测值 <span class="math notranslate nohighlight">\((i,i',k)\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ii'} \le \max\{C_{ik},C_{i'k}\}\tag{14.40}\label{14.40}
+\]</div>
+<p>举个例子，假设数据表示为欧几里得坐标系统中的点．为了使数据中点之间的距离满足 \eqref{14.40}，所有三点形成的三角形必须是等腰三角形，且底边长度不能超过腰长 (Jain and　Dubes, 1988<a class="footnote-reference brackets" href="#id30" id="id20">4</a>)．因此，期待对于任意数据一般的不相似性度量能近似地表示根据谱系图计算得到的共表型不相似性是不现实的．因此，特别是如果没有很多重复值．因此谱系图应该主要看成数据在应用特定算法后强加上的聚类结构的描述．</p>
+<div class="section" id="id21">
+<h3>合并聚类<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p>合并聚类算法以每个表示单观测簇的簇开始．在 <span class="math notranslate nohighlight">\(N-1\)</span> 步中的每一步，最近（最相似）的两个簇合并成一个簇，使得在更高一层上少了一个簇．因此，必须定义两个簇间的不相似性度量．</p>
+<p>令 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 代表两个这样的簇．<span class="math notranslate nohighlight">\(G\)</span> 与 <span class="math notranslate nohighlight">\(H\)</span> 间的不相似性 <span class="math notranslate nohighlight">\(d(G,H)\)</span> 根据成对不相似性 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 的集合来计算，其中 <span class="math notranslate nohighlight">\(i\)</span> 来自 <span class="math notranslate nohighlight">\(G\)</span>，<span class="math notranslate nohighlight">\(i'\)</span> 来自 <span class="math notranslate nohighlight">\(H\)</span>．**单链接 (Single linkage, SL)**合并聚类取组间不相似性为最近的一对</p>
+<div class="math notranslate nohighlight">
+\[
+d_{SL}(G,H)=\min_{i\in G,i'\in H}d_{ii'}\,.\tag{14.41}\label{14.41}
+\]</div>
+<p>这有时也被称作最近邻技巧．**全链接 (Complete linkage, CL)**合并聚类（最远邻技巧）取组内不相似性为最远的一对</p>
+<div class="math notranslate nohighlight">
+\[
+d_{CL}(G,H)=\max_{i\in G,i'\in H}d_{ii'}\,.\tag{14.42}\label{14.42}
+\]</div>
+<p>**群平均 (Group Average, GA)**聚类采用组间不相似性的平均</p>
+<div class="math notranslate nohighlight">
+\[
+d_{GA}(G,H)=\frac{1}{N_GN_H}\sum_{i\in G}\sum_{i'\in H}d_{ii'}\tag{14.42}\label{14.43}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(N_G\)</span> 和 <span class="math notranslate nohighlight">\(N_H\)</span> 分别为每个簇内观测的个数．尽管还有许多方式来定义合并聚类的组间不相似性，但上面的三个是最常见的．图 14.13 展示了这三个例子．</p>
+<p>如果数据不相似性 <span class="math notranslate nohighlight">\(\\{d_{ii'}\\}\)</span> 表现出强的聚类趋势，且每个簇都很紧凑，同时相互分离，则这三个方法会得到相似的结果．如果簇内的观测间的距离相较于不同簇中观测间的距离很近，则称簇为紧凑的．如果不是这种情形，则结果会有差异．</p>
+<p>如果 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 被认为很近，则单链接 \eqref{14.41} 仅要求单个不相似性 <span class="math notranslate nohighlight">\(d_{ii'}, i\in G, i'\in H\)</span> 很小．因此趋向于在较低的阈值处将相近的观测连起来．这个现象，叫做 chaining，通常被认为是这个方法的缺点．基于不相似性 <span class="math notranslate nohighlight">\(\{d_{ii'}\}\)</span>，通过单链接得到的聚类可以违反簇“紧”的性质—-每个簇内的观测趋向于彼此相似．如果我们定义簇内的直径 <span class="math notranslate nohighlight">\(D_G\)</span> 为成员间最大的不相似性</p>
+<div class="math notranslate nohighlight">
+\[
+D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}\label{14.44}
+\]</div>
+<p>则单链接可以得到直径非常大的簇．</p>
+<p>全链接 \eqref{14.42} 表现相反．仅当两个簇间的所有观测对距离都很小时，这两个簇 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 才认为很近．然而，可以构造出违反相近性的簇．也就是，某个簇的观测可以与其他簇成员间的距离可以比它到自己簇内成员的距离更近．</p>
+<p>群平均聚类 \eqref{14.43} 表示这两个极端间的一个权衡．试图得到相距较远但相对紧凑的簇．然而，它的结果依赖于观测值不相似性 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 的数值缩放尺度．对 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 应用严格单调递增的函数 <span class="math notranslate nohighlight">\(h(\cdot)\)</span>，<span class="math notranslate nohighlight">\(h_{ii'}=h(d_{ii'})\)</span>，可以改变由 \eqref{14.43} 得到的结果．然而，\eqref{14.41} 和 \eqref{14.42} 仅依赖于 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 的顺序，因此对这些单调变化保持不变．这种不变性经常视为单链接或者全链接比群平均方法更好的论据．</p>
+<p>可以论证群平均聚类在统计上有一致性的性质，而单链接和全链接都不满足．假设我们有带属性的数据 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span>，并且每个簇 <span class="math notranslate nohighlight">\(k\)</span>　是从某个总体联合密度 <span class="math notranslate nohighlight">\(p_k(x)\)</span> 中的随机采样．全数据集是从 <span class="math notranslate nohighlight">\(K\)</span> 个这样的密度构成的混合模型中采样的．群平均不相似性 <span class="math notranslate nohighlight">\(d_{GA}(G,H)\)</span> \eqref{14.43} 是下式的一个估计</p>
+<div class="math notranslate nohighlight">
+\[
+\int\int d(x,x')p_G(x)p_H(x')dxdx'\,,\tag{14.45}\label{14.45}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(d(x,x')\)</span> 是点 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(x'\)</span> 在属性值空间中的不相似性．当样本大小 <span class="math notranslate nohighlight">\(N\)</span> 趋于无穷时，<span class="math notranslate nohighlight">\(d_{GA}(G,H)\)</span> \eqref{14.43} 趋于 \eqref{14.45}，这也是两个密度 <span class="math notranslate nohighlight">\(p_G(x)\)</span> 和 <span class="math notranslate nohighlight">\(p_H(x)\)</span> 间的某个特征．对于单链接，当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时，<span class="math notranslate nohighlight">\(d_{SL}(G,H)\)</span> \eqref{14.41} 趋于 0，且独立于 <span class="math notranslate nohighlight">\(p_G(x)\)</span> 和 <span class="math notranslate nohighlight">\(p_H(x)\)</span>．对于全链接，当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时，<span class="math notranslate nohighlight">\(d_{CL}(G, H)\)</span> \eqref{14.42} 趋于无穷，同样独立于这两个密度函数．因此，不清楚 <span class="math notranslate nohighlight">\(d_{SL}(G,H)\)</span> 和 <span class="math notranslate nohighlight">\(d_{CL}(G,H)\)</span> 在估计总体的哪个量．</p>
+</div>
+<div class="section" id="id22">
+<h3>例子：人类癌症微阵列数据（继续）<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p><img alt="" src="../_images/fig14.13.png" /></p>
+<p>图 14.13 展示了对微阵列数据的样本（列）应用平均链接的合并聚类得到的谱系图．中间和右边的图象分别显示了采用全链接和单链接的结果．平均链接和全链接给出了类似的结果，然而单链接得到不够平衡的簇，其中有很细的簇．我们考虑平均链接聚类．</p>
+<p>和 K-means 聚类一样，系统聚类能够将癌症聚类在一起．但它有更好的特点．通过在不同高度横切谱系图，会得到不同的簇，且簇是一个包含在另一个．另外，它给出了某些关于样本的偏序信息．在图 14.14 中，我们已经对基因表达矩阵按照系统聚类的顺序对基因（行）和样本（列）进行了重排列．</p>
+<p><img alt="" src="../_images/fig14.14.png" /></p>
+<p>注意到如果在谱系图的任意合并处，翻转分支，得到的谱系图仍然一致．因此为了确定叶子的顺序，我们必须加上约束．为了得到图 14.14 的行排序，我们使用了 S-PLUS 的默认规则：在每一次合并时，更紧的簇放在左边（对于图中旋转后的谱系图，也就是底部）．个体基因可能是最紧的簇，若涉及两个个体基因的合并，则按照观测的顺序进行排列．同样的规则也用在列上．也有许多其他的规则－－举个例子，按照基因的多维缩放放置，见 14.8 节．</p>
+<p>图 14.14 的两次重排列得到了关于基因和样本的富有信息量的图象．这张图比第一章的图 1.3 中随机排列的行和列更有信息量．而且，谱系图本身很有用，举个例子，生物学家可以将基因簇解释成生物过程．</p>
+</div>
+<div class="section" id="id23">
+<h3>分裂聚类<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>分裂聚类算法以将全部数据集看成单个簇为开始，然后在每次迭代时，以自上而下的方式递归地将当前其中一个簇分裂成两个子簇．在聚类领域中，这种方法还没有像合并方法研究得那么透彻．在压缩方面，从工程领域进行了一些探索 (Gersho and Gray, 1992<a class="footnote-reference brackets" href="#id29" id="id24">2</a>)．在聚类设定中，分裂法优于合并法的一个潜在优点是－－当我们关注将数据划分成相对少的簇．</p>
+<p>分裂范式可以通过递归地应用组合方法，比如用 <span class="math notranslate nohighlight">\(K=2\)</span> 时的 K-means (14.3.6 节) 或者 K-medoids 在每步迭代进行分割．然而，这样的方法会取决于每一步的初始化．并且，不一定能够得到保持谱系图所需要的单调性的分割序列．</p>
+<p>可以避免这些问题的分裂算法由 Macnaughton Smith et al. (1965)<a class="footnote-reference brackets" href="#id33" id="id25">10</a> 提出．以将所有观测放入单个簇 <span class="math notranslate nohighlight">\(G\)</span> 中为开始．然后选择到其它所有观测的平均不相似性为最大的观测．这个观测构成了第二个簇 <span class="math notranslate nohighlight">\(H\)</span> 的第一个成员．接下来，<span class="math notranslate nohighlight">\(G\)</span> 中某观测到 <span class="math notranslate nohighlight">\(H\)</span> 中观测的平均距离，减去该观测到 <span class="math notranslate nohighlight">\(G\)</span> 中其它观测的平均距离，如果差值达到最大，则该观测转移到 <span class="math notranslate nohighlight">\(H\)</span> 中去．重复这个步骤，知道差值为负．也就是，不再有 <span class="math notranslate nohighlight">\(G\)</span> 中的观测平均意义下离 <span class="math notranslate nohighlight">\(H\)</span> 更近．这样使得最初的簇一分为二，一部分转移到 <span class="math notranslate nohighlight">\(H\)</span>，一部分留在 <span class="math notranslate nohighlight">\(G\)</span>．这两个簇代表着第二层．接下来的每一层通过对当前层次的其中一个簇应用分裂过程得到．Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id26">4</a> 建议选择每一层中直径最大的簇进行分裂．另外一种策略可以是选择簇内平均不相似性最大的簇</p>
+<div class="math notranslate nohighlight">
+\[
+\bar d_G=\frac{1}{N_G^2}\sum_{i\in G}\sum_{i'\in G}d_{ii'}\,.
+\]</div>
+<p>迭代分裂过程一直进行到所有的簇要么只有一个观测，要么所有的成员之间不相似性都为 0.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id8">1</a></span></dt>
+<dd><p>Jain, A. and Dubes, R. (1988). Algorithms for Clustering Data, Prentice- Hall, Englewood Cliffs, N.J.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dd><p>Hartigan, J. A. and Wong, M. A. (1979). [(Algorithm AS 136] A k-means clustering algorithm (AS R39: 81v30 p355-356), Applied Statistics 28: 100–108.</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets">2</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id12">2</a>,<a href="#id24">3</a>)</span></dt>
+<dd><p>Gersho, A. and Gray, R. (1992). Vector Quantization and Signal Compression, Kluwer Academic Publishers, Boston, MA.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets">4</span><span class="fn-backref">(<a href="#id13">1</a>,<a href="#id16">2</a>,<a href="#id20">3</a>,<a href="#id26">4</a>)</span></dt>
+<dd><p>Kaufman, L. and Rousseeuw, P. (1990). Finding Groups in Data: An Introduction to Cluster Analysis, Wiley, New York.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id14">5</a></span></dt>
+<dd><p>Massart, D., Plastria, F. and Kaufman, L. (1983). Non-hierarchical clustering with MASLOC, The Journal of the Pattern Recognition Society 16: 507–516.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id18">6</a></span></dt>
+<dd><p>Tibshirani, R., Walther, G. and Hastie, T. (2001b). Estimating the number of clusters in a dataset via the gap statistic, Journal of the Royal Statistical Society, Series B. 32(2): 411–423.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets"><a class="fn-backref" href="#id25">10</a></span></dt>
+<dd><p>Macnaughton Smith, P., Williams, W., Dale, M. and Mockett, L. (1965). Dissimilarity analysis: a new technique of hierarchical subdivision, Nature 202: 1034–1035.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./14-Unsupervised-Learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="14.2-Association-Rules.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">14.2 关联规则</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="14.4-Self-Organizing-Maps.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">14.4 自组织图</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
