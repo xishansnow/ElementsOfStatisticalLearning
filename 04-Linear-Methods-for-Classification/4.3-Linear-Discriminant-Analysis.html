@@ -1192,8 +1192,8 @@ f_k(x)=\frac{1}{(2\pi)^{p/2}\vert \boldsymbol\Sigma_k\vert^{1/2}}e^{-\frac{1}{2}
 \]</div>
 <p>假设类别有相同的协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma_k=\Sigma\;\forall k\)</span> 时，会导出 <strong>线性判别分析 (LDA)</strong>。在比较两个类别 <span class="math notranslate nohighlight">\(k\)</span> 和 <span class="math notranslate nohighlight">\(\ell\)</span> 时，比较 log-ratio 就足够了，而且我们可以看到
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c837d18-b8ec-4ca9-b837-d4c47e9588cb">
-<span class="eqno">(10)<a class="headerlink" href="#equation-7c837d18-b8ec-4ca9-b837-d4c47e9588cb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-455cd9f2-3e9e-4464-9818-3180bfb74e15">
+<span class="eqno">(10)<a class="headerlink" href="#equation-455cd9f2-3e9e-4464-9818-3180bfb74e15" title="Permalink to this equation">¶</a></span>\[\begin{align}
 &amp;\log\frac{\Pr(G=k\mid X=x)}{\Pr(G=\ell\mid X=x)}\notag\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\notag\\
 =&amp;\log\frac{\pi_k}{\pi_\ell}-\frac{1}{2}(\mu_k+\mu_\ell)^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)+x^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)\notag
 \end{align}\]</div>

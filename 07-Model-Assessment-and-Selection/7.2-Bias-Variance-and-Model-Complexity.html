@@ -1204,19 +1204,16 @@ L(G,\hat p(X))&amp;=-2\sum\limits_{k=1}^KI(G=k)\log\hat p_k(X) \\
 <p><span class="math notranslate nohighlight">\(-2\times \text{log-likelihood}\)</span> 值有时也被称为 <strong>偏差 (deviance)</strong>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>一篇写得很棒的博客，[What is deviance? -- by kjytay](https://statisticaloddsandends.wordpress.com/2019/03/27/what-is-deviance/)
-
-以及文中提到的 [问题：为什么 saturated model 的 log likelihood 不总是 0？](https://stats.stackexchange.com/questions/184753/in-a-glm-is-the-log-likelihood-of-the-saturated-model-always-zero?answertab=votes#tab-top) 的回答。
-</pre></div>
+<p>一篇写得很棒的博客，<a class="reference external" href="https://statisticaloddsandends.wordpress.com/2019/03/27/what-is-deviance/">What is deviance? – by kjytay</a>
+以及文中提到的 <a class="reference external" href="https://stats.stackexchange.com/questions/184753/in-a-glm-is-the-log-likelihood-of-the-saturated-model-always-zero?answertab=votes#tab-top">问题：为什么 saturated model 的 log likelihood 不总是 0？</a> 的回答。</p>
 </div>
-</div>
-<p>同样，这里测试误差为 <span class="math notranslate nohighlight">\(\text{Err}_{\mathcal{T}}=\mathbf{E}[L(G,\hat G(X))\mid \mathcal{T}]\)</span>，这是在 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 上训练的分类器的总体误分类率，且 <span class="math notranslate nohighlight">\(\text{Err}\)</span> 是误分类错误率的期望值。</p>
-<p>类似前面的定量变量情形，训练误差也是关于样本的，例如，模型的样本对数似然</p>
+<p>同样，这里测试误差为 <span class="math notranslate nohighlight">\(\text{Err}_{\mathcal{T}}=\mathbf{E}[L(G,\hat G(X))\mid \mathcal{T}]\)</span>，这是在 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 上训练的分类器的总体误分类率，且 <span class="math notranslate nohighlight">\(\text{Err}\)</span> 是误分类错误率的期望。</p>
+<p>类似前面的定量变量情形，训练误差也是关于样本的，例如，模型样本的对数似然。</p>
 <div class="math notranslate nohighlight">
 \[
 \overline{\text{err}}=-\frac{2}{N}\sum\limits_{i=1}^N\log\hat p_{g_i}(x_i)\tag{7.7}
 \]</div>
-<p>对数似然可以作为一般响应密度的损失函数，比如 Poisson，gamma，指数，对数正态以及其它的。如果 <span class="math notranslate nohighlight">\(\Pr_{\theta(X)}(Y)\)</span> 为 <span class="math notranslate nohighlight">\(Y\)</span> 的密度，由依赖预测变量的参数 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 来编号，则</p>
+<p>对数似然可以作为一般响应密度的损失函数，比如 Poisson，gamma，指数，对数正态以及其它的。如果 <span class="math notranslate nohighlight">\(\Pr_{\theta(X)}(Y)\)</span> 为 <span class="math notranslate nohighlight">\(Y\)</span> 的密度，由依赖预测变量的参数 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 来编号，则：</p>
 <div class="math notranslate nohighlight">
 \[
 L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
@@ -1226,9 +1223,7 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
 <p>这章中我们描述一系列估计模型的期望测试误差 (<span class="math notranslate nohighlight">\(\text{Err}\)</span>) 的方法。一般地我们的模型会有一个 <strong>调整参数 (tunning parameter)</strong> 或者参数 <span class="math notranslate nohighlight">\(\alpha\)</span>，所以我们可以把预测值写成 <span class="math notranslate nohighlight">\(\hat f_\alpha(x)\)</span>。调整参数会随着我们模型的复杂度而变，而且我们希望找到 <span class="math notranslate nohighlight">\(\alpha\)</span> 值来最小化误差，也就是，得到图 7.1 的平均测试误差曲线的最小值。说完这些，为了简洁我们经常默认 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 对 <span class="math notranslate nohighlight">\(\alpha\)</span> 的依赖性。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>这里原文为，“for brevity we will often suppress the dependence of $\hat f(x)$ on $\alpha$.” 关键词为&quot;suppress&quot;，意为“抑制；压制；阻止；控制”。不过结合上下文，此处想表达的是省略 $\hat f_\alpha(x)$ 中的 $\alpha$。
-</pre></div>
-</div>
+<p>这里原文为，“for brevity we will often suppress the dependence of <span class="math notranslate nohighlight">\(\hat f(x)\)</span> on <span class="math notranslate nohighlight">\(\alpha\)</span>.” 关键词为”suppress”，意为“抑制；压制；阻止；控制”。不过结合上下文，此处想表达的是省略 <span class="math notranslate nohighlight">\(\hat f_\alpha(x)\)</span> 中的 <span class="math notranslate nohighlight">\(\alpha\)</span>。</p>
 </div>
 <p>重要的是要注意，事实上我们可能有两个单独的目标：</p>
 <p><strong>模型选择 (Model selection)：</strong> 估计不同模型的表现来选择最好的那个</p>
@@ -1239,13 +1234,12 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
 <p>本章中的方法是为了没有足够的数据来分成 3 部分的情形设计的。同样地，给出多少的训练数据是足够的一般规则太难了；此外，这取决于潜在函数的信噪比以及根据数据拟合出的模型的复杂度。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>在 [11.6 例子：模拟数据](https://esl.hohoweiya.xyz/11%20Neural%20Networks/11.6%20Example%20of%20Simulated%20Data/index.html)有提到信噪比为
-$$
+<p>在 <a class="reference external" href="https://esl.hohoweiya.xyz/11%20Neural%20Networks/11.6%20Example%20of%20Simulated%20Data/index.html">11.6 例子：模拟数据</a>有提到信噪比为</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\Var(\mathbf{E}(Y\mid X))}{\Var(Y-E(Y\mid X))}=\frac{\Var(f(X))}{\Var(\varepsilon)}
-$$
-另外 [18.1 当 p 远大于 N](../18-High-Dimensional-Problems/18.1-When-p-is-Much-Bigger-than-N/index.html) 中也涉及信噪比。
-</pre></div>
-</div>
+\]</div>
+<p>另外 <span class="xref myst">18.1 当 p 远大于 N</span> 中也涉及信噪比。</p>
 </div>
 <p>本章的方法有两类，第一类通过分析的手段 (AIC，BIC，MDL，SRM)，第二类通过有效的样本重利用（交叉验证和自助法）来近似验证过程（验证过程即比较候选模型选出最优的模型）。除了在模型选择使用它们，我们也检验了每个方法对最终选择的模型的测试误差的估计的可靠性程度。</p>
 <p>在讨论这些之前，我们首先进一步探究测试误差的本质与 <strong>偏差-方差之间的权衡 (the bias-variance tradeoff)</strong>。</p>

@@ -1191,8 +1191,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 然而，可以简单地看到一般情形下 \)</span>\widehat{\Err}_{boot}<span class="math notranslate nohighlight">\( 不会给出良好估计。原因在于自助法数据集是作为训练样本，而原始训练集是作为测试样本，而且这两个样本有共同的观测。这种重合会使得过拟合的预测看起来不可思议地好，这也是交叉验证为什么明确地使用非重合的数据作为训练和测试样本。考虑二分类问题中应用 1 最近邻分类器的例子，每个类有相同数目的观测值，预测变量和类别标签实际上是独立的。于是真实误差率为 0.5。但是对自助法估计 \)</span>\widehat{\Err}_{boot}<span class="math notranslate nohighlight">\( 的贡献值会是 0，除非观测 \)</span>i<span class="math notranslate nohighlight">\( 不出现在自助法样本 \)</span>b<span class="math notranslate nohighlight">\( 中。后一种情形中会有正确的期望值 0.5。现在
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53b6c105-0a03-4c24-a2c8-683110de9dcf">
-<span class="eqno">(17)<a class="headerlink" href="#equation-53b6c105-0a03-4c24-a2c8-683110de9dcf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3ccf9402-f0b0-48f2-82da-ee7e48c3a034">
+<span class="eqno">(17)<a class="headerlink" href="#equation-3ccf9402-f0b0-48f2-82da-ee7e48c3a034" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \Pr\{\text{观测}i\in\text{自助法样本}b\}&amp;=1-(1-\frac{1}{N})^N\notag\\
 &amp;\approx 1-e^{-1}\notag\\
 &amp;=0.632\tag{7.55}\label{7.55}
@@ -1226,8 +1226,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 这是一个取值为 0 到 1 的量，当不存在过拟合时等于 0 (\)</span>\widehat{\Err}^{(1)}=\overline{\err}<span class="math notranslate nohighlight">\()，当过拟合等于无信息值 \)</span>\hat\gamma-\overline{\err}<span class="math notranslate nohighlight">\( 时则等于 1。最后，我们定义“.632+”如下
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-52bd3c1d-1019-4bbd-8d66-4462a476e258">
-<span class="eqno">(18)<a class="headerlink" href="#equation-52bd3c1d-1019-4bbd-8d66-4462a476e258" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b074b7a7-1528-438f-963c-b9ad414e0b1d">
+<span class="eqno">(18)<a class="headerlink" href="#equation-b074b7a7-1528-438f-963c-b9ad414e0b1d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \widehat{\Err}^{(.632+)}&amp;=(1-\hat w)\cdot \overline{err}+\hat w\cdot \widehat{\Err}^{(1)}\tag{7.61}\label{7.61}\\
 \text{其中}\hat w &amp;=\frac{.632}{1-.368\hat R}\notag
 \end{align}\]</div>

@@ -1165,8 +1165,8 @@
 <style>p{text-indent:2em;2}</style>
 <p>和 <span class="xref myst">第 2 章</span> 一样，如果我们假设 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\E(\varepsilon)=0\)</span>，并且 <span class="math notranslate nohighlight">\(\Var(\epsilon)=\sigma_\varepsilon^2\)</span>，我们可以导出在使用平方误差损失的情形下，在输入点 <span class="math notranslate nohighlight">\(X=x_0\)</span> 处回归拟合值 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的期望预测误差，
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0e306eb1-7c41-49b9-94a5-b72de006012b">
-<span class="eqno">(16)<a class="headerlink" href="#equation-0e306eb1-7c41-49b9-94a5-b72de006012b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-31c0701d-8a8c-4248-aa76-ccfd93e6a80e">
+<span class="eqno">(16)<a class="headerlink" href="#equation-31c0701d-8a8c-4248-aa76-ccfd93e6a80e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \Err(x_0)&amp;=\E[(Y-\hat f(x_0))^2\mid X=x_0]\notag\\
 &amp;=\sigma_\varepsilon^2+[\E\hat f(x_0)-f(x_0)]^2+\E[\hat f(x_0)-E\hat f(x_0)]^2\notag\\
 &amp;=\sigma_\varepsilon^2+\Bias^2(\hat f(x_0))+\Var(\hat f(x_0))\notag\\

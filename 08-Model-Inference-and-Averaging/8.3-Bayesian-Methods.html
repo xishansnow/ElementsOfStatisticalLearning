@@ -1178,8 +1178,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 先验协方差矩阵 \)</span>\mathbf \Sigma<span class="math notranslate nohighlight">\( 和方差 \)</span>\tau<span class="math notranslate nohighlight">\( 将在下面讨论。\)</span>\mu(x)<span class="math notranslate nohighlight">\( 隐式的先验过程因此是高斯的，其中协方差核为
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09928ac0-bba0-442b-8d32-ab93f795d233">
-<span class="eqno">(21)<a class="headerlink" href="#equation-09928ac0-bba0-442b-8d32-ab93f795d233" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-86e7cd84-e51c-48b4-bf60-2ea5151c1a34">
+<span class="eqno">(21)<a class="headerlink" href="#equation-86e7cd84-e51c-48b4-bf60-2ea5151c1a34" title="Permalink to this equation">¶</a></span>\[\begin{align}
 K(x,x')&amp;= \cov[\mu(x),\mu(x')]\notag\\
 &amp;=\tau\cdot h(x)^T\mathbf\Sigma h(x').\tag{8.26}
 \end{align}\]</div>
@@ -1187,8 +1187,8 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\notag\\
 \[
 $\beta$ 的后验分布也是高斯的，均值和方差分别为
 \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-1cebe239-5740-486f-9457-342243f36f99">
-<span class="eqno">(22)<a class="headerlink" href="#equation-1cebe239-5740-486f-9457-342243f36f99" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fbf93cba-a0b9-44e5-8a7f-710b2ba668a2">
+<span class="eqno">(22)<a class="headerlink" href="#equation-fbf93cba-a0b9-44e5-8a7f-710b2ba668a2" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \E(\beta\mid \mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\notag\\
 \Cov(\beta\mid\mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf \Sigma^{-1})^{-1}\sigma^2\notag
 \end{align}\]</div>
@@ -1196,8 +1196,8 @@ $\beta$ 的后验分布也是高斯的，均值和方差分别为
 $<span class="math notranslate nohighlight">\(
 后验 \)</span>\mu(x)<span class="math notranslate nohighlight">\( 对应的相应值为
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-083f0a54-aa3c-44c9-9d98-7a4333fcdca1">
-<span class="eqno">(23)<a class="headerlink" href="#equation-083f0a54-aa3c-44c9-9d98-7a4333fcdca1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6cbbb69a-112f-447e-b3bb-f0512c4add3b">
+<span class="eqno">(23)<a class="headerlink" href="#equation-6cbbb69a-112f-447e-b3bb-f0512c4add3b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \E(\mu(x)\mid\mathbf Z)&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\notag\\
 \cov[\mu(x),\mu(x')\mid\mathbf Z]&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}h(x')\sigma^2\notag
 \end{align}\]</div>

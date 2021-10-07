@@ -1208,8 +1208,8 @@ $<span class="math notranslate nohighlight">\(
     \)</span>$</p>
 <p>这里我们更喜欢保持对称性，而且加上约束条件 <span class="math notranslate nohighlight">\(\sum_{k=1}^Kf_k(x)=0\)</span>。二项偏差可以自然地扩展到 <span class="math notranslate nohighlight">\(K\)</span> 个类别的 <strong>多项偏差 (multinomial deviance)</strong> 损失函数：
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-792849ae-b870-4645-b6cc-90def289c249">
-<span class="eqno">(29)<a class="headerlink" href="#equation-792849ae-b870-4645-b6cc-90def289c249" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0746e580-4e8d-4d3b-bf04-638af811169b">
+<span class="eqno">(29)<a class="headerlink" href="#equation-0746e580-4e8d-4d3b-bf04-638af811169b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\cal G_k)\mathrm{log}p_k(x)\notag\\
 &amp;=-\sum\limits_{k=1}^KI(y={\cal G_k})f_k(x)+\mathrm{log}\left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
 \end{align}\]</div>

@@ -1209,8 +1209,8 @@ $<span class="math notranslate nohighlight">\(
 <p>这里我们介绍怎么在这个例子中运用自助法。我们从训练集中有放回抽取 <span class="math notranslate nohighlight">\(B\)</span> 个大小均为 <span class="math notranslate nohighlight">\(N=50\)</span> 的数据集，取样单元为数据对 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i)\)</span>。对于每一个自助法的数据集 <span class="math notranslate nohighlight">\(\mathbf Z^\*\)</span> 我们拟合三次样条 <span class="math notranslate nohighlight">\(\hat \mu^\*(x)\)</span>；从 10 个这样的自助样本中得到的拟合曲线如图 8.2 的左下图所示。利用 <span class="math notranslate nohighlight">\(B=200\)</span> 个自助法样本集，我们可以得到每个 <span class="math notranslate nohighlight">\(x\)</span> 处的 95% 置信区间：我们在每个 <span class="math notranslate nohighlight">\(x\)</span> 处找到第 <span class="math notranslate nohighlight">\(2.5\%\times 200=5\)</span> 大（小）的值。这在图 8.2的右下图画出来了。这些带状与右上角的带状显示，不过在终点处更宽点。</p>
 <p>实际上最小二乘估计 \eqref{8.2} 和 \eqref{8.3}，自助法和最大似然法有着很紧密的联系。进一步假设模型误差为高斯分布，
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a2922b7-1bdd-4239-a973-04f3bdae7c27">
-<span class="eqno">(19)<a class="headerlink" href="#equation-4a2922b7-1bdd-4239-a973-04f3bdae7c27" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9b32712d-5bef-46e5-bf4a-fd62c648a165">
+<span class="eqno">(19)<a class="headerlink" href="#equation-9b32712d-5bef-46e5-bf4a-fd62c648a165" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y&amp;=\mu(X)+\varepsilon;\; \varepsilon\sim N(0,\sigma^2),\notag\\
 \mu(X)&amp;=\sum\limits_{j=1}^7\beta_jh_j(x)\notag
 \end{align}\]</div>
@@ -1249,8 +1249,8 @@ L(\theta;\mathbf Z)=\prod\limits_{i=1}^Ng_\theta(z_i)\tag{8.11}
 <p>这也是观测数据在模型 <span class="math notranslate nohighlight">\(g_\theta\)</span> 下的概率。这个似然是在忽略正乘数情形下定义的，这里我们取为 1。我们将 <span class="math notranslate nohighlight">\(L(\theta;\Z)\)</span> 看成当 <span class="math notranslate nohighlight">\(\Z\)</span> 固定时 <span class="math notranslate nohighlight">\(\theta\)</span> 的函数。</p>
 <p>记 <span class="math notranslate nohighlight">\(L(\theta;\mathbf Z)\)</span> 的对数为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5684a27f-eabd-4164-ad43-80c9ec224ae3">
-<span class="eqno">(20)<a class="headerlink" href="#equation-5684a27f-eabd-4164-ad43-80c9ec224ae3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3a0eefb0-8bd9-4db5-a0a4-a0af1b0bbcc7">
+<span class="eqno">(20)<a class="headerlink" href="#equation-3a0eefb0-8bd9-4db5-a0a4-a0af1b0bbcc7" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell(\theta;\mathbf Z)&amp;=\sum\limits_{i=1}^N\ell(\theta;z_i)\notag\\
 &amp;=\sum\limits_{i=1}^N\log g_\theta(z_i)\qquad \tag{8.12}
 \end{align}\]</div>
