@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,52 +1149,31 @@
                 
   <div class="section" id="id1">
 <h1>16.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=624">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-02-08</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-07-18, 2018-08-18</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>集成学习 (ensemble learning)</strong> 的思想是通过结合一系列简单基础模型的优点来建立一个预测模型．我们已经看到很多这类的例子．</p>
-<p><span class="xref myst">8.7 节</span>的 bagging 和<span class="xref myst">第 15 章</span>的随机森林都是用于分类的集成学习的方法，其中树的每个 committee 对预测的类别都有一个投票．<span class="xref myst">第 10 章</span>中的 boosting 一开始也是以一种 committee 的方法提出来的，尽管不同于随机森林，weak learners 的 committee 随着时间不断进化，并且成员进行带有权重的投票．Stacking（<span class="xref myst">8.8 节</span>）是结合一系列拟合模型优点的新方式．事实上，可以将任何字典方法看成集成学习，其中基函数充当 <strong>弱学习器 (weak learners)</strong>，比如回归样条．</p>
-<p>非参回归的贝叶斯方法也可以看成是集成学习的方法：关于参数设定的后验分布，对一系列大量的候选模型进行平均（比如，Neal and Zhang，2006<a class="footnote-reference brackets" href="#id6" id="id2">1</a>）．</p>
-<p>集成学习可以分成两个任务：从训练集中建立基学习器的总体，然后结合它们形成复合预测．这章中我们进一步讨论 boosting 技术；它通过在 weak learners 的高维空间中通过一个正规化和有监督的搜索来建立集成模型．</p>
-<p>集成学习的一个很早的例子是使用 <strong>error-correcting output codes</strong> (Dietterich and Bakiri, 1995<a class="footnote-reference brackets" href="#id7" id="id3">2</a>, ECOC) 对多个类别进行分类．考虑 <span class="math notranslate nohighlight">\(10\)</span> 个类别的数字分类问题，编码矩阵 <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> 由表 16.1 给出</p>
+<p><strong>集成学习 (ensemble learning)</strong> 的思想是通过结合一系列简单基础模型的优点来建立一个预测模型。我们已经看到很多这类的例子。</p>
+<p><span class="xref myst">8.7 节</span>的 bagging 和<span class="xref myst">第 15 章</span>的随机森林都是用于分类的集成学习的方法，其中树的每个 committee 对预测的类别都有一个投票。<span class="xref myst">第 10 章</span>中的 boosting 一开始也是以一种 committee 的方法提出来的，尽管不同于随机森林，weak learners 的 committee 随着时间不断进化，并且成员进行带有权重的投票。Stacking（<span class="xref myst">8.8 节</span>）是结合一系列拟合模型优点的新方式。事实上，可以将任何字典方法看成集成学习，其中基函数充当 <strong>弱学习器 (weak learners)</strong>，比如回归样条。</p>
+<p>非参回归的贝叶斯方法也可以看成是集成学习的方法：关于参数设定的后验分布，对一系列大量的候选模型进行平均（比如，Neal and Zhang，2006<a class="footnote-reference brackets" href="#id6" id="id2">1</a>）。</p>
+<p>集成学习可以分成两个任务：从训练集中建立基学习器的总体，然后结合它们形成复合预测。这章中我们进一步讨论 boosting 技术；它通过在 weak learners 的高维空间中通过一个正规化和有监督的搜索来建立集成模型。</p>
+<p>集成学习的一个很早的例子是使用 <strong>error-correcting output codes</strong> (Dietterich and Bakiri, 1995<a class="footnote-reference brackets" href="#id7" id="id3">2</a>, ECOC) 对多个类别进行分类。考虑 <span class="math notranslate nohighlight">\(10\)</span> 个类别的数字分类问题，编码矩阵 <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> 由表 16.1 给出</p>
 <p><img alt="" src="../_images/tab16.1.png" /></p>
 <blockquote>
-<div><p>表 16.1 对于 <span class="math notranslate nohighlight">\(10\)</span> 个类别的数字分类问题的 15 位 error-correcting output codes 矩阵 <span class="math notranslate nohighlight">\(\mathbf C\)</span> 的部分．每一列定义了一个两个类别的分类问题．</p>
+<div><p>表 16.1 对于 <span class="math notranslate nohighlight">\(10\)</span> 个类别的数字分类问题的 15 位 error-correcting output codes 矩阵 <span class="math notranslate nohighlight">\(\mathbf C\)</span> 的部分。每一列定义了一个两个类别的分类问题。</p>
 </div></blockquote>
-<p>注意到编码矩阵的第 <span class="math notranslate nohighlight">\(\ell\)</span> 列 <span class="math notranslate nohighlight">\(\mathbf C_\ell\)</span> 定义了一个两个类别的变量可以将所有的原始类别合并成两个大类．这个方法按照下列步骤进行：</p>
+<p>注意到编码矩阵的第 <span class="math notranslate nohighlight">\(\ell\)</span> 列 <span class="math notranslate nohighlight">\(\mathbf C_\ell\)</span> 定义了一个两个类别的变量可以将所有的原始类别合并成两个大类。这个方法按照下列步骤进行：</p>
 <ol class="simple">
-<li><p>对每个由编码矩阵的列定义的 <span class="math notranslate nohighlight">\(L=15\)</span> 个两类别的学习问题，单独进行学习分类器．</p></li>
-<li><p>在每一个测试点 <span class="math notranslate nohighlight">\(x\)</span> 上，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 是第 <span class="math notranslate nohighlight">\(\ell\)</span> 个响应变量的预测概率．</p></li>
-<li><p>定义 <span class="math notranslate nohighlight">\(\delta_k(x)=\sum_{\ell=1}^L\vert C_{k\ell}-\hat p_\ell(x)\vert\)</span>，是第 <span class="math notranslate nohighlight">\(k\)</span> 个类别的判别函数，其中 <span class="math notranslate nohighlight">\(C_{k\ell}\)</span> 是表 16.1 第 <span class="math notranslate nohighlight">\(k\)</span> 行和第 <span class="math notranslate nohighlight">\(\ell\)</span> 列的值．</p></li>
+<li><p>对每个由编码矩阵的列定义的 <span class="math notranslate nohighlight">\(L=15\)</span> 个两类别的学习问题，单独进行学习分类器。</p></li>
+<li><p>在每一个测试点 <span class="math notranslate nohighlight">\(x\)</span> 上，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 是第 <span class="math notranslate nohighlight">\(\ell\)</span> 个响应变量的预测概率。</p></li>
+<li><p>定义 <span class="math notranslate nohighlight">\(\delta_k(x)=\sum_{\ell=1}^L\vert C_{k\ell}-\hat p_\ell(x)\vert\)</span>，是第 <span class="math notranslate nohighlight">\(k\)</span> 个类别的判别函数，其中 <span class="math notranslate nohighlight">\(C_{k\ell}\)</span> 是表 16.1 第 <span class="math notranslate nohighlight">\(k\)</span> 行和第 <span class="math notranslate nohighlight">\(\ell\)</span> 列的值。</p></li>
 </ol>
 <p>!!! note “weiya 注：”
-关于 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 的定义，可以这样理解．首先，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 值越大，表示越倾向于类别 <span class="math notranslate nohighlight">\(1\)</span>，越小则越倾向于类别 <span class="math notranslate nohighlight">\(0\)</span>，于是 <span class="math notranslate nohighlight">\(\vert C_{k\ell}-\hat p_\ell(x) \vert\)</span> 表示预测正确时的程度，值越小表示得到的预测会越正确．因此，最后类别为使得 <span class="math notranslate nohighlight">\(\delta_k(x), k=1,2,\ldots, 10\)</span> 中最小的<span class="math notranslate nohighlight">\(k\)</span>．</p>
-<p><span class="math notranslate nohighlight">\(\mathbf C\)</span> 的每一行是表示该类的二进制编码．每一行的位数比必要的二进制位数更多，而且冗余的“error-correcting”位数在一些不精确的情形下是允许的，而且可以提高模型的效果．事实上，上面的全编码矩阵 <span class="math notranslate nohighlight">\(\mathbf C\)</span> 在任意两列中最小的 Hamming 距离为 7．注意到即使响应指示变量编码（<span class="xref myst">4.2 节</span>）是多余的，因为 <span class="math notranslate nohighlight">\(10\)</span> 个类别仅仅需要 <span class="math notranslate nohighlight">\([\log_210=4]\)</span> 位来实现唯一表示．Dietterich and Bakiri (1995)<a class="footnote-reference brackets" href="#id7" id="id4">2</a> 证明了将分类树作为基分类器会使得不同的多类别问题有显著性提高．</p>
+关于 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 的定义，可以这样理解。首先，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 值越大，表示越倾向于类别 <span class="math notranslate nohighlight">\(1\)</span>，越小则越倾向于类别 <span class="math notranslate nohighlight">\(0\)</span>，于是 <span class="math notranslate nohighlight">\(\vert C_{k\ell}-\hat p_\ell(x) \vert\)</span> 表示预测正确时的程度，值越小表示得到的预测会越正确。因此，最后类别为使得 <span class="math notranslate nohighlight">\(\delta_k(x), k=1,2,\ldots, 10\)</span> 中最小的<span class="math notranslate nohighlight">\(k\)</span>。</p>
+<p><span class="math notranslate nohighlight">\(\mathbf C\)</span> 的每一行是表示该类的二进制编码。每一行的位数比必要的二进制位数更多，而且冗余的“error-correcting”位数在一些不精确的情形下是允许的，而且可以提高模型的效果。事实上，上面的全编码矩阵 <span class="math notranslate nohighlight">\(\mathbf C\)</span> 在任意两列中最小的 Hamming 距离为 7。注意到即使响应指示变量编码（<span class="xref myst">4.2 节</span>）是多余的，因为 <span class="math notranslate nohighlight">\(10\)</span> 个类别仅仅需要 <span class="math notranslate nohighlight">\([\log_210=4]\)</span> 位来实现唯一表示。Dietterich and Bakiri (1995)<a class="footnote-reference brackets" href="#id7" id="id4">2</a> 证明了将分类树作为基分类器会使得不同的多类别问题有显著性提高。</p>
 <p>!!! note “weiya 注：”
 查看 Dietterich and Bakiri (1995)，其中提到无多余编码列的方法被称作 distributed output code，比如图中用了 6 列（虽然不是更少的 4 列），
 <img alt="" src="../_images/note-16-1.png" />
-而 ECOC 的区别在于采用了 error-correcting codes，这种编码能够 correct error．举个简单的例子，比如需要发送信号 <span class="math notranslate nohighlight">\(0\)</span>，如果重复 3 次发送，即使出了一次错误，接收时变成了 <span class="math notranslate nohighlight">\(001\)</span>，或 <span class="math notranslate nohighlight">\(010\)</span> 等，但采用多数原则，仍认为原信号为 <span class="math notranslate nohighlight">\(0\)</span>，这样就达到了 correct error 的效果．原文称，如果 ECOC 矩阵中最小的 Hamming 距离为 <span class="math notranslate nohighlight">\(d\)</span>，则至少可以 correct <span class="math notranslate nohighlight">\(\lfloor \frac{d-1}{2}\rfloor\)</span> 位错误．关于 error-correcting codes，推荐 MARK WILDON 的 Lecture Notes——<a class="reference external" href="http://www.ma.rhul.ac.uk/~uvah099/Maths/Codes11/MT3612011Notes.pdf">ERROR CORRECTING CODES MT361/MT461/MT5461</a>．</p>
-<p>James and Hastie (1998)<a class="footnote-reference brackets" href="#id8" id="id5">4</a> 分析 ECOC 方法，而且证明了随机编码分配和最优结构化 error-correcting 编码．他们也提出这种编码的好处在于降低方差（和 bagging 和随机森林一样），因为不同的编码问题会引出不同的树，另外上面解码步骤 (3) 跟平均(averaging)有相似的影响．</p>
+而 ECOC 的区别在于采用了 error-correcting codes，这种编码能够 correct error。举个简单的例子，比如需要发送信号 <span class="math notranslate nohighlight">\(0\)</span>，如果重复 3 次发送，即使出了一次错误，接收时变成了 <span class="math notranslate nohighlight">\(001\)</span>，或 <span class="math notranslate nohighlight">\(010\)</span> 等，但采用多数原则，仍认为原信号为 <span class="math notranslate nohighlight">\(0\)</span>，这样就达到了 correct error 的效果。原文称，如果 ECOC 矩阵中最小的 Hamming 距离为 <span class="math notranslate nohighlight">\(d\)</span>，则至少可以 correct <span class="math notranslate nohighlight">\(\lfloor \frac{d-1}{2}\rfloor\)</span> 位错误。关于 error-correcting codes，推荐 MARK WILDON 的 Lecture Notes——<a class="reference external" href="http://www.ma.rhul.ac.uk/~uvah099/Maths/Codes11/MT3612011Notes.pdf">ERROR CORRECTING CODES MT361/MT461/MT5461</a>。</p>
+<p>James and Hastie (1998)<a class="footnote-reference brackets" href="#id8" id="id5">4</a> 分析 ECOC 方法，而且证明了随机编码分配和最优结构化 error-correcting 编码。他们也提出这种编码的好处在于降低方差（和 bagging 和随机森林一样），因为不同的编码问题会引出不同的树，另外上面解码步骤 (3) 跟平均(averaging)有相似的影响。</p>
 <p>!!! note “weiya 注”
-Hamming 距离为两个向量不匹配的值的个数．</p>
+Hamming 距离为两个向量不匹配的值的个数。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

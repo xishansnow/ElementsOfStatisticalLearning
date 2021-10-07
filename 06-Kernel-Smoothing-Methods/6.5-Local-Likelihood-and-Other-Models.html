@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>局部似然和其他模型 &#8212; 统计学习精要(中文)</title>
+    <title>6.5 局部似然和其他模型 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.6 核密度估计和分类" href="6.6-Kernel-Density-Estimation-and-Classification.html" />
-    <link rel="prev" title="\(\IR^p\)中结构化局部回归" href="6.4-Structured-Local-Regression-Models-in-Rp.html" />
+    <link rel="prev" title="6.4 \(\mathcal{IR}^p\)中结构化局部回归" href="6.4-Structured-Local-Regression-Models-in-Rp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -353,22 +353,23 @@
     <a class="reference internal" href="6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,28 +1148,29 @@
               <div>
                 
   <div class="section" id="id1">
-<h1>局部似然和其他模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p><strong>局部回归 (local regression)</strong> 和 <strong>可变参数模型 (varying coefficient models)</strong> 的概念非常广泛：如果拟合方法适合(accommodates)观测点的权重系数，则任意参数模型可以变得局部．</p>
+<h1>6.5 局部似然和其他模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
+<p><strong>局部回归 (local regression)</strong> 和 <strong>可变参数模型 (varying coefficient models)</strong> 的概念非常广泛：如果拟合方法适合(accommodates)观测点的权重系数，则任意参数模型可以变得局部。</p>
 <p>!!! question
 怎么理解“accommodate”？</p>
 <p>这里有一些例子：</p>
 <ul class="simple">
-<li><p>每个观测 <span class="math notranslate nohighlight">\(y_i\)</span> 与协变量 <span class="math notranslate nohighlight">\(x_i\)</span> 成线性的参数 <span class="math notranslate nohighlight">\(\theta_i=\theta(x_i)=x_i^T\beta\)</span> 有关，并且基于对数似然 <span class="math notranslate nohighlight">\(l(\beta)=\sum_{i=1}^Nl(y_i,x_i^T\beta)\)</span> 对 <span class="math notranslate nohighlight">\(\beta\)</span> 进行推断．为了更灵活地对 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 建模，我们可以用 <span class="math notranslate nohighlight">\(x_0\)</span> 处局部的概率来推断 <span class="math notranslate nohighlight">\(\theta(x_0)=x_0^T\beta(x_0)\)</span>：</p></li>
+<li><p>每个观测 <span class="math notranslate nohighlight">\(y_i\)</span> 与协变量 <span class="math notranslate nohighlight">\(x_i\)</span> 成线性的参数 <span class="math notranslate nohighlight">\(\theta_i=\theta(x_i)=x_i^T\beta\)</span> 有关，并且基于对数似然 <span class="math notranslate nohighlight">\(l(\beta)=\sum_{i=1}^Nl(y_i,x_i^T\beta)\)</span> 对 <span class="math notranslate nohighlight">\(\beta\)</span> 进行推断。为了更灵活地对 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 建模，我们可以用 <span class="math notranslate nohighlight">\(x_0\)</span> 处局部的概率来推断 <span class="math notranslate nohighlight">\(\theta(x_0)=x_0^T\beta(x_0)\)</span>：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 l(\beta(x_0))=\sum\limits_{i=1}^NK_\lambda(x_0,x_i)l(y_i,x_i^T\beta(x_0))
 \]</div>
-<p>许多似然模型，特别是包含 <strong>逻辑斯蒂回归 (logistic)</strong> 和 <strong>对数线性模型 (log-linear models)</strong> 的 <strong>广义线性模型 (generalized linear models)</strong>．局部似然允许对全局线性模型进行松弛得到局部线性．</p>
+<p>许多似然模型，特别是包含 <strong>逻辑斯蒂回归 (logistic)</strong> 和 <strong>对数线性模型 (log-linear models)</strong> 的 <strong>广义线性模型 (generalized linear models)</strong>。局部似然允许对全局线性模型进行松弛得到局部线性。</p>
 <ul class="simple">
 <li><p>同上所述，区别是不同的变量与用于定义局部似然性的 <span class="math notranslate nohighlight">\(\theta\)</span> 相关联：
 $<span class="math notranslate nohighlight">\(
 l(\theta(z_0))=\sum\limits_{i=1}^NK_\lambda(z_0,z_i)l(y_i,\eta(x_i,\theta(z_0)))
 \)</span><span class="math notranslate nohighlight">\(
-举个例子，\)</span>\eta(x,\theta)=x^T\theta<span class="math notranslate nohighlight">\( 可以是关于 \)</span>x<span class="math notranslate nohighlight">\( 的线性模型．这通过最大化局部似然可以拟合可变参数模型\)</span>\theta(z)$．</p></li>
-<li><p>阶数为<span class="math notranslate nohighlight">\(k\)</span>的<strong>自回归(autoregressive)<strong>时间序列形式为<span class="math notranslate nohighlight">\(y_t=\beta_0+\beta_1y_{t-1}+\beta_2y_{t-2}+\cdots+\beta_ky_{t-k}+\varepsilon_t\)</span>．用<span class="math notranslate nohighlight">\(z_t=(y_{t-1},y_{t-2},\cdots,y_{t-k})\)</span>记</strong>滞后集(lag set)</strong>，模型则看起来是一个标准的线性模型<span class="math notranslate nohighlight">\(y_t=z_t^T\beta+\varepsilon_t\)</span>，而且一般使用最小二乘来拟合．采用核为<span class="math notranslate nohighlight">\(K(z_0,z_t)\)</span>的局部最小二乘拟合允许模型根据**序列的短期记忆(short-term history of the series)**来变化．这区别于更传统的因窗口时间变化的动态线性模型．</p></li>
+举个例子，\)</span>\eta(x,\theta)=x^T\theta<span class="math notranslate nohighlight">\( 可以是关于 \)</span>x<span class="math notranslate nohighlight">\( 的线性模型。这通过最大化局部似然可以拟合可变参数模型\)</span>\theta(z)$。</p></li>
+<li><p>阶数为<span class="math notranslate nohighlight">\(k\)</span>的<strong>自回归(autoregressive)<strong>时间序列形式为<span class="math notranslate nohighlight">\(y_t=\beta_0+\beta_1y_{t-1}+\beta_2y_{t-2}+\cdots+\beta_ky_{t-k}+\varepsilon_t\)</span>。用<span class="math notranslate nohighlight">\(z_t=(y_{t-1},y_{t-2},\cdots,y_{t-k})\)</span>记</strong>滞后集(lag set)</strong>，模型则看起来是一个标准的线性模型<span class="math notranslate nohighlight">\(y_t=z_t^T\beta+\varepsilon_t\)</span>，而且一般使用最小二乘来拟合。采用核为<span class="math notranslate nohighlight">\(K(z_0,z_t)\)</span>的局部最小二乘拟合允许模型根据**序列的短期记忆(short-term history of the series)**来变化。这区别于更传统的因窗口时间变化的动态线性模型。</p></li>
 </ul>
-<p>为了解释局部似然，我们考虑<span class="xref myst">第 4 章</span>中<strong>多类别线性逻辑斯蒂回归模型</strong>(4.36)的局部形式．</p>
+<p>为了解释局部似然，我们考虑<span class="xref myst">第 4 章</span>中<strong>多类别线性逻辑斯蒂回归模型</strong>(4.36)的局部形式。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \Pr(G=k\mid X=x)=\dfrac{e^{\beta_{k0}+\beta_k^Tx}}{1+\sum_{\ell=1}^{K-1}e^{\beta_{\ell0}+\beta_\ell^Tx}}\tag{4.36}
@@ -1184,7 +1186,7 @@ $<span class="math notranslate nohighlight">\(
 \end{split}\]</div>
 <p>注意到</p>
 <ul class="simple">
-<li><p>我们使用<span class="math notranslate nohighlight">\(g_i\)</span>作为下标来选择合适的分子．</p></li>
+<li><p>我们使用<span class="math notranslate nohighlight">\(g_i\)</span>作为下标来选择合适的分子。</p></li>
 <li><p>由模型定义得<span class="math notranslate nohighlight">\(\beta_{J0}=0,\beta_J=0\)</span></p></li>
 <li><p>我们已经对<span class="math notranslate nohighlight">\(x_0\)</span>处的局部回归进行了中心化，所以在<span class="math notranslate nohighlight">\(x_0\)</span>处的拟合后验概率简化为</p></li>
 </ul>
@@ -1192,14 +1194,14 @@ $<span class="math notranslate nohighlight">\(
 \[
 \widehat{\Pr}(G=j\mid X=x_0)=\frac{e^{\hat \beta_{j0}(x_0)}}{1+\sum_{k=1}^{J-1}e^{\hat\beta_{k0}(x_0)}}\tag{6.20}
 \]</div>
-<p>尽管该方法在高维的ZIP号码分类问题中效果显著，但它也可以用来在适当低维度(moderately low dimensions)中的灵活多类别分类．与之相关的方法是广义加性模型（<span class="xref myst">第 9 章</span>）采用的核光滑方法，并且通过假设回归函数的加性结构来避免了维数问题．</p>
-<p>作为一个简单的说明，我们对第4章中的心脏病数据拟合两个类别的 <strong>局部线性逻辑斯蒂回归模型(local linear logistic model)</strong>．图 6.12 显示了对两个风险因子<strong>分别</strong>拟合单变量局部逻辑斯蒂回归模型．当数据本身提供很少的可视信息，这是检测非线性是很有用的筛选工具．这种情形下会发现意外的异常值，而用传统的方法可能会没注意到．</p>
+<p>尽管该方法在高维的ZIP号码分类问题中效果显著，但它也可以用来在适当低维度(moderately low dimensions)中的灵活多类别分类。与之相关的方法是广义加性模型（<span class="xref myst">第 9 章</span>）采用的核光滑方法，并且通过假设回归函数的加性结构来避免了维数问题。</p>
+<p>作为一个简单的说明，我们对第4章中的心脏病数据拟合两个类别的 <strong>局部线性逻辑斯蒂回归模型(local linear logistic model)</strong>。图 6.12 显示了对两个风险因子<strong>分别</strong>拟合单变量局部逻辑斯蒂回归模型。当数据本身提供很少的可视信息，这是检测非线性是很有用的筛选工具。这种情形下会发现意外的异常值，而用传统的方法可能会没注意到。</p>
 <p><img alt="" src="../_images/fig6.12.png" /></p>
 <blockquote>
-<div><p>对于南非心脏病数据，每张图显示了二值响应变量<code class="docutils literal notranslate"><span class="pre">CHD</span></code>（冠状心脏病）作为风险因子的函数．每张图我们采用局部线性逻辑斯蒂回归模型来计算拟合的<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率．<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率在横轴取值较小时意外增加是因为它们是retrospective data，并且一些个体已经接受了降低血压和减轻体重的处理方式．图中的阴影区域表明逐点估计的标准误差带．</p>
+<div><p>对于南非心脏病数据，每张图显示了二值响应变量<code class="docutils literal notranslate"><span class="pre">CHD</span></code>（冠状心脏病）作为风险因子的函数。每张图我们采用局部线性逻辑斯蒂回归模型来计算拟合的<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率。<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率在横轴取值较小时意外增加是因为它们是retrospective data，并且一些个体已经接受了降低血压和减轻体重的处理方式。图中的阴影区域表明逐点估计的标准误差带。</p>
 </div></blockquote>
-<p>因为<code class="docutils literal notranslate"><span class="pre">CHD</span></code>是二值指示变量，所以我们可以通过直接地光滑二值响应变量来估计条件患病率<span class="math notranslate nohighlight">\(\Pr(G=j\mid x_0)\)</span>，而不是用似然公式(likelihood formulation)．这意味着拟合局部常值逻辑斯蒂回归模型（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/84">练习6.5</a>）．为了享受局部线性拟合的偏差纠正，在无限制的逻辑斯蒂尺度上操作会更加自然．</p>
-<p>一般地，我们用逻辑斯蒂回归来计算参数估计和它们的标准差．这个也可以局部实现，因为我们可以得到如图中所示的关于我们拟合的患病率的逐点标准误差带．</p>
+<p>因为<code class="docutils literal notranslate"><span class="pre">CHD</span></code>是二值指示变量，所以我们可以通过直接地光滑二值响应变量来估计条件患病率<span class="math notranslate nohighlight">\(\Pr(G=j\mid x_0)\)</span>，而不是用似然公式(likelihood formulation)。这意味着拟合局部常值逻辑斯蒂回归模型（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/84">练习6.5</a>）。为了享受局部线性拟合的偏差纠正，在无限制的逻辑斯蒂尺度上操作会更加自然。</p>
+<p>一般地，我们用逻辑斯蒂回归来计算参数估计和它们的标准差。这个也可以局部实现，因为我们可以得到如图中所示的关于我们拟合的患病率的逐点标准误差带。</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1236,7 +1238,7 @@ $<span class="math notranslate nohighlight">\(
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="math notranslate nohighlight">\(\IR^p\)</span>中结构化局部回归</p>
+                <p class="prevnext-title">6.4 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中结构化局部回归</p>
             </div>
         </a>
     </div>

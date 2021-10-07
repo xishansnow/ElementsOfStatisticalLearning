@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,39 +1149,13 @@
                 
   <div class="section" id="adaboost">
 <h1>10.4 指数损失和AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=362">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2018-02-28</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-02-28, 2018-05-17&#64;xinyu-intel,2018-06-09</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>我们现在证明 AdaBoost.M1 算法（算法 10.1）等价于使用下列损失函数的向前逐步加法建模
-$<span class="math notranslate nohighlight">\(
-L(y,f(x))=\exp(-yf(x))\tag{10.8}
-\)</span>$
-这个准则的合理性将在下一节中讨论</p>
 <!--
 !!! note "weiya注：Recall"
     ![](../img/10/alg10.1.png)
 
 ![](../img/10/alg10.2.png)
 -->
-<p>AdaBoost 基函数是单个分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>．采用指数损失函数，需要在每一步求解下面优化问题，从而得到需要加入到模型的分类器 <span class="math notranslate nohighlight">\(G_m\)</span> 和对应的系数 <span class="math notranslate nohighlight">\(\beta_m\)</span>
+<p>AdaBoost 基函数是单个分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>。采用指数损失函数，需要在每一步求解下面优化问题，从而得到需要加入到模型的分类器 <span class="math notranslate nohighlight">\(G_m\)</span> 和对应的系数 <span class="math notranslate nohighlight">\(\beta_m\)</span>
 $<span class="math notranslate nohighlight">\(
 (\beta_m,G_m)=\mathrm{arg}\;\underset{\beta,G}{\mathrm {min}}\sum\limits_{i=1}^N\exp[-y_i(f_{m-1}(x_i)+\beta G(x_i))]
 \)</span><span class="math notranslate nohighlight">\(
@@ -1188,12 +1163,12 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 (\beta_m,G_m)=\mathrm{arg}\;\underset{\beta, G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}\exp(-\beta y_iG(x_i))\tag{10.9}\label{10.9}
 \)</span><span class="math notranslate nohighlight">\(
-其中，\)</span>w^{(m)}_i=\exp(-y_if_{m-1}(x))<span class="math notranslate nohighlight">\(．因为每个 \)</span>w^{(m)}_i<span class="math notranslate nohighlight">\( 既不依赖 \)</span>\beta<span class="math notranslate nohighlight">\( 也不依赖 \)</span>G(x)<span class="math notranslate nohighlight">\(，可以看成是应用到每个观测上的权重．权重取决于 \)</span>f_{m-1}(x_i)<span class="math notranslate nohighlight">\(，因此个体的权重值随着迭代次数 \)</span>m$ 而变化．</p>
-<p>\eqref{10.9} 式的解可以通过两步得到．首先，对于任意 <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>，\eqref{10.9} 式 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解为
+其中，\)</span>w^{(m)}_i=\exp(-y_if_{m-1}(x))<span class="math notranslate nohighlight">\(。因为每个 \)</span>w^{(m)}_i<span class="math notranslate nohighlight">\( 既不依赖 \)</span>\beta<span class="math notranslate nohighlight">\( 也不依赖 \)</span>G(x)<span class="math notranslate nohighlight">\(，可以看成是应用到每个观测上的权重。权重取决于 \)</span>f_{m-1}(x_i)<span class="math notranslate nohighlight">\(，因此个体的权重值随着迭代次数 \)</span>m$ 而变化。</p>
+<p>\eqref{10.9} 式的解可以通过两步得到。首先，对于任意 <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>，\eqref{10.9} 式 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解为
 $<span class="math notranslate nohighlight">\(
 G_m=\mathrm{arg}\;\underset{G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i))\tag{10.10}\label{10.10}
 \)</span><span class="math notranslate nohighlight">\(
-这是使得在预测 \)</span>y<span class="math notranslate nohighlight">\( 时加权误差率最小化的分类器．这个可以通过将 \eqref{10.9} 的准则表达成下式看出来
+这是使得在预测 \)</span>y<span class="math notranslate nohighlight">\( 时加权误差率最小化的分类器。这个可以通过将 \eqref{10.9} 的准则表达成下式看出来
 \)</span><span class="math notranslate nohighlight">\(
 e^{-\beta}\sum\limits_{y_i=G(x_i)}\omega_i^{(m)}+e^\beta\sum\limits_{y_i\neq G(x_i)}\omega_i^{(m)}
 \)</span>$</p>
@@ -1202,7 +1177,7 @@ $<span class="math notranslate nohighlight">\(
 (e^{\beta}-e^{-\beta})\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i)) + e^{-\beta}\sum\limits_{i=1}^N\omega_i^{(m)}\tag{10.11}\label{10.11}
 \)</span>$</p>
 <p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(G_m\)</span>”
-因为此处 <span class="math notranslate nohighlight">\(G_m(x)\in\\{-1,1\\}\)</span>，则当 <span class="math notranslate nohighlight">\(y_i=G_i(x)\)</span> 时，<span class="math notranslate nohighlight">\(y_iG_i(x)=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_iG_i(x)=-1\)</span>．从式 \eqref{10.11} 显然可以看出\eqref{10.10} 是 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解．</p>
+因为此处 <span class="math notranslate nohighlight">\(G_m(x)\in\\{-1,1\\}\)</span>，则当 <span class="math notranslate nohighlight">\(y_i=G_i(x)\)</span> 时，<span class="math notranslate nohighlight">\(y_iG_i(x)=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_iG_i(x)=-1\)</span>。从式 \eqref{10.11} 显然可以看出\eqref{10.10} 是 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解。</p>
 <p>将 <span class="math notranslate nohighlight">\(G_m\)</span> 代入到 \eqref{10.9}，可以求解 <span class="math notranslate nohighlight">\(\beta\)</span>
 $<span class="math notranslate nohighlight">\(
 \beta_m=\frac{1}{2}\log\frac{1-\err_m}{\err_m}\qquad \tag{10.12}
@@ -1212,7 +1187,7 @@ $<span class="math notranslate nohighlight">\(
 \err_m=\frac{\sum_{i=1}^N \omega_i^{(m)}I(y_i\neq G_m(x_i))}{\sum_{i=1}^N\omega_i^{(m)}}\tag{10.13}
 \)</span>$</p>
 <p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(\beta_m\)</span>”
-求解关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的函数的最小值，于是只要对 \eqref{10.11} 关于 <span class="math notranslate nohighlight">\(\beta\)</span> 求导并令导数等于 0．</p>
+求解关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的函数的最小值，于是只要对 \eqref{10.11} 关于 <span class="math notranslate nohighlight">\(\beta\)</span> 求导并令导数等于 0。</p>
 <p>由近似过程更新
 $<span class="math notranslate nohighlight">\(
 f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
@@ -1225,17 +1200,17 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
 \)</span><span class="math notranslate nohighlight">\(
 \omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{\alpha_mI(y_i\neq G_m(x_i))}\cdot e^{-\beta_m}\tag{10.15}\label{10.15}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\alpha_m=2\beta_m<span class="math notranslate nohighlight">\( 是 AdaBoost.M1 算法（算法 10.1）中第 2(c) 行定义的常数．\eqref{10.15} 式的因子 \)</span>e^{-\beta_m}$ 对所有的权重都乘以同样的值，所以没有影响．因此 \eqref{10.15} 等价于算法 10.1 中的第 2(d) 行．</p>
-<p>我们可以把 AdaBoost.M1 算法的第 2(a) 行看成近似求解 \eqref{10.11} 最小化问题的方法，从而得到 \eqref{10.10} 式．因此我们将 AdaBoost.M1 总结为通过向前逐步加法建模方式来最小化指数损失函数．</p>
+其中 \)</span>\alpha_m=2\beta_m<span class="math notranslate nohighlight">\( 是 AdaBoost.M1 算法（算法 10.1）中第 2(c) 行定义的常数。\eqref{10.15} 式的因子 \)</span>e^{-\beta_m}$ 对所有的权重都乘以同样的值，所以没有影响。因此 \eqref{10.15} 等价于算法 10.1 中的第 2(d) 行。</p>
+<p>我们可以把 AdaBoost.M1 算法的第 2(a) 行看成近似求解 \eqref{10.11} 最小化问题的方法，从而得到 \eqref{10.10} 式。因此我们将 AdaBoost.M1 总结为通过向前逐步加法建模方式来最小化指数损失函数。</p>
 <p><img alt="" src="../_images/fig10.3.png" /></p>
 <blockquote>
-<div><p>图10.3. boosting with stump 的模拟数据：训练集上的误分类误差率，以及平均指数损失：<span class="math notranslate nohighlight">\((1/N)\sum_{i=1}^N\exp(-y_if(x_i))\)</span>．经过大约 250 次迭代之后，误分类误差率为 0，而指数损失继续下降．</p>
+<div><p>图10.3. boosting with stump 的模拟数据：训练集上的误分类误差率，以及平均指数损失：<span class="math notranslate nohighlight">\((1/N)\sum_{i=1}^N\exp(-y_if(x_i))\)</span>。经过大约 250 次迭代之后，误分类误差率为 0，而指数损失继续下降。</p>
 </div></blockquote>
-<p>图 10.3 展示了图 10.2 中模拟数据问题 (10.2) 的训练集误分类错误率和平均指数损失．训练集误分类错误率在大概250次迭代时下降为0且保持不变．但是指数损失保持下降．注意到在图10.2中测试集误分类误差率在250次迭代之后继续改善．显然AdaBoost不再优化训练集的误分类误差；指数损失对与估计类别概率的变化更加敏感．</p>
+<p>图 10.3 展示了图 10.2 中模拟数据问题 (10.2) 的训练集误分类错误率和平均指数损失。训练集误分类错误率在大概250次迭代时下降为0且保持不变。但是指数损失保持下降。注意到在图10.2中测试集误分类误差率在250次迭代之后继续改善。显然AdaBoost不再优化训练集的误分类误差；指数损失对与估计类别概率的变化更加敏感。</p>
 <!--
 ![](../img/10/fig10.2.png)
 
-> 图10.2. （10.2）的模拟数据：对stumps进行boosting的测试误差率作为迭代次数的函数．图中也显示了单个stump和244个结点的分类树的测试误差率．
+> 图10.2. （10.2）的模拟数据：对stumps进行boosting的测试误差率作为迭代次数的函数。图中也显示了单个stump和244个结点的分类树的测试误差率。
 -->
 </div>
 

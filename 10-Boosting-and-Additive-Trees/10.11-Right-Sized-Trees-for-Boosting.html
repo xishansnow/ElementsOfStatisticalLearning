@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,49 +1149,28 @@
                 
   <div class="section" id="boosting">
 <h1>10.11 大小合适的boosting树<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-10-07</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2020-01-14 18:36:02</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>曾经，boosting 被认为是一种将模型结合起来(combing models)的技巧，在这里模型是树．同样地，生成树的算法可看成是产生用于 boosting 进行结合的模型的 <strong>原型(primitive)</strong>．这种情形下，在生成树的时候以通常的方式分别估计每棵树的最优大小（<span class="xref myst">9.2 节</span>）．首先诱导出非常大（过大的）的一棵树，接着应用自下而上的过程剪枝得到估计的最优终止结点个数的树．这种方式隐含地假设了每棵树是式 \eqref{10.28} 中的最后一棵．</p>
+<p>曾经，boosting 被认为是一种将模型结合起来(combing models)的技巧，在这里模型是树。同样地，生成树的算法可看成是产生用于 boosting 进行结合的模型的 <strong>原型(primitive)</strong>。这种情形下，在生成树的时候以通常的方式分别估计每棵树的最优大小（<span class="xref myst">9.2 节</span>）。首先诱导出非常大（过大的）的一棵树，接着应用自下而上的过程剪枝得到估计的最优终止结点个数的树。这种方式隐含地假设了每棵树是式 \eqref{10.28} 中的最后一棵。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}\label{10.28}
-    \)</span>$, 详见 <span class="xref myst">10.9 节</span>．</p>
-<p>除了真正的最后一棵树，这显然是个很差的假设．结果导致树都趋向于很大，特别是前几步迭代中．这显著降低了模型的效果，并且增大了计算量．</p>
-<p>避免这个问题最简单的策略是将所有树限制为相同的大小， <span class="math notranslate nohighlight">\(J_m=J\;\forall m\)</span>．在每次迭代中，得到 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树．因此 <span class="math notranslate nohighlight">\(J\)</span> 成为了整个 boosting 过程的 <strong>元参数(meta-parameter)</strong>，根据手头上的数据来调整该参数以期最大化估计的效果．</p>
+    \)</span>$, 详见 <span class="xref myst">10.9 节</span>。</p>
+<p>除了真正的最后一棵树，这显然是个很差的假设。结果导致树都趋向于很大，特别是前几步迭代中。这显著降低了模型的效果，并且增大了计算量。</p>
+<p>避免这个问题最简单的策略是将所有树限制为相同的大小， <span class="math notranslate nohighlight">\(J_m=J\;\forall m\)</span>。在每次迭代中，得到 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树。因此 <span class="math notranslate nohighlight">\(J\)</span> 成为了整个 boosting 过程的 <strong>元参数(meta-parameter)</strong>，根据手头上的数据来调整该参数以期最大化估计的效果。</p>
 <p>可以考虑下式的 <strong>目标函数(target function)</strong> 的性质来得到 <span class="math notranslate nohighlight">\(J\)</span> 的有用值</p>
 <div class="math notranslate nohighlight">
 \[
 \eta = \mathrm{arg }\;\underset{f}{\min} \E_{XY}L(Y, f(X))\tag{10.39}
 \]</div>
-<p>这里期望值是对 <span class="math notranslate nohighlight">\((X,Y)\)</span> 的总体联合分布而言．目标函数 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 是在未来数据上有最小预测风险的函数．这是我们试图近似的函数．</p>
-<p><span class="math notranslate nohighlight">\(\eta(X)\)</span> 一个相关的性质是坐标变量 <span class="math notranslate nohighlight">\(X^T=(X_1,X_2,\ldots, X_p)\)</span> 间交叉项的阶．这个可以通过它的 ANOVA 展开式得到</p>
+<p>这里期望值是对 <span class="math notranslate nohighlight">\((X,Y)\)</span> 的总体联合分布而言。目标函数 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 是在未来数据上有最小预测风险的函数。这是我们试图近似的函数。</p>
+<p><span class="math notranslate nohighlight">\(\eta(X)\)</span> 一个相关的性质是坐标变量 <span class="math notranslate nohighlight">\(X^T=(X_1,X_2,\ldots, X_p)\)</span> 间交叉项的阶。这个可以通过它的 ANOVA 展开式得到</p>
 <div class="math notranslate nohighlight">
 \[
 \eta(X)=\sum\limits_{j}\eta_j(X_j)+\sum\limits_{jk}\eta_{jk}(X_j,X_k)+\sum\limits_{jkl}\eta_{jkl}(X_j,X_k, X_l)+\cdots\tag{10.40}\label{10.40}
 \]</div>
-<p>式子 \eqref{10.40} 中的第一项是只有一个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的函数和．这些函数 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 是在所采用的误差损失准则下联合起来最能近似 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 的项．每一个 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 称为 <span class="math notranslate nohighlight">\(X_j\)</span> 的主影响．式中第二项是那些加入到主影响中将 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 拟合得最好的含两个变量的函数．这些函数被称为每个变量对 <span class="math notranslate nohighlight">\((X_j,X_k)\)</span> 的二阶交叉项．式中第三项表示三阶交叉项，以此类推．对于许多实际的问题，低阶交叉影响占主要地位．如果模型得到强烈的高阶交叉影响，比如大型的决策树，则可能正确性不好．</p>
-<p>基于树的近似的交叉性阶数被树的大小 <span class="math notranslate nohighlight">\(J\)</span> 所限制．也就是，不存在大于 <span class="math notranslate nohighlight">\(J-1\)</span> 阶数的交叉项．因为 \eqref{10.28} 的 boosted 模型关于树是可加的，这个限制对于它也适用．<span class="math notranslate nohighlight">\(J=2\)</span> 时（单个分割点的“decision stump”），则只能得到仅主影响的 boosted 模型，其中不允许有交叉项．当 <span class="math notranslate nohighlight">\(J=3\)</span> 时，可以允许有含两个变量的交叉项，以此类推．这表明选择的 <span class="math notranslate nohighlight">\(J\)</span> 值应该反映 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 占优势的交叉项的阶数．当然这在一般情形下是未知的，但是在大部分情况下往往很低．</p>
+<p>式子 \eqref{10.40} 中的第一项是只有一个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的函数和。这些函数 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 是在所采用的误差损失准则下联合起来最能近似 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 的项。每一个 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 称为 <span class="math notranslate nohighlight">\(X_j\)</span> 的主影响。式中第二项是那些加入到主影响中将 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 拟合得最好的含两个变量的函数。这些函数被称为每个变量对 <span class="math notranslate nohighlight">\((X_j,X_k)\)</span> 的二阶交叉项。式中第三项表示三阶交叉项，以此类推。对于许多实际的问题，低阶交叉影响占主要地位。如果模型得到强烈的高阶交叉影响，比如大型的决策树，则可能正确性不好。</p>
+<p>基于树的近似的交叉性阶数被树的大小 <span class="math notranslate nohighlight">\(J\)</span> 所限制。也就是，不存在大于 <span class="math notranslate nohighlight">\(J-1\)</span> 阶数的交叉项。因为 \eqref{10.28} 的 boosted 模型关于树是可加的，这个限制对于它也适用。<span class="math notranslate nohighlight">\(J=2\)</span> 时（单个分割点的“decision stump”），则只能得到仅主影响的 boosted 模型，其中不允许有交叉项。当 <span class="math notranslate nohighlight">\(J=3\)</span> 时，可以允许有含两个变量的交叉项，以此类推。这表明选择的 <span class="math notranslate nohighlight">\(J\)</span> 值应该反映 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 占优势的交叉项的阶数。当然这在一般情形下是未知的，但是在大部分情况下往往很低。</p>
 <p><img alt="" src="../_images/fig10.9.png" /></p>
-<p>图 10.9 说明了交叉项阶数（<span class="math notranslate nohighlight">\(J\)</span> 的选择）在仿真例子 \eqref{10.2} 上的影响．</p>
+<p>图 10.9 说明了交叉项阶数（<span class="math notranslate nohighlight">\(J\)</span> 的选择）在仿真例子 \eqref{10.2} 上的影响。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     Y=
@@ -1202,9 +1182,9 @@ $<span class="math notranslate nohighlight">\(
     \right.
     \tag{10.2}\label{10.2}
     \)</span>$</p>
-<p>生成函数是可加的（二次单项式的和），所以 <span class="math notranslate nohighlight">\(J&gt;2\)</span> 的 boosting 模型产生多余的方差，也因此更高的测试误差．图 10.10 比较了用真实函数构造的 boosted stump 的坐标函数．</p>
+<p>生成函数是可加的（二次单项式的和），所以 <span class="math notranslate nohighlight">\(J&gt;2\)</span> 的 boosting 模型产生多余的方差，也因此更高的测试误差。图 10.10 比较了用真实函数构造的 boosted stump 的坐标函数。</p>
 <p><img alt="" src="../_images/fig10.10.png" /></p>
-<p>尽管在很多应用中，<span class="math notranslate nohighlight">\(J=2\)</span> 是不够的，但也不太可能要求 <span class="math notranslate nohighlight">\(J&gt;10\)</span>．经验表明 <span class="math notranslate nohighlight">\(4\le J\le 8\)</span> 在 boosting 的情况下会取得很好的效果，这个范围内的具体取值对结果的影响并不敏感．我们可以通过尝试不同的值，然后选择一个在验证样本上低风险的 <span class="math notranslate nohighlight">\(J\)</span> 值．然而，使用大于 <span class="math notranslate nohighlight">\(J\simeq 6\)</span> 并不能得到显著的改善．</p>
+<p>尽管在很多应用中，<span class="math notranslate nohighlight">\(J=2\)</span> 是不够的，但也不太可能要求 <span class="math notranslate nohighlight">\(J&gt;10\)</span>。经验表明 <span class="math notranslate nohighlight">\(4\le J\le 8\)</span> 在 boosting 的情况下会取得很好的效果，这个范围内的具体取值对结果的影响并不敏感。我们可以通过尝试不同的值，然后选择一个在验证样本上低风险的 <span class="math notranslate nohighlight">\(J\)</span> 值。然而，使用大于 <span class="math notranslate nohighlight">\(J\simeq 6\)</span> 并不能得到显著的改善。</p>
 </div>
 
     <script type="text/x-thebe-config">

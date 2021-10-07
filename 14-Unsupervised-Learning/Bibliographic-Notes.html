@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,41 +1149,23 @@
                 
   <div class="section" id="id1">
 <h1>14.11 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-09-04</p></td>
-</tr>
-<tr class="row-even"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
 <ol class="simple">
-<li><p>关于聚类的有很多书，包括Hartigan (1975)<a class="footnote-reference brackets" href="#id31" id="id2">1</a>， Gordon (1999)<a class="footnote-reference brackets" href="#id32" id="id3">2</a> 和 Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id33" id="id4">3</a>．</p></li>
-<li><p><span class="math notranslate nohighlight">\(K\)</span>均值聚类至少可以追溯至Lloyd (1957)<a class="footnote-reference brackets" href="#id34" id="id5">4</a>, Forgy (1965)<a class="footnote-reference brackets" href="#id35" id="id6">5</a>, Jancey (1966)<a class="footnote-reference brackets" href="#id36" id="id7">6</a> 和 MacQueen (1967)<a class="footnote-reference brackets" href="#id37" id="id8">7</a>．</p></li>
-<li><p>在工程上的应用，特别是利用向量量化的图象压缩，可以在Gersho and Gray (1992)<a class="footnote-reference brackets" href="#id38" id="id9">8</a>中找到．</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span>中心过程在Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id33" id="id10">3</a>中有讨论．</p></li>
-<li><p>关联规则在Agrawal et al. (1995)<a class="footnote-reference brackets" href="#id39" id="id11">9</a>有总结．</p></li>
-<li><p>自组织图由Kohonen (1989)<a class="footnote-reference brackets" href="#id40" id="id12">10</a> 和 Kohonen (1990)<a class="footnote-reference brackets" href="#id41" id="id13">11</a>提出，Kohonen et al. (2000)<a class="footnote-reference brackets" href="#id42" id="id14">12</a>给出更新的结果．</p></li>
-<li><p>主成分分析和多维缩放在多元分析的标准课本中有讨论，如Mardia et al. (1979)<a class="footnote-reference brackets" href="#id43" id="id15">13</a>．</p></li>
-<li><p>Buja et al. (2008)<a class="footnote-reference brackets" href="#id44" id="id16">14</a>实现了一个强大的用于多维缩放的称为Ggvis的环境，并且用户手册包含该主题的清晰描述．图14.17,14.21(左)以及14.28(左)是用Xgobi产生的，这事由这些作者写的多维数据可视化的包．GGobi是更新的实现(Cook and Swayne, 2007<a class="footnote-reference brackets" href="#id45" id="id17">15</a>)．</p></li>
+<li><p>关于聚类的有很多书，包括Hartigan (1975)<a class="footnote-reference brackets" href="#id31" id="id2">1</a>， Gordon (1999)<a class="footnote-reference brackets" href="#id32" id="id3">2</a> 和 Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id33" id="id4">3</a>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span>均值聚类至少可以追溯至Lloyd (1957)<a class="footnote-reference brackets" href="#id34" id="id5">4</a>, Forgy (1965)<a class="footnote-reference brackets" href="#id35" id="id6">5</a>, Jancey (1966)<a class="footnote-reference brackets" href="#id36" id="id7">6</a> 和 MacQueen (1967)<a class="footnote-reference brackets" href="#id37" id="id8">7</a>。</p></li>
+<li><p>在工程上的应用，特别是利用向量量化的图象压缩，可以在Gersho and Gray (1992)<a class="footnote-reference brackets" href="#id38" id="id9">8</a>中找到。</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>中心过程在Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id33" id="id10">3</a>中有讨论。</p></li>
+<li><p>关联规则在Agrawal et al. (1995)<a class="footnote-reference brackets" href="#id39" id="id11">9</a>有总结。</p></li>
+<li><p>自组织图由Kohonen (1989)<a class="footnote-reference brackets" href="#id40" id="id12">10</a> 和 Kohonen (1990)<a class="footnote-reference brackets" href="#id41" id="id13">11</a>提出，Kohonen et al. (2000)<a class="footnote-reference brackets" href="#id42" id="id14">12</a>给出更新的结果。</p></li>
+<li><p>主成分分析和多维缩放在多元分析的标准课本中有讨论，如Mardia et al. (1979)<a class="footnote-reference brackets" href="#id43" id="id15">13</a>。</p></li>
+<li><p>Buja et al. (2008)<a class="footnote-reference brackets" href="#id44" id="id16">14</a>实现了一个强大的用于多维缩放的称为Ggvis的环境，并且用户手册包含该主题的清晰描述。图14.17,14.21(左)以及14.28(左)是用Xgobi产生的，这事由这些作者写的多维数据可视化的包。GGobi是更新的实现(Cook and Swayne, 2007<a class="footnote-reference brackets" href="#id45" id="id17">15</a>)。</p></li>
 <li><p>Goodall (1991)给出了统计上Procrustes方法的概述，并且Ramsay and Silverman
-(1997)<a class="footnote-reference brackets" href="#id46" id="id18">16</a>讨论了shape registration问题．</p></li>
-<li><p>主曲线和主表面由Hastie (1984)<a class="footnote-reference brackets" href="#id47" id="id19">17</a> 和 Hastie and Stuetzle (1989)<a class="footnote-reference brackets" href="#id48" id="id20">18</a>提出．</p></li>
-<li><p>主点的想法由Flury (1990)<a class="footnote-reference brackets" href="#id49" id="id21">19</a>完成，Tarpey and Flury (1996)<a class="footnote-reference brackets" href="#id50" id="id22">20</a>给出了自洽的一般概念．</p></li>
-<li><p>关于谱聚类的一个超级棒的教程可以在von Luxburg (2007)<a class="footnote-reference brackets" href="#id51" id="id23">21</a>中找到；这也是14.5.3节的主要来源．</p></li>
-<li><p>Luxborg归功于Donath and Hoffman(1973)<a class="footnote-reference brackets" href="#id52" id="id24">22</a>，以及Fiedler (1973)<a class="footnote-reference brackets" href="#id53" id="id25">23</a>在该主题上更早的工作．</p></li>
-<li><p>独立分量分析由Comon (1994)<a class="footnote-reference brackets" href="#id54" id="id26">24</a>提出，Bell and Sejnowski (1995)<a class="footnote-reference brackets" href="#id55" id="id27">25</a>继续后面的发展；14.7节是基于Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id56" id="id28">26</a>．</p></li>
-<li><p>投影寻踪由Friedman and Tukey (1974)<a class="footnote-reference brackets" href="#id57" id="id29">27</a>提出，并在Huber (1985)<a class="footnote-reference brackets" href="#id58" id="id30">28</a>有详细讨论．动态投影寻踪算法在GGobi中有实现．</p></li>
+(1997)<a class="footnote-reference brackets" href="#id46" id="id18">16</a>讨论了shape registration问题。</p></li>
+<li><p>主曲线和主表面由Hastie (1984)<a class="footnote-reference brackets" href="#id47" id="id19">17</a> 和 Hastie and Stuetzle (1989)<a class="footnote-reference brackets" href="#id48" id="id20">18</a>提出。</p></li>
+<li><p>主点的想法由Flury (1990)<a class="footnote-reference brackets" href="#id49" id="id21">19</a>完成，Tarpey and Flury (1996)<a class="footnote-reference brackets" href="#id50" id="id22">20</a>给出了自洽的一般概念。</p></li>
+<li><p>关于谱聚类的一个超级棒的教程可以在von Luxburg (2007)<a class="footnote-reference brackets" href="#id51" id="id23">21</a>中找到；这也是14.5.3节的主要来源。</p></li>
+<li><p>Luxborg归功于Donath and Hoffman(1973)<a class="footnote-reference brackets" href="#id52" id="id24">22</a>，以及Fiedler (1973)<a class="footnote-reference brackets" href="#id53" id="id25">23</a>在该主题上更早的工作。</p></li>
+<li><p>独立分量分析由Comon (1994)<a class="footnote-reference brackets" href="#id54" id="id26">24</a>提出，Bell and Sejnowski (1995)<a class="footnote-reference brackets" href="#id55" id="id27">25</a>继续后面的发展；14.7节是基于Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id56" id="id28">26</a>。</p></li>
+<li><p>投影寻踪由Friedman and Tukey (1974)<a class="footnote-reference brackets" href="#id57" id="id29">27</a>提出，并在Huber (1985)<a class="footnote-reference brackets" href="#id58" id="id30">28</a>有详细讨论。动态投影寻踪算法在GGobi中有实现。</p></li>
 </ol>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,23 +1149,8 @@
                 
   <div class="section" id="id1">
 <h1>15.5 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-09-04</p></td>
-</tr>
-</tbody>
-</table>
-<p>这里讨论的随机森林是Breiman(2001)<a class="footnote-reference brackets" href="#id10" id="id2">1</a>提出来的，经很多想法很早一前就以不同的形式出现了．值得一提的是，Ho(1995)<a class="footnote-reference brackets" href="#id11" id="id3">2</a>提出“random forest”的概念，并且用了在随机的特征子空间中增长树．采用随机排列和平均来避免过拟合是由Kleinberg (1990)<a class="footnote-reference brackets" href="#id12" id="id4">3</a>提出来的，最后出现在Kleinberg (1996)<a class="footnote-reference brackets" href="#id13" id="id5">4</a>中．Amit and Geman (1997)<a class="footnote-reference brackets" href="#id14" id="id6">5</a>采用在图象特征中增长随机树来处理图象分类问题．Breiman (1996a)<a class="footnote-reference brackets" href="#id15" id="id7">6</a>引出了bagging，这是他的随机森林的先驱．Dietterich (2000b)<a class="footnote-reference brackets" href="#id16" id="id8">7</a>也提出采用额外的随机化来提高bagging的性能．他的方法是在每个结点出对前20个候选分离排序，接着随机从中选择．他通过仿真和实际例子展示了额外的随机化能够提高bagging的性能．Friedman and Hall (2007)<a class="footnote-reference brackets" href="#id17" id="id9">8</a>证明了子采样（不放回）是bagging的一个有效的替代方案．他们证明在大小为<span class="math notranslate nohighlight">\(N/2\)</span>的样本上生长和平均树是近似等于bagging（考虑偏差及方差），而采用更少的样本则会降低更大的方差（通过去相关处理）．</p>
-<p>有许多免费的软件实现随机森林．这章中，书中采用R中的randomForest包，由Andy Liaw维护，可以在<code class="docutils literal notranslate"><span class="pre">CRAN</span></code>网站上得到．这同时允许分割变量选择，以及子采样．Adele Cutler维护一个随机森林的网站<code class="docutils literal notranslate"><span class="pre">http://www.math.usu.edu/∼adele/forests/</span></code>，其中由Leo Breiman和Adele Cutler编写的软件是免费的．他们的代码，以及名字“random forests”，是专门授权Salford Systems进行商业发行的．新西兰的Waikato大学的<code class="docutils literal notranslate"><span class="pre">Weka</span></code>机器学习文件<code class="docutils literal notranslate"><span class="pre">http://www.cs.waikato.ac.nz/ml/weka/</span></code>提供了随机森林JAVA实现的免费版本．</p>
+<p>这里讨论的随机森林是Breiman(2001)<a class="footnote-reference brackets" href="#id10" id="id2">1</a>提出来的，经很多想法很早一前就以不同的形式出现了。值得一提的是，Ho(1995)<a class="footnote-reference brackets" href="#id11" id="id3">2</a>提出“random forest”的概念，并且用了在随机的特征子空间中增长树。采用随机排列和平均来避免过拟合是由Kleinberg (1990)<a class="footnote-reference brackets" href="#id12" id="id4">3</a>提出来的，最后出现在Kleinberg (1996)<a class="footnote-reference brackets" href="#id13" id="id5">4</a>中。Amit and Geman (1997)<a class="footnote-reference brackets" href="#id14" id="id6">5</a>采用在图象特征中增长随机树来处理图象分类问题。Breiman (1996a)<a class="footnote-reference brackets" href="#id15" id="id7">6</a>引出了bagging，这是他的随机森林的先驱。Dietterich (2000b)<a class="footnote-reference brackets" href="#id16" id="id8">7</a>也提出采用额外的随机化来提高bagging的性能。他的方法是在每个结点出对前20个候选分离排序，接着随机从中选择。他通过仿真和实际例子展示了额外的随机化能够提高bagging的性能。Friedman and Hall (2007)<a class="footnote-reference brackets" href="#id17" id="id9">8</a>证明了子采样（不放回）是bagging的一个有效的替代方案。他们证明在大小为<span class="math notranslate nohighlight">\(N/2\)</span>的样本上生长和平均树是近似等于bagging（考虑偏差及方差），而采用更少的样本则会降低更大的方差（通过去相关处理）。</p>
+<p>有许多免费的软件实现随机森林。这章中，书中采用R中的randomForest包，由Andy Liaw维护，可以在<code class="docutils literal notranslate"><span class="pre">CRAN</span></code>网站上得到。这同时允许分割变量选择，以及子采样。Adele Cutler维护一个随机森林的网站<code class="docutils literal notranslate"><span class="pre">http://www.math.usu.edu/∼adele/forests/</span></code>，其中由Leo Breiman和Adele Cutler编写的软件是免费的。他们的代码，以及名字“random forests”，是专门授权Salford Systems进行商业发行的。新西兰的Waikato大学的<code class="docutils literal notranslate"><span class="pre">Weka</span></code>机器学习文件<code class="docutils literal notranslate"><span class="pre">http://www.cs.waikato.ac.nz/ml/weka/</span></code>提供了随机森林JAVA实现的免费版本。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

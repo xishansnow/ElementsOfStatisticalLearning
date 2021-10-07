@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,24 +1147,9 @@
                 
   <div class="section" id="id1">
 <h1>3.10 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-06-09</p></td>
-</tr>
-</tbody>
-</table>
-<p>线性回归在很多统计教材中都有讨论，比如，Seber (1984)<a class="footnote-reference brackets" href="#id16" id="id2">1</a>, Weisberg (1980)<a class="footnote-reference brackets" href="#id17" id="id3">2</a> 以及 Mardia et al. (1979)<a class="footnote-reference brackets" href="#id18" id="id4">3</a>．岭回归由 Hoerl and Kennard (1970)<a class="footnote-reference brackets" href="#id19" id="id5">4</a>提出，而 lasso 由Tibshirani (1996)<a class="footnote-reference brackets" href="#id20" id="id6">5</a>提出．几乎在同时，lasso形式的惩罚在信号处理中的 basis pursuit 方法中被提出（Chen et al., 1998）<a class="footnote-reference brackets" href="#id21" id="id7">6</a>．最小角回归过程由 Efron et al. (2004)<a class="footnote-reference brackets" href="#id22" id="id8">7</a>等人提出；与这有关的是早期 Osborne et al. (2000a)<a class="footnote-reference brackets" href="#id23" id="id9">8</a>和 Osborne et al. (2000b)<a class="footnote-reference brackets" href="#id24" id="id10">9</a>的homotopy过程．他们的算法也利用了在 LAR/lasso 算法中的分段线性，但是缺少透明度 (transparency)．向前逐步准则在 Hastie et al. (2007)<a class="footnote-reference brackets" href="#id25" id="id11">10</a>中进行了讨论．Park and Hastie (2007)<a class="footnote-reference brackets" href="#id26" id="id12">11</a> 发展了类似用于广义回归模型的最小角回归的路径算法．偏最小二乘由 Wold (1975)<a class="footnote-reference brackets" href="#id27" id="id13">12</a>提出．收缩方法的比较或许可以在 Copas (1983)<a class="footnote-reference brackets" href="#id28" id="id14">13</a> 和 Frank and Friedman (1993)<a class="footnote-reference brackets" href="#id29" id="id15">14</a>中找到．</p>
+<p>线性回归在很多统计教材中都有讨论，比如，Seber (1984)<a class="footnote-reference brackets" href="#id16" id="id2">1</a>, Weisberg (1980)<a class="footnote-reference brackets" href="#id17" id="id3">2</a> 以及 Mardia et al. (1979)<a class="footnote-reference brackets" href="#id18" id="id4">3</a>。岭回归由 Hoerl and Kennard (1970)<a class="footnote-reference brackets" href="#id19" id="id5">4</a>提出，而 lasso 由Tibshirani (1996)<a class="footnote-reference brackets" href="#id20" id="id6">5</a>提出。几乎在同时，lasso形式的惩罚在信号处理中的 basis pursuit 方法中被提出（Chen et al., 1998）<a class="footnote-reference brackets" href="#id21" id="id7">6</a>。最小角回归过程由 Efron et al. (2004)<a class="footnote-reference brackets" href="#id22" id="id8">7</a>等人提出；与这有关的是早期 Osborne et al. (2000a)<a class="footnote-reference brackets" href="#id23" id="id9">8</a>和 Osborne et al. (2000b)<a class="footnote-reference brackets" href="#id24" id="id10">9</a>的homotopy过程。他们的算法也利用了在 LAR/lasso 算法中的分段线性，但是缺少透明度 (transparency)。向前逐步准则在 Hastie et al. (2007)<a class="footnote-reference brackets" href="#id25" id="id11">10</a>中进行了讨论。Park and Hastie (2007)<a class="footnote-reference brackets" href="#id26" id="id12">11</a> 发展了类似用于广义回归模型的最小角回归的路径算法。偏最小二乘由 Wold (1975)<a class="footnote-reference brackets" href="#id27" id="id13">12</a>提出。收缩方法的比较或许可以在 Copas (1983)<a class="footnote-reference brackets" href="#id28" id="id14">13</a> 和 Frank and Friedman (1993)<a class="footnote-reference brackets" href="#id29" id="id15">14</a>中找到。</p>
 <p>!!! note “weiya注”
-3.8节讲lasso及相关的路径算法一节中还有很多文献．</p>
+3.8节讲lasso及相关的路径算法一节中还有很多文献。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

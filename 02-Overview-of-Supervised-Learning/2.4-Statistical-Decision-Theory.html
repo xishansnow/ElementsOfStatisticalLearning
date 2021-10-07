@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,13 +1149,7 @@
                 
   <div class="section" id="id1">
 <h1>2.4 统计判别理论<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>原文     | <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=37">The Elements of Statistical Learning</a>
-—|—
-翻译     | szcf-weiya
-发布 | 2016-09-30
-更新 | 2018-08-22
-状态 | Done</p>
-<p>这一节我们讨论一小部分理论，这些理论提供构建模型的一个框架，比如我们目前为止所有非正式讨论的模型．我们首先考虑定量输出时的情形，而且从随机变量和概率空间的角度来考虑．记 <span class="math notranslate nohighlight">\(X\in \IR^p\)</span> 为实值随机输入向量，<span class="math notranslate nohighlight">\(Y\in \IR\)</span> 为实值随机输出变量，联合概率分布为 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span>．给定输入 <span class="math notranslate nohighlight">\(X\)</span>，我们寻找一个函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 来预测 <span class="math notranslate nohighlight">\(Y\)</span>．这个理论需要一个 <strong>损失函数 (loss function)</strong> <span class="math notranslate nohighlight">\(L(Y,f(X))\)</span> 用来惩罚预测中的错误，到目前为止最常用并且最方便的是 <strong>平方误差损失 (squared error loss)</strong>: <span class="math notranslate nohighlight">\(L(Y,f(X))=(Y-f(X))^2\)</span>．这促使我们寻找 <span class="math notranslate nohighlight">\(f\)</span> 的一个准则——预测（平方）误差的期望</p>
+<p>这一节我们讨论一小部分理论，这些理论提供构建模型的一个框架，比如我们目前为止所有非正式讨论的模型。我们首先考虑定量输出时的情形，而且从随机变量和概率空间的角度来考虑。记 <span class="math notranslate nohighlight">\(X\in \IR^p\)</span> 为实值随机输入向量，<span class="math notranslate nohighlight">\(Y\in \IR\)</span> 为实值随机输出变量，联合概率分布为 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span>。给定输入 <span class="math notranslate nohighlight">\(X\)</span>，我们寻找一个函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 来预测 <span class="math notranslate nohighlight">\(Y\)</span>。这个理论需要一个 <strong>损失函数 (loss function)</strong> <span class="math notranslate nohighlight">\(L(Y,f(X))\)</span> 用来惩罚预测中的错误，到目前为止最常用并且最方便的是 <strong>平方误差损失 (squared error loss)</strong>: <span class="math notranslate nohighlight">\(L(Y,f(X))=(Y-f(X))^2\)</span>。这促使我们寻找 <span class="math notranslate nohighlight">\(f\)</span> 的一个准则——预测（平方）误差的期望</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1179,51 +1174,51 @@ f(x) = \E(Y\mid X=x)\tag{2.13}\,,
 \]</div>
 <p>也被称作 <strong>回归 (regression)</strong> 函数。因此 <span class="math notranslate nohighlight">\(Y\)</span> 在任意点 <span class="math notranslate nohighlight">\(X=x\)</span> 处的最优预测为条件均值，“最优”是在均方误差意义下的。</p>
 <p>!!! note “原书注：”
-此处条件是指对联合概率密度分解 <span class="math notranslate nohighlight">\(\Pr(X, Y ) = \Pr(Y \mid X)\Pr(X)\)</span>，其中 <span class="math notranslate nohighlight">\(\Pr(Y \mid X) = \Pr(Y, X)/\Pr(X)\)</span>，因此分解成了双变量的积分．</p>
-<p>最近邻方法试图直接利用训练数据完成任务．在每一点 <span class="math notranslate nohighlight">\(x\)</span> 处，我们可能需要输入变量 <span class="math notranslate nohighlight">\(x_i=x\)</span> 附近的所有 <span class="math notranslate nohighlight">\(y_i\)</span> 的均值．因为在任一点 <span class="math notranslate nohighlight">\(x\)</span>，一般至多有一个观测值，我们令</p>
+此处条件是指对联合概率密度分解 <span class="math notranslate nohighlight">\(\Pr(X, Y ) = \Pr(Y \mid X)\Pr(X)\)</span>，其中 <span class="math notranslate nohighlight">\(\Pr(Y \mid X) = \Pr(Y, X)/\Pr(X)\)</span>，因此分解成了双变量的积分。</p>
+<p>最近邻方法试图直接利用训练数据完成任务。在每一点 <span class="math notranslate nohighlight">\(x\)</span> 处，我们可能需要输入变量 <span class="math notranslate nohighlight">\(x_i=x\)</span> 附近的所有 <span class="math notranslate nohighlight">\(y_i\)</span> 的均值。因为在任一点 <span class="math notranslate nohighlight">\(x\)</span>，一般至多有一个观测值，我们令</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{f}(x)=\Ave(y_i\mid x_i\in N_k(x))\tag{2.14}
 \]</div>
-<p>其中“Ave”表示平均，<span class="math notranslate nohighlight">\(N_k(x)\)</span> 是集合 <span class="math notranslate nohighlight">\(\cal{T}\)</span> 中离 <span class="math notranslate nohighlight">\(x\)</span> 最近的 <span class="math notranslate nohighlight">\(k\)</span> 个点的邻域．这里有两个近似</p>
+<p>其中“Ave”表示平均，<span class="math notranslate nohighlight">\(N_k(x)\)</span> 是集合 <span class="math notranslate nohighlight">\(\cal{T}\)</span> 中离 <span class="math notranslate nohighlight">\(x\)</span> 最近的 <span class="math notranslate nohighlight">\(k\)</span> 个点的邻域。这里有两个近似</p>
 <ul class="simple">
 <li><p>用样本数据的平均近似期望；</p></li>
-<li><p>在每一点的条件（期望）松弛为在离该目标点近的某个区域上的条件（期望）．</p></li>
+<li><p>在每一点的条件（期望）松弛为在离该目标点近的某个区域上的条件（期望）。</p></li>
 </ul>
-<p>对于规模为 <span class="math notranslate nohighlight">\(N\)</span> 的大规模训练数据，邻域中的点更可能接近 <span class="math notranslate nohighlight">\(x\)</span>，而且当 <span class="math notranslate nohighlight">\(k\)</span> 越大，平均值会更加稳定．事实上，在联合概率分布 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 温和正则条件下，可以证明当 <span class="math notranslate nohighlight">\(N,k \longrightarrow \infty\)</span> 使得 <span class="math notranslate nohighlight">\(k/N \longrightarrow 0\)</span> 时，<span class="math notranslate nohighlight">\(\hat{f}(x) \longrightarrow \E(Y \mid X = x)\)</span>．根据这个，为什么看得更远，因为似乎我们有个一般的近似量吗？我们经常没有非常大的样本．如果线性或者其它更多结构化的模型是合适的，那么我们经常可以得到比 <span class="math notranslate nohighlight">\(k\)</span>-最近邻更稳定的估计，尽管这些知识必须也要从数据中学习．然而还有其它的问题，有时是致命的．在下一个部分我们看到当维数 <span class="math notranslate nohighlight">\(p\)</span> 变大，<span class="math notranslate nohighlight">\(k\)</span>-最近邻的度量大小也随之变大．所以最近邻代替条件会让我们非常失望．收敛仍然保持，但是当维数增长后收敛 <strong>速率 (rate)</strong> 变小．</p>
+<p>对于规模为 <span class="math notranslate nohighlight">\(N\)</span> 的大规模训练数据，邻域中的点更可能接近 <span class="math notranslate nohighlight">\(x\)</span>，而且当 <span class="math notranslate nohighlight">\(k\)</span> 越大，平均值会更加稳定。事实上，在联合概率分布 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 温和正则条件下，可以证明当 <span class="math notranslate nohighlight">\(N,k \longrightarrow \infty\)</span> 使得 <span class="math notranslate nohighlight">\(k/N \longrightarrow 0\)</span> 时，<span class="math notranslate nohighlight">\(\hat{f}(x) \longrightarrow \E(Y \mid X = x)\)</span>。根据这个，为什么看得更远，因为似乎我们有个一般的近似量吗？我们经常没有非常大的样本。如果线性或者其它更多结构化的模型是合适的，那么我们经常可以得到比 <span class="math notranslate nohighlight">\(k\)</span>-最近邻更稳定的估计，尽管这些知识必须也要从数据中学习。然而还有其它的问题，有时是致命的。在下一个部分我们看到当维数 <span class="math notranslate nohighlight">\(p\)</span> 变大，<span class="math notranslate nohighlight">\(k\)</span>-最近邻的度量大小也随之变大。所以最近邻代替条件会让我们非常失望。收敛仍然保持，但是当维数增长后收敛 <strong>速率 (rate)</strong> 变小。</p>
 <p>线性回归怎样适应这个框架？最简单的解释是假设回归函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 近似线性</p>
 <div class="math notranslate nohighlight">
 \[
 f(x)\approx x^T\beta\tag{2.15}
 \]</div>
-<p>这是个基于模型的方式——我们明确用于回归函数的模型．将 <span class="math notranslate nohighlight">\(f(x)\)</span> 的线性模型插入 <span class="math notranslate nohighlight">\(\EPE (2.9)\)</span> 然后微分，可以理论上解出 <span class="math notranslate nohighlight">\(\beta\)</span>
+<p>这是个基于模型的方式——我们明确用于回归函数的模型。将 <span class="math notranslate nohighlight">\(f(x)\)</span> 的线性模型插入 <span class="math notranslate nohighlight">\(\EPE (2.9)\)</span> 然后微分，可以理论上解出 <span class="math notranslate nohighlight">\(\beta\)</span>
 $<span class="math notranslate nohighlight">\(
 \beta = [\E(XX^T)]^{-1}\E(XY)\tag{2.16}
 \)</span>$</p>
-<p>注意到我们在 <span class="math notranslate nohighlight">\(X\)</span> 上没有条件；而是已经用了我们对函数关系的理解 <strong>整合 <span class="math notranslate nohighlight">\(X\)</span> 的值 (pool over values of <span class="math notranslate nohighlight">\(X\)</span>)</strong>．最小二乘的解 <span class="math notranslate nohighlight">\((2.6)\)</span> 相当于用训练数据的平均值替换掉 <span class="math notranslate nohighlight">\((2.16)\)</span> 中的期望．</p>
-<p>所以 <span class="math notranslate nohighlight">\(k\)</span>-最邻近和最小二乘最终都是根据平均来近似条件期望．但是它们在模型上显著不同．</p>
+<p>注意到我们在 <span class="math notranslate nohighlight">\(X\)</span> 上没有条件；而是已经用了我们对函数关系的理解 <strong>整合 <span class="math notranslate nohighlight">\(X\)</span> 的值 (pool over values of <span class="math notranslate nohighlight">\(X\)</span>)</strong>。最小二乘的解 <span class="math notranslate nohighlight">\((2.6)\)</span> 相当于用训练数据的平均值替换掉 <span class="math notranslate nohighlight">\((2.16)\)</span> 中的期望。</p>
+<p>所以 <span class="math notranslate nohighlight">\(k\)</span>-最邻近和最小二乘最终都是根据平均来近似条件期望。但是它们在模型上显著不同。</p>
 <ul class="simple">
-<li><p>最小二乘假设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是某个整体线性函数的良好近似．</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span>-最近邻假设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是局部常值函数的良好近似．</p></li>
+<li><p>最小二乘假设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是某个整体线性函数的良好近似。</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>-最近邻假设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是局部常值函数的良好近似。</p></li>
 </ul>
-<p>尽管后者似乎更容易被接受，但我们已经看到我们需要为这种灵活性付出代价．</p>
-<p>这本书中描述的很多技巧都是基于模型的，尽管比严格的线性模型更加灵活．举个例子，可加性模型假设</p>
+<p>尽管后者似乎更容易被接受，但我们已经看到我们需要为这种灵活性付出代价。</p>
+<p>这本书中描述的很多技巧都是基于模型的，尽管比严格的线性模型更加灵活。举个例子，可加性模型假设</p>
 <div class="math notranslate nohighlight">
 \[
 f(X) = \sum\limits_{j=1}^{p}f_j(X_j)\tag{2.17}
 \]</div>
-<p>这保留着线性模型的可加性，但是每个并列的函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是任意的．结果表明可加模型的最优估计是对于每个并列的函数 <strong>同时 (simultaneously)</strong> 用 <span class="math notranslate nohighlight">\(k\)</span>-最邻近去近似 <strong>单变量 (univariate)</strong> 的条件期望．因此在可加性的情况下，通过加上某些（通常不现实）的模型假设在高维中估计条件期望的问题被扫除了．</p>
-<p>是否为 <span class="math notranslate nohighlight">\((2.11)\)</span> 的标准而高兴？如果我们用 <span class="math notranslate nohighlight">\(L_1\)</span> 损失函数 <span class="math notranslate nohighlight">\(\E\mid Y-f(X)\mid \)</span> 来替换 <span class="math notranslate nohighlight">\(L_2\)</span> 损失函数会怎么样．这种情况下解是条件中位数，
+<p>这保留着线性模型的可加性，但是每个并列的函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是任意的。结果表明可加模型的最优估计是对于每个并列的函数 <strong>同时 (simultaneously)</strong> 用 <span class="math notranslate nohighlight">\(k\)</span>-最邻近去近似 <strong>单变量 (univariate)</strong> 的条件期望。因此在可加性的情况下，通过加上某些（通常不现实）的模型假设在高维中估计条件期望的问题被扫除了。</p>
+<p>是否为 <span class="math notranslate nohighlight">\((2.11)\)</span> 的标准而高兴？如果我们用 <span class="math notranslate nohighlight">\(L_1\)</span> 损失函数 <span class="math notranslate nohighlight">\(\E\mid Y-f(X)\mid \)</span> 来替换 <span class="math notranslate nohighlight">\(L_2\)</span> 损失函数会怎么样。这种情况下解是条件中位数，
 $<span class="math notranslate nohighlight">\(
 \hat{f}(x) = \median(Y \mid X = x)\tag{2.18}
 \)</span>$</p>
-<p>条件中位数是另一种定位的方式，而且它的估计比条件均值更加鲁棒． <span class="math notranslate nohighlight">\(L_1\)</span> 准则的导数不连续，阻碍了它们的广泛应用．其它更多耐抵抗 (resistant) 的损失函数会在后面章节中介绍，但是平方误差是分析方便而且是最受欢迎的．</p>
-<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误．预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\cal G\)</span> 中取值， <span class="math notranslate nohighlight">\(\cal G\)</span> 是可能的类别的集合．我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\card({\cal G})\)</span>．矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\cal G_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\cal G_\ell\)</span> 的代价．大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚．预测错误的期望为</p>
+<p>条件中位数是另一种定位的方式，而且它的估计比条件均值更加鲁棒。 <span class="math notranslate nohighlight">\(L_1\)</span> 准则的导数不连续，阻碍了它们的广泛应用。其它更多耐抵抗 (resistant) 的损失函数会在后面章节中介绍，但是平方误差是分析方便而且是最受欢迎的。</p>
+<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误。预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\cal G\)</span> 中取值， <span class="math notranslate nohighlight">\(\cal G\)</span> 是可能的类别的集合。我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\card({\cal G})\)</span>。矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\cal G_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\cal G_\ell\)</span> 的代价。大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚。预测错误的期望为</p>
 <div class="math notranslate nohighlight">
 \[
 \EPE = \E[L(G,\hat{G}(X))]\tag{2.19}
 \]</div>
-<p>同样关于联合分布 <span class="math notranslate nohighlight">\(\Pr(G,X)\)</span> 取期望．再一次考虑条件分布，我们可以写出如下的 <span class="math notranslate nohighlight">\(\EPE\)</span></p>
+<p>同样关于联合分布 <span class="math notranslate nohighlight">\(\Pr(G,X)\)</span> 取期望。再一次考虑条件分布，我们可以写出如下的 <span class="math notranslate nohighlight">\(\EPE\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \EPE = \E_X\sum\limits_{k=1}^KL[{\cal{G}}_k,\hat{G}(X)]\Pr({\cal{G}}_k\mid X)\tag{2.20}
@@ -1255,13 +1250,13 @@ $<span class="math notranslate nohighlight">\(
 \[
 \hat{G}(X) = {\cal{G}}_k \text{ if } \Pr({\cal{G}}_k\mid X = x) = \underset{g\in{\cal{G}}}{\max } \Pr(g\mid X = x)\tag{2.23}
 \]</div>
-<p>合理的解决方法被称作 <strong>贝叶斯分类 (Bayes classifier)</strong>，利用条件（离散）分布 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 分到最合适的类别．对于我们模拟的例子图 2.5 显示了最优的贝叶斯判别边界．贝叶斯分类的误差阶被称作 <strong>贝叶斯阶 (Bayes rate)</strong>．</p>
+<p>合理的解决方法被称作 <strong>贝叶斯分类 (Bayes classifier)</strong>，利用条件（离散）分布 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 分到最合适的类别。对于我们模拟的例子图 2.5 显示了最优的贝叶斯判别边界。贝叶斯分类的误差阶被称作 <strong>贝叶斯阶 (Bayes rate)</strong>。</p>
 <p><img alt="" src="../_images/fig2.5.png" /></p>
 <blockquote>
-<div><p>图 2.5：在图 2.1，2.2，和 2.3 中模拟的例子的最优贝叶斯判别边界．因为每个类别的产生密度已知，则判别边界可以准确地计算出来．</p>
+<div><p>图 2.5：在图 2.1，2.2，和 2.3 中模拟的例子的最优贝叶斯判别边界。因为每个类别的产生密度已知，则判别边界可以准确地计算出来。</p>
 </div></blockquote>
-<p>再一次我们看到 <span class="math notranslate nohighlight">\(k\)</span>-最近邻分类直接近似这个解决方法——在最近邻内占绝大多数恰好意味着这个，除了某一点的条件概率松弛为该点的邻域内的条件概率，而且概率是通过训练样本的比例来估计的．</p>
-<p>假设对于一个二分类的问题，我们采用虚拟变量的方法并且通过二进制变量 <span class="math notranslate nohighlight">\(Y\)</span> 编码 <span class="math notranslate nohighlight">\(G\)</span>，然后进行平方误差损失估计．当 <span class="math notranslate nohighlight">\({\cal{G}}_1\)</span> 对应 <span class="math notranslate nohighlight">\(Y=1\)</span>，有 <span class="math notranslate nohighlight">\(\hat{f}(X)=\E(Y\mid X)=\Pr(G={\cal{G}}_1\mid X)\)</span>．同样对于 <span class="math notranslate nohighlight">\(K\)</span> 个类别的问题 <span class="math notranslate nohighlight">\(\E(Y_k\mid X)=\Pr(G={\cal{G}}_k\mid X)\)</span>．这显示了我们虚拟变量回归的过程，然后根据最大的拟合值来分类，这是表示贝叶斯分类器的另一种方式．尽管这个理论是确定的，在实现中问题也会随着采用的回归模型不同而出现．举个例子，当采用线性回归模型，<span class="math notranslate nohighlight">\(\hat{f}(X)\)</span> 不必要为正值，而且我们可能会怀疑用这个作为概率的一个估计．我们将在第四章中讨论构建模型 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 的各种不同的方式．</p>
+<p>再一次我们看到 <span class="math notranslate nohighlight">\(k\)</span>-最近邻分类直接近似这个解决方法——在最近邻内占绝大多数恰好意味着这个，除了某一点的条件概率松弛为该点的邻域内的条件概率，而且概率是通过训练样本的比例来估计的。</p>
+<p>假设对于一个二分类的问题，我们采用虚拟变量的方法并且通过二进制变量 <span class="math notranslate nohighlight">\(Y\)</span> 编码 <span class="math notranslate nohighlight">\(G\)</span>，然后进行平方误差损失估计。当 <span class="math notranslate nohighlight">\({\cal{G}}_1\)</span> 对应 <span class="math notranslate nohighlight">\(Y=1\)</span>，有 <span class="math notranslate nohighlight">\(\hat{f}(X)=\E(Y\mid X)=\Pr(G={\cal{G}}_1\mid X)\)</span>。同样对于 <span class="math notranslate nohighlight">\(K\)</span> 个类别的问题 <span class="math notranslate nohighlight">\(\E(Y_k\mid X)=\Pr(G={\cal{G}}_k\mid X)\)</span>。这显示了我们虚拟变量回归的过程，然后根据最大的拟合值来分类，这是表示贝叶斯分类器的另一种方式。尽管这个理论是确定的，在实现中问题也会随着采用的回归模型不同而出现。举个例子，当采用线性回归模型，<span class="math notranslate nohighlight">\(\hat{f}(X)\)</span> 不必要为正值，而且我们可能会怀疑用这个作为概率的一个估计。我们将在第四章中讨论构建模型 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 的各种不同的方式。</p>
 </div>
 
     <script type="text/x-thebe-config">

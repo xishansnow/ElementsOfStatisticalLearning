@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1166,39 +1167,18 @@
                 
   <div class="section" id="id1">
 <h1>17.3 连续变量的无向图模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=649">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-09-30</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-07-25 21:17:03</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>这里我们考虑所有变量都是连续变量的马尔科夫网络．这样的图模型几乎总是用到高斯分布，因为它有方便的分析性质．我们假设观测值服从均值为 <span class="math notranslate nohighlight">\(\mu\)</span>，协方差为 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 的多元高斯分布．因为高斯分布至多表示二阶的关系，所以它自动地编码了一个成对马尔科夫图．</p>
+<p>这里我们考虑所有变量都是连续变量的马尔科夫网络。这样的图模型几乎总是用到高斯分布，因为它有方便的分析性质。我们假设观测值服从均值为 <span class="math notranslate nohighlight">\(\mu\)</span>，协方差为 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 的多元高斯分布。因为高斯分布至多表示二阶的关系，所以它自动地编码了一个成对马尔科夫图。</p>
 <p>!!! note “weiya 注：”
-因为在高斯分布的密度函数中，指数项中关于随机变量的阶数最多是二次，所以说它至多能表示二阶的关系．</p>
-<p>图 17.1 的图是高斯图模型的一个例子．</p>
+因为在高斯分布的密度函数中，指数项中关于随机变量的阶数最多是二次，所以说它至多能表示二阶的关系。</p>
+<p>图 17.1 的图是高斯图模型的一个例子。</p>
 <p><img alt="" src="../_images/fig17.1.png" /></p>
 <blockquote>
-<div><p>图 17.1. 稀疏无向图的例子，从 flow-cytometry 数据集中估计得到，含有 <span class="math notranslate nohighlight">\(p=11\)</span> 个蛋白质在 <span class="math notranslate nohighlight">\(N=7466\)</span> 个细胞中的测量值．网络结构是通过本章后面将要讨论的图 lasso 过程进行估计的．</p>
+<div><p>图 17.1. 稀疏无向图的例子，从 flow-cytometry 数据集中估计得到，含有 <span class="math notranslate nohighlight">\(p=11\)</span> 个蛋白质在 <span class="math notranslate nohighlight">\(N=7466\)</span> 个细胞中的测量值。网络结构是通过本章后面将要讨论的图 lasso 过程进行估计的。</p>
 </div></blockquote>
-<p>高斯分布有个性质是所有的条件分布也是高斯分布．协方差矩阵的逆 <span class="math notranslate nohighlight">\(\mathbf\Sigma^{-1}\)</span> 包含变量之间的 <strong>偏协方差 (partial covariances)</strong> 信息；也就是，在给定其它变量的条件下，<span class="math notranslate nohighlight">\(i\)</span> 与 <span class="math notranslate nohighlight">\(j\)</span> 的协方差．特别地，如果 <span class="math notranslate nohighlight">\(\mathbf {\Theta=\Sigma^{-1}}\)</span> 的第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 0，则变量 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 在给定其它变量情况下是条件独立的．（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/136">练习 17.3</a>）</p>
+<p>高斯分布有个性质是所有的条件分布也是高斯分布。协方差矩阵的逆 <span class="math notranslate nohighlight">\(\mathbf\Sigma^{-1}\)</span> 包含变量之间的 <strong>偏协方差 (partial covariances)</strong> 信息；也就是，在给定其它变量的条件下，<span class="math notranslate nohighlight">\(i\)</span> 与 <span class="math notranslate nohighlight">\(j\)</span> 的协方差。特别地，如果 <span class="math notranslate nohighlight">\(\mathbf {\Theta=\Sigma^{-1}}\)</span> 的第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 0，则变量 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 在给定其它变量情况下是条件独立的。（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/136">练习 17.3</a>）</p>
 <p>!!! info “weiya 注：Ex. 17.3”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/136">Issue 136: Ex. 17.3</a></p>
-<p>验证某个变量在给定剩余变量的条件下的条件分布是有好处的，其中 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 的作用显而易见．假设我们进行分割 <span class="math notranslate nohighlight">\(X=(Z,Y)\)</span>，其中 <span class="math notranslate nohighlight">\(Z=(X_1,\ldots,X_{p-1})\)</span> 包含前 <span class="math notranslate nohighlight">\(p-1\)</span> 个变量并且 <span class="math notranslate nohighlight">\(Y=X_p\)</span> 是最后一个．于是我们在给定 <span class="math notranslate nohighlight">\(Z\)</span> 下有条件分布（比如，Mardia et al., 1979<a class="footnote-reference brackets" href="#id18" id="id2">1</a>）</p>
+<p>验证某个变量在给定剩余变量的条件下的条件分布是有好处的，其中 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 的作用显而易见。假设我们进行分割 <span class="math notranslate nohighlight">\(X=(Z,Y)\)</span>，其中 <span class="math notranslate nohighlight">\(Z=(X_1,\ldots,X_{p-1})\)</span> 包含前 <span class="math notranslate nohighlight">\(p-1\)</span> 个变量并且 <span class="math notranslate nohighlight">\(Y=X_p\)</span> 是最后一个。于是我们在给定 <span class="math notranslate nohighlight">\(Z\)</span> 下有条件分布（比如，Mardia et al., 1979<a class="footnote-reference brackets" href="#id18" id="id2">1</a>）</p>
 <div class="math notranslate nohighlight">
 \[
 Y\mid Z=z\sim N(\mu_Y+(z-\mu_Z)^T\mathbf \Sigma^{-1}_{ZZ}\sigma_{ZY},\sigma_{YY}-\sigma_{ZY}^T\mathbf\Sigma_{ZZ}^{-1}\sigma_{ZY})\tag{17.6}\label{17.6}
@@ -1214,11 +1194,11 @@ $<span class="math notranslate nohighlight">\(
 \Big)
 \tag{17.7}\label{17.7}
 \)</span><span class="math notranslate nohighlight">\(
-\eqref{17.6} 的条件均值与 \)</span>Y<span class="math notranslate nohighlight">\( 在 \)</span>Z<span class="math notranslate nohighlight">\( 上的总体多重线性回归有完全一样的形式，回归系数为 \)</span>\beta=\mathbf\Sigma^{-1}_{ZZ}\sigma_{ZY}<span class="math notranslate nohighlight">\(．如果我们对 \)</span>\mathbf\Theta<span class="math notranslate nohighlight">\( 用同样的方式进行分割，因为 \)</span>\mathbf{\Sigma\Theta=I}<span class="math notranslate nohighlight">\(，由分块矩阵的求逆公式有
+\eqref{17.6} 的条件均值与 \)</span>Y<span class="math notranslate nohighlight">\( 在 \)</span>Z<span class="math notranslate nohighlight">\( 上的总体多重线性回归有完全一样的形式，回归系数为 \)</span>\beta=\mathbf\Sigma^{-1}_{ZZ}\sigma_{ZY}<span class="math notranslate nohighlight">\(。如果我们对 \)</span>\mathbf\Theta<span class="math notranslate nohighlight">\( 用同样的方式进行分割，因为 \)</span>\mathbf{\Sigma\Theta=I}<span class="math notranslate nohighlight">\(，由分块矩阵的求逆公式有
 \)</span><span class="math notranslate nohighlight">\(
 \theta_{ZY}=-\theta_{YY}\cdot\mathbf\Sigma_{ZZ}^{-1}\sigma_{ZY}\tag{17.8}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>1/\theta_{YY}=\sigma_{YY}-\sigma_{ZY}^T\mathbf\Sigma_{ZZ}^{-1}\sigma_{ZY}&gt;0<span class="math notranslate nohighlight">\(．因此
+其中 \)</span>1/\theta_{YY}=\sigma_{YY}-\sigma_{ZY}^T\mathbf\Sigma_{ZZ}^{-1}\sigma_{ZY}&gt;0<span class="math notranslate nohighlight">\(。因此
 \)</span>$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1229,27 +1209,27 @@ $<span class="math notranslate nohighlight">\(
 $$
 我们可以从这里学到两件事情：</p>
 <ul class="simple">
-<li><p>\eqref{17.6} 中的 <span class="math notranslate nohighlight">\(Y\)</span> 对 <span class="math notranslate nohighlight">\(Z\)</span> 的依懒性只与均值项有关．显然，<span class="math notranslate nohighlight">\(\beta\)</span> 中的 <span class="math notranslate nohighlight">\(0\)</span> 元素，也是 <span class="math notranslate nohighlight">\(\theta_{ZY}\)</span> 中的 <span class="math notranslate nohighlight">\(0\)</span> 元素，意味着 <span class="math notranslate nohighlight">\(Z\)</span> 中的对应元素与 <span class="math notranslate nohighlight">\(Y\)</span> 在给定其余变量<!--（$Z$中其它元素）-->的条件下是独立的．</p></li>
-<li><p>我们可以通过多重线性回归学习这个依赖性结构．</p></li>
+<li><p>\eqref{17.6} 中的 <span class="math notranslate nohighlight">\(Y\)</span> 对 <span class="math notranslate nohighlight">\(Z\)</span> 的依懒性只与均值项有关。显然，<span class="math notranslate nohighlight">\(\beta\)</span> 中的 <span class="math notranslate nohighlight">\(0\)</span> 元素，也是 <span class="math notranslate nohighlight">\(\theta_{ZY}\)</span> 中的 <span class="math notranslate nohighlight">\(0\)</span> 元素，意味着 <span class="math notranslate nohighlight">\(Z\)</span> 中的对应元素与 <span class="math notranslate nohighlight">\(Y\)</span> 在给定其余变量<!--（$Z$中其它元素）-->的条件下是独立的。</p></li>
+<li><p>我们可以通过多重线性回归学习这个依赖性结构。</p></li>
 </ul>
-<p>因此 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 捕捉了所有二阶信息（结构上的和定量的），这些信息是描述每个顶点在给定剩余点时的条件分布所需要的，这也称为高斯图模型的“自然”参数．</p>
+<p>因此 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 捕捉了所有二阶信息（结构上的和定量的），这些信息是描述每个顶点在给定剩余点时的条件分布所需要的，这也称为高斯图模型的“自然”参数。</p>
 <p>!!! note “原书脚注：”
-从高斯图模型得到的分布是 Wishart 分布．它属于指数族，其中自然 (natural, or “canonical”) 参数为 <span class="math notranslate nohighlight">\(\mathbf\Theta=\mathbf\Sigma^{-1}\)</span>. 实际上，偏最大化的对数似然 \eqref{17.11} 是 Wishart 对数似然（忽略常数差异）．</p>
-<p>另外一个（不同）图模型为 <strong>协方差图 (covariance)</strong> 或者 <strong>相关网络 (relevance network)</strong>，其中如果顶点的对应变量间的协方差（不是偏协方差）为 <span class="math notranslate nohighlight">\(0\)</span> 则用双向边连接这些顶点．这在基因问题中很常见，特别地见 Butteet et al. (2000)<a class="footnote-reference brackets" href="#id19" id="id3">2</a>．这些模型的负对数似然是非凸的，使得计算更加有挑战（Chaudhuri et al.，2007<a class="footnote-reference brackets" href="#id20" id="id4">3</a>）．</p>
+从高斯图模型得到的分布是 Wishart 分布。它属于指数族，其中自然 (natural, or “canonical”) 参数为 <span class="math notranslate nohighlight">\(\mathbf\Theta=\mathbf\Sigma^{-1}\)</span>. 实际上，偏最大化的对数似然 \eqref{17.11} 是 Wishart 对数似然（忽略常数差异）。</p>
+<p>另外一个（不同）图模型为 <strong>协方差图 (covariance)</strong> 或者 <strong>相关网络 (relevance network)</strong>，其中如果顶点的对应变量间的协方差（不是偏协方差）为 <span class="math notranslate nohighlight">\(0\)</span> 则用双向边连接这些顶点。这在基因问题中很常见，特别地见 Butteet et al. (2000)<a class="footnote-reference brackets" href="#id19" id="id3">2</a>。这些模型的负对数似然是非凸的，使得计算更加有挑战（Chaudhuri et al.，2007<a class="footnote-reference brackets" href="#id20" id="id4">3</a>）。</p>
 <div class="section" id="id5">
 <h2>图结构已知时参数的估计<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>给定 <span class="math notranslate nohighlight">\(X\)</span> 的一些观测值，我们想要估计无向图的参数，该无向图近似了它们的联合分布．首先假设图是完全的（全连通）．我们假设有 <span class="math notranslate nohighlight">\(N\)</span> 个多维正态观测值 <span class="math notranslate nohighlight">\(x_i,i=1,\ldots,N\)</span>，均值为<span class="math notranslate nohighlight">\(\mu\)</span>，协方差为<span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span>．令</p>
+<p>给定 <span class="math notranslate nohighlight">\(X\)</span> 的一些观测值，我们想要估计无向图的参数，该无向图近似了它们的联合分布。首先假设图是完全的（全连通）。我们假设有 <span class="math notranslate nohighlight">\(N\)</span> 个多维正态观测值 <span class="math notranslate nohighlight">\(x_i,i=1,\ldots,N\)</span>，均值为<span class="math notranslate nohighlight">\(\mu\)</span>，协方差为<span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span>。令</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf S = \frac{1}{N}\sum_{i=1}^N(x_i-\bar x)(x_i-\bar x)^T\tag{17.10}
 \]</div>
-<p>为观测值的协方差矩阵，<span class="math notranslate nohighlight">\(\bar x\)</span> 为样本均值向量．忽略掉常数，其对数似然可以写成
+<p>为观测值的协方差矩阵，<span class="math notranslate nohighlight">\(\bar x\)</span> 为样本均值向量。忽略掉常数，其对数似然可以写成
 $<span class="math notranslate nohighlight">\(
 \ell(\mathbf \Theta)=\mathrm{log \;det}\mathbf\Theta-\mathrm{trace}(\mathbf{S\Theta})\tag{17.11}\label{17.11}
 \)</span><span class="math notranslate nohighlight">\(
-\eqref{17.11} 中我们已经对均值参数 \)</span>\mu<span class="math notranslate nohighlight">\( 进行了偏 (partially) 最大化．\)</span>-\ell(\mathbf \Theta)<span class="math notranslate nohighlight">\( 是 \)</span>\mathbf \Theta<span class="math notranslate nohighlight">\( 的凸函数．可以很简单地证明 \)</span>\mathbf\Sigma<span class="math notranslate nohighlight">\( 的极大似然估计为 \)</span>\mathbf S$．</p>
-<p>现在为了使图更有用（特别在高维数据集中）假设某些边是缺失的，举个例子，图 17.1 中 <code class="docutils literal notranslate"><span class="pre">PIP3</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Erk</span></code> 之间的边是某条缺失边．正如我们所见，对于高斯分布这意味着 <span class="math notranslate nohighlight">\(\mathbf{\Theta=\Sigma^{-1}}\)</span> 对应的值为 <span class="math notranslate nohighlight">\(0\)</span>．因此我们现在想要在某些预先定义的参数为 <span class="math notranslate nohighlight">\(0\)</span> 的子集的约束下最大化 \eqref{17.11}．这是等值约束凸优化问题，研究者们已经提出了许多解决它的方法，特别地，<strong>迭代比例拟合过程 (iterative proportional fitting procedure)</strong>（Speed and Kiiveri，1996<a class="footnote-reference brackets" href="#id21" id="id6">4</a>）．该方法及其它方法在 Whittaker (1990)<a class="footnote-reference brackets" href="#id22" id="id7">5</a> 和 Lauritzen (1996)<a class="footnote-reference brackets" href="#id23" id="id8">6</a> 中作了总结．这些方法研究简化问题，这产生于将图分解成最大团的过程中，正如在之前的章节中描述的那样．这里我们列出一种简单的轮换方法，用不同的方式来研究稀疏性．这种方式的效果会在我们讨论图结构估计问题时变得明显．</p>
-<p>受 \eqref{17.6} 和 \eqref{17.9} 式的启发，这个思想基于线性回归．特别地，假设我们想要估计与给定顶点 <span class="math notranslate nohighlight">\(i\)</span> 相连的顶点的边参数 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span>，那些没有相连的边为 <span class="math notranslate nohighlight">\(0\)</span>．于是这似乎表明，顶点 <span class="math notranslate nohighlight">\(i\)</span> 在与其相关的结点上的线性回归可能会提供一个合理的估计．但是这忽略了回归中预测变量的依赖性结构．事实表明，如果我们进行回归时采用当前（基于模型的）对预测变量叉积矩阵的估计，这会给出了正确的解，并且能精确地解出带约束的最大似然问题．我们现在给出细节．</p>
+\eqref{17.11} 中我们已经对均值参数 \)</span>\mu<span class="math notranslate nohighlight">\( 进行了偏 (partially) 最大化。\)</span>-\ell(\mathbf \Theta)<span class="math notranslate nohighlight">\( 是 \)</span>\mathbf \Theta<span class="math notranslate nohighlight">\( 的凸函数。可以很简单地证明 \)</span>\mathbf\Sigma<span class="math notranslate nohighlight">\( 的极大似然估计为 \)</span>\mathbf S$。</p>
+<p>现在为了使图更有用（特别在高维数据集中）假设某些边是缺失的，举个例子，图 17.1 中 <code class="docutils literal notranslate"><span class="pre">PIP3</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Erk</span></code> 之间的边是某条缺失边。正如我们所见，对于高斯分布这意味着 <span class="math notranslate nohighlight">\(\mathbf{\Theta=\Sigma^{-1}}\)</span> 对应的值为 <span class="math notranslate nohighlight">\(0\)</span>。因此我们现在想要在某些预先定义的参数为 <span class="math notranslate nohighlight">\(0\)</span> 的子集的约束下最大化 \eqref{17.11}。这是等值约束凸优化问题，研究者们已经提出了许多解决它的方法，特别地，<strong>迭代比例拟合过程 (iterative proportional fitting procedure)</strong>（Speed and Kiiveri，1996<a class="footnote-reference brackets" href="#id21" id="id6">4</a>）。该方法及其它方法在 Whittaker (1990)<a class="footnote-reference brackets" href="#id22" id="id7">5</a> 和 Lauritzen (1996)<a class="footnote-reference brackets" href="#id23" id="id8">6</a> 中作了总结。这些方法研究简化问题，这产生于将图分解成最大团的过程中，正如在之前的章节中描述的那样。这里我们列出一种简单的轮换方法，用不同的方式来研究稀疏性。这种方式的效果会在我们讨论图结构估计问题时变得明显。</p>
+<p>受 \eqref{17.6} 和 \eqref{17.9} 式的启发，这个思想基于线性回归。特别地，假设我们想要估计与给定顶点 <span class="math notranslate nohighlight">\(i\)</span> 相连的顶点的边参数 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span>，那些没有相连的边为 <span class="math notranslate nohighlight">\(0\)</span>。于是这似乎表明，顶点 <span class="math notranslate nohighlight">\(i\)</span> 在与其相关的结点上的线性回归可能会提供一个合理的估计。但是这忽略了回归中预测变量的依赖性结构。事实表明，如果我们进行回归时采用当前（基于模型的）对预测变量叉积矩阵的估计，这会给出了正确的解，并且能精确地解出带约束的最大似然问题。我们现在给出细节。</p>
 <p>为了约束对数似然 \eqref{17.11}，我们对缺失边加上拉格朗日常数
 $<span class="math notranslate nohighlight">\(
 \ell_C(\mathbf \Theta)=\mathrm{log\; det}\mathbf\Theta-\mathrm{trace}(\mathbf{\mathbf S\Theta})-\sum\limits_{(j,k)\not\in E}\gamma_{jk}\theta_{jk}\tag{17.12}\label{17.12}
@@ -1258,12 +1238,12 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 \mathbf{\Theta^{-1}-S-\Gamma=0}\tag{17.13}\label{17.13}
 \)</span><span class="math notranslate nohighlight">\(
-这利用了 \)</span>\mathrm{log; det}\mathbf\Theta<span class="math notranslate nohighlight">\( 的导数等于 \)</span>\mathbf \Theta^{-1}<span class="math notranslate nohighlight">\( 的事实（如，Boyd and Vandenberghe, 2004，p641[^7]）．\)</span>\mathbf\Gamma$ 为所有含缺失边的非零拉格朗日参数值．</p>
-<p>我们将要展示我们可以怎么应用回归来求解 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 以及每次求解它的逆 <span class="math notranslate nohighlight">\(\mathbf{W=\Theta^{-1}}\)</span> 的一行和一列．为了简单我们关注最后一行和最后一列．则 \eqref{17.13} 的右上块可以写成
+这利用了 \)</span>\mathrm{log; det}\mathbf\Theta<span class="math notranslate nohighlight">\( 的导数等于 \)</span>\mathbf \Theta^{-1}<span class="math notranslate nohighlight">\( 的事实（如，Boyd and Vandenberghe, 2004，p641[^7]）。\)</span>\mathbf\Gamma$ 为所有含缺失边的非零拉格朗日参数值。</p>
+<p>我们将要展示我们可以怎么应用回归来求解 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 以及每次求解它的逆 <span class="math notranslate nohighlight">\(\mathbf{W=\Theta^{-1}}\)</span> 的一行和一列。为了简单我们关注最后一行和最后一列。则 \eqref{17.13} 的右上块可以写成
 $<span class="math notranslate nohighlight">\(
 w_{12}-s_{12}-\gamma_{12}=0\tag{17.14}\label{17.14}
 \)</span><span class="math notranslate nohighlight">\(
-这里我们将矩阵分块成如 \eqref{17.7} 所示：第一部分为前 \)</span>p-1<span class="math notranslate nohighlight">\( 列和行，第 2 部分为第 \)</span>p<span class="math notranslate nohighlight">\( 行和列．\)</span>\mathbf W<span class="math notranslate nohighlight">\( 和它的逆 \)</span>\mathbf\Theta<span class="math notranslate nohighlight">\( 以同样的方式分块，我们有
+这里我们将矩阵分块成如 \eqref{17.7} 所示：第一部分为前 \)</span>p-1<span class="math notranslate nohighlight">\( 列和行，第 2 部分为第 \)</span>p<span class="math notranslate nohighlight">\( 行和列。\)</span>\mathbf W<span class="math notranslate nohighlight">\( 和它的逆 \)</span>\mathbf\Theta<span class="math notranslate nohighlight">\( 以同样的方式分块，我们有
 \)</span><span class="math notranslate nohighlight">\(
 \Big(\begin{array}{ll}
 \mathbf W_{11}&amp; w_{12}\\
@@ -1281,53 +1261,53 @@ w_{12}^T&amp;w_{22}
 \)</span><span class="math notranslate nohighlight">\(
 这意味着
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fbf81c0e-c972-4854-aa7a-2c0ae6e9ac90">
-<span class="eqno">(32)<a class="headerlink" href="#equation-fbf81c0e-c972-4854-aa7a-2c0ae6e9ac90" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-805c99d5-0ae0-47c0-ae22-847a3abaeb88">
+<span class="eqno">(32)<a class="headerlink" href="#equation-805c99d5-0ae0-47c0-ae22-847a3abaeb88" title="Permalink to this equation">¶</a></span>\[\begin{align}
 w_{12}&amp;=-\mathbf W_{11}\theta_{12}/\theta_{22}\tag{17.16}\label{17.16}\\
 &amp;=\mathbf W_{11}\beta\tag{17.17}\label{17.17}
 \end{align}\]</div>
 <div class="math notranslate nohighlight">
 \[
-其中和 \eqref{17.9} 一样 $\beta=-\theta_{12}/\theta_{22}$．现在将 \eqref{17.17} 替换 \eqref{17.14} 式，我们有
+其中和 \eqref{17.9} 一样 $\beta=-\theta_{12}/\theta_{22}$。现在将 \eqref{17.17} 替换 \eqref{17.14} 式，我们有
 \]</div>
 <p>\mathbf W_{11}\beta-s_{12}-\gamma_{12}=0\tag{17.18}\label{17.18}
 $<span class="math notranslate nohighlight">\(
-这些可以解释成 \)</span>X_p<span class="math notranslate nohighlight">\( 在其他预测变量上的约束回归的 \)</span>p-1<span class="math notranslate nohighlight">\( 个估计等式，除了观测均值的叉积矩阵 \)</span>\mathbf S_{11}<span class="math notranslate nohighlight">\( 替换成了 \)</span>\mathbf W_{11}$ ，这也是根据模型对当前协方差的估计．</p>
-<p>我们可以通过简单的子集回归来求解 \eqref{17.18}．假设 <span class="math notranslate nohighlight">\(\gamma_{12}\)</span> 中有 <span class="math notranslate nohighlight">\(p-q\)</span> 个非零元——比如，<span class="math notranslate nohighlight">\(p-q\)</span> 条边约束为 0．这 <span class="math notranslate nohighlight">\(p-q\)</span> 行没有包含任何信息，而且可以移除掉．更进一步，我们可以通过移除 <span class="math notranslate nohighlight">\(p-q\)</span> 个 <span class="math notranslate nohighlight">\(0\)</span> 元素将 <span class="math notranslate nohighlight">\(\beta\)</span> 退化成 <span class="math notranslate nohighlight">\(\beta^\*\)</span>，得到退化的 <span class="math notranslate nohighlight">\(p\times p\)</span> 的等式系统</p>
+这些可以解释成 \)</span>X_p<span class="math notranslate nohighlight">\( 在其他预测变量上的约束回归的 \)</span>p-1<span class="math notranslate nohighlight">\( 个估计等式，除了观测均值的叉积矩阵 \)</span>\mathbf S_{11}<span class="math notranslate nohighlight">\( 替换成了 \)</span>\mathbf W_{11}$ ，这也是根据模型对当前协方差的估计。</p>
+<p>我们可以通过简单的子集回归来求解 \eqref{17.18}。假设 <span class="math notranslate nohighlight">\(\gamma_{12}\)</span> 中有 <span class="math notranslate nohighlight">\(p-q\)</span> 个非零元——比如，<span class="math notranslate nohighlight">\(p-q\)</span> 条边约束为 0。这 <span class="math notranslate nohighlight">\(p-q\)</span> 行没有包含任何信息，而且可以移除掉。更进一步，我们可以通过移除 <span class="math notranslate nohighlight">\(p-q\)</span> 个 <span class="math notranslate nohighlight">\(0\)</span> 元素将 <span class="math notranslate nohighlight">\(\beta\)</span> 退化成 <span class="math notranslate nohighlight">\(\beta^\*\)</span>，得到退化的 <span class="math notranslate nohighlight">\(p\times p\)</span> 的等式系统</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf  W^*_{11}\beta^*-s_{12}^*=0\tag{17.19}
 \]</div>
-<p>解为 <span class="math notranslate nohighlight">\(\hat\beta^\*=\mathbf {W_{11}^\*}^{-1}s_{12}^\*\)</span>．再加上 <span class="math notranslate nohighlight">\(p-q\)</span> 个 <span class="math notranslate nohighlight">\(0\)</span> 元得到 <span class="math notranslate nohighlight">\(\hat\beta\)</span>．</p>
+<p>解为 <span class="math notranslate nohighlight">\(\hat\beta^\*=\mathbf {W_{11}^\*}^{-1}s_{12}^\*\)</span>。再加上 <span class="math notranslate nohighlight">\(p-q\)</span> 个 <span class="math notranslate nohighlight">\(0\)</span> 元得到 <span class="math notranslate nohighlight">\(\hat\beta\)</span>。</p>
 <p>尽管从 \eqref{17.16} 看出似乎我们只恢复了<span class="math notranslate nohighlight">\(\theta_{12}\)</span> 乘以缩放因子 <span class="math notranslate nohighlight">\(1/\theta_{22}\)</span>，但可以很简单地证明
 $<span class="math notranslate nohighlight">\(
 \frac{1}{\theta_{22}}=w_{22}-w_{12}^T\beta\tag{17.20}
 \)</span><span class="math notranslate nohighlight">\(
-(采用分块矩阵求逆)．因为 \eqref{17.13} 的 \)</span>\mathbf\Gamma<span class="math notranslate nohighlight">\( 对角元为 0，则 \)</span>w_{22}=s_{22}$．</p>
-<p>这导出了在缺失边的约束下，用来估计 <span class="math notranslate nohighlight">\(\hat{\mathbf W}\)</span> 和它的逆 <span class="math notranslate nohighlight">\(\mathbf {\hat\Theta}\)</span> 的算法 17.1 中给出的简单迭代过程．</p>
+(采用分块矩阵求逆)。因为 \eqref{17.13} 的 \)</span>\mathbf\Gamma<span class="math notranslate nohighlight">\( 对角元为 0，则 \)</span>w_{22}=s_{22}$。</p>
+<p>这导出了在缺失边的约束下，用来估计 <span class="math notranslate nohighlight">\(\hat{\mathbf W}\)</span> 和它的逆 <span class="math notranslate nohighlight">\(\mathbf {\hat\Theta}\)</span> 的算法 17.1 中给出的简单迭代过程。</p>
 <p><img alt="" src="../_images/alg17.1.png" /></p>
-<p>注意到这个算法概念上是说得通的．图估计的问题不是 <span class="math notranslate nohighlight">\(p\)</span> 个独立的回归问题，而是 <span class="math notranslate nohighlight">\(p\)</span> 个成对问题．步骤 (b) 中公共 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 的应用，而不是观测的叉积矩阵，将问题以合适的方式结合在一起．惊讶的是，我们在文献中找不到这个过程．然而这与 Dempster(1972)<a class="footnote-reference brackets" href="#id24" id="id9">8</a> 的协方差选择过程有关，而且在分割上与 Chaudhuri et al. (2007)<a class="footnote-reference brackets" href="#id20" id="id10">3</a> 提出的用过协方差图的迭代条件拟合过程很相似．</p>
+<p>注意到这个算法概念上是说得通的。图估计的问题不是 <span class="math notranslate nohighlight">\(p\)</span> 个独立的回归问题，而是 <span class="math notranslate nohighlight">\(p\)</span> 个成对问题。步骤 (b) 中公共 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 的应用，而不是观测的叉积矩阵，将问题以合适的方式结合在一起。惊讶的是，我们在文献中找不到这个过程。然而这与 Dempster(1972)<a class="footnote-reference brackets" href="#id24" id="id9">8</a> 的协方差选择过程有关，而且在分割上与 Chaudhuri et al. (2007)<a class="footnote-reference brackets" href="#id20" id="id10">3</a> 提出的用过协方差图的迭代条件拟合过程很相似。</p>
 <p><img alt="" src="../_images/fig17.4.png" /></p>
 <blockquote>
-<div><p>图 17.4. 一个简单的用于说明的图，以及经验协方差阵．</p>
+<div><p>图 17.4. 一个简单的用于说明的图，以及经验协方差阵。</p>
 </div></blockquote>
-<p>这里是个小例子，选自 Whittaker(1990)<a class="footnote-reference brackets" href="#id22" id="id11">5</a>．假设我们的模型如图 17.4 描述，经验协方差阵为 <span class="math notranslate nohighlight">\(\mathbf S\)</span>．我们应用算法 (17.1) 来解决这个问题；举个例子，在步骤 (b) 对变量 1 的修改后的回归中，删掉变量 3．这个过程很快收敛到解</p>
+<p>这里是个小例子，选自 Whittaker(1990)<a class="footnote-reference brackets" href="#id22" id="id11">5</a>。假设我们的模型如图 17.4 描述，经验协方差阵为 <span class="math notranslate nohighlight">\(\mathbf S\)</span>。我们应用算法 (17.1) 来解决这个问题；举个例子，在步骤 (b) 对变量 1 的修改后的回归中，删掉变量 3。这个过程很快收敛到解</p>
 <p><img alt="" src="../_images/matrix1.png" /></p>
-<p>注意到 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma} ^{-1}\)</span> 的 0 元素，对应缺失边 (1,3) 和 (2,4)．也注意到 <span class="math notranslate nohighlight">\(\hat{\mathbf \Sigma}\)</span> 中对应的元素是唯一与 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 不同的元素．<span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 估计是有时称为    <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的正定“补 (completion)”．</p>
+<p>注意到 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma} ^{-1}\)</span> 的 0 元素，对应缺失边 (1,3) 和 (2,4)。也注意到 <span class="math notranslate nohighlight">\(\hat{\mathbf \Sigma}\)</span> 中对应的元素是唯一与 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 不同的元素。<span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 估计是有时称为    <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的正定“补 (completion)”。</p>
 <p>!!! info “weiya 注：”
-<span class="xref myst">这篇笔记</span>记录了算法 17.1 的具体实现过程．</p>
+<span class="xref myst">这篇笔记</span>记录了算法 17.1 的具体实现过程。</p>
 </div>
 <div class="section" id="id12">
 <h2>图结构的估计<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>大多数情况下，我们不知道哪些边要从图中去掉，因此想试图从数据本身找出．最近几年很多作者提出用于这个目的的 <span class="math notranslate nohighlight">\(L_1\)</span> (lasso) 正则化．</p>
+<p>大多数情况下，我们不知道哪些边要从图中去掉，因此想试图从数据本身找出。最近几年很多作者提出用于这个目的的 <span class="math notranslate nohighlight">\(L_1\)</span> (lasso) 正则化。</p>
 <p>!!! note “weiya 注：”
 省略图中的边，有点类似于做变量选择，而 lasso 正是应对变量选择的“绝世武功”!:joy:</p>
-<p>Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id25" id="id13">9</a> 对这个问题采取简单的方式：不是试图完全估计 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 或者 <span class="math notranslate nohighlight">\(\mathbf \Theta=\mathbf \Sigma^{-1}\)</span>，他们仅仅估计非零的组分 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span>．为了实现这点，它们将每个变量看成响应变量而其它的变量作为预测变量进行拟合 lasso 回归．如果变量 <span class="math notranslate nohighlight">\(i\)</span> 在变量 <span class="math notranslate nohighlight">\(j\)</span> 上的估计系数为非零，或者（并且）<span class="math notranslate nohighlight">\(j\)</span> 变量在 <span class="math notranslate nohighlight">\(i\)</span> 上的估计系数为非零，则组分 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span> 估计为非零．它们证明这个过程渐近地一致估计了 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 的非零元的集合．</p>
-<p>我们可以采取更有系统的含有 lasso 惩罚的方法，接着上一节的讨论．考虑最大化带惩罚的对数似然
+<p>Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id25" id="id13">9</a> 对这个问题采取简单的方式：不是试图完全估计 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 或者 <span class="math notranslate nohighlight">\(\mathbf \Theta=\mathbf \Sigma^{-1}\)</span>，他们仅仅估计非零的组分 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span>。为了实现这点，它们将每个变量看成响应变量而其它的变量作为预测变量进行拟合 lasso 回归。如果变量 <span class="math notranslate nohighlight">\(i\)</span> 在变量 <span class="math notranslate nohighlight">\(j\)</span> 上的估计系数为非零，或者（并且）<span class="math notranslate nohighlight">\(j\)</span> 变量在 <span class="math notranslate nohighlight">\(i\)</span> 上的估计系数为非零，则组分 <span class="math notranslate nohighlight">\(\theta_{ij}\)</span> 估计为非零。它们证明这个过程渐近地一致估计了 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 的非零元的集合。</p>
+<p>我们可以采取更有系统的含有 lasso 惩罚的方法，接着上一节的讨论。考虑最大化带惩罚的对数似然
 $<span class="math notranslate nohighlight">\(
 \mathrm{log\; det}\mathbf\Theta-\mathrm{trace}(\mathbf{S\Theta})-\lambda\Vert\mathbf \Theta\Vert_1\tag{17.21}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\Vert\Theta\Vert^{-1}<span class="math notranslate nohighlight">\( 为 \)</span>L_1<span class="math notranslate nohighlight">\( 范数——\)</span>\mathbf \Sigma^{-1}<span class="math notranslate nohighlight">\( 的元素的绝对值之和，并且我们忽略了常数值．这个带惩罚的似然函数的负值是关于 \)</span>\mathbf \Theta$ 的凸函数．</p>
+其中 \)</span>\Vert\Theta\Vert^{-1}<span class="math notranslate nohighlight">\( 为 \)</span>L_1<span class="math notranslate nohighlight">\( 范数——\)</span>\mathbf \Sigma^{-1}<span class="math notranslate nohighlight">\( 的元素的绝对值之和，并且我们忽略了常数值。这个带惩罚的似然函数的负值是关于 \)</span>\mathbf \Theta$ 的凸函数。</p>
 <p>!!! note “weiya 注：”
 注意区分矩阵的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数和 <span class="math notranslate nohighlight">\(p\)</span> 范数
 $<span class="math notranslate nohighlight">\(
@@ -1337,17 +1317,17 @@ $<span class="math notranslate nohighlight">\(
 	\Vert A\Vert_2 \le \Big(\sum\limits_{i=1}^m\sum\limits_{j=1}^m\vert a_{ij}\vert^2\Big)^{1/2}
 	=\Vert A\Vert_F
 	\)</span>$</p>
-<p>事实证明，可以采用 lasso 得到含惩罚的对数似然的精确的最大值点．特别地，我们仅仅需要把算法 17.1 中修改的回归步骤 (b) 换成修改的 lasso．下面是具体细节．</p>
+<p>事实证明，可以采用 lasso 得到含惩罚的对数似然的精确的最大值点。特别地，我们仅仅需要把算法 17.1 中修改的回归步骤 (b) 换成修改的 lasso。下面是具体细节。</p>
 <p>梯度等式 \eqref{17.13} 的类似形式为
 $<span class="math notranslate nohighlight">\(
 \mathbf{\Theta^{-1}-S}-\lambda\cdot \mathrm{Sign}(\mathbf \Theta)=0\tag{17.22}
 \)</span><span class="math notranslate nohighlight">\(
-这里我们采用 **次梯度 (sub-gradient)** 记号，如果 \)</span>\theta_{jk}\neq 0<span class="math notranslate nohighlight">\(，则 \)</span>\mathrm{Sign}(\theta_{jk})=\mathrm{sign}(\theta_{jk})<span class="math notranslate nohighlight">\(，如果 \)</span>\theta_{jk}=0<span class="math notranslate nohighlight">\(，则 \)</span>\mathrm{Sign}(\theta_{jk})\in[-1,1]<span class="math notranslate nohighlight">\(．继续上一节的讨论，我们得到 \eqref{17.18} 的相似形式
+这里我们采用 **次梯度 (sub-gradient)** 记号，如果 \)</span>\theta_{jk}\neq 0<span class="math notranslate nohighlight">\(，则 \)</span>\mathrm{Sign}(\theta_{jk})=\mathrm{sign}(\theta_{jk})<span class="math notranslate nohighlight">\(，如果 \)</span>\theta_{jk}=0<span class="math notranslate nohighlight">\(，则 \)</span>\mathrm{Sign}(\theta_{jk})\in[-1,1]<span class="math notranslate nohighlight">\(。继续上一节的讨论，我们得到 \eqref{17.18} 的相似形式
 \)</span><span class="math notranslate nohighlight">\(
 \mathbf W_{11}\beta-s_{12}+\lambda\cdot \mathrm{Sign}(\beta)=0\tag{17.23}
 \)</span><span class="math notranslate nohighlight">\(
-（回忆 \)</span>\beta<span class="math notranslate nohighlight">\( 和 \)</span>\theta_{12}$ 有相反的符号）．我们将会看到这个系统完全等价于 lasso 回归的估计等式．</p>
-<p>考虑一般的回归设定，输出变量为 <span class="math notranslate nohighlight">\(\mathbf y\)</span>，且预测矩阵为 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>．lasso 对下式进行最小化
+（回忆 \)</span>\beta<span class="math notranslate nohighlight">\( 和 \)</span>\theta_{12}$ 有相反的符号）。我们将会看到这个系统完全等价于 lasso 回归的估计等式。</p>
+<p>考虑一般的回归设定，输出变量为 <span class="math notranslate nohighlight">\(\mathbf y\)</span>，且预测矩阵为 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>。lasso 对下式进行最小化
 $<span class="math notranslate nohighlight">\(
 \frac{1}{2}(\mathbf y-\mathbf Z\beta)^T(\mathbf y-\mathbf Z\beta)+\lambda\cdot\Vert\beta\Vert_1\tag{17.24}
 \)</span><span class="math notranslate nohighlight">\(
@@ -1355,10 +1335,10 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 \mathbf{Z^TZ}\beta-\mathbf{Z^Ty}+\lambda\cdot \mathrm{Sign}(\beta)=0\tag{17.25}
 \)</span><span class="math notranslate nohighlight">\(
-所以乘上因子 \)</span>1/N<span class="math notranslate nohighlight">\(，\)</span>\mathbf {Z^Ty}<span class="math notranslate nohighlight">\( 是 \)</span>s_{12}<span class="math notranslate nohighlight">\( 的类比，并且我们用 \)</span>\mathbf W_{11}<span class="math notranslate nohighlight">\( 替换 \)</span>\mathbf{Z^TZ}$，从我们当前的模型估计叉积矩阵．</p>
-<p>这一过程称为 <strong>graphical lasso</strong>，由 Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id14">9</a> 提出，这建立在 Banerjee et al. (2008)<a class="footnote-reference brackets" href="#id26" id="id15">10</a>．这总结在算法 17.2 中．</p>
+所以乘上因子 \)</span>1/N<span class="math notranslate nohighlight">\(，\)</span>\mathbf {Z^Ty}<span class="math notranslate nohighlight">\( 是 \)</span>s_{12}<span class="math notranslate nohighlight">\( 的类比，并且我们用 \)</span>\mathbf W_{11}<span class="math notranslate nohighlight">\( 替换 \)</span>\mathbf{Z^TZ}$，从我们当前的模型估计叉积矩阵。</p>
+<p>这一过程称为 <strong>graphical lasso</strong>，由 Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id14">9</a> 提出，这建立在 Banerjee et al. (2008)<a class="footnote-reference brackets" href="#id26" id="id15">10</a>。这总结在算法 17.2 中。</p>
 <p><img alt="" src="../_images/alg17.2.png" /></p>
-<p>Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id16">9</a> 采用成对坐标下降方法（<span class="xref myst">3.8.6 节</span>）来在一步求解修改的 lasso 问题．下面是图 lasso 算法的成对坐标下降细节．令 <span class="math notranslate nohighlight">\(\mathbf {V=W_{11}}\)</span>，更新式有如下形式
+<p>Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id16">9</a> 采用成对坐标下降方法（<span class="xref myst">3.8.6 节</span>）来在一步求解修改的 lasso 问题。下面是图 lasso 算法的成对坐标下降细节。令 <span class="math notranslate nohighlight">\(\mathbf {V=W_{11}}\)</span>，更新式有如下形式
 $<span class="math notranslate nohighlight">\(
 \hat\beta_j\leftarrow S(s_{12j}-\sum\limits_{k\neq j}V_{kj}\hat\beta_k,\lambda)/V_{jj}\tag{17.26}
 \)</span><span class="math notranslate nohighlight">\(
@@ -1366,20 +1346,20 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 S(x,t)=\mathrm{sign}(x)(\vert x\vert-t)_+\tag{17.27}
 \)</span>$
-这个过程对预测变量循环直到收敛．</p>
-<p>可以简单地证明得到解矩阵 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 的对角元 <span class="math notranslate nohighlight">\(w_{jj}\)</span> 为 <span class="math notranslate nohighlight">\(s_{jj}+\lambda\)</span>，这些是在算法 17.2 的步骤 1 中固定的．</p>
+这个过程对预测变量循环直到收敛。</p>
+<p>可以简单地证明得到解矩阵 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 的对角元 <span class="math notranslate nohighlight">\(w_{jj}\)</span> 为 <span class="math notranslate nohighlight">\(s_{jj}+\lambda\)</span>，这些是在算法 17.2 的步骤 1 中固定的。</p>
 <p>!!! note “原书脚注：”
-可以提出问题 (17.21) 的另一个构造，我们不对 <span class="math notranslate nohighlight">\(\mathbf \Theta\)</span> 的对角元进行惩罚．则解矩阵的对角元 <span class="math notranslate nohighlight">\(w_{jj}\)</span> 为 <span class="math notranslate nohighlight">\(s_{jj}\)</span>，算法的剩余部分没有改变．</p>
-<p>Graphical lasso 算法非常快，可以在一分钟之内求解含 1000 个结点的中等稀疏的问题．可以很简单地修改算法得到特定边的惩罚参数 <span class="math notranslate nohighlight">\(\lambda_{jk}\)</span>；因为 <span class="math notranslate nohighlight">\(\lambda_{jk}=\infty\)</span> 会强制使 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为 0，这个算法归入到算法 17.1 中．通过将稀疏逆协方差矩阵问题作为一系列回归，可以快速地计算并且验证解的路径作为惩罚参数<span class="math notranslate nohighlight">\(\lambda\)</span> 的函数．更多的细节可以在 Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id17">9</a> 中找到．</p>
-<p>图 17.1 显示了将图 lasso 应用到 flow-cytometry 数据集中的结果．这里 lasso 惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 设为14．实际中检验随着 <span class="math notranslate nohighlight">\(\lambda\)</span> 变化而得到的不同的图是很有用的．图 17.5 显示了 4 个不同的解．当惩罚参数增大时图变得更稀疏．</p>
+可以提出问题 (17.21) 的另一个构造，我们不对 <span class="math notranslate nohighlight">\(\mathbf \Theta\)</span> 的对角元进行惩罚。则解矩阵的对角元 <span class="math notranslate nohighlight">\(w_{jj}\)</span> 为 <span class="math notranslate nohighlight">\(s_{jj}\)</span>，算法的剩余部分没有改变。</p>
+<p>Graphical lasso 算法非常快，可以在一分钟之内求解含 1000 个结点的中等稀疏的问题。可以很简单地修改算法得到特定边的惩罚参数 <span class="math notranslate nohighlight">\(\lambda_{jk}\)</span>；因为 <span class="math notranslate nohighlight">\(\lambda_{jk}=\infty\)</span> 会强制使 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为 0，这个算法归入到算法 17.1 中。通过将稀疏逆协方差矩阵问题作为一系列回归，可以快速地计算并且验证解的路径作为惩罚参数<span class="math notranslate nohighlight">\(\lambda\)</span> 的函数。更多的细节可以在 Friedman et al. (2008b)<a class="footnote-reference brackets" href="#id25" id="id17">9</a> 中找到。</p>
+<p>图 17.1 显示了将图 lasso 应用到 flow-cytometry 数据集中的结果。这里 lasso 惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 设为14。实际中检验随着 <span class="math notranslate nohighlight">\(\lambda\)</span> 变化而得到的不同的图是很有用的。图 17.5 显示了 4 个不同的解。当惩罚参数增大时图变得更稀疏。</p>
 <p><img alt="" src="../_images/fig17.5.png" /></p>
 <blockquote>
-<div><p>图 17.5. flow-cytometry 数据的 4 个不同的图 lasso 解．</p>
+<div><p>图 17.5. flow-cytometry 数据的 4 个不同的图 lasso 解。</p>
 </div></blockquote>
-<p>最后注意到图模型中有些点的值可以没有观测，也就是，缺失或者隐藏．如果一个点上只有一些值缺失，EM 算法可以用来插补缺失值（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/137">练习 17.9</a>）．</p>
+<p>最后注意到图模型中有些点的值可以没有观测，也就是，缺失或者隐藏。如果一个点上只有一些值缺失，EM 算法可以用来插补缺失值（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/137">练习 17.9</a>）。</p>
 <p>!!! note “weiya 注: Ex. 17.9”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/137">Issue 137: Ex. 17.9</a>．</p>
-<p>然而，有时整个点是隐藏的．在高斯模型中，如果一个点所有的值都缺失，由于线性，可以简单地对缺失的结点进行平均，使得在观察到的结点上产生另一个高斯模型．因此隐藏结点的引入不会扩大观测点的最终模型；实际上，在协方差上加了额外的结构．然而在离散模型中（接下来讨论），固有的非线性使隐藏单元成为扩展模型的有力方式．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/137">Issue 137: Ex. 17.9</a>。</p>
+<p>然而，有时整个点是隐藏的。在高斯模型中，如果一个点所有的值都缺失，由于线性，可以简单地对缺失的结点进行平均，使得在观察到的结点上产生另一个高斯模型。因此隐藏结点的引入不会扩大观测点的最终模型；实际上，在协方差上加了额外的结构。然而在离散模型中（接下来讨论），固有的非线性使隐藏单元成为扩展模型的有力方式。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

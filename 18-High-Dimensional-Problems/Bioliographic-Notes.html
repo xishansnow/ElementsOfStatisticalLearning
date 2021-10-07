@@ -352,22 +352,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,24 +1148,9 @@
                 
   <div class="section" id="id1">
 <h1>18.8 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-06-09</p></td>
-</tr>
-</tbody>
-</table>
-<p>许多文献已经在本章的特定地方给出来了；这里我们在列出另外的一些文献．Dudoit et al. (2002a)<a class="footnote-reference brackets" href="#id23" id="id2">1</a>给出了对基因表达数据的判别分析方法的概述及比较．Levina (2002)<a class="footnote-reference brackets" href="#id24" id="id3">2</a> 做了一些数学分析在<span class="math notranslate nohighlight">\(p, N\rightarrow \infty, p&gt;N\)</span>的情况下比较对角LDA和全LDA．她证明了在合理的假设下，对角LDA比全LDA有更低的极限误差率．Tibshirani et al. (2001a)<a class="footnote-reference brackets" href="#id25" id="id4">3</a>和 Tibshirani et al. (2003)<a class="footnote-reference brackets" href="#id26" id="id5">4</a> 提出了最近收缩中心分类器．Zhu and Hastie (2004)<a class="footnote-reference brackets" href="#id27" id="id6">5</a>研究了正则化逻辑斯蒂回归．高维回归和lasso是非常活跃的研究领域，许多的文献在3.8.5节给出．Tibshirani et al. (2005)<a class="footnote-reference brackets" href="#id28" id="id7">6</a>提出fused lasso，而Zou and Hastie (2005)<a class="footnote-reference brackets" href="#id29" id="id8">7</a>提出弹性网．Bair and Tibshirani (2004)<a class="footnote-reference brackets" href="#id30" id="id9">8</a>和 Bair et al. (2006)<a class="footnote-reference brackets" href="#id31" id="id10">9</a> 中讨论了有监督的主成分．关于censored survival data分析的介绍，参见Kalbfleisch and Prentice (1980)<a class="footnote-reference brackets" href="#id32" id="id11">10</a>．</p>
-<p>微阵列技术导致了一系列的统计研究：参见Speed (2003)<a class="footnote-reference brackets" href="#id33" id="id12">11</a>、Parmigiani et al. (2003)<a class="footnote-reference brackets" href="#id34" id="id13">12</a>、Simon et al. (2004)<a class="footnote-reference brackets" href="#id35" id="id14">13</a>以及Lee (2004)<a class="footnote-reference brackets" href="#id36" id="id15">14</a>等书中的例子．</p>
-<p>错误发现率由Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id37" id="id16">15</a>提出，并且被这些作者以及其他作者进行研究和推广．FDR部分的文章或许可以在Yoav Benjamini的主页中找到．一些最近的文章包括Efron and Tibshirani (2002)<a class="footnote-reference brackets" href="#id38" id="id17">16</a>, Storey (2002)<a class="footnote-reference brackets" href="#id39" id="id18">17</a>, Genovese and Wasserman (2004)<a class="footnote-reference brackets" href="#id40" id="id19">18</a>, Storey and Tibshirani (2003)<a class="footnote-reference brackets" href="#id41" id="id20">19</a> 以及 Benjamini and Yekutieli (2005)<a class="footnote-reference brackets" href="#id42" id="id21">20</a>．Dudoit et al. (2002b)<a class="footnote-reference brackets" href="#id43" id="id22">21</a>对微阵列研究中的差异表达基因的识别的方法进行了综述．</p>
+<p>许多文献已经在本章的特定地方给出来了；这里我们在列出另外的一些文献。Dudoit et al. (2002a)<a class="footnote-reference brackets" href="#id23" id="id2">1</a>给出了对基因表达数据的判别分析方法的概述及比较。Levina (2002)<a class="footnote-reference brackets" href="#id24" id="id3">2</a> 做了一些数学分析在<span class="math notranslate nohighlight">\(p, N\rightarrow \infty, p&gt;N\)</span>的情况下比较对角LDA和全LDA。她证明了在合理的假设下，对角LDA比全LDA有更低的极限误差率。Tibshirani et al. (2001a)<a class="footnote-reference brackets" href="#id25" id="id4">3</a>和 Tibshirani et al. (2003)<a class="footnote-reference brackets" href="#id26" id="id5">4</a> 提出了最近收缩中心分类器。Zhu and Hastie (2004)<a class="footnote-reference brackets" href="#id27" id="id6">5</a>研究了正则化逻辑斯蒂回归。高维回归和lasso是非常活跃的研究领域，许多的文献在3.8.5节给出。Tibshirani et al. (2005)<a class="footnote-reference brackets" href="#id28" id="id7">6</a>提出fused lasso，而Zou and Hastie (2005)<a class="footnote-reference brackets" href="#id29" id="id8">7</a>提出弹性网。Bair and Tibshirani (2004)<a class="footnote-reference brackets" href="#id30" id="id9">8</a>和 Bair et al. (2006)<a class="footnote-reference brackets" href="#id31" id="id10">9</a> 中讨论了有监督的主成分。关于censored survival data分析的介绍，参见Kalbfleisch and Prentice (1980)<a class="footnote-reference brackets" href="#id32" id="id11">10</a>。</p>
+<p>微阵列技术导致了一系列的统计研究：参见Speed (2003)<a class="footnote-reference brackets" href="#id33" id="id12">11</a>、Parmigiani et al. (2003)<a class="footnote-reference brackets" href="#id34" id="id13">12</a>、Simon et al. (2004)<a class="footnote-reference brackets" href="#id35" id="id14">13</a>以及Lee (2004)<a class="footnote-reference brackets" href="#id36" id="id15">14</a>等书中的例子。</p>
+<p>错误发现率由Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id37" id="id16">15</a>提出，并且被这些作者以及其他作者进行研究和推广。FDR部分的文章或许可以在Yoav Benjamini的主页中找到。一些最近的文章包括Efron and Tibshirani (2002)<a class="footnote-reference brackets" href="#id38" id="id17">16</a>, Storey (2002)<a class="footnote-reference brackets" href="#id39" id="id18">17</a>, Genovese and Wasserman (2004)<a class="footnote-reference brackets" href="#id40" id="id19">18</a>, Storey and Tibshirani (2003)<a class="footnote-reference brackets" href="#id41" id="id20">19</a> 以及 Benjamini and Yekutieli (2005)<a class="footnote-reference brackets" href="#id42" id="id21">20</a>。Dudoit et al. (2002b)<a class="footnote-reference brackets" href="#id43" id="id22">21</a>对微阵列研究中的差异表达基因的识别的方法进行了综述。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

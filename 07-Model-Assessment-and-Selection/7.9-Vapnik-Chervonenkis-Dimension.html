@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1161,6 +1162,7 @@
                 
   <div class="section" id="vc">
 <h1>7.9 VC维<a class="headerlink" href="#vc" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>!!! note “更新笔记”
 &#64;2018-01-07 完成了图7.7的部分模拟，即 AIC 和 BIC 下 kNN 回归与分类的情形，其它情形待完成。具体模拟细节记录在了<a class="reference external" href="http://rmd.hohoweiya.xyz/sim7_7.html">这个 R Notebook</a>中。</p>
 <p>使用样本内误差估计的困难在于需要确定在拟合中使用的参数（或复杂度）个数 <span class="math notranslate nohighlight">\(d\)</span>。尽管 7.6 节引入的有效参数个数对部分非线性模型是有用的，但是不太普遍。Vapnik-Chervonenkis （VC）理论提供了对复杂度更一般的度量，而且给出了相应的最优估计。这里我们简短介绍这个理论。</p>

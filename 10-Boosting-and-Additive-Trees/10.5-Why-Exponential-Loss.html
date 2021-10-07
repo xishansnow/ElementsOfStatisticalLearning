@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,29 +1149,8 @@
                 
   <div class="section" id="id1">
 <h1>10.5 为什么是指数损失？<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=364">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-02-08</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-02-28</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>AdaBoost.M1 算法最初是从一个非常不一样的角度出发得到的，而不是上一节中提出的．它与基于指数损失的向前逐步加性建模的等价性仅在其提出后五年后就被发现．通过研究指数损失函数准则的性质，可以深入了解这个过程并且找出可能改善的方式．</p>
-<p>在加性模型中指数损失的主要吸引点在于计算上的方便；它导出简单的模块化重加权的 AdaBoost 算法．然而，研究它的统计性质也是我们关注的．它估计什么，估计有多么好？第一个问题可以通过寻找总体最小化来回答．</p>
+<p>AdaBoost.M1 算法最初是从一个非常不一样的角度出发得到的，而不是上一节中提出的。它与基于指数损失的向前逐步加性建模的等价性仅在其提出后五年后就被发现。通过研究指数损失函数准则的性质，可以深入了解这个过程并且找出可能改善的方式。</p>
+<p>在加性模型中指数损失的主要吸引点在于计算上的方便；它导出简单的模块化重加权的 AdaBoost 算法。然而，研究它的统计性质也是我们关注的。它估计什么，估计有多么好？第一个问题可以通过寻找总体最小化来回答。</p>
 <p>可以很简单地证明 (Friedman et al., 2000)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>
 $<span class="math notranslate nohighlight">\(
 f^*(x)=\mathrm{arg}\;\underset{f(x)}{\min}\mathrm{E}_{Y\mid x}(e^{-Yf(x)})=\frac{1}{2}\log\frac{\Pr(Y=1\mid X)}{\Pr(Y=-1\mid X)}\tag{10.16}
@@ -1179,14 +1159,14 @@ f^*(x)=\mathrm{arg}\;\underset{f(x)}{\min}\mathrm{E}_{Y\mid x}(e^{-Yf(x)})=\frac
 \)</span><span class="math notranslate nohighlight">\(
 \Pr(Y=1\mid x)=\frac{1}{1+e^{-2f^*(x)}}
 \)</span><span class="math notranslate nohighlight">\(
-因此，由 AdaBoost 得到的加性展开是在估计 \)</span>P(Y=1\mid x)$ <strong>对数比率值 (log-odds)</strong> 的二分之一．这证明使用它的符号作为 \eqref{10.1} 的分类规则是合理的．</p>
+因此，由 AdaBoost 得到的加性展开是在估计 \)</span>P(Y=1\mid x)$ <strong>对数比率值 (log-odds)</strong> 的二分之一。这证明使用它的符号作为 \eqref{10.1} 的分类规则是合理的。</p>
 <p>!!! info “Recall”
 $<span class="math notranslate nohighlight">\(
     G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}\label{10.1}
     \)</span>$</p>
 <p>!!! note “weiya注”
-此处 <span class="math notranslate nohighlight">\(f^\*(x)\)</span> 相当于 <span class="math notranslate nohighlight">\(\sum\alpha_mG_m\)</span>，当其大于 0，表明 <span class="math notranslate nohighlight">\(P(Y=1\mid x)&gt;P(Y=-1\mid x)\)</span>，所以称使用其符号作为分类规则是合理的．</p>
-<p>另外一个有着同样的总体最小化的损失准则为 <strong>二项分布负对数似然 (the binomial negative log-likelihood)</strong> 或者 <strong>偏差 (deviance)</strong>（也称为交叉熵），将 <span class="math notranslate nohighlight">\(f\)</span> 解释为 logit 变换．</p>
+此处 <span class="math notranslate nohighlight">\(f^\*(x)\)</span> 相当于 <span class="math notranslate nohighlight">\(\sum\alpha_mG_m\)</span>，当其大于 0，表明 <span class="math notranslate nohighlight">\(P(Y=1\mid x)&gt;P(Y=-1\mid x)\)</span>，所以称使用其符号作为分类规则是合理的。</p>
+<p>另外一个有着同样的总体最小化的损失准则为 <strong>二项分布负对数似然 (the binomial negative log-likelihood)</strong> 或者 <strong>偏差 (deviance)</strong>（也称为交叉熵），将 <span class="math notranslate nohighlight">\(f\)</span> 解释为 logit 变换。</p>
 <p>!!! note “weiya 注”
 考虑
 $<span class="math notranslate nohighlight">\(
@@ -1200,12 +1180,12 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     L(p, y) = -\log(f)=-(y\log p+(1-y)\log(1-p))
     \)</span>$
-也称为 logit 损失函数．</p>
+也称为 logit 损失函数。</p>
 <p>令
 $<span class="math notranslate nohighlight">\(
 p(x)=\Pr(Y=1\mid x)=\frac{e^{f(x)}}{e^{-f(x)}+e^{f(x)}}=\frac{1}{1+e^{-2f(x)}}\tag{10.17}\label{10.17}
 \)</span><span class="math notranslate nohighlight">\(
-并且定义 \)</span>Y’=(Y+1)/2\in \{0,1\}$．则二项对数对数似然损失函数为</p>
+并且定义 \)</span>Y’=(Y+1)/2\in \{0,1\}$。则二项对数对数似然损失函数为</p>
 <div class="math notranslate nohighlight">
 \[
 l(Y,p(x))=Y'\mathrm{log}p(x)+(1-Y')\mathrm{log}(1-p(x))
@@ -1216,7 +1196,7 @@ l(Y,p(x))=Y'\mathrm{log}p(x)+(1-Y')\mathrm{log}(1-p(x))
     $$
     l(Y,f(x))=Y'\mathrm{log}f(x)+(1-Y')\mathrm{log}(1-f(x))
     $$
-    不会引起误解，当$f(x)=p(x)$时，达到最大值．
+    不会引起误解，当$f(x)=p(x)$时，达到最大值。
 -->
 <p>或者等价地，偏差为
 $<span class="math notranslate nohighlight">\(
@@ -1242,9 +1222,9 @@ $<span class="math notranslate nohighlight">\(
     Y=1
     $$
 -->
-<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\Pr(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的．因此，使用任意一个准则在总体的水平下得到相同的解．注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数．</p>
+<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\Pr(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
 <p>!!! note “weiya 注”
-也就是说，不存在一个二项随机变量的密度函数，使得 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 成为其对数似然函数．</p>
+也就是说，不存在一个二项随机变量的密度函数，使得 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 成为其对数似然函数。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

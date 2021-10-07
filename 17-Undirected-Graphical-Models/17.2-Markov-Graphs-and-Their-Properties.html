@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,82 +1149,61 @@
                 
   <div class="section" id="id1">
 <h1>17.2 马尔科夫图及其性质<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=646">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-09-30</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-06-11</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>这部分我们讨论图作为随机变量集的联合分布的模型的基本性质．我们将下面两部分的讨论放在后面的章节中，其中一部分是 (a) 根据数据对边的参数的估计和参量化，另一部分是 (b) 估计图的拓扑结构．</p>
-<p>图 17.2 显示了无向图的四个例子．图 <span class="math notranslate nohighlight">\(\cal G\)</span> 包含数据对 <span class="math notranslate nohighlight">\((V,E)\)</span>，其中 <span class="math notranslate nohighlight">\(V\)</span> 是顶点的集合，<span class="math notranslate nohighlight">\(E\)</span> 为边的集合（用顶点对定义）．对于两个结点 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span>，如果存在一条边将它们连起来，则这两个结点称为 <strong>邻接 (adjacent)</strong>，记做 <span class="math notranslate nohighlight">\(X\sim Y\)</span>．<strong>路径 (path)</strong> <span class="math notranslate nohighlight">\(X_1,X_2,\ldots, X_n\)</span> 是相连的顶点集，也就是 <span class="math notranslate nohighlight">\(X_{i-1}\sim X_i,i=2,\ldots,n\)</span>．<strong>完全图 (complete graph)</strong> 是每个顶点对都被一条边相连的图．<strong>子图 (subgraph)</strong> <span class="math notranslate nohighlight">\(U\in V\)</span> 是顶点集及其边的子集．举个例子，图 17.2(a) 的 <span class="math notranslate nohighlight">\((X,Y,Z)\)</span> 构成路径但不是完全图．</p>
+<p>这部分我们讨论图作为随机变量集的联合分布的模型的基本性质。我们将下面两部分的讨论放在后面的章节中，其中一部分是 (a) 根据数据对边的参数的估计和参量化，另一部分是 (b) 估计图的拓扑结构。</p>
+<p>图 17.2 显示了无向图的四个例子。图 <span class="math notranslate nohighlight">\(\cal G\)</span> 包含数据对 <span class="math notranslate nohighlight">\((V,E)\)</span>，其中 <span class="math notranslate nohighlight">\(V\)</span> 是顶点的集合，<span class="math notranslate nohighlight">\(E\)</span> 为边的集合（用顶点对定义）。对于两个结点 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span>，如果存在一条边将它们连起来，则这两个结点称为 <strong>邻接 (adjacent)</strong>，记做 <span class="math notranslate nohighlight">\(X\sim Y\)</span>。<strong>路径 (path)</strong> <span class="math notranslate nohighlight">\(X_1,X_2,\ldots, X_n\)</span> 是相连的顶点集，也就是 <span class="math notranslate nohighlight">\(X_{i-1}\sim X_i,i=2,\ldots,n\)</span>。<strong>完全图 (complete graph)</strong> 是每个顶点对都被一条边相连的图。<strong>子图 (subgraph)</strong> <span class="math notranslate nohighlight">\(U\in V\)</span> 是顶点集及其边的子集。举个例子，图 17.2(a) 的 <span class="math notranslate nohighlight">\((X,Y,Z)\)</span> 构成路径但不是完全图。</p>
 <p><img alt="" src="../_images/fig17.2.png" /></p>
 <blockquote>
-<div><p>图 17.2. 无向图模型或者马尔科夫网络的例子．每个结点或顶点表示一个随机变量，两个结点之间缺失边表示条件独立．举个例子，在图 (a) 中，在给定 <span class="math notranslate nohighlight">\(Y\)</span> 的情况下，<span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span> 是独立的．在图 (b) 中，<span class="math notranslate nohighlight">\(Z\)</span> 与 <span class="math notranslate nohighlight">\(X,Y,W\)</span> 中的每一个都是独立的．</p>
+<div><p>图 17.2. 无向图模型或者马尔科夫网络的例子。每个结点或顶点表示一个随机变量，两个结点之间缺失边表示条件独立。举个例子，在图 (a) 中，在给定 <span class="math notranslate nohighlight">\(Y\)</span> 的情况下，<span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span> 是独立的。在图 (b) 中，<span class="math notranslate nohighlight">\(Z\)</span> 与 <span class="math notranslate nohighlight">\(X,Y,W\)</span> 中的每一个都是独立的。</p>
 </div></blockquote>
-<p>假设我们有图 <span class="math notranslate nohighlight">\(\cal G\)</span>，它的顶点集合 <span class="math notranslate nohighlight">\(V\)</span> 表示联合分布为 <span class="math notranslate nohighlight">\(P\)</span> 的随机变量集．在马尔科夫图 <span class="math notranslate nohighlight">\(\cal G\)</span> 中，某条边的缺失表示在给定其他结点的变量时，对应的随机变量是条件独立的．这可以用下面的记号来表示：
+<p>假设我们有图 <span class="math notranslate nohighlight">\(\cal G\)</span>，它的顶点集合 <span class="math notranslate nohighlight">\(V\)</span> 表示联合分布为 <span class="math notranslate nohighlight">\(P\)</span> 的随机变量集。在马尔科夫图 <span class="math notranslate nohighlight">\(\cal G\)</span> 中，某条边的缺失表示在给定其他结点的变量时，对应的随机变量是条件独立的。这可以用下面的记号来表示：
 $<span class="math notranslate nohighlight">\(
 \text{No edge joining X and Y}\Leftrightarrow X\bot Y\mid \text{rest}\tag{17.1}
 \)</span><span class="math notranslate nohighlight">\(
-其中 “rest” 表示图中所有的其他结点．举个例子，在图 17.2 (a) 中 \)</span>X\bot Z\mid Y<span class="math notranslate nohighlight">\(．这也称作 \)</span>\cal G$ 的 <strong>逐对马尔科夫独立 (pairwise Markov independencies)</strong>．</p>
-<p>如果 <span class="math notranslate nohighlight">\(A,B\)</span> 和 <span class="math notranslate nohighlight">\(C\)</span> 为子图，且若 <span class="math notranslate nohighlight">\(A\)</span> 和 <span class="math notranslate nohighlight">\(B\)</span> 的任一路径都交于 <span class="math notranslate nohighlight">\(C\)</span> 中的结点，则称 <span class="math notranslate nohighlight">\(C\)</span> <strong>分离 (separate)</strong> <span class="math notranslate nohighlight">\(A\)</span> 和 <span class="math notranslate nohighlight">\(B\)</span>．举个例子，<span class="math notranslate nohighlight">\(Y\)</span> 分离图 17.2 (a) 和 (d) 的 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span>，并且 <span class="math notranslate nohighlight">\(Z\)</span> 分离 (d) 中的 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(W\)</span>．图 17.2 (b) 的 <span class="math notranslate nohighlight">\(Z\)</span> 与 <span class="math notranslate nohighlight">\(X,Y,W\)</span> 不相连，则我们称这两个集合被空集分离．在图 17.2 (c) 中，<span class="math notranslate nohighlight">\(C=\{X,Z\}\)</span> 分离 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(W\)</span>．</p>
-<p>分离集有良好的性质，它们将图分解成条件独立的部分．特别地，在含有 <span class="math notranslate nohighlight">\(A,B\)</span> 和 <span class="math notranslate nohighlight">\(C\)</span> 子图的图 <span class="math notranslate nohighlight">\(\cal G\)</span>，
+其中 “rest” 表示图中所有的其他结点。举个例子，在图 17.2 (a) 中 \)</span>X\bot Z\mid Y<span class="math notranslate nohighlight">\(。这也称作 \)</span>\cal G$ 的 <strong>逐对马尔科夫独立 (pairwise Markov independencies)</strong>。</p>
+<p>如果 <span class="math notranslate nohighlight">\(A,B\)</span> 和 <span class="math notranslate nohighlight">\(C\)</span> 为子图，且若 <span class="math notranslate nohighlight">\(A\)</span> 和 <span class="math notranslate nohighlight">\(B\)</span> 的任一路径都交于 <span class="math notranslate nohighlight">\(C\)</span> 中的结点，则称 <span class="math notranslate nohighlight">\(C\)</span> <strong>分离 (separate)</strong> <span class="math notranslate nohighlight">\(A\)</span> 和 <span class="math notranslate nohighlight">\(B\)</span>。举个例子，<span class="math notranslate nohighlight">\(Y\)</span> 分离图 17.2 (a) 和 (d) 的 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span>，并且 <span class="math notranslate nohighlight">\(Z\)</span> 分离 (d) 中的 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(W\)</span>。图 17.2 (b) 的 <span class="math notranslate nohighlight">\(Z\)</span> 与 <span class="math notranslate nohighlight">\(X,Y,W\)</span> 不相连，则我们称这两个集合被空集分离。在图 17.2 (c) 中，<span class="math notranslate nohighlight">\(C=\{X,Z\}\)</span> 分离 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(W\)</span>。</p>
+<p>分离集有良好的性质，它们将图分解成条件独立的部分。特别地，在含有 <span class="math notranslate nohighlight">\(A,B\)</span> 和 <span class="math notranslate nohighlight">\(C\)</span> 子图的图 <span class="math notranslate nohighlight">\(\cal G\)</span>，
 $<span class="math notranslate nohighlight">\(
 \text{if C separates A and B then }A\bot B\mid C\tag{17.2}
 \)</span><span class="math notranslate nohighlight">\(
-这称作 \)</span>\cal G<span class="math notranslate nohighlight">\( 的 **全局马尔科夫性质 (global Markov properties)**．事实上，图的 **逐对马尔科夫性质 (pairwise Markov properties)** 和 **整体马尔科夫性质 (global Markov properties)** 是等价的（对于有正分布的图）．也就是，**相关概率分布 (associated probability distribution)** 满足逐对马尔科夫独立性和全局马尔科夫假设的图的集合是相同的．这个结果对于从简单成对性质中推断整体独立关系是很有用的．举个例子，在图 17.2 (d) 中 \)</span>X\bot Z\mid\{Y,W\}<span class="math notranslate nohighlight">\(，因为这是一个马尔科夫图，且 \)</span>X<span class="math notranslate nohighlight">\( 和 \)</span>Z<span class="math notranslate nohighlight">\( 之间没有连接．但是 \)</span>Y<span class="math notranslate nohighlight">\( 也将 \)</span>X<span class="math notranslate nohighlight">\( 从 \)</span>Z<span class="math notranslate nohighlight">\( 和 \)</span>W<span class="math notranslate nohighlight">\( 中分离，因此由整体马尔科夫假设我们得出 \)</span>X\bot Z\mid Y<span class="math notranslate nohighlight">\( 和 \)</span>X\bot W\mid Y<span class="math notranslate nohighlight">\(．类似地，我们有 \)</span>Y\bot W\mid Z$．</p>
+这称作 \)</span>\cal G<span class="math notranslate nohighlight">\( 的 **全局马尔科夫性质 (global Markov properties)**。事实上，图的 **逐对马尔科夫性质 (pairwise Markov properties)** 和 **整体马尔科夫性质 (global Markov properties)** 是等价的（对于有正分布的图）。也就是，**相关概率分布 (associated probability distribution)** 满足逐对马尔科夫独立性和全局马尔科夫假设的图的集合是相同的。这个结果对于从简单成对性质中推断整体独立关系是很有用的。举个例子，在图 17.2 (d) 中 \)</span>X\bot Z\mid\{Y,W\}<span class="math notranslate nohighlight">\(，因为这是一个马尔科夫图，且 \)</span>X<span class="math notranslate nohighlight">\( 和 \)</span>Z<span class="math notranslate nohighlight">\( 之间没有连接。但是 \)</span>Y<span class="math notranslate nohighlight">\( 也将 \)</span>X<span class="math notranslate nohighlight">\( 从 \)</span>Z<span class="math notranslate nohighlight">\( 和 \)</span>W<span class="math notranslate nohighlight">\( 中分离，因此由整体马尔科夫假设我们得出 \)</span>X\bot Z\mid Y<span class="math notranslate nohighlight">\( 和 \)</span>X\bot W\mid Y<span class="math notranslate nohighlight">\(。类似地，我们有 \)</span>Y\bot W\mid Z$。</p>
 <p>!!! note “weiya 注：三种等价的 Markov 性质”
 <!--pairwise Markov properties: 寻找缺失边，在给定其他结点的情况下，缺失边的两个顶点相互独立；
 	global Markov properties: 寻找分离集，在给定分离集的情况下，被分离的子图相互独立；-->
 pairwise Markov properties: 对于所有的非邻接顶点 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span>，<span class="math notranslate nohighlight">\(a\)</span> 为剩余结点的集合，则 <span class="math notranslate nohighlight">\(X_i\ind X_j\mid X_a\)</span>，</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>global Markov properties: 对于所有的不相交的子集 $a$, $b$ 和 $c$，若 $a$ 分离 $b$ 和 $c$，则 $X_b\ind X_c\mid X_a$，
 
-local Markov properties: 对于每个顶点 $i$，$a=\mathrm{bd}(i)$ 是边界集，$b$ 为剩余结点的集合，则 $X_i\ind X_b\mid X_a$．
+local Markov properties: 对于每个顶点 $i$，$a=\mathrm{bd}(i)$ 是边界集，$b$ 为剩余结点的集合，则 $X_i\ind X_b\mid X_a$。
 </pre></div>
 </div>
-<p>全局马尔科夫性质允许我们将图分解成更小的易控制的片段，因此在计算和解释性上有本质上的简化．基于这个目的，我们将图分解成 <strong>团 (clique)</strong>．团是一个完全子图——所有顶点都与其他点邻接的顶点集；如果一个团，没有其他顶点可以加进去仍保持是一个团的称为最大团．图 17.2 的最大团为</p>
+<p>全局马尔科夫性质允许我们将图分解成更小的易控制的片段，因此在计算和解释性上有本质上的简化。基于这个目的，我们将图分解成 <strong>团 (clique)</strong>。团是一个完全子图——所有顶点都与其他点邻接的顶点集；如果一个团，没有其他顶点可以加进去仍保持是一个团的称为最大团。图 17.2 的最大团为</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((a)\; \\{X,Y\\},\\{Y,Z\\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((b)\; \\{X,Y,W\\},\\{Z\\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((c)\; \\{X,Y\\},\\{Y,Z\\},\\{Z,W\\},\\{X,W\\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((d)\; \\{X,Y\\},\\{Y,Z\\},\\{Z,W\\}\)</span></p></li>
 </ul>
-<p>尽管接下来连续和离散的分布都要考虑，但是大部分的发展是针对后者的（离散分布）．马尔科夫图 <span class="math notranslate nohighlight">\(\cal G\)</span> 上的概率密度函数 <span class="math notranslate nohighlight">\(f\)</span> 可以表示成
+<p>尽管接下来连续和离散的分布都要考虑，但是大部分的发展是针对后者的（离散分布）。马尔科夫图 <span class="math notranslate nohighlight">\(\cal G\)</span> 上的概率密度函数 <span class="math notranslate nohighlight">\(f\)</span> 可以表示成
 $<span class="math notranslate nohighlight">\(
 f(x)=\frac{1}{Z}\prod\limits_{C\in\cal C}\psi_C(x_C)\tag{17.3}
 \)</span>$</p>
-<p>其中 <span class="math notranslate nohighlight">\(\cal C\)</span> 为最大团的集合，并且正函数 <span class="math notranslate nohighlight">\(\psi_C(\cdot)\)</span> 称为 <strong>团势 (clique potentials)</strong>．这些不是一般的密度函数，而是表示 <span class="math notranslate nohighlight">\(X_C\)</span> 中依赖性的 <strong>亲和力 (affinities)</strong>，依赖性越强，<span class="math notranslate nohighlight">\(x_C\)</span> 得分越高．<!--这通过对特定的实例 $x_C$ 打更高的分实现．--></p>
+<p>其中 <span class="math notranslate nohighlight">\(\cal C\)</span> 为最大团的集合，并且正函数 <span class="math notranslate nohighlight">\(\psi_C(\cdot)\)</span> 称为 <strong>团势 (clique potentials)</strong>。这些不是一般的密度函数，而是表示 <span class="math notranslate nohighlight">\(X_C\)</span> 中依赖性的 <strong>亲和力 (affinities)</strong>，依赖性越强，<span class="math notranslate nohighlight">\(x_C\)</span> 得分越高。<!--这通过对特定的实例 $x_C$ 打更高的分实现。--></p>
 <p>!!! note “原书脚注：”
-如果团是分离的，则势可以是密度，但一般不是这种情形．</p>
+如果团是分离的，则势可以是密度，但一般不是这种情形。</p>
 <p>下值</p>
 <div class="math notranslate nohighlight">
 \[
 Z=\sum\limits_{x\in \cal X}\prod\limits_{C\in \cal C}\psi_C(x_C)\tag{17.4}
 \]</div>
-<p>是标准化常数，也称作 <strong>分割 (partition)</strong> 函数．另外，式 <span class="math notranslate nohighlight">\((17.3)\)</span> 表明图的独立性由乘积中的团定义．这个结果对于有着正分布的马尔科夫网络 <span class="math notranslate nohighlight">\(\cal G\)</span> 成立，也称作 Hammersley-Cliffodinyrd 定理（Hammersley and Clifford, 1971<a class="footnote-reference brackets" href="#id11" id="id2">1</a>; Clifford, 1990<a class="footnote-reference brackets" href="#id12" id="id3">2</a>）．</p>
+<p>是标准化常数，也称作 <strong>分割 (partition)</strong> 函数。另外，式 <span class="math notranslate nohighlight">\((17.3)\)</span> 表明图的独立性由乘积中的团定义。这个结果对于有着正分布的马尔科夫网络 <span class="math notranslate nohighlight">\(\cal G\)</span> 成立，也称作 Hammersley-Cliffodinyrd 定理（Hammersley and Clifford, 1971<a class="footnote-reference brackets" href="#id11" id="id2">1</a>; Clifford, 1990<a class="footnote-reference brackets" href="#id12" id="id3">2</a>）。</p>
 <p>!!! note “weiya 注”
 一般地，对于取值为 <span class="math notranslate nohighlight">\(x_i\)</span> 的随机变量 <span class="math notranslate nohighlight">\(X_i\)</span> 的集合，<strong>势函数 (potential function)</strong> 为 <span class="math notranslate nohighlight">\(H(x_1,x_2,\ldots)\)</span>，<strong>分割函数 (partition function)</strong> 定义如下
 $<span class="math notranslate nohighlight">\(
 	Z(\beta)=\sum\limits_{x_i}exp(-\beta H(x_1,x_2,\ldots))
 	\)</span>$</p>
-<p>很多图的估计和计算的方法首先将图分解成最大团．然后在单个团中计算相关的量，接着在整个图上进行累加．一个著名的例子是根据联合分布计算边缘和低阶概率的 join tree（或 junction tree）算法．可以在 Pearl (1986)<a class="footnote-reference brackets" href="#id13" id="id4">3</a>，Lauritzen and Spiegelhalter (1988)<a class="footnote-reference brackets" href="#id14" id="id5">4</a>，Pearl (1988)<a class="footnote-reference brackets" href="#id15" id="id6">5</a>，Shenoy and Shafer (1988)<a class="footnote-reference brackets" href="#id16" id="id7">6</a>，Jensen et al. (1990)<a class="footnote-reference brackets" href="#id17" id="id8">7</a>，或者 Koller and Friedman (2007)<a class="footnote-reference brackets" href="#id18" id="id9">8</a> 中找到具体细节．</p>
+<p>很多图的估计和计算的方法首先将图分解成最大团。然后在单个团中计算相关的量，接着在整个图上进行累加。一个著名的例子是根据联合分布计算边缘和低阶概率的 join tree（或 junction tree）算法。可以在 Pearl (1986)<a class="footnote-reference brackets" href="#id13" id="id4">3</a>，Lauritzen and Spiegelhalter (1988)<a class="footnote-reference brackets" href="#id14" id="id5">4</a>，Pearl (1988)<a class="footnote-reference brackets" href="#id15" id="id6">5</a>，Shenoy and Shafer (1988)<a class="footnote-reference brackets" href="#id16" id="id7">6</a>，Jensen et al. (1990)<a class="footnote-reference brackets" href="#id17" id="id8">7</a>，或者 Koller and Friedman (2007)<a class="footnote-reference brackets" href="#id18" id="id9">8</a> 中找到具体细节。</p>
 <p>!!! tip “weiya 注：junction tree”
-Søren Højsgaard 的 <a class="reference external" href="../references/GMwR-notes.pdf#page=22">Notes: Graphical Models with R</a> 中通过一个简单的三结点的有向图展示了如何通过 Message Passing in Junction Tree 计算边缘分布的概率．Søren Højsgaard et al. 的 <a class="reference external" href="../references/Graphical-Models-with-R.pdf#page=64">Graphical Models with R</a> 介绍了更一般的 Message Passing in Junction Tree，主要分为两个过程，work inwards towards root 和 work outwards from root．另外，可以参考 Mark A. Paskin 的 <a class="reference external" href="http://ai.stanford.edu/~paskin/gm-short-course/">A Short Course on Graphical Models</a>．</p>
-<p>图模型并不总能唯一确定联合概率分布的高阶依赖结构．考虑图 17.3 的三结点完全图．它可以表示下面任一分布的依赖性结构
+Søren Højsgaard 的 <a class="reference external" href="../references/GMwR-notes.pdf#page=22">Notes: Graphical Models with R</a> 中通过一个简单的三结点的有向图展示了如何通过 Message Passing in Junction Tree 计算边缘分布的概率。Søren Højsgaard et al. 的 <a class="reference external" href="../references/Graphical-Models-with-R.pdf#page=64">Graphical Models with R</a> 介绍了更一般的 Message Passing in Junction Tree，主要分为两个过程，work inwards towards root 和 work outwards from root。另外，可以参考 Mark A. Paskin 的 <a class="reference external" href="http://ai.stanford.edu/~paskin/gm-short-course/">A Short Course on Graphical Models</a>。</p>
+<p>图模型并不总能唯一确定联合概率分布的高阶依赖结构。考虑图 17.3 的三结点完全图。它可以表示下面任一分布的依赖性结构
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1232,12 +1212,12 @@ f^{(3)}(x,y,z)&amp;=\frac{1}{Z}\psi(x,y,z)
 \end{align*}\]</div>
 <p>\tag{17.5}
 $<span class="math notranslate nohighlight">\(
-第一个仅仅明确了二阶依赖性（并且可以用更少的参数表示）．离散数据的图模型是 loglinear models for multiway contingency tables 的一种特殊情形（如，Bishop et al., 1975[^9]）；这种情形下 \)</span>f^{(2)}$ 被称作“无二阶交叉”模型．</p>
+第一个仅仅明确了二阶依赖性（并且可以用更少的参数表示）。离散数据的图模型是 loglinear models for multiway contingency tables 的一种特殊情形（如，Bishop et al., 1975[^9]）；这种情形下 \)</span>f^{(2)}$ 被称作“无二阶交叉”模型。</p>
 <p><img alt="" src="../_images/fig17.3.png" /></p>
 <blockquote>
-<div><p>图 17.3. 没有唯一地指定变量的联合分布中的高阶依赖性结构的完全图．</p>
+<div><p>图 17.3. 没有唯一地指定变量的联合分布中的高阶依赖性结构的完全图。</p>
 </div></blockquote>
-<p>本章的剩余部分我们关注 <strong>成对马尔科夫图 (pairwise Markov graphs)</strong> (Koller and Friedman, 2007<a class="footnote-reference brackets" href="#id18" id="id10">8</a>)．对于每条边都有势能函数（如上面 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 的成对变量），且用至多二阶的交叉项来表示．这些在参数上是很简洁的，更容易处理，并且给出由图结构表示的最小复杂性．连续和离散数据的模型都仅仅是（关于**边集 (edge set)**中变量的）成对边缘分布的函数．</p>
+<p>本章的剩余部分我们关注 <strong>成对马尔科夫图 (pairwise Markov graphs)</strong> (Koller and Friedman, 2007<a class="footnote-reference brackets" href="#id18" id="id10">8</a>)。对于每条边都有势能函数（如上面 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 的成对变量），且用至多二阶的交叉项来表示。这些在参数上是很简洁的，更容易处理，并且给出由图结构表示的最小复杂性。连续和离散数据的模型都仅仅是（关于**边集 (edge set)**中变量的）成对边缘分布的函数。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

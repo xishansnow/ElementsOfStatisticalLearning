@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1166,35 +1167,35 @@
                 
   <div class="section" id="id1">
 <h1>3.5 运用派生输入方向的方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>在很多情形下我们有很多输入，这些输入的相关性经常是非常强的．这一小节中的方法产生较少的原输入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的线性组合 <span class="math notranslate nohighlight">\(Z_m,m=1,2,\ldots,M\)</span>，然后 <span class="math notranslate nohighlight">\(Z_m\)</span> 用来代替 <span class="math notranslate nohighlight">\(X_j\)</span> 来作为回归的输入．这些方法区别于怎样构造线性组合．</p>
+<p>在很多情形下我们有很多输入，这些输入的相关性经常是非常强的。这一小节中的方法产生较少的原输入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的线性组合 <span class="math notranslate nohighlight">\(Z_m,m=1,2,\ldots,M\)</span>，然后 <span class="math notranslate nohighlight">\(Z_m\)</span> 用来代替 <span class="math notranslate nohighlight">\(X_j\)</span> 来作为回归的输入。这些方法区别于怎样构造线性组合。</p>
 <div class="section" id="id2">
 <h2>主成分回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>在这种方法下，使用的线性组合 <span class="math notranslate nohighlight">\(Z_m\)</span> 是在前面 <span class="xref myst">3.4.1 节</span>中定义的主成分．</p>
-<p>主成分回归构造派生的输入列 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf Xv_m\)</span>，然后在 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots,\mathbf z_M,\; M\le p\)</span> 上回归 <span class="math notranslate nohighlight">\(\mathbf y\)</span>．因为 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是正交的，则这个回归只是单变量回归的和</p>
+<p>在这种方法下，使用的线性组合 <span class="math notranslate nohighlight">\(Z_m\)</span> 是在前面 <span class="xref myst">3.4.1 节</span>中定义的主成分。</p>
+<p>主成分回归构造派生的输入列 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf Xv_m\)</span>，然后在 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots,\mathbf z_M,\; M\le p\)</span> 上回归 <span class="math notranslate nohighlight">\(\mathbf y\)</span>。因为 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是正交的，则这个回归只是单变量回归的和</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{\mathbf y}^{pcr}_{(M)}=\bar y\mathbf 1+\sum\limits_{m=1}^M\hat{\theta}_m\mathbf z_m\tag{3.61}\label{3.61}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\hat\theta_m=\langle \mathbf z_m,\mathbf y\rangle/\langle\mathbf z_m,\mathbf z_m\rangle\)</span>．因为每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是原输入变量 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的线性组合，我们可以将解 \eqref{3.61} 表达成关于 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的系数（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">练习 3.13</a>）:</p>
+<p>其中，<span class="math notranslate nohighlight">\(\hat\theta_m=\langle \mathbf z_m,\mathbf y\rangle/\langle\mathbf z_m,\mathbf z_m\rangle\)</span>。因为每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是原输入变量 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的线性组合，我们可以将解 \eqref{3.61} 表达成关于 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的系数（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">练习 3.13</a>）:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\beta^{pcr}(M)=\sum\limits_{m=1}^M\hat\theta_mv_m\tag{3.62}
 \]</div>
 <p>!!! info “weiya 注：Ex. 3.13”
-已解决．详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">Issue 102: Ex. 3.13</a>．</p>
-<p>岭回归下，主成分依赖输入 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的放缩尺度，所以一般地我们首先对它们进行标准化．注意到如果 <span class="math notranslate nohighlight">\(M=p\)</span>，我们就会回到通常的最小二乘估计，因为列 <span class="math notranslate nohighlight">\(\mathbf Z=\mathbf U\mathbf D\)</span> 张成了 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列空间．对于 <span class="math notranslate nohighlight">\(M &lt; p\)</span> 我们得到一个降维的回归问题．我们看到主成分回归与岭回归非常相似：都是通过输入矩阵的主成分来操作的．岭回归对主成分系数进行了收缩，收缩更多地依赖对应特征值的大小；主成分回归丢掉 <span class="math notranslate nohighlight">\(p-M\)</span> 个最小的特征值分量．图 3.17 说明了这一点</p>
+已解决。详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">Issue 102: Ex. 3.13</a>。</p>
+<p>岭回归下，主成分依赖输入 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的放缩尺度，所以一般地我们首先对它们进行标准化。注意到如果 <span class="math notranslate nohighlight">\(M=p\)</span>，我们就会回到通常的最小二乘估计，因为列 <span class="math notranslate nohighlight">\(\mathbf Z=\mathbf U\mathbf D\)</span> 张成了 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列空间。对于 <span class="math notranslate nohighlight">\(M &lt; p\)</span> 我们得到一个降维的回归问题。我们看到主成分回归与岭回归非常相似：都是通过输入矩阵的主成分来操作的。岭回归对主成分系数进行了收缩，收缩更多地依赖对应特征值的大小；主成分回归丢掉 <span class="math notranslate nohighlight">\(p-M\)</span> 个最小的特征值分量。图 3.17 说明了这一点</p>
 <p><img alt="" src="../_images/fig3.17.png" /></p>
 <blockquote>
-<div><p>图 3.17 岭回归运用 (3.47) 中的收缩因子 <span class="math notranslate nohighlight">\(d_j^2/(d_j^2+\lambda)\)</span> 来收缩主成分回归的系数．主成分回归截断了它们． 图中显示了图 3.7 对应的收缩和截断模式作为主成分指标的函数．</p>
+<div><p>图 3.17 岭回归运用 (3.47) 中的收缩因子 <span class="math notranslate nohighlight">\(d_j^2/(d_j^2+\lambda)\)</span> 来收缩主成分回归的系数。主成分回归截断了它们。 图中显示了图 3.7 对应的收缩和截断模式作为主成分指标的函数。</p>
 </div></blockquote>
-<p>在图 3.7 中我们看到交叉验证表明有 7 项；最终模型在表 3.3 中有最低的测试误差．</p>
+<p>在图 3.7 中我们看到交叉验证表明有 7 项；最终模型在表 3.3 中有最低的测试误差。</p>
 </div>
 <div class="section" id="id3">
 <h2>偏最小二乘<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>这个技巧也构造了一系列用于回归的输入变量的线性组合，但是与主成分回归不同的是它采用 <span class="math notranslate nohighlight">\(\mathbf y\)</span>（除了 <span class="math notranslate nohighlight">\(\mathbf X\)</span>）来构造．和主成分回归相同的是，偏最小二乘 (PLS) 也不是<strong>尺度不变 (scale invariant)</strong> 的，所以我们假设每个 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 标准化使得均值为 0 、方差为 1．一开始，PLS 对每个 <span class="math notranslate nohighlight">\(j\)</span> 计算 <span class="math notranslate nohighlight">\(\hat \varphi_{1j}=\langle \mathbf x_j, \mathbf y\rangle\)</span>．从这里我们构造新的派生输入变量 <span class="math notranslate nohighlight">\(\mathbf z_1=\sum_j\hat \varphi_{1j}\mathbf x_j\)</span>，这是第一偏最小二乘方向．因此在每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 的构造中，输入变量通过判断其在 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 上的单变量影响强度来加权．</p>
+<p>这个技巧也构造了一系列用于回归的输入变量的线性组合，但是与主成分回归不同的是它采用 <span class="math notranslate nohighlight">\(\mathbf y\)</span>（除了 <span class="math notranslate nohighlight">\(\mathbf X\)</span>）来构造。和主成分回归相同的是，偏最小二乘 (PLS) 也不是<strong>尺度不变 (scale invariant)</strong> 的，所以我们假设每个 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 标准化使得均值为 0 、方差为 1。一开始，PLS 对每个 <span class="math notranslate nohighlight">\(j\)</span> 计算 <span class="math notranslate nohighlight">\(\hat \varphi_{1j}=\langle \mathbf x_j, \mathbf y\rangle\)</span>。从这里我们构造新的派生输入变量 <span class="math notranslate nohighlight">\(\mathbf z_1=\sum_j\hat \varphi_{1j}\mathbf x_j\)</span>，这是第一偏最小二乘方向。因此在每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 的构造中，输入变量通过判断其在 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 上的单变量影响强度来加权。</p>
 <p>!!! note “weiya 注：原书脚注”
-因为 <span class="math notranslate nohighlight">\(\x_j\)</span> 已经标准化，第一方向 <span class="math notranslate nohighlight">\(\hat\varphi_{1j}\)</span> 是单变量回归的系数（乘以某不相关的常数）；但对接下来的方向不是这样．</p>
-<p>输出变量 <strong><span class="math notranslate nohighlight">\(\mathbf y\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 上回归</strong>便得到系数 <span class="math notranslate nohighlight">\(\hat \theta_1\)</span>，然后我们对 <span class="math notranslate nohighlight">\(\mathbf x_1,\mathbf x_2,\ldots,\mathbf x_p\)</span> 进行关于 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 的正交化．我们继续这个过程，直到得到 <span class="math notranslate nohighlight">\(M\le p\)</span> 个方向．在这种方式下，偏最小二乘得到一系列派生的、正交化的输入或者方向 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots, \mathbf z_M\)</span>．和主成分回归一样，如果我们构造所有 <span class="math notranslate nohighlight">\(M=p\)</span> 个方向，我们会得到一个等价于普通最小二乘估计的解；如果使用 <span class="math notranslate nohighlight">\(M&lt; p\)</span> 个方向会得到一个低维的回归．这个过程将在算法 3.3 中详细描述．</p>
+因为 <span class="math notranslate nohighlight">\(\x_j\)</span> 已经标准化，第一方向 <span class="math notranslate nohighlight">\(\hat\varphi_{1j}\)</span> 是单变量回归的系数（乘以某不相关的常数）；但对接下来的方向不是这样。</p>
+<p>输出变量 <strong><span class="math notranslate nohighlight">\(\mathbf y\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 上回归</strong>便得到系数 <span class="math notranslate nohighlight">\(\hat \theta_1\)</span>，然后我们对 <span class="math notranslate nohighlight">\(\mathbf x_1,\mathbf x_2,\ldots,\mathbf x_p\)</span> 进行关于 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 的正交化。我们继续这个过程，直到得到 <span class="math notranslate nohighlight">\(M\le p\)</span> 个方向。在这种方式下，偏最小二乘得到一系列派生的、正交化的输入或者方向 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots, \mathbf z_M\)</span>。和主成分回归一样，如果我们构造所有 <span class="math notranslate nohighlight">\(M=p\)</span> 个方向，我们会得到一个等价于普通最小二乘估计的解；如果使用 <span class="math notranslate nohighlight">\(M&lt; p\)</span> 个方向会得到一个低维的回归。这个过程将在算法 3.3 中详细描述。</p>
 <p>!!! note “weiya 注：”
 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上回归 <span class="math notranslate nohighlight">\(\mathbf b\)</span>（或者称作 <span class="math notranslate nohighlight">\(\mathbf b\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上回归）指的是
 <span class="math notranslate nohighlight">\(\mathbf b\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上的无截距的简单单变量回归，回归系数为
@@ -1214,11 +1215,11 @@ $<span class="math notranslate nohighlight">\(
    2. $\hat \theta_m=\langle \mathbf z_m, \mathbf y\rangle/\langle \mathbf z_m,\mathbf z_m\rangle$
    3. $\hat{\mathbf y}^{(m)}=\hat{\mathbf y}^{(m-1)}+\hat\theta_m\mathbf z_m$
    4. 对每个$\mathbf x_j^{(m-1)}$关于$\mathbf z_m$正交化：$\mathbf x_j^{(m)}=\mathbf x_j^{(m-1)}-\dfrac{\langle \mathbf z_m,\mathbf x_j\rangle}{\langle \mathbf z_m,\mathbf z_m\rangle}\mathbf z_m,\; j=1,2,\ldots,p.$
-3. 输出拟合向量序列$\{\hat{\mathbf y^{(m)}}\}^p_1$．因为$\{\mathbf z_\ell\}^m_1$关于原输入变量$\mathbf x_j$为线性的，所以是$\hat {\mathbf y}^{(m)}=\mathbf X \hat \beta^{pls}(m)$.这些线性系数可以通过PLS转换的序列重新得到．
+3. 输出拟合向量序列$\{\hat{\mathbf y^{(m)}}\}^p_1$。因为$\{\mathbf z_\ell\}^m_1$关于原输入变量$\mathbf x_j$为线性的，所以是$\hat {\mathbf y}^{(m)}=\mathbf X \hat \beta^{pls}(m)$.这些线性系数可以通过PLS转换的序列重新得到。
 ****
 -->
-<p>在前列腺癌的例子中，交叉验证在图 3.7 中选择 <span class="math notranslate nohighlight">\(M=2\)</span> 个 PLS 方向．这得到了表 3.3 最右边的列的模型．</p>
-<p>偏最小二乘求解的是什么优化问题呢？因为它使用响应变量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 去构造它的方向，所以它解的路径是关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的非线性函数．可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/103">练习 3.15</a>）偏最小二乘寻找有高方差以及和响应变量有高相关性的方向，而与之相对的主成分分析回归只重视高方差（Stone and Brooks, 1990<a class="footnote-reference brackets" href="#id6" id="id4">1</a>; Frank and Friedman, 1993<a class="footnote-reference brackets" href="#id7" id="id5">2</a>）．特别地，第 <span class="math notranslate nohighlight">\(m\)</span> 个主成分方向 <span class="math notranslate nohighlight">\(v_m\)</span> 是下面问题的解：</p>
+<p>在前列腺癌的例子中，交叉验证在图 3.7 中选择 <span class="math notranslate nohighlight">\(M=2\)</span> 个 PLS 方向。这得到了表 3.3 最右边的列的模型。</p>
+<p>偏最小二乘求解的是什么优化问题呢？因为它使用响应变量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 去构造它的方向，所以它解的路径是关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的非线性函数。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/103">练习 3.15</a>）偏最小二乘寻找有高方差以及和响应变量有高相关性的方向，而与之相对的主成分分析回归只重视高方差（Stone and Brooks, 1990<a class="footnote-reference brackets" href="#id6" id="id4">1</a>; Frank and Friedman, 1993<a class="footnote-reference brackets" href="#id7" id="id5">2</a>）。特别地，第 <span class="math notranslate nohighlight">\(m\)</span> 个主成分方向 <span class="math notranslate nohighlight">\(v_m\)</span> 是下面问题的解：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1227,7 +1228,7 @@ $<span class="math notranslate nohighlight">\(
 \end{align}
 \tag{3.63}
 \end{split}\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\mathbf S\)</span> 为 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的样本协方差矩阵．<span class="math notranslate nohighlight">\(\alpha^T\mathbf Sv_\ell=0\)</span> 保证了 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf X\alpha\)</span> 与之前所有的线性组合 <span class="math notranslate nohighlight">\(\mathbf z_\ell=\mathbf v_\ell\)</span> 都不相关．第 <span class="math notranslate nohighlight">\(m\)</span> 个 PLS 方向 <span class="math notranslate nohighlight">\(\hat \varphi_m\)</span> 是下面的解：</p>
+<p>其中，<span class="math notranslate nohighlight">\(\mathbf S\)</span> 为 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的样本协方差矩阵。<span class="math notranslate nohighlight">\(\alpha^T\mathbf Sv_\ell=0\)</span> 保证了 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf X\alpha\)</span> 与之前所有的线性组合 <span class="math notranslate nohighlight">\(\mathbf z_\ell=\mathbf v_\ell\)</span> 都不相关。第 <span class="math notranslate nohighlight">\(m\)</span> 个 PLS 方向 <span class="math notranslate nohighlight">\(\hat \varphi_m\)</span> 是下面的解：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1236,11 +1237,11 @@ $<span class="math notranslate nohighlight">\(
 \end{align}
 \tag{3.64}
 \end{split}\]</div>
-<p>进一步的分析揭示了，方差项趋向于占主导地位，而且因此偏最小二乘表现得很像岭回归和主成分回归．我们将在下一节讨论这些．</p>
-<p>如果输入矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 是正交的，则偏最小二乘会经过 <span class="math notranslate nohighlight">\(m=1\)</span> 步找到最小二乘估计．后续的步骤不起作用，因为 <span class="math notranslate nohighlight">\(m &gt;1\text{时}，\hat \varphi_{mj}=0\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">练习 3.14</a>）．</p>
+<p>进一步的分析揭示了，方差项趋向于占主导地位，而且因此偏最小二乘表现得很像岭回归和主成分回归。我们将在下一节讨论这些。</p>
+<p>如果输入矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 是正交的，则偏最小二乘会经过 <span class="math notranslate nohighlight">\(m=1\)</span> 步找到最小二乘估计。后续的步骤不起作用，因为 <span class="math notranslate nohighlight">\(m &gt;1\text{时}，\hat \varphi_{mj}=0\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">练习 3.14</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.14”
-已解决．详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">Issue 104: Ex. 3.14</a>．</p>
-<p>也可以证明 <span class="math notranslate nohighlight">\(m=1,2,\ldots,p\)</span> 时的 PLS 系数序列表示计算最小二乘解时的共轭梯度（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/105">练习 3.18</a>）．</p>
+已解决。详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">Issue 104: Ex. 3.14</a>。</p>
+<p>也可以证明 <span class="math notranslate nohighlight">\(m=1,2,\ldots,p\)</span> 时的 PLS 系数序列表示计算最小二乘解时的共轭梯度（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/105">练习 3.18</a>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>

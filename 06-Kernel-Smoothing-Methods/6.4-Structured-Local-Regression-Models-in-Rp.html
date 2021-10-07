@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>\(\IR^p\)中结构化局部回归 &#8212; 统计学习精要(中文)</title>
+    <title>6.4 \(\mathcal{IR}^p\)中结构化局部回归 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="局部似然和其他模型" href="6.5-Local-Likelihood-and-Other-Models.html" />
-    <link rel="prev" title="6.3 \(\IR^p\)中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
+    <link rel="next" title="6.5 局部似然和其他模型" href="6.5-Local-Likelihood-and-Other-Models.html" />
+    <link rel="prev" title="6.3 \(\mathcal{IR}^p\)中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -353,22 +353,23 @@
     <a class="reference internal" href="6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1166,47 +1167,48 @@
         
               <div>
                 
-  <div class="section" id="ir-p">
-<h1><span class="math notranslate nohighlight">\(\IR^p\)</span>中结构化局部回归<a class="headerlink" href="#ir-p" title="Permalink to this headline">¶</a></h1>
-<p>当维度与样本大小的比率不是很好，则局部回归对我们没有太大帮助，除非我们想要对模型做出一些结构化的假设．这本书的很多部分是关于结构化回归和分类模型的．这里我们关注一些与核方法直接相关的方法．</p>
+  <div class="section" id="mathcal-ir-p">
+<h1>6.4 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中结构化局部回归<a class="headerlink" href="#mathcal-ir-p" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
+<p>当维度与样本大小的比率不是很好，则局部回归对我们没有太大帮助，除非我们想要对模型做出一些结构化的假设。这本书的很多部分是关于结构化回归和分类模型的。这里我们关注一些与核方法直接相关的方法。</p>
 <div class="section" id="id1">
 <h2>结构核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     K_\lambda(x_0,x)=D\left(\frac{\Vert x-x_0\Vert}{\lambda}\right)\tag{6.13}\label{6.13}
     \)</span>$</p>
-<p>一种方式是修改核．默认的球面核 \eqref{6.13} 对每个坐标给出了相等的权重，所以一种自然的默认策略是对每个变量标准化得到单位标准误差．更一般的方式是使用半正定矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 来对不同的坐标进行赋予权重：</p>
+<p>一种方式是修改核。默认的球面核 \eqref{6.13} 对每个坐标给出了相等的权重，所以一种自然的默认策略是对每个变量标准化得到单位标准误差。更一般的方式是使用半正定矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 来对不同的坐标进行赋予权重：</p>
 <div class="math notranslate nohighlight">
 \[
 K_{\lambda, A}(x_0,x)=D\left(\frac{(x-x_0)^T\mathbf A(x-x_0))}{\lambda}\right)\tag{6.14}
 \]</div>
-<p>整个坐标或者方向的影响可以通过在 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 上加入合适的限制来降低或者忽略．举个例子，如果 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 为对角矩阵，则我们可以通过增加或者减小 <span class="math notranslate nohighlight">\(A_{jj}\)</span> 来增大或者减小单个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的影响．预测变量很多通常都是高度相关的，比如从相似的数字信号或者图像中得到．预测变量的协方差函数可以用来修改矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span>，使得在高频对比中关注更少（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/196">练习 6.4</a>）．研究者们已经提出了多维核参数训练的方法．举个例子，第 11 章中讨论的投影寻踪回归模型是合适的，其中 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的低阶形式表示 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的岭回归．关于 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的更一般的模型是很复杂的，相反地，我们倾向于接下来讨论的结构形式的回归函数．</p>
+<p>整个坐标或者方向的影响可以通过在 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 上加入合适的限制来降低或者忽略。举个例子，如果 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 为对角矩阵，则我们可以通过增加或者减小 <span class="math notranslate nohighlight">\(A_{jj}\)</span> 来增大或者减小单个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的影响。预测变量很多通常都是高度相关的，比如从相似的数字信号或者图像中得到。预测变量的协方差函数可以用来修改矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span>，使得在高频对比中关注更少（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/196">练习 6.4</a>）。研究者们已经提出了多维核参数训练的方法。举个例子，第 11 章中讨论的投影寻踪回归模型是合适的，其中 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的低阶形式表示 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的岭回归。关于 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的更一般的模型是很复杂的，相反地，我们倾向于接下来讨论的结构形式的回归函数。</p>
 <div class="section" id="id2">
 <h3>结构回归函数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>我们试着在 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中拟合回归函数 <span class="math notranslate nohighlight">\(\E(Y\mid X)=f(X_1,X_2,\ldots,X_p)\)</span>，其中每一阶的交叉项都可能存在．很自然地可以考虑下列形式的方差分析 (ANOVA) 分解：</p>
+<p>我们试着在 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中拟合回归函数 <span class="math notranslate nohighlight">\(\E(Y\mid X)=f(X_1,X_2,\ldots,X_p)\)</span>，其中每一阶的交叉项都可能存在。很自然地可以考虑下列形式的方差分析 (ANOVA) 分解：</p>
 <div class="math notranslate nohighlight">
 \[
 f(X_1,X_2,\ldots,X_p)=\alpha+\sum\limits_jg_j(X_j)+\sum\limits_{k&lt;\ell}g_{k\ell}(X_k,X_\ell)+\cdots\tag{6.15}
 \]</div>
-<p>并且接着引入消除一些高阶项的结构．可加性模型假设只有主要影响项 <span class="math notranslate nohighlight">\(f(X)=\alpha+\sum\limits_{j=1}^pg_j(X_j)\)</span>，二阶模型会有次数至多为 2 的交叉项，以此类推．在第 9 章中，我们描述了对于拟合这样低阶交叉模型的 <strong>迭代向后拟合 (iterative backfitting)</strong> 算法．在加性模型中，举个例子，如果所有但除了第 <span class="math notranslate nohighlight">\(k\)</span> 项是已知的，则我们可以用 <span class="math notranslate nohighlight">\(Y-\sum_{j\neq k}g_j(X_j)\)</span> 在 <span class="math notranslate nohighlight">\(X_k\)</span> 上的局部回归来估计 <span class="math notranslate nohighlight">\(g_k\)</span>．这个依次对每个函数重复进行，直到收敛．重要的细节是，在每一步，一维局部回归是所有都需要的．同样的思想可以用来拟合低维 ANOVA 分解．</p>
-<p>这些结构模型的一个重要的特殊情形是 <strong>可变系数模型 (varying coefficient models)</strong> 类．举个例子，假设我们将 <span class="math notranslate nohighlight">\(X\)</span> 中的 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量分成集合 <span class="math notranslate nohighlight">\((X_1,X_2,\ldots,X_q),q &lt; p\)</span>，剩下的变量放进向量 <span class="math notranslate nohighlight">\(Z\)</span> 中．接着我们假设条件线性模型</p>
+<p>并且接着引入消除一些高阶项的结构。可加性模型假设只有主要影响项 <span class="math notranslate nohighlight">\(f(X)=\alpha+\sum\limits_{j=1}^pg_j(X_j)\)</span>，二阶模型会有次数至多为 2 的交叉项，以此类推。在第 9 章中，我们描述了对于拟合这样低阶交叉模型的 <strong>迭代向后拟合 (iterative backfitting)</strong> 算法。在加性模型中，举个例子，如果所有但除了第 <span class="math notranslate nohighlight">\(k\)</span> 项是已知的，则我们可以用 <span class="math notranslate nohighlight">\(Y-\sum_{j\neq k}g_j(X_j)\)</span> 在 <span class="math notranslate nohighlight">\(X_k\)</span> 上的局部回归来估计 <span class="math notranslate nohighlight">\(g_k\)</span>。这个依次对每个函数重复进行，直到收敛。重要的细节是，在每一步，一维局部回归是所有都需要的。同样的思想可以用来拟合低维 ANOVA 分解。</p>
+<p>这些结构模型的一个重要的特殊情形是 <strong>可变系数模型 (varying coefficient models)</strong> 类。举个例子，假设我们将 <span class="math notranslate nohighlight">\(X\)</span> 中的 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量分成集合 <span class="math notranslate nohighlight">\((X_1,X_2,\ldots,X_q),q &lt; p\)</span>，剩下的变量放进向量 <span class="math notranslate nohighlight">\(Z\)</span> 中。接着我们假设条件线性模型</p>
 <div class="math notranslate nohighlight">
 \[
 f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
 \]</div>
-<p>对于给定的 <span class="math notranslate nohighlight">\(Z\)</span>，这是线性模型，但是每个参数可以随着 <span class="math notranslate nohighlight">\(Z\)</span> 而改变．很自然地可以通过局部加权最小二乘拟合这个模型：</p>
+<p>对于给定的 <span class="math notranslate nohighlight">\(Z\)</span>，这是线性模型，但是每个参数可以随着 <span class="math notranslate nohighlight">\(Z\)</span> 而改变。很自然地可以通过局部加权最小二乘拟合这个模型：</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\alpha(z_0),\beta(z_0)}{\min}\sum\limits_{i=1}^NK_\lambda(z_0,z_i)(y_i-\alpha(z_0)-x_{1i}\beta(z_0)-\cdots - x_{qi}\beta_q(z_0))^2\tag{6.17}
 \]</div>
-<p>图 6.10 说明了在人类大动脉测量数据上的想法．一个由来已久的说法是 <strong>大动脉 (aorta)</strong> 会随着 <code class="docutils literal notranslate"><span class="pre">age</span></code> 增长而变厚．这里我们将大动脉的 <code class="docutils literal notranslate"><span class="pre">diameter</span></code> 建立为 <code class="docutils literal notranslate"><span class="pre">age</span></code> 的线性函数，但是允许系数随着 <code class="docutils literal notranslate"><span class="pre">gender</span></code> 和 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 的变化而变化．我们对男性和女性分别采用局部回归模型．尽管大动脉确实很明显地（在大动脉比较厚区域中）随着年龄而变厚，这种关系随着到大动脉的距离而减弱．图 6.11 显示了截距和斜率作为深度的函数．</p>
+<p>图 6.10 说明了在人类大动脉测量数据上的想法。一个由来已久的说法是 <strong>大动脉 (aorta)</strong> 会随着 <code class="docutils literal notranslate"><span class="pre">age</span></code> 增长而变厚。这里我们将大动脉的 <code class="docutils literal notranslate"><span class="pre">diameter</span></code> 建立为 <code class="docutils literal notranslate"><span class="pre">age</span></code> 的线性函数，但是允许系数随着 <code class="docutils literal notranslate"><span class="pre">gender</span></code> 和 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 的变化而变化。我们对男性和女性分别采用局部回归模型。尽管大动脉确实很明显地（在大动脉比较厚区域中）随着年龄而变厚，这种关系随着到大动脉的距离而减弱。图 6.11 显示了截距和斜率作为深度的函数。</p>
 <p><img alt="" src="../_images/fig6.10.png" /></p>
 <blockquote>
-<div><p>图 6.11. 每张图中 <code class="docutils literal notranslate"><span class="pre">aorta</span> <span class="pre">diameter</span></code> 建立为 <code class="docutils literal notranslate"><span class="pre">age</span></code> 的线性函数模型．这个模型的系数随着 <code class="docutils literal notranslate"><span class="pre">gender</span> </code>和到 <code class="docutils literal notranslate"><span class="pre">aorta</span></code> 的 <code class="docutils literal notranslate"><span class="pre">depth</span></code>（左边靠近顶端，右边靠近底端）变化．在线性模型中的系数有着明显的趋势．</p>
+<div><p>图 6.11. 每张图中 <code class="docutils literal notranslate"><span class="pre">aorta</span> <span class="pre">diameter</span></code> 建立为 <code class="docutils literal notranslate"><span class="pre">age</span></code> 的线性函数模型。这个模型的系数随着 <code class="docutils literal notranslate"><span class="pre">gender</span> </code>和到 <code class="docutils literal notranslate"><span class="pre">aorta</span></code> 的 <code class="docutils literal notranslate"><span class="pre">depth</span></code>（左边靠近顶端，右边靠近底端）变化。在线性模型中的系数有着明显的趋势。</p>
 </div></blockquote>
 <p><img alt="" src="../_images/fig6.11.png" /></p>
 <blockquote>
-<div><p>图 6.11. 在男性和女性情形下，<code class="docutils literal notranslate"><span class="pre">age</span></code> 作为到 aorta 的 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 的函数的截距和斜率．黄色带状表示一个标准误差．</p>
+<div><p>图 6.11. 在男性和女性情形下，<code class="docutils literal notranslate"><span class="pre">age</span></code> 作为到 aorta 的 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 的函数的截距和斜率。黄色带状表示一个标准误差。</p>
 </div></blockquote>
 </div>
 </div>
@@ -1246,7 +1248,7 @@ f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">6.3 <span class="math notranslate nohighlight">\(\IR^p\)</span>中的局部回归</p>
+                <p class="prevnext-title">6.3 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中的局部回归</p>
             </div>
         </a>
     </div>
@@ -1254,7 +1256,7 @@ f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
         <a class="right-next" href="6.5-Local-Likelihood-and-Other-Models.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">局部似然和其他模型</p>
+                <p class="prevnext-title">6.5 局部似然和其他模型</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

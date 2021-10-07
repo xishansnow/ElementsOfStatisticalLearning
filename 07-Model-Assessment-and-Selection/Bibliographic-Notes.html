@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,23 +1147,9 @@
                 
   <div class="section" id="id1">
 <h1>7.13 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-02-20</p></td>
-</tr>
-</tbody>
-</table>
-<p>交叉验证的主要参考文献为Stone(1974)<a class="footnote-reference brackets" href="#id27" id="id2">1</a>，Stone(1977)<a class="footnote-reference brackets" href="#id28" id="id3">2</a>和Allen(1974)<a class="footnote-reference brackets" href="#id29" id="id4">3</a>．AIC由Akaike(1973)<a class="footnote-reference brackets" href="#id30" id="id5">4</a>提出，而BIC由Schwarz（1978）<a class="footnote-reference brackets" href="#id31" id="id6">5</a>提出．Madigan and Raftery（1994）<a class="footnote-reference brackets" href="#id32" id="id7">6</a>概述了贝叶斯模型选择．MDL准则归功于Rissanen(1983)<a class="footnote-reference brackets" href="#id33" id="id8">7</a>．Cover and Thomas（1991）<a class="footnote-reference brackets" href="#id34" id="id9">8</a>包含编码理论和复杂性的很好的描述．VC维在Vapnik（1996）<a class="footnote-reference brackets" href="#id34" id="id10">8</a>中有描述．Stone（1977）<a class="footnote-reference brackets" href="#id28" id="id11">2</a>证明了AIC和舍一交叉验证渐进相等．一般的交叉验证由Golub et. al（1979）<a class="footnote-reference brackets" href="#id35" id="id12">10</a>和Wahba（1980）<a class="footnote-reference brackets" href="#id36" id="id13">11</a>描述．也可以参见Hastie and Tibshirani（1990）<a class="footnote-reference brackets" href="#id37" id="id14">12</a>的第三章．自助法归功于Efron（1979）<a class="footnote-reference brackets" href="#id38" id="id15">13</a>；它的概述可以参见Efron and Tibshirani（1993）<a class="footnote-reference brackets" href="#id39" id="id16">14</a>．Efron（1983）<a class="footnote-reference brackets" href="#id40" id="id17">15</a>提出一系列预测误差的自助法估计，包括乐观估计和.632估计．Efron（1986）<a class="footnote-reference brackets" href="#id41" id="id18">16</a>比较CV和GCV以及误差率的自助法估计．Breiman and Spector（1992)<a class="footnote-reference brackets" href="#id42" id="id19">17</a>，Breiman（1992）<a class="footnote-reference brackets" href="#id43" id="id20">18</a>，Shao（1996）<a class="footnote-reference brackets" href="#id44" id="id21">19</a>，Zhang（1993）<a class="footnote-reference brackets" href="#id45" id="id22">20</a>和Kohavi（1995）<a class="footnote-reference brackets" href="#id46" id="id23">21</a>等人研究了模型选择的交叉验证和自助法．.632+估计由Efron and Tibshirani（1997）<a class="footnote-reference brackets" href="#id47" id="id24">22</a>提出．</p>
-<p>Cherkassky and Ma(2003)<a class="footnote-reference brackets" href="#id48" id="id25">23</a>发表了回归中SRM用于模型选择的表现的研究，这对应本书的7.9.1节．他们抱怨我们对待SRM不公平，因为没有正确地应用它．我们的回复可以在期刊的同一个问题中找到（Hastie et. al（2003）<a class="footnote-reference brackets" href="#id49" id="id26">24</a>）．</p>
+<style>p{text-indent:2em;2}</style>
+<p>交叉验证的主要参考文献为Stone(1974)<a class="footnote-reference brackets" href="#id27" id="id2">1</a>，Stone(1977)<a class="footnote-reference brackets" href="#id28" id="id3">2</a>和Allen(1974)<a class="footnote-reference brackets" href="#id29" id="id4">3</a>。AIC由Akaike(1973)<a class="footnote-reference brackets" href="#id30" id="id5">4</a>提出，而BIC由Schwarz（1978）<a class="footnote-reference brackets" href="#id31" id="id6">5</a>提出。Madigan and Raftery（1994）<a class="footnote-reference brackets" href="#id32" id="id7">6</a>概述了贝叶斯模型选择。MDL准则归功于Rissanen(1983)<a class="footnote-reference brackets" href="#id33" id="id8">7</a>。Cover and Thomas（1991）<a class="footnote-reference brackets" href="#id34" id="id9">8</a>包含编码理论和复杂性的很好的描述。VC维在Vapnik（1996）<a class="footnote-reference brackets" href="#id34" id="id10">8</a>中有描述。Stone（1977）<a class="footnote-reference brackets" href="#id28" id="id11">2</a>证明了AIC和舍一交叉验证渐进相等。一般的交叉验证由Golub et. al（1979）<a class="footnote-reference brackets" href="#id35" id="id12">10</a>和Wahba（1980）<a class="footnote-reference brackets" href="#id36" id="id13">11</a>描述。也可以参见Hastie and Tibshirani（1990）<a class="footnote-reference brackets" href="#id37" id="id14">12</a>的第三章。自助法归功于Efron（1979）<a class="footnote-reference brackets" href="#id38" id="id15">13</a>；它的概述可以参见Efron and Tibshirani（1993）<a class="footnote-reference brackets" href="#id39" id="id16">14</a>。Efron（1983）<a class="footnote-reference brackets" href="#id40" id="id17">15</a>提出一系列预测误差的自助法估计，包括乐观估计和.632估计。Efron（1986）<a class="footnote-reference brackets" href="#id41" id="id18">16</a>比较CV和GCV以及误差率的自助法估计。Breiman and Spector（1992)<a class="footnote-reference brackets" href="#id42" id="id19">17</a>，Breiman（1992）<a class="footnote-reference brackets" href="#id43" id="id20">18</a>，Shao（1996）<a class="footnote-reference brackets" href="#id44" id="id21">19</a>，Zhang（1993）<a class="footnote-reference brackets" href="#id45" id="id22">20</a>和Kohavi（1995）<a class="footnote-reference brackets" href="#id46" id="id23">21</a>等人研究了模型选择的交叉验证和自助法。.632+估计由Efron and Tibshirani（1997）<a class="footnote-reference brackets" href="#id47" id="id24">22</a>提出。</p>
+<p>Cherkassky and Ma(2003)<a class="footnote-reference brackets" href="#id48" id="id25">23</a>发表了回归中SRM用于模型选择的表现的研究，这对应本书的7.9.1节。他们抱怨我们对待SRM不公平，因为没有正确地应用它。我们的回复可以在期刊的同一个问题中找到（Hastie et. al（2003）<a class="footnote-reference brackets" href="#id49" id="id26">24</a>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

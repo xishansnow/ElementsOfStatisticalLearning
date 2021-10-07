@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1166,77 +1167,77 @@
                 
   <div class="section" id="id1">
 <h1>5.9 小波光滑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>我们已经看到，有两种操作的模式来处理<strong>基函数的字典集 (dictionaries of basis functions)</strong>．对于回归样条，我们运用专业相关的知识或者自动地来选择基底的子集．更自适应的过程比如 MARS（<span class="xref myst">第 9 章</span>）可以同时捕捉光滑和非光滑的行为．对于光滑样条，我们采用整个基底，然后将系数收缩到光滑．</p>
-<p>小波法一般用整个正交基底来表示函数，但是会进一步对参数进行收缩或选择达到<strong>稀疏 (sparse)</strong> 表示．正如光滑函数可以用很少的样条基函数来表示，对于大部分都是平滑、包含很少的<strong>独立凹凸块 (isolated bumps)</strong> 函数可以用很少的（凹凸不平的）基函数来表示．小波基在信号处理和压缩中非常流行，因为他们可以有效地表示光滑和局部凹凸不平的函数——这被称为<strong>时间和频率的局部化(time and frequency localization)</strong>．相反，传统的 Fourier 仅仅允许频率的局部化．</p>
-<p>在我们介绍具体细节前，先看看图 5.16 中左边的 Haar 小波来直观感受小波光滑是怎样实现的．</p>
+<p>我们已经看到，有两种操作的模式来处理<strong>基函数的字典集 (dictionaries of basis functions)</strong>。对于回归样条，我们运用专业相关的知识或者自动地来选择基底的子集。更自适应的过程比如 MARS（<span class="xref myst">第 9 章</span>）可以同时捕捉光滑和非光滑的行为。对于光滑样条，我们采用整个基底，然后将系数收缩到光滑。</p>
+<p>小波法一般用整个正交基底来表示函数，但是会进一步对参数进行收缩或选择达到<strong>稀疏 (sparse)</strong> 表示。正如光滑函数可以用很少的样条基函数来表示，对于大部分都是平滑、包含很少的<strong>独立凹凸块 (isolated bumps)</strong> 函数可以用很少的（凹凸不平的）基函数来表示。小波基在信号处理和压缩中非常流行，因为他们可以有效地表示光滑和局部凹凸不平的函数——这被称为<strong>时间和频率的局部化(time and frequency localization)</strong>。相反，传统的 Fourier 仅仅允许频率的局部化。</p>
+<p>在我们介绍具体细节前，先看看图 5.16 中左边的 Haar 小波来直观感受小波光滑是怎样实现的。</p>
 <p><img alt="" src="../_images/fig5.16.png" /></p>
-<p>竖轴表示小波的尺度（频率），底部 <strong>尺度最低 (low scale)</strong>，顶端 <strong>尺度最高 (high scale)</strong>．在每个尺度下，小波并排着填充着时间轴：我们只展示出了一个子集．小波光滑通过最小二乘来拟合基底的系数，接着设置阈值来舍弃较小的系数．因为在每个尺度下都有很多的基函数，则可以在需要它的时候采用它，不需要它的时候舍弃它，这样来实现时间和频率的局部化．Harr 小波很容易理解，但是对大部分目标不够光滑．图 5.16 中右边的 symmlet 小波有着相同的正交性质，但是更加光滑．</p>
-<p>图 5.17 展示了一个 <strong>原子核偶磁共振 (nuclear magnetic resonance, NMR)</strong> 信号，看上去由光滑的组分和单独的尖状物以及一些噪声组成．采用 symmlet 基底的小波变换显示在左下角的图中．小波的系数按行排列，从底部的最低尺度到顶部的最大尺度．每一条线段的长度表明了系数的大小．右下角显示了当设置阈值过滤时的小波系数．阈值过滤的过程由式 \eqref{5.69} 给出，是与线性回归中 lasso 一样的软阈值过程（<span class="xref myst">3.4.2 节</span>）．注意到许多较小的系数设为了 0．图中上边的绿色曲线显示了系数过滤后的 <strong>向后转换 (back-transform)</strong> 结果：这也就是原始信号的光滑版本．在下一节我们将给出这一过程的细节，包括小波的构造和阈值规则．</p>
+<p>竖轴表示小波的尺度（频率），底部 <strong>尺度最低 (low scale)</strong>，顶端 <strong>尺度最高 (high scale)</strong>。在每个尺度下，小波并排着填充着时间轴：我们只展示出了一个子集。小波光滑通过最小二乘来拟合基底的系数，接着设置阈值来舍弃较小的系数。因为在每个尺度下都有很多的基函数，则可以在需要它的时候采用它，不需要它的时候舍弃它，这样来实现时间和频率的局部化。Harr 小波很容易理解，但是对大部分目标不够光滑。图 5.16 中右边的 symmlet 小波有着相同的正交性质，但是更加光滑。</p>
+<p>图 5.17 展示了一个 <strong>原子核偶磁共振 (nuclear magnetic resonance, NMR)</strong> 信号，看上去由光滑的组分和单独的尖状物以及一些噪声组成。采用 symmlet 基底的小波变换显示在左下角的图中。小波的系数按行排列，从底部的最低尺度到顶部的最大尺度。每一条线段的长度表明了系数的大小。右下角显示了当设置阈值过滤时的小波系数。阈值过滤的过程由式 \eqref{5.69} 给出，是与线性回归中 lasso 一样的软阈值过程（<span class="xref myst">3.4.2 节</span>）。注意到许多较小的系数设为了 0。图中上边的绿色曲线显示了系数过滤后的 <strong>向后转换 (back-transform)</strong> 结果：这也就是原始信号的光滑版本。在下一节我们将给出这一过程的细节，包括小波的构造和阈值规则。</p>
 <p><img alt="" src="../_images/fig5.17.png" /></p>
 <div class="section" id="id2">
 <h2>小波基和小波变换<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>!!! note “weiya 注”
-推荐 Guy Nason 的 <a class="reference external" href="http://www.springer.com/gp/book/9780387759609">Wavelet Methods in Statistics with R</a>，其中第 2 节对 Wavelet 的介绍很通俗易懂，几乎不涉及定理，还在 R 中用具体例子说明．</p>
-<p>这一节我们将给出小波的构造和过滤的具体细节．小波基通过单尺度函数 <span class="math notranslate nohighlight">\(\phi(x)\)</span>（也被称作 father）的 <strong>平移 (translation)</strong> 和 <strong>伸缩 (dilation)</strong> 生成．图 5.18 的红色曲线是 Haar 和 symmlet-8 的尺度函数．</p>
+推荐 Guy Nason 的 <a class="reference external" href="http://www.springer.com/gp/book/9780387759609">Wavelet Methods in Statistics with R</a>，其中第 2 节对 Wavelet 的介绍很通俗易懂，几乎不涉及定理，还在 R 中用具体例子说明。</p>
+<p>这一节我们将给出小波的构造和过滤的具体细节。小波基通过单尺度函数 <span class="math notranslate nohighlight">\(\phi(x)\)</span>（也被称作 father）的 <strong>平移 (translation)</strong> 和 <strong>伸缩 (dilation)</strong> 生成。图 5.18 的红色曲线是 Haar 和 symmlet-8 的尺度函数。</p>
 <p><img alt="" src="../_images/fig5.18.png" /></p>
-<p>Haar 基特别容易理解，特别是对于有着方差分析或者树的经验的人，因为它产生一个分段常值表示．因此如果 <span class="math notranslate nohighlight">\(\phi(x) = I(x\in [0,1])\)</span>，则 <span class="math notranslate nohighlight">\(\phi_{0,k}(x)=\phi(x-k)\)</span>，<span class="math notranslate nohighlight">\(k\)</span> 是整数，生成在整数结点处跳跃的正交基函数．称这个为 <strong>参考 (reference)</strong> 空间 <span class="math notranslate nohighlight">\(V_0\)</span>．伸缩变换 <span class="math notranslate nohighlight">\(\phi_{1,k}=\sqrt{2}\phi(2x-k)\)</span> 形成了在长度为 <span class="math notranslate nohighlight">\(\frac 12\)</span> 的区间上取分段常值的函数空间 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span>．事实上，更一般地，我们有 <span class="math notranslate nohighlight">\(\cdots\supset V_1\supset V_0\supset V_{-1}\supset \cdots\)</span> 其中每个 <span class="math notranslate nohighlight">\(V_j\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{j,k}=2^{j/2}\phi(2^jx-k)\)</span> 张成．</p>
-<p>现在来定义小波．在方差分析中，我们经常用总均值 <span class="math notranslate nohighlight">\(\mu=\frac 12(\mu_1+\mu_2)\)</span> 来表示成对的均值 <span class="math notranslate nohighlight">\(\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\mu_2\)</span>，以及差异 <span class="math notranslate nohighlight">\(\alpha=\frac 12 (\mu_1-\mu_2)\)</span>．如果 <span class="math notranslate nohighlight">\(\alpha\)</span> 非常小，则可以进行简化，因为我们可以将之设为 0．类似的方式，我们可能用 <span class="math notranslate nohighlight">\(V_j\)</span> 的组分加上 <span class="math notranslate nohighlight">\(V_j\)</span> 关于 <span class="math notranslate nohighlight">\(V_{j+1}\)</span> 的正交补中的组分 <span class="math notranslate nohighlight">\(W_j\)</span> 来表示 <span class="math notranslate nohighlight">\(V_{j+1}\)</span> 中的函数，写成 <span class="math notranslate nohighlight">\(V_{j+1} = V_j\oplus W_j\)</span>. <span class="math notranslate nohighlight">\(W_j\)</span> 中的组分表示 <strong>细节 (detail)</strong>，而且我们可能希望将这些组分设为 0．容易看到由<strong>母波 (mother wavelet)</strong> <span class="math notranslate nohighlight">\(\psi(x) = \phi(2x)-\phi(2x-1)\)</span> 生成的 <span class="math notranslate nohighlight">\(\psi (x-k)\)</span> 构成了 Haar 族中 <span class="math notranslate nohighlight">\(W_0\)</span> 的正交基．同样地，<span class="math notranslate nohighlight">\(\psi_{j,k}=2^{j/2}\psi(2^jx-k)\)</span> 构成了 <span class="math notranslate nohighlight">\(W_j\)</span> 的基．</p>
-<p>现在 <span class="math notranslate nohighlight">\(V_{j+1}=V_j\oplus W_j=V_{j-1}\oplus W_{j-1}\oplus W_j\)</span>，所以除了用第 <span class="math notranslate nohighlight">\(j\)</span> 层的 detail 和第 <span class="math notranslate nohighlight">\(j\)</span> 层的 rough component 来表示一个函数，后者可以分解成第 <span class="math notranslate nohighlight">\(j-1\)</span> 层的 detail 和 rough component，依次类推．最后我们得到表达式 <span class="math notranslate nohighlight">\(V_J=V_0\oplus W_0\oplus W_1\oplus \cdots\oplus W_{J-1}\)</span>．图 5.6 展示了特定的小波 <span class="math notranslate nohighlight">\(\psi_{j,k}(x)\)</span>．</p>
-<p>注意到因为这些空间是正交的，则所有的基函数也都是正交的．事实上，如果定义域是离散的，且有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个（时间）点，这是我们可以达到的最大值．在第 <span class="math notranslate nohighlight">\(j\)</span> 层，我们有 <span class="math notranslate nohighlight">\(2^j\)</span> 个基元素，加起来，则在 <span class="math notranslate nohighlight">\(W_j\)</span> 中我们总共有 <span class="math notranslate nohighlight">\(2^J-1\)</span> 个元素，还有 <span class="math notranslate nohighlight">\(V_0\)</span> 中的一个元素．这个结构正交基允许 multiresolution analysis，我们将在下一节中介绍．</p>
-<p>尽管 Haar 基可以帮助理解上述的构造过程，但具体情形下，Haar 基太粗糙了．幸运的是，已经发明了许多智能的小波基．图 5.16 和 5.18 作出了 Daubechies symmlet-8 基．这个基比对应的 Haar 基有更光滑的组分，但是存在 tradeoff：</p>
+<p>Haar 基特别容易理解，特别是对于有着方差分析或者树的经验的人，因为它产生一个分段常值表示。因此如果 <span class="math notranslate nohighlight">\(\phi(x) = I(x\in [0,1])\)</span>，则 <span class="math notranslate nohighlight">\(\phi_{0,k}(x)=\phi(x-k)\)</span>，<span class="math notranslate nohighlight">\(k\)</span> 是整数，生成在整数结点处跳跃的正交基函数。称这个为 <strong>参考 (reference)</strong> 空间 <span class="math notranslate nohighlight">\(V_0\)</span>。伸缩变换 <span class="math notranslate nohighlight">\(\phi_{1,k}=\sqrt{2}\phi(2x-k)\)</span> 形成了在长度为 <span class="math notranslate nohighlight">\(\frac 12\)</span> 的区间上取分段常值的函数空间 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span>。事实上，更一般地，我们有 <span class="math notranslate nohighlight">\(\cdots\supset V_1\supset V_0\supset V_{-1}\supset \cdots\)</span> 其中每个 <span class="math notranslate nohighlight">\(V_j\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{j,k}=2^{j/2}\phi(2^jx-k)\)</span> 张成。</p>
+<p>现在来定义小波。在方差分析中，我们经常用总均值 <span class="math notranslate nohighlight">\(\mu=\frac 12(\mu_1+\mu_2)\)</span> 来表示成对的均值 <span class="math notranslate nohighlight">\(\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\mu_2\)</span>，以及差异 <span class="math notranslate nohighlight">\(\alpha=\frac 12 (\mu_1-\mu_2)\)</span>。如果 <span class="math notranslate nohighlight">\(\alpha\)</span> 非常小，则可以进行简化，因为我们可以将之设为 0。类似的方式，我们可能用 <span class="math notranslate nohighlight">\(V_j\)</span> 的组分加上 <span class="math notranslate nohighlight">\(V_j\)</span> 关于 <span class="math notranslate nohighlight">\(V_{j+1}\)</span> 的正交补中的组分 <span class="math notranslate nohighlight">\(W_j\)</span> 来表示 <span class="math notranslate nohighlight">\(V_{j+1}\)</span> 中的函数，写成 <span class="math notranslate nohighlight">\(V_{j+1} = V_j\oplus W_j\)</span>. <span class="math notranslate nohighlight">\(W_j\)</span> 中的组分表示 <strong>细节 (detail)</strong>，而且我们可能希望将这些组分设为 0。容易看到由<strong>母波 (mother wavelet)</strong> <span class="math notranslate nohighlight">\(\psi(x) = \phi(2x)-\phi(2x-1)\)</span> 生成的 <span class="math notranslate nohighlight">\(\psi (x-k)\)</span> 构成了 Haar 族中 <span class="math notranslate nohighlight">\(W_0\)</span> 的正交基。同样地，<span class="math notranslate nohighlight">\(\psi_{j,k}=2^{j/2}\psi(2^jx-k)\)</span> 构成了 <span class="math notranslate nohighlight">\(W_j\)</span> 的基。</p>
+<p>现在 <span class="math notranslate nohighlight">\(V_{j+1}=V_j\oplus W_j=V_{j-1}\oplus W_{j-1}\oplus W_j\)</span>，所以除了用第 <span class="math notranslate nohighlight">\(j\)</span> 层的 detail 和第 <span class="math notranslate nohighlight">\(j\)</span> 层的 rough component 来表示一个函数，后者可以分解成第 <span class="math notranslate nohighlight">\(j-1\)</span> 层的 detail 和 rough component，依次类推。最后我们得到表达式 <span class="math notranslate nohighlight">\(V_J=V_0\oplus W_0\oplus W_1\oplus \cdots\oplus W_{J-1}\)</span>。图 5.6 展示了特定的小波 <span class="math notranslate nohighlight">\(\psi_{j,k}(x)\)</span>。</p>
+<p>注意到因为这些空间是正交的，则所有的基函数也都是正交的。事实上，如果定义域是离散的，且有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个（时间）点，这是我们可以达到的最大值。在第 <span class="math notranslate nohighlight">\(j\)</span> 层，我们有 <span class="math notranslate nohighlight">\(2^j\)</span> 个基元素，加起来，则在 <span class="math notranslate nohighlight">\(W_j\)</span> 中我们总共有 <span class="math notranslate nohighlight">\(2^J-1\)</span> 个元素，还有 <span class="math notranslate nohighlight">\(V_0\)</span> 中的一个元素。这个结构正交基允许 multiresolution analysis，我们将在下一节中介绍。</p>
+<p>尽管 Haar 基可以帮助理解上述的构造过程，但具体情形下，Haar 基太粗糙了。幸运的是，已经发明了许多智能的小波基。图 5.16 和 5.18 作出了 Daubechies symmlet-8 基。这个基比对应的 Haar 基有更光滑的组分，但是存在 tradeoff：</p>
 <ul class="simple">
-<li><p>每个小波的支撑集包含 15 个连续的时间间隔，而不像 Haar 基只包含一个．更一般地，symmlet-<span class="math notranslate nohighlight">\(p\)</span> 族有 <span class="math notranslate nohighlight">\(2p-1\)</span> 个连续间隔的支撑集．支撑集越宽，小波降至 0 所花费的时间越长，因此可以达到更光滑．注意到有效支撑集要窄很多．</p></li>
+<li><p>每个小波的支撑集包含 15 个连续的时间间隔，而不像 Haar 基只包含一个。更一般地，symmlet-<span class="math notranslate nohighlight">\(p\)</span> 族有 <span class="math notranslate nohighlight">\(2p-1\)</span> 个连续间隔的支撑集。支撑集越宽，小波降至 0 所花费的时间越长，因此可以达到更光滑。注意到有效支撑集要窄很多。</p></li>
 <li><p>symmlet-<span class="math notranslate nohighlight">\(p\)</span> 小波 <span class="math notranslate nohighlight">\(\psi(x)\)</span> 有 <span class="math notranslate nohighlight">\(p\)</span> 个 <strong>消失的矩 (vanishing moments)</strong>，也就是
 $<span class="math notranslate nohighlight">\(
 \int\psi (x)x^jdx=0,\; j=0,\ldots, p-1
 \)</span><span class="math notranslate nohighlight">\(
-上式的其中一个意义是在 \)</span>N=2^J<span class="math notranslate nohighlight">\( 个时间结点上产生的任意 order 为 \)</span>p<span class="math notranslate nohighlight">\( 的多项式正好在 \)</span>V_0<span class="math notranslate nohighlight">\( 中 ([习题 5.18](https://github.com/szcf-weiya/ESL-CN/issues/115)) 在这种情形下，\)</span>V_0<span class="math notranslate nohighlight">\( 等价于光滑样条惩罚中的零空间．Haar 小波有一个消失的矩，且 \)</span>V_0$ 可以表示任意常值函数．</p></li>
+上式的其中一个意义是在 \)</span>N=2^J<span class="math notranslate nohighlight">\( 个时间结点上产生的任意 order 为 \)</span>p<span class="math notranslate nohighlight">\( 的多项式正好在 \)</span>V_0<span class="math notranslate nohighlight">\( 中 ([习题 5.18](https://github.com/szcf-weiya/ESL-CN/issues/115)) 在这种情形下，\)</span>V_0<span class="math notranslate nohighlight">\( 等价于光滑样条惩罚中的零空间。Haar 小波有一个消失的矩，且 \)</span>V_0$ 可以表示任意常值函数。</p></li>
 </ul>
 <p>!!! note “weiya 注：”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/115">Issue 115: Ex. 5.18</a>．</p>
-<p>symmlet-<span class="math notranslate nohighlight">\(p\)</span> 尺度函数是众多小波生成器族中的一个．操作类似 Haar 基：</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/115">Issue 115: Ex. 5.18</a>。</p>
+<p>symmlet-<span class="math notranslate nohighlight">\(p\)</span> 尺度函数是众多小波生成器族中的一个。操作类似 Haar 基：</p>
 <ul class="simple">
-<li><p>如果 <span class="math notranslate nohighlight">\(V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi(x-k)\)</span> 展开，则 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{1,k}(x)=\sqrt{2}\phi(2x-k)\)</span> 展开，且对于某些过滤系数 <span class="math notranslate nohighlight">\(h(k)\)</span>，有 <span class="math notranslate nohighlight">\(\phi(x)=\sum_{k\in\cal Z}h(k)\phi_{1,k}(x)\)</span>．</p></li>
-<li><p><span class="math notranslate nohighlight">\(W_0\)</span> 由 <span class="math notranslate nohighlight">\(\psi(x) =\sum_{k\in\cal Z}g(k)\phi_{1,k}(x)\)</span> 张成，其中过滤参数为 <span class="math notranslate nohighlight">\(g(k)=(-1)^{1-k}h(1-k)\)</span>．</p></li>
+<li><p>如果 <span class="math notranslate nohighlight">\(V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi(x-k)\)</span> 展开，则 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{1,k}(x)=\sqrt{2}\phi(2x-k)\)</span> 展开，且对于某些过滤系数 <span class="math notranslate nohighlight">\(h(k)\)</span>，有 <span class="math notranslate nohighlight">\(\phi(x)=\sum_{k\in\cal Z}h(k)\phi_{1,k}(x)\)</span>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(W_0\)</span> 由 <span class="math notranslate nohighlight">\(\psi(x) =\sum_{k\in\cal Z}g(k)\phi_{1,k}(x)\)</span> 张成，其中过滤参数为 <span class="math notranslate nohighlight">\(g(k)=(-1)^{1-k}h(1-k)\)</span>。</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>自适应小波滤波<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>当数据在均匀格子上取值时，小波非常有用，比如数字化信号、图象，或者时间序列．我们将要关注一维的情形，假设总共有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个格子点是很方便的．假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个等距间隔观测上取值的 <span class="math notranslate nohighlight">\(N\times N\)</span> 正交小波基矩阵．然后 <span class="math notranslate nohighlight">\(\y^\* = \W^T\y\)</span> 被称作 <span class="math notranslate nohighlight">\(\y\)</span> 的 <strong>小波变换 (wavelet transform)</strong> （这也是全最小二乘系数）．自适应小波拟合的流行方法被称作 SURE 收缩 (Stein Unbiased Risk Estimation, Donoho and Johnstone (1994)<a class="footnote-reference brackets" href="#id5" id="id4">1</a>)．我们以下面的准则开始</p>
+<p>当数据在均匀格子上取值时，小波非常有用，比如数字化信号、图象，或者时间序列。我们将要关注一维的情形，假设总共有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个格子点是很方便的。假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个等距间隔观测上取值的 <span class="math notranslate nohighlight">\(N\times N\)</span> 正交小波基矩阵。然后 <span class="math notranslate nohighlight">\(\y^\* = \W^T\y\)</span> 被称作 <span class="math notranslate nohighlight">\(\y\)</span> 的 <strong>小波变换 (wavelet transform)</strong> （这也是全最小二乘系数）。自适应小波拟合的流行方法被称作 SURE 收缩 (Stein Unbiased Risk Estimation, Donoho and Johnstone (1994)<a class="footnote-reference brackets" href="#id5" id="id4">1</a>)。我们以下面的准则开始</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\boldsymbol\theta}{\min}\Vert \y-\W\boldsymbol\theta\Vert^2_2+2\lambda\Vert \boldsymbol\theta\Vert_1\tag{5.68}\label{5.68}
 \]</div>
-<p>这与<span class="xref myst">第 3 章</span>中的 lasso 准则一样．因为 <span class="math notranslate nohighlight">\(\W\)</span> 是正交的，所以导出下面简单的解：</p>
+<p>这与<span class="xref myst">第 3 章</span>中的 lasso 准则一样。因为 <span class="math notranslate nohighlight">\(\W\)</span> 是正交的，所以导出下面简单的解：</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\theta_j = \sign(y_j^*)(\vert y_j^*\vert-\lambda)_+\tag{5.69}\label{5.69}
 \]</div>
-<p>最小二乘系数平移至 0，且在 0 处截断．拟合后的函数（向量）则由<strong>逆小波变换 (inverse wavelet transform)</strong> <span class="math notranslate nohighlight">\(\hat{\mathbf f} = \W\hat\theta\)</span> 给出．</p>
-<p><span class="math notranslate nohighlight">\(\lambda\)</span> 的一个简单选择是 <span class="math notranslate nohighlight">\(\lambda = \sigma \sqrt{2\log N}\)</span>，其中 <span class="math notranslate nohighlight">\(\sigma\)</span> 是噪声标准偏差的估计．我们可以给出这种选择一些理由．因为 <span class="math notranslate nohighlight">\(\W\)</span> 是正交变换，如果 <span class="math notranslate nohighlight">\(\y\)</span> 中的元素为白噪声（均值为 0 且方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的独立高斯随机变量），则 <span class="math notranslate nohighlight">\(\y^*\)</span> 也是．而且如果随机变量 <span class="math notranslate nohighlight">\(Z_1,Z_2,\ldots,Z_N\)</span> 是白噪声，<span class="math notranslate nohighlight">\(\vert Z_j\vert, j=1,\ldots, N\)</span> 最大值的期望近似为 <span class="math notranslate nohighlight">\(\sigma\sqrt{2\log N}\)</span>．因此所有小于 <span class="math notranslate nohighlight">\(\sigma \sqrt{2\log N}\)</span> 的系数可能为噪声，且设为 0．</p>
+<p>最小二乘系数平移至 0，且在 0 处截断。拟合后的函数（向量）则由<strong>逆小波变换 (inverse wavelet transform)</strong> <span class="math notranslate nohighlight">\(\hat{\mathbf f} = \W\hat\theta\)</span> 给出。</p>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span> 的一个简单选择是 <span class="math notranslate nohighlight">\(\lambda = \sigma \sqrt{2\log N}\)</span>，其中 <span class="math notranslate nohighlight">\(\sigma\)</span> 是噪声标准偏差的估计。我们可以给出这种选择一些理由。因为 <span class="math notranslate nohighlight">\(\W\)</span> 是正交变换，如果 <span class="math notranslate nohighlight">\(\y\)</span> 中的元素为白噪声（均值为 0 且方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的独立高斯随机变量），则 <span class="math notranslate nohighlight">\(\y^*\)</span> 也是。而且如果随机变量 <span class="math notranslate nohighlight">\(Z_1,Z_2,\ldots,Z_N\)</span> 是白噪声，<span class="math notranslate nohighlight">\(\vert Z_j\vert, j=1,\ldots, N\)</span> 最大值的期望近似为 <span class="math notranslate nohighlight">\(\sigma\sqrt{2\log N}\)</span>。因此所有小于 <span class="math notranslate nohighlight">\(\sigma \sqrt{2\log N}\)</span> 的系数可能为噪声，且设为 0。</p>
 <p>!!! note “weiya 注：”
 Guy Nason 的 <a class="reference external" href="http://www.springer.com/gp/book/9780387759609">Wavelet Methods in Statistics with R</a> 提到如下定理直接说明了上述结论：
 <img alt="" src="../_images/ref-thm-3-1.png" /></p>
-<p>空间 <span class="math notranslate nohighlight">\(\W\)</span> 可以是任意正交函数的基：多项式，自然样条或者 cosinusoids．让小波变得特殊的是采用的基函数的特定形式，它允许<strong>在时间和在频率上局部化 (localized in time and in frequency)</strong> 的表示．</p>
-<p>让我们再次看一下图 5.17 的 NMR 信号．采用 symmlet-8 基来计算小波变换．注意到这些系数没有都降至 <span class="math notranslate nohighlight">\(V_0\)</span>，而是在 <span class="math notranslate nohighlight">\(V_4\)</span> 停住，其中有 16 个基函数．当我们从小到大去看每一层的 detail，系数越来越小，除了在有尖状物的地方．小波的系数表示信号在时间上局部化（在每一层的基函数是其它函数的平移）以及在频率上局部化的特征．每个伸缩通过因子 2 来增长 detail，这种情形对应在传统的 Fourier 表示中对频率加倍．事实上，小波的更数学的理解揭示了在特定尺度上小波有一个限制在有限区域或频率的<strong>信频 (octave)</strong> 上的 Fourier 变换．</p>
-<p>右图中的收缩、截断是通过 SURE 方法（在这一节的开头有介绍）实现的．<span class="math notranslate nohighlight">\(N\times N\)</span> 的正交基矩阵 <span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个时间点上取值的小波基函数．特别地，在图中情形下，有 16 列对应 <span class="math notranslate nohighlight">\(\phi_{4,k}(x)\)</span>，且剩余的贡献在 <span class="math notranslate nohighlight">\(\psi_{j,k}(x), j=4,\ldots,11\)</span> 上．实际中，<span class="math notranslate nohighlight">\(\lambda\)</span> 依赖噪声方差，而且必须从数据中估计出来（比如在最高层次的系数的方差）．</p>
+<p>空间 <span class="math notranslate nohighlight">\(\W\)</span> 可以是任意正交函数的基：多项式，自然样条或者 cosinusoids。让小波变得特殊的是采用的基函数的特定形式，它允许<strong>在时间和在频率上局部化 (localized in time and in frequency)</strong> 的表示。</p>
+<p>让我们再次看一下图 5.17 的 NMR 信号。采用 symmlet-8 基来计算小波变换。注意到这些系数没有都降至 <span class="math notranslate nohighlight">\(V_0\)</span>，而是在 <span class="math notranslate nohighlight">\(V_4\)</span> 停住，其中有 16 个基函数。当我们从小到大去看每一层的 detail，系数越来越小，除了在有尖状物的地方。小波的系数表示信号在时间上局部化（在每一层的基函数是其它函数的平移）以及在频率上局部化的特征。每个伸缩通过因子 2 来增长 detail，这种情形对应在传统的 Fourier 表示中对频率加倍。事实上，小波的更数学的理解揭示了在特定尺度上小波有一个限制在有限区域或频率的<strong>信频 (octave)</strong> 上的 Fourier 变换。</p>
+<p>右图中的收缩、截断是通过 SURE 方法（在这一节的开头有介绍）实现的。<span class="math notranslate nohighlight">\(N\times N\)</span> 的正交基矩阵 <span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个时间点上取值的小波基函数。特别地，在图中情形下，有 16 列对应 <span class="math notranslate nohighlight">\(\phi_{4,k}(x)\)</span>，且剩余的贡献在 <span class="math notranslate nohighlight">\(\psi_{j,k}(x), j=4,\ldots,11\)</span> 上。实际中，<span class="math notranslate nohighlight">\(\lambda\)</span> 依赖噪声方差，而且必须从数据中估计出来（比如在最高层次的系数的方差）。</p>
 <p>注意到 SURE 准则 \eqref{5.68} 和 光滑样条准则 \eqref{5.21} 的相似性：</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \underset{\mathbf\theta}{\mathrm{min}}\Vert \mathbf{y-U\theta}\Vert^2+\lambda \mathbf{\theta^TD\theta}\tag{5.21}\label{5.21}
     \)</span>$</p>
 <ul class="simple">
-<li><p>两者都是从粗糙到细致的分层结构，尽管小波在每个分辨率上对时间也进行局部化．</p></li>
-<li><p>样条通过强加不同的收缩常数 <span class="math notranslate nohighlight">\(d_k\)</span> 来建立光滑函数的基．早期版本的 SURE 收缩对所有尺度同等对待． <code class="docutils literal notranslate"><span class="pre">S+wavelets</span></code> 函数 <code class="docutils literal notranslate"><span class="pre">waveshrink()</span> </code> 有许多选项，有些允许不同的收缩．</p></li>
-<li><p>样条的 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚只进行收缩，而 SURE 的 <span class="math notranslate nohighlight">\(L_1\)</span> 的惩罚进行收缩和选择．</p></li>
+<li><p>两者都是从粗糙到细致的分层结构，尽管小波在每个分辨率上对时间也进行局部化。</p></li>
+<li><p>样条通过强加不同的收缩常数 <span class="math notranslate nohighlight">\(d_k\)</span> 来建立光滑函数的基。早期版本的 SURE 收缩对所有尺度同等对待。 <code class="docutils literal notranslate"><span class="pre">S+wavelets</span></code> 函数 <code class="docutils literal notranslate"><span class="pre">waveshrink()</span> </code> 有许多选项，有些允许不同的收缩。</p></li>
+<li><p>样条的 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚只进行收缩，而 SURE 的 <span class="math notranslate nohighlight">\(L_1\)</span> 的惩罚进行收缩和选择。</p></li>
 </ul>
-<p>更一般地，光滑样条通过加上光滑度来实现原始信号的压缩，而小波是加上稀疏度．</p>
+<p>更一般地，光滑样条通过加上光滑度来实现原始信号的压缩，而小波是加上稀疏度。</p>
 <p><img alt="" src="../_images/fig5.19.png" /></p>
-<p>图 5.19 在两个本质不同的数据集上比较了小波拟合 （采用 SURE 收缩） 和光滑样条拟合（采用交叉验证）．对于上图中的 NMR 数据，光滑样条到处引入 detail 来捕捉 isolated spike 的细节；小波拟合很好地局部化了 spike．在下图中，真实函数是光滑的，噪声相对较大、小波拟合引入了额外的不必要的 wiggle——这是为了额外的自适应性付出的代价．</p>
-<p>小波变换不是通过 <span class="math notranslate nohighlight">\(\y^\*=\W\y\)</span> 中的矩阵相乘来进行．事实上，采用更智能的 <strong>金字塔算法 (pyramidal schemes)</strong>, <span class="math notranslate nohighlight">\(\y^\*\)</span> 会用 <span class="math notranslate nohighlight">\(O(N)\)</span> 的计算量完成，这甚至比 <strong>快速傅里叶变换 (FFT)</strong> 的 <span class="math notranslate nohighlight">\(N\log N\)</span> 还要快．尽管一般情形下的构造超出了本书的范围，但可以简单证明 Haar 基时的情形（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">练习 5.19</a>）．同样地，逆小波变换 <span class="math notranslate nohighlight">\(\W\hat{\theta}\)</span> 也是 <span class="math notranslate nohighlight">\(O(N)\)</span> 的．</p>
+<p>图 5.19 在两个本质不同的数据集上比较了小波拟合 （采用 SURE 收缩） 和光滑样条拟合（采用交叉验证）。对于上图中的 NMR 数据，光滑样条到处引入 detail 来捕捉 isolated spike 的细节；小波拟合很好地局部化了 spike。在下图中，真实函数是光滑的，噪声相对较大、小波拟合引入了额外的不必要的 wiggle——这是为了额外的自适应性付出的代价。</p>
+<p>小波变换不是通过 <span class="math notranslate nohighlight">\(\y^\*=\W\y\)</span> 中的矩阵相乘来进行。事实上，采用更智能的 <strong>金字塔算法 (pyramidal schemes)</strong>, <span class="math notranslate nohighlight">\(\y^\*\)</span> 会用 <span class="math notranslate nohighlight">\(O(N)\)</span> 的计算量完成，这甚至比 <strong>快速傅里叶变换 (FFT)</strong> 的 <span class="math notranslate nohighlight">\(N\log N\)</span> 还要快。尽管一般情形下的构造超出了本书的范围，但可以简单证明 Haar 基时的情形（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">练习 5.19</a>）。同样地，逆小波变换 <span class="math notranslate nohighlight">\(\W\hat{\theta}\)</span> 也是 <span class="math notranslate nohighlight">\(O(N)\)</span> 的。</p>
 <p>!!! info “weiya 注：Ex. 5.19”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">Issue 116: Ex. 5.19</a>．</p>
-<p>这里只是对这个庞大且在发展的领域作非常简单的介绍．在小波上建立了非常大量的数学和计算基础．现代图象压缩通常采用二维小波表示来实现．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">Issue 116: Ex. 5.19</a>。</p>
+<p>这里只是对这个庞大且在发展的领域作非常简单的介绍。在小波上建立了非常大量的数学和计算基础。现代图象压缩通常采用二维小波表示来实现。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>

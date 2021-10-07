@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,13 +1147,9 @@
                 
   <div class="section" id="id1">
 <h1>7.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>学习方法的 <strong>泛化 (generalization)</strong> 效果与它在独立的测试集上的预测能力有关．泛化效果的评估在实际中特别重要，因为它指导着如何选择学习方法或模型，而且给了我们对最终选择的模型 <strong>质量 (quality)</strong> 的一个度量．</p>
-<p>这章中我们描述和举例说明评估泛化效果的重要方法，而且展示它们怎么应用到模型选择．我们以对偏差、方差和模型复杂度间相互作用的讨论作为本章的开始．</p>
-<p>!!! tip
-在第一章导言中，这一章被看成是预备知识，要求同前四章一样先阅读．
-&gt; We recommend that Chapters 1–4 be first read in sequence. Chapter 7 should also be considered mandatory, as it covers central concepts that pertain to all learning methods. With this in mind, the rest of the book can be read sequentially, or sampled, depending on the reader’s interest.
-&gt;
-&gt; 我们建议按顺序先阅读第 1-4 章，第 7 章也应该当作强制阅读，因为它介绍了关于所有学习方法的中心概念．有了这些概念，这本书的其他章节根据读者的兴趣可以按照顺序读，或选读．</p>
+<style>p{text-indent:2em;2}</style>
+<p>学习方法的 <strong>泛化 (generalization)</strong> 效果与其在独立测试集上的预测性能有关。泛化效果评估在实践中特别重要，因为它指导着如何选择学习方法或模型，并且给出了最终所选模型 <strong>质量 (quality)</strong> 的一个度量。</p>
+<p>本章描述和举例说明评估泛化效果的主要方法，而且展示其在模型选择中的使用方法。我们首先从偏差、方差和模型复杂度之间的相互作用作为本章起点。</p>
 </div>
 
     <script type="text/x-thebe-config">

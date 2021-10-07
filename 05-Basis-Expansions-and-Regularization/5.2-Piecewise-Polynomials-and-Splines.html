@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1171,26 +1172,26 @@
                 
   <div class="section" id="id1">
 <h1>5.2 分段多项式和样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>直到 <span class="xref myst">5.7 节</span> 我们都假设 <span class="math notranslate nohighlight">\(X\)</span> 为一维向量．分段多项式函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 通过将 <span class="math notranslate nohighlight">\(X\)</span> 的定义域分成连续的区间得到，并且在每个区间内用单独的多项式来表示 <span class="math notranslate nohighlight">\(f\)</span>．图 5.1 显示了两个简单的分段多项式．第一个是分段常值，含有三个基函数：
+<p>直到 <span class="xref myst">5.7 节</span> 我们都假设 <span class="math notranslate nohighlight">\(X\)</span> 为一维向量。分段多项式函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 通过将 <span class="math notranslate nohighlight">\(X\)</span> 的定义域分成连续的区间得到，并且在每个区间内用单独的多项式来表示 <span class="math notranslate nohighlight">\(f\)</span>。图 5.1 显示了两个简单的分段多项式。第一个是分段常值，含有三个基函数：
 $<span class="math notranslate nohighlight">\(
 h_1(X)=I(X&lt;\xi_1),\;h_2(X)=I(\xi_1\le X\le \xi_2),\;h_3(X)=I(\xi_2\le X)
 \)</span><span class="math notranslate nohighlight">\(
-因为这些在不连续区域都为正值，模型 \)</span>f(X)=\sum_{m=1}^3\beta_mh_m(X)<span class="math notranslate nohighlight">\( 的最小二乘估计等价于 \)</span>\hat\beta_m=\overline{Y}_m<span class="math notranslate nohighlight">\(，即为 \)</span>Y<span class="math notranslate nohighlight">\( 在第 \)</span>m$ 个区域的均值．</p>
+因为这些在不连续区域都为正值，模型 \)</span>f(X)=\sum_{m=1}^3\beta_mh_m(X)<span class="math notranslate nohighlight">\( 的最小二乘估计等价于 \)</span>\hat\beta_m=\overline{Y}_m<span class="math notranslate nohighlight">\(，即为 \)</span>Y<span class="math notranslate nohighlight">\( 在第 \)</span>m$ 个区域的均值。</p>
 <p><img alt="" src="../_images/fig5.1.png" /></p>
 <blockquote>
-<div><p>图 5.1. 上面两张图显示了对一些模拟数据的分段常值函数拟合．垂直虚线表示两个结点 <span class="math notranslate nohighlight">\(\xi_1\)</span> 和 <span class="math notranslate nohighlight">\(\xi_2\)</span>．蓝色曲线表示真正的函数，数据是通过函数加上高斯噪声产生的．下面板的图显示了对同样数据的分段线性函数拟合——上面板的图没有限制，而下面板的图限制为在结点处连续——右上图没有限制，而左下图限制为在结点处连续．右下图显示了分段线性的基函数，<span class="math notranslate nohighlight">\(h_3(X)=(X-\xi_1)_+\)</span>,它在 <span class="math notranslate nohighlight">\(\xi_1\)</span> 处连续．黑色点表示样本取值 <span class="math notranslate nohighlight">\(h_3(x_i),i=1,2,\ldots,N\)</span>．</p>
+<div><p>图 5.1. 上面两张图显示了对一些模拟数据的分段常值函数拟合。垂直虚线表示两个结点 <span class="math notranslate nohighlight">\(\xi_1\)</span> 和 <span class="math notranslate nohighlight">\(\xi_2\)</span>。蓝色曲线表示真正的函数，数据是通过函数加上高斯噪声产生的。下面板的图显示了对同样数据的分段线性函数拟合——上面板的图没有限制，而下面板的图限制为在结点处连续——右上图没有限制，而左下图限制为在结点处连续。右下图显示了分段线性的基函数，<span class="math notranslate nohighlight">\(h_3(X)=(X-\xi_1)_+\)</span>,它在 <span class="math notranslate nohighlight">\(\xi_1\)</span> 处连续。黑色点表示样本取值 <span class="math notranslate nohighlight">\(h_3(x_i),i=1,2,\ldots,N\)</span>。</p>
 </div></blockquote>
-<p>右上图显示了分段线性拟合．需要三个额外的基函数：<span class="math notranslate nohighlight">\(h_{m+3}=h_m(X)X,m=1,2,3\)</span>．除了在特殊情况下，我们一般更想要第三个面板的图，也是分段线性，但在间隔点上连续．这些连续性的约束导致在参数上存在线性约束；举个例子，<span class="math notranslate nohighlight">\(f(\xi_1^-)=f(\xi_1^+)\)</span> 意味着 <span class="math notranslate nohighlight">\(\beta_1+\xi_1\beta_4=\beta_2+\xi_1\beta_5\)</span>．在这种情形下，因为存在两个约束，我们则减少了两个参数，最终得到 4 个自由参数．</p>
+<p>右上图显示了分段线性拟合。需要三个额外的基函数：<span class="math notranslate nohighlight">\(h_{m+3}=h_m(X)X,m=1,2,3\)</span>。除了在特殊情况下，我们一般更想要第三个面板的图，也是分段线性，但在间隔点上连续。这些连续性的约束导致在参数上存在线性约束；举个例子，<span class="math notranslate nohighlight">\(f(\xi_1^-)=f(\xi_1^+)\)</span> 意味着 <span class="math notranslate nohighlight">\(\beta_1+\xi_1\beta_4=\beta_2+\xi_1\beta_5\)</span>。在这种情形下，因为存在两个约束，我们则减少了两个参数，最终得到 4 个自由参数。</p>
 <p>这种情形下更直接的方式是将约束结合起来的基函数：
 $<span class="math notranslate nohighlight">\(
 h_1(X)=1,\;h_2(X)=X,\;h_3(X)=(X-\xi_1)_+,\;h_4(X)=(X-\xi_2)_+
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>t_+<span class="math notranslate nohighlight">\( 记为正的部分．函数 \)</span>h_3$ 的图象如图 5.1 右下角图所示．我们经常偏好光滑函数，这个可以通过增加局部多项式的阶数实现．</p>
+其中 \)</span>t_+<span class="math notranslate nohighlight">\( 记为正的部分。函数 \)</span>h_3$ 的图象如图 5.1 右下角图所示。我们经常偏好光滑函数，这个可以通过增加局部多项式的阶数实现。</p>
 <p><img alt="" src="../_images/fig5.2.png" /></p>
 <blockquote>
-<div><p>图 5.2. 一系列分段 3 次多项式拟合，其中增加了连续性的阶数．</p>
+<div><p>图 5.2. 一系列分段 3 次多项式拟合，其中增加了连续性的阶数。</p>
 </div></blockquote>
-<p>图 5.2 展示了一系列对同样数据进行的分段 3 次多项式拟合，增加了结点处连续性的阶数．右下图的函数是连续的，且在结点处的一阶微分和二阶微分均连续．这称为三次样条．再加一阶的连续性可以得到全局三次多项式．不难证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/29">练习 5.1</a>）下面的基函数表示结点为 <span class="math notranslate nohighlight">\(\xi_1\)</span> 和 <span class="math notranslate nohighlight">\(\xi_2\)</span> 的三次样条．
+<p>图 5.2 展示了一系列对同样数据进行的分段 3 次多项式拟合，增加了结点处连续性的阶数。右下图的函数是连续的，且在结点处的一阶微分和二阶微分均连续。这称为三次样条。再加一阶的连续性可以得到全局三次多项式。不难证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/29">练习 5.1</a>）下面的基函数表示结点为 <span class="math notranslate nohighlight">\(\xi_1\)</span> 和 <span class="math notranslate nohighlight">\(\xi_2\)</span> 的三次样条。
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1200,16 +1201,16 @@ h_2(X)=X,\;h_4(X)=X^3,\;&amp;h_6(X)=(X-\xi_2)_+^3
 <p>\tag{5.3}
 $$</p>
 <p>!!! info “weiya 注：Ex. 5.1”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/29">Issue 29: Ex. 5.1</a>．</p>
-<p>这里 6 个基函数对应 6 维函数的线性空间．快速地确定参数个数：（3 个区域）<span class="math notranslate nohighlight">\(\times\)</span> (每个区域 4 个参数)-（2 个结点）<span class="math notranslate nohighlight">\(\times\)</span>（每个结点 3 个限制）= 6.</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/29">Issue 29: Ex. 5.1</a>。</p>
+<p>这里 6 个基函数对应 6 维函数的线性空间。快速地确定参数个数：（3 个区域）<span class="math notranslate nohighlight">\(\times\)</span> (每个区域 4 个参数)-（2 个结点）<span class="math notranslate nohighlight">\(\times\)</span>（每个结点 3 个限制）= 6.</p>
 <p>!!! note “weiya 注”
-单独考虑每个区域，因每个区域是三阶多项式，则需要确定的参数有四个，每个结点处，需要保持连续、一阶微分连续、二阶微分连续，所以每个结点3个限制．
-从另一个角度看，因 <span class="math notranslate nohighlight">\(\sum_{m=1}^6\beta_mh_m\)</span> 需要确定的就是 <span class="math notranslate nohighlight">\(\beta_m\)</span> 这 6 个参数．</p>
+单独考虑每个区域，因每个区域是三阶多项式，则需要确定的参数有四个，每个结点处，需要保持连续、一阶微分连续、二阶微分连续，所以每个结点3个限制。
+从另一个角度看，因 <span class="math notranslate nohighlight">\(\sum_{m=1}^6\beta_mh_m\)</span> 需要确定的就是 <span class="math notranslate nohighlight">\(\beta_m\)</span> 这 6 个参数。</p>
 <!--
-单独考虑每个区域，则需要确定的参数有四个，$\sum_{i=1}^4\beta_mh_m$，每个结点处，需要保持连续、一阶微分连续、二阶微分连续，所以每个结点3个限制．
-从另一个角度看，因$\sum_{i=1}^6\beta_mh_m$需要确定的就是$\beta_i$这6个参数．
+单独考虑每个区域，则需要确定的参数有四个，$\sum_{i=1}^4\beta_mh_m$，每个结点处，需要保持连续、一阶微分连续、二阶微分连续，所以每个结点3个限制。
+从另一个角度看，因$\sum_{i=1}^6\beta_mh_m$需要确定的就是$\beta_i$这6个参数。
 -->
-<p>更一般地，结点为 <span class="math notranslate nohighlight">\(\xi_j,j=1,\ldots,K\)</span> 的 order 为 <span class="math notranslate nohighlight">\(M\)</span> 的样条是 order 为 <span class="math notranslate nohighlight">\(M\)</span> 的分段多项式，而且有连续的 <span class="math notranslate nohighlight">\(M-2\)</span> 次微分．三次样条的 <span class="math notranslate nohighlight">\(M=4\)</span>．实际上图 5.1 的分段常数函数是 order 为 1 的样条，而连续的分段线性函数是 order 为 2 的样条．同样地，<strong>截断幂 (truncated-power)</strong> 基的集合是
+<p>更一般地，结点为 <span class="math notranslate nohighlight">\(\xi_j,j=1,\ldots,K\)</span> 的 order 为 <span class="math notranslate nohighlight">\(M\)</span> 的样条是 order 为 <span class="math notranslate nohighlight">\(M\)</span> 的分段多项式，而且有连续的 <span class="math notranslate nohighlight">\(M-2\)</span> 次微分。三次样条的 <span class="math notranslate nohighlight">\(M=4\)</span>。实际上图 5.1 的分段常数函数是 order 为 1 的样条，而连续的分段线性函数是 order 为 2 的样条。同样地，<strong>截断幂 (truncated-power)</strong> 基的集合是
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1217,22 +1218,22 @@ h_j(X)&amp;=X^{j-1},j=1,\ldots,M\\
 h_{M+\ell}(X)&amp;=(X-\xi_\ell)_+^{M-1},\ell=1,\ldots,K
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}据说三次样条是人眼看不出结点不连续的最低阶样条．很少有更好的理由去选择更高次的样条，除非对光滑的微分感兴趣．实际中，用得最多的 order 还是 $M=1,2,4$．\\这些固定结点的样条也称作 **回归样条 (regression splines)**．我们需要选择样条的阶数，结点的个数以及它们的位置．一种简单方式是用基函数或自由度来参量化样条族，并用观测 $x_i$ 来确定结点的位置．举个例子，`R` 语言中的命令 `bs(x,df=7)` 产生在 `x` 的 $N$ 个观测点取值的三次样条基函数，其中有 $7-3=4$ 个内结点，内结点在 `x` 的（20,40,60 和 80）分位数处．（含四个结点的三次样条有 8 个维度．`bs()`函数默认忽略基函数里面的常数项，因为这样的项一般包含在模型的其它项里面．）\\!!! note &quot;weiya 注： &quot;
+\[ \begin{align}\begin{aligned}据说三次样条是人眼看不出结点不连续的最低阶样条。很少有更好的理由去选择更高次的样条，除非对光滑的微分感兴趣。实际中，用得最多的 order 还是 $M=1,2,4$。\\这些固定结点的样条也称作 **回归样条 (regression splines)**。我们需要选择样条的阶数，结点的个数以及它们的位置。一种简单方式是用基函数或自由度来参量化样条族，并用观测 $x_i$ 来确定结点的位置。举个例子，`R` 语言中的命令 `bs(x,df=7)` 产生在 `x` 的 $N$ 个观测点取值的三次样条基函数，其中有 $7-3=4$ 个内结点，内结点在 `x` 的（20,40,60 和 80）分位数处。（含四个结点的三次样条有 8 个维度。`bs()`函数默认忽略基函数里面的常数项，因为这样的项一般包含在模型的其它项里面。）\\!!! note &quot;weiya 注： &quot;
     order 为 $M$，含有 $K$ 个结点的样条其自由度为
     \end{aligned}\end{align} \]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>M(K+1)-(M-1)K=K+M
 $$
-左边第一项表示 $K+1$ 个区域中每个区域需要 $M$ 个参数，而第二项表明 $K$ 个结点中需要 $M-1$ 个限制．比如，对于三次样条，$M=4$，则自由度为 $K+4$．在 `bs(x,df=7)` 中，原本四个结点的三次样条自由度为 8，但是由于 `bs()` 函数本身默认在基中去掉常数项．原书中解释说，“这样的项一般包含在模型的其它项里面”，能否举个例子？
+左边第一项表示 $K+1$ 个区域中每个区域需要 $M$ 个参数，而第二项表明 $K$ 个结点中需要 $M-1$ 个限制。比如，对于三次样条，$M=4$，则自由度为 $K+4$。在 `bs(x,df=7)` 中，原本四个结点的三次样条自由度为 8，但是由于 `bs()` 函数本身默认在基中去掉常数项。原书中解释说，“这样的项一般包含在模型的其它项里面”，能否举个例子？
 </pre></div>
 </div>
-<p>然而，也可以更明确地指出，<code class="docutils literal notranslate"><span class="pre">bs(x,</span> <span class="pre">degree=1,</span> <span class="pre">knots=c(0.2,0.4,0.6))</span></code> 产生有三个内结点的线性样条的基，并且返回一个 <span class="math notranslate nohighlight">\(N\times 4\)</span> 的矩阵．</p>
-<p>因为特定 order 以及结点序列的样条函数的空间是向量空间，所以表示它们会有许多等价的基底（就像普通多项式一样．）尽管截断幂基在概念上很简单，但是数值计算时不是很吸引人：较大的幂次会导致非常严重的舍入问题．在本章附录中描述的 B 样条基即使在结点数 <span class="math notranslate nohighlight">\(K\)</span> 很大时也有很高的计算效率．</p>
+<p>然而，也可以更明确地指出，<code class="docutils literal notranslate"><span class="pre">bs(x,</span> <span class="pre">degree=1,</span> <span class="pre">knots=c(0.2,0.4,0.6))</span></code> 产生有三个内结点的线性样条的基，并且返回一个 <span class="math notranslate nohighlight">\(N\times 4\)</span> 的矩阵。</p>
+<p>因为特定 order 以及结点序列的样条函数的空间是向量空间，所以表示它们会有许多等价的基底（就像普通多项式一样。）尽管截断幂基在概念上很简单，但是数值计算时不是很吸引人：较大的幂次会导致非常严重的舍入问题。在本章附录中描述的 B 样条基即使在结点数 <span class="math notranslate nohighlight">\(K\)</span> 很大时也有很高的计算效率。</p>
 <div class="section" id="id2">
 <h2>自然三次样条<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>我们知道对数据的多项式拟合的行为在边界处有不稳定的趋势，而且外推法会很危险．样条进一步恶化了这些问题．边界结点之外的多项式拟合的表现比该区域对应的全局多项式拟合更野蛮．从最小二乘拟合的样条函数的 <strong>逐点方差 (pairwise variance)</strong>，可以很方便地看到这一点（更多细节见下一节的计算这些方差的例子）．图 5.3 比较了不同模型的逐点方差．在边界处的方差爆炸是显而易见的，对于三次样条这必要会更糟糕．</p>
+<p>我们知道对数据的多项式拟合的行为在边界处有不稳定的趋势，而且外推法会很危险。样条进一步恶化了这些问题。边界结点之外的多项式拟合的表现比该区域对应的全局多项式拟合更野蛮。从最小二乘拟合的样条函数的 <strong>逐点方差 (pairwise variance)</strong>，可以很方便地看到这一点（更多细节见下一节的计算这些方差的例子）。图 5.3 比较了不同模型的逐点方差。在边界处的方差爆炸是显而易见的，对于三次样条这必要会更糟糕。</p>
 <p><img alt="" src="../_images/fig5.3.png" /></p>
-<p><strong>自然三次样条 (natural cubic spline)</strong> 添加额外的限制，具体地，令边界结点之外的函数是线性的．这样减少了 4 个自由度（两个边界区域分别两个限制条件），这四个自由度可以通过在内部区域取更多的结点花费掉．图 5.3 用方差表示了这种权衡．在边界附近需要在偏差上付出代价，但是假设边界附近（不管怎样，我们的信息很少）为线性函数通常是合理的考虑．</p>
-<p>含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的自然三次样条用 <span class="math notranslate nohighlight">\(K\)</span> 个基函数来表示．可以从三次样条的出发，通过强加上边界限制导出降维的基．举个例子，从 5.2 节描述的truncated power序列基出发，我们得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">练习 5.4</a>）：
+<p><strong>自然三次样条 (natural cubic spline)</strong> 添加额外的限制，具体地，令边界结点之外的函数是线性的。这样减少了 4 个自由度（两个边界区域分别两个限制条件），这四个自由度可以通过在内部区域取更多的结点花费掉。图 5.3 用方差表示了这种权衡。在边界附近需要在偏差上付出代价，但是假设边界附近（不管怎样，我们的信息很少）为线性函数通常是合理的考虑。</p>
+<p>含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的自然三次样条用 <span class="math notranslate nohighlight">\(K\)</span> 个基函数来表示。可以从三次样条的出发，通过强加上边界限制导出降维的基。举个例子，从 5.2 节描述的truncated power序列基出发，我们得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">练习 5.4</a>）：
 $<span class="math notranslate nohighlight">\(
 N_1(X)=1,\;N_2(X)=X,\; N_{k+2}(X)=d_k(X)-d_{K-1}(X),\tag{5.4}
 \)</span><span class="math notranslate nohighlight">\(
@@ -1242,14 +1243,14 @@ d_k(X)=\frac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_K-\xi_k}\tag{5.5}
 \)</span><span class="math notranslate nohighlight">\(
 可以看到当\)</span>X\ge \xi_K$时每个基函数的二阶微分和三阶微分均为0.</p>
 <p>!!! info “weiya 注：Ex. 5.4”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">Issue 31: Ex. 5.4</a>，欢迎讨论交流．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">Issue 31: Ex. 5.4</a>，欢迎讨论交流。</p>
 <p>!!! note “weiya 注”
-下面说明对于自然三次样条而言，基函数个数即为结点个数．
+下面说明对于自然三次样条而言，基函数个数即为结点个数。
 设有 <span class="math notranslate nohighlight">\(K\)</span> 个结点，则有 <span class="math notranslate nohighlight">\(K-2\)</span> 个内结点，<span class="math notranslate nohighlight">\((K-2+1)\)</span> 个区域，每个区域参数为 4 个，每个内结点减掉 3 个参数，每个边界点减掉一个参数，则还剩下
 $<span class="math notranslate nohighlight">\(
     (K-1)\cdot 4-3(K-2)-2\times 1 = K
     \)</span><span class="math notranslate nohighlight">\(
-    也就是 \)</span>K$ 个基函数．</p>
+    也就是 \)</span>K$ 个基函数。</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>具体地，假设某内结点 $\xi$ 的左右区域函数分别为
 $$
 f_i(x) = a_ix^3+b_ix^2+c_ix+d_i,\quad i=1,2\,,
@@ -1274,36 +1275,36 @@ $$
 </div>
 <div class="section" id="id3">
 <h2>例子：南非心脏病（继续）<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>在 4.4.2 节我们对南非心脏病数据进行了线性逻辑斯蒂回归拟合．这里我们以采用自然样条的函数来探索非线性．模型的函数有如下形式：
+<p>在 4.4.2 节我们对南非心脏病数据进行了线性逻辑斯蒂回归拟合。这里我们以采用自然样条的函数来探索非线性。模型的函数有如下形式：
 $<span class="math notranslate nohighlight">\(
 \mathrm{logit}[\Pr(chd\mid X)]=\theta_0+h_1(X_1)^T\theta_1+h_2(X_2)^T\theta_2+\cdots+h_p(X_p)^T\theta_p\tag{5.6}
 \)</span><span class="math notranslate nohighlight">\(
-其中每个 \)</span>\theta_i<span class="math notranslate nohighlight">\( 都是乘以对应自然样条基函数 \)</span>h_j$ 的系数向量．</p>
-<p>我们在模型中对每一项采用4个自然样条基．举个例子，<span class="math notranslate nohighlight">\(X_1\)</span> 代表 <code class="docutils literal notranslate"><span class="pre">sbp</span></code>，<span class="math notranslate nohighlight">\(h_1(X_1)\)</span> 是包含四个基函数的基．因为我们把 <span class="math notranslate nohighlight">\(h_j\)</span> 的常数项提取出来了，所以这实际上表明有三个而非两个内结点（在 <code class="docutils literal notranslate"><span class="pre">sbp</span></code> 的均匀分位数结点处取值），另外在数据端点有两个边界结点．</p>
+其中每个 \)</span>\theta_i<span class="math notranslate nohighlight">\( 都是乘以对应自然样条基函数 \)</span>h_j$ 的系数向量。</p>
+<p>我们在模型中对每一项采用4个自然样条基。举个例子，<span class="math notranslate nohighlight">\(X_1\)</span> 代表 <code class="docutils literal notranslate"><span class="pre">sbp</span></code>，<span class="math notranslate nohighlight">\(h_1(X_1)\)</span> 是包含四个基函数的基。因为我们把 <span class="math notranslate nohighlight">\(h_j\)</span> 的常数项提取出来了，所以这实际上表明有三个而非两个内结点（在 <code class="docutils literal notranslate"><span class="pre">sbp</span></code> 的均匀分位数结点处取值），另外在数据端点有两个边界结点。</p>
 <!--
 > weiya注：
 >
-> 因为把常数项单独提出来，所以原本应该为5个基函数．对于自然三次样条来说，$K$个基函数表示含有$K$个结点．
+> 因为把常数项单独提出来，所以原本应该为5个基函数。对于自然三次样条来说，$K$个基函数表示含有$K$个结点。
 >
 > 因为三次样条$M=4$，$K$为结点个数（含边界点）
 >
 > $M+K=4+$基函数个数
 >
-> 则$K$个基函数表示含有$K$个结点．
+> 则$K$个基函数表示含有$K$个结点。
 >
-> 这里，总共5个结点，除去边界点，则还剩3个内结点．
+> 这里，总共5个结点，除去边界点，则还剩3个内结点。
 -->
 <!--
 !!! note "weiya注："
-    因为把常数项单独提出来，所以原本应该为5个基函数．对于自然三次样条来说，$K$个基函数表示含有$K$个结点．
+    因为把常数项单独提出来，所以原本应该为5个基函数。对于自然三次样条来说，$K$个基函数表示含有$K$个结点。
 
     因为三次样条$M=4$，$K$为结点个数（含边界点）
 
     $M+K=4+$基函数个数
 
-    则$K$个基函数表示含有$K$个结点．
+    则$K$个基函数表示含有$K$个结点。
 
-    这里，总共5个结点，除去边界点，则还剩3个内结点．
+    这里，总共5个结点，除去边界点，则还剩3个内结点。
 
 !!! note "weiya 注"
     上文 $h_j$ 中的常数项已经提出，所以实际上含 $K$ 个基函数的自然三次样条，其内结点个数为
@@ -1313,26 +1314,26 @@ $<span class="math notranslate nohighlight">\(
 
 -->
 <p>!!! note “weiya 注：”
-因为把常数项单独提出来，所以原本应该为 5 个基函数．考虑到对于自然三次样条，<span class="math notranslate nohighlight">\(K\)</span> 个基函数表示含有 <span class="math notranslate nohighlight">\(K\)</span> 个结点．所以这里也就是总共 5 个结点，除去边界点，则还剩 3 个内结点．</p>
-<p>因为 <code class="docutils literal notranslate"><span class="pre">famhist</span></code> 是含两个水平的因子，所以用一个二值变量或者虚拟变量来编码，而且它与拟合的模型中的单个系数有关．</p>
-<p>更简洁地，我们将 <span class="math notranslate nohighlight">\(p\)</span> 维基函数（以及常数项）向量结合成一个向量 <span class="math notranslate nohighlight">\(h(X)\)</span>，则模型简化为 <span class="math notranslate nohighlight">\(h(X)^T\theta\)</span>，总参数个数为 <span class="math notranslate nohighlight">\(df=1+\sum_{j=1}^pdf_j\)</span>，是每个组分中参数个数的和．每个基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个样本中分别取值，得到一个 <span class="math notranslate nohighlight">\(N\times df\)</span> 的基矩阵 <span class="math notranslate nohighlight">\(\mathbf H\)</span>．在这点上看，模型类似于其他的线性逻辑斯蒂回归模型，应用的算法在 4.4.1 节描述．</p>
+因为把常数项单独提出来，所以原本应该为 5 个基函数。考虑到对于自然三次样条，<span class="math notranslate nohighlight">\(K\)</span> 个基函数表示含有 <span class="math notranslate nohighlight">\(K\)</span> 个结点。所以这里也就是总共 5 个结点，除去边界点，则还剩 3 个内结点。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">famhist</span></code> 是含两个水平的因子，所以用一个二值变量或者虚拟变量来编码，而且它与拟合的模型中的单个系数有关。</p>
+<p>更简洁地，我们将 <span class="math notranslate nohighlight">\(p\)</span> 维基函数（以及常数项）向量结合成一个向量 <span class="math notranslate nohighlight">\(h(X)\)</span>，则模型简化为 <span class="math notranslate nohighlight">\(h(X)^T\theta\)</span>，总参数个数为 <span class="math notranslate nohighlight">\(df=1+\sum_{j=1}^pdf_j\)</span>，是每个组分中参数个数的和。每个基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个样本中分别取值，得到一个 <span class="math notranslate nohighlight">\(N\times df\)</span> 的基矩阵 <span class="math notranslate nohighlight">\(\mathbf H\)</span>。在这点上看，模型类似于其他的线性逻辑斯蒂回归模型，应用的算法在 4.4.1 节描述。</p>
 <p><img alt="" src="../_images/fig5.4.png" /></p>
-<p>我们采用向后逐步删除过程，从模型中删除项并且保持每个项的整体结构，而不是每次删除一个系数．AIC 统计量（7.5 节）用来删除项，并且在最后模型中保留下来的所有项如果被删掉都会导致 AIC 增大（见表 5.1）．图 5.4 显示了通过逐步回归选择出的最终模型的图象．对于每个变量 <span class="math notranslate nohighlight">\(X_j\)</span>，画出的函数是<span class="math notranslate nohighlight">\(\hat{f_j}(X_j)=h_j(X_j)^T\hat\theta_j\)</span>．协方差矩阵 <span class="math notranslate nohighlight">\(\Cov(\hat\theta)=\mathbf\Sigma\)</span> 通过 <span class="math notranslate nohighlight">\(\mathbf{\hat\Sigma=(H^TWH)^{-1}}\)</span> 来估计，其中 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 为逻辑斯蒂回归的对角元素构成的权重矩阵．因此 <span class="math notranslate nohighlight">\(v_j(X_j)=\Var[\hat{f_j}(X_j)]=h_j(X_j)^T\mathbf{\hat \Sigma}\_{jj}h_j(X_j)\)</span> 是 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的逐点方差函数，其中 <span class="math notranslate nohighlight">\(\Cov(\hat\theta_j)=\hat{\mathbf\Sigma}\_{jj}\)</span> 是 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma}\)</span> 对应的子矩阵．图 5.4 中每张图的阴影区域由 <span class="math notranslate nohighlight">\(\hat{f_j}(X_j)\pm2\sqrt{v_j(X_j)}\)</span> 定义．</p>
-<p>AIC统计量比似然比检验（偏差检验）更“宽容”（generous）．<code class="docutils literal notranslate"><span class="pre">sbp</span></code>和<code class="docutils literal notranslate"><span class="pre">obesity</span></code>都被包含进模型中，而这两个量都不在线性模型中．图象解释了为什么它们的贡献本质上是非线性．这些影响乍看或许很奇怪，但这因为是回顾性数据的本质．这些指标有时是当病人患上心脏病后测出来的，而且在很多情形下他们已经受益于健康饮食和生活状态，因此在<code class="docutils literal notranslate"><span class="pre">obesity</span></code>和<code class="docutils literal notranslate"><span class="pre">sbp</span></code>值较低时会有明显的增长．表5.1总结了部分模型的效果．</p>
+<p>我们采用向后逐步删除过程，从模型中删除项并且保持每个项的整体结构，而不是每次删除一个系数。AIC 统计量（7.5 节）用来删除项，并且在最后模型中保留下来的所有项如果被删掉都会导致 AIC 增大（见表 5.1）。图 5.4 显示了通过逐步回归选择出的最终模型的图象。对于每个变量 <span class="math notranslate nohighlight">\(X_j\)</span>，画出的函数是<span class="math notranslate nohighlight">\(\hat{f_j}(X_j)=h_j(X_j)^T\hat\theta_j\)</span>。协方差矩阵 <span class="math notranslate nohighlight">\(\Cov(\hat\theta)=\mathbf\Sigma\)</span> 通过 <span class="math notranslate nohighlight">\(\mathbf{\hat\Sigma=(H^TWH)^{-1}}\)</span> 来估计，其中 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 为逻辑斯蒂回归的对角元素构成的权重矩阵。因此 <span class="math notranslate nohighlight">\(v_j(X_j)=\Var[\hat{f_j}(X_j)]=h_j(X_j)^T\mathbf{\hat \Sigma}\_{jj}h_j(X_j)\)</span> 是 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的逐点方差函数，其中 <span class="math notranslate nohighlight">\(\Cov(\hat\theta_j)=\hat{\mathbf\Sigma}\_{jj}\)</span> 是 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma}\)</span> 对应的子矩阵。图 5.4 中每张图的阴影区域由 <span class="math notranslate nohighlight">\(\hat{f_j}(X_j)\pm2\sqrt{v_j(X_j)}\)</span> 定义。</p>
+<p>AIC统计量比似然比检验（偏差检验）更“宽容”（generous）。<code class="docutils literal notranslate"><span class="pre">sbp</span></code>和<code class="docutils literal notranslate"><span class="pre">obesity</span></code>都被包含进模型中，而这两个量都不在线性模型中。图象解释了为什么它们的贡献本质上是非线性。这些影响乍看或许很奇怪，但这因为是回顾性数据的本质。这些指标有时是当病人患上心脏病后测出来的，而且在很多情形下他们已经受益于健康饮食和生活状态，因此在<code class="docutils literal notranslate"><span class="pre">obesity</span></code>和<code class="docutils literal notranslate"><span class="pre">sbp</span></code>值较低时会有明显的增长。表5.1总结了部分模型的效果。</p>
 <p><img alt="" src="../_images/tab5.1.png" /></p>
 </div>
 <div class="section" id="id4">
 <h2>例子：音素识别<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>在这个例子中我们采用样条来降低灵活性而非增大灵活性；这个应用是属于一般的 <strong>函数型 (functional)</strong> 建模．图 5.5 的上图显示了在 256 个频率下分别s测量两个音素“aa”和“ao”的 15 个对数周期图．目标是应用这些数据对口语音素进行分类．选择这两个音素是因为它们很难被分开．</p>
+<p>在这个例子中我们采用样条来降低灵活性而非增大灵活性；这个应用是属于一般的 <strong>函数型 (functional)</strong> 建模。图 5.5 的上图显示了在 256 个频率下分别s测量两个音素“aa”和“ao”的 15 个对数周期图。目标是应用这些数据对口语音素进行分类。选择这两个音素是因为它们很难被分开。</p>
 <p><img alt="" src="../_images/fig5.5.png" /></p>
 <blockquote>
-<div><p>图 5.5 上图显示了对数周期图作为 15个例子中的频率的函数，例子中每个音素“aa”和“ao”从总共695个“aa”和1022个“ao”中选取．每个对数周期图在256个均匀的空间频率处测量．下图显示了对数据进行极大似然拟合逻辑斯蒂回归得到的系数（作为频率的函数）的图象，将256个对数周期图值作为输入．带约束的逻辑斯蒂回归的系数随频率变化是光滑的红色曲线，而在锯齿状灰色曲线是无约束的逻辑斯蒂回归情形下系数随频率变化的曲线．</p>
+<div><p>图 5.5 上图显示了对数周期图作为 15个例子中的频率的函数，例子中每个音素“aa”和“ao”从总共695个“aa”和1022个“ao”中选取。每个对数周期图在256个均匀的空间频率处测量。下图显示了对数据进行极大似然拟合逻辑斯蒂回归得到的系数（作为频率的函数）的图象，将256个对数周期图值作为输入。带约束的逻辑斯蒂回归的系数随频率变化是光滑的红色曲线，而在锯齿状灰色曲线是无约束的逻辑斯蒂回归情形下系数随频率变化的曲线。</p>
 </div></blockquote>
 <p>!!! note “weiya注”
-周期图（Periodogram）：在信号处理中，周期图是信号谱密度的估计．
-抛开背景知识，直观理解便是上图绘制了每条曲线代表一个例子，其中 15 条表示”aa”，另外 15 条表示”ao”．</p>
-<p>输入特征是长度为 256 的向量 <span class="math notranslate nohighlight">\(x\)</span>，我们可以看成是在频率 <span class="math notranslate nohighlight">\(f\)</span> 的节点上取值的函数值 <span class="math notranslate nohighlight">\(X(f)\)</span> 向量．实际上，存在一个连续的类似信号，它是频率的函数，这里我们可以将 <span class="math notranslate nohighlight">\(X(f)\)</span> 看成是它的一个取样版本．</p>
-<p>图 5.5 的下图显示了对从 695 个“aa”和 1022 个“ao”选出的 1000 个训练样本进行极大似然拟合得到的线性逻辑斯蒂回归模型的系数．也作出了系数关于频率的函数图象，而且实际上我们可以根据下面的连续形式来思考模型</p>
+周期图（Periodogram）：在信号处理中，周期图是信号谱密度的估计。
+抛开背景知识，直观理解便是上图绘制了每条曲线代表一个例子，其中 15 条表示”aa”，另外 15 条表示”ao”。</p>
+<p>输入特征是长度为 256 的向量 <span class="math notranslate nohighlight">\(x\)</span>，我们可以看成是在频率 <span class="math notranslate nohighlight">\(f\)</span> 的节点上取值的函数值 <span class="math notranslate nohighlight">\(X(f)\)</span> 向量。实际上，存在一个连续的类似信号，它是频率的函数，这里我们可以将 <span class="math notranslate nohighlight">\(X(f)\)</span> 看成是它的一个取样版本。</p>
+<p>图 5.5 的下图显示了对从 695 个“aa”和 1022 个“ao”选出的 1000 个训练样本进行极大似然拟合得到的线性逻辑斯蒂回归模型的系数。也作出了系数关于频率的函数图象，而且实际上我们可以根据下面的连续形式来思考模型</p>
 <div class="math notranslate nohighlight">
 \[
 \log\frac{\Pr(\mathrm{aa}\mid X)}{\Pr(\mathrm{ao}\mid X)}=\int X(f)\beta(f)df\tag{5.7}
@@ -1342,13 +1343,13 @@ $<span class="math notranslate nohighlight">\(
 \[
 \sum\limits_{j=1}^{256}X(f_j)\beta(f_j)=\sum\limits_{j=1}^{256}x_j\beta_j\tag{5.8}
 \]</div>
-<p>系数计算出对比度函数 (contrast functional)，而且将会在频域内有显著的值，其中对数周期图会区分这两个类．</p>
-<p>灰色曲线十分粗糙．因为输入信号有相当强的正自相关性，这导致系数中的负自相关．另外，样本大小仅仅为每个系数仅仅提供了 4 个有效的观测值．</p>
+<p>系数计算出对比度函数 (contrast functional)，而且将会在频域内有显著的值，其中对数周期图会区分这两个类。</p>
+<p>灰色曲线十分粗糙。因为输入信号有相当强的正自相关性，这导致系数中的负自相关。另外，样本大小仅仅为每个系数仅仅提供了 4 个有效的观测值。</p>
 <p>!!! note “weiya注：”
 我的理解是，因为训练样本大小为 1000，而系数共有 256，所以平均下来应该是每个系数仅有四个观测值。</p>
-<p>类似这样的应用允许 <strong>自然的正则化 (natural regularization)</strong>．我们强制系数作为频率的函数均匀变化．图 5.5 中下图的红色曲线显示了对这些数据应用这样一个光滑参数曲线．我们看到低频率的差异性很明显．这个光滑不仅允许对它们的差异进行更简单的解读，而且得到更加精确的分类器：</p>
+<p>类似这样的应用允许 <strong>自然的正则化 (natural regularization)</strong>。我们强制系数作为频率的函数均匀变化。图 5.5 中下图的红色曲线显示了对这些数据应用这样一个光滑参数曲线。我们看到低频率的差异性很明显。这个光滑不仅允许对它们的差异进行更简单的解读，而且得到更加精确的分类器：</p>
 <p><img alt="" src="../_images/tabno1.png" /></p>
-<p>红色光滑曲线可以应用非常简单的自然三次样条得到．我们可以将系数函数表达成样条 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span> 的展开．实际中这意味着 <span class="math notranslate nohighlight">\(\beta=\mathbf H\theta\)</span>，其中，<span class="math notranslate nohighlight">\(\mathbf H\)</span> 是 <span class="math notranslate nohighlight">\(p\times M\)</span> 三次样条的基矩阵，定义在频率集上．这里我们采用 <span class="math notranslate nohighlight">\(M=12\)</span> 个基函数，其中结点均匀分布在表示频率的整数 <span class="math notranslate nohighlight">\(1,2,\ldots,256\)</span> 上．因为 <span class="math notranslate nohighlight">\(x^T\beta=x^T\mathbf H\theta\)</span>，我们可以简单地将输入特征 <span class="math notranslate nohighlight">\(x\)</span> 替换成 <strong>滤波 (filtered)</strong> 形式(x^*=\mathbf{H}^Tx)，并在<span class="math notranslate nohighlight">\(x^*\)</span>上通过线性逻辑斯蒂回归拟合<span class="math notranslate nohighlight">\(\theta\)</span>．因此红色曲线是<span class="math notranslate nohighlight">\(\beta(f)=h(f)^T\hat\theta\)</span>．</p>
+<p>红色光滑曲线可以应用非常简单的自然三次样条得到。我们可以将系数函数表达成样条 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span> 的展开。实际中这意味着 <span class="math notranslate nohighlight">\(\beta=\mathbf H\theta\)</span>，其中，<span class="math notranslate nohighlight">\(\mathbf H\)</span> 是 <span class="math notranslate nohighlight">\(p\times M\)</span> 三次样条的基矩阵，定义在频率集上。这里我们采用 <span class="math notranslate nohighlight">\(M=12\)</span> 个基函数，其中结点均匀分布在表示频率的整数 <span class="math notranslate nohighlight">\(1,2,\ldots,256\)</span> 上。因为 <span class="math notranslate nohighlight">\(x^T\beta=x^T\mathbf H\theta\)</span>，我们可以简单地将输入特征 <span class="math notranslate nohighlight">\(x\)</span> 替换成 <strong>滤波 (filtered)</strong> 形式(x^*=\mathbf{H}^Tx)，并在<span class="math notranslate nohighlight">\(x^*\)</span>上通过线性逻辑斯蒂回归拟合<span class="math notranslate nohighlight">\(\theta\)</span>。因此红色曲线是<span class="math notranslate nohighlight">\(\beta(f)=h(f)^T\hat\theta\)</span>。</p>
 <p>!!! note “weiya 注：”
 这里其实就是 <strong>函数型线性模型 (functional linear model)</strong> 的策略，为了保持光滑化，用样条基函数来表示系数函数。更多细节可以参见 Ramsay, J. O., &amp; Silverman, B. W. (2005). Functional data analysis (Second edition). Springer. 这本书的第 13 章。</p>
 </div>

@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1171,32 +1172,11 @@
                 
   <div class="section" id="gradient-boosting">
 <h1>10.10 Gradient Boosting的数值优化<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-08-27</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2020-01-13 14:57:32</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \hat\Theta_m = \text{arg }\underset{\Theta_m}{\text{min}}\sum\limits_{i=1}^NL(y_i,f_{m-1}(x_i)+T(x_i;\Theta_m))\tag{10.29}\label{10.29}
     \)</span>$</p>
-<p>采用任意可导损失准则的 \eqref{10.29} 的快速近似算法可以类比数值优化导出．在训练数据上用 <span class="math notranslate nohighlight">\(f(x)\)</span> 来预测 <span class="math notranslate nohighlight">\(y\)</span> 的损失为</p>
+<p>采用任意可导损失准则的 \eqref{10.29} 的快速近似算法可以类比数值优化导出。在训练数据上用 <span class="math notranslate nohighlight">\(f(x)\)</span> 来预测 <span class="math notranslate nohighlight">\(y\)</span> 的损失为</p>
 <div class="math notranslate nohighlight">
 \[
 L(f) = \sum\limits_{i=1}^NL(y_i, f(x_i))\tag{10.33}\label{10.33}
@@ -1221,13 +1201,13 @@ $<span class="math notranslate nohighlight">\(
 \[
 \mathbf f_M=\sum\limits_{m=1}^M\mathbf h_m,\qquad \mathbf h_m\in \IR^N
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\mathbf f_0=\mathbf h_0\)</span> 是初始化的猜测，接下来每个 <span class="math notranslate nohighlight">\(\mathbf f_m\)</span> 基于当前的参数向量 <span class="math notranslate nohighlight">\(\mathbf f_{m-1}\)</span>（此前已经更新的和）导出．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf f_0=\mathbf h_0\)</span> 是初始化的猜测，接下来每个 <span class="math notranslate nohighlight">\(\mathbf f_m\)</span> 基于当前的参数向量 <span class="math notranslate nohighlight">\(\mathbf f_{m-1}\)</span>（此前已经更新的和）导出。</p>
 <p>!!! note “weiya 注：”
 这里 <span class="math notranslate nohighlight">\(\mathbf h_m\)</span> 即对应 <span class="math notranslate nohighlight">\(\\{T(x_1;\Theta_m),\ldots, T(x_N;\Theta_m)\\}^T\)</span>.</p>
-<p>不同数值优化方法的区别在于它们采用不同的方法来计算每个增长向量 <span class="math notranslate nohighlight">\(\mathbf h_m\)</span>．</p>
+<p>不同数值优化方法的区别在于它们采用不同的方法来计算每个增长向量 <span class="math notranslate nohighlight">\(\mathbf h_m\)</span>。</p>
 <div class="section" id="id1">
 <h2>最速下降<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p><strong>最速下降 (steepest descent)</strong> 选择 <span class="math notranslate nohighlight">\(\mathbf h_m=-\rho_m \mathbf g_m\)</span>，其中 <span class="math notranslate nohighlight">\(\rho_m\)</span> 为标量值，<span class="math notranslate nohighlight">\(\mathbf g_m\in \IR^N\)</span> 是在 <span class="math notranslate nohighlight">\(\mathbf f=\mathbf f_{m-1}\)</span> 取值的 <span class="math notranslate nohighlight">\(L(\mathbf f)\)</span> 的梯度．<span class="math notranslate nohighlight">\(\mathbf g_m\)</span> 的组分为</p>
+<p><strong>最速下降 (steepest descent)</strong> 选择 <span class="math notranslate nohighlight">\(\mathbf h_m=-\rho_m \mathbf g_m\)</span>，其中 <span class="math notranslate nohighlight">\(\rho_m\)</span> 为标量值，<span class="math notranslate nohighlight">\(\mathbf g_m\in \IR^N\)</span> 是在 <span class="math notranslate nohighlight">\(\mathbf f=\mathbf f_{m-1}\)</span> 取值的 <span class="math notranslate nohighlight">\(L(\mathbf f)\)</span> 的梯度。<span class="math notranslate nohighlight">\(\mathbf g_m\)</span> 的组分为</p>
 <div class="math notranslate nohighlight">
 \[
 g_{im}=\Big[\frac{\partial L(y_i, f(x_i))}{\partial f(x_i)} \Big]_{f(x_i)=f_{m-1}(x_i)}\tag{10.35}\label{10.35}
@@ -1241,25 +1221,25 @@ $<span class="math notranslate nohighlight">\(
 \[
 \mathbf f_m = \mathbf f_{m-1}-\rho_m\mathbf g_m
 \]</div>
-<p>这个过程一直重复直到下一次迭代．最速下降可以看成是非常贪婪的策略，因为 <span class="math notranslate nohighlight">\(-\mathbf g_m\)</span> 是 <span class="math notranslate nohighlight">\(\IR^N\)</span> 空间中 <span class="math notranslate nohighlight">\(L(\mathbf f)\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf f= \mathbf f_{m-1}\)</span> 处最速下降的局部方向．</p>
+<p>这个过程一直重复直到下一次迭代。最速下降可以看成是非常贪婪的策略，因为 <span class="math notranslate nohighlight">\(-\mathbf g_m\)</span> 是 <span class="math notranslate nohighlight">\(\IR^N\)</span> 空间中 <span class="math notranslate nohighlight">\(L(\mathbf f)\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf f= \mathbf f_{m-1}\)</span> 处最速下降的局部方向。</p>
 </div>
 <div class="section" id="id2">
 <h2>Gradient Boosting<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><strong>Forward stagewise boosting</strong>（算法 10.2）也是非常贪婪的策略．每一步中，在给定当前模型 <span class="math notranslate nohighlight">\(f_{m-1}\)</span> 以及其拟合值 <span class="math notranslate nohighlight">\(f_{m-1}(x_i)\)</span> 下，得到的解是在最大程度上降低 \eqref{10.29} 的树．</p>
-<p>因此，树的预测值 <span class="math notranslate nohighlight">\(T(x_i;\Theta_m)\)</span> 与负梯度 \eqref{10.35} 的组分类似．本质区别在于树的组分 <span class="math notranslate nohighlight">\(\mathbf t_m=\\{T(x_1;\Theta_m),\ldots,T(x_N;\Theta_m)\\}\)</span> 不是独立的．它们限定为终止结点个数为 <span class="math notranslate nohighlight">\(J_m\)</span> 的树的预测值，然而负梯度是没有任何限制的最速下降方向．</p>
+<p><strong>Forward stagewise boosting</strong>（算法 10.2）也是非常贪婪的策略。每一步中，在给定当前模型 <span class="math notranslate nohighlight">\(f_{m-1}\)</span> 以及其拟合值 <span class="math notranslate nohighlight">\(f_{m-1}(x_i)\)</span> 下，得到的解是在最大程度上降低 \eqref{10.29} 的树。</p>
+<p>因此，树的预测值 <span class="math notranslate nohighlight">\(T(x_i;\Theta_m)\)</span> 与负梯度 \eqref{10.35} 的组分类似。本质区别在于树的组分 <span class="math notranslate nohighlight">\(\mathbf t_m=\\{T(x_1;\Theta_m),\ldots,T(x_N;\Theta_m)\\}\)</span> 不是独立的。它们限定为终止结点个数为 <span class="math notranslate nohighlight">\(J_m\)</span> 的树的预测值，然而负梯度是没有任何限制的最速下降方向。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \hat \gamma_{jm}=\text{arg }\underset{\gamma_{jm}}{\text{min}}\sum\limits_{x_i\in R_{jm}}L(y_i,f_{m-1}(x_i)+\gamma_{jm})\tag{10.30}\label{10.30}
     \)</span>$</p>
-<p>向前逐步方法中 \eqref{10.30} 的解类似于在最速下降方向对 \eqref{10.36} 进行 <strong>线搜索(line search)</strong>．区别在于 \eqref{10.30} 中对  <span class="math notranslate nohighlight">\(\mathbf t_m\)</span> 的组分进行单独的线搜索，这里的组分是对应每个单独的终止结点 <span class="math notranslate nohighlight">\(\\{T(x_i;\Theta_m)\\}\_{x_i\in R_{jm}}\)</span>，换句话说，就是对每个终止结点应用一次线搜索．</p>
-<p>如果在训练数据上最小化损失 \eqref{10.33} 是唯一的目标，则最速下降是更好的策略．梯度 \eqref{10.35} 对于任意可导的损失函数 <span class="math notranslate nohighlight">\(L(y,f(x))\)</span> 是很容易计算的，然而对于 <span class="xref myst">10.6 节</span>中讨论的鲁棒的准则来求解 \eqref{10.29} 是很困难的．很不幸的是梯度 \eqref{10.35} 仅仅在训练数据点 <span class="math notranslate nohighlight">\(x_i\)</span> 处有定义，然而最终的目标是将 <span class="math notranslate nohighlight">\(f_M(x)\)</span> 一般化到新数据，而不是仅仅是出现在训练集中的数据．</p>
-<p>解决这个困境的一种可能方案是在第 <span class="math notranslate nohighlight">\(m\)</span> 次迭代中构造 <span class="math notranslate nohighlight">\(T(x;\Theta_m)\)</span>，其预测值 <span class="math notranslate nohighlight">\(\mathbf t_m\)</span> 与负梯度尽可能接近．采用平方误差来衡量近似程度，则有</p>
+<p>向前逐步方法中 \eqref{10.30} 的解类似于在最速下降方向对 \eqref{10.36} 进行 <strong>线搜索(line search)</strong>。区别在于 \eqref{10.30} 中对  <span class="math notranslate nohighlight">\(\mathbf t_m\)</span> 的组分进行单独的线搜索，这里的组分是对应每个单独的终止结点 <span class="math notranslate nohighlight">\(\\{T(x_i;\Theta_m)\\}\_{x_i\in R_{jm}}\)</span>，换句话说，就是对每个终止结点应用一次线搜索。</p>
+<p>如果在训练数据上最小化损失 \eqref{10.33} 是唯一的目标，则最速下降是更好的策略。梯度 \eqref{10.35} 对于任意可导的损失函数 <span class="math notranslate nohighlight">\(L(y,f(x))\)</span> 是很容易计算的，然而对于 <span class="xref myst">10.6 节</span>中讨论的鲁棒的准则来求解 \eqref{10.29} 是很困难的。很不幸的是梯度 \eqref{10.35} 仅仅在训练数据点 <span class="math notranslate nohighlight">\(x_i\)</span> 处有定义，然而最终的目标是将 <span class="math notranslate nohighlight">\(f_M(x)\)</span> 一般化到新数据，而不是仅仅是出现在训练集中的数据。</p>
+<p>解决这个困境的一种可能方案是在第 <span class="math notranslate nohighlight">\(m\)</span> 次迭代中构造 <span class="math notranslate nohighlight">\(T(x;\Theta_m)\)</span>，其预测值 <span class="math notranslate nohighlight">\(\mathbf t_m\)</span> 与负梯度尽可能接近。采用平方误差来衡量近似程度，则有</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\Theta_m = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{i=1}^N(-g_{im}-T(x_i;\Theta))^2\tag{10.37}\label{10.37}
 \]</div>
-<p>也就是，用最小二乘对负梯度值 \eqref{10.35} 进行拟合．如 <span class="xref myst">10.9 节</span>提到的，对于最小二乘决策树生长(induction)存在快速算法．尽管 \eqref{10.37} 的解 <span class="math notranslate nohighlight">\(\hat R_{jm}\)</span> 会与求解 \eqref{10.29} 得到的 <span class="math notranslate nohighlight">\(R_{jm}\)</span> 不同，但一般而言它们已经足够近似来实现同样的目的．在任何情形下，向前逐步 boosting 过程，自上而下决策树生长(induction)，都是近似过程．当构造完树 \eqref{10.37}，对应的每个区域的常数值由 \eqref{10.30} 给出．</p>
-<p>表 10.2 总结了通常使用的损失函数的梯度．对于平方误差损失，负梯度恰恰是普通的残差 <span class="math notranslate nohighlight">\(-g_{im}=y_i-f_{m-1}(x_i)\)</span>，所以 \eqref{10.37} 等价于标准的最小二乘 boosting．在绝对值损失下，负梯度为残差的符号，所以在每次迭代，\eqref{10.37} 利用最小二乘对当前的残差的符号进行拟合．对于 Huber M-回归，负梯度是这两者的综合（详见表 10.2）．</p>
+<p>也就是，用最小二乘对负梯度值 \eqref{10.35} 进行拟合。如 <span class="xref myst">10.9 节</span>提到的，对于最小二乘决策树生长(induction)存在快速算法。尽管 \eqref{10.37} 的解 <span class="math notranslate nohighlight">\(\hat R_{jm}\)</span> 会与求解 \eqref{10.29} 得到的 <span class="math notranslate nohighlight">\(R_{jm}\)</span> 不同，但一般而言它们已经足够近似来实现同样的目的。在任何情形下，向前逐步 boosting 过程，自上而下决策树生长(induction)，都是近似过程。当构造完树 \eqref{10.37}，对应的每个区域的常数值由 \eqref{10.30} 给出。</p>
+<p>表 10.2 总结了通常使用的损失函数的梯度。对于平方误差损失，负梯度恰恰是普通的残差 <span class="math notranslate nohighlight">\(-g_{im}=y_i-f_{m-1}(x_i)\)</span>，所以 \eqref{10.37} 等价于标准的最小二乘 boosting。在绝对值损失下，负梯度为残差的符号，所以在每次迭代，\eqref{10.37} 利用最小二乘对当前的残差的符号进行拟合。对于 Huber M-回归，负梯度是这两者的综合（详见表 10.2）。</p>
 <p><img alt="" src="../_images/tab10.2.png" /></p>
 <p>对于分类，损失函数是多项偏差 \eqref{10.22}，</p>
 <p>!!! note “weiya 注：Recall”
@@ -1269,7 +1249,7 @@ $<span class="math notranslate nohighlight">\(
     &amp;=-\sum\limits_{k=1}^KI(y={\cal G_k})f_k(x)+\log \left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
     \end{align*}
     \)</span>$</p>
-<p>并且在每次迭代过程中构造 <span class="math notranslate nohighlight">\(K\)</span> 棵最小二乘树．每棵树 <span class="math notranslate nohighlight">\(T_{km}\)</span> 是对各自负梯度向量 <span class="math notranslate nohighlight">\(g_{km}\)</span> 的拟合，</p>
+<p>并且在每次迭代过程中构造 <span class="math notranslate nohighlight">\(K\)</span> 棵最小二乘树。每棵树 <span class="math notranslate nohighlight">\(T_{km}\)</span> 是对各自负梯度向量 <span class="math notranslate nohighlight">\(g_{km}\)</span> 的拟合，</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1277,12 +1257,12 @@ $<span class="math notranslate nohighlight">\(
 &amp;=I(y_i={\cal G_k})-p_k(x_i)\tag{10.38}\label{10.38}
 \end{align}
 \end{split}\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(p_k(x)\)</span> 由 \eqref{10.21} 给出．尽管在每次迭代时，分别构造 <span class="math notranslate nohighlight">\(K\)</span> 棵树，但是它们通过式 \eqref{10.21} 关联起来．</p>
+<p>其中 <span class="math notranslate nohighlight">\(p_k(x)\)</span> 由 \eqref{10.21} 给出。尽管在每次迭代时，分别构造 <span class="math notranslate nohighlight">\(K\)</span> 棵树，但是它们通过式 \eqref{10.21} 关联起来。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     p_k(x) = \frac{e^{f_k(x)}}{\sum_{\ell=1}^Ke^{f_\ell(x)}}\tag{10.21}\label{10.21}
     \)</span>$</p>
-<p>对于二值分类(<span class="math notranslate nohighlight">\(K=2\)</span>)，仅仅需要一棵树．</p>
+<p>对于二值分类(<span class="math notranslate nohighlight">\(K=2\)</span>)，仅仅需要一棵树。</p>
 <p>!!! note “weiya 注”
 对于二值分类，多项式偏差简单化为逻辑斯蒂损失函数
 考虑
@@ -1297,30 +1277,30 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     L(p, y) = -\log(f)=-(y\log p+(1-y)\log (1-p))
     \)</span><span class="math notranslate nohighlight">\(
-    也称为 logit 损失函数．
+    也称为 logit 损失函数。
     Logit 损失函数的负梯度为
     \)</span><span class="math notranslate nohighlight">\(
     -\frac{y-p}{p(1-p)}
     \)</span>$</p>
 <!--
-将上述几种损失函数及其梯度用如下的Julia程序表达出来．
+将上述几种损失函数及其梯度用如下的Julia程序表达出来。
 
 <script src="https://gist.github.com/szcf-weiya/cc6eaee677a027af5451f9fd17930543.js"></script>
 -->
 <p>!!! info
-笔记<span class="xref myst">损失函数的梯度总结及Julia实现</span>用Julia表达了表10.2中的各个损失函数及其梯度．</p>
+笔记<span class="xref myst">损失函数的梯度总结及Julia实现</span>用Julia表达了表10.2中的各个损失函数及其梯度。</p>
 </div>
 <div class="section" id="id3">
 <h2>Gradient Boosting 的实现<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/alg10.3.png" /></p>
-<p>上图中的算法 10.3 展示了用于回归的 <strong>gradient tree-boosting</strong> 的通用算法．特定的算法可以通过插入不同的损失准则 <span class="math notranslate nohighlight">\(L(y, f(x))\)</span> 得到．算法第一行初始化为最优的常数模型，也就是单终止结点的树．第 <span class="math notranslate nohighlight">\(2(a)\)</span> 行的负梯度计算的组分被称为广义残差或 <strong>伪残差(pseudo residuals)</strong>，<span class="math notranslate nohighlight">\(r\)</span>．通常使用的损失函数的梯度已经总结在表 10.2 中．</p>
-<p>用于分类的算法是类似的．第 <span class="math notranslate nohighlight">\(2(a)\)</span>-<span class="math notranslate nohighlight">\((d)\)</span> 行每次迭代时重复 <span class="math notranslate nohighlight">\(K\)</span> 次，每次对每个类用 \eqref{10.38} 计算负梯度．第 3 行的结果是 <span class="math notranslate nohighlight">\(K\)</span> 个不同的树的展开 <span class="math notranslate nohighlight">\(f_{kM}(x), k=1,2,\ldots, K\)</span>．这通过 \eqref{10.21} 得到概率或者像 \eqref{10.20} 一样做分类．</p>
+<p>上图中的算法 10.3 展示了用于回归的 <strong>gradient tree-boosting</strong> 的通用算法。特定的算法可以通过插入不同的损失准则 <span class="math notranslate nohighlight">\(L(y, f(x))\)</span> 得到。算法第一行初始化为最优的常数模型，也就是单终止结点的树。第 <span class="math notranslate nohighlight">\(2(a)\)</span> 行的负梯度计算的组分被称为广义残差或 <strong>伪残差(pseudo residuals)</strong>，<span class="math notranslate nohighlight">\(r\)</span>。通常使用的损失函数的梯度已经总结在表 10.2 中。</p>
+<p>用于分类的算法是类似的。第 <span class="math notranslate nohighlight">\(2(a)\)</span>-<span class="math notranslate nohighlight">\((d)\)</span> 行每次迭代时重复 <span class="math notranslate nohighlight">\(K\)</span> 次，每次对每个类用 \eqref{10.38} 计算负梯度。第 3 行的结果是 <span class="math notranslate nohighlight">\(K\)</span> 个不同的树的展开 <span class="math notranslate nohighlight">\(f_{kM}(x), k=1,2,\ldots, K\)</span>。这通过 \eqref{10.21} 得到概率或者像 \eqref{10.20} 一样做分类。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     G(x)={\cal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
     \)</span>$</p>
 <p>细节在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/76">练习 10.9</a>中给出，两个基本的调整参数为迭代次数 <span class="math notranslate nohighlight">\(M\)</span> 和每个组分树的大小 <span class="math notranslate nohighlight">\(J_m,m=1,2\ldots,M\)</span>.</p>
-<p>这个算法原始实现称为 MART，指的是“<strong>多重可加回归树(multiple additive regression trees)</strong>”．这章中很多图是用 MART 得到的．这里描述的<strong>gradient boosting</strong> 在 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言的 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包中有实现(Ridgeway, 1999<a class="footnote-reference brackets" href="#id6" id="id4">1</a>, “Gradient Boosted Models”)，可以免费使用．<span class="xref myst">10.14.2 节</span>中用了 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包，在<span class="xref myst">第 16 章</span>和<span class="xref myst">第 15 章</span>有详细介绍．另外，还有个 boosting 算法的 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言实现是 <code class="docutils literal notranslate"><span class="pre">mboost</span></code>(Hothorn and Bühlmann, 2006<a class="footnote-reference brackets" href="#id7" id="id5">2</a>)．有个 gradient boosting/MART 的商业实现称为 TreeNet (Salford Systems, Inc.)</p>
+<p>这个算法原始实现称为 MART，指的是“<strong>多重可加回归树(multiple additive regression trees)</strong>”。这章中很多图是用 MART 得到的。这里描述的<strong>gradient boosting</strong> 在 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言的 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包中有实现(Ridgeway, 1999<a class="footnote-reference brackets" href="#id6" id="id4">1</a>, “Gradient Boosted Models”)，可以免费使用。<span class="xref myst">10.14.2 节</span>中用了 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包，在<span class="xref myst">第 16 章</span>和<span class="xref myst">第 15 章</span>有详细介绍。另外，还有个 boosting 算法的 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言实现是 <code class="docutils literal notranslate"><span class="pre">mboost</span></code>(Hothorn and Bühlmann, 2006<a class="footnote-reference brackets" href="#id7" id="id5">2</a>)。有个 gradient boosting/MART 的商业实现称为 TreeNet (Salford Systems, Inc.)</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>

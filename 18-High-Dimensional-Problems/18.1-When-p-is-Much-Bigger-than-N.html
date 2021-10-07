@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,43 +1149,22 @@
                 
   <div class="section" id="pn">
 <h1>18.1 当p远大于N<a class="headerlink" href="#pn" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-03-14</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-08-17 10:52:02</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
 <p>!!! note “更新笔记”
-&#64;2017-12-28 使用 R Notwbook 记录了模拟本节中的例子的具体过程，详见<span class="xref myst"><strong>这里</strong></span>．</p>
-<p>这章中我们讨论特征的个数 <span class="math notranslate nohighlight">\(p\)</span> 远大于观测的个数 <span class="math notranslate nohighlight">\(N\)</span> 的预测问题，通常写成 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span>．这样的问题变得越来越重要，特别是在基因和其他计算生物的领域中．我们将会看到这种情形下，<strong>高方差 (high variance)</strong> 和 <strong>过拟合 (overfitting)</strong> 是主要的考虑对象．结果表明，经常选择简单、高正则化的方式．本章的第一部分关注分类和回归中的预测问题，而第二部分讨论特征选择和特征评估这些更基本的问题．</p>
-<p>首先，图 18.1 总结了一个小型的仿真结果，展示了 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 时，“<strong>欠拟合更好 (less fitting is better)</strong>”的原则．对 <span class="math notranslate nohighlight">\(N=100\)</span> 个样本中的每一个，我们生成 <span class="math notranslate nohighlight">\(p\)</span> 个成对相关系数为 <span class="math notranslate nohighlight">\(0.2\)</span> 的标准高斯特征 <span class="math notranslate nohighlight">\(X\)</span>．响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 根据下面线性模型产生，</p>
+&#64;2017-12-28 使用 R Notwbook 记录了模拟本节中的例子的具体过程，详见<span class="xref myst"><strong>这里</strong></span>。</p>
+<p>这章中我们讨论特征的个数 <span class="math notranslate nohighlight">\(p\)</span> 远大于观测的个数 <span class="math notranslate nohighlight">\(N\)</span> 的预测问题，通常写成 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span>。这样的问题变得越来越重要，特别是在基因和其他计算生物的领域中。我们将会看到这种情形下，<strong>高方差 (high variance)</strong> 和 <strong>过拟合 (overfitting)</strong> 是主要的考虑对象。结果表明，经常选择简单、高正则化的方式。本章的第一部分关注分类和回归中的预测问题，而第二部分讨论特征选择和特征评估这些更基本的问题。</p>
+<p>首先，图 18.1 总结了一个小型的仿真结果，展示了 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 时，“<strong>欠拟合更好 (less fitting is better)</strong>”的原则。对 <span class="math notranslate nohighlight">\(N=100\)</span> 个样本中的每一个，我们生成 <span class="math notranslate nohighlight">\(p\)</span> 个成对相关系数为 <span class="math notranslate nohighlight">\(0.2\)</span> 的标准高斯特征 <span class="math notranslate nohighlight">\(X\)</span>。响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 根据下面线性模型产生，</p>
 <div class="math notranslate nohighlight">
 \[
 Y=\sum\limits_{j=1}^pX_j\beta_j+\sigma\varepsilon\tag{18.1}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 产生于标准高斯分布．对于每个数据集，系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 也从标准高斯分布中产生．我们研究三种情形：<span class="math notranslate nohighlight">\(p=20,100,1000\)</span>．在每种情形下标准误差的选取 <span class="math notranslate nohighlight">\(\sigma\)</span> 都使得信噪比 <span class="math notranslate nohighlight">\(\Var[\E(Y\mid X)]/\sigma^2\)</span> 等于<span class="math notranslate nohighlight">\(2\)</span>．结果表明，单变量回归系数显著的个数分别为 9，33 和 331，这是在 100 次模拟中平均得到的．<span class="math notranslate nohighlight">\(p=1000\)</span> 的情形是用来模拟高维数据，这些数据可能是基因数据或者蛋白质数据．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 产生于标准高斯分布。对于每个数据集，系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 也从标准高斯分布中产生。我们研究三种情形：<span class="math notranslate nohighlight">\(p=20,100,1000\)</span>。在每种情形下标准误差的选取 <span class="math notranslate nohighlight">\(\sigma\)</span> 都使得信噪比 <span class="math notranslate nohighlight">\(\Var[\E(Y\mid X)]/\sigma^2\)</span> 等于<span class="math notranslate nohighlight">\(2\)</span>。结果表明，单变量回归系数显著的个数分别为 9，33 和 331，这是在 100 次模拟中平均得到的。<span class="math notranslate nohighlight">\(p=1000\)</span> 的情形是用来模拟高维数据，这些数据可能是基因数据或者蛋白质数据。</p>
 <p>!!! note “weiya 注：”
-注意 <span class="math notranslate nohighlight">\(z_{0.975} = 1.96 \approx 2\)</span>，则如果 <span class="math notranslate nohighlight">\(\vert\hat\beta_j/\widehat{se}_j\vert\ge 2\)</span>，则称回归系数显著，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 为估计的（单变量）系数，<span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是它的标准误差估计．</p>
+注意 <span class="math notranslate nohighlight">\(z_{0.975} = 1.96 \approx 2\)</span>，则如果 <span class="math notranslate nohighlight">\(\vert\hat\beta_j/\widehat{se}_j\vert\ge 2\)</span>，则称回归系数显著，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 为估计的（单变量）系数，<span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是它的标准误差估计。</p>
 <p><img alt="" src="../_images/fig18.1.png" /></p>
 <blockquote>
-<div><p>图 18.1. 模拟实验的测试误差结果．显示了 3 个不同 <span class="math notranslate nohighlight">\(p\)</span> 值（特征的数目）下，100 次模拟的相对测试误差的箱线图．相对误差是测试误差除以贝叶斯误差 <span class="math notranslate nohighlight">\(\sigma^2\)</span>．从左到右，显示了三个不同的正则化参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span> 的岭回归的结果．拟合中的（平均）有效自由度在每张图的下面标出来了．</p>
+<div><p>图 18.1. 模拟实验的测试误差结果。显示了 3 个不同 <span class="math notranslate nohighlight">\(p\)</span> 值（特征的数目）下，100 次模拟的相对测试误差的箱线图。相对误差是测试误差除以贝叶斯误差 <span class="math notranslate nohighlight">\(\sigma^2\)</span>。从左到右，显示了三个不同的正则化参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span> 的岭回归的结果。拟合中的（平均）有效自由度在每张图的下面标出来了。</p>
 </div></blockquote>
-<p>我们对数据进行岭回归拟合，其中采用了三个不同的正则参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span>．当 <span class="math notranslate nohighlight">\(\lambda=0.001\)</span>，这近似与最小二乘一样，仅仅有一点正则来保证当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，问题不是奇异的．图 18.1 显示了在每个情形下不同的估计达到的相对测试误差的箱线图．在每个岭回归拟合中使用的对应的平均自由度（\eqref{3.50}）也标出来了．</p>
+<p>我们对数据进行岭回归拟合，其中采用了三个不同的正则参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span>。当 <span class="math notranslate nohighlight">\(\lambda=0.001\)</span>，这近似与最小二乘一样，仅仅有一点正则来保证当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，问题不是奇异的。图 18.1 显示了在每个情形下不同的估计达到的相对测试误差的箱线图。在每个岭回归拟合中使用的对应的平均自由度（\eqref{3.50}）也标出来了。</p>
 <p>!!! note “Recall: \eqref{3.50}”
 $<span class="math notranslate nohighlight">\(
     \begin{align}
@@ -1193,10 +1173,10 @@ $<span class="math notranslate nohighlight">\(
     &amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}\label{3.50}
     \end{align}
     \)</span>$</p>
-<p>自由度是一个比 <span class="math notranslate nohighlight">\(\lambda\)</span> 更有解释性的参数．从图中我们看到，在 <span class="math notranslate nohighlight">\(p=20\)</span> 时，<span class="math notranslate nohighlight">\(\lambda=0.001\)</span>(20df) 的岭回归最优；当 <span class="math notranslate nohighlight">\(p=100\)</span> 时 <span class="math notranslate nohighlight">\(\lambda=100\)</span>(35df) 最优，并且当 <span class="math notranslate nohighlight">\(p=1000\)</span>时 <span class="math notranslate nohighlight">\(\lambda=1000\)</span>(43df) 最优．</p>
-<p>这些结果可以解释如下．当 <span class="math notranslate nohighlight">\(p=20\)</span> 时，我们拟合所有的情形，并且可以以低偏差尽可能地识别更多的显著系数．当 <span class="math notranslate nohighlight">\(p=100\)</span> 时，我们可以采用中等程度的收缩识别一些非零的系数．最后，当 <span class="math notranslate nohighlight">\(p=1000\)</span> 时，即使有许多非零系数，我们并不希望找到它们，并且我们需要收缩它们．为了说明这个结论，令 <span class="math notranslate nohighlight">\(t_j=\hat\beta_j/\widehat{se}_j\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是岭回归估计，而 <span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是标准误差的估计．接着在这三种情形中取最优的岭回归参数，<span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 2.0,0.6 和 0.2，并且超过 2 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 的平均个数等于 9.8,1.2 和 0.0．</p>
-<p><span class="math notranslate nohighlight">\(\lambda=0.001\)</span> 的岭回归成功利用了当 <span class="math notranslate nohighlight">\( p &lt; N\)</span> 时的特征的相关性，但是当 <span class="math notranslate nohighlight">\( p &gt; &gt; N\)</span> 时不能这样处理．在后者的情形下，在相对较少的样本中没有足够的信息来有效估计高维协方差阵．这种情形下，更大的正则化会有更好的预测表现．</p>
-<p>因此高维数据的分析要求对 <span class="math notranslate nohighlight">\(N &gt; p\)</span> 情形的方法进行改动，或者采用全新的方法．这章中我们讨论用于高维分类和回归问题时的两种方式的例子；这些方法趋向有更重的正则化，使用 <strong>科学的语境知识 (scientific contextual knowledge)</strong> 来得到适当形式的正则化．这章以 <strong>特征选择 (feature selection)</strong> 和 <strong>多重检验 (multiple testing)</strong> 结束．</p>
+<p>自由度是一个比 <span class="math notranslate nohighlight">\(\lambda\)</span> 更有解释性的参数。从图中我们看到，在 <span class="math notranslate nohighlight">\(p=20\)</span> 时，<span class="math notranslate nohighlight">\(\lambda=0.001\)</span>(20df) 的岭回归最优；当 <span class="math notranslate nohighlight">\(p=100\)</span> 时 <span class="math notranslate nohighlight">\(\lambda=100\)</span>(35df) 最优，并且当 <span class="math notranslate nohighlight">\(p=1000\)</span>时 <span class="math notranslate nohighlight">\(\lambda=1000\)</span>(43df) 最优。</p>
+<p>这些结果可以解释如下。当 <span class="math notranslate nohighlight">\(p=20\)</span> 时，我们拟合所有的情形，并且可以以低偏差尽可能地识别更多的显著系数。当 <span class="math notranslate nohighlight">\(p=100\)</span> 时，我们可以采用中等程度的收缩识别一些非零的系数。最后，当 <span class="math notranslate nohighlight">\(p=1000\)</span> 时，即使有许多非零系数，我们并不希望找到它们，并且我们需要收缩它们。为了说明这个结论，令 <span class="math notranslate nohighlight">\(t_j=\hat\beta_j/\widehat{se}_j\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是岭回归估计，而 <span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是标准误差的估计。接着在这三种情形中取最优的岭回归参数，<span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 2.0,0.6 和 0.2，并且超过 2 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 的平均个数等于 9.8,1.2 和 0.0。</p>
+<p><span class="math notranslate nohighlight">\(\lambda=0.001\)</span> 的岭回归成功利用了当 <span class="math notranslate nohighlight">\( p &lt; N\)</span> 时的特征的相关性，但是当 <span class="math notranslate nohighlight">\( p &gt; &gt; N\)</span> 时不能这样处理。在后者的情形下，在相对较少的样本中没有足够的信息来有效估计高维协方差阵。这种情形下，更大的正则化会有更好的预测表现。</p>
+<p>因此高维数据的分析要求对 <span class="math notranslate nohighlight">\(N &gt; p\)</span> 情形的方法进行改动，或者采用全新的方法。这章中我们讨论用于高维分类和回归问题时的两种方式的例子；这些方法趋向有更重的正则化，使用 <strong>科学的语境知识 (scientific contextual knowledge)</strong> 来得到适当形式的正则化。这章以 <strong>特征选择 (feature selection)</strong> 和 <strong>多重检验 (multiple testing)</strong> 结束。</p>
 </div>
 
     <script type="text/x-thebe-config">

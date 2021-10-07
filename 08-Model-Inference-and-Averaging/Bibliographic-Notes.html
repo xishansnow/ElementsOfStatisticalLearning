@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,28 +1147,7 @@
                 
   <div class="section" id="id1">
 <h1>8.10 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-09-06</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-08-01 19:39:45</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>关于经典的统计推断有很多书：Cox and Hinkley (1974)<a class="footnote-reference brackets" href="#id23" id="id2">1</a> 和 Silvey (1975)<a class="footnote-reference brackets" href="#id24" id="id3">2</a> 给出了通俗的解释．自助法归功于 Efron (1979)<a class="footnote-reference brackets" href="#id25" id="id4">3</a>，并且在 Efron and Tibshirani (1993)<a class="footnote-reference brackets" href="#id26" id="id5">4</a> 和 Hall (1992)<a class="footnote-reference brackets" href="#id27" id="id6">5</a> 中作了完整的描述．贝叶斯推断的一本很好的现代书是 Gelman et al. (1995)<a class="footnote-reference brackets" href="#id28" id="id7">6</a>．清晰描述贝叶斯方法在神经网络的应用由 Neal (1996)<a class="footnote-reference brackets" href="#id29" id="id8">18</a> 给出．Gibbs 采样的统计应用归功于 Geman and Geman (1984)<a class="footnote-reference brackets" href="#id30" id="id9">7</a>，以及Gelfand and Smith (1990)<a class="footnote-reference brackets" href="#id31" id="id10">8</a>，还有 Tanner and Wong (1987)<a class="footnote-reference brackets" href="#id32" id="id11">9</a> 相关的工作．马尔科夫蒙特卡洛方法，包括吉布斯采样以及 MH 算法，在Spiegelhalter et al. (1996)<a class="footnote-reference brackets" href="#id33" id="id12">10</a> 有讨论．EM 算法归功于 Dempster et al. (1977)<a class="footnote-reference brackets" href="#id34" id="id13">11</a>；虽然之前有很多相关的工作，但因为这篇文章的讨论者将其清晰地描述出来．EM 看成完整数据对数似然惩罚的联合最大化由 Neal and Hinton (1998)<a class="footnote-reference brackets" href="#id35" id="id14">12</a>给出；他们将其归功于 Csiszar and Tusnády (1984)<a class="footnote-reference brackets" href="#id36" id="id15">19</a> 和 Hathaway (1986)<a class="footnote-reference brackets" href="#id37" id="id16">20</a>，因为这两篇文章已经注意到了这个联系．Bagging 由 Breiman (1996a)<a class="footnote-reference brackets" href="#id38" id="id17">13</a> 提出．Stacking 归功于 Wolpert (1992)<a class="footnote-reference brackets" href="#id39" id="id18">14</a>； Breiman (1996b)<a class="footnote-reference brackets" href="#id40" id="id19">21</a> 包含统计学家们的讨论．Leblanc and Tibshirani (1996)<a class="footnote-reference brackets" href="#id41" id="id20">15</a> 描述了基于自助法的 stacking 的变形．在贝叶斯网络中平均模型最近由 Madigan and Raftery (1994)<a class="footnote-reference brackets" href="#id42" id="id21">16</a> 提出．Bumping 由 Tibshirani and Knight (1999)<a class="footnote-reference brackets" href="#id43" id="id22">17</a> 提出．</p>
+<p>关于经典的统计推断有很多书：Cox and Hinkley (1974)<a class="footnote-reference brackets" href="#id23" id="id2">1</a> 和 Silvey (1975)<a class="footnote-reference brackets" href="#id24" id="id3">2</a> 给出了通俗的解释。自助法归功于 Efron (1979)<a class="footnote-reference brackets" href="#id25" id="id4">3</a>，并且在 Efron and Tibshirani (1993)<a class="footnote-reference brackets" href="#id26" id="id5">4</a> 和 Hall (1992)<a class="footnote-reference brackets" href="#id27" id="id6">5</a> 中作了完整的描述。贝叶斯推断的一本很好的现代书是 Gelman et al. (1995)<a class="footnote-reference brackets" href="#id28" id="id7">6</a>。清晰描述贝叶斯方法在神经网络的应用由 Neal (1996)<a class="footnote-reference brackets" href="#id29" id="id8">18</a> 给出。Gibbs 采样的统计应用归功于 Geman and Geman (1984)<a class="footnote-reference brackets" href="#id30" id="id9">7</a>，以及Gelfand and Smith (1990)<a class="footnote-reference brackets" href="#id31" id="id10">8</a>，还有 Tanner and Wong (1987)<a class="footnote-reference brackets" href="#id32" id="id11">9</a> 相关的工作。马尔科夫蒙特卡洛方法，包括吉布斯采样以及 MH 算法，在Spiegelhalter et al. (1996)<a class="footnote-reference brackets" href="#id33" id="id12">10</a> 有讨论。EM 算法归功于 Dempster et al. (1977)<a class="footnote-reference brackets" href="#id34" id="id13">11</a>；虽然之前有很多相关的工作，但因为这篇文章的讨论者将其清晰地描述出来。EM 看成完整数据对数似然惩罚的联合最大化由 Neal and Hinton (1998)<a class="footnote-reference brackets" href="#id35" id="id14">12</a>给出；他们将其归功于 Csiszar and Tusnády (1984)<a class="footnote-reference brackets" href="#id36" id="id15">19</a> 和 Hathaway (1986)<a class="footnote-reference brackets" href="#id37" id="id16">20</a>，因为这两篇文章已经注意到了这个联系。Bagging 由 Breiman (1996a)<a class="footnote-reference brackets" href="#id38" id="id17">13</a> 提出。Stacking 归功于 Wolpert (1992)<a class="footnote-reference brackets" href="#id39" id="id18">14</a>； Breiman (1996b)<a class="footnote-reference brackets" href="#id40" id="id19">21</a> 包含统计学家们的讨论。Leblanc and Tibshirani (1996)<a class="footnote-reference brackets" href="#id41" id="id20">15</a> 描述了基于自助法的 stacking 的变形。在贝叶斯网络中平均模型最近由 Madigan and Raftery (1994)<a class="footnote-reference brackets" href="#id42" id="id21">16</a> 提出。Bumping 由 Tibshirani and Knight (1999)<a class="footnote-reference brackets" href="#id43" id="id22">17</a> 提出。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

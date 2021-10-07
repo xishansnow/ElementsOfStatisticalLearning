@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,6 +1149,7 @@
                 
   <div class="section" id="id1">
 <h1>7.8 最小描述长度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>**最小描述长度 (MDL) **方法给出与 BIC 形式上等价的选择准则，但是它是从最优编码角度出发的。我们首先回忆数据压缩的编码理论，接着将其应用到模型选择中。</p>
 <p>我们将数据 <span class="math notranslate nohighlight">\(z\)</span> 看成是想要编码并且发给其他人（接受者）的信息。我们将模型看成是对数据编码的一种方式，然后选择最简模型，也就是传输的最短编码。</p>
 <p>首先假设我们可能想要传送的信息为 <span class="math notranslate nohighlight">\(z_1,z_2,\ldots,z_m\)</span>。我们的编码采用长度为 <span class="math notranslate nohighlight">\(A\)</span> 的有限字母表：举个例子，我们可能采用长度为 <span class="math notranslate nohighlight">\(A=2\)</span> 的二进制编码 <span class="math notranslate nohighlight">\(\\{0,1\\}\)</span>。这里是 4 个可能信息以及二值编码的例子：</p>

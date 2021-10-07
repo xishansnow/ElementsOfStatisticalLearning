@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,35 +1149,17 @@
                 
   <div class="section" id="id1">
 <h1>10.15 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-09-05</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<p>Schapire (1990)<a class="footnote-reference brackets" href="#id28" id="id2">1</a> 在 PAC 学习框架中 (Valiant, 1984<a class="footnote-reference brackets" href="#id29" id="id3">2</a>; Kearns and Vazirani, 1994<a class="footnote-reference brackets" href="#id30" id="id4">3</a>) 发展了第一个简单的boosting 过程．Schapire 证明了 <strong>弱学习器 (weak learner)</strong> 总是可以通过在输入数据流的过滤版本训练两个额外的分类器来提高效果．弱学习器是产生两类别分类器的算法，该分类器保证了效果要显著地比抛硬币的猜测好．当在前 <span class="math notranslate nohighlight">\(N\)</span> 个训练点上学习出初始的分类器 <span class="math notranslate nohighlight">\(G_1\)</span>，</p>
+<p>Schapire (1990)<a class="footnote-reference brackets" href="#id28" id="id2">1</a> 在 PAC 学习框架中 (Valiant, 1984<a class="footnote-reference brackets" href="#id29" id="id3">2</a>; Kearns and Vazirani, 1994<a class="footnote-reference brackets" href="#id30" id="id4">3</a>) 发展了第一个简单的boosting 过程。Schapire 证明了 <strong>弱学习器 (weak learner)</strong> 总是可以通过在输入数据流的过滤版本训练两个额外的分类器来提高效果。弱学习器是产生两类别分类器的算法，该分类器保证了效果要显著地比抛硬币的猜测好。当在前 <span class="math notranslate nohighlight">\(N\)</span> 个训练点上学习出初始的分类器 <span class="math notranslate nohighlight">\(G_1\)</span>，</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(G_2\)</span> 在 <span class="math notranslate nohighlight">\(N\)</span> 新样本点中学习，其中有一半是被 <span class="math notranslate nohighlight">\(G_1\)</span> 误分类的；</p></li>
 <li><p><span class="math notranslate nohighlight">\(G_3\)</span> 在 <span class="math notranslate nohighlight">\(G_1\)</span> 和 <span class="math notranslate nohighlight">\(G_2\)</span> 不一致的 <span class="math notranslate nohighlight">\(N\)</span> 个样本点上学习；</p></li>
 <li><p>boosted 分类器则为 <span class="math notranslate nohighlight">\(G_B=majority\; vote(G_1,G_2,G_3)\)</span>.</p></li>
 </ul>
-<p>Schapire 的“Strength of Weak Learnability”定理证明了 <span class="math notranslate nohighlight">\(G_B\)</span> 提高了 <span class="math notranslate nohighlight">\(G_1\)</span> 的效果．</p>
-<p>Freund (1995)[^4 ]提出了“boost by majority”的变体，它同时结合了许多弱分类器并且提高了 Schapire 简单的 boosting 算法的效果．支持这些算法的理论要求弱分类器以固定误差率产生分类器．这导出了更自适应且更实际的 AdaBoost (Freund and Schapire, 1996a<a class="footnote-reference brackets" href="#id31" id="id5">5</a>) 以及其衍生算法，在 AdaBoost 及其衍生算法中去掉了那条假设．</p>
-<p>Freund and Schapire (1996a)<a class="footnote-reference brackets" href="#id32" id="id6">6</a> 和 Schapire and Singer (1999)<a class="footnote-reference brackets" href="#id33" id="id7">7</a> 提供了一些以泛化误差上界的形式的理论来支持他们的算法．这个理论已经在计算机学习领域中发展，起初基于 PAC 学习的概念．其它一些理论试图从博弈论解释 boosting (Freund and Schapire, 1996b<a class="footnote-reference brackets" href="#id32" id="id8">6</a>; Breiman, 1999<a class="footnote-reference brackets" href="#id34" id="id9">9</a>; Breiman, 1998<a class="footnote-reference brackets" href="#id35" id="id10">10</a>)，以及从 VC 理论来解释 (Schapire et al., 1998<a class="footnote-reference brackets" href="#id36" id="id11">11</a>)．与 AdaBoost 算法有关的理论和界都很有趣，但是往往界太松了，实际的重要性不是很大．实际中，boosting 达到了比这些界更深刻的结果．Schapire (2002)<a class="footnote-reference brackets" href="#id37" id="id12">12</a> 和 Meir and Rätsch (2003)<a class="footnote-reference brackets" href="#id38" id="id13">13</a> 给出了比本书第一版更新的结果的概述．</p>
-<p>Friedman et al. (2000)<a class="footnote-reference brackets" href="#id39" id="id14">16</a> 和 Friedman (2001)<a class="footnote-reference brackets" href="#id40" id="id15">15</a> 是本章的基础．Friedman et al. (2000)<a class="footnote-reference brackets" href="#id39" id="id16">16</a> 在统计上分析了AdaBoost，导出了指数准则，并且证明了它估计了类别概率的对数几率．他们提出了可加树模型，right-sized 树以及 <span class="xref myst">10.11 节</span>的 ANOVA 表示，以及多类别逻辑斯蒂形式．Friedman (2001)<a class="footnote-reference brackets" href="#id41" id="id17">17</a> 发展了梯度 boosting，以及分类和回归的收缩，而 Friedman (1999)<a class="footnote-reference brackets" href="#id42" id="id18">18</a> 探索了 boosting 的随机变体．Mason et al. (2000)<a class="footnote-reference brackets" href="#id43" id="id19">19</a> 也包括boosting 的梯度形式．正如 Friedman et al. (2000)<a class="footnote-reference brackets" href="#id44" id="id20">20</a> 中发表的讨论中显示，关于 boosting 怎样以及为什么起作用仍存在争议．</p>
-<p>因为在本书的第一版发表时，辩论仍然在进行，并且扩散到了统计邻域，有一系列的论文讨论 boosting 的一致性 (Jiang, 2004<a class="footnote-reference brackets" href="#id45" id="id21">21</a>; Lugosi and Vayatis, 2004<a class="footnote-reference brackets" href="#id46" id="id22">22</a>; Zhang and Yu, 2005<a class="footnote-reference brackets" href="#id47" id="id23">23</a>; Bartlett and Traskin, 2007<a class="footnote-reference brackets" href="#id48" id="id24">24</a>)．Mease and Wyner (2008)<a class="footnote-reference brackets" href="#id49" id="id25">25</a> 通过一系列的仿真例子来质疑我们关于 boosting 的解释；我们的回应 (Friedman et al., 2008a<a class="footnote-reference brackets" href="#id50" id="id26">26</a>) 解决了大部分的反对意见．最近 Bühlmann and Hothorn (2007)<a class="footnote-reference brackets" href="#id51" id="id27">27</a> 的概述支持我们 boosting 的方法．</p>
+<p>Schapire 的“Strength of Weak Learnability”定理证明了 <span class="math notranslate nohighlight">\(G_B\)</span> 提高了 <span class="math notranslate nohighlight">\(G_1\)</span> 的效果。</p>
+<p>Freund (1995)[^4 ]提出了“boost by majority”的变体，它同时结合了许多弱分类器并且提高了 Schapire 简单的 boosting 算法的效果。支持这些算法的理论要求弱分类器以固定误差率产生分类器。这导出了更自适应且更实际的 AdaBoost (Freund and Schapire, 1996a<a class="footnote-reference brackets" href="#id31" id="id5">5</a>) 以及其衍生算法，在 AdaBoost 及其衍生算法中去掉了那条假设。</p>
+<p>Freund and Schapire (1996a)<a class="footnote-reference brackets" href="#id32" id="id6">6</a> 和 Schapire and Singer (1999)<a class="footnote-reference brackets" href="#id33" id="id7">7</a> 提供了一些以泛化误差上界的形式的理论来支持他们的算法。这个理论已经在计算机学习领域中发展，起初基于 PAC 学习的概念。其它一些理论试图从博弈论解释 boosting (Freund and Schapire, 1996b<a class="footnote-reference brackets" href="#id32" id="id8">6</a>; Breiman, 1999<a class="footnote-reference brackets" href="#id34" id="id9">9</a>; Breiman, 1998<a class="footnote-reference brackets" href="#id35" id="id10">10</a>)，以及从 VC 理论来解释 (Schapire et al., 1998<a class="footnote-reference brackets" href="#id36" id="id11">11</a>)。与 AdaBoost 算法有关的理论和界都很有趣，但是往往界太松了，实际的重要性不是很大。实际中，boosting 达到了比这些界更深刻的结果。Schapire (2002)<a class="footnote-reference brackets" href="#id37" id="id12">12</a> 和 Meir and Rätsch (2003)<a class="footnote-reference brackets" href="#id38" id="id13">13</a> 给出了比本书第一版更新的结果的概述。</p>
+<p>Friedman et al. (2000)<a class="footnote-reference brackets" href="#id39" id="id14">16</a> 和 Friedman (2001)<a class="footnote-reference brackets" href="#id40" id="id15">15</a> 是本章的基础。Friedman et al. (2000)<a class="footnote-reference brackets" href="#id39" id="id16">16</a> 在统计上分析了AdaBoost，导出了指数准则，并且证明了它估计了类别概率的对数几率。他们提出了可加树模型，right-sized 树以及 <span class="xref myst">10.11 节</span>的 ANOVA 表示，以及多类别逻辑斯蒂形式。Friedman (2001)<a class="footnote-reference brackets" href="#id41" id="id17">17</a> 发展了梯度 boosting，以及分类和回归的收缩，而 Friedman (1999)<a class="footnote-reference brackets" href="#id42" id="id18">18</a> 探索了 boosting 的随机变体。Mason et al. (2000)<a class="footnote-reference brackets" href="#id43" id="id19">19</a> 也包括boosting 的梯度形式。正如 Friedman et al. (2000)<a class="footnote-reference brackets" href="#id44" id="id20">20</a> 中发表的讨论中显示，关于 boosting 怎样以及为什么起作用仍存在争议。</p>
+<p>因为在本书的第一版发表时，辩论仍然在进行，并且扩散到了统计邻域，有一系列的论文讨论 boosting 的一致性 (Jiang, 2004<a class="footnote-reference brackets" href="#id45" id="id21">21</a>; Lugosi and Vayatis, 2004<a class="footnote-reference brackets" href="#id46" id="id22">22</a>; Zhang and Yu, 2005<a class="footnote-reference brackets" href="#id47" id="id23">23</a>; Bartlett and Traskin, 2007<a class="footnote-reference brackets" href="#id48" id="id24">24</a>)。Mease and Wyner (2008)<a class="footnote-reference brackets" href="#id49" id="id25">25</a> 通过一系列的仿真例子来质疑我们关于 boosting 的解释；我们的回应 (Friedman et al., 2008a<a class="footnote-reference brackets" href="#id50" id="id26">26</a>) 解决了大部分的反对意见。最近 Bühlmann and Hothorn (2007)<a class="footnote-reference brackets" href="#id51" id="id27">27</a> 的概述支持我们 boosting 的方法。</p>
 <ol class="simple">
 <li></li>
 </ol>

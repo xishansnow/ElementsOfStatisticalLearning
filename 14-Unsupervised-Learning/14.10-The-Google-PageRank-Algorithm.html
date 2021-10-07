@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,43 +1149,22 @@
                 
   <div class="section" id="pagerank">
 <h1>14.10 谷歌的PageRank算法<a class="headerlink" href="#pagerank" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-09-30</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-01-23</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
 <p>!!! note “写在前面”
-翻译这一节时，已经从多个地方了解到了PageRank算法．最初是在Tan Sir的数学建模课上，后来便是数院短学期有一节讲到PageRank算法，并且布置了相关的课后作业．在那个作业中，是对一个网络利用PageRank进行分析与讨论．翻译完此节，特意去整理了一下那个作业，开了一个仓库来放它，有兴趣的可以看看:grinning:．<a class="reference external" href="https://github.com/szcf-weiya/miniPR">传送门</a></p>
-<p>这一节我们给出谷歌搜索引擎所采用的最原始的PageRank算法，这是非监督学习的一个有趣的应用．</p>
-<p>我们假设有<span class="math notranslate nohighlight">\(N\)</span>个网页，并且希望对它们进行重要性排序．举个例子，这<span class="math notranslate nohighlight">\(N\)</span>个页面可能都匹配到字符串“statistical learning”，我们希望对页面按照其可能对浏览者的相关程度进行排序．</p>
-<p>PageRank算法考虑如果有很多其他的页面指向一个页面，则该页面是重要的．然而指向一个给定页面的链接网页并不会平等对待：算法考虑链接页面的重要性（PageRank）以及它们向外链接的个数．有高PageRank值的网页被赋予更大的权重，而有更多的向外链接的页面则赋予较小的权重．这个想法得到了PageRank的递归定义，细节如下．</p>
-<p>如果页面<span class="math notranslate nohighlight">\(j\)</span>指向页面<span class="math notranslate nohighlight">\(i\)</span>，令<span class="math notranslate nohighlight">\(L_{ij}=1\)</span>，否则为0．令<span class="math notranslate nohighlight">\(c_j=\sum_{i=1}^NL_{ij}\)</span>等于页面<span class="math notranslate nohighlight">\(j\)</span>指向的页面个数（向外链接的个数）．则谷歌的PageRank值<span class="math notranslate nohighlight">\(p_i\)</span>由递归关系定义</p>
+翻译这一节时，已经从多个地方了解到了PageRank算法。最初是在Tan Sir的数学建模课上，后来便是数院短学期有一节讲到PageRank算法，并且布置了相关的课后作业。在那个作业中，是对一个网络利用PageRank进行分析与讨论。翻译完此节，特意去整理了一下那个作业，开了一个仓库来放它，有兴趣的可以看看:grinning:。<a class="reference external" href="https://github.com/szcf-weiya/miniPR">传送门</a></p>
+<p>这一节我们给出谷歌搜索引擎所采用的最原始的PageRank算法，这是非监督学习的一个有趣的应用。</p>
+<p>我们假设有<span class="math notranslate nohighlight">\(N\)</span>个网页，并且希望对它们进行重要性排序。举个例子，这<span class="math notranslate nohighlight">\(N\)</span>个页面可能都匹配到字符串“statistical learning”，我们希望对页面按照其可能对浏览者的相关程度进行排序。</p>
+<p>PageRank算法考虑如果有很多其他的页面指向一个页面，则该页面是重要的。然而指向一个给定页面的链接网页并不会平等对待：算法考虑链接页面的重要性（PageRank）以及它们向外链接的个数。有高PageRank值的网页被赋予更大的权重，而有更多的向外链接的页面则赋予较小的权重。这个想法得到了PageRank的递归定义，细节如下。</p>
+<p>如果页面<span class="math notranslate nohighlight">\(j\)</span>指向页面<span class="math notranslate nohighlight">\(i\)</span>，令<span class="math notranslate nohighlight">\(L_{ij}=1\)</span>，否则为0。令<span class="math notranslate nohighlight">\(c_j=\sum_{i=1}^NL_{ij}\)</span>等于页面<span class="math notranslate nohighlight">\(j\)</span>指向的页面个数（向外链接的个数）。则谷歌的PageRank值<span class="math notranslate nohighlight">\(p_i\)</span>由递归关系定义</p>
 <div class="math notranslate nohighlight">
 \[
 p_i=(1-d)+d\sum\limits_{j=1}^N(\frac{L_{ij}}{c_j})p_j\qquad (14.107)
 \]</div>
-<p>其中<span class="math notranslate nohighlight">\(d\)</span>为正的常数值（设定为0.85）．</p>
-<p>想法是页面<span class="math notranslate nohighlight">\(i\)</span>的重要性是指向该页面的重要性之和．它们的和赋予权重<span class="math notranslate nohighlight">\(1/c_j\)</span>，也就是，每个页面分配将总值为1的权重赋予其它页面．常数值<span class="math notranslate nohighlight">\(d\)</span>保证了每个页面至少得到<span class="math notranslate nohighlight">\(1-d\)</span>的PageRank值．采用矩阵表示为
+<p>其中<span class="math notranslate nohighlight">\(d\)</span>为正的常数值（设定为0.85）。</p>
+<p>想法是页面<span class="math notranslate nohighlight">\(i\)</span>的重要性是指向该页面的重要性之和。它们的和赋予权重<span class="math notranslate nohighlight">\(1/c_j\)</span>，也就是，每个页面分配将总值为1的权重赋予其它页面。常数值<span class="math notranslate nohighlight">\(d\)</span>保证了每个页面至少得到<span class="math notranslate nohighlight">\(1-d\)</span>的PageRank值。采用矩阵表示为
 $<span class="math notranslate nohighlight">\(
 \mathbf p = (1-d)\mathbf e+d\cdot \mathbf {LD_c^{-1}p}\qquad (14.108)
 \)</span><span class="math notranslate nohighlight">\(
-其中\)</span>\mathbf e<span class="math notranslate nohighlight">\(是\)</span>N<span class="math notranslate nohighlight">\(个元素均为1的列向量，\)</span>\mathbf D_c = diag(\mathbf c)<span class="math notranslate nohighlight">\(是对角元素为\)</span>c_j<span class="math notranslate nohighlight">\(的对角矩阵．引入标准化\)</span>\mathbf{e^Tp}=N$，则(14.108)可以写成</p>
+其中\)</span>\mathbf e<span class="math notranslate nohighlight">\(是\)</span>N<span class="math notranslate nohighlight">\(个元素均为1的列向量，\)</span>\mathbf D_c = diag(\mathbf c)<span class="math notranslate nohighlight">\(是对角元素为\)</span>c_j<span class="math notranslate nohighlight">\(的对角矩阵。引入标准化\)</span>\mathbf{e^Tp}=N$，则(14.108)可以写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
@@ -1193,17 +1173,17 @@ $<span class="math notranslate nohighlight">\(
 \end{array}
 \qquad (14.109)
 \end{split}\]</div>
-<p>其中矩阵<span class="math notranslate nohighlight">\(\mathbf A\)</span>是方括号里面的表达式．</p>
-<p>利用与Markov链的联系（见下），可以证明矩阵<span class="math notranslate nohighlight">\(\mathbf A\)</span>有等于1的实值特征值，并且1是其最大的特征值．这意味着我们可以采用幂法来求出<span class="math notranslate nohighlight">\(\hat{\mathbf p}\)</span>：起始值为<span class="math notranslate nohighlight">\(\mathbf p = \mathbf p_0\)</span>，进行下面的迭代</p>
+<p>其中矩阵<span class="math notranslate nohighlight">\(\mathbf A\)</span>是方括号里面的表达式。</p>
+<p>利用与Markov链的联系（见下），可以证明矩阵<span class="math notranslate nohighlight">\(\mathbf A\)</span>有等于1的实值特征值，并且1是其最大的特征值。这意味着我们可以采用幂法来求出<span class="math notranslate nohighlight">\(\hat{\mathbf p}\)</span>：起始值为<span class="math notranslate nohighlight">\(\mathbf p = \mathbf p_0\)</span>，进行下面的迭代</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf p_k \leftarrow\mathbf A\mathbf p_{k-1};\qquad \mathbf p_k \leftarrow N\frac{\mathbf p_k}{\mathbf e^T\mathbf p_k}\qquad (14.110)
 \]</div>
-<p>不动点<span class="math notranslate nohighlight">\(\hat{\mathbf p}\)</span>则是PageRanks．</p>
-<p>在Page et. al(1998)<a class="footnote-reference brackets" href="#id3" id="id1">1</a>的原始论文中，作者将PageRank考虑成用户行为的模型，用户随机点击页面，而不去考虑内容．用户在网络上进行随机游走，随机选择有用的向外链接．因子<span class="math notranslate nohighlight">\(1-d\)</span>是他不去点击链接而直接跳到该页面的概率．</p>
-<p>有些PageRank的描述是将<span class="math notranslate nohighlight">\((1-d)/N\)</span>作为定义(14.107)式中的第一项，这更符合随机浏览的解释．接着page rank的解(除以<span class="math notranslate nohighlight">\(N\)</span>)是不可约、非周期Markov链在<span class="math notranslate nohighlight">\(N\)</span>个网页上的平稳分布．</p>
-<p>定义(14.107)也对应一个不可约、非周期Markov链，但转移概率与<span class="math notranslate nohighlight">\((1-d)/N\)</span>版本的不同．将PageRank看成Markov链能够更清楚地看出为什么<span class="math notranslate nohighlight">\(\mathbf A\)</span>有最大的实特征值1．因为<span class="math notranslate nohighlight">\(\mathbf A\)</span>的元素为正值，且每一列和为1，Markov链的理论告诉我们它有唯一的一个特征值为1的特征向量，对应该Markov链的平稳分布(Bremaud, 1999)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>．</p>
-<p>图14.46为了说明展示了一个小型的网络．</p>
+<p>不动点<span class="math notranslate nohighlight">\(\hat{\mathbf p}\)</span>则是PageRanks。</p>
+<p>在Page et. al(1998)<a class="footnote-reference brackets" href="#id3" id="id1">1</a>的原始论文中，作者将PageRank考虑成用户行为的模型，用户随机点击页面，而不去考虑内容。用户在网络上进行随机游走，随机选择有用的向外链接。因子<span class="math notranslate nohighlight">\(1-d\)</span>是他不去点击链接而直接跳到该页面的概率。</p>
+<p>有些PageRank的描述是将<span class="math notranslate nohighlight">\((1-d)/N\)</span>作为定义(14.107)式中的第一项，这更符合随机浏览的解释。接着page rank的解(除以<span class="math notranslate nohighlight">\(N\)</span>)是不可约、非周期Markov链在<span class="math notranslate nohighlight">\(N\)</span>个网页上的平稳分布。</p>
+<p>定义(14.107)也对应一个不可约、非周期Markov链，但转移概率与<span class="math notranslate nohighlight">\((1-d)/N\)</span>版本的不同。将PageRank看成Markov链能够更清楚地看出为什么<span class="math notranslate nohighlight">\(\mathbf A\)</span>有最大的实特征值1。因为<span class="math notranslate nohighlight">\(\mathbf A\)</span>的元素为正值，且每一列和为1，Markov链的理论告诉我们它有唯一的一个特征值为1的特征向量，对应该Markov链的平稳分布(Bremaud, 1999)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>。</p>
+<p>图14.46为了说明展示了一个小型的网络。</p>
 <p><img alt="" src="../_images/fig14.46.png" /></p>
 <p>链接矩阵为</p>
 <div class="math notranslate nohighlight">
@@ -1219,8 +1199,8 @@ $<span class="math notranslate nohighlight">\(
   \right)
   \qquad (14.111)
 \end{split}\]</div>
-<p>向外链接的个数为<span class="math notranslate nohighlight">\(\mathbf c = (2,1,1,1)\)</span>．</p>
-<p>PageRank的解为<span class="math notranslate nohighlight">\(\hat{\mathbf p}=(1.49, 0.78, 1.58, 0.15)\)</span>．注意到页面4没有进入的链接，因此得到最小的PageRank值0.15．</p>
+<p>向外链接的个数为<span class="math notranslate nohighlight">\(\mathbf c = (2,1,1,1)\)</span>。</p>
+<p>PageRank的解为<span class="math notranslate nohighlight">\(\hat{\mathbf p}=(1.49, 0.78, 1.58, 0.15)\)</span>。注意到页面4没有进入的链接，因此得到最小的PageRank值0.15。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>

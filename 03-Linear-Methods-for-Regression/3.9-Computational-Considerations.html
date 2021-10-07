@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,12 +1149,12 @@
                 
   <div class="section" id="id1">
 <h1>3.9 计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>最小二乘拟合一般通过对矩阵 <span class="math notranslate nohighlight">\(\mathbf X^T\mathbf X\)</span> 进行 Cholesky 分解或者对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行 QR 分解实现．在有 <span class="math notranslate nohighlight">\(N\)</span> 个观测和 <span class="math notranslate nohighlight">\(p\)</span> 个特征时，Cholesky 分解需要 <span class="math notranslate nohighlight">\(p^3+Np^2/2\)</span> 次操作，而 QR 分解需要 <span class="math notranslate nohighlight">\(Np^2\)</span> 次操作．依赖于 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 的相对大小，Cholesky 分解有时会更快，但是另一方面，数值不太稳定（Lawson and Hansen, 1974<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）．通过 LAR 算法实现的 lasso 的计算量与最小二乘拟合有相同的阶数．</p>
+<p>最小二乘拟合一般通过对矩阵 <span class="math notranslate nohighlight">\(\mathbf X^T\mathbf X\)</span> 进行 Cholesky 分解或者对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行 QR 分解实现。在有 <span class="math notranslate nohighlight">\(N\)</span> 个观测和 <span class="math notranslate nohighlight">\(p\)</span> 个特征时，Cholesky 分解需要 <span class="math notranslate nohighlight">\(p^3+Np^2/2\)</span> 次操作，而 QR 分解需要 <span class="math notranslate nohighlight">\(Np^2\)</span> 次操作。依赖于 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 的相对大小，Cholesky 分解有时会更快，但是另一方面，数值不太稳定（Lawson and Hansen, 1974<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）。通过 LAR 算法实现的 lasso 的计算量与最小二乘拟合有相同的阶数。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>“weiya 注：Cholesky and QR decomposition for Least Squares”
 对于 Cholesky 分解，考虑线性方程 <span class="math notranslate nohighlight">\(\X^T\X\beta=\X^T\Y\)</span>，若 <span class="math notranslate nohighlight">\(\X^T\X=\L\L^T\)</span>, 则转换为求解 <span class="math notranslate nohighlight">\(\L w=\X^T\Y\)</span> and <span class="math notranslate nohighlight">\(\L^T\beta=w\)</span>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>对于 QR 分解，考虑线性方程 $\X\beta = \Y$，若 $\X = \Q\R$，则 $\Q\R\beta = \Y=\Q\Q^T\Y$，所以转换为求解 $\R\beta=\Q^T\Y$．
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>对于 QR 分解，考虑线性方程 $\X\beta = \Y$，若 $\X = \Q\R$，则 $\Q\R\beta = \Y=\Q\Q^T\Y$，所以转换为求解 $\R\beta=\Q^T\Y$。
 
 更多细节详见[这里](http://www.math.iit.edu/~fass/477577_Chapter_5.pdf).
 </pre></div>

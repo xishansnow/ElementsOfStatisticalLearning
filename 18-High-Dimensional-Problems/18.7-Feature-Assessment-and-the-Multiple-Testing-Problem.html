@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1171,36 +1172,15 @@
                 
   <div class="section" id="id1">
 <h1>18.7 特征评估和多重检验问题<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-06-09</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2017-12-29; 2018-05-17</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>在本章的第一部分中我们讨论了 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下的预测模型．这里我们考虑在评估 <span class="math notranslate nohighlight">\(p\)</span> 个特征中每一个特征的显著性的这一基本问题．考虑 <span class="xref myst">18.4.1 节</span>中蛋白质质谱的例子．在这个问题中，对病人作预测时，研究者可能不关心他是否患有前列腺癌．感兴趣的而是识别出哪种蛋白质在正常群体和癌症群体中的含量有差异，由此加深对疾病的了解，这对药物的研制有指导意义．因此我们的目标是评估单个特征的显著性．这个评估通常不用在本章中第一部分使用多变量预测模型来实现．特征评估问题将我们的关注点从预测移到传统的统计学话题——多重假设检验．在本章接下来的章节中，我们将用 <span class="math notranslate nohighlight">\(M\)</span> 来表示特征的个数，而不是 <span class="math notranslate nohighlight">\(p\)</span>，因为我们将频繁用 <span class="math notranslate nohighlight">\(p\)</span> 表示 <span class="math notranslate nohighlight">\(p\)</span> 值．</p>
+<p>在本章的第一部分中我们讨论了 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下的预测模型。这里我们考虑在评估 <span class="math notranslate nohighlight">\(p\)</span> 个特征中每一个特征的显著性的这一基本问题。考虑 <span class="xref myst">18.4.1 节</span>中蛋白质质谱的例子。在这个问题中，对病人作预测时，研究者可能不关心他是否患有前列腺癌。感兴趣的而是识别出哪种蛋白质在正常群体和癌症群体中的含量有差异，由此加深对疾病的了解，这对药物的研制有指导意义。因此我们的目标是评估单个特征的显著性。这个评估通常不用在本章中第一部分使用多变量预测模型来实现。特征评估问题将我们的关注点从预测移到传统的统计学话题——多重假设检验。在本章接下来的章节中，我们将用 <span class="math notranslate nohighlight">\(M\)</span> 来表示特征的个数，而不是 <span class="math notranslate nohighlight">\(p\)</span>，因为我们将频繁用 <span class="math notranslate nohighlight">\(p\)</span> 表示 <span class="math notranslate nohighlight">\(p\)</span> 值。</p>
 <p><img alt="" src="../_images/table18.4.png" /></p>
-<p>举个例子，考虑表 18.4 的微阵列数据，数据取自一项癌症患者对电离辐射治疗的敏感性的研究 (Rieger et al.，2004<a class="footnote-reference brackets" href="#id14" id="id2">1</a>)．每一行包含 58 个病人样本的基因表达值：44 个样本取自有正常反应的病人，而 14 个样本取自对电离辐射有严重反应的病人．测量值是在 oligo-nucleotide 微阵列上得到的．试验的目的是在对电离辐射敏感的病人群体中找出基因表达值不同的基因．总共有 <span class="math notranslate nohighlight">\(M=12625\)</span> 个基因，为了说明，表中显示了部分基因和样本．</p>
+<p>举个例子，考虑表 18.4 的微阵列数据，数据取自一项癌症患者对电离辐射治疗的敏感性的研究 (Rieger et al.，2004<a class="footnote-reference brackets" href="#id14" id="id2">1</a>)。每一行包含 58 个病人样本的基因表达值：44 个样本取自有正常反应的病人，而 14 个样本取自对电离辐射有严重反应的病人。测量值是在 oligo-nucleotide 微阵列上得到的。试验的目的是在对电离辐射敏感的病人群体中找出基因表达值不同的基因。总共有 <span class="math notranslate nohighlight">\(M=12625\)</span> 个基因，为了说明，表中显示了部分基因和样本。</p>
 <p>为了识别出有用的基因，我们对每个基因构造两样本 <span class="math notranslate nohighlight">\(t\)</span> 统计量</p>
 <div class="math notranslate nohighlight">
 \[
 t_j = \frac{\bar x_{2j}-\bar x_{1j}}{se_j}\tag{18.38}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\bar x_{kj} = \sum_{i\in C_\ell}x_{ij}/N_\ell\)</span>．这里 <span class="math notranslate nohighlight">\(C_\ell\)</span> 是在群 <span class="math notranslate nohighlight">\(\ell\)</span> 中 <span class="math notranslate nohighlight">\(N_\ell\)</span> 个样本的指标集，其中 <span class="math notranslate nohighlight">\(\ell = 1\)</span> 表示正常的群体，而 <span class="math notranslate nohighlight">\(\ell=2\)</span> 表示敏感的群体．<span class="math notranslate nohighlight">\(se_j\)</span> 是基因 <span class="math notranslate nohighlight">\(j\)</span> 的混合群内标准误差：</p>
+<p>其中，<span class="math notranslate nohighlight">\(\bar x_{kj} = \sum_{i\in C_\ell}x_{ij}/N_\ell\)</span>。这里 <span class="math notranslate nohighlight">\(C_\ell\)</span> 是在群 <span class="math notranslate nohighlight">\(\ell\)</span> 中 <span class="math notranslate nohighlight">\(N_\ell\)</span> 个样本的指标集，其中 <span class="math notranslate nohighlight">\(\ell = 1\)</span> 表示正常的群体，而 <span class="math notranslate nohighlight">\(\ell=2\)</span> 表示敏感的群体。<span class="math notranslate nohighlight">\(se_j\)</span> 是基因 <span class="math notranslate nohighlight">\(j\)</span> 的混合群内标准误差：</p>
 <div class="math notranslate nohighlight">
 \[
 se_j=\hat \sigma_j\sqrt{\frac{1}{N_1}+\frac{1}{N_2}};\;\hat\sigma_j^2=\frac{1}{N_1+N_2-2}(\sum\limits_{i\in C_1}(x_{ij}-\bar x_{1j})^2+\sum\limits_{i\in C_2}(x_{ij}-\bar x_{2j})^2)
@@ -1208,24 +1188,24 @@ se_j=\hat \sigma_j\sqrt{\frac{1}{N_1}+\frac{1}{N_2}};\;\hat\sigma_j^2=\frac{1}{N
 <p>!!! note “Recall”
 <img alt="" src="../_images/note18.1.png" /></p>
 <p><img alt="" src="../_images/fig18.18.png" /></p>
-<p>图 18.18 的直方图用橘黄色显示了 12625 个 <span class="math notranslate nohighlight">\(t\)</span> 统计量，取值范围为 -4.7 到 5.0．如果 <span class="math notranslate nohighlight">\(t_j\)</span> 服从正态分布，我们可以认为任何绝对值大于 2 的 <span class="math notranslate nohighlight">\(t\)</span> 统计量为显著的．这对应的显著水平为 <span class="math notranslate nohighlight">\(5\%\)</span>. 这里有 1189 个基因的 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>．然而，,即使分组与任何基因都不相关，12625 个基因中我们也可能希望很多大的值是随机出现的．举个例子，如果基因是独立的（实际上它们当然不是），假阳性的基因个数会服从均值为 <span class="math notranslate nohighlight">\(12625\cdot 0.05=631.3\)</span>，标准差为 24.5 的二项分布；实际的 1189 超出这个范围．</p>
+<p>图 18.18 的直方图用橘黄色显示了 12625 个 <span class="math notranslate nohighlight">\(t\)</span> 统计量，取值范围为 -4.7 到 5.0。如果 <span class="math notranslate nohighlight">\(t_j\)</span> 服从正态分布，我们可以认为任何绝对值大于 2 的 <span class="math notranslate nohighlight">\(t\)</span> 统计量为显著的。这对应的显著水平为 <span class="math notranslate nohighlight">\(5\%\)</span>. 这里有 1189 个基因的 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>。然而，,即使分组与任何基因都不相关，12625 个基因中我们也可能希望很多大的值是随机出现的。举个例子，如果基因是独立的（实际上它们当然不是），假阳性的基因个数会服从均值为 <span class="math notranslate nohighlight">\(12625\cdot 0.05=631.3\)</span>，标准差为 24.5 的二项分布；实际的 1189 超出这个范围。</p>
 <p>!!! note “weiya 注：标准差的计算”</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
 \sqrt{np(1-p)}=\sqrt{12625*0.95*0.05}=24.5
 $$
 </pre></div>
 </div>
-<p>那我们怎么能够评估所有 12625 个基因的结果呢？这称为 <strong>多重检验(multiple testing)</strong> 问题．我们可以像上面一样开始，计算每个基因的 <span class="math notranslate nohighlight">\(p\)</span> 值．当假设特征服从正态分布，这个可以使用理论上的 <span class="math notranslate nohighlight">\(t\)</span> 分布概率实现．一个吸引人的替代方案是使用 <strong>置换分布(permutation distribution)</strong>，因为它避免了数据分布的假设．（理论上）我们计算样本的所有 <span class="math notranslate nohighlight">\(K = \binom{58}{14}\)</span> 种排列，并且对于每个排列 <span class="math notranslate nohighlight">\(k\)</span> 计算 <span class="math notranslate nohighlight">\(t\)</span> 统计量 <span class="math notranslate nohighlight">\(t_j^k\)</span>．于是基因 <span class="math notranslate nohighlight">\(j\)</span> 的 <span class="math notranslate nohighlight">\(p\)</span> 值为</p>
+<p>那我们怎么能够评估所有 12625 个基因的结果呢？这称为 <strong>多重检验(multiple testing)</strong> 问题。我们可以像上面一样开始，计算每个基因的 <span class="math notranslate nohighlight">\(p\)</span> 值。当假设特征服从正态分布，这个可以使用理论上的 <span class="math notranslate nohighlight">\(t\)</span> 分布概率实现。一个吸引人的替代方案是使用 <strong>置换分布(permutation distribution)</strong>，因为它避免了数据分布的假设。（理论上）我们计算样本的所有 <span class="math notranslate nohighlight">\(K = \binom{58}{14}\)</span> 种排列，并且对于每个排列 <span class="math notranslate nohighlight">\(k\)</span> 计算 <span class="math notranslate nohighlight">\(t\)</span> 统计量 <span class="math notranslate nohighlight">\(t_j^k\)</span>。于是基因 <span class="math notranslate nohighlight">\(j\)</span> 的 <span class="math notranslate nohighlight">\(p\)</span> 值为</p>
 <div class="math notranslate nohighlight">
 \[
 p_j=\frac{1}{K}\sum\limits_{k=1}^KI(\vert t_j^k\vert &gt; \vert t_j\vert)\tag{18.40}\label{18.40}
 \]</div>
-<p>当然，<span class="math notranslate nohighlight">\(\binom{58}{14}\)</span> 是很大的数（大约 <span class="math notranslate nohighlight">\(10^{13}\)</span>），因此我们不能列举出所有可能的排列．相反地，我们取可能的排列的一个随机样本，这里我们取一个 <span class="math notranslate nohighlight">\(K=1000\)</span> 种排列的随机样本．为了利用基因都是相似的这一事实（比如，在同一尺度下测量），我们可以将所有基因混合一起计算 <span class="math notranslate nohighlight">\(p\)</span> 值</p>
+<p>当然，<span class="math notranslate nohighlight">\(\binom{58}{14}\)</span> 是很大的数（大约 <span class="math notranslate nohighlight">\(10^{13}\)</span>），因此我们不能列举出所有可能的排列。相反地，我们取可能的排列的一个随机样本，这里我们取一个 <span class="math notranslate nohighlight">\(K=1000\)</span> 种排列的随机样本。为了利用基因都是相似的这一事实（比如，在同一尺度下测量），我们可以将所有基因混合一起计算 <span class="math notranslate nohighlight">\(p\)</span> 值</p>
 <div class="math notranslate nohighlight">
 \[
 p_j=\frac{1}{MK}\sum\limits_{j'=1}^M\sum\limits_{k=1}^KI(\vert t_{j'}^k\vert&gt;\vert t_j\vert)\tag{18.41}
 \]</div>
-<p>这也给出了比 \eqref{18.40} 式更细致的 <span class="math notranslate nohighlight">\(p\)</span> 值，因为在混合零分布中比单一的零分布使用了更多的值．</p>
+<p>这也给出了比 \eqref{18.40} 式更细致的 <span class="math notranslate nohighlight">\(p\)</span> 值，因为在混合零分布中比单一的零分布使用了更多的值。</p>
 <p>采用这个 <span class="math notranslate nohighlight">\(p\)</span> 值的集合，我们要检验下面的假设</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1233,13 +1213,13 @@ H_{0j} = \text{治疗对基因 }j\text{ 无作用}\\
 H_{1j} = \text{治疗对基因 }j\text{ 有作用}\\
 \text{for } j=1,2,\ldots, M
 \end{split}\]</div>
-<p>如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha\)</span>，我们在 <span class="math notranslate nohighlight">\(\alpha\)</span> 的水平下拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>．这个检验的第一类错误等于 <span class="math notranslate nohighlight">\(\alpha\)</span>，也就是，错误拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 的概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>现在考虑更多的检验，我们应该采用什么作为误差的整体衡量不是很清楚．令 <span class="math notranslate nohighlight">\(A_j\)</span> 为 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 被错误拒绝的事件，由定义知 <span class="math notranslate nohighlight">\(\Pr(A_j)=\alpha\)</span>．<strong>FWER(family-wise error rate)</strong> 是至少存在一个被错误拒绝的概率，并且经常用它作为整体错误的衡量．具体地，如果 <span class="math notranslate nohighlight">\(A=\cup_{j=1}^MA_j\)</span> 是至少有一个被错误拒绝的事件，于是 FWER 为 <span class="math notranslate nohighlight">\(\Pr(A)\)</span>．一般地，对于较大的 <span class="math notranslate nohighlight">\(M\)</span>，<span class="math notranslate nohighlight">\(\Pr(A) &gt; &gt; \alpha\)</span>，并且取决于检验之间的相关性．如果检验之间互相独立，且第一类错误概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>，则 FWER 为 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>．另一方面，如果检验之间有正依赖，即 <span class="math notranslate nohighlight">\(\Pr(A_j\mid A_k)&gt;\Pr(A_j)\)</span>，则 FWER 会小于 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>．测试之间的正依赖在实际中经常发生，特别是基因研究中．</p>
-<p>做多重检验的一个很简单的方式是 Bonferroni 方法．它让每个个体的检验更加严格，使得 FWER 至多等于 <span class="math notranslate nohighlight">\(\alpha\)</span>: 如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha/M\)</span>， 我们拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>．可以很简单地证明这会使得 FWER <span class="math notranslate nohighlight">\(\le\alpha\)</span>（练习 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/228">18.16</a>）．Bonferroni 方法在 <span class="math notranslate nohighlight">\(M\)</span> 相对较小的情形下有用，但是对于大的 <span class="math notranslate nohighlight">\(M\)</span> 则太过保守，也就是，得到的显著基因数目过少．</p>
+<p>如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha\)</span>，我们在 <span class="math notranslate nohighlight">\(\alpha\)</span> 的水平下拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>。这个检验的第一类错误等于 <span class="math notranslate nohighlight">\(\alpha\)</span>，也就是，错误拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 的概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>现在考虑更多的检验，我们应该采用什么作为误差的整体衡量不是很清楚。令 <span class="math notranslate nohighlight">\(A_j\)</span> 为 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 被错误拒绝的事件，由定义知 <span class="math notranslate nohighlight">\(\Pr(A_j)=\alpha\)</span>。<strong>FWER(family-wise error rate)</strong> 是至少存在一个被错误拒绝的概率，并且经常用它作为整体错误的衡量。具体地，如果 <span class="math notranslate nohighlight">\(A=\cup_{j=1}^MA_j\)</span> 是至少有一个被错误拒绝的事件，于是 FWER 为 <span class="math notranslate nohighlight">\(\Pr(A)\)</span>。一般地，对于较大的 <span class="math notranslate nohighlight">\(M\)</span>，<span class="math notranslate nohighlight">\(\Pr(A) &gt; &gt; \alpha\)</span>，并且取决于检验之间的相关性。如果检验之间互相独立，且第一类错误概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>，则 FWER 为 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。另一方面，如果检验之间有正依赖，即 <span class="math notranslate nohighlight">\(\Pr(A_j\mid A_k)&gt;\Pr(A_j)\)</span>，则 FWER 会小于 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。测试之间的正依赖在实际中经常发生，特别是基因研究中。</p>
+<p>做多重检验的一个很简单的方式是 Bonferroni 方法。它让每个个体的检验更加严格，使得 FWER 至多等于 <span class="math notranslate nohighlight">\(\alpha\)</span>: 如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha/M\)</span>， 我们拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>。可以很简单地证明这会使得 FWER <span class="math notranslate nohighlight">\(\le\alpha\)</span>（练习 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/228">18.16</a>）。Bonferroni 方法在 <span class="math notranslate nohighlight">\(M\)</span> 相对较小的情形下有用，但是对于大的 <span class="math notranslate nohighlight">\(M\)</span> 则太过保守，也就是，得到的显著基因数目过少。</p>
 <p>!!! info “weiya 注：Ex. 18.16”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/228">Issue 228: Ex. 18.16</a></p>
-<p>在我们的例子中，如果在 <span class="math notranslate nohighlight">\(\alpha=0.05\)</span> 水平下检验，则我们需要采用的阈值为 <span class="math notranslate nohighlight">\(0.05/12625=3.9\times 10^{-6}\)</span>．在 12625 个基因的 <span class="math notranslate nohighlight">\(p\)</span> 值中没有比这还小．</p>
-<p>有许多对该方法的变形，通过调整单个 <span class="math notranslate nohighlight">\(p\)</span> 值使得 FWER 至多为 <span class="math notranslate nohighlight">\(\alpha\)</span>，一些方法避免了对独立性的假设，比如，Dudoit et al. (2002b)<a class="footnote-reference brackets" href="#id15" id="id3">2</a>．</p>
+<p>在我们的例子中，如果在 <span class="math notranslate nohighlight">\(\alpha=0.05\)</span> 水平下检验，则我们需要采用的阈值为 <span class="math notranslate nohighlight">\(0.05/12625=3.9\times 10^{-6}\)</span>。在 12625 个基因的 <span class="math notranslate nohighlight">\(p\)</span> 值中没有比这还小。</p>
+<p>有许多对该方法的变形，通过调整单个 <span class="math notranslate nohighlight">\(p\)</span> 值使得 FWER 至多为 <span class="math notranslate nohighlight">\(\alpha\)</span>，一些方法避免了对独立性的假设，比如，Dudoit et al. (2002b)<a class="footnote-reference brackets" href="#id15" id="id3">2</a>。</p>
 <p>!!! note “weiya 注：Holm’s procedure”
 Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridge University Press, 493. 介绍了一种可以改善 Bonferroni 方法的策略，</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. 将 $p$ 值从小到大排序， $p_{(1)} &lt; p_{(2)} &lt; \cdots &lt; p_{(N)}$
@@ -1249,78 +1229,78 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 </div>
 <div class="section" id="fdr">
 <h2>FDR<a class="headerlink" href="#fdr" title="Permalink to this headline">¶</a></h2>
-<p>多重检验的另一种不同的方式不是试图控制 FWER，而是关注假阳性基因的比例．正如我们将要看到的，这个方法在实际中有很强的吸引力．</p>
-<p>表 18.5 总结了 <span class="math notranslate nohighlight">\(M\)</span> 个假设检验的理论结果．注意到 FWER 为 <span class="math notranslate nohighlight">\(\Pr(V\ge 1)\)</span>．</p>
+<p>多重检验的另一种不同的方式不是试图控制 FWER，而是关注假阳性基因的比例。正如我们将要看到的，这个方法在实际中有很强的吸引力。</p>
+<p>表 18.5 总结了 <span class="math notranslate nohighlight">\(M\)</span> 个假设检验的理论结果。注意到 FWER 为 <span class="math notranslate nohighlight">\(\Pr(V\ge 1)\)</span>。</p>
 <p><img alt="" src="../_images/tab18.5.png" /></p>
 <p>这里我们关注 <strong>误发现率 FDR (false discovery rate)</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{FDR}=\E(V/R)\tag{18.43}\label{18.43}
 \]</div>
-<p>在微阵列中，这是被错误称为显著的基因占所有被称为显著的 <span class="math notranslate nohighlight">\(R\)</span> 个基因的比例的期望．这个期望从数据所产生的总体中取．Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id16" id="id4">3</a>第一次提出误发现率的记号，并且给出了一个检验过程（算法 18.2），该过程中 FDR 被用户所定义的层次 <span class="math notranslate nohighlight">\(\alpha\)</span> 所界定．Benjamini–Hochberg (BH) 过程是基于 <span class="math notranslate nohighlight">\(p\)</span> 值；这些可以从检验估计量（如，高斯）的渐近近似得到，或者通过排列分布获得，这里采取排列分布．</p>
+<p>在微阵列中，这是被错误称为显著的基因占所有被称为显著的 <span class="math notranslate nohighlight">\(R\)</span> 个基因的比例的期望。这个期望从数据所产生的总体中取。Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id16" id="id4">3</a>第一次提出误发现率的记号，并且给出了一个检验过程（算法 18.2），该过程中 FDR 被用户所定义的层次 <span class="math notranslate nohighlight">\(\alpha\)</span> 所界定。Benjamini–Hochberg (BH) 过程是基于 <span class="math notranslate nohighlight">\(p\)</span> 值；这些可以从检验估计量（如，高斯）的渐近近似得到，或者通过排列分布获得，这里采取排列分布。</p>
 <p><img alt="" src="../_images/alg18.2.png" /></p>
 <p>如果假设是独立的，Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id16" id="id5">3</a> 证明了不管零假设对的个数、也不管零假设为错的时候 <span class="math notranslate nohighlight">\(p\)</span> 值的分布，这个过程有如下性质</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{FDR}\le \frac{M_0}{M}\alpha\le \alpha\tag{18.45}\label{18.45}
 \]</div>
-<p>为了解释这个性质，我们取 <span class="math notranslate nohighlight">\(\alpha=0.15\)</span>．图 18.19 展示了有序 <span class="math notranslate nohighlight">\(p\)</span> 值 <span class="math notranslate nohighlight">\(p_{j}\)</span>，以及斜率为 <span class="math notranslate nohighlight">\(0.15/12625\)</span> 的直线．</p>
+<p>为了解释这个性质，我们取 <span class="math notranslate nohighlight">\(\alpha=0.15\)</span>。图 18.19 展示了有序 <span class="math notranslate nohighlight">\(p\)</span> 值 <span class="math notranslate nohighlight">\(p_{j}\)</span>，以及斜率为 <span class="math notranslate nohighlight">\(0.15/12625\)</span> 的直线。</p>
 <p><img alt="" src="../_images/fig18.19.png" /></p>
-<p>从左边开始，并且向右移动，BH 方法找到使得 <span class="math notranslate nohighlight">\(p\)</span> 值落在直线下方的最后一个点．这发生在 <span class="math notranslate nohighlight">\(j=11\)</span> 处，所以我们拒绝这 11 个有更小 <span class="math notranslate nohighlight">\(p\)</span> 值的假设．注意到第 11 小的 <span class="math notranslate nohighlight">\(p\)</span> 值的截断值为 0.00012，且第 11 大的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 4.101．因此我们拒绝这 11 个 <span class="math notranslate nohighlight">\(\vert t_j\vert\ge 4.101\)</span> 的基因．</p>
-<p>从我们简短的描述中，BH 过程怎么进行的不是很清楚；也就是，为什么对应的 FDR 至多 0.15（该例中的 <span class="math notranslate nohighlight">\(\alpha\)</span>）．实际上，这一事实的证明相当复杂 (Benjamini and Hochberg, 1995<a class="footnote-reference brackets" href="#id16" id="id6">3</a>)</p>
-<p>更直接的方式是 plug-in 方法．不是从某个 <span class="math notranslate nohighlight">\(\alpha\)</span> 的值开始，我们固定一个 <span class="math notranslate nohighlight">\(t\)</span> 统计量的截断点，如上面出现的 4.101．等于或大于 4.101 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 观测值的个数为 11．在总的排列数据中，大于等于 4.101 的 <span class="math notranslate nohighlight">\(t_j^k\)</span> 有 1518 个，对于每个排列平均为 <span class="math notranslate nohighlight">\(1518/1000=1.518\)</span>．因此 FDR 的直接估计为 <span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}=1.518/11\sim 14\%\)</span>．注意到 14% 近似等于上面使用的 <span class="math notranslate nohighlight">\(\alpha=0.15\)</span>（差异是由于离散化)．这个过程在算法 18.3 中有描述．概述如下：</p>
+<p>从左边开始，并且向右移动，BH 方法找到使得 <span class="math notranslate nohighlight">\(p\)</span> 值落在直线下方的最后一个点。这发生在 <span class="math notranslate nohighlight">\(j=11\)</span> 处，所以我们拒绝这 11 个有更小 <span class="math notranslate nohighlight">\(p\)</span> 值的假设。注意到第 11 小的 <span class="math notranslate nohighlight">\(p\)</span> 值的截断值为 0.00012，且第 11 大的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 4.101。因此我们拒绝这 11 个 <span class="math notranslate nohighlight">\(\vert t_j\vert\ge 4.101\)</span> 的基因。</p>
+<p>从我们简短的描述中，BH 过程怎么进行的不是很清楚；也就是，为什么对应的 FDR 至多 0.15（该例中的 <span class="math notranslate nohighlight">\(\alpha\)</span>）。实际上，这一事实的证明相当复杂 (Benjamini and Hochberg, 1995<a class="footnote-reference brackets" href="#id16" id="id6">3</a>)</p>
+<p>更直接的方式是 plug-in 方法。不是从某个 <span class="math notranslate nohighlight">\(\alpha\)</span> 的值开始，我们固定一个 <span class="math notranslate nohighlight">\(t\)</span> 统计量的截断点，如上面出现的 4.101。等于或大于 4.101 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 观测值的个数为 11。在总的排列数据中，大于等于 4.101 的 <span class="math notranslate nohighlight">\(t_j^k\)</span> 有 1518 个，对于每个排列平均为 <span class="math notranslate nohighlight">\(1518/1000=1.518\)</span>。因此 FDR 的直接估计为 <span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}=1.518/11\sim 14\%\)</span>。注意到 14% 近似等于上面使用的 <span class="math notranslate nohighlight">\(\alpha=0.15\)</span>（差异是由于离散化)。这个过程在算法 18.3 中有描述。概述如下：</p>
 <blockquote>
-<div><p>算法 18.3 FDR 的 plug-in 估计等价于采用 (18.40) <span class="math notranslate nohighlight">\(p\)</span> 值的排列的算法 18.2 的 BH 过程．</p>
+<div><p>算法 18.3 FDR 的 plug-in 估计等价于采用 (18.40) <span class="math notranslate nohighlight">\(p\)</span> 值的排列的算法 18.2 的 BH 过程。</p>
 </div></blockquote>
 <p><img alt="" src="../_images/alg18.3.png" /></p>
-<p>BH 方法和 plug-in 估计之间的对应不是巧合．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/132">练习 18.17</a> 证明一般情形它们是等价的．</p>
+<p>BH 方法和 plug-in 估计之间的对应不是巧合。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/132">练习 18.17</a> 证明一般情形它们是等价的。</p>
 <p>!!! note “weiya 注：Ex. 18.17”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/132">Issue 132: Ex. 18.17</a>，但结论与题目中稍有出入，有进一步完善的空间．</p>
-<p>注意到这个过程不需要引用 <span class="math notranslate nohighlight">\(p\)</span> 值，而是直接处理检验统计量．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/132">Issue 132: Ex. 18.17</a>，但结论与题目中稍有出入，有进一步完善的空间。</p>
+<p>注意到这个过程不需要引用 <span class="math notranslate nohighlight">\(p\)</span> 值，而是直接处理检验统计量。</p>
 <p>plug-in 估计基于下列的近似</p>
 <div class="math notranslate nohighlight">
 \[
 \E(V/R)\approx\frac{E(V)}{E(R)}\tag{18.47}
 \]</div>
-<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)．注意到分子 <span class="math notranslate nohighlight">\(\widehat{\E(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\E(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设．因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式．最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）．等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 \eqref{18.45} 用来改善 BH 方法．</p>
+<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)。注意到分子 <span class="math notranslate nohighlight">\(\widehat{\E(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\E(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设。因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式。最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）。等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 \eqref{18.45} 用来改善 BH 方法。</p>
 <p>!!! info “weiya 注：Ex. 18.19”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">Issue 133: Ex. 18.19</a>．</p>
-<p>读者可能会惊讶我们选了一个较大的数 0.15 作为 FDR 的界 <span class="math notranslate nohighlight">\(\alpha\)</span>．我们必须记住 FDR 不同于第一类误差，后者经常选择 0.05．对于科学家，FDR 是假阳性在被统计学家称为显著的基因中比例的期望．微阵列实验表明 FDR 达到 0.15 仍然有用，特别是当我们探索自然时．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">Issue 133: Ex. 18.19</a>。</p>
+<p>读者可能会惊讶我们选了一个较大的数 0.15 作为 FDR 的界 <span class="math notranslate nohighlight">\(\alpha\)</span>。我们必须记住 FDR 不同于第一类误差，后者经常选择 0.05。对于科学家，FDR 是假阳性在被统计学家称为显著的基因中比例的期望。微阵列实验表明 FDR 达到 0.15 仍然有用，特别是当我们探索自然时。</p>
 </div>
 <div class="section" id="sam">
 <h2>对称分割点和 SAM 过程<a class="headerlink" href="#sam" title="Permalink to this headline">¶</a></h2>
-<p>在上面描述的检验方法中，我们采用检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的绝对值，因此对于统计量的正值和负值有相同的截断点．在一些试验中，可能会出现大部分或者所有的差异表达基因在正方向上变化（或者所有都在负方向）．对于这种情形，对两种情形分布导出截断点是有利的．</p>
-<p>微阵列的显著性分析 (SAM, significance analysis of microarrays) 提供了一种方式．SAM 方法的基本思想展现在图 18.20 中．在竖轴上，我们画出有序检验统计量 <span class="math notranslate nohighlight">\(t_{(1)}\le t_{(2)}\le \ldots t_{(M)}\)</span>，而横轴展示了从数据的排列中得到的有序统计量的期望：<span class="math notranslate nohighlight">\(\tilde t_{(j)}=(1/K)\sum_{k=1}^Kt_{(j)}^k\)</span>，其中 <span class="math notranslate nohighlight">\(t_{(1)}^k\le t_{(2)}^k\le \cdots\le t_{(M)}^k\)</span> 是排列 <span class="math notranslate nohighlight">\(k\)</span> 的有序检验统计量．</p>
+<p>在上面描述的检验方法中，我们采用检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的绝对值，因此对于统计量的正值和负值有相同的截断点。在一些试验中，可能会出现大部分或者所有的差异表达基因在正方向上变化（或者所有都在负方向）。对于这种情形，对两种情形分布导出截断点是有利的。</p>
+<p>微阵列的显著性分析 (SAM, significance analysis of microarrays) 提供了一种方式。SAM 方法的基本思想展现在图 18.20 中。在竖轴上，我们画出有序检验统计量 <span class="math notranslate nohighlight">\(t_{(1)}\le t_{(2)}\le \ldots t_{(M)}\)</span>，而横轴展示了从数据的排列中得到的有序统计量的期望：<span class="math notranslate nohighlight">\(\tilde t_{(j)}=(1/K)\sum_{k=1}^Kt_{(j)}^k\)</span>，其中 <span class="math notranslate nohighlight">\(t_{(1)}^k\le t_{(2)}^k\le \cdots\le t_{(M)}^k\)</span> 是排列 <span class="math notranslate nohighlight">\(k\)</span> 的有序检验统计量。</p>
 <p><img alt="" src="../_images/fig18.20.png" /></p>
-<p>图中作出了平行于角平分线，间距为 <span class="math notranslate nohighlight">\(\Delta\)</span> 的两条横线．从原点开始向右移动，寻找离开该带的第一个点．这定义了上截断点 <span class="math notranslate nohighlight">\(C_{hi}\)</span>，并且所有高出该点的基因称为显著（标记为红色）．类似地，在左下角寻找下截断点 <span class="math notranslate nohighlight">\(C_{low}\)</span>．因此每个调整参数 <span class="math notranslate nohighlight">\(\Delta\)</span> 定义了上下截断点，对于每个截断点，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 的 plug-in 估计和前面一样．一般地，计算一系列的 <span class="math notranslate nohighlight">\(\Delta\)</span> 和与之相关的 <span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span>，主观上从中选择一组值．</p>
-<p>SAM 的优势在于截断点的可能的不对称性．在图 18.20 的例子中，当 <span class="math notranslate nohighlight">\(\Delta=0.71\)</span>，我们得到 11 个显著基因；它们都位于右上方．位于左下方的数据点从未离开带状区域，也因此有 <span class="math notranslate nohighlight">\(C_{low}=-\infty\)</span>．因此，对于该 <span class="math notranslate nohighlight">\(\Delta\)</span>，在左（负）侧没有被称为显著的基因．我们不会如 18.7.1 节中一样在这些截断点上加上对称性，因为这里没有理由假设在两端有相似的行为．</p>
-<p>似然比检验中，这个方法和非对称方法之间存在联系．假设我们在无影响的零假设下有对数似然 <span class="math notranslate nohighlight">\(\ell_0(t_j)\)</span>，并且在备择假设下有对数似然 <span class="math notranslate nohighlight">\(\ell(t_j)\)</span>．则似然比检验意味着如果对于某些 <span class="math notranslate nohighlight">\(\Delta\)</span>，</p>
+<p>图中作出了平行于角平分线，间距为 <span class="math notranslate nohighlight">\(\Delta\)</span> 的两条横线。从原点开始向右移动，寻找离开该带的第一个点。这定义了上截断点 <span class="math notranslate nohighlight">\(C_{hi}\)</span>，并且所有高出该点的基因称为显著（标记为红色）。类似地，在左下角寻找下截断点 <span class="math notranslate nohighlight">\(C_{low}\)</span>。因此每个调整参数 <span class="math notranslate nohighlight">\(\Delta\)</span> 定义了上下截断点，对于每个截断点，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 的 plug-in 估计和前面一样。一般地，计算一系列的 <span class="math notranslate nohighlight">\(\Delta\)</span> 和与之相关的 <span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span>，主观上从中选择一组值。</p>
+<p>SAM 的优势在于截断点的可能的不对称性。在图 18.20 的例子中，当 <span class="math notranslate nohighlight">\(\Delta=0.71\)</span>，我们得到 11 个显著基因；它们都位于右上方。位于左下方的数据点从未离开带状区域，也因此有 <span class="math notranslate nohighlight">\(C_{low}=-\infty\)</span>。因此，对于该 <span class="math notranslate nohighlight">\(\Delta\)</span>，在左（负）侧没有被称为显著的基因。我们不会如 18.7.1 节中一样在这些截断点上加上对称性，因为这里没有理由假设在两端有相似的行为。</p>
+<p>似然比检验中，这个方法和非对称方法之间存在联系。假设我们在无影响的零假设下有对数似然 <span class="math notranslate nohighlight">\(\ell_0(t_j)\)</span>，并且在备择假设下有对数似然 <span class="math notranslate nohighlight">\(\ell(t_j)\)</span>。则似然比检验意味着如果对于某些 <span class="math notranslate nohighlight">\(\Delta\)</span>，</p>
 <div class="math notranslate nohighlight">
 \[
 \ell(t_j)-\ell_0(t_j)&gt;\Delta \tag{18.48}
 \]</div>
-<p>则拒绝零假设．</p>
-<p>取决于这些似然，特别是相对值，这可以导出 <span class="math notranslate nohighlight">\(t_j\)</span> 的阈值与 <span class="math notranslate nohighlight">\(-t_j\)</span> 的阈值不同．当</p>
+<p>则拒绝零假设。</p>
+<p>取决于这些似然，特别是相对值，这可以导出 <span class="math notranslate nohighlight">\(t_j\)</span> 的阈值与 <span class="math notranslate nohighlight">\(-t_j\)</span> 的阈值不同。当</p>
 <div class="math notranslate nohighlight">
 \[
 \vert t_{(j)}-\tilde t_{(j)}\vert &gt;\Delta\tag{18.49}
 \]</div>
-<p>再次，每个 <span class="math notranslate nohighlight">\(t_{(j)}\)</span> 的阈值取决于对应的零假设的 <span class="math notranslate nohighlight">\(\tilde t_{(j)}\)</span> 值．</p>
+<p>再次，每个 <span class="math notranslate nohighlight">\(t_{(j)}\)</span> 的阈值取决于对应的零假设的 <span class="math notranslate nohighlight">\(\tilde t_{(j)}\)</span> 值。</p>
 </div>
 <div class="section" id="id9">
 <h2>FDR 的贝叶斯解释<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>这里有个 FDR 的有趣的贝叶斯解释，在 Storey (2002)<a class="footnote-reference brackets" href="#id17" id="id10">4</a> 和 Efron and Tibshirani (2002)<a class="footnote-reference brackets" href="#id19" id="id11">6</a> 中发展起来．首先我们需要定义 <strong>正误发现率 pFDR (positive false discovery rate)</strong></p>
+<p>这里有个 FDR 的有趣的贝叶斯解释，在 Storey (2002)<a class="footnote-reference brackets" href="#id17" id="id10">4</a> 和 Efron and Tibshirani (2002)<a class="footnote-reference brackets" href="#id19" id="id11">6</a> 中发展起来。首先我们需要定义 <strong>正误发现率 pFDR (positive false discovery rate)</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{pFDR}=\E\left[\frac VR\mid R&gt;0\right]
 \]</div>
-<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率．这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示．注意到通常的 FDR（式 \eqref{18.43}）当 <span class="math notranslate nohighlight">\(\Pr(R=0)&gt;0\)</span> 时没有定义．</p>
-<p>令 <span class="math notranslate nohighlight">\(\Gamma\)</span> 为单个测试的拒绝域；在上面的例子中我们采用 <span class="math notranslate nohighlight">\(\Gamma=(-\infty,-4.10)\cup (4.10,\infty)\)</span>．假设对独立同分布的统计量 <span class="math notranslate nohighlight">\(t_1,\ldots,t_M\)</span> 及拒绝域 <span class="math notranslate nohighlight">\(\Gamma\)</span> 进行了 <span class="math notranslate nohighlight">\(M\)</span> 个相同的简单假设检验．定义随机变量 <span class="math notranslate nohighlight">\(Z_j\)</span>，如果第 <span class="math notranslate nohighlight">\(j\)</span> 个假设是对的，则等于 0，否则等于 1．我们假设对于某分布 <span class="math notranslate nohighlight">\(F_0\)</span> 和 <span class="math notranslate nohighlight">\(F_1\)</span>，每对 <span class="math notranslate nohighlight">\((t_j,Z_j)\)</span> 是独立同分布的随机变量，满足</p>
+<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 \eqref{18.43}）当 <span class="math notranslate nohighlight">\(\Pr(R=0)&gt;0\)</span> 时没有定义。</p>
+<p>令 <span class="math notranslate nohighlight">\(\Gamma\)</span> 为单个测试的拒绝域；在上面的例子中我们采用 <span class="math notranslate nohighlight">\(\Gamma=(-\infty,-4.10)\cup (4.10,\infty)\)</span>。假设对独立同分布的统计量 <span class="math notranslate nohighlight">\(t_1,\ldots,t_M\)</span> 及拒绝域 <span class="math notranslate nohighlight">\(\Gamma\)</span> 进行了 <span class="math notranslate nohighlight">\(M\)</span> 个相同的简单假设检验。定义随机变量 <span class="math notranslate nohighlight">\(Z_j\)</span>，如果第 <span class="math notranslate nohighlight">\(j\)</span> 个假设是对的，则等于 0，否则等于 1。我们假设对于某分布 <span class="math notranslate nohighlight">\(F_0\)</span> 和 <span class="math notranslate nohighlight">\(F_1\)</span>，每对 <span class="math notranslate nohighlight">\((t_j,Z_j)\)</span> 是独立同分布的随机变量，满足</p>
 <div class="math notranslate nohighlight">
 \[
 t_j\mid Z_j\sim (1-Z_j)\cdot F_0+Z_j\cdot F_1\tag{18.51}\label{18.51}
 \]</div>
-<p>这表明每个测试统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 都来自两个分布中的其中一个：如果零假设是对的，则为 <span class="math notranslate nohighlight">\(F_0\)</span>，否则为 <span class="math notranslate nohighlight">\(F_1\)</span>．令 <span class="math notranslate nohighlight">\(\Pr(Z_j=0)=\pi_0\)</span>，我们有边缘分布：</p>
+<p>这表明每个测试统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 都来自两个分布中的其中一个：如果零假设是对的，则为 <span class="math notranslate nohighlight">\(F_0\)</span>，否则为 <span class="math notranslate nohighlight">\(F_1\)</span>。令 <span class="math notranslate nohighlight">\(\Pr(Z_j=0)=\pi_0\)</span>，我们有边缘分布：</p>
 <div class="math notranslate nohighlight">
 \[
 t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
@@ -1330,15 +1310,15 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
 \[
 \mathrm{pFDR}(\Gamma)=\Pr(Z_j=0\mid t_j\in\Gamma)\tag{18.53}
 \]</div>
-<p>因此在混合模型 \eqref{18.51} 的假设下，如果测试统计量落在该测试的拒绝域中，也就是，如果我们拒绝原假设时，则 pFDR 是零假设为真的后验概率.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">练习 18.20</a>）．</p>
+<p>因此在混合模型 \eqref{18.51} 的假设下，如果测试统计量落在该测试的拒绝域中，也就是，如果我们拒绝原假设时，则 pFDR 是零假设为真的后验概率.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">练习 18.20</a>）。</p>
 <p>!!! note “weiya 注：Ex. 18.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">Issue 135: Ex. 18.20</a>.</p>
-<p>误发现率提供了基于整个拒绝域（比如 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>）的检验的准确性的度量．但是如果这样一个检验的 FDR 为 <span class="math notranslate nohighlight">\(10\%\)</span>，则 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的基因会比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 的基因更显著．因此导出 FDR 的局部版本（比如特定基因）是我们感兴趣的．检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的 q-value 定义为在所有拒绝 <span class="math notranslate nohighlight">\(t_j\)</span> 的区域中最小的 FDR．也就是，对于对称的拒绝域，<span class="math notranslate nohighlight">\(t_j=2\)</span> 的 q-value 定义为拒绝域 <span class="math notranslate nohighlight">\(\Gamma=\\{-(\infty,-2)\cup(2,\infty)\\}\)</span>的 FDR．因此 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的 FDR 要小于 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时的 FDR，这反映了 <span class="math notranslate nohighlight">\(t_j=5\)</span> 比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时更显著．<span class="math notranslate nohighlight">\(t=t_0\)</span> 时的局部误分类率定义为</p>
+<p>误发现率提供了基于整个拒绝域（比如 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>）的检验的准确性的度量。但是如果这样一个检验的 FDR 为 <span class="math notranslate nohighlight">\(10\%\)</span>，则 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的基因会比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 的基因更显著。因此导出 FDR 的局部版本（比如特定基因）是我们感兴趣的。检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的 q-value 定义为在所有拒绝 <span class="math notranslate nohighlight">\(t_j\)</span> 的区域中最小的 FDR。也就是，对于对称的拒绝域，<span class="math notranslate nohighlight">\(t_j=2\)</span> 的 q-value 定义为拒绝域 <span class="math notranslate nohighlight">\(\Gamma=\\{-(\infty,-2)\cup(2,\infty)\\}\)</span>的 FDR。因此 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的 FDR 要小于 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时的 FDR，这反映了 <span class="math notranslate nohighlight">\(t_j=5\)</span> 比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时更显著。<span class="math notranslate nohighlight">\(t=t_0\)</span> 时的局部误分类率定义为</p>
 <div class="math notranslate nohighlight">
 \[
 \Pr(Z_j=0\mid t_j=t_0)\tag{18.54}
 \]</div>
-<p>这是 <span class="math notranslate nohighlight">\(t_j=t_0\)</span> 附近无穷小拒绝域中正的 FDR．</p>
+<p>这是 <span class="math notranslate nohighlight">\(t_j=t_0\)</span> 附近无穷小拒绝域中正的 FDR。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

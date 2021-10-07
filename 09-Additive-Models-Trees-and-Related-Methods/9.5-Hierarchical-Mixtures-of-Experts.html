@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,52 +1149,31 @@
                 
   <div class="section" id="id1">
 <h1>9.5 专家的分层混合<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=348">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-03-14</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2018-03-17</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>专家的分层混合 (HME)</strong> 过程可以看成是基于树方法的变种．主要的差异是树的分割不是<strong>硬决定 (hard decision)</strong>，而是<strong>软概率的决定 (soft probabilistic)</strong>．在每个结点观测往左或者往右的概率取决于输入值．因为最后的参数优化问题是光滑的，所以有一些计算的优势，不像在基于树的方式中的离散分割点的搜索．软分割或许也可以帮助预测准确性，并且提供另外一种有用的数据描述方式．</p>
-<p>HMEs 和 CART 树的实现还有其他的差异．在HME中，在每个终止结点处拟合线性（或者逻辑斯蒂回归）模型，而不是像 CART 中那样是常值．分割点可以是多重的，而不仅仅是二值的，并且分割点是输入的线性组合的概率函数，而不是在标准 CART 中的单个输入．然而，这些选择的相对优点不是清晰的，大部分将在 9.2 节的后面中讨论．</p>
-<p>简单的 2 层 HME 模型如图 9.13 所示．可以认为是在每个非终止结点处进行软分割的树．然而，这种方法的发明者采用不同的术语．终止结点称为<strong>专家 (experts)</strong>，非终止结点称为<strong>门控网络 (gating networks)</strong>．想法是，每个专家对响应变量提供一个看法（预测），并且通过门控网络将这些“看法”结合在一起．正如我们所见，这个模型形式上是混合模型，并且图中的两层模型可以推广为多层，因此有了称为<strong>专家的分层混合 (hierarchical mixtures of experts)</strong></p>
+<p><strong>专家的分层混合 (HME)</strong> 过程可以看成是基于树方法的变种。主要的差异是树的分割不是<strong>硬决定 (hard decision)</strong>，而是<strong>软概率的决定 (soft probabilistic)</strong>。在每个结点观测往左或者往右的概率取决于输入值。因为最后的参数优化问题是光滑的，所以有一些计算的优势，不像在基于树的方式中的离散分割点的搜索。软分割或许也可以帮助预测准确性，并且提供另外一种有用的数据描述方式。</p>
+<p>HMEs 和 CART 树的实现还有其他的差异。在HME中，在每个终止结点处拟合线性（或者逻辑斯蒂回归）模型，而不是像 CART 中那样是常值。分割点可以是多重的，而不仅仅是二值的，并且分割点是输入的线性组合的概率函数，而不是在标准 CART 中的单个输入。然而，这些选择的相对优点不是清晰的，大部分将在 9.2 节的后面中讨论。</p>
+<p>简单的 2 层 HME 模型如图 9.13 所示。可以认为是在每个非终止结点处进行软分割的树。然而，这种方法的发明者采用不同的术语。终止结点称为<strong>专家 (experts)</strong>，非终止结点称为<strong>门控网络 (gating networks)</strong>。想法是，每个专家对响应变量提供一个看法（预测），并且通过门控网络将这些“看法”结合在一起。正如我们所见，这个模型形式上是混合模型，并且图中的两层模型可以推广为多层，因此有了称为<strong>专家的分层混合 (hierarchical mixtures of experts)</strong></p>
 <p><img alt="" src="../_images/fig9.13.png" /></p>
 <blockquote>
-<div><p>图9.13. 两层专家分层混合模型 (HME)．</p>
+<div><p>图9.13. 两层专家分层混合模型 (HME)。</p>
 </div></blockquote>
-<p>考虑回归或者分类问题，正如本章中前面描述的一样．数据 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span>，<span class="math notranslate nohighlight">\(y_i\)</span> 要么是连续响应变量，要么是二值响应变量，并且 <span class="math notranslate nohighlight">\(x_i\)</span> 是向量值输入．为了记号的简便，我们假设 <span class="math notranslate nohighlight">\(x_i\)</span> 的第一个元素是1，这个元素代表截距．</p>
-<p>这里描述 HME 是如何定义的．顶层的门控网络有输出</p>
+<p>考虑回归或者分类问题，正如本章中前面描述的一样。数据 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span>，<span class="math notranslate nohighlight">\(y_i\)</span> 要么是连续响应变量，要么是二值响应变量，并且 <span class="math notranslate nohighlight">\(x_i\)</span> 是向量值输入。为了记号的简便，我们假设 <span class="math notranslate nohighlight">\(x_i\)</span> 的第一个元素是1，这个元素代表截距。</p>
+<p>这里描述 HME 是如何定义的。顶层的门控网络有输出</p>
 <div class="math notranslate nohighlight">
 \[
 g_j(x,\gamma_j)=\frac{e^{\gamma_j^Tx}}{\sum_{k=1}^Ke^{\gamma_k^Tx}}\; j=1,2,\ldots,K\tag{9.25}
 \]</div>
-<p>其中每个 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是未知参数向量．这表示软的 <span class="math notranslate nohighlight">\(K\)</span> 重分割（图 9.13 中 <span class="math notranslate nohighlight">\(K=2\)</span>）每个 <span class="math notranslate nohighlight">\(g_j(x,\gamma_j)\)</span> 是将特征向量为<span class="math notranslate nohighlight">\(x\)</span> 的观测赋给第 <span class="math notranslate nohighlight">\(j\)</span> 个分支．注意到 <span class="math notranslate nohighlight">\(K=2\)</span> 时，如果我们将 <span class="math notranslate nohighlight">\(x\)</span> 的某一个元素的系数取为 <span class="math notranslate nohighlight">\(+\infty\)</span>，接着我们得到无穷大的斜率的逻辑斯蒂曲线．在这种情形下，门的概率取 0 或 1，对应在该输入下的硬分割．</p>
+<p>其中每个 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是未知参数向量。这表示软的 <span class="math notranslate nohighlight">\(K\)</span> 重分割（图 9.13 中 <span class="math notranslate nohighlight">\(K=2\)</span>）每个 <span class="math notranslate nohighlight">\(g_j(x,\gamma_j)\)</span> 是将特征向量为<span class="math notranslate nohighlight">\(x\)</span> 的观测赋给第 <span class="math notranslate nohighlight">\(j\)</span> 个分支。注意到 <span class="math notranslate nohighlight">\(K=2\)</span> 时，如果我们将 <span class="math notranslate nohighlight">\(x\)</span> 的某一个元素的系数取为 <span class="math notranslate nohighlight">\(+\infty\)</span>，接着我们得到无穷大的斜率的逻辑斯蒂曲线。在这种情形下，门的概率取 0 或 1，对应在该输入下的硬分割。</p>
 <p>在第二层，门控网络有类似的形式：
 $<span class="math notranslate nohighlight">\(
 g_{\ell\mid j}(x,\gamma_{j\ell})=\frac{e^{\gamma_{j\ell}^Tx}}{\sum_{k=1}^Ke^{\gamma_{jk}^Tx}},\ell=1,2,\ldots,K\tag{9.26}
 \)</span><span class="math notranslate nohighlight">\(
-这是在给定上一层第 \)</span>j<span class="math notranslate nohighlight">\( 个分支的情况下，赋予第\)</span>\ell$分支的概率．</p>
+这是在给定上一层第 \)</span>j<span class="math notranslate nohighlight">\( 个分支的情况下，赋予第\)</span>\ell$分支的概率。</p>
 <p>在每个专家（终止结点），我们有如下形式的响应变量的模型</p>
 <div class="math notranslate nohighlight">
 \[
 Y\sim  \Pr(y\mid x,\theta_{jl})\tag{9.27}
 \]</div>
-<p>这根据问题而有不同．</p>
+<p>这根据问题而有不同。</p>
 <p><strong>回归：</strong> 使用高斯线性回归模型，其中<span class="math notranslate nohighlight">\(\theta_{j\ell}=(\beta_{i\ell},\sigma^2_{j\ell})\)</span>:
 $<span class="math notranslate nohighlight">\(
 Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2)\tag{9.28}
@@ -1206,10 +1186,10 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
 \)</span><span class="math notranslate nohighlight">\(
 \Pr(y\mid x,\Psi)=\sum\limits_{j=1}^Kg_j(x,\gamma_j)\sum\limits_{\ell=1}^Kg_{\ell\mid j}(x,\gamma_{j\ell})Pr(y\mid x,\theta_{j\ell})\tag{9.30}
 \)</span>$
-这是个混合模型，其中混合概率由门控网络模型确定．</p>
-<p>为了估计这些参数，我们在 <span class="math notranslate nohighlight">\(\Psi\)</span> 的参数上最大化数据的对数似然，<span class="math notranslate nohighlight">\(\sum_i \log \Pr(y_i\mid x_i,\Psi)\)</span>．处理这个的最方便是 EM 算法，我们已经在<span class="xref myst">8.5节</span>中描述了．我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_j\)</span>， 除了一个元素为 1，所有的都是 0．我们把这个解释为由顶层门控网络作出的分支判断．类似地，我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 来描述第二层的门控判断．</p>
-<p>在 E 步，EM 算法在给定当前参数值的情况下计算 <span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望．这些期望接着作为 M 步的观测权重，来估计专家网络的参数．中间结点的参数由多重逻辑斯蒂回归来估计．<span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望是概率，并且这些用作逻辑斯蒂回归的响应向量．</p>
-<p>专家的分层混合方式是 CART 树的一个有潜力的对手．采用<strong>软分割 (soft splits)</strong>，而不是硬分割，它可以捕捉到从低到高响应变量的转变是渐增的情形．对数似然是未知系数的光滑函数，因此更适合数值优化．和 CART 类似，都是线性组合的分割，但是后者更难优化．另一方面，基于我们的了解，寻找 HME 模型的一个好的树拓扑结构是没有方法的，正如 CART 中一样．一般地，可以采用一些深度固定的树，很可能得到 CART 过程的输出．HMEs 上的研究强调预测而不是最终模型的解释．与 HME 很相近的模型是<strong>潜类别模型(latent class model)</strong> (Lin et. al, 2000<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)，一般只有一层；且结点或者潜在类别解释成表现出相似响应变量行为的个体的群体．</p>
+这是个混合模型，其中混合概率由门控网络模型确定。</p>
+<p>为了估计这些参数，我们在 <span class="math notranslate nohighlight">\(\Psi\)</span> 的参数上最大化数据的对数似然，<span class="math notranslate nohighlight">\(\sum_i \log \Pr(y_i\mid x_i,\Psi)\)</span>。处理这个的最方便是 EM 算法，我们已经在<span class="xref myst">8.5节</span>中描述了。我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_j\)</span>， 除了一个元素为 1，所有的都是 0。我们把这个解释为由顶层门控网络作出的分支判断。类似地，我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 来描述第二层的门控判断。</p>
+<p>在 E 步，EM 算法在给定当前参数值的情况下计算 <span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望。这些期望接着作为 M 步的观测权重，来估计专家网络的参数。中间结点的参数由多重逻辑斯蒂回归来估计。<span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望是概率，并且这些用作逻辑斯蒂回归的响应向量。</p>
+<p>专家的分层混合方式是 CART 树的一个有潜力的对手。采用<strong>软分割 (soft splits)</strong>，而不是硬分割，它可以捕捉到从低到高响应变量的转变是渐增的情形。对数似然是未知系数的光滑函数，因此更适合数值优化。和 CART 类似，都是线性组合的分割，但是后者更难优化。另一方面，基于我们的了解，寻找 HME 模型的一个好的树拓扑结构是没有方法的，正如 CART 中一样。一般地，可以采用一些深度固定的树，很可能得到 CART 过程的输出。HMEs 上的研究强调预测而不是最终模型的解释。与 HME 很相近的模型是<strong>潜类别模型(latent class model)</strong> (Lin et. al, 2000<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)，一般只有一层；且结点或者潜在类别解释成表现出相似响应变量行为的个体的群体。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

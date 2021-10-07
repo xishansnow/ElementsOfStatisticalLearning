@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,29 +1149,8 @@
                 
   <div class="section" id="id1">
 <h1>14.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-09-30</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2017-09-10, 2018-03-20</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>前面的章节我们考虑了给定输入或预测变量 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span> 来预测一个或多个输出或响应变量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_m)\)</span> 的值．记 <span class="math notranslate nohighlight">\(x_i^T=(x_{i1},\ldots,x_{ip})\)</span> 为第 <span class="math notranslate nohighlight">\(i\)</span> 个训练情形的输入，令 <span class="math notranslate nohighlight">\(y_i\)</span> 是响应变量的一个测量值．预测是基于已经知道的训练样本 <span class="math notranslate nohighlight">\((x_1,y_1),\ldots,(x_N,y_N)\)</span>，其中所有变量的联合分布值是知道的．这称为<strong>监督学习 (supervised learning)</strong> 或者“有老师指导的学习”．在这个比喻下，“学生”表示在训练样本中每个 <span class="math notranslate nohighlight">\(x_i\)</span> 的一个回答 <span class="math notranslate nohighlight">\(\hat y_i\)</span>，监督或者“老师”要么（不仅）提供正确的答案，要么（并且）给出该学生回答的误差．这通常用一些损失函数来表示 <span class="math notranslate nohighlight">\(L(y,\hat y)\)</span>，举个例子，<span class="math notranslate nohighlight">\(L(y,\hat y)=(y-\hat y)^2\)</span>．</p>
-<p>如果我们假设 <span class="math notranslate nohighlight">\((X,Y)\)</span> 是用某联合概率密度 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 表示的随机变量，则监督学习可以正式地表征为密度估计的问题，其中涉及确定条件密度 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span>的性质．通常我们感兴趣的性质是在每个 <span class="math notranslate nohighlight">\(x\)</span> 处最小化期望误差的“位置”参数<span class="math notranslate nohighlight">\(\mu\)</span>，</p>
+<p>前面的章节我们考虑了给定输入或预测变量 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span> 来预测一个或多个输出或响应变量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_m)\)</span> 的值。记 <span class="math notranslate nohighlight">\(x_i^T=(x_{i1},\ldots,x_{ip})\)</span> 为第 <span class="math notranslate nohighlight">\(i\)</span> 个训练情形的输入，令 <span class="math notranslate nohighlight">\(y_i\)</span> 是响应变量的一个测量值。预测是基于已经知道的训练样本 <span class="math notranslate nohighlight">\((x_1,y_1),\ldots,(x_N,y_N)\)</span>，其中所有变量的联合分布值是知道的。这称为<strong>监督学习 (supervised learning)</strong> 或者“有老师指导的学习”。在这个比喻下，“学生”表示在训练样本中每个 <span class="math notranslate nohighlight">\(x_i\)</span> 的一个回答 <span class="math notranslate nohighlight">\(\hat y_i\)</span>，监督或者“老师”要么（不仅）提供正确的答案，要么（并且）给出该学生回答的误差。这通常用一些损失函数来表示 <span class="math notranslate nohighlight">\(L(y,\hat y)\)</span>，举个例子，<span class="math notranslate nohighlight">\(L(y,\hat y)=(y-\hat y)^2\)</span>。</p>
+<p>如果我们假设 <span class="math notranslate nohighlight">\((X,Y)\)</span> 是用某联合概率密度 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 表示的随机变量，则监督学习可以正式地表征为密度估计的问题，其中涉及确定条件密度 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span>的性质。通常我们感兴趣的性质是在每个 <span class="math notranslate nohighlight">\(x\)</span> 处最小化期望误差的“位置”参数<span class="math notranslate nohighlight">\(\mu\)</span>，</p>
 <div class="math notranslate nohighlight">
 \[
 \mu(x)=\underset{\theta}{\mathrm{argmin}}\;E_{Y\mid X}L(Y,\theta)\tag{14.1}
@@ -1180,14 +1160,14 @@
 \[
 \Pr(X,Y)=\Pr(Y\mid X)\cdot \Pr(X)
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 是仅关于 <span class="math notranslate nohighlight">\(X\)</span> 的边缘密度．在监督学习中，一般不直接关心 <span class="math notranslate nohighlight">\(\Pr(X)\)</span>．主要感兴趣的是条件密度的性质 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span>．因为 <span class="math notranslate nohighlight">\(Y\)</span> 经常是低维（通常为1），并且只有它的位置 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 是感兴趣的，问题大大简化了．正如在前面章节讨论的那样，在各种不同情形下都有许多方式成功进行监督学习．</p>
-<p>这章中我们讨论<strong>非监督学习 (unsupervised learning)</strong> 或者“无老师指导的学习”．这种情形下我们只有联合密度为 <span class="math notranslate nohighlight">\(\Pr(X)\)</span>的 <span class="math notranslate nohighlight">\(p\)</span> 维随机向量的 <span class="math notranslate nohighlight">\(N\)</span> 个观测的集合 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span>．我们的目标是在没有监督，或者老师不提供正确答案，又或者不提供每个观测的错误程度的情况下，直接推断该密度分布的性质．<span class="math notranslate nohighlight">\(X\)</span> 的维度有时比监督学习中的高很多，而且我们关心的性质经常比简单的位置估计复杂得多．这些因素在某种程度上被以下事实所缓解：<span class="math notranslate nohighlight">\(X\)</span> 表示要考虑的所有变量．我们不需要在其它变量的值改变的情况下推断 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 的性质怎么改变．</p>
-<p>在低维问题中 (<span class="math notranslate nohighlight">\(p\le 3\)</span>)，有各种有效的非参方法来在所有 <span class="math notranslate nohighlight">\(X\)</span> 值处直接估计密度 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 本身，并且进行可视化表示（比如，Silverman, 1986<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）．由于维度灾难，这些方法在高维中会失效．必须寻求估计比较粗糙的全局模型，例如高斯混合或者表征 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 的各种简单描述性统计．</p>
-<p>一般地，这些描述性统计量试图表征<span class="math notranslate nohighlight">\(\Pr(X)\)</span> 相对较大时的 <span class="math notranslate nohighlight">\(X\)</span>值，或者这些值的集合．例如，主成分、多维缩放、自组织图，以及主曲线都尝试识别具有高数据密度的 <span class="math notranslate nohighlight">\(X\)</span> 空间中的低维<strong>流形 (manifold)</strong>．这提供了这些变量之间的关联信息，以及它们是否可以看成更小的包含“潜 (latent)”变量的集合的函数的信息．聚类分析试图寻找 <span class="math notranslate nohighlight">\(X\)</span> 空间中包含 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 模型的多重凸区域．这可以判断 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 是否可以表示成简单密度的混合，这些简单密度表示唯一的观测类型或者类别．混合模型有类似的目标．关联规则试图构造简单的描述（联合规则）来描述在非常高维的二值数据特殊情形中的高密度区域．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 是仅关于 <span class="math notranslate nohighlight">\(X\)</span> 的边缘密度。在监督学习中，一般不直接关心 <span class="math notranslate nohighlight">\(\Pr(X)\)</span>。主要感兴趣的是条件密度的性质 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span>。因为 <span class="math notranslate nohighlight">\(Y\)</span> 经常是低维（通常为1），并且只有它的位置 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 是感兴趣的，问题大大简化了。正如在前面章节讨论的那样，在各种不同情形下都有许多方式成功进行监督学习。</p>
+<p>这章中我们讨论<strong>非监督学习 (unsupervised learning)</strong> 或者“无老师指导的学习”。这种情形下我们只有联合密度为 <span class="math notranslate nohighlight">\(\Pr(X)\)</span>的 <span class="math notranslate nohighlight">\(p\)</span> 维随机向量的 <span class="math notranslate nohighlight">\(N\)</span> 个观测的集合 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span>。我们的目标是在没有监督，或者老师不提供正确答案，又或者不提供每个观测的错误程度的情况下，直接推断该密度分布的性质。<span class="math notranslate nohighlight">\(X\)</span> 的维度有时比监督学习中的高很多，而且我们关心的性质经常比简单的位置估计复杂得多。这些因素在某种程度上被以下事实所缓解：<span class="math notranslate nohighlight">\(X\)</span> 表示要考虑的所有变量。我们不需要在其它变量的值改变的情况下推断 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 的性质怎么改变。</p>
+<p>在低维问题中 (<span class="math notranslate nohighlight">\(p\le 3\)</span>)，有各种有效的非参方法来在所有 <span class="math notranslate nohighlight">\(X\)</span> 值处直接估计密度 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 本身，并且进行可视化表示（比如，Silverman, 1986<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）。由于维度灾难，这些方法在高维中会失效。必须寻求估计比较粗糙的全局模型，例如高斯混合或者表征 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 的各种简单描述性统计。</p>
+<p>一般地，这些描述性统计量试图表征<span class="math notranslate nohighlight">\(\Pr(X)\)</span> 相对较大时的 <span class="math notranslate nohighlight">\(X\)</span>值，或者这些值的集合。例如，主成分、多维缩放、自组织图，以及主曲线都尝试识别具有高数据密度的 <span class="math notranslate nohighlight">\(X\)</span> 空间中的低维<strong>流形 (manifold)</strong>。这提供了这些变量之间的关联信息，以及它们是否可以看成更小的包含“潜 (latent)”变量的集合的函数的信息。聚类分析试图寻找 <span class="math notranslate nohighlight">\(X\)</span> 空间中包含 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 模型的多重凸区域。这可以判断 <span class="math notranslate nohighlight">\(\Pr(X)\)</span> 是否可以表示成简单密度的混合，这些简单密度表示唯一的观测类型或者类别。混合模型有类似的目标。关联规则试图构造简单的描述（联合规则）来描述在非常高维的二值数据特殊情形中的高密度区域。</p>
 <p>!!! note “weiya 注：流形”
-流形（manifold）：数学上，流形是一个拓扑空间，在每一点附近局部地近似欧式空间．更精确地，<span class="math notranslate nohighlight">\(n\)</span> 维流形的每个点与维度为 <span class="math notranslate nohighlight">\(n\)</span> 的欧式空间同态的邻域．</p>
-<p>监督学习中，有一个明确的成功或不成功的量度，因此可用于判断特定情况下的<strong>充分性 (adequacy)</strong>，并比较不同方法在各种情况下的<strong>有效性 (effectiveness)</strong>．成功的损失直接用在联合分布 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 上的期望损失来衡量．这个可以用各种方式来衡量，包括交叉验证．在非监督学习中，没有这些直接衡量成功的量度．从大部分非监督学习的算法的输出中评估推断的有效性是很难确定的．必须诉诸于<strong>启发式变量 (heuristic arguments)</strong>，在监督学习也经常使用，这不仅可以激励 (motivating) 算法，而且为了评价结果的质量．因为有效性是主观问题，不能直接加以证实，这种不舒服 (unconfortable) 的情形导致提出的方法激增，</p>
-<p>在这章中，我们提出在实际中广泛使用的非监督学习技巧，以及另外一些作者认同的方法．</p>
+流形（manifold）：数学上，流形是一个拓扑空间，在每一点附近局部地近似欧式空间。更精确地，<span class="math notranslate nohighlight">\(n\)</span> 维流形的每个点与维度为 <span class="math notranslate nohighlight">\(n\)</span> 的欧式空间同态的邻域。</p>
+<p>监督学习中，有一个明确的成功或不成功的量度，因此可用于判断特定情况下的<strong>充分性 (adequacy)</strong>，并比较不同方法在各种情况下的<strong>有效性 (effectiveness)</strong>。成功的损失直接用在联合分布 <span class="math notranslate nohighlight">\(\Pr(X,Y)\)</span> 上的期望损失来衡量。这个可以用各种方式来衡量，包括交叉验证。在非监督学习中，没有这些直接衡量成功的量度。从大部分非监督学习的算法的输出中评估推断的有效性是很难确定的。必须诉诸于<strong>启发式变量 (heuristic arguments)</strong>，在监督学习也经常使用，这不仅可以激励 (motivating) 算法，而且为了评价结果的质量。因为有效性是主观问题，不能直接加以证实，这种不舒服 (unconfortable) 的情形导致提出的方法激增，</p>
+<p>在这章中，我们提出在实际中广泛使用的非监督学习技巧，以及另外一些作者认同的方法。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

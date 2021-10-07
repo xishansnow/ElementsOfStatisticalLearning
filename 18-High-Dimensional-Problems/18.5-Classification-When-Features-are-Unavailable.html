@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="18.6 高维回归: 有监督的主成分" href="18.6-High-Dimensional-Regression.html" />
-    <link rel="prev" title="18.4 \(L_1\)正则的线性分类器" href="18.4-Linear-Classifiers-with-L1-Regularization.html" />
+    <link rel="prev" title="18.4 \(L_1\) 正则的线性分类器" href="18.4-Linear-Classifiers-with-L1-Regularization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1171,75 +1172,54 @@
                 
   <div class="section" id="id1">
 <h1>18.5 当特征不可用时的分类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-08-10</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-08-05 21:00:43</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
 <p>!!! note “proximity matrix”
-关系矩阵，近似性矩阵，样品间的相似性矩阵．</p>
-<p>现实中很多研究对象都很抽象，定义一个特征向量不是很显然的．但是只要我们能够得到 <span class="math notranslate nohighlight">\(N\times N\)</span> 的 <strong>相似性矩阵 (proximity matrix)</strong>，我们就可以将相似性解释为内积，这样许多分类器都可以用上去了．蛋白质结构属于这一类问题，我们将在下面第一节讨论．</p>
-<p>在其它的一些应用中，比如文本分类，特征向量是存在的，但是非常高维．这种情形我们不希望计算如此高维的数据，而是存储成对文本间的内积矩阵．通常这些内积可以通过采样技巧来近似．</p>
-<p>成对距离有着相似的目的，因为这可以转换成中心化后的内积．<span class="xref myst">第 14 章</span>讨论了更多关于相似性矩阵的细节．</p>
+关系矩阵，近似性矩阵，样品间的相似性矩阵。</p>
+<p>现实中很多研究对象都很抽象，定义一个特征向量不是很显然的。但是只要我们能够得到 <span class="math notranslate nohighlight">\(N\times N\)</span> 的 <strong>相似性矩阵 (proximity matrix)</strong>，我们就可以将相似性解释为内积，这样许多分类器都可以用上去了。蛋白质结构属于这一类问题，我们将在下面第一节讨论。</p>
+<p>在其它的一些应用中，比如文本分类，特征向量是存在的，但是非常高维。这种情形我们不希望计算如此高维的数据，而是存储成对文本间的内积矩阵。通常这些内积可以通过采样技巧来近似。</p>
+<p>成对距离有着相似的目的，因为这可以转换成中心化后的内积。<span class="xref myst">第 14 章</span>讨论了更多关于相似性矩阵的细节。</p>
 <div class="section" id="id2">
 <h2>例子：字符串核和蛋白质分类<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>计算生物学中一个重要的问题是根据序列相似性将蛋白质分到函数型和结构型类别中．蛋白质分子是一串氨基酸，通过长度（氨基酸分子的个数）和组成成分进行区分．在我们考虑的例子中，长度介于 75-160 个，有 20 种不同的氨基酸，用不同的字母来表示．下面是两个例子，长度分别是 110 和 153:</p>
+<p>计算生物学中一个重要的问题是根据序列相似性将蛋白质分到函数型和结构型类别中。蛋白质分子是一串氨基酸，通过长度（氨基酸分子的个数）和组成成分进行区分。在我们考虑的例子中，长度介于 75-160 个，有 20 种不同的氨基酸，用不同的字母来表示。下面是两个例子，长度分别是 110 和 153:</p>
 <p><img alt="" src="../_images/proteins.png" /></p>
-<p>衡量两个蛋白质分子间的相似度有很多种方法．这里我们考虑基于某匹配的子串（比如上面标红的 LQE）个数的度量．</p>
-<p>为了构造特征，统计字符串中长度为 <span class="math notranslate nohighlight">\(m\)</span> 的序列出现的次数，并且计算长度为 <span class="math notranslate nohighlight">\(m\)</span> 的所有可能序列的个数．正式的表述是，对于字符串 <span class="math notranslate nohighlight">\(x\)</span>，我们定义特征映射</p>
+<p>衡量两个蛋白质分子间的相似度有很多种方法。这里我们考虑基于某匹配的子串（比如上面标红的 LQE）个数的度量。</p>
+<p>为了构造特征，统计字符串中长度为 <span class="math notranslate nohighlight">\(m\)</span> 的序列出现的次数，并且计算长度为 <span class="math notranslate nohighlight">\(m\)</span> 的所有可能序列的个数。正式的表述是，对于字符串 <span class="math notranslate nohighlight">\(x\)</span>，我们定义特征映射</p>
 <div class="math notranslate nohighlight">
 \[
 \Phi_m(x)=\{\phi_a(x)\}_{a\in\cal A_m}\tag{18.25}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\cal A_m\)</span> 是长度为 <span class="math notranslate nohighlight">\(m\)</span> 的子序列的集合，而 <span class="math notranslate nohighlight">\(\phi_a(x)\)</span> 为 “a” 出现在字符串 <span class="math notranslate nohighlight">\(x\)</span> 出现的次数．应用这个，我们定义内积</p>
+<p>其中 <span class="math notranslate nohighlight">\(\cal A_m\)</span> 是长度为 <span class="math notranslate nohighlight">\(m\)</span> 的子序列的集合，而 <span class="math notranslate nohighlight">\(\phi_a(x)\)</span> 为 “a” 出现在字符串 <span class="math notranslate nohighlight">\(x\)</span> 出现的次数。应用这个，我们定义内积</p>
 <div class="math notranslate nohighlight">
 \[
 K_m(x_1,x_2)=\langle \Phi_m(x_1),\Phi_m(x_2) \rangle\tag{18.26}\label{18.26}
 \]</div>
-<p>它衡量了两个字符串 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span> 的相似性．举个例子，这个可以用到支持向量机中，将字符串划分到不同的蛋白质类．</p>
-<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\cal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配．事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> \eqref{18.26}，而不用实际计算单个向量．这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>．</p>
-<p>数据中包含两个类别的 1708 个蛋白质——阴性 (1663) 和阳性 (45)．上面这两个该数据集中的例子，称为 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span>，这两条字符串中已经标出 LQE 的子序列．可能存在 <span class="math notranslate nohighlight">\(20^3\)</span> 种子序列，所以 <span class="math notranslate nohighlight">\(\Phi_3(x)\)</span> 是一个长度为 <span class="math notranslate nohighlight">\(8000\)</span> 的向量．对于这个例子，<span class="math notranslate nohighlight">\(\phi_{LQE}(x_1)=1,\phi_{LQE}(x_2)=2\)</span>．</p>
+<p>它衡量了两个字符串 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span> 的相似性。举个例子，这个可以用到支持向量机中，将字符串划分到不同的蛋白质类。</p>
+<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\cal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配。事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> \eqref{18.26}，而不用实际计算单个向量。这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>。</p>
+<p>数据中包含两个类别的 1708 个蛋白质——阴性 (1663) 和阳性 (45)。上面这两个该数据集中的例子，称为 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span>，这两条字符串中已经标出 LQE 的子序列。可能存在 <span class="math notranslate nohighlight">\(20^3\)</span> 种子序列，所以 <span class="math notranslate nohighlight">\(\Phi_3(x)\)</span> 是一个长度为 <span class="math notranslate nohighlight">\(8000\)</span> 的向量。对于这个例子，<span class="math notranslate nohighlight">\(\phi_{LQE}(x_1)=1,\phi_{LQE}(x_2)=2\)</span>。</p>
 <p>!!! note “weiya 注：ROC curve”
-ROC 是 receiver operating characteristics 的首字母缩写，用来同时展现分类器的 specificity 和 sensitivity，横轴一般为 specificity (或 false positive rate， 其中 specificity = 1 - false positive rate)，纵轴一般为sensitivity (或 true positive rate，其中 sensitivity = true positive rate)，通过在不同的阈值下计算这两个值，就可以得到 ROC 曲线．分类器的整体表现可以由 ROC 曲线下的面积 AUC (area under the curve) 给出．</p>
-<p>使用 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id4">1</a> 的软件，我们计算 <span class="math notranslate nohighlight">\(m=4\)</span> 时的核，它可以用在支持向量分类器中来在 <span class="math notranslate nohighlight">\(20^4=160000\)</span> 维特征空间中寻找 <strong>最大边缘解 (maximal margin solution)</strong>．我们采用 10 折交叉验证来计算在所有训练数据中的 SVM 预测值．图 18.9 中的橘黄色曲线显示了支持向量分类器的 ROC 曲线，通过改变交叉验证的支持向量分类器的预测变量的阈值计算得到．曲线下的面积为 0.84．Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id5">1</a> 表明字符串核方法是有竞争力的，但是准确性或许没有专门用于蛋白质匹配的方法高．</p>
+ROC 是 receiver operating characteristics 的首字母缩写，用来同时展现分类器的 specificity 和 sensitivity，横轴一般为 specificity (或 false positive rate， 其中 specificity = 1 - false positive rate)，纵轴一般为sensitivity (或 true positive rate，其中 sensitivity = true positive rate)，通过在不同的阈值下计算这两个值，就可以得到 ROC 曲线。分类器的整体表现可以由 ROC 曲线下的面积 AUC (area under the curve) 给出。</p>
+<p>使用 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id4">1</a> 的软件，我们计算 <span class="math notranslate nohighlight">\(m=4\)</span> 时的核，它可以用在支持向量分类器中来在 <span class="math notranslate nohighlight">\(20^4=160000\)</span> 维特征空间中寻找 <strong>最大边缘解 (maximal margin solution)</strong>。我们采用 10 折交叉验证来计算在所有训练数据中的 SVM 预测值。图 18.9 中的橘黄色曲线显示了支持向量分类器的 ROC 曲线，通过改变交叉验证的支持向量分类器的预测变量的阈值计算得到。曲线下的面积为 0.84。Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id5">1</a> 表明字符串核方法是有竞争力的，但是准确性或许没有专门用于蛋白质匹配的方法高。</p>
 <p><img alt="" src="../_images/fig18.9.png" /></p>
-<p>仅仅使用核矩阵的信息，许多分类器都可以进行计算；下一节给出了一些细节．图 18.9 展示了最近重心分类器（绿色），基于距离的 1-最近邻（蓝色）. 它们的表现类似支持向量机．</p>
+<p>仅仅使用核矩阵的信息，许多分类器都可以进行计算；下一节给出了一些细节。图 18.9 展示了最近重心分类器（绿色），基于距离的 1-最近邻（蓝色）. 它们的表现类似支持向量机。</p>
 </div>
 <div class="section" id="id6">
 <h2>分类和其它使用内积核和成对距离的模型<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>除了支持向量机，还有很多分类器可以仅需要内积矩阵来实现．这也意味着它们也能像 SVM 那样“核化 (kernelized)”．</p>
+<p>除了支持向量机，还有很多分类器可以仅需要内积矩阵来实现。这也意味着它们也能像 SVM 那样“核化 (kernelized)”。</p>
 <p>一个显然的例子是最近邻分类器，因为我们可以将成对内积转化成成对距离：</p>
 <div class="math notranslate nohighlight">
 \[
 \Vert x_i-x_i'\Vert^2=\langle x_i,x_i\rangle + \langle x_i',x_i'\rangle - 2\langle x_i,x_i'\rangle\,.\tag{18.27}\label{18.27}
 \]</div>
-<p>1-NN 的变种已经用在了图 18.9 中，它得到了构造 ROC 曲线需要的连续判别分数．这个对距离加权的 1-NN 运用了测试点到每个类别最近点的距离；见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/199">练习 18.14</a>．</p>
-<p>最近重心分类器也很容易．对于训练数据点 <span class="math notranslate nohighlight">\((x_i,g_i),i=1,\ldots,N\)</span>, 测试点 <span class="math notranslate nohighlight">\(x_0\)</span>，以及类别标签 <span class="math notranslate nohighlight">\(\bar x_k,k=1,\ldots,K\)</span>，我们可以写成</p>
+<p>1-NN 的变种已经用在了图 18.9 中，它得到了构造 ROC 曲线需要的连续判别分数。这个对距离加权的 1-NN 运用了测试点到每个类别最近点的距离；见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/199">练习 18.14</a>。</p>
+<p>最近重心分类器也很容易。对于训练数据点 <span class="math notranslate nohighlight">\((x_i,g_i),i=1,\ldots,N\)</span>, 测试点 <span class="math notranslate nohighlight">\(x_0\)</span>，以及类别标签 <span class="math notranslate nohighlight">\(\bar x_k,k=1,\ldots,K\)</span>，我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
 \Vert x_0-\bar x_k\Vert^2 = \langle x_0, x_0\rangle - \frac{2}{N_k}\sum_{g_i=k}\langle x_0,x_i\rangle + \frac{1}{N_k^2}\sum_{g_i=k}\sum_{g_{i'}=k}\langle x_i,x_{i'}\rangle\,,\tag{18.28}\label{18.28}
 \]</div>
-<p>因此我们可以计算测试点到每个重心的距离，然后采用最近重心分类器．这意味着像 <span class="math notranslate nohighlight">\(K\)</span>-means 的聚类方法也可以实现，仅需要采用数据点的内积．</p>
-<p>带平方正则项的逻辑斯蒂回归和多项式回归也可以用内积核来实现；见 <span class="xref myst">12.3.3 节</span>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">练习 18.13</a>．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/201">练习 12.10</a>　推导了使用内积核的线性判别分析．</p>
+<p>因此我们可以计算测试点到每个重心的距离，然后采用最近重心分类器。这意味着像 <span class="math notranslate nohighlight">\(K\)</span>-means 的聚类方法也可以实现，仅需要采用数据点的内积。</p>
+<p>带平方正则项的逻辑斯蒂回归和多项式回归也可以用内积核来实现；见 <span class="xref myst">12.3.3 节</span>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">练习 18.13</a>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/201">练习 12.10</a>　推导了使用内积核的线性判别分析。</p>
 <p>!!! info “weiya 注：Ex. 18.13”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">Issue 122: Ex. 18.13</a>.</p>
-<p>主成分也可以用内积核来计算；因为这通常很有用，所以这里给出细节．首先假设我们有中心化的数据矩阵 <span class="math notranslate nohighlight">\(\X\)</span>，并令 <span class="math notranslate nohighlight">\(\X=\U\D\V^T\)</span> 为其 SVD 分解 \eqref{18.12}．</p>
+<p>主成分也可以用内积核来计算；因为这通常很有用，所以这里给出细节。首先假设我们有中心化的数据矩阵 <span class="math notranslate nohighlight">\(\X\)</span>，并令 <span class="math notranslate nohighlight">\(\X=\U\D\V^T\)</span> 为其 SVD 分解 \eqref{18.12}。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align}
@@ -1247,7 +1227,7 @@ $<span class="math notranslate nohighlight">\(
     &amp; = \mathbf{RV^T}\tag{18.13}
     \end{align}
     \)</span>$</p>
-<p>则 <span class="math notranslate nohighlight">\(\Z=\U\D\)</span> 为主成分变量的矩阵（见 <span class="xref myst">14.5.1 节</span>）．但如果 <span class="math notranslate nohighlight">\(\K=\X\X^T\)</span>，则有 <span class="math notranslate nohighlight">\(\K=\U\D^2\U^T\)</span>，因此我们可以从 <span class="math notranslate nohighlight">\(\K\)</span> 的特征分解计算出 <span class="math notranslate nohighlight">\(\Z\)</span>．如果 <span class="math notranslate nohighlight">\(\X\)</span> 没有中心化，则可以用 <span class="math notranslate nohighlight">\(\tilde \X = (\I-\M)\X\)</span> 来中心化，其中 <span class="math notranslate nohighlight">\(\M=\frac 1N\1\1^T\)</span> 是均值算子．因此我们可以根据未中心化的内积矩阵计算 <strong>二次中心化 (double centered)</strong> 核 <span class="math notranslate nohighlight">\((\I-\M)\K(\I-\M)\)</span> 的特征向量来求主成分．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">练习 18.15</a> 进一步讨论了这一点，并且 <span class="xref myst">14.5.4 节</span>讨论了一般核时 <strong>kernel PCA</strong> 的细节，比如用于 SVMs 中的 <strong>径向核 (radial kernel)</strong>．</p>
+<p>则 <span class="math notranslate nohighlight">\(\Z=\U\D\)</span> 为主成分变量的矩阵（见 <span class="xref myst">14.5.1 节</span>）。但如果 <span class="math notranslate nohighlight">\(\K=\X\X^T\)</span>，则有 <span class="math notranslate nohighlight">\(\K=\U\D^2\U^T\)</span>，因此我们可以从 <span class="math notranslate nohighlight">\(\K\)</span> 的特征分解计算出 <span class="math notranslate nohighlight">\(\Z\)</span>。如果 <span class="math notranslate nohighlight">\(\X\)</span> 没有中心化，则可以用 <span class="math notranslate nohighlight">\(\tilde \X = (\I-\M)\X\)</span> 来中心化，其中 <span class="math notranslate nohighlight">\(\M=\frac 1N\1\1^T\)</span> 是均值算子。因此我们可以根据未中心化的内积矩阵计算 <strong>二次中心化 (double centered)</strong> 核 <span class="math notranslate nohighlight">\((\I-\M)\K(\I-\M)\)</span> 的特征向量来求主成分。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">练习 18.15</a> 进一步讨论了这一点，并且 <span class="xref myst">14.5.4 节</span>讨论了一般核时 <strong>kernel PCA</strong> 的细节，比如用于 SVMs 中的 <strong>径向核 (radial kernel)</strong>。</p>
 <p>!!! info “weiya 注：Ex. 18.15”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">Issue 184: Ex. 18.15</a>.</p>
 <p>如果我们只有成对数据的欧式距离（的平方），</p>
@@ -1255,7 +1235,7 @@ $<span class="math notranslate nohighlight">\(
 \[
 \Delta_{ii'}^2 = \Vert x_i-x_{i'}\Vert^2\,,
 \]</div>
-<p>事实上我们也可以完成上面的所有任务．策略是将成对距离转换为中心化的内积，然后像上面的过程一样进行．我们可以写成</p>
+<p>事实上我们也可以完成上面的所有任务。策略是将成对距离转换为中心化的内积，然后像上面的过程一样进行。我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
 \Delta_{ii'}^2=\Vert x_i-\bar x\Vert^2+\Vert x_{i'}-\bar x\Vert^2-2\langle x_i-\bar x,x_{i'}-\bar x\rangle\,.\tag{18.30}\label{18.30}
@@ -1265,7 +1245,7 @@ $<span class="math notranslate nohighlight">\(
 \[
 \tilde\K = (\I-\M)\B(\I-\M)\,;\tag{18.31}\label{18.31}
 \]</div>
-<p>可以很简单地检验 <span class="math notranslate nohighlight">\(\tilde K_{ii'}=\langle x_i-\bar x, x_{i'}-\bar x\rangle\)</span>，即中心化的内积矩阵．</p>
+<p>可以很简单地检验 <span class="math notranslate nohighlight">\(\tilde K_{ii'}=\langle x_i-\bar x, x_{i'}-\bar x\rangle\)</span>，即中心化的内积矩阵。</p>
 <p>!!! note “weiya 注：\eqref{18.31}”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
@@ -1275,29 +1255,29 @@ $<span class="math notranslate nohighlight">\(
     \end{align*}
     \)</span><span class="math notranslate nohighlight">\(
     where \)</span>a = \sum_i\Vert x_i-\bar x\Vert^2$.</p>
-<p>距离和内积也可以用来计算每个类的 <a class="reference external" href="https://en.wikipedia.org/wiki/Medoid">medoid</a>–到该类中其它观测点平均距离最近的观测．这可以用于分类（最近 medoid），也可以导出 <span class="math notranslate nohighlight">\(k\)</span>-medoid 聚类（<span class="xref myst">14.3.10 节</span>）．像蛋白质这种抽象的数据点，medoids 相较于均值有更现实的优点．medoid 是训练样本中的一个，并且可以呈现出来．我们在下一节尝试过最近 medoid（表 18.3），但表现令人失望．</p>
+<p>距离和内积也可以用来计算每个类的 <a class="reference external" href="https://en.wikipedia.org/wiki/Medoid">medoid</a>–到该类中其它观测点平均距离最近的观测。这可以用于分类（最近 medoid），也可以导出 <span class="math notranslate nohighlight">\(k\)</span>-medoid 聚类（<span class="xref myst">14.3.10 节</span>）。像蛋白质这种抽象的数据点，medoids 相较于均值有更现实的优点。medoid 是训练样本中的一个，并且可以呈现出来。我们在下一节尝试过最近 medoid（表 18.3），但表现令人失望。</p>
 <p><img alt="" src="../_images/tab18.3.png" /></p>
 <p>根据内积核和距离，考虑我们不能做什么是很有用的：</p>
 <ul class="simple">
 <li><p>我们不能标准化变量，在下一节例子中标准化能够显著提高效果</p></li>
-<li><p>我们不能直接评估单个变量的贡献．特别地，我们不能进行 <span class="math notranslate nohighlight">\(t\)</span> 检验，拟合 nearest shrunken centroids 模型，也不能拟合任何带 lasso 惩罚的模型</p></li>
-<li><p>我们不能将好的变量从噪声变量中分离开：每个变量有相同的权重．如果相关变量与不相关变量的比率很小（经常是这种情形），采用核的方法不可能像特征选择的方法那么好．</p></li>
+<li><p>我们不能直接评估单个变量的贡献。特别地，我们不能进行 <span class="math notranslate nohighlight">\(t\)</span> 检验，拟合 nearest shrunken centroids 模型，也不能拟合任何带 lasso 惩罚的模型</p></li>
+<li><p>我们不能将好的变量从噪声变量中分离开：每个变量有相同的权重。如果相关变量与不相关变量的比率很小（经常是这种情形），采用核的方法不可能像特征选择的方法那么好。</p></li>
 </ul>
 </div>
 <div class="section" id="id7">
 <h2>例子：摘要分类<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>这个有点心血来潮的例子用来解释核方法的局限性．我们收集了 48 篇文章的摘要，分别来自 Bradley Efron (BE), Trevor Hastie and Rob Tibshirani (HT)（经常共同作者），以及 Jerome Friedman (JF)．我们从这些摘要中提取所有单词（无重复），并且定义 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 为摘要 <span class="math notranslate nohighlight">\(i\)</span> 中单词 <span class="math notranslate nohighlight">\(j\)</span> 出现的次数．这是所谓的 bags of word 表示．引号，括号，以及特殊字符首先从摘要中删除，然后所有字符转换成小写．我们也去掉单词 “we”，因为这会不公平地将 HT 摘要判别出来．</p>
-<p>我们首先对数据应用 nearest shrunken centroid 分类器，采用 10 折交叉验证．实际上没有收缩，所以用了所有的特征，见表 18.3 的第一行．误差率为 17%；特征数可以大约降至 500 而不影响准确度．注意到 nearest shrunken classifier 需要原始特征矩阵 <span class="math notranslate nohighlight">\(\X\)</span> 来单独地对每个特征进行标准化．图 18.10 展示了前 20 个判别单词，正的得分表示在这一类出现的次数多余其它类．</p>
+<p>这个有点心血来潮的例子用来解释核方法的局限性。我们收集了 48 篇文章的摘要，分别来自 Bradley Efron (BE), Trevor Hastie and Rob Tibshirani (HT)（经常共同作者），以及 Jerome Friedman (JF)。我们从这些摘要中提取所有单词（无重复），并且定义 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 为摘要 <span class="math notranslate nohighlight">\(i\)</span> 中单词 <span class="math notranslate nohighlight">\(j\)</span> 出现的次数。这是所谓的 bags of word 表示。引号，括号，以及特殊字符首先从摘要中删除，然后所有字符转换成小写。我们也去掉单词 “we”，因为这会不公平地将 HT 摘要判别出来。</p>
+<p>我们首先对数据应用 nearest shrunken centroid 分类器，采用 10 折交叉验证。实际上没有收缩，所以用了所有的特征，见表 18.3 的第一行。误差率为 17%；特征数可以大约降至 500 而不影响准确度。注意到 nearest shrunken classifier 需要原始特征矩阵 <span class="math notranslate nohighlight">\(\X\)</span> 来单独地对每个特征进行标准化。图 18.10 展示了前 20 个判别单词，正的得分表示在这一类出现的次数多余其它类。</p>
 <p><img alt="" src="../_images/fig18.10.png" /></p>
-<p>有些单词确实有意义：比如 “frequentist” 和 “Bayesian” 反映 Efron 关注统计推断．然而，许多单词意想不到，并且反映了个人的写作风格：比如，Friedman 用 “presented” 而 HT 用 “propose”.</p>
-<p>我们接着用线性核且无正则化的支持向量机，采用 “all pairs” (ovo) 的方法来处理这三个类（SVM 的正则化没有改善表现）．结果展示在表 18.3 中．这比 nearest shrunken centroid 分类器要差．</p>
-<p>刚刚提到的，表 18.3 第一行代表 nearest shrunken centroid（无正则化）．用 <span class="math notranslate nohighlight">\(s_j\)</span> 表示特征 <span class="math notranslate nohighlight">\(j\)</span> 的 <strong>合并类内标准差 (pooled within-class standard deviation)</strong>，<span class="math notranslate nohighlight">\(s_0\)</span> 为 <span class="math notranslate nohighlight">\(s_j\)</span> 的中值．则第一行也表示对每个特征用 <span class="math notranslate nohighlight">\(s_j+s_0\)</span> 标准化后的 nearest centroid 分离器．（回忆 \eqref{18.4}）</p>
+<p>有些单词确实有意义：比如 “frequentist” 和 “Bayesian” 反映 Efron 关注统计推断。然而，许多单词意想不到，并且反映了个人的写作风格：比如，Friedman 用 “presented” 而 HT 用 “propose”.</p>
+<p>我们接着用线性核且无正则化的支持向量机，采用 “all pairs” (ovo) 的方法来处理这三个类（SVM 的正则化没有改善表现）。结果展示在表 18.3 中。这比 nearest shrunken centroid 分类器要差。</p>
+<p>刚刚提到的，表 18.3 第一行代表 nearest shrunken centroid（无正则化）。用 <span class="math notranslate nohighlight">\(s_j\)</span> 表示特征 <span class="math notranslate nohighlight">\(j\)</span> 的 <strong>合并类内标准差 (pooled within-class standard deviation)</strong>，<span class="math notranslate nohighlight">\(s_0\)</span> 为 <span class="math notranslate nohighlight">\(s_j\)</span> 的中值。则第一行也表示对每个特征用 <span class="math notranslate nohighlight">\(s_j+s_0\)</span> 标准化后的 nearest centroid 分离器。（回忆 \eqref{18.4}）</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     d_{kj}=\frac{\bar x_{kj}-\bar x_j}{m_k(s_j+s_0)}\tag{18.4}\label{18.4}
     \)</span>$</p>
-<p>第 (3) 行表明 nearest medoids 的表现很差，这有点让我们吃惊．这或许是因为样本量太小而维度太高，medoids 方差比均值会更大．1-最近邻分类器的效果也很差．</p>
-<p>nearest centroid 分类器的效果也展示在表 18.3 中的第 (5) 行：比 nearest medoids 要好，但是比 nearest shrunken centroids 差（即使没有收缩）．区别似乎是在 nearest shrunken centroids 中每个特征进行了标准化．这个标准化在这里很重要，并且要求能够使用单个特征的取值．nearest centroids 采用 spherical 度量，并且要求特征变量有相似的单位．支持向量机估计特征的线性组合，并且可以很好地处理未标准化的特征．</p>
+<p>第 (3) 行表明 nearest medoids 的表现很差，这有点让我们吃惊。这或许是因为样本量太小而维度太高，medoids 方差比均值会更大。1-最近邻分类器的效果也很差。</p>
+<p>nearest centroid 分类器的效果也展示在表 18.3 中的第 (5) 行：比 nearest medoids 要好，但是比 nearest shrunken centroids 差（即使没有收缩）。区别似乎是在 nearest shrunken centroids 中每个特征进行了标准化。这个标准化在这里很重要，并且要求能够使用单个特征的取值。nearest centroids 采用 spherical 度量，并且要求特征变量有相似的单位。支持向量机估计特征的线性组合，并且可以很好地处理未标准化的特征。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id8"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>)</span></dt>
@@ -1341,7 +1321,7 @@ $<span class="math notranslate nohighlight">\(
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">18.4 <span class="math notranslate nohighlight">\(L_1\)</span>正则的线性分类器</p>
+                <p class="prevnext-title">18.4 <span class="math notranslate nohighlight">\(L_1\)</span> 正则的线性分类器</p>
             </div>
         </a>
     </div>

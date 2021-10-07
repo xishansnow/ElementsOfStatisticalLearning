@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,57 +1149,36 @@
                 
   <div class="section" id="id1">
 <h1>15.2 随机森林的定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=606">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-06-09</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-04-19 20:38:52</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差．树是用于 bagging 的理想模型，因为它们可以捕捉数据中复杂的交叉项，而且如果树长得足够深的话，会有相对较低的偏差．因为树是充满噪声的，所以通过平均可以很大程度地改善它们．而且，因为 bagging 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的．这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差．这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的．</p>
-<p><span class="math notranslate nohighlight">\(B\)</span> 棵独立同分布、方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的随机变量的平均方差为 <span class="math notranslate nohighlight">\(\frac{1}{B}\sigma^2\)</span>．如果变量是简单的同分布（不一定独立），有着正的成对相关系数 <span class="math notranslate nohighlight">\(\rho\)</span>，则平均的方差为（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">练习 15.1</a>）
+<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差。树是用于 bagging 的理想模型，因为它们可以捕捉数据中复杂的交叉项，而且如果树长得足够深的话，会有相对较低的偏差。因为树是充满噪声的，所以通过平均可以很大程度地改善它们。而且，因为 bagging 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的。这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差。这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的。</p>
+<p><span class="math notranslate nohighlight">\(B\)</span> 棵独立同分布、方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的随机变量的平均方差为 <span class="math notranslate nohighlight">\(\frac{1}{B}\sigma^2\)</span>。如果变量是简单的同分布（不一定独立），有着正的成对相关系数 <span class="math notranslate nohighlight">\(\rho\)</span>，则平均的方差为（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">练习 15.1</a>）
 $<span class="math notranslate nohighlight">\(
 \rho\sigma^2+\frac{1-\rho}{B}\sigma^2 \tag{15.1}\label{15.1}
 \)</span>$</p>
 <p>!!! info “weiya 注：Ex. 15.1”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">Issue 23: Ex. 15.1</a>．</p>
-<p>当 <span class="math notranslate nohighlight">\(B\)</span> 增大时，第二项消失，但是第一项还在，而且成对 bagged 的树的相关系数的大小限制了平均的好处．随机森林的想法（算法 15.1）是通过降低树之间的相关系数来改善方差的降低，而不使方差增长过大．这可以通过在生成树的过程中对输入变量进行随机选择来实现．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">Issue 23: Ex. 15.1</a>。</p>
+<p>当 <span class="math notranslate nohighlight">\(B\)</span> 增大时，第二项消失，但是第一项还在，而且成对 bagged 的树的相关系数的大小限制了平均的好处。随机森林的想法（算法 15.1）是通过降低树之间的相关系数来改善方差的降低，而不使方差增长过大。这可以通过在生成树的过程中对输入变量进行随机选择来实现。</p>
 <p><img alt="" src="../_images/alg15.1.png" /></p>
 <p>特别地，当在一个 bootstrapped 数据集中生成树时：</p>
 <blockquote>
 <div><p>在每次分割时，随机选择 <span class="math notranslate nohighlight">\(m\le p\)</span> 个输入变量作为候选变量用来分割</p>
 </div></blockquote>
-<p>一般地，<span class="math notranslate nohighlight">\(m\)</span> 取为 <span class="math notranslate nohighlight">\(\sqrt{p}\)</span>，或者甚至小到取 1．</p>
+<p>一般地，<span class="math notranslate nohighlight">\(m\)</span> 取为 <span class="math notranslate nohighlight">\(\sqrt{p}\)</span>，或者甚至小到取 1。</p>
 <p>生成 <span class="math notranslate nohighlight">\(B\)</span> 棵这样的树 <span class="math notranslate nohighlight">\(\\{T(x;\Theta_b)\\}_1^B\)</span>，随机森林（回归）预测变量为</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_{rf}^B(x) = \frac{1}{B}\sum\limits_{b=1}^BT(x;\Theta_b)\tag{15.2}
 \]</div>
-<p>如 <span class="xref myst">10.9 节</span>一样，<span class="math notranslate nohighlight">\(\Theta_b\)</span> 根据分离变量、每个结点的分离值以及终止结点的值来表征第 <span class="math notranslate nohighlight">\(b\)</span> 个随机森林树．直观上，降低 <span class="math notranslate nohighlight">\(m\)</span> 会降低任意两棵树之间的相关系数，也因此通过 \eqref{15.1} 来降低平均的方差．</p>
-<p>并非所有的估计都可以通过像这样震荡数据来改善．似乎强非线性估计，比如树，改善最大．对于其 bootstrapped 树，<span class="math notranslate nohighlight">\(\rho\)</span>一般很小（一般是 0.05 或更小；见图 15.9），而 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 不比原树的方差要大．另一方面，bagging 不会改变线性估计，比如样本均值（因此也不会改变方差）；其bootstrapped 均值之间的成对相关系数大约为 50%（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/191">练习 15.4</a>）．</p>
+<p>如 <span class="xref myst">10.9 节</span>一样，<span class="math notranslate nohighlight">\(\Theta_b\)</span> 根据分离变量、每个结点的分离值以及终止结点的值来表征第 <span class="math notranslate nohighlight">\(b\)</span> 个随机森林树。直观上，降低 <span class="math notranslate nohighlight">\(m\)</span> 会降低任意两棵树之间的相关系数，也因此通过 \eqref{15.1} 来降低平均的方差。</p>
+<p>并非所有的估计都可以通过像这样震荡数据来改善。似乎强非线性估计，比如树，改善最大。对于其 bootstrapped 树，<span class="math notranslate nohighlight">\(\rho\)</span>一般很小（一般是 0.05 或更小；见图 15.9），而 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 不比原树的方差要大。另一方面，bagging 不会改变线性估计，比如样本均值（因此也不会改变方差）；其bootstrapped 均值之间的成对相关系数大约为 50%（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/191">练习 15.4</a>）。</p>
 <p>!!! note “weiya 注：”
-Bagging 可以看成是特殊的随机森林，即 <span class="math notranslate nohighlight">\(m=p\)</span> 的随机森林．</p>
-<p>随机森林很流行．Leo Breiman 的合作者 Adele Cutler 维护一个随机森林的网站 <a class="reference external" href="http://www.math.usu.edu/~adele/forests/">http://www.math.usu.edu/~adele/forests/</a>．R 语言中有一个 <code class="docutils literal notranslate"><span class="pre">randomForest</span></code> 的包，由 Andy Liaw 维护，可以从 <code class="docutils literal notranslate"><span class="pre">CRAN</span></code> 网站上下载．</p>
+Bagging 可以看成是特殊的随机森林，即 <span class="math notranslate nohighlight">\(m=p\)</span> 的随机森林。</p>
+<p>随机森林很流行。Leo Breiman 的合作者 Adele Cutler 维护一个随机森林的网站 <a class="reference external" href="http://www.math.usu.edu/~adele/forests/">http://www.math.usu.edu/~adele/forests/</a>。R 语言中有一个 <code class="docutils literal notranslate"><span class="pre">randomForest</span></code> 的包，由 Andy Liaw 维护，可以从 <code class="docutils literal notranslate"><span class="pre">CRAN</span></code> 网站上下载。</p>
 <p>!!! note “原书脚注：”
 令人悲伤的是，Leo Breiman 逝世于 2005 年 7 月。</p>
-<p>这些作者们声称随机森林取得了巨大的成功：“更精确”，“更有解释性”，以及类似这样的．在我们的经验中，随机森林确实做得很好，只需要非常少的调参．随机森林在 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 测试集上取得了 4.88% 的误分类率，与其他方法相比表现得很好，没有显著性地比 gradient boosting (4.5%) 差．Bagging 达到 5.4%，显著地比其他方法要差，所以这个例子中额外的随机会有帮助．</p>
-<p>图 15.1 展示了这三个方法在 2500 棵树上测试误差的变化．在这种情形下，尽管 10 折交叉验证选择了所有的 2500 棵树，但有证据表明 gradient boosting 开始过拟合．</p>
+<p>这些作者们声称随机森林取得了巨大的成功：“更精确”，“更有解释性”，以及类似这样的。在我们的经验中，随机森林确实做得很好，只需要非常少的调参。随机森林在 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 测试集上取得了 4.88% 的误分类率，与其他方法相比表现得很好，没有显著性地比 gradient boosting (4.5%) 差。Bagging 达到 5.4%，显著地比其他方法要差，所以这个例子中额外的随机会有帮助。</p>
+<p>图 15.1 展示了这三个方法在 2500 棵树上测试误差的变化。在这种情形下，尽管 10 折交叉验证选择了所有的 2500 棵树，但有证据表明 gradient boosting 开始过拟合。</p>
 <p><img alt="" src="../_images/fig15.1.png" /></p>
-<p>图 15.2 展现了在 nested spheres 问题上随机森林与 gradient boosting 模拟的结果．这里 boosting 很容易地比随机森林表现要好．注意到这里较小的 <span class="math notranslate nohighlight">\(m\)</span> 会更好，尽管部分原因是因为真实的判别边界是可加的．</p>
+<p>图 15.2 展现了在 nested spheres 问题上随机森林与 gradient boosting 模拟的结果。这里 boosting 很容易地比随机森林表现要好。注意到这里较小的 <span class="math notranslate nohighlight">\(m\)</span> 会更好，尽管部分原因是因为真实的判别边界是可加的。</p>
 <p>!!! note “weiya注”
 nested spheres问题在 <span class="xref myst">10.1 boosting方法</span>中定义，即
 特征 <span class="math notranslate nohighlight">\(X_1,\ldots,X_{10}\)</span> 是标准独立高斯分布，目标 <span class="math notranslate nohighlight">\(Y\)</span> 定义如下
@@ -1213,12 +1193,12 @@ $<span class="math notranslate nohighlight">\(
     \tag{10.2}
     \)</span>$</p>
 <p><img alt="" src="../_images/fig15.2.png" /></p>
-<p>图 15.3 比较了在一个回归问题中随机森林与（带收缩的）boosting，该问题采用加利福利亚住房数据（<a class="reference external" href="https://esl.hohoweiya.xyz/10-Boosting-and-Additive-Trees/10.14-Illustrations/index.html">10.14.1 节</a>）．</p>
+<p>图 15.3 比较了在一个回归问题中随机森林与（带收缩的）boosting，该问题采用加利福利亚住房数据（<a class="reference external" href="https://esl.hohoweiya.xyz/10-Boosting-and-Additive-Trees/10.14-Illustrations/index.html">10.14.1 节</a>）。</p>
 <p><img alt="" src="../_images/fig15.3.png" /></p>
 <p>表现出的两个很强的特点是</p>
 <ul class="simple">
-<li><p>随机森林在大概 200 棵树时稳定了，而在 1000 棵树的时候 boosting 仍然在改善．boosting 被收缩放慢了，同时也因为树更小的事实．</p></li>
-<li><p>这里 boosting 比随机森林更好．在 1000 项的时候，弱 boosting 模型（深度为 4 的 GBM）比更强的随机森林（RF <span class="math notranslate nohighlight">\(m=6\)</span>）有更小的误差；对均值绝对误差进行 Wilcoxon 检验得到 <span class="math notranslate nohighlight">\(p\)</span> 值为 0.007．对于较大的 <span class="math notranslate nohighlight">\(m\)</span>，随机森林不会表现得更好．</p></li>
+<li><p>随机森林在大概 200 棵树时稳定了，而在 1000 棵树的时候 boosting 仍然在改善。boosting 被收缩放慢了，同时也因为树更小的事实。</p></li>
+<li><p>这里 boosting 比随机森林更好。在 1000 项的时候，弱 boosting 模型（深度为 4 的 GBM）比更强的随机森林（RF <span class="math notranslate nohighlight">\(m=6\)</span>）有更小的误差；对均值绝对误差进行 Wilcoxon 检验得到 <span class="math notranslate nohighlight">\(p\)</span> 值为 0.007。对于较大的 <span class="math notranslate nohighlight">\(m\)</span>，随机森林不会表现得更好。</p></li>
 </ul>
 </div>
 

@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,28 +1147,7 @@
                 
   <div class="section" id="id1">
 <h1>12.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-12-16</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2017.10.15; 2018.02.12</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>在这章我们将要描述用于分类的线性判别边界的推广．当两个类别是线性可分时我们在第四章中介绍了最优分离超平面．这里我们介绍不可分的情形，即当类别有重叠时．这些技巧会被推广为为<strong>支持向量机(support vector machine)</strong>，通过在大的、变换后的特征空间中构造线性边界得到非线性边界．第二套方法推广了Fisher的线性判别分析（LDA）．推广包括 <strong>可变的判别分析(flexible discriminant analysis)</strong>，它以一种很类似于支持向量机的方式帮助构造非线性边界，除此之外，还有对含有大量相关的特征的信号和图像数据分类而进行的<strong>带惩罚的判别分析(penalized discriminant analysis)</strong>，以及对于无规则类别的<strong>混合判别分析(mixture discriminant analysis)</strong>．</p>
+<p>在这章我们将要描述用于分类的线性判别边界的推广。当两个类别是线性可分时我们在第四章中介绍了最优分离超平面。这里我们介绍不可分的情形，即当类别有重叠时。这些技巧会被推广为为<strong>支持向量机(support vector machine)</strong>，通过在大的、变换后的特征空间中构造线性边界得到非线性边界。第二套方法推广了Fisher的线性判别分析（LDA）。推广包括 <strong>可变的判别分析(flexible discriminant analysis)</strong>，它以一种很类似于支持向量机的方式帮助构造非线性边界，除此之外，还有对含有大量相关的特征的信号和图像数据分类而进行的<strong>带惩罚的判别分析(penalized discriminant analysis)</strong>，以及对于无规则类别的<strong>混合判别分析(mixture discriminant analysis)</strong>。</p>
 <p>!!! note “weiya 注”
 两种方式：</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- SVM

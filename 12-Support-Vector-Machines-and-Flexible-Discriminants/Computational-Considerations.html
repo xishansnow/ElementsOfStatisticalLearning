@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,27 +1149,9 @@
                 
   <div class="section" id="id1">
 <h1>计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=474">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>时间</p></td>
-<td><p>2020-05-27 11:01:42</p></td>
-</tr>
-<tr class="row-even"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>当有 <span class="math notranslate nohighlight">\(N\)</span> 个训练情形，<span class="math notranslate nohighlight">\(p\)</span> 个预测变量，以及 <span class="math notranslate nohighlight">\(m\)</span> 个支持向量时，并假设 <span class="math notranslate nohighlight">\(m\approx N\)</span>，支持向量机需要 <span class="math notranslate nohighlight">\(m^3+mN+mpN\)</span> 次操作．尽管存在计算上的捷径 (Platt, 1999)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>，但他们不能很好地随着 <span class="math notranslate nohighlight">\(N\)</span> 缩放．因为他们更新很快，读者应该在网上搜索最新的技巧．</p>
-<p>LDA 需要 <span class="math notranslate nohighlight">\(Np^2+p^3\)</span> 次操作，PDA 也一样．FDA 的复杂度取决于使用的回归方法．许多技巧关于 <span class="math notranslate nohighlight">\(N\)</span> 是线性的，比如可加模型和 MARS．一般的样条和基于核的回归方法一般需要 <span class="math notranslate nohighlight">\(N^3\)</span> 次操作．</p>
-<p>R 中的包 <code class="docutils literal notranslate"><span class="pre">mda</span></code> 可以用来拟合 FDA，PDA 和 MDA 模型，S-PLUS 中也有软件包．</p>
+<p>当有 <span class="math notranslate nohighlight">\(N\)</span> 个训练情形，<span class="math notranslate nohighlight">\(p\)</span> 个预测变量，以及 <span class="math notranslate nohighlight">\(m\)</span> 个支持向量时，并假设 <span class="math notranslate nohighlight">\(m\approx N\)</span>，支持向量机需要 <span class="math notranslate nohighlight">\(m^3+mN+mpN\)</span> 次操作。尽管存在计算上的捷径 (Platt, 1999)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>，但他们不能很好地随着 <span class="math notranslate nohighlight">\(N\)</span> 缩放。因为他们更新很快，读者应该在网上搜索最新的技巧。</p>
+<p>LDA 需要 <span class="math notranslate nohighlight">\(Np^2+p^3\)</span> 次操作，PDA 也一样。FDA 的复杂度取决于使用的回归方法。许多技巧关于 <span class="math notranslate nohighlight">\(N\)</span> 是线性的，比如可加模型和 MARS。一般的样条和基于核的回归方法一般需要 <span class="math notranslate nohighlight">\(N^3\)</span> 次操作。</p>
+<p>R 中的包 <code class="docutils literal notranslate"><span class="pre">mda</span></code> 可以用来拟合 FDA，PDA 和 MDA 模型，S-PLUS 中也有软件包。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

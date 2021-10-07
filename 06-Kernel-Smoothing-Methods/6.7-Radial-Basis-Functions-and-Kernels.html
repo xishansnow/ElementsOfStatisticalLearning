@@ -353,22 +353,23 @@
     <a class="reference internal" href="6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,9 +1149,10 @@
                 
   <div class="section" id="id1">
 <h1>6.7 径向基函数和核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>在第五章中，函数表示成基函数展开的形式：<span class="math notranslate nohighlight">\(f(x)=\sum_{j=1}^M\beta_jh_j(x)\)</span>．使用基函数展开进行灵活建模的技术有两部分构成，首先需要选取合适的基函数族，然后通过选择、正则化、或者两者都有的方法来控制表达式的复杂度．有些基函数族的元素是局部定义的，比如，B 样条在 <span class="math notranslate nohighlight">\(\IR\)</span> 中局部定义．如果在特定区域中需要更多的灵活性，这个区域则需要用更多的基函数来表示（对于 B 样条，也就是需要更多结点）．<span class="math notranslate nohighlight">\(\IR\)</span> 局部基函数的张量积构成了 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中的局部基函数．不是所有的基函数都是局部的——举个例子，对于样条的截断幂基，或者在神经网络中使用的 S 型基函数 <span class="math notranslate nohighlight">\(\sigma(\alpha_0+\alpha x)\)</span>（见 <span class="xref myst">第 11 章</span>）．虽然如此，复合函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 也可以显示出局部行为，因为参数的特定符号和值造成全局影响的抵消．举个例子，对于同样的函数空间截断幂基有等价的 B 样条基；这种情况下恰恰就是因为抵消．</p>
-<p>核方法通过在目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 局部的区域中拟合简单的模型来实现灵活性．局部化通过加权核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 来实现，并且单个观测权重为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>．</p>
-<p><strong>径向基函数 (Radial basis functions)</strong> 将核函数 <span class="math notranslate nohighlight">\(K_\lambda(\xi,x)\)</span> 看成基函数．</p>
+<style>p{text-indent:2em;2}</style>
+<p>在第五章中，函数表示成基函数展开的形式：<span class="math notranslate nohighlight">\(f(x)=\sum_{j=1}^M\beta_jh_j(x)\)</span>。使用基函数展开进行灵活建模的技术有两部分构成，首先需要选取合适的基函数族，然后通过选择、正则化、或者两者都有的方法来控制表达式的复杂度。有些基函数族的元素是局部定义的，比如，B 样条在 <span class="math notranslate nohighlight">\(\IR\)</span> 中局部定义。如果在特定区域中需要更多的灵活性，这个区域则需要用更多的基函数来表示（对于 B 样条，也就是需要更多结点）。<span class="math notranslate nohighlight">\(\IR\)</span> 局部基函数的张量积构成了 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中的局部基函数。不是所有的基函数都是局部的——举个例子，对于样条的截断幂基，或者在神经网络中使用的 S 型基函数 <span class="math notranslate nohighlight">\(\sigma(\alpha_0+\alpha x)\)</span>（见 <span class="xref myst">第 11 章</span>）。虽然如此，复合函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 也可以显示出局部行为，因为参数的特定符号和值造成全局影响的抵消。举个例子，对于同样的函数空间截断幂基有等价的 B 样条基；这种情况下恰恰就是因为抵消。</p>
+<p>核方法通过在目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 局部的区域中拟合简单的模型来实现灵活性。局部化通过加权核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 来实现，并且单个观测权重为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>。</p>
+<p><strong>径向基函数 (Radial basis functions)</strong> 将核函数 <span class="math notranslate nohighlight">\(K_\lambda(\xi,x)\)</span> 看成基函数。</p>
 <p>!!! note “weiya 注：Isotropic covariance vs. Radial basis functions”
 平稳的协方差函数是 <span class="math notranslate nohighlight">\(\x - \x'\)</span> 的函数，而如果进一步只跟 <span class="math notranslate nohighlight">\(\x\)</span> 和 <span class="math notranslate nohighlight">\(\x'\)</span> 间的距离 <span class="math notranslate nohighlight">\(\vert \x-\x'\vert\)</span> 有关，则称为 isotropic covariance，也称作 radial basis functions.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>参考 [WeiYa&#39;s Work Yard: Isotropic vs. Anisotropic](https://stats.hohoweiya.xyz/2019/10/24/cov-func/).
@@ -1158,30 +1160,30 @@
 </div>
 <p>这得到模型
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-471fb258-2829-4d11-99a9-181e3a759277">
-<span class="eqno">(15)<a class="headerlink" href="#equation-471fb258-2829-4d11-99a9-181e3a759277" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a2a245c5-0f1e-4895-8042-949a7f422526">
+<span class="eqno">(15)<a class="headerlink" href="#equation-a2a245c5-0f1e-4895-8042-949a7f422526" title="Permalink to this equation">¶</a></span>\[\begin{align}
 f(x) &amp;= \sum\limits_{j=1}^MK_{\lambda_j}(\xi_j,x)\beta_j\notag\\
 &amp;= \sum\limits_{j=1}^MD\left(\frac{\Vert x-\xi_j\Vert}{\lambda_j}\right)\beta_j\tag{6.28}
 \end{align}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\begin{split}
-其中每个基元素由位置或者 **原型 (prototype)** 参数 $\xi_j$ 以及缩放参数 $\lambda_j$ 决定．$D$ 的一个流行的选择是标准高斯密度函数．有许多方式来学习参数 $\\{\lambda_j,\xi_j,\beta_j\\},j=1,\ldots,M$．为了简化，我们关注回归的最小二乘方法，并且采用高斯核．\end{split}\\- 优化关于所有参数的平方和
+其中每个基元素由位置或者 **原型 (prototype)** 参数 $\xi_j$ 以及缩放参数 $\lambda_j$ 决定。$D$ 的一个流行的选择是标准高斯密度函数。有许多方式来学习参数 $\\{\lambda_j,\xi_j,\beta_j\\},j=1,\ldots,M$。为了简化，我们关注回归的最小二乘方法，并且采用高斯核。\end{split}\\- 优化关于所有参数的平方和
 \end{aligned}\end{align} \]</div>
 <p>\underset{{\lambda_j,\xi_j,\beta_j}<em>1^M}{\min}\sum\limits</em>{i=1}^M\left(y_i-\beta_0-\sum\limits_{j=1}^M\beta_j\exp\left{-\frac{(x_i-\xi_j)^T(x_i-\xi_j)}{\lambda_j^2}\right}\right)^2\tag{6.29}
 $$</p>
-<p>​这个模型一般称为 RBF 网络，这是 S 型神经网络的替代选择，将在 <span class="xref myst">第 11 章</span> 讨论；<span class="math notranslate nohighlight">\(\xi_j\)</span> 和 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 在参数中有重要作用．这个准则是有着多重局部最小点的非凸函数，并且优化的算法类似神经网络中的算法．</p>
+<p>​这个模型一般称为 RBF 网络，这是 S 型神经网络的替代选择，将在 <span class="xref myst">第 11 章</span> 讨论；<span class="math notranslate nohighlight">\(\xi_j\)</span> 和 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 在参数中有重要作用。这个准则是有着多重局部最小点的非凸函数，并且优化的算法类似神经网络中的算法。</p>
 <ul class="simple">
-<li><p>分开估计 <span class="math notranslate nohighlight">\(\\{\lambda_j,\xi_j\\}\)</span> 和 <span class="math notranslate nohighlight">\(\beta_j\)</span>．给定前者，后者的估计是简单的最小二乘问题．通常单独用 <span class="math notranslate nohighlight">\(X\)</span> 的分布，以非监督的方式选择核参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 和 <span class="math notranslate nohighlight">\(\xi_j\)</span>．其中一种方式是在给定中心 <span class="math notranslate nohighlight">\(\xi_j\)</span> 和缩放 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 时，对训练 <span class="math notranslate nohighlight">\(x_i\)</span> 拟合高斯混合密度模型．一种特别的方式是使用聚类方法来确定原型 <span class="math notranslate nohighlight">\(\xi_j\)</span>，并且将 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 看成是超参数．这些方式的显然缺点是条件分布 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span> 以及 <span class="math notranslate nohighlight">\(\E(Y\mid X)\)</span> 是不起作用的．不过它们的优点是，可以更简单地实现．</p></li>
+<li><p>分开估计 <span class="math notranslate nohighlight">\(\\{\lambda_j,\xi_j\\}\)</span> 和 <span class="math notranslate nohighlight">\(\beta_j\)</span>。给定前者，后者的估计是简单的最小二乘问题。通常单独用 <span class="math notranslate nohighlight">\(X\)</span> 的分布，以非监督的方式选择核参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 和 <span class="math notranslate nohighlight">\(\xi_j\)</span>。其中一种方式是在给定中心 <span class="math notranslate nohighlight">\(\xi_j\)</span> 和缩放 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 时，对训练 <span class="math notranslate nohighlight">\(x_i\)</span> 拟合高斯混合密度模型。一种特别的方式是使用聚类方法来确定原型 <span class="math notranslate nohighlight">\(\xi_j\)</span>，并且将 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 看成是超参数。这些方式的显然缺点是条件分布 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span> 以及 <span class="math notranslate nohighlight">\(\E(Y\mid X)\)</span> 是不起作用的。不过它们的优点是，可以更简单地实现。</p></li>
 </ul>
 <p>!!! question “weiya 注：翻译相关”
 原文的 <strong>不起作用 (having no say)</strong> 后面用 “in where the action is concentrated” 进行了修饰，但是不太清楚 “action” 是指什么，以及修饰语想表达什么？</p>
 <p><img alt="" src="../_images/fig6.16.png" /></p>
-<p>尽管看起来减少参数的个数，并假设 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 为常数的方法很吸引人，但是这会带来糟糕的副作用——产生 <strong>洞 (holes)</strong>，也就是 <span class="math notranslate nohighlight">\(\IR^p\)</span> 存在某个区域，其中没有核有合适的支撑（如图 6.16（上）所示）．对径向基函数重标准化，</p>
+<p>尽管看起来减少参数的个数，并假设 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 为常数的方法很吸引人，但是这会带来糟糕的副作用——产生 <strong>洞 (holes)</strong>，也就是 <span class="math notranslate nohighlight">\(\IR^p\)</span> 存在某个区域，其中没有核有合适的支撑（如图 6.16（上）所示）。对径向基函数重标准化，</p>
 <div class="math notranslate nohighlight">
 \[
 h_j(x)=\frac{D(\Vert x-\xi_j\Vert/\lambda)}{\sum_{k=1}^MD(\Vert x-\xi_k\Vert/\lambda)}\,,\tag{6.30}
 \]</div>
-<p>可以避免这个问题（图 6.16（下））．</p>
+<p>可以避免这个问题（图 6.16（下））。</p>
 <p><span class="math notranslate nohighlight">\(\IR^p\)</span> 中的 Nadaraya-Watson 核回归估计量 \eqref{6.2} 可以看成是重标准化后径向基函数的展开，</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
@@ -1195,7 +1197,7 @@ $<span class="math notranslate nohighlight">\(
 \end{align*}
 \end{split}\]</div>
 <p>其中基函数 <span class="math notranslate nohighlight">\(h_i\)</span> 确定了每个观测的位置以及系数；也就是说，<span class="math notranslate nohighlight">\(\xi_i=x_i,\hat\beta_i=y_i,i=1,\ldots,N\)</span>.</p>
-<p>注意到展开式 \eqref{6.31} 与由 <span class="math notranslate nohighlight">\(K\)</span> 导出的正则化问题的解 \eqref{5.50} 间的相似性．径向基函数搭建了现代“核方法”与局部拟合技巧间的桥梁．</p>
+<p>注意到展开式 \eqref{6.31} 与由 <span class="math notranslate nohighlight">\(K\)</span> 导出的正则化问题的解 \eqref{5.50} 间的相似性。径向基函数搭建了现代“核方法”与局部拟合技巧间的桥梁。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     f(x)=\sum\limits_{i=1}^N\alpha_i K(x, x_i)\tag{5.50}\label{5.50}

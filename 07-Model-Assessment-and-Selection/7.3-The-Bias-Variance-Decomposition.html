@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1161,10 +1162,11 @@
                 
   <div class="section" id="id1">
 <h1>7.3 偏差-方差分解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>和 <span class="xref myst">第 2 章</span> 一样，如果我们假设 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\E(\varepsilon)=0\)</span>，并且 <span class="math notranslate nohighlight">\(\Var(\epsilon)=\sigma_\varepsilon^2\)</span>，我们可以导出在使用平方误差损失的情形下，在输入点 <span class="math notranslate nohighlight">\(X=x_0\)</span> 处回归拟合值 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的期望预测误差，
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61439032-6321-409f-bd06-cd1a84562d6b">
-<span class="eqno">(16)<a class="headerlink" href="#equation-61439032-6321-409f-bd06-cd1a84562d6b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0e306eb1-7c41-49b9-94a5-b72de006012b">
+<span class="eqno">(16)<a class="headerlink" href="#equation-0e306eb1-7c41-49b9-94a5-b72de006012b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \Err(x_0)&amp;=\E[(Y-\hat f(x_0))^2\mid X=x_0]\notag\\
 &amp;=\sigma_\varepsilon^2+[\E\hat f(x_0)-f(x_0)]^2+\E[\hat f(x_0)-E\hat f(x_0)]^2\notag\\
 &amp;=\sigma_\varepsilon^2+\Bias^2(\hat f(x_0))+\Var(\hat f(x_0))\notag\\
@@ -1173,7 +1175,7 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[!!! note &quot;weiya 注：推导 (7.9)&quot;
     &lt;!--
-    (7.9) 其实暗含 $\E f(x_0)\E\hat f(x_0)=\E(f(x_0)\hat f(x_0))$，这显然成立，因为我们训练 $\hat f$ 时，完全不知道真实的 $f$，故它们独立．
+    (7.9) 其实暗含 $\E f(x_0)\E\hat f(x_0)=\E(f(x_0)\hat f(x_0))$，这显然成立，因为我们训练 $\hat f$ 时，完全不知道真实的 $f$，故它们独立。
     \]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{align}
 \Err(x_0)&amp;=E[(Y-\hat f(x_0))^2\mid X=x_0]\\
@@ -1211,7 +1213,7 @@ $$
 $$
 </pre></div>
 </div>
-<p>第一项是目标在真实均值 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 处的方差，无论我们对 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 的估计有多好，这是不可避免的，除非 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2=0\)</span>．第二项是偏差的平方，是我们估计的均值与真实的均值间的偏差量；最后一项是方差，是估计的 <span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 在其均值处的平方偏差的期望值．一般地，我们建立的模型 <span class="math notranslate nohighlight">\(\hat f\)</span> 越复杂，（平方）偏差越低但是方差越大．</p>
+<p>第一项是目标在真实均值 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 处的方差，无论我们对 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 的估计有多好，这是不可避免的，除非 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2=0\)</span>。第二项是偏差的平方，是我们估计的均值与真实的均值间的偏差量；最后一项是方差，是估计的 <span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 在其均值处的平方偏差的期望值。一般地，我们建立的模型 <span class="math notranslate nohighlight">\(\hat f\)</span> 越复杂，（平方）偏差越低但是方差越大。</p>
 <p>对于 <span class="math notranslate nohighlight">\(k\)</span>-最近邻回归拟合，这些表达式有简单的形式</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1220,7 +1222,7 @@ $$
 &amp;= \sigma_\varepsilon^2+\left[f(x_0)-\frac{1}{k}\sum\limits_{\ell=1}^k f(x_{(\ell)})\right]^2+\frac{\sigma_\varepsilon^2}{k}\tag{7.10}
 \end{align}
 \end{split}\]</div>
-<p>这里为了简单我们假设训练输入 <span class="math notranslate nohighlight">\(x_i\)</span> 为固定的，则随机性来自 <span class="math notranslate nohighlight">\(y_i\)</span>．邻居的个数 <span class="math notranslate nohighlight">\(k\)</span> 与模型复杂度负相关．对于较小的 <span class="math notranslate nohighlight">\(k\)</span>，估计出的 <span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以对潜在的函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 可能有更好的适应性．当 <span class="math notranslate nohighlight">\(k\)</span> 增大，偏差—— <span class="math notranslate nohighlight">\(f(x_0)\)</span> 与 <span class="math notranslate nohighlight">\(k\)</span>-最近邻中的 <span class="math notranslate nohighlight">\(f(x)\)</span> 平均值的差的平方——一般会增大，而方差会降低．</p>
+<p>这里为了简单我们假设训练输入 <span class="math notranslate nohighlight">\(x_i\)</span> 为固定的，则随机性来自 <span class="math notranslate nohighlight">\(y_i\)</span>。邻居的个数 <span class="math notranslate nohighlight">\(k\)</span> 与模型复杂度负相关。对于较小的 <span class="math notranslate nohighlight">\(k\)</span>，估计出的 <span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以对潜在的函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 可能有更好的适应性。当 <span class="math notranslate nohighlight">\(k\)</span> 增大，偏差—— <span class="math notranslate nohighlight">\(f(x_0)\)</span> 与 <span class="math notranslate nohighlight">\(k\)</span>-最近邻中的 <span class="math notranslate nohighlight">\(f(x)\)</span> 平均值的差的平方——一般会增大，而方差会降低。</p>
 <p>对于线性模型拟合 <span class="math notranslate nohighlight">\(\hat f_p(x)=x^T\hat\beta\)</span>，其中含有 <span class="math notranslate nohighlight">\(p\)</span> 个组分的参数向量 <span class="math notranslate nohighlight">\(\beta\)</span> 是通过最小二乘拟合的，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1229,7 +1231,7 @@ $$
 &amp;=\sigma^2_\varepsilon+[f(x_0)-E\hat f_p(x_0)]^2+\Vert\mathbf h(x_0)\Vert^2\sigma_\varepsilon^2\tag{7.11}\label{7.11}
 \end{align}
 \end{split}\]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf{X(X^TX)^{-1}}x_0\)</span>，是得到拟合 <span class="math notranslate nohighlight">\(\hat f_p(x_0)=x_0^T\mathbf{(X^TX)^{-1}X^Ty}\)</span> 的 <span class="math notranslate nohighlight">\(N\)</span> 维线性权重，因此 <span class="math notranslate nohighlight">\(\mathrm{Var}[\hat f_p(x_0)]=\Vert \mathbf h(x_0)\Vert^2\sigma_\varepsilon^2\)</span>．尽管方差随着 <span class="math notranslate nohighlight">\(x_0\)</span> 变化，但它的平均（当 <span class="math notranslate nohighlight">\(x_0\)</span> 取遍样本值 <span class="math notranslate nohighlight">\(x_i\)</span>）为 <span class="math notranslate nohighlight">\((p/N)\sigma^2_\varepsilon\)</span>，</p>
+<p>这里 <span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf{X(X^TX)^{-1}}x_0\)</span>，是得到拟合 <span class="math notranslate nohighlight">\(\hat f_p(x_0)=x_0^T\mathbf{(X^TX)^{-1}X^Ty}\)</span> 的 <span class="math notranslate nohighlight">\(N\)</span> 维线性权重，因此 <span class="math notranslate nohighlight">\(\mathrm{Var}[\hat f_p(x_0)]=\Vert \mathbf h(x_0)\Vert^2\sigma_\varepsilon^2\)</span>。尽管方差随着 <span class="math notranslate nohighlight">\(x_0\)</span> 变化，但它的平均（当 <span class="math notranslate nohighlight">\(x_0\)</span> 取遍样本值 <span class="math notranslate nohighlight">\(x_i\)</span>）为 <span class="math notranslate nohighlight">\((p/N)\sigma^2_\varepsilon\)</span>，</p>
 <p>!!! note “weiya 注”
 记 <span class="math notranslate nohighlight">\(\X=[x_1',x_2',\ldots,x_N']'\)</span>，则
 $<span class="math notranslate nohighlight">\(
@@ -1242,19 +1244,19 @@ $<span class="math notranslate nohighlight">\(
     &amp;=p\notag
     \end{align}
     \)</span><span class="math notranslate nohighlight">\(
-    则方差的平均为 \)</span>(p/N)\sigma_\varepsilon^2$．</p>
+    则方差的平均为 \)</span>(p/N)\sigma_\varepsilon^2$。</p>
 <p>因此有
 $<span class="math notranslate nohighlight">\(
 \frac{1}{N}\sum\limits_{i=1}^N\mathrm{Err}(x_i)=\sigma_\varepsilon^2+\frac{1}{N}\sum\limits_{i=1}^N[f(x_i)-\E\hat f(x_i)]^2+\frac{p}{N}\sigma_\varepsilon^2\tag{7.12}
 \)</span>$</p>
-<p>这称作 <strong>样本内 (in-sample)</strong> 误差．这里模型复杂度直接与参数个数 <span class="math notranslate nohighlight">\(p\)</span> 有关．</p>
-<p>对于岭回归估计 <span class="math notranslate nohighlight">\(\hat f_\alpha(x_0)\)</span> 的测试误差 <span class="math notranslate nohighlight">\(\Err(x_0)\)</span> 与 \eqref{7.11} 式相同，除了方差项的线性系数不一样：<span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf X(\mathbf {X^TX}+\alpha\mathbf I)^Tx_0\)</span>．偏差项也会不一样．</p>
-<p>对于线性模型族比如岭回归，我们可以更精细地分解偏差．令 <span class="math notranslate nohighlight">\(\beta_*\)</span> 为 <span class="math notranslate nohighlight">\(f\)</span> 的最优线性估计的参数：</p>
+<p>这称作 <strong>样本内 (in-sample)</strong> 误差。这里模型复杂度直接与参数个数 <span class="math notranslate nohighlight">\(p\)</span> 有关。</p>
+<p>对于岭回归估计 <span class="math notranslate nohighlight">\(\hat f_\alpha(x_0)\)</span> 的测试误差 <span class="math notranslate nohighlight">\(\Err(x_0)\)</span> 与 \eqref{7.11} 式相同，除了方差项的线性系数不一样：<span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf X(\mathbf {X^TX}+\alpha\mathbf I)^Tx_0\)</span>。偏差项也会不一样。</p>
+<p>对于线性模型族比如岭回归，我们可以更精细地分解偏差。令 <span class="math notranslate nohighlight">\(\beta_*\)</span> 为 <span class="math notranslate nohighlight">\(f\)</span> 的最优线性估计的参数：</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_*=\mathrm{arg}\;\underset{\beta}{\mathrm{min}}\;E(f(X)-X^T\beta)^2\tag{7.13}
 \]</div>
-<p>这里期望是对输入变量 <span class="math notranslate nohighlight">\(X\)</span> 的分布取的．接着我们可以将 <strong>偏差平方的平均 (average squared bias)</strong> 写成</p>
+<p>这里期望是对输入变量 <span class="math notranslate nohighlight">\(X\)</span> 的分布取的。接着我们可以将 <strong>偏差平方的平均 (average squared bias)</strong> 写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1263,29 +1265,29 @@ $<span class="math notranslate nohighlight">\(
 &amp;=\text{Ave[Model Bias]}^2+\text{Ave[Estimation Bias]}^2\tag{7.14}
 \end{align}
 \end{split}\]</div>
-<p>右侧的第一项是 <strong>模型偏差 (model bias)</strong> 平方的平均，它是最优线性近似和真实函数之间的误差．第二项是 <strong>估计偏差 (estimation bias)</strong> 平方的平均，它是估计的平均值 <span class="math notranslate nohighlight">\(\E(x_0^T\hat\beta)\)</span> 与最优线性近似之间的误差．</p>
-<p>对于通过普通最小二乘拟合的线性模型，估计量的偏差为 0．对于约束的拟合，比如岭回归，它是正的，而且我们用减小方差的好处进行交易．模型偏差只可能通过将线性模型类扩大为更广的模型类才能降低，或者通过在模型中加入变量的交叉项以及变换项（通过变量的变换得到的）来降低．</p>
-<p>图 7.2 显示了偏差和方差之间的权衡的原理图．在线性模型的情形下，模型空间是根据 <span class="math notranslate nohighlight">\(p\)</span> 个输入变量进行线性预测的集合，标为 “closest fit” 的黑点是 <span class="math notranslate nohighlight">\(x^T\beta_*\)</span>．蓝色阴影部分区域表示训练样本与真实值（图中的 truth）之间的误差 <span class="math notranslate nohighlight">\(\sigma_\varepsilon\)</span>．</p>
+<p>右侧的第一项是 <strong>模型偏差 (model bias)</strong> 平方的平均，它是最优线性近似和真实函数之间的误差。第二项是 <strong>估计偏差 (estimation bias)</strong> 平方的平均，它是估计的平均值 <span class="math notranslate nohighlight">\(\E(x_0^T\hat\beta)\)</span> 与最优线性近似之间的误差。</p>
+<p>对于通过普通最小二乘拟合的线性模型，估计量的偏差为 0。对于约束的拟合，比如岭回归，它是正的，而且我们用减小方差的好处进行交易。模型偏差只可能通过将线性模型类扩大为更广的模型类才能降低，或者通过在模型中加入变量的交叉项以及变换项（通过变量的变换得到的）来降低。</p>
+<p>图 7.2 显示了偏差和方差之间的权衡的原理图。在线性模型的情形下，模型空间是根据 <span class="math notranslate nohighlight">\(p\)</span> 个输入变量进行线性预测的集合，标为 “closest fit” 的黑点是 <span class="math notranslate nohighlight">\(x^T\beta_*\)</span>。蓝色阴影部分区域表示训练样本与真实值（图中的 truth）之间的误差 <span class="math notranslate nohighlight">\(\sigma_\varepsilon\)</span>。</p>
 <p><img alt="" src="../_images/fig7.2.png" /></p>
 <blockquote>
-<div><p>图 7.2. 偏差和方差行为的原理图．模型空间是模型的所有可能的预测的集合，“closest fit”用黑点标出．图中显示了偏离真实值的模型偏差，以及用圆心在标记为“closest fit in population”的黑点处的黄色大圆来表示方差．图中也显示了收缩或者正则化的拟合，它们有额外的估计偏差，但是因为方差的减小导致了更小的预测误差．</p>
+<div><p>图 7.2. 偏差和方差行为的原理图。模型空间是模型的所有可能的预测的集合，“closest fit”用黑点标出。图中显示了偏离真实值的模型偏差，以及用圆心在标记为“closest fit in population”的黑点处的黄色大圆来表示方差。图中也显示了收缩或者正则化的拟合，它们有额外的估计偏差，但是因为方差的减小导致了更小的预测误差。</p>
 </div></blockquote>
-<p>图中也显示了最小二乘的方差，用圆心在标记为“closest fit in population”的黑点处的黄色大圆来表示．现在如果我们用更少的预测变量来拟合模型，或者通过将它们向 0 收缩来正则化系数，我们会得到图中的 “shrunken fit”．这个拟合有额外的估计偏差，因为它不是模型空间的最近拟合 (closest fit)．另一方面，它有更小的方差．如果方差的减少大于（平方）偏差的增大，则是值得的．</p>
+<p>图中也显示了最小二乘的方差，用圆心在标记为“closest fit in population”的黑点处的黄色大圆来表示。现在如果我们用更少的预测变量来拟合模型，或者通过将它们向 0 收缩来正则化系数，我们会得到图中的 “shrunken fit”。这个拟合有额外的估计偏差，因为它不是模型空间的最近拟合 (closest fit)。另一方面，它有更小的方差。如果方差的减少大于（平方）偏差的增大，则是值得的。</p>
 <div class="section" id="id2">
 <h2>例子： 方差-偏差之间的权衡<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig7.3.png" /></p>
 <blockquote>
-<div><p>图 7.3. 某模拟例子的预测误差的期望（橘黄色），平方偏差（绿色）以及方差（蓝色）．上面两张图为平方误差损失的回归；下面两张图为0-1损失的分类．模型是 <span class="math notranslate nohighlight">\(k\)</span> 最近邻（左边）以及大小为<span class="math notranslate nohighlight">\(p\)</span>的最优子集回归（右）．在回归和分类中的方差和偏差曲线是一样的，但是预测误差曲线是不同的．</p>
+<div><p>图 7.3. 某模拟例子的预测误差的期望（橘黄色），平方偏差（绿色）以及方差（蓝色）。上面两张图为平方误差损失的回归；下面两张图为0-1损失的分类。模型是 <span class="math notranslate nohighlight">\(k\)</span> 最近邻（左边）以及大小为<span class="math notranslate nohighlight">\(p\)</span>的最优子集回归（右）。在回归和分类中的方差和偏差曲线是一样的，但是预测误差曲线是不同的。</p>
 </div></blockquote>
-<p>图 7.3. 显示了两个模拟例子的偏差-方差之间的权衡．有 80 个观测，20 个预测变量，在超立方体 <span class="math notranslate nohighlight">\([0,1]^{20}\)</span> 中均匀分布．这些情形如下：</p>
-<p><strong>左图：</strong> 若 <span class="math notranslate nohighlight">\(X_1\le 1/2\)</span>，<span class="math notranslate nohighlight">\(Y=0\)</span>，且若 <span class="math notranslate nohighlight">\(X_1&gt;1/2\)</span>，<span class="math notranslate nohighlight">\(Y=1\)</span>，而且应用 <span class="math notranslate nohighlight">\(k\)</span>-最近邻模型．</p>
-<p><strong>右图：</strong> 若 <span class="math notranslate nohighlight">\(\sum_{j=1}^{10}X_j&gt;5\)</span>，<span class="math notranslate nohighlight">\(Y=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y=0\)</span>，且采用大小为 <span class="math notranslate nohighlight">\(p\)</span> 的最优子集回归．</p>
-<p>上面一行的图是平方误差损失的回归；下面一行的图是 0-1 损失的分类．图中显示了预测误差（红色）、平方误差（绿色）和方差（蓝色），所有都是用大的测试样本来计算的．</p>
-<p>在回归问题中，偏差和方差相加得到预测误差曲线，对于 <span class="math notranslate nohighlight">\(k\)</span> 最近邻在 <span class="math notranslate nohighlight">\(k=5\)</span> 处有最小值，对于线性模型 <span class="math notranslate nohighlight">\(p\ge 10\)</span> 有最小值．对于分类损失（下图），可以看到一些有趣的现象．偏差和方差曲线与上面的图象相同，而且预测误差指的是误分类比率．我们看到预测误差不再是偏差平方与方差的和．对于 <span class="math notranslate nohighlight">\(k\)</span> 最近邻分类器，当邻居个数增长到 20，预测误差降低或者保持不变，尽管偏差平方仍在增大．对与线性模型分类器最小值和回归一样出现在 <span class="math notranslate nohighlight">\(p\ge 10\)</span>，但是在 <span class="math notranslate nohighlight">\(p=1\)</span> 处模型的改进是很显著的．我们看到偏差和方差是相互影响来确定预测误差．</p>
-<p>为什么会这样？第一个现象可以很简单的解释．假设在一个给定的输入点，类别 1 的真实概率为 0.9，而我们估计出的期望值为 0.6．则偏差平方——<span class="math notranslate nohighlight">\((0.6-0.9)^2\)</span>——是相当大的，但是预测误差为 0，因为我们作出了正确的判断．换句话说，使得我们处于判别边界正确一侧的估计误差是没有影响的．<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/26">练习 7.2</a> 从分析角度论证这个现象，而且展示了偏差与方差之间的相互影响．</p>
+<p>图 7.3. 显示了两个模拟例子的偏差-方差之间的权衡。有 80 个观测，20 个预测变量，在超立方体 <span class="math notranslate nohighlight">\([0,1]^{20}\)</span> 中均匀分布。这些情形如下：</p>
+<p><strong>左图：</strong> 若 <span class="math notranslate nohighlight">\(X_1\le 1/2\)</span>，<span class="math notranslate nohighlight">\(Y=0\)</span>，且若 <span class="math notranslate nohighlight">\(X_1&gt;1/2\)</span>，<span class="math notranslate nohighlight">\(Y=1\)</span>，而且应用 <span class="math notranslate nohighlight">\(k\)</span>-最近邻模型。</p>
+<p><strong>右图：</strong> 若 <span class="math notranslate nohighlight">\(\sum_{j=1}^{10}X_j&gt;5\)</span>，<span class="math notranslate nohighlight">\(Y=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y=0\)</span>，且采用大小为 <span class="math notranslate nohighlight">\(p\)</span> 的最优子集回归。</p>
+<p>上面一行的图是平方误差损失的回归；下面一行的图是 0-1 损失的分类。图中显示了预测误差（红色）、平方误差（绿色）和方差（蓝色），所有都是用大的测试样本来计算的。</p>
+<p>在回归问题中，偏差和方差相加得到预测误差曲线，对于 <span class="math notranslate nohighlight">\(k\)</span> 最近邻在 <span class="math notranslate nohighlight">\(k=5\)</span> 处有最小值，对于线性模型 <span class="math notranslate nohighlight">\(p\ge 10\)</span> 有最小值。对于分类损失（下图），可以看到一些有趣的现象。偏差和方差曲线与上面的图象相同，而且预测误差指的是误分类比率。我们看到预测误差不再是偏差平方与方差的和。对于 <span class="math notranslate nohighlight">\(k\)</span> 最近邻分类器，当邻居个数增长到 20，预测误差降低或者保持不变，尽管偏差平方仍在增大。对与线性模型分类器最小值和回归一样出现在 <span class="math notranslate nohighlight">\(p\ge 10\)</span>，但是在 <span class="math notranslate nohighlight">\(p=1\)</span> 处模型的改进是很显著的。我们看到偏差和方差是相互影响来确定预测误差。</p>
+<p>为什么会这样？第一个现象可以很简单的解释。假设在一个给定的输入点，类别 1 的真实概率为 0.9，而我们估计出的期望值为 0.6。则偏差平方——<span class="math notranslate nohighlight">\((0.6-0.9)^2\)</span>——是相当大的，但是预测误差为 0，因为我们作出了正确的判断。换句话说，使得我们处于判别边界正确一侧的估计误差是没有影响的。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/26">练习 7.2</a> 从分析角度论证这个现象，而且展示了偏差与方差之间的相互影响。</p>
 <p>!!! info “weiya 注：Ex. 7.2”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/26">Issue 26: Ex. 7.2</a>．</p>
-<p>整体思想是偏差方差间的权衡在 0-1 损失的表现与在平方误差损失的表现不一样．反过来意味着调整参数的最优选择可能在两种设定下本质上不同．正如后面章节中描述的那样，我们应该将调整参数的选择建立于对预测误差的估计之上．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/26">Issue 26: Ex. 7.2</a>。</p>
+<p>整体思想是偏差方差间的权衡在 0-1 损失的表现与在平方误差损失的表现不一样。反过来意味着调整参数的最优选择可能在两种设定下本质上不同。正如后面章节中描述的那样，我们应该将调整参数的选择建立于对预测误差的估计之上。</p>
 </div>
 </div>
 

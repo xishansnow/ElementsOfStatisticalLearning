@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,32 +1149,11 @@
                 
   <div class="section" id="id1">
 <h1>13.5 计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-08-29</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2019-01-06</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>最近邻分类规则的一个缺点通常是它的计算负荷量，无论是寻找最近邻还是存储整个训练集合．当有 <span class="math notranslate nohighlight">\(N\)</span> 个观测和 <span class="math notranslate nohighlight">\(p\)</span> 个变量时，对每个点最近邻分类需要 <span class="math notranslate nohighlight">\(Np\)</span> 次操作来寻找邻域．有一些快速算法 (Friedman et al., 1975<a class="footnote-reference brackets" href="#id9" id="id2">1</a>; Friedman et al., 1977<a class="footnote-reference brackets" href="#id10" id="id3">2</a>) 能在某种程度上降低计算负荷．Hastie and Simard (1998)<a class="footnote-reference brackets" href="#id11" id="id4">3</a> 通过在不变度量框架下提出类似 <span class="math notranslate nohighlight">\(K\)</span>-means 聚类的方法，降低了 <strong>切向距离 (tangent distance)</strong> 的计算量．</p>
-<p>降低存储的要求更加困难，研究者们提出了各种 <strong>编辑 (editing)</strong> 和 <strong>压缩 (condensing)</strong> 的过程．想法是单独拿出能进行最近邻预测的训练集的子集，并且把剩下的训练数据丢掉．直观上看，保留靠近判别边界处和在边界正确一侧的训练点是很重要的，而那些离边界很远的点可以舍弃．</p>
-<p>Devijver and Kittler (1982) <a class="footnote-reference brackets" href="#id12" id="id5">4</a> 的多重编辑算法将数据周期性地划分为训练集和测试集，计算测试集上的最近邻，并且删掉误分类的测试点．想法是保留训练观测值的同种类别．</p>
-<p>Hart (1968)<a class="footnote-reference brackets" href="#id13" id="id6">5</a> 的 <strong>压缩 (condensing)</strong> 过程更进一步，试图仅仅保留这些类别的 <strong>外点 (exterior point)</strong>．以随机选择单个观测作为训练集开始，每次处理一个额外的数据点，仅当它被当前训练集误分类时才加入到训练集中．</p>
-<p>这是过程在 Dasarathy (1991)<a class="footnote-reference brackets" href="#id14" id="id7">6</a> 和 Ripley (1996)<a class="footnote-reference brackets" href="#id15" id="id8">7</a> 中均有综述．它们也可以应用到除最近邻以外的学习过程．尽管这些方法有时是有用的，但是我们并没有太多的实际经验，也没有在文献中找到关于它们表现的系统性的比较．</p>
+<p>最近邻分类规则的一个缺点通常是它的计算负荷量，无论是寻找最近邻还是存储整个训练集合。当有 <span class="math notranslate nohighlight">\(N\)</span> 个观测和 <span class="math notranslate nohighlight">\(p\)</span> 个变量时，对每个点最近邻分类需要 <span class="math notranslate nohighlight">\(Np\)</span> 次操作来寻找邻域。有一些快速算法 (Friedman et al., 1975<a class="footnote-reference brackets" href="#id9" id="id2">1</a>; Friedman et al., 1977<a class="footnote-reference brackets" href="#id10" id="id3">2</a>) 能在某种程度上降低计算负荷。Hastie and Simard (1998)<a class="footnote-reference brackets" href="#id11" id="id4">3</a> 通过在不变度量框架下提出类似 <span class="math notranslate nohighlight">\(K\)</span>-means 聚类的方法，降低了 <strong>切向距离 (tangent distance)</strong> 的计算量。</p>
+<p>降低存储的要求更加困难，研究者们提出了各种 <strong>编辑 (editing)</strong> 和 <strong>压缩 (condensing)</strong> 的过程。想法是单独拿出能进行最近邻预测的训练集的子集，并且把剩下的训练数据丢掉。直观上看，保留靠近判别边界处和在边界正确一侧的训练点是很重要的，而那些离边界很远的点可以舍弃。</p>
+<p>Devijver and Kittler (1982) <a class="footnote-reference brackets" href="#id12" id="id5">4</a> 的多重编辑算法将数据周期性地划分为训练集和测试集，计算测试集上的最近邻，并且删掉误分类的测试点。想法是保留训练观测值的同种类别。</p>
+<p>Hart (1968)<a class="footnote-reference brackets" href="#id13" id="id6">5</a> 的 <strong>压缩 (condensing)</strong> 过程更进一步，试图仅仅保留这些类别的 <strong>外点 (exterior point)</strong>。以随机选择单个观测作为训练集开始，每次处理一个额外的数据点，仅当它被当前训练集误分类时才加入到训练集中。</p>
+<p>这是过程在 Dasarathy (1991)<a class="footnote-reference brackets" href="#id14" id="id7">6</a> 和 Ripley (1996)<a class="footnote-reference brackets" href="#id15" id="id8">7</a> 中均有综述。它们也可以应用到除最近邻以外的学习过程。尽管这些方法有时是有用的，但是我们并没有太多的实际经验，也没有在文献中找到关于它们表现的系统性的比较。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

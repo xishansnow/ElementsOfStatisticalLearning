@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,33 +1149,12 @@
                 
   <div class="section" id="id1">
 <h1>12.6 惩罚判别分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=465">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2018-08-08</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2020-05-27 10:29:44</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>尽管 FDA 的动机是推广最优得分，但是它也可以直接看成是正则化判别分析的形式．假设 FDA 中的回归过程意味着在基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上的、并且系数有二次惩罚的线性回归：</p>
+<p>尽管 FDA 的动机是推广最优得分，但是它也可以直接看成是正则化判别分析的形式。假设 FDA 中的回归过程意味着在基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上的、并且系数有二次惩罚的线性回归：</p>
 <div class="math notranslate nohighlight">
 \[
 ASR(\{\theta_\ell,\beta_\ell\}^L_{\ell=1})=\frac 1N\sum\limits_{\ell=1}^L\Big[\sum\limits_{i=1}^N(\theta_\ell(g_i)-h^T(x_i)\beta_\ell)^2+\lambda\beta_\ell^T\mathbf \Omega\beta_\ell\Big].\tag{12.57}
 \]</div>
-<p><span class="math notranslate nohighlight">\(\mathbf \Omega\)</span> 的选择取决于具体问题．如果 <span class="math notranslate nohighlight">\(\eta_\ell(x)=h(x)\beta_\ell\)</span> 是样条基函数的展开，则 <span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 可能约束 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 要在 <span class="math notranslate nohighlight">\(\IR^p\)</span> 上光滑．在可加样条的情形下，每个坐标有 <span class="math notranslate nohighlight">\(N\)</span> 个样条基函数，则 <span class="math notranslate nohighlight">\(h(x)\)</span> 总共包含 <span class="math notranslate nohighlight">\(Np\)</span> 个基函数；在这种情形下，<span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 是 <span class="math notranslate nohighlight">\(Np\times Np\)</span> 的，并且是分块对角的．</p>
+<p><span class="math notranslate nohighlight">\(\mathbf \Omega\)</span> 的选择取决于具体问题。如果 <span class="math notranslate nohighlight">\(\eta_\ell(x)=h(x)\beta_\ell\)</span> 是样条基函数的展开，则 <span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 可能约束 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 要在 <span class="math notranslate nohighlight">\(\IR^p\)</span> 上光滑。在可加样条的情形下，每个坐标有 <span class="math notranslate nohighlight">\(N\)</span> 个样条基函数，则 <span class="math notranslate nohighlight">\(h(x)\)</span> 总共包含 <span class="math notranslate nohighlight">\(Np\)</span> 个基函数；在这种情形下，<span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 是 <span class="math notranslate nohighlight">\(Np\times Np\)</span> 的，并且是分块对角的。</p>
 <p>然后 FDA 中的步骤就可以看成是 LDA 的推广形式，我们称之为 <strong>带惩罚的判别分析 (penalized discriminant analysis)</strong>，或者 PDA：</p>
 <ul class="simple">
 <li><p>通过基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 扩充预测变量 <span class="math notranslate nohighlight">\(X\)</span> 的集合；</p></li>
@@ -1182,21 +1162,21 @@ ASR(\{\theta_\ell,\beta_\ell\}^L_{\ell=1})=\frac 1N\sum\limits_{\ell=1}^L\Big[\s
 $<span class="math notranslate nohighlight">\(
 D(x,\mu)=(h(x)-h(\mu))^T(\mathbf \Sigma_W+\lambda\Omega)^{-1}(h(x)-h(\mu))\tag{12.58}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\mathbf \Sigma_W<span class="math notranslate nohighlight">\( 是导出变量 \)</span>h(x_i)$ 的类别内协方差矩阵．</p></li>
+其中 \)</span>\mathbf \Sigma_W<span class="math notranslate nohighlight">\( 是导出变量 \)</span>h(x_i)$ 的类别内协方差矩阵。</p></li>
 <li><p>采用惩罚度量分解分类子空间：
 $<span class="math notranslate nohighlight">\(
 \max\; u^T\mathbf \Sigma_{\mathrm{Bet}}u\;\text{subject to }u^T(\mathbf\Sigma_W+\lambda\mathbf\Omega)u=1
 \)</span>$
-不严谨地说，带惩罚的麦哈顿距离趋向于给“粗糙”的坐标更少的权重，而给“光滑”的坐标更多的权重；因为惩罚不是对角的，同样的方式会应用到粗糙或光滑的线性组合中．</p></li>
+不严谨地说，带惩罚的麦哈顿距离趋向于给“粗糙”的坐标更少的权重，而给“光滑”的坐标更多的权重；因为惩罚不是对角的，同样的方式会应用到粗糙或光滑的线性组合中。</p></li>
 </ul>
-<p>对于某些类的问题，第一步的基展开不是必须的；我们已经有太多（相关的）预测变量了．一个突出的例子是当分类的对象是 <strong>数字化模拟信号 (digitized analog signals)</strong> ：</p>
+<p>对于某些类的问题，第一步的基展开不是必须的；我们已经有太多（相关的）预测变量了。一个突出的例子是当分类的对象是 <strong>数字化模拟信号 (digitized analog signals)</strong> ：</p>
 <ul class="simple">
-<li><p>语音片段的对数周期图，在 256 个频率的集合上进行采样；见图 5.5．</p></li>
-<li><p>手写数字的数字图像中的灰度像素值．</p></li>
+<li><p>语音片段的对数周期图，在 256 个频率的集合上进行采样；见图 5.5。</p></li>
+<li><p>手写数字的数字图像中的灰度像素值。</p></li>
 </ul>
-<p>在这些情形中直观上很清楚为什么需要正则化．以数字图像为例．相邻像素值趋向于相关，通常几乎是一样的．这意味着这些像素的对应 LDA 系数对可能会很不一样并且符号相反，因此当作用到类似的像素值时系数会被抵消掉．正相关的预测变量导致噪声的、负相关的系数估计，并且这个噪声导致多余的采样方差．一个合理的策略是在空间中对系数正则化使之光滑，，图像也一样．这就是 PDA 做的事．计算步骤和 FDA 一样，除了需要使用合适的带惩罚的回归方法．这里 <span class="math notranslate nohighlight">\(h^T(X)\beta_\ell=X\beta_\ell\)</span>，并且选择 <span class="math notranslate nohighlight">\(\mathbf \Omega\)</span> 使得 <span class="math notranslate nohighlight">\(\beta_\ell^T\mathbf\Omega\beta_\ell\)</span> 惩罚关于 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的粗糙程度（将其看成图像时）．图 1.2 展示了一些手写字母的例子．图 12.11 显示了采用 LDA 和 PDA 的判别变量．</p>
+<p>在这些情形中直观上很清楚为什么需要正则化。以数字图像为例。相邻像素值趋向于相关，通常几乎是一样的。这意味着这些像素的对应 LDA 系数对可能会很不一样并且符号相反，因此当作用到类似的像素值时系数会被抵消掉。正相关的预测变量导致噪声的、负相关的系数估计，并且这个噪声导致多余的采样方差。一个合理的策略是在空间中对系数正则化使之光滑，，图像也一样。这就是 PDA 做的事。计算步骤和 FDA 一样，除了需要使用合适的带惩罚的回归方法。这里 <span class="math notranslate nohighlight">\(h^T(X)\beta_\ell=X\beta_\ell\)</span>，并且选择 <span class="math notranslate nohighlight">\(\mathbf \Omega\)</span> 使得 <span class="math notranslate nohighlight">\(\beta_\ell^T\mathbf\Omega\beta_\ell\)</span> 惩罚关于 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的粗糙程度（将其看成图像时）。图 1.2 展示了一些手写字母的例子。图 12.11 显示了采用 LDA 和 PDA 的判别变量。</p>
 <p><img alt="" src="../_images/fig12.11.png" /></p>
-<p>由 LDA 生成的判别变量系数看起来像 <strong>椒盐 (salt and pepper)</strong> 图像，而由 PDA 得到了光滑图像．第一张光滑图像可以看成是线性对比度函数的系数，用于从中间为中空的图像中（可能是 0 或 4）分离具有暗中心垂直条带的图像（可能是 1 或 7）．图 12.12 佐证了这个解释，第二个坐标的解释更加困难．这个以及其他例子在 Hastie et al. (1995) 中有更详细的讨论，其中也展示了在他们试过的情形中，在独立的测试数据中，正则化将 LDA 的分类效果约提高了 <span class="math notranslate nohighlight">\(25\%\)</span>．</p>
+<p>由 LDA 生成的判别变量系数看起来像 <strong>椒盐 (salt and pepper)</strong> 图像，而由 PDA 得到了光滑图像。第一张光滑图像可以看成是线性对比度函数的系数，用于从中间为中空的图像中（可能是 0 或 4）分离具有暗中心垂直条带的图像（可能是 1 或 7）。图 12.12 佐证了这个解释，第二个坐标的解释更加困难。这个以及其他例子在 Hastie et al. (1995) 中有更详细的讨论，其中也展示了在他们试过的情形中，在独立的测试数据中，正则化将 LDA 的分类效果约提高了 <span class="math notranslate nohighlight">\(25\%\)</span>。</p>
 <p><img alt="" src="../_images/fig12.12.png" /></p>
 </div>
 

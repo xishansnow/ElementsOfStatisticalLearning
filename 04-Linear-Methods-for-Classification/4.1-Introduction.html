@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,12 +1149,12 @@
                 
   <div class="section" id="id1">
 <h1>4.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>这章我们重新回到分类问题，并且集中讨论分类的线性方法．因为我们的预测变量 <span class="math notranslate nohighlight">\(G(x)\)</span> 是在离散集 <span class="math notranslate nohighlight">\(\cal G\)</span> 中取值，所以我们总是可以根据类别把输入空间分成一些区域的集合．在<span class="xref myst">第 2 章</span>我们看到这些区域的边界会随着预测函数的不同而变得粗糙或者光滑．这个过程的一个很重要的类是 <strong>线性判别边界 (decision boundaries)</strong>；这也是我们说的分类的线性方法．</p>
-<p>可以通过许多不同的方式找到线性判别边界．在第二章中，我们根据类别指示变量拟合线性回归模型，并将观测点分到拟合值最大的类别．假设有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，为了方便记为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>，第 <span class="math notranslate nohighlight">\(k\)</span> 个响应的指示变量拟合的线性模型为 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat\beta_{k0}+\hat\beta_k^Tx\)</span>．第 <span class="math notranslate nohighlight">\(k\)</span> 类和第 <span class="math notranslate nohighlight">\(l\)</span> 类的判别边界是满足 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat f_\ell(x)\)</span> 的点的集合，也就是集合 <span class="math notranslate nohighlight">\(\\{x:(\hat\beta_{k0}-\hat\beta_{\ell 0})+(\hat\beta_k-\hat\beta_\ell)^Tx=0\\}\)</span>，这是一个仿射集或者超平面．</p>
+<p>这章我们重新回到分类问题，并且集中讨论分类的线性方法。因为我们的预测变量 <span class="math notranslate nohighlight">\(G(x)\)</span> 是在离散集 <span class="math notranslate nohighlight">\(\cal G\)</span> 中取值，所以我们总是可以根据类别把输入空间分成一些区域的集合。在<span class="xref myst">第 2 章</span>我们看到这些区域的边界会随着预测函数的不同而变得粗糙或者光滑。这个过程的一个很重要的类是 <strong>线性判别边界 (decision boundaries)</strong>；这也是我们说的分类的线性方法。</p>
+<p>可以通过许多不同的方式找到线性判别边界。在第二章中，我们根据类别指示变量拟合线性回归模型，并将观测点分到拟合值最大的类别。假设有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，为了方便记为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>，第 <span class="math notranslate nohighlight">\(k\)</span> 个响应的指示变量拟合的线性模型为 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat\beta_{k0}+\hat\beta_k^Tx\)</span>。第 <span class="math notranslate nohighlight">\(k\)</span> 类和第 <span class="math notranslate nohighlight">\(l\)</span> 类的判别边界是满足 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat f_\ell(x)\)</span> 的点的集合，也就是集合 <span class="math notranslate nohighlight">\(\\{x:(\hat\beta_{k0}-\hat\beta_{\ell 0})+(\hat\beta_k-\hat\beta_\ell)^Tx=0\\}\)</span>，这是一个仿射集或者超平面。</p>
 <p>!!! note “weiya 注：作者脚注”
-严格来说，超平面需要通过原点，而仿射集不需要．我们有时忽略它们之间的区别并且一般称超平面．</p>
-<p>因为对于任意两个类别这也成立，输入空间被分块超平面判别边界分成了若干个类别区域．回归方法对每个类别建立 <strong>判别函数 (discriminant functions)</strong> <span class="math notranslate nohighlight">\(\delta_k(x)\)</span>，然后将 <span class="math notranslate nohighlight">\(x\)</span> 分到取最大值的判别函数所在类别中．建立后验概率 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 也是属于这种类别．说的更清楚点，只要 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 或者 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的，则判别边界将也是线性的．</p>
-<p>实际上，我们仅要求 <span class="math notranslate nohighlight">\(\delta_k\)</span> 或者 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 的单调变换关于判别边界要是线性的．举个例子，如果这里有两个类，一个关于后验概率很流行的模型是</p>
+严格来说，超平面需要通过原点，而仿射集不需要。我们有时忽略它们之间的区别并且一般称超平面。</p>
+<p>因为对于任意两个类别这也成立，输入空间被分块超平面判别边界分成了若干个类别区域。回归方法对每个类别建立 <strong>判别函数 (discriminant functions)</strong> <span class="math notranslate nohighlight">\(\delta_k(x)\)</span>，然后将 <span class="math notranslate nohighlight">\(x\)</span> 分到取最大值的判别函数所在类别中。建立后验概率 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 也是属于这种类别。说的更清楚点，只要 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 或者 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的，则判别边界将也是线性的。</p>
+<p>实际上，我们仅要求 <span class="math notranslate nohighlight">\(\delta_k\)</span> 或者 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 的单调变换关于判别边界要是线性的。举个例子，如果这里有两个类，一个关于后验概率很流行的模型是</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1167,15 +1168,15 @@
 \[
 \log\dfrac{\Pr(G=1\mid X=x)}{\Pr(G=2\mid X=x)}=\beta_0+\beta^Tx\qquad\tag{4.2}
 \]</div>
-<p>判别边界是 <strong>log-odds</strong> 等于 <span class="math notranslate nohighlight">\(0\)</span> 的点的集合，这是由 <span class="math notranslate nohighlight">\(\\{x\mid\beta_0+\beta^Tx=0\\}\)</span> 定义的超平面．我们讨论两种非常流行但是不同的方法，最后都得到线性的 log-odds 或者 logits：线性判别分析和线性 logistic 回归．尽管它们的推导不相同，但是他们关键的区别在于用线性函数拟合训练数据的方式．</p>
-<p>一种更直接的方式是在类别之间显性地建立线性边界．对于在 <span class="math notranslate nohighlight">\(p\)</span> 维输入空间的两个类别的问题，这意味着将判别边界建模为超平面——换句话说，一个 <strong>法向量 (normal vector)</strong> 和一个 <strong>分隔点 (cut-point)</strong>．我们将看到两种方法都是显式寻找“分隔超平面”．第一个是著名的 Rosenblatt (1958)<a class="footnote-reference brackets" href="#id4" id="id2">1</a> 的 <strong>感知器 (perceptron)</strong> 模型，以及一个从训练数据中寻找分离超平面的算法（如果存在超平面的话）．第二个方法要归功于 Vapnik(1996)<a class="footnote-reference brackets" href="#id5" id="id3">2</a>，如果超平面存在的话寻找一个<strong>最优分离超平面</strong>，不存在的话则寻找一个超平面使得训练数据中的重叠最小．我们这里处理可分的情形，不可分的情形将推到<span class="xref myst">第 12 章</span>讨论．</p>
-<p>尽管整个章节都在谈论线性判别边界，但对于一般情形还有相当大的讨论余地．</p>
+<p>判别边界是 <strong>log-odds</strong> 等于 <span class="math notranslate nohighlight">\(0\)</span> 的点的集合，这是由 <span class="math notranslate nohighlight">\(\\{x\mid\beta_0+\beta^Tx=0\\}\)</span> 定义的超平面。我们讨论两种非常流行但是不同的方法，最后都得到线性的 log-odds 或者 logits：线性判别分析和线性 logistic 回归。尽管它们的推导不相同，但是他们关键的区别在于用线性函数拟合训练数据的方式。</p>
+<p>一种更直接的方式是在类别之间显性地建立线性边界。对于在 <span class="math notranslate nohighlight">\(p\)</span> 维输入空间的两个类别的问题，这意味着将判别边界建模为超平面——换句话说，一个 <strong>法向量 (normal vector)</strong> 和一个 <strong>分隔点 (cut-point)</strong>。我们将看到两种方法都是显式寻找“分隔超平面”。第一个是著名的 Rosenblatt (1958)<a class="footnote-reference brackets" href="#id4" id="id2">1</a> 的 <strong>感知器 (perceptron)</strong> 模型，以及一个从训练数据中寻找分离超平面的算法（如果存在超平面的话）。第二个方法要归功于 Vapnik(1996)<a class="footnote-reference brackets" href="#id5" id="id3">2</a>，如果超平面存在的话寻找一个<strong>最优分离超平面</strong>，不存在的话则寻找一个超平面使得训练数据中的重叠最小。我们这里处理可分的情形，不可分的情形将推到<span class="xref myst">第 12 章</span>讨论。</p>
+<p>尽管整个章节都在谈论线性判别边界，但对于一般情形还有相当大的讨论余地。</p>
 <p>!!! note “weiya 注：翻译”
 此处原文为，“While this entire chapter is devoted to linear decision boundaries, there is considerable scope for generalization.”</p>
-<p>举个例子，我们可以对变量集 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 加上他们的交叉积 <span class="math notranslate nohighlight">\(X_1^2,X_2^2,\ldots,X_1X_2,\ldots,\)</span> （因此加入了 <span class="math notranslate nohighlight">\(p(p+1)/2\)</span> 个额外的变量）进行推广．当增广空间的线性函数投影到原空间的二次函数，则线性判别边界转换为二次判别边界．图 4.1 解释了这个想法．数据集是一样的，左边是在二维空间中用线性判别函数，而右图在增广的五维空间中用线性判别函数．这种方式可以跟任意基变换 <span class="math notranslate nohighlight">\(h(X)\)</span> 一起使用，其中 <span class="math notranslate nohighlight">\(h:\IR^p\rightarrow \IR^q,q &gt; p\)</span>，这将在后面章节中讨论．</p>
+<p>举个例子，我们可以对变量集 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 加上他们的交叉积 <span class="math notranslate nohighlight">\(X_1^2,X_2^2,\ldots,X_1X_2,\ldots,\)</span> （因此加入了 <span class="math notranslate nohighlight">\(p(p+1)/2\)</span> 个额外的变量）进行推广。当增广空间的线性函数投影到原空间的二次函数，则线性判别边界转换为二次判别边界。图 4.1 解释了这个想法。数据集是一样的，左边是在二维空间中用线性判别函数，而右图在增广的五维空间中用线性判别函数。这种方式可以跟任意基变换 <span class="math notranslate nohighlight">\(h(X)\)</span> 一起使用，其中 <span class="math notranslate nohighlight">\(h:\IR^p\rightarrow \IR^q,q &gt; p\)</span>，这将在后面章节中讨论。</p>
 <p><img alt="" src="../_images/fig4.1.png" /></p>
 <blockquote>
-<div><p>图 4.1：左图显示了三个类别的一些数据，以及通过线性判别分析得到的线性判别边界．右图显示了二次判别边界．这是通过在五维空间 <span class="math notranslate nohighlight">\(X_1,X_2,X_1X_2,X_1^2,X_2^2\)</span> 找到线性边界得到．这个空间里面的线性不等式是原空间的二次不等式．</p>
+<div><p>图 4.1：左图显示了三个类别的一些数据，以及通过线性判别分析得到的线性判别边界。右图显示了二次判别边界。这是通过在五维空间 <span class="math notranslate nohighlight">\(X_1,X_2,X_1X_2,X_1^2,X_2^2\)</span> 找到线性边界得到。这个空间里面的线性不等式是原空间的二次不等式。</p>
 </div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1186,10 +1187,10 @@
                 
   <div class="section" id="lasso">
 <h1>3.8 Lasso 和相关路径算法的补充<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h1>
-<p>自从 LAR 算法（Efron et al., 2004<a class="footnote-reference brackets" href="#id41" id="id1">1</a>）的提出，许多研究都在发展对于不同问题的正则化拟合算法．另外，<span class="math notranslate nohighlight">\(L_1\)</span> 正则有它自己的用处，它促进了信号处理领域的 <strong>压缩传感 (compressed sensing)</strong> 的发展（Donoho, 2006a<a class="footnote-reference brackets" href="#id42" id="id2">2</a>; Candes, 2006<a class="footnote-reference brackets" href="#id43" id="id3">3</a>）．在这部分我们讨论一些相关的想法和以 LAR 算法为先驱的其它路径算法．</p>
+<p>自从 LAR 算法（Efron et al., 2004<a class="footnote-reference brackets" href="#id41" id="id1">1</a>）的提出，许多研究都在发展对于不同问题的正则化拟合算法。另外，<span class="math notranslate nohighlight">\(L_1\)</span> 正则有它自己的用处，它促进了信号处理领域的 <strong>压缩传感 (compressed sensing)</strong> 的发展（Donoho, 2006a<a class="footnote-reference brackets" href="#id42" id="id2">2</a>; Candes, 2006<a class="footnote-reference brackets" href="#id43" id="id3">3</a>）。在这部分我们讨论一些相关的想法和以 LAR 算法为先驱的其它路径算法。</p>
 <div class="section" id="incremental-forward-stagewise-regression">
 <h2>增长的向前逐渐回归 (Incremental Forward Stagewise Regression)<a class="headerlink" href="#incremental-forward-stagewise-regression" title="Permalink to this headline">¶</a></h2>
-<p>这里我们提出另外一种类似 LAR 的算法，这次集中在 <strong>向前逐渐回归 (Forward Stagewise Regression)</strong>．有趣地是，理解一个灵活的非线性回归过程 (boosting) 的努力导出了线性模型的一个新算法（LAR）．在阅读本书的第一版时，<span class="xref myst">第 16 章</span>的向前逐渐算法 16.1，Brad Efron 意识到对于线性模型，可以明确地构造出如图 3.10 所示的分段线性的 lasso 路径．这促使他提出 <a class="reference external" href="3.4-Shrinkage-Methods/index.html#_2">3.4.4 节</a>介绍的 LAR 过程，以及这里提到的 <strong>向前逐渐回归 (forward-stagewise regression)</strong> 的增长版本．</p>
+<p>这里我们提出另外一种类似 LAR 的算法，这次集中在 <strong>向前逐渐回归 (Forward Stagewise Regression)</strong>。有趣地是，理解一个灵活的非线性回归过程 (boosting) 的努力导出了线性模型的一个新算法（LAR）。在阅读本书的第一版时，<span class="xref myst">第 16 章</span>的向前逐渐算法 16.1，Brad Efron 意识到对于线性模型，可以明确地构造出如图 3.10 所示的分段线性的 lasso 路径。这促使他提出 <a class="reference external" href="3.4-Shrinkage-Methods/index.html#_2">3.4.4 节</a>介绍的 LAR 过程，以及这里提到的 <strong>向前逐渐回归 (forward-stagewise regression)</strong> 的增长版本。</p>
 <p><img alt="" src="../_images/alg3.4.png" /></p>
 <!--
 ****
@@ -1198,16 +1199,16 @@
 1. 从残差向量$\mathbf r$等于$\mathbf y$开始，$\beta_1,\beta_2,\ldots,\beta_p=0$. 所有的预测变量进行标准化使得均值为0、方差为1.
 2. 寻找与残差向量$\mathbf r$最相关的预测变量$\mathbf x_j$
 3. 更新$\beta_j\leftarrow\beta_j+\delta_j$, 其中$\delta_j=\epsilon\cdot sign[\langle \mathbf x_j,\mathbf r\rangle]$并且$\epsilon>0$是一个很小的步长，然后令$\mathbf r=\mathbf r-\delta_j\mathbf x_j$
-4. 重复步骤2和步骤3，直到所有的残差向量与所有的预测变量都不相关．
+4. 重复步骤2和步骤3，直到所有的残差向量与所有的预测变量都不相关。
 
 ****
 -->
-<p>考虑 <span class="xref myst">16.2 节</span> 提出的 forward-stagewise boosting 算法 16.1 的线性版本．它通过重复更新与当前残差最相关的变量的系数（乘以一个小量 <span class="math notranslate nohighlight">\(\epsilon\)</span>）得到系数曲线．算法 3.4 给出了具体的细节．图 3.19（左边）展示了前列腺癌数据中步长 <span class="math notranslate nohighlight">\(\epsilon=0.01\)</span> 的过程．如果 <span class="math notranslate nohighlight">\(\delta_j=\langle \mathbf x_j,\mathbf r\rangle\)</span>（残差在第 <span class="math notranslate nohighlight">\(j\)</span> 个预测变量的最小二乘系数），则这恰恰是 <a class="reference external" href="3.3-Subset-Selection/index.html#forward-stagewis">3.3 节</a> 中介绍的一般 <strong>向前逐渐过程 (FS)</strong>．</p>
+<p>考虑 <span class="xref myst">16.2 节</span> 提出的 forward-stagewise boosting 算法 16.1 的线性版本。它通过重复更新与当前残差最相关的变量的系数（乘以一个小量 <span class="math notranslate nohighlight">\(\epsilon\)</span>）得到系数曲线。算法 3.4 给出了具体的细节。图 3.19（左边）展示了前列腺癌数据中步长 <span class="math notranslate nohighlight">\(\epsilon=0.01\)</span> 的过程。如果 <span class="math notranslate nohighlight">\(\delta_j=\langle \mathbf x_j,\mathbf r\rangle\)</span>（残差在第 <span class="math notranslate nohighlight">\(j\)</span> 个预测变量的最小二乘系数），则这恰恰是 <a class="reference external" href="3.3-Subset-Selection/index.html#forward-stagewis">3.3 节</a> 中介绍的一般 <strong>向前逐渐过程 (FS)</strong>。</p>
 <p><img alt="" src="../_images/fig3.19.png" /></p>
-<p>这里我们主要对小的 <span class="math notranslate nohighlight">\(\epsilon\)</span> 值感兴趣．令 <span class="math notranslate nohighlight">\(\epsilon\rightarrow 0\)</span> 则得到图 3.19 的右图，在这种情形下与图 3.10 的 lasso 路径相同．我们称这个极限过程为 <strong>无穷小的向前逐渐回归 (infinitesimal forward stagewise regression)</strong> 或者 <span class="math notranslate nohighlight">\(FS_0\)</span> ．这个过程在非线性、自适应方法中有着很重要的作用，比如 boosting（<span class="xref myst">第 10</span> 和 <span class="xref myst">16 章</span>），并且是增长的向前逐渐回归的，这是最能经得起理论分析的版本．由于它与 boosting 的关系，Buhlmann and Hothorn (2007)<a class="footnote-reference brackets" href="#id44" id="id4">4</a>称这个过程为”L2boost”。</p>
-<p>Efron 最初认为 LAR 算法 3.2 是 <span class="math notranslate nohighlight">\(FS_0\)</span> 的一个实现，允许每个连结变量 (tied predictor) 以一种平衡的方式更新他们的系数，并且在相关性方面保持连结．然而，他接着意识到 LAR 在这些连结预测变量中的最小二乘拟合可以导致系数向相反的方向移动到它们的相关系数，这在算法 3.4 中是不可能发生的．下面对 LAR 算法的修正实现了 <span class="math notranslate nohighlight">\(FS_0\)</span>：</p>
+<p>这里我们主要对小的 <span class="math notranslate nohighlight">\(\epsilon\)</span> 值感兴趣。令 <span class="math notranslate nohighlight">\(\epsilon\rightarrow 0\)</span> 则得到图 3.19 的右图，在这种情形下与图 3.10 的 lasso 路径相同。我们称这个极限过程为 <strong>无穷小的向前逐渐回归 (infinitesimal forward stagewise regression)</strong> 或者 <span class="math notranslate nohighlight">\(FS_0\)</span> 。这个过程在非线性、自适应方法中有着很重要的作用，比如 boosting（<span class="xref myst">第 10</span> 和 <span class="xref myst">16 章</span>），并且是增长的向前逐渐回归的，这是最能经得起理论分析的版本。由于它与 boosting 的关系，Buhlmann and Hothorn (2007)<a class="footnote-reference brackets" href="#id44" id="id4">4</a>称这个过程为”L2boost”。</p>
+<p>Efron 最初认为 LAR 算法 3.2 是 <span class="math notranslate nohighlight">\(FS_0\)</span> 的一个实现，允许每个连结变量 (tied predictor) 以一种平衡的方式更新他们的系数，并且在相关性方面保持连结。然而，他接着意识到 LAR 在这些连结预测变量中的最小二乘拟合可以导致系数向相反的方向移动到它们的相关系数，这在算法 3.4 中是不可能发生的。下面对 LAR 算法的修正实现了 <span class="math notranslate nohighlight">\(FS_0\)</span>：</p>
 <p>!!! note “weiya 注”
-直观上看，在算法 3.2 的第 4 步中，系数朝着联合最小二乘方向移动，注意此时方向与最小二乘方向可能一致或者相反．然而算法 3.4 中的移动方向始终与最小二乘方向保持一致．因此需要算法 3.2b 的修改．</p>
+直观上看，在算法 3.2 的第 4 步中，系数朝着联合最小二乘方向移动，注意此时方向与最小二乘方向可能一致或者相反。然而算法 3.4 中的移动方向始终与最小二乘方向保持一致。因此需要算法 3.2b 的修改。</p>
 <p><img alt="" src="../_images/alg3.2b.png" /></p>
 <!--
 ****
@@ -1217,17 +1218,17 @@
 $$
 \underset{b}{min}\Vert\mathbf r-\mathbf X_{\cal A}b\Vert^2_2 \;s.t.\; b_js_j\ge 0,\;j\in\cal A
 $$
-其中，$s_j$是$\langle\mathbf x_j,\mathbf r \rangle$的方向．
+其中，$s_j$是$\langle\mathbf x_j,\mathbf r \rangle$的方向。
 ****
 -->
-<p>这个修正相当于一个非负的最小二乘拟合, 保持系数的符号与相关系数的符号一致．可以证明它实现了对于最大相关性的连结变量的无限小”更新”的最优平衡．（Hastie et al.，2007<a class="footnote-reference brackets" href="#id45" id="id5">5</a>）．类似 lasso，全 <span class="math notranslate nohighlight">\(FS_0\)</span> 路径可以通过 LAR 算法非常有效地计算出来．</p>
-<p>作为这些事实的结果，如果 LAR 图象是单调不减或者单调不增，如 3.19 所示，则 LAR，lasso，以及 <span class="math notranslate nohighlight">\(FS_0\)</span> 这三种算法给出了相同的图象．如果图象不是单调的但是不穿过 0，则 LAR 和 lasso 是一样的．</p>
-<p>因为 <span class="math notranslate nohighlight">\(FS_0\)</span> 与 lasso 不同，很自然地问它是否优化了准则．答案比 lasso 更加的复杂；<span class="math notranslate nohighlight">\(FS_0\)</span> 系数曲线是微分方程的一个解．尽管 lasso 在降低系数向量 <span class="math notranslate nohighlight">\(\beta\)</span> 的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数的单位残差平方和增长方面实现了最优化，但 <span class="math notranslate nohighlight">\(FS_0\)</span> 在沿着系数路径的 <span class="math notranslate nohighlight">\(L_1\)</span> 弧长的单位增长是最优的．因此它的系数曲线不会经常改变方向．</p>
-<p><span class="math notranslate nohighlight">\(FS_0\)</span> 比 lasso的约束更强，事实上也可以看成是 lasso 的单调版本；见图 16.3 生动的例子．<span class="math notranslate nohighlight">\(FS_0\)</span> 可能在 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下很有用，它的系数曲线会更加的光滑，因此比 lasso 有更小的方差．更多关于 <span class="math notranslate nohighlight">\(FS_0\)</span> 的细节将在 16.2.3 节给出以及 Hastie et al. (2007)<a class="footnote-reference brackets" href="#id45" id="id6">5</a>．图 3.16 包含了<span class="math notranslate nohighlight">\(FS_0\)</span>, 它的表现非常类似于 lasso．</p>
+<p>这个修正相当于一个非负的最小二乘拟合, 保持系数的符号与相关系数的符号一致。可以证明它实现了对于最大相关性的连结变量的无限小”更新”的最优平衡。（Hastie et al.，2007<a class="footnote-reference brackets" href="#id45" id="id5">5</a>）。类似 lasso，全 <span class="math notranslate nohighlight">\(FS_0\)</span> 路径可以通过 LAR 算法非常有效地计算出来。</p>
+<p>作为这些事实的结果，如果 LAR 图象是单调不减或者单调不增，如 3.19 所示，则 LAR，lasso，以及 <span class="math notranslate nohighlight">\(FS_0\)</span> 这三种算法给出了相同的图象。如果图象不是单调的但是不穿过 0，则 LAR 和 lasso 是一样的。</p>
+<p>因为 <span class="math notranslate nohighlight">\(FS_0\)</span> 与 lasso 不同，很自然地问它是否优化了准则。答案比 lasso 更加的复杂；<span class="math notranslate nohighlight">\(FS_0\)</span> 系数曲线是微分方程的一个解。尽管 lasso 在降低系数向量 <span class="math notranslate nohighlight">\(\beta\)</span> 的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数的单位残差平方和增长方面实现了最优化，但 <span class="math notranslate nohighlight">\(FS_0\)</span> 在沿着系数路径的 <span class="math notranslate nohighlight">\(L_1\)</span> 弧长的单位增长是最优的。因此它的系数曲线不会经常改变方向。</p>
+<p><span class="math notranslate nohighlight">\(FS_0\)</span> 比 lasso的约束更强，事实上也可以看成是 lasso 的单调版本；见图 16.3 生动的例子。<span class="math notranslate nohighlight">\(FS_0\)</span> 可能在 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下很有用，它的系数曲线会更加的光滑，因此比 lasso 有更小的方差。更多关于 <span class="math notranslate nohighlight">\(FS_0\)</span> 的细节将在 16.2.3 节给出以及 Hastie et al. (2007)<a class="footnote-reference brackets" href="#id45" id="id6">5</a>。图 3.16 包含了<span class="math notranslate nohighlight">\(FS_0\)</span>, 它的表现非常类似于 lasso。</p>
 </div>
 <div class="section" id="id7">
 <h2>分段线性路径算法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>最小角回归过程探索了 lasso 解的路径分段线性的本质．这导出了其他正则化问题类似的“路径算法”．假设我们求解</p>
+<p>最小角回归过程探索了 lasso 解的路径分段线性的本质。这导出了其他正则化问题类似的“路径算法”。假设我们求解</p>
 <div class="math notranslate nohighlight">
 \[
 \hat \beta(\lambda)=\mathrm{argmin}_\beta[R(\beta)+\lambda J(\beta)]\tag{3.76}
@@ -1236,12 +1237,12 @@ $$
 \[
 R(\beta)=\sum\limits_{i=1}^NL(y_i,\beta_0+\sum_{j=1}^px_{ij}\beta_j)\tag{3.77}
 \]</div>
-<p>其中损失函数 <span class="math notranslate nohighlight">\(L\)</span> 和惩罚函数 <span class="math notranslate nohighlight">\(J\)</span> 都是凸函数．则下面是解的路径 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span> 为分段线性的充分条件(Rosset and Zhu, 2007)<a class="footnote-reference brackets" href="#id46" id="id8">6</a></p>
+<p>其中损失函数 <span class="math notranslate nohighlight">\(L\)</span> 和惩罚函数 <span class="math notranslate nohighlight">\(J\)</span> 都是凸函数。则下面是解的路径 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span> 为分段线性的充分条件(Rosset and Zhu, 2007)<a class="footnote-reference brackets" href="#id46" id="id8">6</a></p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(R\)</span> 作为 <span class="math notranslate nohighlight">\(\beta\)</span> 的函数是二次的或者是分段二次</p></li>
 <li><p><span class="math notranslate nohighlight">\(J\)</span> 关于 <span class="math notranslate nohighlight">\(\beta\)</span> 分段线性</p></li>
 </ol>
-<p>这也意味着（原则上）解的路径可以有效地计算出来．例子包括平方损失和绝对误差损失，“Huberized”损失，以及关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的 <span class="math notranslate nohighlight">\(L_1, L_\infty\)</span> 惩罚．另一个例子是支持向量机中的“hinge loss”．那里损失是分段线性，惩罚是二次的．有趣的是，这导出了对偶空间的分段线性路径算法；更多的细节在 <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.3-Support-Vector-Machines-and-Kernels.html"><span class="doc std std-doc">12.3.5 节</span></a>给出．</p>
+<p>这也意味着（原则上）解的路径可以有效地计算出来。例子包括平方损失和绝对误差损失，“Huberized”损失，以及关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的 <span class="math notranslate nohighlight">\(L_1, L_\infty\)</span> 惩罚。另一个例子是支持向量机中的“hinge loss”。那里损失是分段线性，惩罚是二次的。有趣的是，这导出了对偶空间的分段线性路径算法；更多的细节在 <a class="reference internal" href="../12-Support-Vector-Machines-and-Flexible-Discriminants/12.3-Support-Vector-Machines-and-Kernels.html"><span class="doc std std-doc">12.3.5 节</span></a>给出。</p>
 <p>!!! note “weiya 注：Huber Loss &amp; Hinge Loss”
 Huber loss 损失函数为：
 $<span class="math notranslate nohighlight">\(
@@ -1252,7 +1253,7 @@ $<span class="math notranslate nohighlight">\(
     \)</span>$
 其图象为
 <img alt="" src="../_images/huber.png" /></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[SLS 的 Ex. 2.11 **(已解决！)**](https://github.com/szcf-weiya/ESL-CN/issues/178) 讨论了 Huber 损失函数与 $\ell_1$-norm 的等价性．
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[SLS 的 Ex. 2.11 **(已解决！)**](https://github.com/szcf-weiya/ESL-CN/issues/178) 讨论了 Huber 损失函数与 $\ell_1$-norm 的等价性。
 
 Hinge Loss 是用于分类器的损失函数，定义为
 
@@ -1271,69 +1272,69 @@ $$
 \[
 \mathrm{min}_\beta\Vert\beta\Vert_1\text{ subject to }\Vert \mathbf X^T(\mathbf y-\mathbf X\beta)\Vert_\infty\le s\tag{3.78}
 \]</div>
-<p>他们称这个解为 <strong>Dantzig selector (DS)</strong>．可以等价地写成</p>
+<p>他们称这个解为 <strong>Dantzig selector (DS)</strong>。可以等价地写成</p>
 <div class="math notranslate nohighlight">
 \[
 \min_\beta \Vert \mathbf X^T(\mathbf y-\mathbf X\beta)\Vert_\infty\text{ subject to } \Vert\beta\Vert_1\le t\tag{3.79}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\Vert\cdot\Vert_\infty\)</span> 为 <span class="math notranslate nohighlight">\(L_\infty\)</span> 范数，也就是该向量中绝对值最大的组分．这种形式类似 lasso，用梯度绝对值的最大值替换平方误差损失．注意到当 <span class="math notranslate nohighlight">\(t\)</span> 变大，如果 <span class="math notranslate nohighlight">\(N &lt; p\)</span>，则两个过程都会得到最小二乘解．如果 <span class="math notranslate nohighlight">\(p\ge N\)</span>，它们都得到最小的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数的最小二乘解．然而，对于较小的 <span class="math notranslate nohighlight">\(t\)</span>，DS 过程的解的路径与 lasso 不同．</p>
-<p>Candes and Tao (2007)<a class="footnote-reference brackets" href="#id47" id="id10">7</a>证明了求解 DS 是线性规划问题；为了纪念 George Dantzig（线性规划中单纯形法的发明者），因此称为 Dantzig．他们也证明了该方法的一系列有趣的数学问题，这些性质与重建潜在的稀疏系数向量的能力有关．如 Bickel et al. (2008)<a class="footnote-reference brackets" href="#id48" id="id11">13</a> 所证明，这些性质对于 lasso 也适用．</p>
-<p>不幸的是 DS 方法的运算性质不够令人满意．这个方法想法上与 lasso 类似，特别是当我们观察 lasso 的平稳条件 \eqref{3.58}．</p>
+<p>这里 <span class="math notranslate nohighlight">\(\Vert\cdot\Vert_\infty\)</span> 为 <span class="math notranslate nohighlight">\(L_\infty\)</span> 范数，也就是该向量中绝对值最大的组分。这种形式类似 lasso，用梯度绝对值的最大值替换平方误差损失。注意到当 <span class="math notranslate nohighlight">\(t\)</span> 变大，如果 <span class="math notranslate nohighlight">\(N &lt; p\)</span>，则两个过程都会得到最小二乘解。如果 <span class="math notranslate nohighlight">\(p\ge N\)</span>，它们都得到最小的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数的最小二乘解。然而，对于较小的 <span class="math notranslate nohighlight">\(t\)</span>，DS 过程的解的路径与 lasso 不同。</p>
+<p>Candes and Tao (2007)<a class="footnote-reference brackets" href="#id47" id="id10">7</a>证明了求解 DS 是线性规划问题；为了纪念 George Dantzig（线性规划中单纯形法的发明者），因此称为 Dantzig。他们也证明了该方法的一系列有趣的数学问题，这些性质与重建潜在的稀疏系数向量的能力有关。如 Bickel et al. (2008)<a class="footnote-reference brackets" href="#id48" id="id11">13</a> 所证明，这些性质对于 lasso 也适用。</p>
+<p>不幸的是 DS 方法的运算性质不够令人满意。这个方法想法上与 lasso 类似，特别是当我们观察 lasso 的平稳条件 \eqref{3.58}。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\cal B}\tag{3.58}\label{3.58}
     \)</span>$</p>
-<p>和 LAR 算法一样，对于活跃集中的所有变量，lasso 保持着与当前残差相同的内积（以及相关系数），并且将它们的系数向残差平方和的最优下降方向变化．在这个过程中，相同的相关系数单调下降（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a>），并且在任何时刻这个相关性大于非活跃集中的变量．</p>
+<p>和 LAR 算法一样，对于活跃集中的所有变量，lasso 保持着与当前残差相同的内积（以及相关系数），并且将它们的系数向残差平方和的最优下降方向变化。在这个过程中，相同的相关系数单调下降（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a>），并且在任何时刻这个相关性大于非活跃集中的变量。</p>
 <p>!!! info “weiya 注：Ex. 3.23”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">Issue 100: Ex. 3.23</a>，欢迎讨论交流．</p>
-<p>而 Dantzig 选择器试图最小化当前残差与所有变量之间的最大内积．因此它可以达到比 lasso 更小的最大值，但是在这一过程中会发生奇怪的现象．如果活跃集的大小为 <span class="math notranslate nohighlight">\(m\)</span>，则会有 <span class="math notranslate nohighlight">\(m\)</span> 个变量与最大相关性绑在一起．然而，这些变量不需要与活跃集重合！因此它可以在模型中包含这样一个变量，其与当前残差的相关性小于不在活跃集中的变量与残差的相关性 (Efron et al., 2007<a class="footnote-reference brackets" href="#id49" id="id12">14</a>)．这似乎不合理，而且有时会导致较差的预测误差．Efron et al. (2007)<a class="footnote-reference brackets" href="#id49" id="id13">14</a> 也证明了随着正则化参数 <span class="math notranslate nohighlight">\(s\)</span> 的变化，DS 可能得到非常不稳定的系数曲线．</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">Issue 100: Ex. 3.23</a>，欢迎讨论交流。</p>
+<p>而 Dantzig 选择器试图最小化当前残差与所有变量之间的最大内积。因此它可以达到比 lasso 更小的最大值，但是在这一过程中会发生奇怪的现象。如果活跃集的大小为 <span class="math notranslate nohighlight">\(m\)</span>，则会有 <span class="math notranslate nohighlight">\(m\)</span> 个变量与最大相关性绑在一起。然而，这些变量不需要与活跃集重合！因此它可以在模型中包含这样一个变量，其与当前残差的相关性小于不在活跃集中的变量与残差的相关性 (Efron et al., 2007<a class="footnote-reference brackets" href="#id49" id="id12">14</a>)。这似乎不合理，而且有时会导致较差的预测误差。Efron et al. (2007)<a class="footnote-reference brackets" href="#id49" id="id13">14</a> 也证明了随着正则化参数 <span class="math notranslate nohighlight">\(s\)</span> 的变化，DS 可能得到非常不稳定的系数曲线。</p>
 </div>
 <div class="section" id="the-grouped-lasso">
 <h2>The Grouped Lasso<a class="headerlink" href="#the-grouped-lasso" title="Permalink to this headline">¶</a></h2>
-<p>在一些问题中，预测变量属于预定义的群体中；举个例子，属于同一个生物路径的基因，或者表示类别型数据层次的指示变量（哑变量）．在这种情形中，或许想要对群体中每个成员一起进行收缩或选择．Grouped lasso 便是一种实现方式．假设 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量被分到 <span class="math notranslate nohighlight">\(L\)</span> 个群中，在第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群中有 <span class="math notranslate nohighlight">\(p_\ell\)</span> 个成员．为了简便，我们采用矩阵 <span class="math notranslate nohighlight">\(\mathbf X_\ell\)</span> 来表示对应第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群的预测变量，对应的系数向量为<span class="math notranslate nohighlight">\(\beta_\ell\)</span>．grouped-lasso 最小化下面的凸准则</p>
+<p>在一些问题中，预测变量属于预定义的群体中；举个例子，属于同一个生物路径的基因，或者表示类别型数据层次的指示变量（哑变量）。在这种情形中，或许想要对群体中每个成员一起进行收缩或选择。Grouped lasso 便是一种实现方式。假设 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量被分到 <span class="math notranslate nohighlight">\(L\)</span> 个群中，在第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群中有 <span class="math notranslate nohighlight">\(p_\ell\)</span> 个成员。为了简便，我们采用矩阵 <span class="math notranslate nohighlight">\(\mathbf X_\ell\)</span> 来表示对应第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群的预测变量，对应的系数向量为<span class="math notranslate nohighlight">\(\beta_\ell\)</span>。grouped-lasso 最小化下面的凸准则</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta\in \IR^p}{\mathrm{min}}\Big(\Vert \mathbf y-\beta_0\boldsymbol 1-\sum\limits_{\ell=1}^L\mathbf X_\ell\beta_\ell\Vert_2^2+\lambda \sum\limits_{\ell=1}^L\sqrt{p_\ell}\Vert \beta_\ell\Vert_2\Big)\tag{3.80}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\sqrt{p_\ell}\)</span> 项对应不同的群体大小，并且 <span class="math notranslate nohighlight">\(\Vert\cdot\Vert_2\)</span> 是欧几里得范数．因为一个向量 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的欧式范数为 0 当且仅当其各组分都为 0，这个过程保证了群体层次和个体水平的稀疏性．也就是，对于某些 <span class="math notranslate nohighlight">\(\lambda\)</span>，预测变量的整个群体都排除在模型之外．这个过程由 Bakin (1999)<a class="footnote-reference brackets" href="#id50" id="id14">8</a> 和 Lin and Zhang (2006)<a class="footnote-reference brackets" href="#id51" id="id15">9</a> 提出，以及 Yuan and Lin (2007)<a class="footnote-reference brackets" href="#id52" id="id16">10</a> 的研究和推广．推广包括更一般的 <span class="math notranslate nohighlight">\(L_2\)</span> 范数 <span class="math notranslate nohighlight">\(\Vert \eta\Vert=(\eta^TK\eta)^{1/2}\)</span>，并且允许重复的预测变量 (Zhao et al., 2008<a class="footnote-reference brackets" href="#id53" id="id17">11</a>)．拟合离散的可加模型的方法之间也有联系（Lin and Zhang, 2006<a class="footnote-reference brackets" href="#id51" id="id18">9</a>; Ravikumar et al., 2008<a class="footnote-reference brackets" href="#id54" id="id19">12</a>）</p>
+<p>其中 <span class="math notranslate nohighlight">\(\sqrt{p_\ell}\)</span> 项对应不同的群体大小，并且 <span class="math notranslate nohighlight">\(\Vert\cdot\Vert_2\)</span> 是欧几里得范数。因为一个向量 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的欧式范数为 0 当且仅当其各组分都为 0，这个过程保证了群体层次和个体水平的稀疏性。也就是，对于某些 <span class="math notranslate nohighlight">\(\lambda\)</span>，预测变量的整个群体都排除在模型之外。这个过程由 Bakin (1999)<a class="footnote-reference brackets" href="#id50" id="id14">8</a> 和 Lin and Zhang (2006)<a class="footnote-reference brackets" href="#id51" id="id15">9</a> 提出，以及 Yuan and Lin (2007)<a class="footnote-reference brackets" href="#id52" id="id16">10</a> 的研究和推广。推广包括更一般的 <span class="math notranslate nohighlight">\(L_2\)</span> 范数 <span class="math notranslate nohighlight">\(\Vert \eta\Vert=(\eta^TK\eta)^{1/2}\)</span>，并且允许重复的预测变量 (Zhao et al., 2008<a class="footnote-reference brackets" href="#id53" id="id17">11</a>)。拟合离散的可加模型的方法之间也有联系（Lin and Zhang, 2006<a class="footnote-reference brackets" href="#id51" id="id18">9</a>; Ravikumar et al., 2008<a class="footnote-reference brackets" href="#id54" id="id19">12</a>）</p>
 </div>
 <div class="section" id="id20">
 <h2>lasso 的更多性质<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
-<p>许多作者已经研究了当 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 增长时，lasso 的能力以及重建模型相关的过程．这个工作的例子有 Knight and Fu (2000)<a class="footnote-reference brackets" href="#id55" id="id21">15</a>, Greenshtein and Ritov (2004)<a class="footnote-reference brackets" href="#id56" id="id22">16</a>, Tropp (2004)<a class="footnote-reference brackets" href="#id57" id="id23">17</a>, Donoho (2006b)<a class="footnote-reference brackets" href="#id58" id="id24">18</a>, Meinshausen (2007)<a class="footnote-reference brackets" href="#id59" id="id25">19</a>, Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id60" id="id26">20</a>, Tropp (2006)<a class="footnote-reference brackets" href="#id61" id="id27">21</a>, Zhao and Yu (2006)<a class="footnote-reference brackets" href="#id62" id="id28">22</a>, Wainwright (2006)<a class="footnote-reference brackets" href="#id63" id="id29">23</a>, 以及 Bunea et al. (2007)<a class="footnote-reference brackets" href="#id64" id="id30">24</a>．举个例子，Donoho (2006b)<a class="footnote-reference brackets" href="#id58" id="id31">18</a> 集中在 <span class="math notranslate nohighlight">\(p&gt;N\)</span> 的情形并且当边界 <span class="math notranslate nohighlight">\(t\)</span> 变大时 lasso 的解．极限情形下，这给出了在所有零训练误差的模型中最小的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数解．他证明了对模型矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 加上具体的假设，如果真实模型为稀疏的，则解能以高概率识别出正确的预测变量．</p>
+<p>许多作者已经研究了当 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 增长时，lasso 的能力以及重建模型相关的过程。这个工作的例子有 Knight and Fu (2000)<a class="footnote-reference brackets" href="#id55" id="id21">15</a>, Greenshtein and Ritov (2004)<a class="footnote-reference brackets" href="#id56" id="id22">16</a>, Tropp (2004)<a class="footnote-reference brackets" href="#id57" id="id23">17</a>, Donoho (2006b)<a class="footnote-reference brackets" href="#id58" id="id24">18</a>, Meinshausen (2007)<a class="footnote-reference brackets" href="#id59" id="id25">19</a>, Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id60" id="id26">20</a>, Tropp (2006)<a class="footnote-reference brackets" href="#id61" id="id27">21</a>, Zhao and Yu (2006)<a class="footnote-reference brackets" href="#id62" id="id28">22</a>, Wainwright (2006)<a class="footnote-reference brackets" href="#id63" id="id29">23</a>, 以及 Bunea et al. (2007)<a class="footnote-reference brackets" href="#id64" id="id30">24</a>。举个例子，Donoho (2006b)<a class="footnote-reference brackets" href="#id58" id="id31">18</a> 集中在 <span class="math notranslate nohighlight">\(p&gt;N\)</span> 的情形并且当边界 <span class="math notranslate nohighlight">\(t\)</span> 变大时 lasso 的解。极限情形下，这给出了在所有零训练误差的模型中最小的 <span class="math notranslate nohighlight">\(L_1\)</span> 范数解。他证明了对模型矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 加上具体的假设，如果真实模型为稀疏的，则解能以高概率识别出正确的预测变量。</p>
 <p>许多这领域的结果对模型矩阵假设了如下条件</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{j\in \cal S^c}{\mathrm{max}}\Vert \mathbf x_j^T\mathbf X_{\cal S}(\mathbf X_{\cal S}^T\mathbf X_{\cal S})^{-1}\Vert_1\le (1-\epsilon)\text{ for some }\epsilon\in (0, 1]\tag{3.81}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\cal S\)</span> 标记真实的潜在模型中非零系数特征的子集，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中对应的这些特征的列．类似地，<span class="math notranslate nohighlight">\(\cal S^c\)</span>是真实系数为 0 的特征的集合，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 是对应的列．这说明 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 的列在 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 上的最小二乘系数不会太大，也就是，信号变量 <span class="math notranslate nohighlight">\(\cal S\)</span> 与冗余变量 <span class="math notranslate nohighlight">\(\cal S^c\)</span> 之间不是高度相关．</p>
-<p>考虑这些系数本身，lasso 收缩导致非零系数的估计偏向 0，并且一般地他们不是一致的．降低这种偏差的一种方式是运行 lasso 来识别非零系数的集合，接着对选出的特征进行无约束线性模型拟合．另外，也可以采用 lasso 来选择非零预测变量，接着再次运用 lasso，但是从第一步开始便只用选择出的变量．这称为 relaxed lasso (Meinshausen, 2007<a class="footnote-reference brackets" href="#id59" id="id32">19</a>)．这个想法是采用交叉验证来估计 lasso 初始的惩罚参数，然后接着对选择出的变量再用一次惩罚参数．因为第二步中的变量与噪声变量之间的竞争变小，所以交叉验证会趋向于选择较小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，因此它们的系数会比初始估计时收缩得要小．</p>
+<p>这里 <span class="math notranslate nohighlight">\(\cal S\)</span> 标记真实的潜在模型中非零系数特征的子集，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中对应的这些特征的列。类似地，<span class="math notranslate nohighlight">\(\cal S^c\)</span>是真实系数为 0 的特征的集合，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 是对应的列。这说明 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 的列在 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 上的最小二乘系数不会太大，也就是，信号变量 <span class="math notranslate nohighlight">\(\cal S\)</span> 与冗余变量 <span class="math notranslate nohighlight">\(\cal S^c\)</span> 之间不是高度相关。</p>
+<p>考虑这些系数本身，lasso 收缩导致非零系数的估计偏向 0，并且一般地他们不是一致的。降低这种偏差的一种方式是运行 lasso 来识别非零系数的集合，接着对选出的特征进行无约束线性模型拟合。另外，也可以采用 lasso 来选择非零预测变量，接着再次运用 lasso，但是从第一步开始便只用选择出的变量。这称为 relaxed lasso (Meinshausen, 2007<a class="footnote-reference brackets" href="#id59" id="id32">19</a>)。这个想法是采用交叉验证来估计 lasso 初始的惩罚参数，然后接着对选择出的变量再用一次惩罚参数。因为第二步中的变量与噪声变量之间的竞争变小，所以交叉验证会趋向于选择较小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，因此它们的系数会比初始估计时收缩得要小。</p>
 <p>另外，也可以修改 lasso 惩罚函数使得更大的系数收缩得不要太剧烈；Fan and Li (2005)<a class="footnote-reference brackets" href="#id65" id="id33">25</a>的 <strong>平稳削减绝对偏差法 (smoothly clipped absolute deviation, SCAD)</strong> 用 <span class="math notranslate nohighlight">\(J_a(\beta,\lambda)\)</span> 替换 <span class="math notranslate nohighlight">\(\lambda\vert\beta \vert\)</span>，其中对于 <span class="math notranslate nohighlight">\(a\ge 2\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dJ_a(\beta,\lambda)}{d\beta}=\lambda \cdot \mathrm{sign}(\beta)[I(\vert \beta\vert\le \lambda)+\frac{(a\lambda-\vert \beta\vert)_\+}{(a-1)\lambda}I(\vert\beta\vert&gt;\lambda)]\tag{3.82}
 \]</div>
-<p>方括号中的第二项降低了 lasso 对于较大 <span class="math notranslate nohighlight">\(\beta\)</span> 的收缩程度，在极限状态时，当 <span class="math notranslate nohighlight">\(a\rightarrow \infty\)</span>，没有收缩．图 3.20 显示了 SCAD 惩罚，以及 lasso 和 <span class="math notranslate nohighlight">\(\beta^{1-\nu} \)</span>．然而这个准则不是凸的，这是一个缺陷，因为它会使得计算变得很困难．adaptive lasso (Zou, 2006)<a class="footnote-reference brackets" href="#id66" id="id34">26</a>采用形如 <span class="math notranslate nohighlight">\(\sum_{j=1}^pw_j\vert\beta_j\vert\)</span> 的加权惩罚，其中 <span class="math notranslate nohighlight">\(w_j=1/\vert\hat\beta_j\vert^\nu\)</span>，<span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是一般最小二乘估计并且 <span class="math notranslate nohighlight">\(\nu &gt;0\)</span>．这是对 <a class="reference external" href="3.4-Shrinkage-Methods/index.html#lasso_1">3.4.3 节</a>中讨论的 <span class="math notranslate nohighlight">\(\vert\beta\vert^q\)</span> 惩罚的实际近似（这里 <span class="math notranslate nohighlight">\(q=1-\nu\)</span>）．adaptive lasso 在保证 lasso 吸引人的凸性基础上还得到了参数的一致估计．</p>
+<p>方括号中的第二项降低了 lasso 对于较大 <span class="math notranslate nohighlight">\(\beta\)</span> 的收缩程度，在极限状态时，当 <span class="math notranslate nohighlight">\(a\rightarrow \infty\)</span>，没有收缩。图 3.20 显示了 SCAD 惩罚，以及 lasso 和 <span class="math notranslate nohighlight">\(\beta^{1-\nu} \)</span>。然而这个准则不是凸的，这是一个缺陷，因为它会使得计算变得很困难。adaptive lasso (Zou, 2006)<a class="footnote-reference brackets" href="#id66" id="id34">26</a>采用形如 <span class="math notranslate nohighlight">\(\sum_{j=1}^pw_j\vert\beta_j\vert\)</span> 的加权惩罚，其中 <span class="math notranslate nohighlight">\(w_j=1/\vert\hat\beta_j\vert^\nu\)</span>，<span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是一般最小二乘估计并且 <span class="math notranslate nohighlight">\(\nu &gt;0\)</span>。这是对 <a class="reference external" href="3.4-Shrinkage-Methods/index.html#lasso_1">3.4.3 节</a>中讨论的 <span class="math notranslate nohighlight">\(\vert\beta\vert^q\)</span> 惩罚的实际近似（这里 <span class="math notranslate nohighlight">\(q=1-\nu\)</span>）。adaptive lasso 在保证 lasso 吸引人的凸性基础上还得到了参数的一致估计。</p>
 <p><img alt="" src="../_images/fig3.20.png" /></p>
 </div>
 <div class="section" id="pathwise-coordinate-optimization">
 <h2>Pathwise Coordinate Optimization<a class="headerlink" href="#pathwise-coordinate-optimization" title="Permalink to this headline">¶</a></h2>
-<p>一种替代计算 lasso 的 LARS 算法是 <strong>简单坐标下降 (simple coordinate descent)</strong>．这个想法由 Fu (1998)<a class="footnote-reference brackets" href="#id67" id="id35">27</a> 和 Daubechies et al. (2004)<a class="footnote-reference brackets" href="#id68" id="id36">28</a> 提出，后来被 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id37">29</a>, Wu and Lange (2008)<a class="footnote-reference brackets" href="#id70" id="id38">30</a> 和其他人研究及推广．想法是固定 Lagrangian 形式 \eqref{3.52} 中的惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，在控制其它参数固定不变时，相继地优化每一个参数．</p>
+<p>一种替代计算 lasso 的 LARS 算法是 <strong>简单坐标下降 (simple coordinate descent)</strong>。这个想法由 Fu (1998)<a class="footnote-reference brackets" href="#id67" id="id35">27</a> 和 Daubechies et al. (2004)<a class="footnote-reference brackets" href="#id68" id="id36">28</a> 提出，后来被 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id37">29</a>, Wu and Lange (2008)<a class="footnote-reference brackets" href="#id70" id="id38">30</a> 和其他人研究及推广。想法是固定 Lagrangian 形式 \eqref{3.52} 中的惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，在控制其它参数固定不变时，相继地优化每一个参数。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}\label{3.52}
     \)</span>$</p>
-<p>假设预测变量都经过标准化得到 0 均值和单位范数．用 <span class="math notranslate nohighlight">\(\tilde\beta_k(\lambda)\)</span> 表示惩罚参数为 <span class="math notranslate nohighlight">\(\lambda\)</span> 时对 <span class="math notranslate nohighlight">\(\beta_k\)</span> 的当前估计．我们可以分离出 \eqref{3.52} 的 <span class="math notranslate nohighlight">\(\beta_j\)</span>,</p>
+<p>假设预测变量都经过标准化得到 0 均值和单位范数。用 <span class="math notranslate nohighlight">\(\tilde\beta_k(\lambda)\)</span> 表示惩罚参数为 <span class="math notranslate nohighlight">\(\lambda\)</span> 时对 <span class="math notranslate nohighlight">\(\beta_k\)</span> 的当前估计。我们可以分离出 \eqref{3.52} 的 <span class="math notranslate nohighlight">\(\beta_j\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 R(\tilde\beta(\lambda),\beta_j)=\frac{1}{2}\sum\limits_{i=1}^N(y_i-\sum\limits_{k\neq j}x_{ik}\tilde \beta_k(\lambda)-x_{ij}\beta_j)^2+\lambda \sum\limits_{k\neq j}\vert \tilde \beta_k(\lambda)\vert+\lambda \vert \beta_j\vert
 \]</div>
-<p>其中我们压缩了截距并且为了方便引出因子 <span class="math notranslate nohighlight">\(\frac 12\)</span>．这个可以看成是响应变量为部分残差 <span class="math notranslate nohighlight">\(y_i-\tilde y_i^{(j)}=y_i-\sum_{k\neq j}x_{ik}\tilde \beta_k(\lambda)\)</span>．这有显式解，得到下面的更新</p>
+<p>其中我们压缩了截距并且为了方便引出因子 <span class="math notranslate nohighlight">\(\frac 12\)</span>。这个可以看成是响应变量为部分残差 <span class="math notranslate nohighlight">\(y_i-\tilde y_i^{(j)}=y_i-\sum_{k\neq j}x_{ik}\tilde \beta_k(\lambda)\)</span>。这有显式解，得到下面的更新</p>
 <div class="math notranslate nohighlight">
 \[
 \tilde \beta_j(\lambda)\leftarrow S(\sum_{i=1}^Nx_{ij}(y_i-\tilde y_i^{(j)}),\lambda)\tag{3.84}\label{3.84}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(S(t,\lambda)=\sign(t)(\vert t\vert-\lambda)\_+\)</span> 是表 3.4 中的软阈值算子．<span class="math notranslate nohighlight">\(S(\cdot)\)</span> 中的第一个变量是部分残差在标准化变量 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 上的简单最小二乘系数．\eqref{3.84} 的重复迭代——轮流考虑每个变量直到收敛——得到 lasso 估计 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span>．</p>
-<p>我们也可以采用这种简单的算法来有效地计算在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的每个网格结点上 lasso 的解．我们从使得 <span class="math notranslate nohighlight">\(\hat\beta(\lambda_{\max})=0\)</span> 的最小 <span class="math notranslate nohighlight">\(\lambda_{\max}\)</span> 开始，每次降低一点点来循环考虑每个变量直到收敛．采用前一个解作为 <span class="math notranslate nohighlight">\(\lambda\)</span> 新值的“warm start”，<span class="math notranslate nohighlight">\(\lambda\)</span> 再一次降低，并且重复该过程．这个可能比 LARS 算法快，特别是在大型问题中．它速度的关键在于 \eqref{3.84} 中的量随着 <span class="math notranslate nohighlight">\(j\)</span> 变化可以快速更新，并且通常更新后有 <span class="math notranslate nohighlight">\(\tilde \beta_j=0\)</span>．另一方面，它在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的网格处求解，而不是整个解的路径．同样类型的算法可以应用到 elastic net，grouped lasso 以及许多其它惩罚为个体参数的函数之和的模型（Friedman et al., 2010<a class="footnote-reference brackets" href="#id71" id="id39">31</a>）．通过一些修改，这也可以应用到 fused lasso（<a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html"><span class="doc std std-doc">18.4.2 节</span></a>）；细节在 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id40">29</a>中给出．</p>
+<p>这里 <span class="math notranslate nohighlight">\(S(t,\lambda)=\sign(t)(\vert t\vert-\lambda)\_+\)</span> 是表 3.4 中的软阈值算子。<span class="math notranslate nohighlight">\(S(\cdot)\)</span> 中的第一个变量是部分残差在标准化变量 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 上的简单最小二乘系数。\eqref{3.84} 的重复迭代——轮流考虑每个变量直到收敛——得到 lasso 估计 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span>。</p>
+<p>我们也可以采用这种简单的算法来有效地计算在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的每个网格结点上 lasso 的解。我们从使得 <span class="math notranslate nohighlight">\(\hat\beta(\lambda_{\max})=0\)</span> 的最小 <span class="math notranslate nohighlight">\(\lambda_{\max}\)</span> 开始，每次降低一点点来循环考虑每个变量直到收敛。采用前一个解作为 <span class="math notranslate nohighlight">\(\lambda\)</span> 新值的“warm start”，<span class="math notranslate nohighlight">\(\lambda\)</span> 再一次降低，并且重复该过程。这个可能比 LARS 算法快，特别是在大型问题中。它速度的关键在于 \eqref{3.84} 中的量随着 <span class="math notranslate nohighlight">\(j\)</span> 变化可以快速更新，并且通常更新后有 <span class="math notranslate nohighlight">\(\tilde \beta_j=0\)</span>。另一方面，它在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的网格处求解，而不是整个解的路径。同样类型的算法可以应用到 elastic net，grouped lasso 以及许多其它惩罚为个体参数的函数之和的模型（Friedman et al., 2010<a class="footnote-reference brackets" href="#id71" id="id39">31</a>）。通过一些修改，这也可以应用到 fused lasso（<a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html"><span class="doc std std-doc">18.4.2 节</span></a>）；细节在 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id40">29</a>中给出。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>

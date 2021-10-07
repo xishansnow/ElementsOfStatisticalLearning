@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,40 +1149,19 @@
                 
   <div class="section" id="id1">
 <h1>14.9 非线性降维和局部多维缩放<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2016-09-30</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2020-02-20 15:46:34</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>最近有人提出了一些用于非线性降维的方法，类似主曲面的思想．想法是将数据看成位于一个嵌在高维空间中的 <strong>固有低维非线性流形 (intrinsically low-dimensional nonlinear manifold)</strong> 的附近．这些方法可以看成是“压扁(flattening)”流形，因此将数据降低至低维坐标系统中，用于表示点在流形中的相对位置．在信噪比非常高的问题中非常有用（比如，物理系统），而且对于有低信噪比的观测数据不是很有用．</p>
+<p>最近有人提出了一些用于非线性降维的方法，类似主曲面的思想。想法是将数据看成位于一个嵌在高维空间中的 <strong>固有低维非线性流形 (intrinsically low-dimensional nonlinear manifold)</strong> 的附近。这些方法可以看成是“压扁(flattening)”流形，因此将数据降低至低维坐标系统中，用于表示点在流形中的相对位置。在信噪比非常高的问题中非常有用（比如，物理系统），而且对于有低信噪比的观测数据不是很有用。</p>
 <p><img alt="" src="../_images/fig14.44.png" /></p>
-<p>基本的目标在图 14.44 的左图中进行了说明．数据落在有较大曲率的抛物线附近．经典的 MDS 不能保持沿着这条曲线的点的顺序，因为它会将处于曲线两端的点看成离得非常近．右图显示了 <strong>局部多维缩放 (local multi-dimensional scaling, Local MDS)</strong> 的结果，我们将在下面讨论非线性多维缩放的三个方法中的其中一个．这些方法仅仅使用 <span class="math notranslate nohighlight">\(p\)</span> 维中点的坐标，不需要流形的其它信息．<strong>局部多维缩放</strong> 能够很好地保持沿着曲线的点的顺序．</p>
-<p>我们将简短地介绍用作非线性降维和流形映射的三个新方法．</p>
-<p><strong>等距特征映射算法 (Isometric feature mapping, ISOMAP)</strong> (Tenenbaum et al. 2000<a class="footnote-reference brackets" href="#id6" id="id2">1</a>) 构造了一个图来近似沿着流形的点之间的测地线距离．具体地，对每个数据点，我们找到其邻居——距该点的某个欧式距离范围内的点．我们构造任意两个邻居点间用边相连的图．任意两点的测地线距离则用图中点的最短路径来近似．最终，对图的距离应用经典缩放，来得到低维映射．</p>
-<p><strong>局部线性内嵌 (Local linear embedding, LLE)</strong>(Roweis and Saul, 2000<a class="footnote-reference brackets" href="#id7" id="id3">2</a>)采用完全不同的方式，它试图保持高维数据的局部仿射结构．每个数据点用邻居点的线性组合来近似．于是通过寻找保持局部近似的最优方式构造低维表示．细节非常有趣，所以在这里给出：</p>
+<p>基本的目标在图 14.44 的左图中进行了说明。数据落在有较大曲率的抛物线附近。经典的 MDS 不能保持沿着这条曲线的点的顺序，因为它会将处于曲线两端的点看成离得非常近。右图显示了 <strong>局部多维缩放 (local multi-dimensional scaling, Local MDS)</strong> 的结果，我们将在下面讨论非线性多维缩放的三个方法中的其中一个。这些方法仅仅使用 <span class="math notranslate nohighlight">\(p\)</span> 维中点的坐标，不需要流形的其它信息。<strong>局部多维缩放</strong> 能够很好地保持沿着曲线的点的顺序。</p>
+<p>我们将简短地介绍用作非线性降维和流形映射的三个新方法。</p>
+<p><strong>等距特征映射算法 (Isometric feature mapping, ISOMAP)</strong> (Tenenbaum et al. 2000<a class="footnote-reference brackets" href="#id6" id="id2">1</a>) 构造了一个图来近似沿着流形的点之间的测地线距离。具体地，对每个数据点，我们找到其邻居——距该点的某个欧式距离范围内的点。我们构造任意两个邻居点间用边相连的图。任意两点的测地线距离则用图中点的最短路径来近似。最终，对图的距离应用经典缩放，来得到低维映射。</p>
+<p><strong>局部线性内嵌 (Local linear embedding, LLE)</strong>(Roweis and Saul, 2000<a class="footnote-reference brackets" href="#id7" id="id3">2</a>)采用完全不同的方式，它试图保持高维数据的局部仿射结构。每个数据点用邻居点的线性组合来近似。于是通过寻找保持局部近似的最优方式构造低维表示。细节非常有趣，所以在这里给出：</p>
 <ol class="simple">
 <li><p>对每个 <span class="math notranslate nohighlight">\(p\)</span> 维中的数据点 <span class="math notranslate nohighlight">\(x_i\)</span>，寻找欧式距离意义下的 <span class="math notranslate nohighlight">\(K\)</span> 最近邻点 <span class="math notranslate nohighlight">\(\cal N(i)\)</span>.</p></li>
 <li><p>对每个点用邻居点的混合仿射来近似
 $<span class="math notranslate nohighlight">\(
 \underset{w_{ik}}{\min}\Vert x_i-\sum\limits_{k\in\cal N(i)}w_{ik}x_k\Vert^2\tag{14.102}
 \)</span><span class="math notranslate nohighlight">\(
-其中权重 \)</span>w_{ik}<span class="math notranslate nohighlight">\( 满足 \)</span>w_{ik}=0, k\not\in \cal N(i), \sum_{k=1}^Nw_{ik}=1<span class="math notranslate nohighlight">\(．\)</span>w_{ik}<span class="math notranslate nohighlight">\( 是点 \)</span>k<span class="math notranslate nohighlight">\( 对 \)</span>i<span class="math notranslate nohighlight">\( 点的重构的贡献．注意到为了得到唯一解，我们必须要求 \)</span>K &lt; p$．</p></li>
+其中权重 \)</span>w_{ik}<span class="math notranslate nohighlight">\( 满足 \)</span>w_{ik}=0, k\not\in \cal N(i), \sum_{k=1}^Nw_{ik}=1<span class="math notranslate nohighlight">\(。\)</span>w_{ik}<span class="math notranslate nohighlight">\( 是点 \)</span>k<span class="math notranslate nohighlight">\( 对 \)</span>i<span class="math notranslate nohighlight">\( 点的重构的贡献。注意到为了得到唯一解，我们必须要求 \)</span>K &lt; p$。</p></li>
 <li><p>最后，固定 <span class="math notranslate nohighlight">\(w_{ik}\)</span>，在 <span class="math notranslate nohighlight">\(d &lt; p\)</span> 维空间中寻找点 <span class="math notranslate nohighlight">\(y_i\)</span> 来最小化
 $<span class="math notranslate nohighlight">\(
 \sum\limits_{i=1}^N\Vert y_i-\sum\limits_{k=1}^Nw_{ik}y_k\Vert^2\tag{14.103}
@@ -1192,29 +1172,29 @@ $<span class="math notranslate nohighlight">\(
 \[
 \tr [(\Y-\W\Y)^T(\Y-\W\Y)] = \tr[\Y^T(\I-\W)^T(\I-\W)\Y)]\tag{14.104}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\W\)</span> 是 <span class="math notranslate nohighlight">\(N\times N\)</span>; <span class="math notranslate nohighlight">\(\Y\)</span> 是 <span class="math notranslate nohighlight">\(N\times d, d &lt; p\)</span>．<span class="math notranslate nohighlight">\(\hat \Y\)</span> 的解是 <span class="math notranslate nohighlight">\(\M=(\I-\W)^T(\I-\W)\)</span> 的 <strong>尾特征向量 (trailing eigenvectors)</strong>．因为 <span class="math notranslate nohighlight">\(\1\)</span> 是特征值为 0 的平凡特征向量，所以我们舍弃它并且保留接下来的 <span class="math notranslate nohighlight">\(d\)</span> 个．这会产生额外的影响 <span class="math notranslate nohighlight">\(\1^T\Y=0\)</span>，因此嵌入坐标的均值为0．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\W\)</span> 是 <span class="math notranslate nohighlight">\(N\times N\)</span>; <span class="math notranslate nohighlight">\(\Y\)</span> 是 <span class="math notranslate nohighlight">\(N\times d, d &lt; p\)</span>。<span class="math notranslate nohighlight">\(\hat \Y\)</span> 的解是 <span class="math notranslate nohighlight">\(\M=(\I-\W)^T(\I-\W)\)</span> 的 <strong>尾特征向量 (trailing eigenvectors)</strong>。因为 <span class="math notranslate nohighlight">\(\1\)</span> 是特征值为 0 的平凡特征向量，所以我们舍弃它并且保留接下来的 <span class="math notranslate nohighlight">\(d\)</span> 个。这会产生额外的影响 <span class="math notranslate nohighlight">\(\1^T\Y=0\)</span>，因此嵌入坐标的均值为0。</p>
 <p>!!! note “weiya 注:”
 这里的尾特征向量除去了特征值为 0 的平凡特征向量 <span class="math notranslate nohighlight">\(\1\)</span>，而因为特征向量间正交，所以有 <span class="math notranslate nohighlight">\(\1^T\Y=0\)</span>.</p>
-<p><strong>局部多维缩放 (Local MDS)</strong>（Chen and Buja, 2008<a class="footnote-reference brackets" href="#id8" id="id4">3</a>）采用最简单的、而且可以说是最直接的方式．定义 <span class="math notranslate nohighlight">\(\cal N\)</span> 为邻居点的对称集；具体地，如果点 <span class="math notranslate nohighlight">\(i\)</span> 在 <span class="math notranslate nohighlight">\(i'\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 最近邻中，则点对 <span class="math notranslate nohighlight">\((i, i')\)</span> 在 <span class="math notranslate nohighlight">\(\cal N\)</span> 中，反过来也是如此．</p>
+<p><strong>局部多维缩放 (Local MDS)</strong>（Chen and Buja, 2008<a class="footnote-reference brackets" href="#id8" id="id4">3</a>）采用最简单的、而且可以说是最直接的方式。定义 <span class="math notranslate nohighlight">\(\cal N\)</span> 为邻居点的对称集；具体地，如果点 <span class="math notranslate nohighlight">\(i\)</span> 在 <span class="math notranslate nohighlight">\(i'\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 最近邻中，则点对 <span class="math notranslate nohighlight">\((i, i')\)</span> 在 <span class="math notranslate nohighlight">\(\cal N\)</span> 中，反过来也是如此。</p>
 <p>!!! note “weiya 注”
-在<span class="xref myst">14.7节</span>中的谱聚类的 mutual K-nearest-neighbor graph 也有用到 <span class="math notranslate nohighlight">\(\cal N\)</span>．</p>
+在<span class="xref myst">14.7节</span>中的谱聚类的 mutual K-nearest-neighbor graph 也有用到 <span class="math notranslate nohighlight">\(\cal N\)</span>。</p>
 <p>于是我们构造压力函数</p>
 <div class="math notranslate nohighlight">
 \[
 S_L(z_1,z_2,\ldots, z_N) = \sum\limits_{(i,i')\in \cal N}(d_{ii'}-\Vert z_i-z_{i'}\Vert)^2 + \sum\limits_{(i,i')\not\in \cal N}w\cdot (D-\Vert z_i-z_{i'}\Vert)^2\tag{14.105}\label{14.105}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(D\)</span> 是某个较大的常数，<span class="math notranslate nohighlight">\(w\)</span> 是权重．想法是将不是邻居的点看成是距离非常远；这些点对被赋予小权重 <span class="math notranslate nohighlight">\(w\)</span> 使得它们不会主导整个压力函数．为了简化表达式，取 <span class="math notranslate nohighlight">\(w\sim 1/D\)</span>，并令 <span class="math notranslate nohighlight">\(D\rightarrow \infty\)</span>．展开式 \eqref{14.105}，得到</p>
+<p>这里 <span class="math notranslate nohighlight">\(D\)</span> 是某个较大的常数，<span class="math notranslate nohighlight">\(w\)</span> 是权重。想法是将不是邻居的点看成是距离非常远；这些点对被赋予小权重 <span class="math notranslate nohighlight">\(w\)</span> 使得它们不会主导整个压力函数。为了简化表达式，取 <span class="math notranslate nohighlight">\(w\sim 1/D\)</span>，并令 <span class="math notranslate nohighlight">\(D\rightarrow \infty\)</span>。展开式 \eqref{14.105}，得到</p>
 <div class="math notranslate nohighlight">
 \[
 S_L(z_1,z_2,\ldots, z_N)=\sum\limits_{(i, i')\in\cal N}(d_{ii'}-\Vert z_i-z_{i'}\Vert)^2-\tau \sum\limits_{(i,i')\not \in \cal N}\Vert z_i-z_{i'}\Vert\tag{14.106}\label{14.106}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\tau =2wD\)</span>．式 \eqref{14.106} 试图保持数据的局部性质，而第二项促使非邻居对 <span class="math notranslate nohighlight">\((i, i')\)</span> 的 <span class="math notranslate nohighlight">\(z_i,z_{i'}\)</span> 更远．局部多维缩放在固定邻居个数 <span class="math notranslate nohighlight">\(K\)</span> 以及调整参数 <span class="math notranslate nohighlight">\(\tau\)</span> 的情况下，在 <span class="math notranslate nohighlight">\(z_i\)</span> 上最小化压力函数 \eqref{14.106}．</p>
-<p>图 14.44 的右图显示了采用 <span class="math notranslate nohighlight">\(k=2\)</span> 个邻居和 <span class="math notranslate nohighlight">\(\tau = 0.01\)</span> 的局部多维缩放的结果．我们采用多个起始值的 <strong>坐标下降 (coordinate descent)</strong> 来寻找（非凸）损失函数一个好的最小值．沿着曲线的点的顺序大部分都被保持了．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\tau =2wD\)</span>。式 \eqref{14.106} 试图保持数据的局部性质，而第二项促使非邻居对 <span class="math notranslate nohighlight">\((i, i')\)</span> 的 <span class="math notranslate nohighlight">\(z_i,z_{i'}\)</span> 更远。局部多维缩放在固定邻居个数 <span class="math notranslate nohighlight">\(K\)</span> 以及调整参数 <span class="math notranslate nohighlight">\(\tau\)</span> 的情况下，在 <span class="math notranslate nohighlight">\(z_i\)</span> 上最小化压力函数 \eqref{14.106}。</p>
+<p>图 14.44 的右图显示了采用 <span class="math notranslate nohighlight">\(k=2\)</span> 个邻居和 <span class="math notranslate nohighlight">\(\tau = 0.01\)</span> 的局部多维缩放的结果。我们采用多个起始值的 <strong>坐标下降 (coordinate descent)</strong> 来寻找（非凸）损失函数一个好的最小值。沿着曲线的点的顺序大部分都被保持了。</p>
 <p><img alt="" src="../_images/fig14.45.png" /></p>
-<p>图 14.45 显示了 LLE 方法的一个有趣的应用．数据包含 1965 张图象，数字化为 <span class="math notranslate nohighlight">\(20\times 28\)</span> 的灰白图象．图中展示了 LLE 的前两个坐标结果，它们解释了摆放位置以及表情的一些变异．类似的图象可以通过局部多维缩放得到．</p>
+<p>图 14.45 显示了 LLE 方法的一个有趣的应用。数据包含 1965 张图象，数字化为 <span class="math notranslate nohighlight">\(20\times 28\)</span> 的灰白图象。图中展示了 LLE 的前两个坐标结果，它们解释了摆放位置以及表情的一些变异。类似的图象可以通过局部多维缩放得到。</p>
 <p>!!! note “原书脚注: “
 Sam Roweis 和 Lawrence Saul 友好地提供了图 14.45.</p>
-<p>在 Chen and Buja(2008)<a class="footnote-reference brackets" href="#id8" id="id5">3</a> 报告的实验中，局部多维缩放与 ISOMAP 和 LLE 相比表现得更好．他们也演示了局部多维缩放在图象布局方面很有用的应用．有些方法与这里讨论的方法有着紧密的联系，如谱聚类（<span class="xref myst">14.5.3 节</span>）和核主成分（<span class="xref myst">14.5.4 节</span>）．</p>
+<p>在 Chen and Buja(2008)<a class="footnote-reference brackets" href="#id8" id="id5">3</a> 报告的实验中，局部多维缩放与 ISOMAP 和 LLE 相比表现得更好。他们也演示了局部多维缩放在图象布局方面很有用的应用。有些方法与这里讨论的方法有着紧密的联系，如谱聚类（<span class="xref myst">14.5.3 节</span>）和核主成分（<span class="xref myst">14.5.4 节</span>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

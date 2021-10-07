@@ -353,22 +353,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,49 +1149,28 @@
                 
   <div class="section" id="boosting">
 <h1>10.2 Boosting 拟合可加模型<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>原文</p></th>
-<th class="head"><p><a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=360">The Elements of Statistical Learning</a></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>翻译</p></td>
-<td><p>szcf-weiya</p></td>
-</tr>
-<tr class="row-odd"><td><p>发布</p></td>
-<td><p>2017-02-08</p></td>
-</tr>
-<tr class="row-even"><td><p>更新</p></td>
-<td><p>2017-08-26, 2018-02-28</p></td>
-</tr>
-<tr class="row-odd"><td><p>状态</p></td>
-<td><p>Done</p></td>
-</tr>
-</tbody>
-</table>
-<p>Boosting 的成功真的不是很神秘．关键在于 (10.1) 式．</p>
+<p>Boosting 的成功真的不是很神秘。关键在于 (10.1) 式。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     G(x)=\mathrm {sign}(\sum\limits_{m=1}^M\alpha_mG_m(x))\tag{10.1}
     \)</span>$</p>
-<p>Boosting 是在一组基本的“基”函数集合中拟合 <strong>加性展开 (additive expansions)</strong> 的方法．这里基函数是单个的分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>．更一般地，基函数展开式采用下列形式</p>
+<p>Boosting 是在一组基本的“基”函数集合中拟合 <strong>加性展开 (additive expansions)</strong> 的方法。这里基函数是单个的分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>。更一般地，基函数展开式采用下列形式</p>
 <div class="math notranslate nohighlight">
 \[
 f(x)=\sum\limits_{m=1}^M\beta_mb(x;\gamma_m)\tag{10.3}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\beta_m,m=1,2,\ldots,M\)</span> 是展开的系数，<span class="math notranslate nohighlight">\(b(x;\gamma)\in \IR\)</span> 是普通的关于多元变量 <span class="math notranslate nohighlight">\(x\)</span> 的简单函数，<span class="math notranslate nohighlight">\(\gamma\)</span> 是其参数．我们在 <span class="xref myst">第 5 章</span> 中详细讨论了基的展开．</p>
+<p>其中 <span class="math notranslate nohighlight">\(\beta_m,m=1,2,\ldots,M\)</span> 是展开的系数，<span class="math notranslate nohighlight">\(b(x;\gamma)\in \IR\)</span> 是普通的关于多元变量 <span class="math notranslate nohighlight">\(x\)</span> 的简单函数，<span class="math notranslate nohighlight">\(\gamma\)</span> 是其参数。我们在 <span class="xref myst">第 5 章</span> 中详细讨论了基的展开。</p>
 <p>类似的加性展开是本书介绍的许多学习方法的核心：</p>
 <ul class="simple">
-<li><p>在单层神经网络中（<span class="xref myst">第 11 章</span>），<span class="math notranslate nohighlight">\(b(x;\gamma)=\sigma(\gamma_0+\gamma_1^Tx)\)</span>，其中 <span class="math notranslate nohighlight">\(\sigma(t)=1/(1+e^{-t})\)</span> 是 sigmoid 函数，并且 <span class="math notranslate nohighlight">\(\gamma\)</span> 参量化输入变量的线性组合．</p></li>
-<li><p>在信号处理中，小波（<span class="xref myst">5.9.1 节</span>）用 <span class="math notranslate nohighlight">\(\gamma\)</span> 参量化“母”微波的位置和偏移量是很流行的选择．多元自适应回归样条（<span class="xref myst">9.4 节</span>）采用截断幂样条基函数，其中 <span class="math notranslate nohighlight">\(\gamma\)</span> 对变量和结点的值进行参量化．</p></li>
-<li><p>对于树，<span class="math notranslate nohighlight">\(\gamma\)</span> 对中间结点的分离变量和分离点以及终止结点的预测值进行参量化．</p></li>
+<li><p>在单层神经网络中（<span class="xref myst">第 11 章</span>），<span class="math notranslate nohighlight">\(b(x;\gamma)=\sigma(\gamma_0+\gamma_1^Tx)\)</span>，其中 <span class="math notranslate nohighlight">\(\sigma(t)=1/(1+e^{-t})\)</span> 是 sigmoid 函数，并且 <span class="math notranslate nohighlight">\(\gamma\)</span> 参量化输入变量的线性组合。</p></li>
+<li><p>在信号处理中，小波（<span class="xref myst">5.9.1 节</span>）用 <span class="math notranslate nohighlight">\(\gamma\)</span> 参量化“母”微波的位置和偏移量是很流行的选择。多元自适应回归样条（<span class="xref myst">9.4 节</span>）采用截断幂样条基函数，其中 <span class="math notranslate nohighlight">\(\gamma\)</span> 对变量和结点的值进行参量化。</p></li>
+<li><p>对于树，<span class="math notranslate nohighlight">\(\gamma\)</span> 对中间结点的分离变量和分离点以及终止结点的预测值进行参量化。</p></li>
 </ul>
 <p>一般地，通过使训练数据上的平均损失函数最小化来拟合这些模型，比如平方误差或者基于概率的损失函数，
 $<span class="math notranslate nohighlight">\(
 \underset{\{\beta_m,\gamma_m\}_1^M}{\mathrm {min}}\;\sum\limits_{i=1}^NL(y_i,\sum\limits_{m=1}^M\beta_mb(x_i;\gamma_m))\tag{10.4}
 \)</span><span class="math notranslate nohighlight">\(
-对于许多损失函数 \)</span>L(y,f(x))<span class="math notranslate nohighlight">\( 和/或基函数 \)</span>b(x;\gamma)$，这需要 <strong>计算密集型的 (computationally intensive)</strong> 数值优化技术．</p>
+对于许多损失函数 \)</span>L(y,f(x))<span class="math notranslate nohighlight">\( 和/或基函数 \)</span>b(x;\gamma)$，这需要 <strong>计算密集型的 (computationally intensive)</strong> 数值优化技术。</p>
 <p>!!! note “weiya 注：computationally intensive”
 引用<a class="reference external" href="https://www.zhihu.com/question/23243435">什么是计算密集型（computationally intensive）？ - 知乎</a>的回答
 &gt; 程序系统大部分在做计算、逻辑判断、循环导致 cpu 占用率很高的情况，称之为计算密集型；频繁网络传输、读取硬盘及其他 io 设备称之为 io 密集型</p>

@@ -351,22 +351,23 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
+     6.4
      <span class="math notranslate nohighlight">
-      \(\IR^p\)
+      \(\mathcal{IR}^p\)
      </span>
      中结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.5-Local-Likelihood-and-Other-Models.html">
-     局部似然和其他模型
+     6.5 局部似然和其他模型
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,14 +1147,8 @@
                 
   <div class="section" id="id1">
 <h1>2.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>原文     | <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf#page=28">The Elements of Statistical Learning</a>
-—|—
-翻译     | szcf-weiya
-发布 | 2016-09-30
-更新 | 2018-08-21
-状态 | Done</p>
-<p>第一章中描述的三个例子有一些共同的组成成分．每个例子中都有一个变量集，这些变量可以记作 <strong>输入变量 (inputs)</strong>，可以是测量得到或者预设的．这些变量对一个或多个 <strong>输出变量 (outputs)</strong> 有影响．每个例子的目标便是利用输入变量去预测输出的值．这样的过程称之为 <strong>监督学习 (supervised learning)</strong>．</p>
-<p>我们已经使用了更现代的机器学习的语言．在统计学中，<strong>输入变量 (inputs)</strong> 通常称作 <strong>预测变量 (predictors)</strong>，这是一个与输入变量等价的说法，更经典的说法是 <strong>自变量 (independent variables)</strong>．在模式识别中，更倾向于采用 <strong>特征 (features)</strong> 的说法，我们也会采用这一说法．<strong>输出变量 (outputs)</strong> 被称作 <strong>响应变量(responses)</strong>，或者更经典的说法是 <strong>因变量 (dependent variables)</strong>．</p>
+<p>第一章中描述的三个例子有一些共同的组成成分。每个例子中都有一个变量集，这些变量可以记作 <strong>输入变量 (inputs)</strong>，可以是测量得到或者预设的。这些变量对一个或多个 <strong>输出变量 (outputs)</strong> 有影响。每个例子的目标便是利用输入变量去预测输出的值。这样的过程称之为 <strong>监督学习 (supervised learning)</strong>。</p>
+<p>我们已经使用了更现代的机器学习的语言。在统计学中，<strong>输入变量 (inputs)</strong> 通常称作 <strong>预测变量 (predictors)</strong>，这是一个与输入变量等价的说法，更经典的说法是 <strong>自变量 (independent variables)</strong>。在模式识别中，更倾向于采用 <strong>特征 (features)</strong> 的说法，我们也会采用这一说法。<strong>输出变量 (outputs)</strong> 被称作 <strong>响应变量(responses)</strong>，或者更经典的说法是 <strong>因变量 (dependent variables)</strong>。</p>
 </div>
 
     <script type="text/x-thebe-config">
