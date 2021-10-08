@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1185,15 +1185,15 @@
 <p>为了构造特征，统计字符串中长度为 <span class="math notranslate nohighlight">\(m\)</span> 的序列出现的次数，并且计算长度为 <span class="math notranslate nohighlight">\(m\)</span> 的所有可能序列的个数。正式的表述是，对于字符串 <span class="math notranslate nohighlight">\(x\)</span>，我们定义特征映射</p>
 <div class="math notranslate nohighlight">
 \[
-\Phi_m(x)=\{\phi_a(x)\}_{a\in\cal A_m}\tag{18.25}
+\Phi_m(x)=\{\phi_a(x)\}_{a\in\mathcal A_m}\tag{18.25}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\cal A_m\)</span> 是长度为 <span class="math notranslate nohighlight">\(m\)</span> 的子序列的集合，而 <span class="math notranslate nohighlight">\(\phi_a(x)\)</span> 为 “a” 出现在字符串 <span class="math notranslate nohighlight">\(x\)</span> 出现的次数。应用这个，我们定义内积</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathcal A_m\)</span> 是长度为 <span class="math notranslate nohighlight">\(m\)</span> 的子序列的集合，而 <span class="math notranslate nohighlight">\(\phi_a(x)\)</span> 为 “a” 出现在字符串 <span class="math notranslate nohighlight">\(x\)</span> 出现的次数。应用这个，我们定义内积</p>
 <div class="math notranslate nohighlight">
 \[
 K_m(x_1,x_2)=\langle \Phi_m(x_1),\Phi_m(x_2) \rangle\tag{18.26}\label{18.26}
 \]</div>
 <p>它衡量了两个字符串 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span> 的相似性。举个例子，这个可以用到支持向量机中，将字符串划分到不同的蛋白质类。</p>
-<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\cal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配。事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> \eqref{18.26}，而不用实际计算单个向量。这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>。</p>
+<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\mathcal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配。事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> \eqref{18.26}，而不用实际计算单个向量。这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>。</p>
 <p>数据中包含两个类别的 1708 个蛋白质——阴性 (1663) 和阳性 (45)。上面这两个该数据集中的例子，称为 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span>，这两条字符串中已经标出 LQE 的子序列。可能存在 <span class="math notranslate nohighlight">\(20^3\)</span> 种子序列，所以 <span class="math notranslate nohighlight">\(\Phi_3(x)\)</span> 是一个长度为 <span class="math notranslate nohighlight">\(8000\)</span> 的向量。对于这个例子，<span class="math notranslate nohighlight">\(\phi_{LQE}(x_1)=1,\phi_{LQE}(x_2)=2\)</span>。</p>
 <p>!!! note “weiya 注：ROC curve”
 ROC 是 receiver operating characteristics 的首字母缩写，用来同时展现分类器的 specificity 和 sensitivity，横轴一般为 specificity (或 false positive rate， 其中 specificity = 1 - false positive rate)，纵轴一般为sensitivity (或 true positive rate，其中 sensitivity = true positive rate)，通过在不同的阈值下计算这两个值，就可以得到 ROC 曲线。分类器的整体表现可以由 ROC 曲线下的面积 AUC (area under the curve) 给出。</p>
@@ -1222,10 +1222,10 @@ ROC 是 receiver operating characteristics 的首字母缩写，用来同时展�
 <p>主成分也可以用内积核来计算；因为这通常很有用，所以这里给出细节。首先假设我们有中心化的数据矩阵 <span class="math notranslate nohighlight">\(\X\)</span>，并令 <span class="math notranslate nohighlight">\(\X=\U\D\V^T\)</span> 为其 SVD 分解 \eqref{18.12}。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
+    \begin{align*}
     \mathbf X &amp; = \mathbf {UDV^T}\tag{18.12}\label{18.12}\\
     &amp; = \mathbf{RV^T}\tag{18.13}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <p>则 <span class="math notranslate nohighlight">\(\Z=\U\D\)</span> 为主成分变量的矩阵（见 <span class="xref myst">14.5.1 节</span>）。但如果 <span class="math notranslate nohighlight">\(\K=\X\X^T\)</span>，则有 <span class="math notranslate nohighlight">\(\K=\U\D^2\U^T\)</span>，因此我们可以从 <span class="math notranslate nohighlight">\(\K\)</span> 的特征分解计算出 <span class="math notranslate nohighlight">\(\Z\)</span>。如果 <span class="math notranslate nohighlight">\(\X\)</span> 没有中心化，则可以用 <span class="math notranslate nohighlight">\(\tilde \X = (\I-\M)\X\)</span> 来中心化，其中 <span class="math notranslate nohighlight">\(\M=\frac 1N\1\1^T\)</span> 是均值算子。因此我们可以根据未中心化的内积矩阵计算 <strong>二次中心化 (double centered)</strong> 核 <span class="math notranslate nohighlight">\((\I-\M)\K(\I-\M)\)</span> 的特征向量来求主成分。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">练习 18.15</a> 进一步讨论了这一点，并且 <span class="xref myst">14.5.4 节</span>讨论了一般核时 <strong>kernel PCA</strong> 的细节，比如用于 SVMs 中的 <strong>径向核 (radial kernel)</strong>。</p>
 <p>!!! info “weiya 注：Ex. 18.15”

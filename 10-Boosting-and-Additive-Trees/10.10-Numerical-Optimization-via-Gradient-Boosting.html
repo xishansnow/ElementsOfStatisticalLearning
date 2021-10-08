@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1245,17 +1245,17 @@ $<span class="math notranslate nohighlight">\(
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
-    L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\cal G_k)\log p_k(x)\\
-    &amp;=-\sum\limits_{k=1}^KI(y={\cal G_k})f_k(x)+\log \left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
+    L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\mathcal G_k)\log p_k(x)\\
+    &amp;=-\sum\limits_{k=1}^KI(y={\mathcal G_k})f_k(x)+\log \left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
     \end{align*}
     \)</span>$</p>
 <p>并且在每次迭代过程中构造 <span class="math notranslate nohighlight">\(K\)</span> 棵最小二乘树。每棵树 <span class="math notranslate nohighlight">\(T_{km}\)</span> 是对各自负梯度向量 <span class="math notranslate nohighlight">\(g_{km}\)</span> 的拟合，</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
--g_{ikm} &amp;= \Big[\frac{\partial L(y_i, f_1(x_i),\ldots, f_K(x_i))}{\partial f_k(x_i)}\Big]_{\mathbf f(x_i)=\mathbf f_{m-1}(x_i)}\notag\\
-&amp;=I(y_i={\cal G_k})-p_k(x_i)\tag{10.38}\label{10.38}
-\end{align}
+\begin{align*}
+-g_{ikm} &amp;= \Big[\frac{\partial L(y_i, f_1(x_i),\ldots, f_K(x_i))}{\partial f_k(x_i)}\Big]_{\mathbf f(x_i)=\mathbf f_{m-1}(x_i)}\\
+&amp;=I(y_i={\mathcal G_k})-p_k(x_i)\tag{10.38}\label{10.38}
+\end{align*}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(p_k(x)\)</span> 由 \eqref{10.21} 给出。尽管在每次迭代时，分别构造 <span class="math notranslate nohighlight">\(K\)</span> 棵树，但是它们通过式 \eqref{10.21} 关联起来。</p>
 <p>!!! note “weiya 注：Recall”
@@ -1297,7 +1297,7 @@ $<span class="math notranslate nohighlight">\(
 <p>用于分类的算法是类似的。第 <span class="math notranslate nohighlight">\(2(a)\)</span>-<span class="math notranslate nohighlight">\((d)\)</span> 行每次迭代时重复 <span class="math notranslate nohighlight">\(K\)</span> 次，每次对每个类用 \eqref{10.38} 计算负梯度。第 3 行的结果是 <span class="math notranslate nohighlight">\(K\)</span> 个不同的树的展开 <span class="math notranslate nohighlight">\(f_{kM}(x), k=1,2,\ldots, K\)</span>。这通过 \eqref{10.21} 得到概率或者像 \eqref{10.20} 一样做分类。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    G(x)={\cal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
+    G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
     \)</span>$</p>
 <p>细节在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/76">练习 10.9</a>中给出，两个基本的调整参数为迭代次数 <span class="math notranslate nohighlight">\(M\)</span> 和每个组分树的大小 <span class="math notranslate nohighlight">\(J_m,m=1,2\ldots,M\)</span>.</p>
 <p>这个算法原始实现称为 MART，指的是“<strong>多重可加回归树(multiple additive regression trees)</strong>”。这章中很多图是用 MART 得到的。这里描述的<strong>gradient boosting</strong> 在 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言的 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包中有实现(Ridgeway, 1999<a class="footnote-reference brackets" href="#id6" id="id4">1</a>, “Gradient Boosted Models”)，可以免费使用。<span class="xref myst">10.14.2 节</span>中用了 <code class="docutils literal notranslate"><span class="pre">gbm</span></code> 包，在<span class="xref myst">第 16 章</span>和<span class="xref myst">第 15 章</span>有详细介绍。另外，还有个 boosting 算法的 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言实现是 <code class="docutils literal notranslate"><span class="pre">mboost</span></code>(Hothorn and Bühlmann, 2006<a class="footnote-reference brackets" href="#id7" id="id5">2</a>)。有个 gradient boosting/MART 的商业实现称为 TreeNet (Salford Systems, Inc.)</p>

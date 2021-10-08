@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.12 条件测试误差或期望测试误差？ &#8212; 统计学习精要(中文)</title>
+    <title>7.12 “条件测试误差”还是“测试误差的期望”？ &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1148,26 +1148,29 @@
               <div>
                 
   <div class="section" id="id1">
-<h1>7.12 条件测试误差或期望测试误差？<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>7.12 “条件测试误差”还是“测试误差的期望”？<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>图 7.14 和 7.15 检验了交叉验证是否能很好地估计 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span> 的问题，其中 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span> 表示<strong>给定训练集 <span class="math notranslate nohighlight">\(\cal T\)</span> 上的误差</strong><!--（228页的式（7.15））-->，它与<strong>期望预测误差</strong>相对。</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    \Err_{\cal T} = \mathrm E_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\cal T}]\tag{7.15}
-    \)</span>$</p>
+<p>图 7.14 和 7.15 检验了交叉验证是否能很好地估计 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 的问题，其中 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 表示<strong>给定训练集 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 上的误差</strong><!--（228页的式（7.15））-->，它与<strong>期望预测误差</strong>相对。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{Err}_{\mathcal{T}} = \mathbb{E}_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\mathcal{T}}]\tag{7.15}
+\]</div>
+</div>
 <p><img alt="" src="../_images/fig7.14.png" /></p>
 <blockquote>
-<div><p>图 7.14. 从图 7.3 的右上图得到的 100 个模拟值的条件预测误差 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span>，10 折交叉验证，以及舍一交叉验证的曲线。红色粗线为期望预测误差 <span class="math notranslate nohighlight">\(\Err\)</span>，而黑色粗线为期望 CV 曲线 <span class="math notranslate nohighlight">\(\E_{\cal T}CV_{10}\)</span> 和 <span class="math notranslate nohighlight">\(\E_{\cal T}CV_N\)</span>。右下图显示了 CV 曲线与条件误差的绝对偏差的期望 <span class="math notranslate nohighlight">\(\E_{\cal T}\vert CV_k-\Err_{\cal T}\vert\)</span>，<span class="math notranslate nohighlight">\(K=10\)</span>（蓝色）以及 <span class="math notranslate nohighlight">\(K=N\)</span>（绿色），并且也显示了 CV 曲线与期望误差之间绝对偏差的期望 <span class="math notranslate nohighlight">\(\E_{\cal T}\vert CV_{10}-\Err\vert\)</span>（橘黄色）。</p>
+<div><p>图 7.14. 从图 7.3 的右上图得到的 100 个模拟值的条件预测误差 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span>，10 折交叉验证，以及舍一交叉验证的曲线。红色粗线为期望预测误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span>，而黑色粗线为期望 CV 曲线 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}CV_{10}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}CV_N\)</span>。右下图显示了 CV 曲线与条件误差的绝对偏差的期望 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}\vert CV_k-\mathbb{Err}_{\mathcal{T}}\vert\)</span>，<span class="math notranslate nohighlight">\(K=10\)</span>（蓝色）以及 <span class="math notranslate nohighlight">\(K=N\)</span>（绿色），并且也显示了 CV 曲线与期望误差之间绝对偏差的期望 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}\vert CV_{10}-\mathbb{Err}\vert\)</span>（橘黄色）。</p>
 </div></blockquote>
-<p>对于图 7.3 中右上图的 “reg/linear” 的设定中产生的 100 个训练集中的每一个训练集，图 7.14 展示了条件误差 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span> 作为子集大小的函数图象（左上图）。接下来两张图显示了 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证和 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证，后者也称作<strong>舍一法 (LOO)</strong>。每张图的红色粗线表示<strong>期望（预测）误差</strong> <span class="math notranslate nohighlight">\(\Err\)</span>，而黑色粗线表示<strong>期望交叉验证</strong>。右下图则显示了交叉验证近似<strong>条件误差</strong>和<strong>期望误差</strong>的程度。</p>
-<p>可能会认为 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证能很好地近似 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span>，因为它几乎用了整个训练样本来拟合新的测试点。另一方面，可能会期望 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证会很好地估计 <span class="math notranslate nohighlight">\(\Err\)</span>，因为它平均了不同的训练集。从图中看到估计 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span> 时 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证比 <span class="math notranslate nohighlight">\(N\)</span> 折做得更好，对 <span class="math notranslate nohighlight">\(\Err\)</span> 的估计甚至更好。确实如此，两条黑色曲线与红色曲线的相似性表明两个 CV 曲线对 <span class="math notranslate nohighlight">\(\Err\)</span> 近似无偏，且 <span class="math notranslate nohighlight">\(10\)</span> 折有更小的方差。类似的趋势由 Efron (1983)<a class="footnote-reference brackets" href="#id3" id="id2">1</a> 给出。</p>
+<p>对于图 7.3 中右上图的 “reg/linear” 的设定中产生的 100 个训练集中的每一个训练集，图 7.14 展示了条件误差 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 作为子集大小的函数图象（左上图）。接下来两张图显示了 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证和 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证，后者也称作<strong>舍一法 (LOO)</strong>。每张图的红色粗线表示<strong>期望（预测）误差</strong> <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span>，而黑色粗线表示<strong>期望交叉验证</strong>。右下图则显示了交叉验证近似<strong>条件误差</strong>和<strong>期望误差</strong>的程度。</p>
+<p>可能会认为 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证能很好地近似 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span>，因为它几乎用了整个训练样本来拟合新的测试点。另一方面，可能会期望 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证会很好地估计 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span>，因为它平均了不同的训练集。从图中看到估计 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 时 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证比 <span class="math notranslate nohighlight">\(N\)</span> 折做得更好，对 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 的估计甚至更好。确实如此，两条黑色曲线与红色曲线的相似性表明两个 CV 曲线对 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 近似无偏，且 <span class="math notranslate nohighlight">\(10\)</span> 折有更小的方差。类似的趋势由 Efron (1983)<a class="footnote-reference brackets" href="#id3" id="id2">1</a> 给出。</p>
 <p><img alt="" src="../_images/fig7.15.png" /></p>
 <blockquote>
-<div><p>图 7.15.  对 100 个训练集的每个 CV 估计误差关于真实条件误差的图象，模拟的设定与图 7.3 的右上图相同。前三张图对应不同的子集大小 <span class="math notranslate nohighlight">\(p\)</span>，且水平直线和垂直直线是在 <span class="math notranslate nohighlight">\(\Err(p)\)</span> 处画的。尽管看起来这些图象没有多大的关联，但是我们从右下图看到大部分是负相关的。</p>
+<div><p>图 7.15.  对 100 个训练集的每个 CV 估计误差关于真实条件误差的图象，模拟的设定与图 7.3 的右上图相同。前三张图对应不同的子集大小 <span class="math notranslate nohighlight">\(p\)</span>，且水平直线和垂直直线是在 <span class="math notranslate nohighlight">\(\mathbb{Err}(p)\)</span> 处画的。尽管看起来这些图象没有多大的关联，但是我们从右下图看到大部分是负相关的。</p>
 </div></blockquote>
-<p>图 7.15 显示了 100 次模拟中，10 折交叉验证和 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证对误差的估计关于真实条件误差的散点图。尽管散点图没有表明太多的相关性，但右下图表明对于大部分来说是呈负相关的，这正是之前已经观察到的神奇现象。这种负相关解释了为什么任意形式的 CV 都<strong>不能</strong>很好地估计 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span>。每张图的虚线是在 <span class="math notranslate nohighlight">\(\Err(p)\)</span> 处画的，<span class="math notranslate nohighlight">\(\Err(p)\)</span> 是最优子集大小 <span class="math notranslate nohighlight">\(p\)</span> 时的期望误差。我们再一次看到两种形式的 CV 对于期望误差是近似无偏的，但是对于不同训练集的测试误差的方差是相当不同的。</p>
+<p>图 7.15 显示了 100 次模拟中，10 折交叉验证和 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证对误差的估计关于真实条件误差的散点图。尽管散点图没有表明太多的相关性，但右下图表明对于大部分来说是呈负相关的，这正是之前已经观察到的神奇现象。这种负相关解释了为什么任意形式的 CV 都<strong>不能</strong>很好地估计 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span>。每张图的虚线是在 <span class="math notranslate nohighlight">\(\mathbb{Err}(p)\)</span> 处画的，<span class="math notranslate nohighlight">\(\mathbb{Err}(p)\)</span> 是最优子集大小 <span class="math notranslate nohighlight">\(p\)</span> 时的期望误差。我们再一次看到两种形式的 CV 对于期望误差是近似无偏的，但是对于不同训练集的测试误差的方差是相当不同的。</p>
 <p>在 7.3 的四种实验条件下，“reg/linear” 条件表现出实际测试误差与预测测试误差最高的相关性。这个现象也发生在误差的自助法估计中，而且我们猜测，对条件预测误差的其他估计都成立。</p>
-<p>我们得出结论，仅仅给出从与训练集相同的数据时，一般情况下得到特定训练集的测试误差的估计不是很容易的。相反地，交叉验证和相关的方法可能可以对期望误差 <span class="math notranslate nohighlight">\(\Err\)</span> 给出合理的估计。</p>
+<p>我们得出结论，仅仅给出从与训练集相同的数据时，一般情况下得到特定训练集的测试误差的估计不是很容易的。相反地，交叉验证和相关的方法可能可以对期望误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 给出合理的估计。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

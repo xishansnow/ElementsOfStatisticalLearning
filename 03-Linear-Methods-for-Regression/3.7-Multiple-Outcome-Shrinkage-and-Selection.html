@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1194,7 +1194,7 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}\label{3.66}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\hat\Y^{rr}(m) &amp;= \X(\X^T\X)^{-1}\X^T\Y\U_m\U_m^-\notag\\
+\hat\Y^{rr}(m) &amp;= \X(\X^T\X)^{-1}\X^T\Y\U_m\U_m^-\\
 &amp;=\H\Y\P_m\,,\tag{3.71}
 \end{align*}
 \end{split}\]</div>
@@ -1225,10 +1225,10 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}\label{3.66}
 <p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = \X(\X^T\X+\lambda\I)^{-1}\X^T\)</span> 是岭回归收缩算子，和 \eqref{3.46} 一样。他们的文章及其讨论有更多细节。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
-    \mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\notag\\
+    \begin{align*}
+    \mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\\
     &amp;=\mathbf{UU^Ty}\tag{3.46}\label{3.46}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

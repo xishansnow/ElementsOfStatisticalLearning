@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1362,7 +1362,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="id7">
 <h2>组合算法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>最受欢迎的聚类算法不考虑描述数据的概率模型而直接将每个观测划分为一类或一簇。每个观测用整数 <span class="math notranslate nohighlight">\(i\in\\{1,\cdots,N\\}\)</span> 来唯一标号。假定预先确定的类别个数 <span class="math notranslate nohighlight">\(K &lt; N\)</span>，并且每个编号为 <span class="math notranslate nohighlight">\(k\in\\{1,\ldots,K\\}\)</span>。每个观测仅仅分配到一个类中。这些分配可以表示为多对一映射，或者编码器 <span class="math notranslate nohighlight">\(k = C(i)\)</span>，将第 <span class="math notranslate nohighlight">\(i\)</span> 个观测分配到第 <span class="math notranslate nohighlight">\(k\)</span> 个类。基于每个观测对的不相似性 <span class="math notranslate nohighlight">\(d(x_i,x_{i'})\)</span> 来寻找特定的编码器 <span class="math notranslate nohighlight">\(\{C^\*(i)\}\)</span> 来实现要求的目标（细节在下面）。一般地，编码器 <span class="math notranslate nohighlight">\(C(i)\)</span> 通过给出每个观测 <span class="math notranslate nohighlight">\(i\)</span> 的值（类别分配）来显示描述。因此，过程的“参数”是 <span class="math notranslate nohighlight">\(N\)</span> 个观测中每个的类别分配。调整这些来最小化表征聚类目标没有达到的程度的“损失”函数。</p>
+<p>最受欢迎的聚类算法不考虑描述数据的概率模型而直接将每个观测划分为一类或一簇。每个观测用整数 <span class="math notranslate nohighlight">\(i\in\\{1,\cdots,N\\}\)</span> 来唯一标号。假定预先确定的类别个数 <span class="math notranslate nohighlight">\(K &lt; N\)</span>，并且每个编号为 <span class="math notranslate nohighlight">\(k\in\\{1,\ldots,K\\}\)</span>。每个观测仅仅分配到一个类中。这些分配可以表示为多对一映射，或者编码器 <span class="math notranslate nohighlight">\(k = C(i)\)</span>，将第 <span class="math notranslate nohighlight">\(i\)</span> 个观测分配到第 <span class="math notranslate nohighlight">\(k\)</span> 个类。基于每个观测对的不相似性 <span class="math notranslate nohighlight">\(d(x_i,x_{i'})\)</span> 来寻找特定的编码器 <span class="math notranslate nohighlight">\(\{C^*(i)\}\)</span> 来实现要求的目标（细节在下面）。一般地，编码器 <span class="math notranslate nohighlight">\(C(i)\)</span> 通过给出每个观测 <span class="math notranslate nohighlight">\(i\)</span> 的值（类别分配）来显示描述。因此，过程的“参数”是 <span class="math notranslate nohighlight">\(N\)</span> 个观测中每个的类别分配。调整这些来最小化表征聚类目标没有达到的程度的“损失”函数。</p>
 <p>一种方式是直接确定数学上的损失函数并且试图通过一些组合优化算法来最小化。因为目标是将离得近的点分到同一类，一个自然的损失（或“能量”）函数会是
 $<span class="math notranslate nohighlight">\(
 W(C)=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}d(x_i,x_{i'})\tag{14.28}\label{14.28}
@@ -1402,11 +1402,11 @@ d(x_i,x_{i'})=\sum\limits_{j=1}^p(x_{ij}-x_{i'j})^2=\Vert x_i-x_{i'}\Vert^2
 这个可以很容易计算。原问题及解答参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">Issues 42: Ex. 14.1</a></p>
 <p>类间点散 \eqref{14.28} 可以写成
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a7e1c56-9f6e-4bc8-81f0-cc56200e3d3d">
-<span class="eqno">(30)<a class="headerlink" href="#equation-0a7e1c56-9f6e-4bc8-81f0-cc56200e3d3d" title="Permalink to this equation">¶</a></span>\[\begin{align}
-W(C)&amp;=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}\Vert x_i-x_{i'}\Vert^2\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+W(C)&amp;=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}\Vert x_i-x_{i'}\Vert^2\\
 &amp;=\sum\limits_{k=1}^KN_k\sum\limits_{C(i)=k}\Vert x_i-\bar x_k\Vert^2\qquad \tag{14.31}\label{14.31}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}
 其中$\bar x_k=(\bar x_{1k},\ldots,\bar x_{pk})$是与第 $k$ 个类的均值向量，并且 $N_k=\sum_{i=1}^NI(C(i)=k)$。\\!!! note &quot;weiya 注：\eqref{14.31} 的推导&quot;
@@ -1515,8 +1515,8 @@ C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}\label{14.37}
 <p>为了应用 K-means 或者 K-medoids，需要选择簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 以及初始化。后者可以通过确定初始的簇中心的集合 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span> 或者 <span class="math notranslate nohighlight">\(\\{i_1,\ldots,i_K\\}\)</span>. 通常确定簇重心是很方便的，可以采用随机选择或者基于向前逐步划分的特定策略。在每一步，给定上一步选择好的簇中心 <span class="math notranslate nohighlight">\(i_1,\ldots,i_{k-1}\)</span> 选择中心 <span class="math notranslate nohighlight">\(i_k\)</span>　来最小化 \eqref{14.33} 或者 \eqref{14.38}. 重复 <span class="math notranslate nohighlight">\(K\)</span> 步，因此得到 <span class="math notranslate nohighlight">\(K\)</span> 个初始化中心，可以用它们开始优化算法。</p>
 <p>簇的个数 <span class="math notranslate nohighlight">\(K\)</span> 取决于目标。对于数据分割，<span class="math notranslate nohighlight">\(K\)</span> 通常在问题中有定义。举个例子，某公司可能需要招 <span class="math notranslate nohighlight">\(K\)</span> 个销售员，且目标是将用户数据库划分 <span class="math notranslate nohighlight">\(K\)</span> 份，每个销售员负责一份，划分要使得每一份的销售员尽可能相似。然而，聚类分析通常用来给出某个描述性统计量来确定构成数据库的观测值落到不同簇的程度。这里这样的簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 是未知的，并且需要像划分本身一样从数据中估计得到。</p>
 <p>用来估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的基于数据的方法一般需要研究类内不相似性 <span class="math notranslate nohighlight">\(W_K\)</span> 作为簇个数 <span class="math notranslate nohighlight">\(K\)</span> 的函数。对于 <span class="math notranslate nohighlight">\(K\in \\{1,2,\ldots,K_{\max}\\}\)</span> 有单独的解。对应的值 <span class="math notranslate nohighlight">\(\\{W_1,\ldots,W_\max\\}\)</span> 通常随着 <span class="math notranslate nohighlight">\(K\)</span> 的增长而降低。当在独立的测试集上测试时，结果也是这种情形，因为更多的簇中心会趋向于将特征空间填得很密，因此对于所有的数据点会比较近。因此交叉验证技巧，在非监督学习的模型选择很有用，但是无法用到这里。</p>
-<p>这种方法背后的直觉是，如果实际中有 <span class="math notranslate nohighlight">\(K^*\)</span> 个不同的数据簇（通过不相似性度量来定义），则对于 <span class="math notranslate nohighlight">\(K &lt; K^\*\)</span>　簇时，每个簇包含真实簇的部分子集。也就是，这个解不会将聚在一块的观测点划分到不同的估计的簇中。在这种情况下，解的准则值趋向于随着每一次指定的簇的个数的增加而显著降低，<span class="math notranslate nohighlight">\(W_{K+1} &lt;&lt; W_K\)</span>，因为不同的聚集块逐步划分到不同的簇中。当 <span class="math notranslate nohighlight">\(K &gt; K^\*\)</span>，其中一个簇一定至少将真实的某个簇分成了两个子簇。这趋向于随着 <span class="math notranslate nohighlight">\(K\)</span>　进一步增大，准则的降低量变得更小。将真实的簇（其中观测值彼此很接近）分成两部分，所带来的准则降低小于将两个分离的簇划分开所带来的准则降低。</p>
-<p>在这种情况下，准则值的差值 <span class="math notranslate nohighlight">\(W_K-W_{K+1}\)</span> 会在 <span class="math notranslate nohighlight">\(K=K^\*\)</span> 处有一个显著的降低。也就是，<span class="math notranslate nohighlight">\(\\{W_K-W_{K+1}\mid K&lt; K^\*\\} &gt;&gt; \\{W_K-W_{K+1}\mid K \ge K^\*\\}\)</span>。<span class="math notranslate nohighlight">\(K^\*\)</span> 的一个估计 <span class="math notranslate nohighlight">\(\hat K^*\)</span> 可以通过找出 <span class="math notranslate nohighlight">\(W_K\)</span> 关于 <span class="math notranslate nohighlight">\(K\)</span> 的曲线中的拐弯来得到。和距离过程的其他方面一样，这个方法有点启发式。</p>
+<p>这种方法背后的直觉是，如果实际中有 <span class="math notranslate nohighlight">\(K^*\)</span> 个不同的数据簇（通过不相似性度量来定义），则对于 <span class="math notranslate nohighlight">\(K &lt; K^*\)</span>　簇时，每个簇包含真实簇的部分子集。也就是，这个解不会将聚在一块的观测点划分到不同的估计的簇中。在这种情况下，解的准则值趋向于随着每一次指定的簇的个数的增加而显著降低，<span class="math notranslate nohighlight">\(W_{K+1} &lt;&lt; W_K\)</span>，因为不同的聚集块逐步划分到不同的簇中。当 <span class="math notranslate nohighlight">\(K &gt; K^*\)</span>，其中一个簇一定至少将真实的某个簇分成了两个子簇。这趋向于随着 <span class="math notranslate nohighlight">\(K\)</span>　进一步增大，准则的降低量变得更小。将真实的簇（其中观测值彼此很接近）分成两部分，所带来的准则降低小于将两个分离的簇划分开所带来的准则降低。</p>
+<p>在这种情况下，准则值的差值 <span class="math notranslate nohighlight">\(W_K-W_{K+1}\)</span> 会在 <span class="math notranslate nohighlight">\(K=K^*\)</span> 处有一个显著的降低。也就是，<span class="math notranslate nohighlight">\(\\{W_K-W_{K+1}\mid K&lt; K^*\\} &gt;&gt; \\{W_K-W_{K+1}\mid K \ge K^*\\}\)</span>。<span class="math notranslate nohighlight">\(K^*\)</span> 的一个估计 <span class="math notranslate nohighlight">\(\hat K^*\)</span> 可以通过找出 <span class="math notranslate nohighlight">\(W_K\)</span> 关于 <span class="math notranslate nohighlight">\(K\)</span> 的曲线中的拐弯来得到。和距离过程的其他方面一样，这个方法有点启发式。</p>
 <p>最近提出的 Gap Statistic 比较曲线 <span class="math notranslate nohighlight">\(\log W_K\)</span> 和从包含数据的长方形区域中均匀采样得到的曲线 (Tibshirani et al. 2001b<a class="footnote-reference brackets" href="#id32" id="id18">6</a>)。它估计最优的簇的个数为两条曲线的差值最大的地方。本质上，这是一种自动化确定上文所说的拐弯点的方法。当数据落在一个簇里面时，这个方法也趋向于估计最优簇的个数为 1。这一点大部分的（跟该方法比较的）方法都失效了。</p>
 <p><img alt="" src="../_images/fig14.11.png" /></p>
 <p>图 14.11 展示了 Gap Statistic 应用于图 14.4 的模拟数据时的结果。左图展示了 <span class="math notranslate nohighlight">\(K=1,\ldots,8\)</span> 时 <span class="math notranslate nohighlight">\(\log W_K\)</span> 以及基于 20 次从均匀分布中模拟的数据得到的 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的期望值。右图展示了差值曲线，也就是期望的曲线减去观测的曲线。图中也展示了长度为 <span class="math notranslate nohighlight">\(s_k'=s_k\sqrt{1+1/20}\)</span> 的一半的误差区间，其中 <span class="math notranslate nohighlight">\(s_K\)</span> 是 20 次重复实验 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的标准差。差值曲线在 <span class="math notranslate nohighlight">\(K=2\)</span> 处达到最大。如果 <span class="math notranslate nohighlight">\(G(K)\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 个簇时的差值，则估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的正式规则为</p>

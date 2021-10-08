@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1197,13 +1197,13 @@ $<span class="math notranslate nohighlight">\(
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/115">Issue 115: Ex. 5.18</a>。</p>
 <p>symmlet-<span class="math notranslate nohighlight">\(p\)</span> 尺度函数是众多小波生成器族中的一个。操作类似 Haar 基：</p>
 <ul class="simple">
-<li><p>如果 <span class="math notranslate nohighlight">\(V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi(x-k)\)</span> 展开，则 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{1,k}(x)=\sqrt{2}\phi(2x-k)\)</span> 展开，且对于某些过滤系数 <span class="math notranslate nohighlight">\(h(k)\)</span>，有 <span class="math notranslate nohighlight">\(\phi(x)=\sum_{k\in\cal Z}h(k)\phi_{1,k}(x)\)</span>。</p></li>
-<li><p><span class="math notranslate nohighlight">\(W_0\)</span> 由 <span class="math notranslate nohighlight">\(\psi(x) =\sum_{k\in\cal Z}g(k)\phi_{1,k}(x)\)</span> 张成，其中过滤参数为 <span class="math notranslate nohighlight">\(g(k)=(-1)^{1-k}h(1-k)\)</span>。</p></li>
+<li><p>如果 <span class="math notranslate nohighlight">\(V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi(x-k)\)</span> 展开，则 <span class="math notranslate nohighlight">\(V_1\supset V_0\)</span> 由 <span class="math notranslate nohighlight">\(\phi_{1,k}(x)=\sqrt{2}\phi(2x-k)\)</span> 展开，且对于某些过滤系数 <span class="math notranslate nohighlight">\(h(k)\)</span>，有 <span class="math notranslate nohighlight">\(\phi(x)=\sum_{k\in\mathcal Z}h(k)\phi_{1,k}(x)\)</span>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(W_0\)</span> 由 <span class="math notranslate nohighlight">\(\psi(x) =\sum_{k\in\mathcal Z}g(k)\phi_{1,k}(x)\)</span> 张成，其中过滤参数为 <span class="math notranslate nohighlight">\(g(k)=(-1)^{1-k}h(1-k)\)</span>。</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
 <h2>自适应小波滤波<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>当数据在均匀格子上取值时，小波非常有用，比如数字化信号、图象，或者时间序列。我们将要关注一维的情形，假设总共有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个格子点是很方便的。假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个等距间隔观测上取值的 <span class="math notranslate nohighlight">\(N\times N\)</span> 正交小波基矩阵。然后 <span class="math notranslate nohighlight">\(\y^\* = \W^T\y\)</span> 被称作 <span class="math notranslate nohighlight">\(\y\)</span> 的 <strong>小波变换 (wavelet transform)</strong> （这也是全最小二乘系数）。自适应小波拟合的流行方法被称作 SURE 收缩 (Stein Unbiased Risk Estimation, Donoho and Johnstone (1994)<a class="footnote-reference brackets" href="#id5" id="id4">1</a>)。我们以下面的准则开始</p>
+<p>当数据在均匀格子上取值时，小波非常有用，比如数字化信号、图象，或者时间序列。我们将要关注一维的情形，假设总共有 <span class="math notranslate nohighlight">\(N=2^J\)</span> 个格子点是很方便的。假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\W\)</span> 是在 <span class="math notranslate nohighlight">\(N\)</span> 个等距间隔观测上取值的 <span class="math notranslate nohighlight">\(N\times N\)</span> 正交小波基矩阵。然后 <span class="math notranslate nohighlight">\(\y^* = \W^T\y\)</span> 被称作 <span class="math notranslate nohighlight">\(\y\)</span> 的 <strong>小波变换 (wavelet transform)</strong> （这也是全最小二乘系数）。自适应小波拟合的流行方法被称作 SURE 收缩 (Stein Unbiased Risk Estimation, Donoho and Johnstone (1994)<a class="footnote-reference brackets" href="#id5" id="id4">1</a>)。我们以下面的准则开始</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\boldsymbol\theta}{\min}\Vert \y-\W\boldsymbol\theta\Vert^2_2+2\lambda\Vert \boldsymbol\theta\Vert_1\tag{5.68}\label{5.68}
@@ -1234,7 +1234,7 @@ $<span class="math notranslate nohighlight">\(
 <p>更一般地，光滑样条通过加上光滑度来实现原始信号的压缩，而小波是加上稀疏度。</p>
 <p><img alt="" src="../_images/fig5.19.png" /></p>
 <p>图 5.19 在两个本质不同的数据集上比较了小波拟合 （采用 SURE 收缩） 和光滑样条拟合（采用交叉验证）。对于上图中的 NMR 数据，光滑样条到处引入 detail 来捕捉 isolated spike 的细节；小波拟合很好地局部化了 spike。在下图中，真实函数是光滑的，噪声相对较大、小波拟合引入了额外的不必要的 wiggle——这是为了额外的自适应性付出的代价。</p>
-<p>小波变换不是通过 <span class="math notranslate nohighlight">\(\y^\*=\W\y\)</span> 中的矩阵相乘来进行。事实上，采用更智能的 <strong>金字塔算法 (pyramidal schemes)</strong>, <span class="math notranslate nohighlight">\(\y^\*\)</span> 会用 <span class="math notranslate nohighlight">\(O(N)\)</span> 的计算量完成，这甚至比 <strong>快速傅里叶变换 (FFT)</strong> 的 <span class="math notranslate nohighlight">\(N\log N\)</span> 还要快。尽管一般情形下的构造超出了本书的范围，但可以简单证明 Haar 基时的情形（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">练习 5.19</a>）。同样地，逆小波变换 <span class="math notranslate nohighlight">\(\W\hat{\theta}\)</span> 也是 <span class="math notranslate nohighlight">\(O(N)\)</span> 的。</p>
+<p>小波变换不是通过 <span class="math notranslate nohighlight">\(\y^*=\W\y\)</span> 中的矩阵相乘来进行。事实上，采用更智能的 <strong>金字塔算法 (pyramidal schemes)</strong>, <span class="math notranslate nohighlight">\(\y^*\)</span> 会用 <span class="math notranslate nohighlight">\(O(N)\)</span> 的计算量完成，这甚至比 <strong>快速傅里叶变换 (FFT)</strong> 的 <span class="math notranslate nohighlight">\(N\log N\)</span> 还要快。尽管一般情形下的构造超出了本书的范围，但可以简单证明 Haar 基时的情形（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">练习 5.19</a>）。同样地，逆小波变换 <span class="math notranslate nohighlight">\(\W\hat{\theta}\)</span> 也是 <span class="math notranslate nohighlight">\(O(N)\)</span> 的。</p>
 <p>!!! info “weiya 注：Ex. 5.19”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">Issue 116: Ex. 5.19</a>。</p>
 <p>这里只是对这个庞大且在发展的领域作非常简单的介绍。在小波上建立了非常大量的数学和计算基础。现代图象压缩通常采用二维小波表示来实现。</p>

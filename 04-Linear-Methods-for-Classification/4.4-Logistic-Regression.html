@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1263,10 +1263,10 @@ $<span class="math notranslate nohighlight">\(
 <span class="math notranslate nohighlight">\(\mathbf X=[x'_1,x'_2,\ldots,x'_N]'\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \dfrac{\partial \ell(\beta)}{\partial \beta}&amp;=\mathbf{X^T(y-p)}\tag{4.24}\label{4.24}\\
 \dfrac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T}&amp;=-\mathbf{X^TWX}\tag{4.25}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>牛顿迭代为
 $<span class="math notranslate nohighlight">\(
@@ -1350,7 +1350,7 @@ $<span class="math notranslate nohighlight">\(
 <p>这一般化了 <a class="reference external" href="/03-Linear-Methods-for-Regression/3.4-Shrinkage-Methods/index.html#mjx-eqn-3.58">3.4.4 节</a> 中的 \eqref{3.58}；活跃变量再与残差的一般化相关性结合在一起。</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
-    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\cal B}\tag{3.58}\label{3.58}
+    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\mathcal B}\tag{3.58}\label{3.58}
     \)</span>$</p>
 <p>路径算法（比如 lasso 的 LAR 算法）变得更加困难，因为系数曲线是逐段光滑而不是线性的。然而，可以通过二次逼近来实现。</p>
 <p>图 4.13 显示了 <a class="reference external" href="4.4-Logistic-Regression/index.html#_2">4.4.2 节</a>南非心脏病数据的 <span class="math notranslate nohighlight">\(L_1\)</span> 正则化路径。这是通过 R 语言<code class="docutils literal notranslate"><span class="pre">glmpath</span></code>包 (Park and Hastie, 2007<a class="footnote-reference brackets" href="#id15" id="id9">4</a>) 实现的，运用了凸优化的 predictor-corrector 方法确定了 <span class="math notranslate nohighlight">\(\lambda\)</span> 在哪个非零活跃集值发生改变（图中的垂直线）。这里直线看似线性的，但在其它的例子中曲率将会更加明显。</p>
@@ -1367,10 +1367,10 @@ $<span class="math notranslate nohighlight">\(
 <p>在 <span class="xref myst">4.3 节</span>我们发现类别 <span class="math notranslate nohighlight">\(k\)</span> 和 <span class="math notranslate nohighlight">\(K\)</span> 类关于 <span class="math notranslate nohighlight">\(x\)</span> 线性函数的后验概率 odds 的对数 \eqref{4.9}：</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
-    &amp;\log\frac{\Pr(G=k\mid X=x)}{\Pr(G=\ell\mid X=x)}\notag\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\notag\\
-    =&amp;\log\frac{\pi_k}{\pi_\ell}-\frac{1}{2}(\mu_k+\mu_\ell)^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)+x^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)\notag
-    \end{align}\tag{4.9}\label{4.9}
+    \begin{align*}
+    &amp;\log\frac{\Pr(G=k\mid X=x)}{\Pr(G=\ell\mid X=x)}\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\\
+    =&amp;\log\frac{\pi_k}{\pi_\ell}-\frac{1}{2}(\mu_k+\mu_\ell)^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)+x^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)
+    \end{align*}\tag{4.9}\label{4.9}
     \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

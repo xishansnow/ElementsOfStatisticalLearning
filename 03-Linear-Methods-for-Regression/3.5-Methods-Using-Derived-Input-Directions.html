@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1222,19 +1222,19 @@ $<span class="math notranslate nohighlight">\(
 <p>偏最小二乘求解的是什么优化问题呢？因为它使用响应变量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 去构造它的方向，所以它解的路径是关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的非线性函数。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/103">练习 3.15</a>）偏最小二乘寻找有高方差以及和响应变量有高相关性的方向，而与之相对的主成分分析回归只重视高方差（Stone and Brooks, 1990<a class="footnote-reference brackets" href="#id6" id="id4">1</a>; Frank and Friedman, 1993<a class="footnote-reference brackets" href="#id7" id="id5">2</a>）。特别地，第 <span class="math notranslate nohighlight">\(m\)</span> 个主成分方向 <span class="math notranslate nohighlight">\(v_m\)</span> 是下面问题的解：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \max_{\alpha} &amp;\Var(\mathbf X\alpha)\\
 \st&amp;\Vert \alpha\Vert=1,\alpha^T\mathbf Sv_\ell=0,\;\ell=1,\ldots,m-1
-\end{align}
+\end{align*}
 \tag{3.63}
 \end{split}\]</div>
 <p>其中，<span class="math notranslate nohighlight">\(\mathbf S\)</span> 为 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的样本协方差矩阵。<span class="math notranslate nohighlight">\(\alpha^T\mathbf Sv_\ell=0\)</span> 保证了 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf X\alpha\)</span> 与之前所有的线性组合 <span class="math notranslate nohighlight">\(\mathbf z_\ell=\mathbf v_\ell\)</span> 都不相关。第 <span class="math notranslate nohighlight">\(m\)</span> 个 PLS 方向 <span class="math notranslate nohighlight">\(\hat \varphi_m\)</span> 是下面的解：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \max_\alpha&amp; \mathrm{Corr}^2(\mathbf y,\mathbf X\alpha)\Var(\mathbf X\alpha)\\
 \st&amp; \Vert\alpha\Vert=1,\alpha^T\mathbf S\hat \varphi_\ell=0,\ell=1,\ldots,m-1
-\end{align}
+\end{align*}
 \tag{3.64}
 \end{split}\]</div>
 <p>进一步的分析揭示了，方差项趋向于占主导地位，而且因此偏最小二乘表现得很像岭回归和主成分回归。我们将在下一节讨论这些。</p>

@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1174,12 +1174,15 @@
 \mathrm{length} = -\log \Pr(\mathbf y\mid \theta,M,\mathbf X)-\log \Pr(\theta\mid M)\tag{7.44} 
 \]</div>
 <p>这是在给定输入的情况下目标值的对数似然。</p>
-<p>!!! note “weiya 注：”
-这里我理解为其实就是
-$<span class="math notranslate nohighlight">\(
-    \Pr(y,\theta\mid M, \X) = \Pr(y\mid \theta,M,\X)\Pr(\theta\mid M)\,,
-    \)</span><span class="math notranslate nohighlight">\(
-    其中 \)</span>y<span class="math notranslate nohighlight">\( 和 \)</span>\theta<span class="math notranslate nohighlight">\( 是目标值，而 \)</span>\X<span class="math notranslate nohighlight">\( 和 \)</span>M$ 都是输入。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里我理解为其实就是 :</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(y,\theta\mid M, \X) = \Pr(y\mid \theta,M,\X)\Pr(\theta\mid M)\,,
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(y\)</span> 和 <span class="math notranslate nohighlight">\(\theta\)</span> 是目标值，而 <span class="math notranslate nohighlight">\(\X\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 都是输入。</p>
+</div>
 <p>第二项是传递模型参数 <span class="math notranslate nohighlight">\(\theta\)</span> 的平均编码长度，而第一项是传递模型与真实目标值之间差异的平均编码长度。举个例子假设我们有单目标 <span class="math notranslate nohighlight">\(y\sim N(\theta,\sigma^2)\)</span>，参数为 <span class="math notranslate nohighlight">\(\theta\sim N(0,1)\)</span>，并且没有输入（为了简单）。则模型长度为
 $<span class="math notranslate nohighlight">\(
 \mathrm{length} = constant + \log\sigma + \frac{(y-\theta)^2}{2\sigma^2} + \frac{\theta^2}{2}\tag{7.45}

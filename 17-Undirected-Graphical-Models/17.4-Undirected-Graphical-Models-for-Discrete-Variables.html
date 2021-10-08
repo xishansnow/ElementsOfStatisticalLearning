@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1183,11 +1183,11 @@
 <p>另外，每个结点处的值可以 <strong>被观测到 (visible)</strong> 或者 <strong>观测不到 (hidden)</strong>。结点通常由层来构成，这类似神经网络。玻尔兹曼机对于非监督学习和监督学习都是很有用的，特别对有结构化输入数据，比如图像，但是也受到计算上的限制。图 17.6 显示了一个约束的玻尔兹曼机（后面讨论），其中一些变量是隐藏的，而且只有一些结点对是相连的。我们所有 <span class="math notranslate nohighlight">\(p\)</span> 个结点都是可见的简单情形，并且边的对 <span class="math notranslate nohighlight">\((j,k)\)</span> 取自 <span class="math notranslate nohighlight">\(E\)</span>。</p>
 <p>用 <span class="math notranslate nohighlight">\(X_j\)</span> 标记结点 <span class="math notranslate nohighlight">\(j\)</span> 处的二值变量，它们联合分布的 Ising 模型由下式给出
 $<span class="math notranslate nohighlight">\(
-p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mathbf{\Theta})\right]\text{  for  }X\in{\cal X}\tag{17.28}\label{17.28}
+p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mathbf{\Theta})\right]\text{  for  }X\in{\mathcal X}\tag{17.28}\label{17.28}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>{\cal X}=\{0,1\}^p<span class="math notranslate nohighlight">\(。和上一节的高斯模型一样，只对成对交叉项进行建模。Ising 模型是在统计力学中发展的，而且现在更一般地用来建立成对交叉的联合影响。\)</span>\Phi\mathbf{(\Theta)}<span class="math notranslate nohighlight">\( 为 **分割函数 (partition function)** 的对数，而且由下式定义
+其中 \)</span>{\mathcal X}=\{0,1\}^p<span class="math notranslate nohighlight">\(。和上一节的高斯模型一样，只对成对交叉项进行建模。Ising 模型是在统计力学中发展的，而且现在更一般地用来建立成对交叉的联合影响。\)</span>\Phi\mathbf{(\Theta)}<span class="math notranslate nohighlight">\( 为 **分割函数 (partition function)** 的对数，而且由下式定义
 \)</span><span class="math notranslate nohighlight">\(
-\Phi(\mathbf \Theta)=\log\sum\limits_{x\in\cal X}\left[\exp\left(\sum\limits_{(j,k)\in E}\theta_{jk}x_jx_k\right)\right]\tag{17.29}
+\Phi(\mathbf \Theta)=\log\sum\limits_{x\in\mathcal X}\left[\exp\left(\sum\limits_{(j,k)\in E}\theta_{jk}x_jx_k\right)\right]\tag{17.29}
 \)</span>$</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
@@ -1214,11 +1214,11 @@ $<span class="math notranslate nohighlight">\(
 <h2>当图结构已知时估计参数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>从模型中给出一些数据，我们可以怎么估计参数？假设我们有观测 <span class="math notranslate nohighlight">\(x_i=(x_{i1},x_{i2},\ldots,x_{ip})\in\\{0,1\\}^p,i=1,\ldots,N\)</span>。对数似然为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-121b4724-1eca-414a-9af0-3bba06073d32">
-<span class="eqno">(32)<a class="headerlink" href="#equation-121b4724-1eca-414a-9af0-3bba06073d32" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\ell(\mathbf\Theta)&amp;=\sum\limits_{i=1}^N\log \Pr\nolimits_{\mathbf\Theta}(X_i=x_i)\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ell(\mathbf\Theta)&amp;=\sum\limits_{i=1}^N\log \Pr\nolimits_{\mathbf\Theta}(X_i=x_i)\\
 &amp;=\sum\limits_{i=1}^N\Big[\sum\limits_{(j,k)\in E}\theta_{jk}x_{ij}x_{ik}-\Phi(\mathbf\Theta) \Big]\tag{17.31}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[
 对数似然的梯度为
@@ -1227,23 +1227,23 @@ $$</p>
 $<span class="math notranslate nohighlight">\(
 并且
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f446714-ac30-4a9b-9ef5-a51099df7854">
-<span class="eqno">(33)<a class="headerlink" href="#equation-6f446714-ac30-4a9b-9ef5-a51099df7854" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\frac{\partial \Phi(\mathbf\Theta)}{\partial \theta_{jk}}&amp;=\sum\limits_{x\in\cal X}x_jx_k\cdot p(x,\mathbf\Theta)\notag\\
-&amp;=\E_{\mathbf\Theta}(X_jX_k)\tag{17.33}
-\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{\partial \Phi(\mathbf\Theta)}{\partial \theta_{jk}}&amp;=\sum\limits_{x\in\mathcal X}x_jx_k\cdot p(x,\mathbf\Theta)\\
+&amp;=\mathbb{E}_{\mathbf\Theta}(X_jX_k)\tag{17.33}
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[
 令梯度等于 0 得到
 \]</div>
-<p>\hat \E(X_jX_k)-\E_{\mathbf \Theta}(X_jX_k)=0\tag{17.34}\label{17.34}
+<p>\hat \E(X_jX_k)-\mathbb{E}_{\mathbf \Theta}(X_jX_k)=0\tag{17.34}\label{17.34}
 $<span class="math notranslate nohighlight">\(
 其中我们定义
 \)</span><span class="math notranslate nohighlight">\(
 \hat \E(X_jX_k)=\frac{1}{N}\sum\limits_{i=1}^Nx_{ij}x_{ik},\tag{17.35}
 \)</span>$
 这是关于数据的经验分布取期望。注意 \eqref{17.34} 式，我们看到极大似然估计简单地把结点之间的内积估计和观测的内积匹配上了。这是指数族模型得分（梯度）等式的标准形式，其中令充分统计量等于模型下的期望。</p>
-<p>为了寻找极大似然估计，我们可以利用梯度搜索或者牛顿法。然而 <span class="math notranslate nohighlight">\(\E_{\mathbf \Theta}(X_jX_k)\)</span> 的计算涉及 <span class="math notranslate nohighlight">\(p(X,\mathbf\Theta)\)</span> 在 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\vert{\cal X}\vert=2^p\)</span> 种可能值中的 <span class="math notranslate nohighlight">\(2^{p-2}\)</span> 种情形，</p>
+<p>为了寻找极大似然估计，我们可以利用梯度搜索或者牛顿法。然而 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span> 的计算涉及 <span class="math notranslate nohighlight">\(p(X,\mathbf\Theta)\)</span> 在 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\vert{\mathcal X}\vert=2^p\)</span> 种可能值中的 <span class="math notranslate nohighlight">\(2^{p-2}\)</span> 种情形，</p>
 <p>!!! note “weiya 注：<span class="math notranslate nohighlight">\(2^{p-2}\)</span>”
 可以这样理解，因为 <span class="math notranslate nohighlight">\(X_jX_k\)</span> 的取值有四种情形，则对每一种 <span class="math notranslate nohighlight">\(X_jX_k\)</span>，总共有<span class="math notranslate nohighlight">\(2^p/4=2^{p-2}\)</span>种可能。</p>
 <p>而且对于大的 <span class="math notranslate nohighlight">\(p\)</span> 一般是不可行的（比如，大于 30）。对于小 <span class="math notranslate nohighlight">\(p\)</span>，有一系列标准的统计方法可以使用：</p>
@@ -1268,44 +1268,44 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 <p>当 <span class="math notranslate nohighlight">\(p\)</span> 变大 <span class="math notranslate nohighlight">\((&gt;30)\)</span> 可以采用其它的方法来近似梯度</p>
 <ul class="simple">
-<li><p>均值域近似（Peterson and Anderson, 1987<a class="footnote-reference brackets" href="#id28" id="id9">5</a>）用 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_j)\E_{\mathbf \Theta}(X_k)\)</span> 来估计 <span class="math notranslate nohighlight">\(\E_{\Theta}(X_jX_k)\)</span>，并且将输入变量用它们的均值替换，得到一系列关于参数 <span class="math notranslate nohighlight">\(\theta_{jk}\)</span> 的非线性等式。</p></li>
-<li><p>为了得到近似解，吉布斯采样（<span class="xref myst">8.6 节</span>）可以用来近似 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_jX_k)\)</span>，即对估计模型 <span class="math notranslate nohighlight">\(\Pr_{\mathbf\Theta}(X_j\mid X_{-j})\)</span> 逐步抽样（见 Ripley (1996)<a class="footnote-reference brackets" href="#id29" id="id10">6</a>）</p></li>
+<li><p>均值域近似（Peterson and Anderson, 1987<a class="footnote-reference brackets" href="#id28" id="id9">5</a>）用 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_j)\mathbb{E}_{\mathbf \Theta}(X_k)\)</span> 来估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\Theta}(X_jX_k)\)</span>，并且将输入变量用它们的均值替换，得到一系列关于参数 <span class="math notranslate nohighlight">\(\theta_{jk}\)</span> 的非线性等式。</p></li>
+<li><p>为了得到近似解，吉布斯采样（<span class="xref myst">8.6 节</span>）可以用来近似 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k)\)</span>，即对估计模型 <span class="math notranslate nohighlight">\(\Pr_{\mathbf\Theta}(X_j\mid X_{-j})\)</span> 逐步抽样（见 Ripley (1996)<a class="footnote-reference brackets" href="#id29" id="id10">6</a>）</p></li>
 </ul>
 <p>我们没有讨论 <strong>可分解模型 (decomposable models)</strong>，因为此时极大似然估计不需要任何迭代就可以在闭形式中找到。举个例子，这些模型来自树：截断树拓扑的特殊图。当关心计算易处理性，树是一个有用的模型类，因为它们回避本节中提出的计算上的考虑。详见 Whittaker(1990)<a class="footnote-reference brackets" href="#id30" id="id11">7</a> 的第 12 章的例子。</p>
 <p>##　隐藏结点</p>
-<p>我们可以通过引入潜在或隐藏结点来增加离散马尔科夫网络的复杂性。假设变量的子集 <span class="math notranslate nohighlight">\(X_{\cal H}\)</span> 是未观测的或者“隐藏的”，并且剩余的变量 <span class="math notranslate nohighlight">\(X_{\cal V}\)</span> 是观测的或者“可见的”。则观测数据的对数似然为
+<p>我们可以通过引入潜在或隐藏结点来增加离散马尔科夫网络的复杂性。假设变量的子集 <span class="math notranslate nohighlight">\(X_{\mathcal H}\)</span> 是未观测的或者“隐藏的”，并且剩余的变量 <span class="math notranslate nohighlight">\(X_{\mathcal V}\)</span> 是观测的或者“可见的”。则观测数据的对数似然为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29cff76a-d837-4745-a9a2-68d761ef2746">
-<span class="eqno">(34)<a class="headerlink" href="#equation-29cff76a-d837-4745-a9a2-68d761ef2746" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\ell(\mathbf\Theta)&amp;=\sum_{i=1}^N\mathrm{log}[\Pr\nolimits_{\mathbf\Theta}(X_{\cal V}=x_{i\cal V})]\notag\\
-&amp;=\sum_{i=1}^N\left[\mathrm{log}\sum\limits_{x_{\cal H}\in{\cal X_H}}\exp\sum\limits_{(j,k)\in E}(\theta_{jk}x_{ij}x_{jk}-\Phi(\mathbf\Theta))\right]\tag{17.36}
-\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ell(\mathbf\Theta)&amp;=\sum_{i=1}^N\mathrm{log}[\Pr\nolimits_{\mathbf\Theta}(X_{\mathcal V}=x_{i\mathcal V})]\\
+&amp;=\sum_{i=1}^N\left[\mathrm{log}\sum\limits_{x_{\mathcal H}\in{\mathcal X_H}}\exp\sum\limits_{(j,k)\in E}(\theta_{jk}x_{ij}x_{jk}-\Phi(\mathbf\Theta))\right]\tag{17.36}
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-对 $x_{\cal H}$ 求和意味着我们对隐藏单元的所有可能 $\\{0,1\\}$ 值进行求和。梯度为
+对 $x_{\mathcal H}$ 求和意味着我们对隐藏单元的所有可能 $\\{0,1\\}$ 值进行求和。梯度为
 \end{split}\]</div>
-<p>\frac{d\ell(\mathbf\Theta)}{d\theta_{jk}}=\hat \E_{\cal V}\E_{\mathbf \Theta}(X_jX_k\mid X_{\cal V})-\E_{\mathbf\Theta}(X_jX_k)\tag{17.37}\label{17.37}
+<p>\frac{d\ell(\mathbf\Theta)}{d\theta_{jk}}=\hat \mathbb{E}<em>{\mathcal V}\mathbb{E}</em>{\mathbf \Theta}(X_jX_k\mid X_{\mathcal V})-\mathbb{E}_{\mathbf\Theta}(X_jX_k)\tag{17.37}\label{17.37}
 $<span class="math notranslate nohighlight">\(
 第一项是当 \)</span>X_jX_k<span class="math notranslate nohighlight">\( 都可见时的经验均值；如果其中一个或都隐藏，则在给定可见数据下进行第一次插值，然后在隐藏变量上平均。第二项是 \)</span>X_jX_k$ 的无条件期望。</p>
 <p>第一项中的内层期望可以用条件期望的基本法则和伯努利随机变量的性质进行赋值。具体地，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，
 $<span class="math notranslate nohighlight">\(
-\E_{\mathbf\Theta}(X_jX_k\mid X_{\cal V}=x_{i\cal V}) =
+\mathbb{E}_{\mathbf\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V}) =
 \left\{
 \begin{array}{ll}
-x_{ij}x_{ik}&amp; \text{if }j,k\in\cal V\\
-x_{ij}\Pr\nolimits_{\cal\mathbf\Theta}(X_k=1\mid X_{\cal V}=x_{i\cal V})&amp;\text{if }j\in\cal V,k\in\cal H\\
-\Pr\nolimits_{\mathbf\Theta}(X_j=1,X_k=1\mid X_{\cal V}=x_{i\cal V})&amp;\text{if }j,k\in{\cal H}\end{array}
+x_{ij}x_{ik}&amp; \text{if }j,k\in\mathcal V\\
+x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal V})&amp;\text{if }j\in\mathcal V,k\in\mathcal H\\
+\Pr\nolimits_{\mathbf\Theta}(X_j=1,X_k=1\mid X_{\mathcal V}=x_{i\mathcal V})&amp;\text{if }j,k\in{\mathcal H}\end{array}
 \right.
 \tag{17.38}\label{17.38}
 \)</span>$</p>
 <p>!!! note “weiya 注：推导 \eqref{17.38}”
 参见<a class="reference external" href="http://disq.us/p/22yh4r6">评论</a>.</p>
-<p>现在需要进行两个独立的吉布斯采样；第一个是从上面的模型中采样估计 <span class="math notranslate nohighlight">\(\E_{\mathbf \Theta}(X_jX_k)\)</span>，第二个是估计 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_jX_k\mid X_{\cal V}=x_{i\cal V})\)</span>。对于后者，固定（“夹住”）可见单元为观测值，并且仅仅对隐藏变量进行取样。吉布斯采样必须对训练集中的每一个观测进行，在梯度搜索的每一阶段。结果是这个过程可以变得非常慢，甚至对于中等规模的模型也是如此。在 <span class="xref myst">17.4.4 节</span>我们考虑进一步的模型约束来使得计算可行。</p>
+<p>现在需要进行两个独立的吉布斯采样；第一个是从上面的模型中采样估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span>，第二个是估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})\)</span>。对于后者，固定（“夹住”）可见单元为观测值，并且仅仅对隐藏变量进行取样。吉布斯采样必须对训练集中的每一个观测进行，在梯度搜索的每一阶段。结果是这个过程可以变得非常慢，甚至对于中等规模的模型也是如此。在 <span class="xref myst">17.4.4 节</span>我们考虑进一步的模型约束来使得计算可行。</p>
 </div>
 <div class="section" id="id12">
 <h2>图结构的估计<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>Lee et al. (2007)<a class="footnote-reference brackets" href="#id30" id="id13">7</a> 和 Wainwright et al. (2007)<a class="footnote-reference brackets" href="#id31" id="id14">8</a> 建议使用二值成对马尔科夫网络的 lasso 惩罚。第一篇作者们提出共轭梯度法来精确最大化含惩罚的对数似然。瓶颈是梯度中 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_jX_k)\)</span> 的计算；通过 junction tree 算法的精确计算对于稀疏图是可行的但是对稠密的图变得难以处理。</p>
-<p>第二个篇文章提出近似的解法，类似对于高斯图模型的 Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id32" id="id15">9</a> 的方法。它们将每个结点看成其他结点的函数的 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚逻辑斯蒂回归，接着以某种方式对称边的参数。举个例子，如果 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为从输出变量为结点 <span class="math notranslate nohighlight">\(j\)</span> 的逻辑斯蒂回归模型中得到的 <span class="math notranslate nohighlight">\(j\)</span>-<span class="math notranslate nohighlight">\(k\)</span> 边参数的估计，“最小”的对称化设定 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为 <span class="math notranslate nohighlight">\(\tilde\theta_{jk}\)</span> 或 <span class="math notranslate nohighlight">\(\tilde\theta_{kj}\)</span> 中绝对值最小的，类似地定义“最大”准则。他们证明在确定条件下，随着样本大小变为无穷大，两种近似都能估计正确的非零边。Hoefling and Tibshirani(2008)<a class="footnote-reference brackets" href="#id33" id="id16">10</a> 将 graphical lasso 应用到离散马尔科夫网络，得到比共轭梯度稍快的过程，但是依旧必须处理 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_jX_k)\)</span> 的计算。他们也在大量的模拟研究中比较了精确解和近似解，并且发现“最小”和“最大”近似仅仅比精确解略微不精确，对于估计非零边和估计边参数的真实值都是这样，而且快很多。此外，他们可以处理稠密图的情形，因为他们不需要计算 <span class="math notranslate nohighlight">\(\E_{\mathbf\Theta}(X_jX_k)\)</span>.</p>
+<p>Lee et al. (2007)<a class="footnote-reference brackets" href="#id30" id="id13">7</a> 和 Wainwright et al. (2007)<a class="footnote-reference brackets" href="#id31" id="id14">8</a> 建议使用二值成对马尔科夫网络的 lasso 惩罚。第一篇作者们提出共轭梯度法来精确最大化含惩罚的对数似然。瓶颈是梯度中 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k)\)</span> 的计算；通过 junction tree 算法的精确计算对于稀疏图是可行的但是对稠密的图变得难以处理。</p>
+<p>第二个篇文章提出近似的解法，类似对于高斯图模型的 Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id32" id="id15">9</a> 的方法。它们将每个结点看成其他结点的函数的 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚逻辑斯蒂回归，接着以某种方式对称边的参数。举个例子，如果 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为从输出变量为结点 <span class="math notranslate nohighlight">\(j\)</span> 的逻辑斯蒂回归模型中得到的 <span class="math notranslate nohighlight">\(j\)</span>-<span class="math notranslate nohighlight">\(k\)</span> 边参数的估计，“最小”的对称化设定 <span class="math notranslate nohighlight">\(\hat\theta_{jk}\)</span> 为 <span class="math notranslate nohighlight">\(\tilde\theta_{jk}\)</span> 或 <span class="math notranslate nohighlight">\(\tilde\theta_{kj}\)</span> 中绝对值最小的，类似地定义“最大”准则。他们证明在确定条件下，随着样本大小变为无穷大，两种近似都能估计正确的非零边。Hoefling and Tibshirani(2008)<a class="footnote-reference brackets" href="#id33" id="id16">10</a> 将 graphical lasso 应用到离散马尔科夫网络，得到比共轭梯度稍快的过程，但是依旧必须处理 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k)\)</span> 的计算。他们也在大量的模拟研究中比较了精确解和近似解，并且发现“最小”和“最大”近似仅仅比精确解略微不精确，对于估计非零边和估计边参数的真实值都是这样，而且快很多。此外，他们可以处理稠密图的情形，因为他们不需要计算 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k)\)</span>.</p>
 <p>最后，我们指出高斯和二值模型的关键区别。在高斯情况下，<span class="math notranslate nohighlight">\(\mathbf\Sigma\)</span> 和其逆经常都是感兴趣的，而且 graphical lasso 过程都实现了这两个的估计。然而，Meinshausen and Bühlmann (2006)<a class="footnote-reference brackets" href="#id32" id="id17">9</a> 对于高斯图模型的近似类似 Wainwright et al. (2007)<a class="footnote-reference brackets" href="#id31" id="id18">8</a> 对二值情形的近似，却仅仅得到 <span class="math notranslate nohighlight">\(\mathbf\Sigma^{-1}\)</span> 的估计。相反地，在二值数据的马尔科夫模型中，<span class="math notranslate nohighlight">\(\mathbf\Theta\)</span> 是我们感兴趣的，而它的逆不是我们感兴趣的。Wainwright et al. (2007)<a class="footnote-reference brackets" href="#id31" id="id19">8</a> 近似的方法有效地估计 <span class="math notranslate nohighlight">\(\mathbf\Theta\)</span>，因此是二值问题的吸引人的解决方案。</p>
 </div>
 <div class="section" id="id20">
@@ -1314,28 +1314,28 @@ x_{ij}\Pr\nolimits_{\cal\mathbf\Theta}(X_k=1\mid X_{\cal V}=x_{i\cal V})&amp;\te
 <p>!!! note “weiya 注：”
 这样 \eqref{17.38} 式变成，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，
 $<span class="math notranslate nohighlight">\(
-		\E_{\Theta}(X_jX_k\mid X_{\cal V}=x_{i\cal V})=
+		\mathbb{E}_{\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})=
 		\left\{
 			\begin{array}{ll}
-			x_{ij}x_{ik}&amp;\text{if }j,k\in\cal V\\
-			\Pr\nolimits_{\Theta}(X_j=1,X_k=1\mid X_{\cal V}=x_{i\cal V})&amp;\text{if }j,k\in\cal H
+			x_{ij}x_{ik}&amp;\text{if }j,k\in\mathcal V\\
+			\Pr\nolimits_{\Theta}(X_j=1,X_k=1\mid X_{\mathcal V}=x_{i\mathcal V})&amp;\text{if }j,k\in\mathcal H
 			\end{array}
 			\right.
 		\)</span>$</p>
-<p>图 17.6 显示了一个例子；可见层被分成了输入变量 <span class="math notranslate nohighlight">\(\cal V_1\)</span> 和输出变量 <span class="math notranslate nohighlight">\(\cal V_2\)</span>，且有一个隐藏层 <span class="math notranslate nohighlight">\(\cal H\)</span>。我们将这样一个网络表示成</p>
+<p>图 17.6 显示了一个例子；可见层被分成了输入变量 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和输出变量 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span>，且有一个隐藏层 <span class="math notranslate nohighlight">\(\mathcal H\)</span>。我们将这样一个网络表示成</p>
 <div class="math notranslate nohighlight">
 \[
-{\cal V}_1\leftrightarrow {\cal H\leftrightarrow\cal V}_2\tag{17.39}
+{\mathcal V}_1\leftrightarrow {\mathcal H\leftrightarrow\mathcal V}_2\tag{17.39}
 \]</div>
 <p><img alt="" src="../_images/fig17.6.png" /></p>
 <blockquote>
-<div><p>图 17.6. 同一层中的结点没有连接的 <strong>限制玻尔兹曼机 (RBM)</strong>。可见单元细分成了 <span class="math notranslate nohighlight">\(\cal V_1\)</span> 和 <span class="math notranslate nohighlight">\(\cal V_2\)</span>，允许 RBM 建立特征 <span class="math notranslate nohighlight">\(\cal V_1\)</span> 和标签 <span class="math notranslate nohighlight">\(\cal V_2\)</span> 之间的联合密度。</p>
+<div><p>图 17.6. 同一层中的结点没有连接的 <strong>限制玻尔兹曼机 (RBM)</strong>。可见单元细分成了 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span>，允许 RBM 建立特征 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和标签 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 之间的联合密度。</p>
 </div></blockquote>
-<p>举个例子， <span class="math notranslate nohighlight">\(\cal V_1\)</span> 可以是手写字体图像的二值像素，<span class="math notranslate nohighlight">\(\cal V_2\)</span> 可以有10个单元，每个单元是观测的类别标签 0-9 中的一个。</p>
+<p>举个例子， <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 可以是手写字体图像的二值像素，<span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 可以有10个单元，每个单元是观测的类别标签 0-9 中的一个。</p>
 <p>这个模型的约束形式简化了估计 \eqref{17.37} 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 \eqref{17.30} 给出的条件概率一起取样。</p>
-<p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替取样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\cal V_1\)</span> 部分在交替取样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\cal V_1\)</span> 的标签分布中取样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
+<p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替取样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 部分在交替取样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 的标签分布中取样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
 <p>正如所注意到的约束玻尔兹曼机有与单层隐藏层神经网络一样的一般形式（<span class="xref myst">11.3 节</span>）。神经网络中边是有向的，隐藏单元经常是实值的，并且拟合准则不一样。神经网络在输入特征的情况下，最小化目标与模型预测之间的误差（交叉熵）。相反地，约束玻尔兹曼机最大化所有可见单元（也就是，特征和目标）的联合分布的对数似然。可以从输入特征中提取对预测标签有用的信息，但是，与监督学习方法不同，可能也使用一些隐藏单元对特征向量中的结构进行建模，而这与预测标签不是直接相关的。然而，这些特征当与从隐藏层中导出的特征结合起来会变得有用。</p>
-<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 \eqref{17.37} 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\cal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\cal H\)</span> 取样，然后给定 <span class="math notranslate nohighlight">\(\cal H\)</span> 对 <span class="math notranslate nohighlight">\(\cal V_1,V_2\)</span> 取样，最后再次给定 <span class="math notranslate nohighlight">\(\cal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \cal H\)</span> 取样。思想是，当参数与解相差很多，迭代吉布斯取样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
+<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 \eqref{17.37} 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 取样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 取样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 取样。思想是，当参数与解相差很多，迭代吉布斯取样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
 <p>!!! note “weiya 注”
 <img alt="" src="../_images/hvGibbs.png" />
 截图自<a class="reference external" href="http://deeplearning.net/tutorial/">http://deeplearning.net/tutorial/</a></p>

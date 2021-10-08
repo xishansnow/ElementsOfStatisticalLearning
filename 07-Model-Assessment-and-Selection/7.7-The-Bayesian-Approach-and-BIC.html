@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1162,54 +1162,58 @@
 \mathrm{BIC} = \frac{N}{\sigma_\varepsilon^2}[\overline{\text{err}}+(\log N)\cdot\frac{d}{N}\sigma_\varepsilon^2] \tag{7.36}
 \]</div>
 <p>因此当用 2 替换 <span class="math notranslate nohighlight">\(\log N\)</span> 后，BIC 与 AIC（<span class="math notranslate nohighlight">\(C_p\)</span>）成比例的。假设 <span class="math notranslate nohighlight">\(N &gt; e^2\approx 7.4\)</span>，BIC 趋向于对复杂模型惩罚更重，偏向于选择更简单的模型。如同 AIC，<span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> 一般通过低偏差模型的均方误差来估计。</p>
-<p>!!! note “weiya 注：”
-注意此处假设 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> 已知，如果将其看成未知，并通过 MLE 求解，则 BIC 准则（忽略常数）为
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意此处假设 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> 已知，如果将其看成未知，并通过 MLE 求解，则 BIC 准则（忽略常数）为
 $<span class="math notranslate nohighlight">\(
-    \mathrm{BIC} = N\log\mathrm{RSS} + d\log N\,,
-    \)</span>$
+\mathrm{BIC} = N\log\mathrm{RSS} + d\log N\,,
+\)</span>$
 详见 <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_information_criterion#Gaussian_special_case">Wiki: BIC</a></p>
+</div>
 <p>对于分类问题，选择交叉熵作为误差衡量，使用多项对数似然会导出与 AIC 更相似的关系。注意到误分类误差率不会出现在 BIC  中，因为它并不对应于在任何概率模型下数据的对数似然。</p>
 <p>尽管和 AIC 很相似，但 BIC 的来源 (motivation) 截然不同。它来源于使用贝叶斯方法来选择模型，我们现在进行讨论。</p>
-<p>假设我们有一系列预选模型 <span class="math notranslate nohighlight">\({\cal M_m},m=1,\ldots,M\)</span>，以及对应的模型参数 <span class="math notranslate nohighlight">\(\theta_m\)</span>，我们希望从中选择最优的模型。假设我们对每个模型 <span class="math notranslate nohighlight">\(\cal M_m\)</span> 的参数有先验分布 <span class="math notranslate nohighlight">\(\Pr(\theta_m\mid\cal M_m)\)</span>，则模型的后验概率为：</p>
+<p>假设我们有一系列预选模型 <span class="math notranslate nohighlight">\({\mathcal M_m},m=1,\ldots,M\)</span>，以及对应的模型参数 <span class="math notranslate nohighlight">\(\theta_m\)</span>，我们希望从中选择最优的模型。假设我们对每个模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 的参数有先验分布 <span class="math notranslate nohighlight">\(\Pr(\theta_m\mid\mathcal M_m)\)</span>，则模型的后验概率为：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\Pr({\cal M}_m\mid \mathbf Z) &amp;\varpropto \Pr({\cal M_m})\cdot \Pr(\mathbf Z\mid {\cal M_m})\qquad\tag{7.37} \\
-&amp;\varpropto \Pr({\cal M_m})\cdot \int \Pr(\mathbf Z\mid \theta_m,{\cal M_m})\Pr(\theta_m\mid\cal M_m)d\theta_m 
-\end{align}
+\begin{align*}
+\Pr({\mathcal M}_m\mid \mathbf Z) &amp;\varpropto \Pr({\mathcal M_m})\cdot \Pr(\mathbf Z\mid {\mathcal M_m})\qquad\tag{7.37} \\
+&amp;\varpropto \Pr({\mathcal M_m})\cdot \int \Pr(\mathbf Z\mid \theta_m,{\mathcal M_m})\Pr(\theta_m\mid\mathcal M_m)d\theta_m 
+\end{align*}
 \end{split}\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 表示训练数据 <span class="math notranslate nohighlight">\(\\{x_i,y_i\\}\_1^N\)</span>。为了比较两个模型 <span class="math notranslate nohighlight">\(\cal M_m\)</span> 和 <span class="math notranslate nohighlight">\(\cal M_\ell\)</span>，我们构造后验 odds</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 表示训练数据 <span class="math notranslate nohighlight">\(\\{x_i,y_i\\}\_1^N\)</span>。为了比较两个模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal M_\ell\)</span>，我们构造后验 odds</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\Pr({\cal M_m}\mid\mathbf Z)}{\Pr({\cal M_\ell\mid \mathbf Z})}=\frac{\Pr(\cal M_m)}{\Pr(\cal M_\ell)}\cdot\frac{\Pr(\mathbf Z\mid \cal M_m)}{\Pr(\mathbf Z\mid \cal M_\ell)}\tag{7.38}
+\frac{\Pr({\mathcal M_m}\mid\mathbf Z)}{\Pr({\mathcal M_\ell\mid \mathbf Z})}=\frac{\Pr(\mathcal M_m)}{\Pr(\mathcal M_\ell)}\cdot\frac{\Pr(\mathbf Z\mid \mathcal M_m)}{\Pr(\mathbf Z\mid \mathcal M_\ell)}\tag{7.38}
 \]</div>
 <p>如果 odds 大于 1，则我们选择模型 <span class="math notranslate nohighlight">\(m\)</span>，否则我们选择模型 <span class="math notranslate nohighlight">\(\ell\)</span>。最右端的值：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{BF}(\mathbf Z)=\frac{\Pr(\mathbf Z\mid\cal M_m)}{\Pr(\mathbf Z\mid \cal M_\ell)}\tag{7.39}
+\mathrm{BF}(\mathbf Z)=\frac{\Pr(\mathbf Z\mid\mathcal M_m)}{\Pr(\mathbf Z\mid \mathcal M_\ell)}\tag{7.39}
 \]</div>
 <p>称为 <strong>贝叶斯因子 (Bayes factor)</strong>, 这是数据对于后验 odds 的贡献。</p>
-<p>一般地我们假设模型的先验分布是均匀的，所以 <span class="math notranslate nohighlight">\(\Pr(\cal M_m)\)</span> 为常值。我们需要其它的方式来估计 <span class="math notranslate nohighlight">\(\Pr(\mathbf Z\mid \cal M_m)\)</span>。在某些简化 (Ripley, 1996<a class="footnote-reference brackets" href="#id4" id="id2">2</a>) 下，对式（7.37） 采用被称作对积分的 Laplace 近似得到</p>
+<p>一般地我们假设模型的先验分布是均匀的，所以 <span class="math notranslate nohighlight">\(\Pr(\mathcal M_m)\)</span> 为常值。我们需要其它的方式来估计 <span class="math notranslate nohighlight">\(\Pr(\mathbf Z\mid \mathcal M_m)\)</span>。在某些简化 (Ripley, 1996<a class="footnote-reference brackets" href="#id4" id="id2">2</a>) 下，对式（7.37） 采用被称作对积分的 Laplace 近似得到</p>
 <div class="math notranslate nohighlight">
 \[
-\log \Pr(\mathbf Z\mid {\cal M_m})=\mathrm{log} \Pr(\mathbf Z\mid \hat \theta_m,{\cal M_m})-\frac{d_m}{2}\cdot \mathrm{log} N + O(1) \tag{7.40}
+\log \Pr(\mathbf Z\mid {\mathcal M_m})=\mathrm{log} \Pr(\mathbf Z\mid \hat \theta_m,{\mathcal M_m})-\frac{d_m}{2}\cdot \mathrm{log} N + O(1) \tag{7.40}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\hat \theta_m\)</span> 为极大似然估计，且 <span class="math notranslate nohighlight">\(d_m\)</span> 为模型 <span class="math notranslate nohighlight">\(\cal M_m\)</span> 自由参数的个数。如果我们定义损失函数为：</p>
+<p>这里 <span class="math notranslate nohighlight">\(\hat \theta_m\)</span> 为极大似然估计，且 <span class="math notranslate nohighlight">\(d_m\)</span> 为模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 自由参数的个数。如果我们定义损失函数为：</p>
 <div class="math notranslate nohighlight">
 \[
--2\log \Pr(\mathbf Z\mid \hat\theta_m,\cal M_m)
+-2\log \Pr(\mathbf Z\mid \hat\theta_m,\mathcal M_m)
 \]</div>
 <p>这等价于式（7.35） 的 BIC 准则。</p>
-<p>因此，选择 BIC 最小的模型等价于选择有最大（近似）后验概率的模型。但是这个框架可以给我们更多的信息。如果我们对 <span class="math notranslate nohighlight">\(M\)</span> 个元素的模型集合进行计算 BIC 准则，得到 <span class="math notranslate nohighlight">\(\mathrm{BIC}_m,m=1,2,\ldots,M\)</span>，则我们可以估计每个模型 <span class="math notranslate nohighlight">\(\cal M_m\)</span> 的后验概率为：</p>
+<p>因此，选择 BIC 最小的模型等价于选择有最大（近似）后验概率的模型。但是这个框架可以给我们更多的信息。如果我们对 <span class="math notranslate nohighlight">\(M\)</span> 个元素的模型集合进行计算 BIC 准则，得到 <span class="math notranslate nohighlight">\(\mathrm{BIC}_m,m=1,2,\ldots,M\)</span>，则我们可以估计每个模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 的后验概率为：</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{e^{-\frac{1}{2}\cdot \mathrm{BIC}_m}}{\sum_{\ell=1}^Me^{-\frac{1}{2}\cdot \mathrm{BIC}_\ell}}\tag{7.41}
 \]</div>
 <p>因此我们不仅可以估计最优的模型，还可以所考虑的模型的相对表现。</p>
 <p>用于模型选择，AIC 和 BIC 之间没有明显的选择。BIC 作为选择准则是渐近一致的，这意味着给出模型族，其中包含真实模型，BIC 选择正确模型的概率当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时是 1。对于 AIC 这是不成立的，当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时，趋向于选择太复杂的模型。另一方面，在有限样本时，BIC 经常选择太过简单的模型，因为对模型复杂度的惩罚更大。</p>
-<p>!!! note “weiya 注”
-BIC 是强相合的，而 AIC 不是。
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>BIC 是强相合的，而 AIC 不是。
 <strong>强相合估计：</strong> 如果 <span class="math notranslate nohighlight">\(\hat\theta_N\; a.s.\)</span> 收敛到 <span class="math notranslate nohighlight">\(\theta\)</span>，则称 <span class="math notranslate nohighlight">\(\hat\theta_N\)</span> 是 <span class="math notranslate nohighlight">\(\theta\)</span> 的强相合估计。</p>
+</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>

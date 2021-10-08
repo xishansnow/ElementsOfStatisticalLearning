@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1180,12 +1180,12 @@
 $<span class="math notranslate nohighlight">\(
     f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}\label{10.41}
     \)</span>$</p>
-<p>考虑所有可能的 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树 <span class="math notranslate nohighlight">\(\cal T=\{T_k\}\)</span> 的字典作为 <span class="math notranslate nohighlight">\(\IR^p\)</span> 的基函数，这在训练数据上可以实现。线性模型为</p>
+<p>考虑所有可能的 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树 <span class="math notranslate nohighlight">\(\mathcal T=\{T_k\}\)</span> 的字典作为 <span class="math notranslate nohighlight">\(\IR^p\)</span> 的基函数，这在训练数据上可以实现。线性模型为</p>
 <div class="math notranslate nohighlight">
 \[
 f(x)=\sum\limits_{k=1}^K\alpha_kT_k(x)\tag{16.1}\label{16.1}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(K=\mathrm{card}(\cal T)\)</span>。假设系数通过最小二乘进行估计。因为这些树的个数可能比最大训练集还要大很多，所以需要一些正则化。令 <span class="math notranslate nohighlight">\(\hat\alpha(\lambda)\)</span> 是下式的解</p>
+<p>其中 <span class="math notranslate nohighlight">\(K=\mathrm{card}(\mathcal T)\)</span>。假设系数通过最小二乘进行估计。因为这些树的个数可能比最大训练集还要大很多，所以需要一些正则化。令 <span class="math notranslate nohighlight">\(\hat\alpha(\lambda)\)</span> 是下式的解</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\alpha}{\min}\left\{\sum\limits_{i=1}^N(y_i-\sum\limits_{k=1}^K\alpha_kT_k(x_i))^2+\lambda\cdot J(\alpha)\right\}\tag{16.2}\label{16.2}
@@ -1193,16 +1193,16 @@ f(x)=\sum\limits_{k=1}^K\alpha_kT_k(x)\tag{16.1}\label{16.1}
 <p><span class="math notranslate nohighlight">\(J(\alpha)\)</span> 是关于系数的函数，并且一般惩罚较大的值。比如</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 J(\alpha) &amp;=\sum\limits_{k=1}^K\vert \alpha_k\vert^2\qquad \text{岭回归}\tag{16.3}\\
 J(\alpha) &amp;=\sum\limits_{k=1}^K\vert\alpha_K\vert\qquad\text{lasso}\tag{16.4}\label{16.4}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>这些都在 <span class="xref myst">3.4 节</span>介绍了。正如这里讨论的那样，从中等大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 到较大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 的 lasso 问题的解是趋向于稀疏的；许多 <span class="math notranslate nohighlight">\(\hat\alpha_k(\lambda)=0\)</span>。也就是，只有所有候选树的一小部分会选进模型 \eqref{16.1}。这似乎是合理的，因为似乎只有所有候选树的一小部分对任意特定的目标函数的近似是恰当的。然而，对于不同的目标值，相关的子集也会不一样。</p>
 <p>!!! note “weiya 注：”
 换句话说，对于某个 <span class="math notranslate nohighlight">\(y_i\)</span>，与该目标相关的候选树的子集为 <span class="math notranslate nohighlight">\(C_i\)</span>，这会随着目标值的不同而发生变化。</p>
 <p>那些没有设为 <span class="math notranslate nohighlight">\(0\)</span> 的系数被 lasso 收缩了，因为它们的绝对值比对应最小二乘值要小：<span class="math notranslate nohighlight">\(\vert\hat\alpha_k(\lambda)\vert &lt; \vert\hat\alpha_k(0)\vert\)</span>。当 <span class="math notranslate nohighlight">\(\lambda\)</span> 增大时，系数都进行了收缩，每一个最终都变为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
-<p>由于非常多的基函数 <span class="math notranslate nohighlight">\(T_k\)</span>，直接求解含有 lasso 惩罚 \eqref{16.4} 的 \eqref{16.2} 是不可能的。然而，存在可行的向前逐步策略，对 lasso 的效果有非常好的近似，并且与增强和向前逐步算法 10.2 非常相似。算法 16.1 给出了细节。尽管是用树的基函数 <span class="math notranslate nohighlight">\(T_k\)</span> 表示的，算法也可以用来任意基函数的集合中。第 <span class="math notranslate nohighlight">\(1\)</span> 行所有系数初始化为 <span class="math notranslate nohighlight">\(0\)</span>；这对应了 \eqref{16.2} 式的 <span class="math notranslate nohighlight">\(\lambda=\infty\)</span>。 每个接下来的步骤中，第 2(a) 行选择对当前残差拟合得最好的树 <span class="math notranslate nohighlight">\(T_{k^\*}\)</span>。其对应的系数 <span class="math notranslate nohighlight">\(\check{\alpha}\_{k^\*}\)</span> 接着在第 2(b) 步增长或减小一个无穷小量，而所有其他的系数 <span class="math notranslate nohighlight">\(\check{\alpha}_{k\neq k^*}\)</span> 都保持不变。原则上，这个过程可以一直迭代到所有的残差为 <span class="math notranslate nohighlight">\(0\)</span>，或者 <span class="math notranslate nohighlight">\(\beta^\*=0\)</span>。第二种情况会发生在 <span class="math notranslate nohighlight">\(K &lt; N\)</span> 的情形下，并且在那时候，参数值表示最小二乘的解。这对应了 \eqref{16.2} 式的 <span class="math notranslate nohighlight">\(\lambda=0\)</span>。</p>
+<p>由于非常多的基函数 <span class="math notranslate nohighlight">\(T_k\)</span>，直接求解含有 lasso 惩罚 \eqref{16.4} 的 \eqref{16.2} 是不可能的。然而，存在可行的向前逐步策略，对 lasso 的效果有非常好的近似，并且与增强和向前逐步算法 10.2 非常相似。算法 16.1 给出了细节。尽管是用树的基函数 <span class="math notranslate nohighlight">\(T_k\)</span> 表示的，算法也可以用来任意基函数的集合中。第 <span class="math notranslate nohighlight">\(1\)</span> 行所有系数初始化为 <span class="math notranslate nohighlight">\(0\)</span>；这对应了 \eqref{16.2} 式的 <span class="math notranslate nohighlight">\(\lambda=\infty\)</span>。 每个接下来的步骤中，第 2(a) 行选择对当前残差拟合得最好的树 <span class="math notranslate nohighlight">\(T_{k^*}\)</span>。其对应的系数 <span class="math notranslate nohighlight">\(\check{\alpha}\_{k^*}\)</span> 接着在第 2(b) 步增长或减小一个无穷小量，而所有其他的系数 <span class="math notranslate nohighlight">\(\check{\alpha}_{k\neq k^*}\)</span> 都保持不变。原则上，这个过程可以一直迭代到所有的残差为 <span class="math notranslate nohighlight">\(0\)</span>，或者 <span class="math notranslate nohighlight">\(\beta^*=0\)</span>。第二种情况会发生在 <span class="math notranslate nohighlight">\(K &lt; N\)</span> 的情形下，并且在那时候，参数值表示最小二乘的解。这对应了 \eqref{16.2} 式的 <span class="math notranslate nohighlight">\(\lambda=0\)</span>。</p>
 <p><img alt="" src="../_images/alg16.1.png" /></p>
 <p>对算法 16.1 迭代 <span class="math notranslate nohighlight">\(M &lt; \infty\)</span> 次后，许多系数会变成 <span class="math notranslate nohighlight">\(0\)</span>，也就是，它们不会再增长。其他的系数的绝对值会趋向于比对应的最小二乘解来得小，<span class="math notranslate nohighlight">\(\vert \check{\alpha}_k(M)\vert&lt;\vert \hat{\alpha}_k(0)\vert\)</span>。因此，这个 <span class="math notranslate nohighlight">\(M\)</span> 次迭代的解定性地来看，表现得像是 lasso，其中 <span class="math notranslate nohighlight">\(M\)</span> 与 <span class="math notranslate nohighlight">\(\lambda\)</span> 成反比。</p>
 <p><img alt="" src="../_images/fig16.1.png" /></p>
@@ -1230,7 +1230,7 @@ J(\alpha) &amp;=\sum\limits_{k=1}^K\vert\alpha_K\vert\qquad\text{lasso}\tag{16.4
 </div></blockquote>
 <p>下面的评论需要一些限定条件：</p>
 <ul class="simple">
-<li><p>对于给定的应用，稀疏度（稠密度）取决于未知真实函数的个数，以及选定的字典集 <span class="math notranslate nohighlight">\(\cal T\)</span>。</p></li>
+<li><p>对于给定的应用，稀疏度（稠密度）取决于未知真实函数的个数，以及选定的字典集 <span class="math notranslate nohighlight">\(\mathcal T\)</span>。</p></li>
 <li><p>稀疏和稠密的概念相对于训练数据集的大小和（或）噪信比 (NSR)。越大的训练集允许我们估计更小标准差的系数。同样地，在小 NSR 的情形中，当给定样本大小我们能识别出相对于大 NSR 情形下更多的非零系数。</p></li>
 <li><p>字典集的大小也很重要。增大字典集的大小可能导出我们函数的更稀疏的表示，但是寻找问题会变得更困难，导致更高的方差。</p></li>
 </ul>
@@ -1259,7 +1259,7 @@ $<span class="math notranslate nohighlight">\(
 <p>这里系数曲线仅仅在路径的前期是相似的。对于后期，向前逐步路径趋向于单调的，且更光滑，而这些对于 lasso 而言都是振荡的。这是因为变量集间的强相关性——lasso 某种程度上受到多重共线性的影响（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/123">练习 3.28</a>）。</p>
 <p><img alt="" src="../_images/fig16.4.png" /></p>
 <p>这两种模型的表现很相似（图 16.4），并且它们达到相同的最小值。在向前逐步算法的后期需要更长时间来过拟合，这是更光滑的路径的可能的结果。</p>
-<p>Hastie et al. (2007)<a class="footnote-reference brackets" href="#id17" id="id11">2</a> 证明了 <span class="math notranslate nohighlight">\(FS_0\)</span> 求解了平方误差损失下 lasso 问题的单调版本。令 <span class="math notranslate nohighlight">\(\cal T^\alpha=\cal T\cup\\{-\cal T\\}\)</span> 是通过加入 <span class="math notranslate nohighlight">\(\cal T\)</span> 中每个基元素的负值得到的增广字典。我们考虑非负系数 <span class="math notranslate nohighlight">\(\alpha_k\ge 0\)</span> 的模型 <span class="math notranslate nohighlight">\(f(x)=\sum_{T_k\in {\cal T}^\alpha}\alpha_kT_k(x)\)</span>。在增广空间中，lasso 的系数路径是正的，而 <span class="math notranslate nohighlight">\(FS_0\)</span> 的则是单调非降的。</p>
+<p>Hastie et al. (2007)<a class="footnote-reference brackets" href="#id17" id="id11">2</a> 证明了 <span class="math notranslate nohighlight">\(FS_0\)</span> 求解了平方误差损失下 lasso 问题的单调版本。令 <span class="math notranslate nohighlight">\(\mathcal T^\alpha=\mathcal T\cup\\{-\mathcal T\\}\)</span> 是通过加入 <span class="math notranslate nohighlight">\(\mathcal T\)</span> 中每个基元素的负值得到的增广字典。我们考虑非负系数 <span class="math notranslate nohighlight">\(\alpha_k\ge 0\)</span> 的模型 <span class="math notranslate nohighlight">\(f(x)=\sum_{T_k\in {\mathcal T}^\alpha}\alpha_kT_k(x)\)</span>。在增广空间中，lasso 的系数路径是正的，而 <span class="math notranslate nohighlight">\(FS_0\)</span> 的则是单调非降的。</p>
 <p>单调的 lasso 路径可以用微分方程表示：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1279,10 +1279,10 @@ m(f) = \underset{i}{\min}\frac{y_if(x_i)}{\sum_{k=1}^K\vert \alpha_k\vert}\tag{1
 <p>这里最小值是在训练样本中取，并且 <span class="math notranslate nohighlight">\(y_i\in\\{-1,+1\\}\)</span>。与支持向量机的 <span class="math notranslate nohighlight">\(L_2\)</span> margin \eqref{4.40} 不同的是，<span class="math notranslate nohighlight">\(L_1\)</span> margin <span class="math notranslate nohighlight">\(m(f)\)</span> 用 <span class="math notranslate nohighlight">\(L_\infty\)</span> 的单位（最大的坐标距离）衡量了到最近的训练点的距离。</p>
 <p>!!! note “Recall: <span class="math notranslate nohighlight">\(L_2\)</span> margin \eqref{4.40}”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
-    {\beta^*}^T(x-x_0)&amp;=\frac{1}{\Vert\beta\Vert}(\beta^Tx+\beta_0)\notag\\
+    \begin{align*}
+    {\beta^*}^T(x-x_0)&amp;=\frac{1}{\Vert\beta\Vert}(\beta^Tx+\beta_0)\\
     &amp;=\frac{1}{\Vert f'(x)\Vert}f(x)\tag{4.40}\label{4.40}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <p>Schapire et al. (1998)<a class="footnote-reference brackets" href="#id25" id="id13">9</a> 证明了对于可分数据，Adaboost 在每步迭代都增加 <span class="math notranslate nohighlight">\(m(f)\)</span>，收敛到 margin-symmetric 的解。Rätsch and Warmuth (2002)<a class="footnote-reference brackets" href="#id26" id="id14">10</a> 证明了带收缩的 Adaboost 渐近收敛到 <span class="math notranslate nohighlight">\(L_1\)</span>-margin-maximizing 的解。Rosset et al. (2004a)<a class="footnote-reference brackets" href="#id18" id="id15">3</a> 考虑对一般损失函数 \eqref{16.2} 形式的正则化模型。他们证明了当 <span class="math notranslate nohighlight">\(\lambda\downarrow 0\)</span> 时，对于特定的损失函数，解收敛到 margin-maximizing 的情形。特别地，他们证明 Adaboost 的指数损失属于这种情形，二项偏差也是这种情形。</p>
 <p>综合本节的结果，我们得到下面关于 boosted 分类器的总结：</p>

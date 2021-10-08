@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,14 +1160,14 @@
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\EPE_k(x_0)&amp;=\E[(Y-\hat{f}_k(x_0))^2\mid X=x_0]\notag\\
-&amp;=\sigma^2+[Bias^2(\hat{f}_k(x_0))+Var_{\cal T}(\hat{f}_k(x_0))]\label{2.46}\\
+\EPE_k(x_0)&amp;=\E[(Y-\hat{f}_k(x_0))^2\mid X=x_0]\\
+&amp;=\sigma^2+[Bias^2(\hat{f}_k(x_0))+Var_{\mathcal T}(\hat{f}_k(x_0))]\label{2.46}\\
 &amp;=\sigma^2+[f(x_0)-\frac{1}{k}\sum\limits_{\ell=1}^kf(x_{(\ell)})]^2+\frac{\sigma^2}{k}\label{2.47}
 \end{align*}
 \end{split}\]</div>
 <p>带括号的下标 <span class="math notranslate nohighlight">\((\ell)\)</span> 表示 <span class="math notranslate nohighlight">\(x_0\)</span> 的最近邻的顺序。</p>
 <p>在展开式中有三项。第一项 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 是 <strong>不可约减的 (irreducible)</strong> 误差——是新测试目标点的方差——而且我们不能够控制，即使我们知道真值 <span class="math notranslate nohighlight">\(f(x_0)\)</span></p>
-<p>第二项和第三项在我们的控制范围内，并且构成了估计 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 时 <span class="math notranslate nohighlight">\(\hat f_k(x_0)\)</span> 的 <strong>均方误差 (mean squared error)</strong>，均方误差经常被分解成偏差部分和方差部分。偏差项是真值均值 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 与估计的期望值之间差异的平方——<span class="math notranslate nohighlight">\([\E_{\cal T}(\hat{f}\_k(x_0))-f(x_0)]^2\)</span>——其中期望平均了训练数据中的随机量。如果真实的函数相当地光滑，这一项很可能随着 <span class="math notranslate nohighlight">\(k\)</span> 的增加而增加。对于较小的 <span class="math notranslate nohighlight">\(k\)</span> 值和较少的近邻点会导致值 <span class="math notranslate nohighlight">\(f(x_{(\ell)})\)</span> 与 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 很接近，所以它们的平均应该距离 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 很近。当 <span class="math notranslate nohighlight">\(k\)</span> 值增加，邻域远离，然后任何事情都可能发生。</p>
+<p>第二项和第三项在我们的控制范围内，并且构成了估计 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 时 <span class="math notranslate nohighlight">\(\hat f_k(x_0)\)</span> 的 <strong>均方误差 (mean squared error)</strong>，均方误差经常被分解成偏差部分和方差部分。偏差项是真值均值 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 与估计的期望值之间差异的平方——<span class="math notranslate nohighlight">\([\mathbb{E}_{\mathcal T}(\hat{f}\_k(x_0))-f(x_0)]^2\)</span>——其中期望平均了训练数据中的随机量。如果真实的函数相当地光滑，这一项很可能随着 <span class="math notranslate nohighlight">\(k\)</span> 的增加而增加。对于较小的 <span class="math notranslate nohighlight">\(k\)</span> 值和较少的近邻点会导致值 <span class="math notranslate nohighlight">\(f(x_{(\ell)})\)</span> 与 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 很接近，所以它们的平均应该距离 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 很近。当 <span class="math notranslate nohighlight">\(k\)</span> 值增加，邻域远离，然后任何事情都可能发生。</p>
 <p>这里的方差项是方差的简单平均，因为 <span class="math notranslate nohighlight">\(k\)</span> 的倒数关系，随 <span class="math notranslate nohighlight">\(k\)</span> 变大而变小。所以当 <span class="math notranslate nohighlight">\(k\)</span> 变化，会有 <strong>偏差——误差的权衡 (bias-variance tradeoff)</strong>。</p>
 <p>更一般地，随着我们过程的 <strong>模型复杂度 (model complexity)</strong> 增加，方差趋于上升，偏差趋于下降。当模型复杂度下降时会发生相反的行为。对于 <span class="math notranslate nohighlight">\(k\)</span>-最近邻，模型复杂度由 <span class="math notranslate nohighlight">\(k\)</span> 来控制。</p>
 <p>一般地，我们选择模型复杂度使偏差与方差达到均衡从而使测试误差最小。测试误差的一个明显的估计是 <strong>训练误差 (training error)</strong> <span class="math notranslate nohighlight">\(\frac{1}{N}\sum_i(y_i-\hat{y}_i)^2\)</span>。不幸的是，训练误差不是测试误差的良好估计，因为这不能解释模型复杂度。</p>

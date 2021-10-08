@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1178,10 +1178,10 @@
 <p>图 5.9 显示了在如下简单的模型中应用光滑样条 <span class="math notranslate nohighlight">\(df_\lambda\)</span> 的选择的效果：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-Y&amp; =f(X)+\varepsilon\notag\\
-f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}\notag
-\end{align}
+\begin{align*}
+Y&amp; =f(X)+\varepsilon\\
+f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}
+\end{align*}
 \tag{5.22}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(X\sim U[0,1], \varepsilon\sim N(0, 1)\)</span>。我们的训练样本包含从该模型中独立抽取的 <span class="math notranslate nohighlight">\(N=100\)</span> 个数据对 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>。</p>
@@ -1212,11 +1212,11 @@ f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}\notag
 <p><strong>积分平方预测误差 (EPE)</strong> 用一个总结式结合了偏差和方差：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\EPE(\hat f_\lambda) &amp;=\E(Y-\hat f_\lambda(X))^2\notag\\
-&amp;= \Var(Y)+\E[\Bias^2(\hat f_\lambda(X))+\Var(\hat f_\lambda(X))]\notag\\
+\begin{align*}
+\EPE(\hat f_\lambda) &amp;=\E(Y-\hat f_\lambda(X))^2\\
+&amp;= \Var(Y)+\E[\Bias^2(\hat f_\lambda(X))+\Var(\hat f_\lambda(X))]\\
 &amp;= \sigma^2+\MSE(\hat f_\lambda)\tag{5.25}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>注意到<strong>这是在训练样本（得到 <span class="math notranslate nohighlight">\(\hat f_\lambda\)</span> ）和（独立选择的）预测点 <span class="math notranslate nohighlight">\((X,Y)\)</span> 的值中进行平均</strong>。</p>
 <p>!!! note “weiya 注：计算 EPE”
@@ -1225,10 +1225,10 @@ f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}\notag
 <p>因为我们不知道真实函数，所以无法得到 EPE，因此需要一个估计。这个话题将在第 7 章中详细展开，以及像 <span class="math notranslate nohighlight">\(K\)</span> 折交叉验证，GCV 和 <span class="math notranslate nohighlight">\(C_p\)</span> 等广泛使用的方法。在图 5.9 中我们展示了一个 <span class="math notranslate nohighlight">\(N\)</span> 折（舍一法）交叉验证的曲线：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \CV(\hat f_\lambda) &amp;=\frac 1N\sum\limits_{i=1}^N(y_i-\hat f_\lambda^{(-i)}(x_i))^2\tag{5.26}\\
 &amp;= \frac 1N\sum\limits_{i=1}^N(\frac{y_i-\hat f_\lambda (x_i)}{1-S_\lambda(i, i)})^2\tag{5.27}\\
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>上式可以从原始的拟合数据中计算每个 <span class="math notranslate nohighlight">\(\lambda\)</span> 值以及 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 的对角元素（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/112">练习 5.13</a>）来得到。</p>
 <p>!!! info “weiya 注：Ex. 5.13”

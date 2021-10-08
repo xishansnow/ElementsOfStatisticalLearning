@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1162,7 +1162,7 @@
                 
   <div class="section" id="fda">
 <h1>12.5 FDA<a class="headerlink" href="#fda" title="Permalink to this headline">¶</a></h1>
-<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\({\cal G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \cal G\mapsto\IR^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
+<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\({\mathcal G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \mathcal G\mapsto\IR^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta,\theta}{\min}\sum\limits_{i=1}^N(\theta(g_i)-x_i^T\beta)^2\tag{12.52}

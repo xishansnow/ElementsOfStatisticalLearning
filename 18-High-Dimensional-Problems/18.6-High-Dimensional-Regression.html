@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1208,21 +1208,21 @@ R 包 <code class="docutils literal notranslate"><span class="pre">superpc</span
 \[
 Y=\beta_0+\beta_1U+\varepsilon\tag{18.32}
 \]</div>
-<p>另外，我们有由 <span class="math notranslate nohighlight">\(j\in\cal P\)</span> 索引的特征 <span class="math notranslate nohighlight">\(X_j\)</span> 的结合中测量值，其中</p>
+<p>另外，我们有由 <span class="math notranslate nohighlight">\(j\in\mathcal P\)</span> 索引的特征 <span class="math notranslate nohighlight">\(X_j\)</span> 的结合中测量值，其中</p>
 <div class="math notranslate nohighlight">
 \[
-X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \cal P\tag{18.33}
+X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \mathcal P\tag{18.33}
 \]</div>
 <p>误差 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 和 <span class="math notranslate nohighlight">\(\epsilon_j\)</span> 假设均值为零且在各自模型中与其它随机变量独立。</p>
-<p>我们也有许多额外的特征 <span class="math notranslate nohighlight">\(X_k, k\in \cal P\)</span> 是独立于 <span class="math notranslate nohighlight">\(U\)</span> 的。我们想要识别 <span class="math notranslate nohighlight">\(\cal P\)</span>，估计 <span class="math notranslate nohighlight">\(U\)</span>，因此拟合预测模型 (18.32)。这是潜变量结构模型的特殊情形，或者说是单组分因子分析模型（Mardia et al., 1979<a class="footnote-reference brackets" href="#id17" id="id6">1</a>，也参见<span class="xref myst">第 14.7 节</span>）潜变量 <span class="math notranslate nohighlight">\(U\)</span>是图 18.13 中概念化的细胞类型的连续版本。</p>
+<p>我们也有许多额外的特征 <span class="math notranslate nohighlight">\(X_k, k\in \mathcal P\)</span> 是独立于 <span class="math notranslate nohighlight">\(U\)</span> 的。我们想要识别 <span class="math notranslate nohighlight">\(\mathcal P\)</span>，估计 <span class="math notranslate nohighlight">\(U\)</span>，因此拟合预测模型 (18.32)。这是潜变量结构模型的特殊情形，或者说是单组分因子分析模型（Mardia et al., 1979<a class="footnote-reference brackets" href="#id17" id="id6">1</a>，也参见<span class="xref myst">第 14.7 节</span>）潜变量 <span class="math notranslate nohighlight">\(U\)</span>是图 18.13 中概念化的细胞类型的连续版本。</p>
 <p>监督主成分算法可以看成是拟合这个模型的方法：</p>
 <ol class="simple">
-<li><p>第 (1) 步筛查 (screening) 估计集合 <span class="math notranslate nohighlight">\(\cal P\)</span>。</p></li>
-<li><p>给定 <span class="math notranslate nohighlight">\(\cal P\)</span>，用第2(a)步中最大的主成分估计潜变量 <span class="math notranslate nohighlight">\(U\)</span>。</p></li>
+<li><p>第 (1) 步筛查 (screening) 估计集合 <span class="math notranslate nohighlight">\(\mathcal P\)</span>。</p></li>
+<li><p>给定 <span class="math notranslate nohighlight">\(\mathcal P\)</span>，用第2(a)步中最大的主成分估计潜变量 <span class="math notranslate nohighlight">\(U\)</span>。</p></li>
 <li><p>最后，第 2(b) 中的回归拟合估计模型 (18.32) 中的系数。</p></li>
 </ol>
-<p>第 (1) 步是自然的，因为平均而言，只有当 <span class="math notranslate nohighlight">\(\alpha_{1j}\)</span> 不为零时，回归系数才是非零的。因此这步应该会选出特征 <span class="math notranslate nohighlight">\(j\in\cal P\)</span>。如果我们假设误差 <span class="math notranslate nohighlight">\(\epsilon_j\)</span> 有高斯分布且有相同的方差，则第 (2a) 步也是自然的。这种情形下主成分是单因子模型的极大似然估计 (Mardia et al., 1979<a class="footnote-reference brackets" href="#id20" id="id7">3</a>)。第 (2b) 中的回归是很显然的。</p>
-<p>假设总共有 <span class="math notranslate nohighlight">\(p\)</span> 个特征，其中 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征在相关集合 <span class="math notranslate nohighlight">\(\cal P\)</span> 中。则如果 <span class="math notranslate nohighlight">\(p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都增长但 <span class="math notranslate nohighlight">\(p_1\)</span> 比 <span class="math notranslate nohighlight">\(p\)</span> 相对较小，可以证明（在合理的条件下）第一主成分对于潜因子是一致的。通常情形下的主成分可能不是一致的，因为它可能被大量的噪声特征所污染。</p>
+<p>第 (1) 步是自然的，因为平均而言，只有当 <span class="math notranslate nohighlight">\(\alpha_{1j}\)</span> 不为零时，回归系数才是非零的。因此这步应该会选出特征 <span class="math notranslate nohighlight">\(j\in\mathcal P\)</span>。如果我们假设误差 <span class="math notranslate nohighlight">\(\epsilon_j\)</span> 有高斯分布且有相同的方差，则第 (2a) 步也是自然的。这种情形下主成分是单因子模型的极大似然估计 (Mardia et al., 1979<a class="footnote-reference brackets" href="#id20" id="id7">3</a>)。第 (2b) 中的回归是很显然的。</p>
+<p>假设总共有 <span class="math notranslate nohighlight">\(p\)</span> 个特征，其中 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征在相关集合 <span class="math notranslate nohighlight">\(\mathcal P\)</span> 中。则如果 <span class="math notranslate nohighlight">\(p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都增长但 <span class="math notranslate nohighlight">\(p_1\)</span> 比 <span class="math notranslate nohighlight">\(p\)</span> 相对较小，可以证明（在合理的条件下）第一主成分对于潜因子是一致的。通常情形下的主成分可能不是一致的，因为它可能被大量的噪声特征所污染。</p>
 <p>最后，假设在监督主成分过程中的第 (1) 步使用的阈值产生大量的特征用于计算主成分。则为了解释性，也同样为了实际应用，我们会寻找降维后的子集特征来近似模型。预处理 (Pre-conditioning) 是其中的一种方式。</p>
 </div>
 <div class="section" id="id8">
@@ -1231,20 +1231,20 @@ X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \cal P\tag{18.33}
 <p>Thresholded PLS 可以看成是监督主成分的噪声版本，因此我们不会期待它在实际中效果会很好。假设我们的变量全部标准化了，第一 PLS 变量有如下的形式</p>
 <div class="math notranslate nohighlight">
 \[
-\z = \sum_{j\in \cal P}\langle \y,\x_j\rangle\x_j\tag{18.34}
+\z = \sum_{j\in \mathcal P}\langle \y,\x_j\rangle\x_j\tag{18.34}
 \]</div>
 <p>并且可以看成对模型 (18.33) 中潜因子 <span class="math notranslate nohighlight">\(U\)</span> 的估计。相反地，监督主成分方向 <span class="math notranslate nohighlight">\(\hat\u\)</span> 满足</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\u = \frac{1}{d^2}\sum\limits_{j\in\cal P}\langle \hat\u,\x_j\rangle\x_j\tag{18.35}
+\hat\u = \frac{1}{d^2}\sum\limits_{j\in\mathcal P}\langle \hat\u,\x_j\rangle\x_j\tag{18.35}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(d\)</span> 是 <span class="math notranslate nohighlight">\(\X_{\cal P}\)</span> 第一奇异值。这遵循第一主成分的定义。因此 thresholded PLS 采用 <span class="math notranslate nohighlight">\(\y\)</span> 与每个特征的内积作为权重，而有监督的主成分采用特征来导出“self-consistent”的估计量 <span class="math notranslate nohighlight">\(\hat\u\)</span>。因为许多特征都对估计 <span class="math notranslate nohighlight">\(\hat\u\)</span> 起到作用，而不是仅仅是单个输出 <span class="math notranslate nohighlight">\(\y\)</span>，我们可以期待 <span class="math notranslate nohighlight">\(\hat\u\)</span> 比 <span class="math notranslate nohighlight">\(\z\)</span> 的噪声更少。事实上，如果在集合 <span class="math notranslate nohighlight">\(\cal P\)</span> 中有 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征，且 <span class="math notranslate nohighlight">\(N,p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都趋于无穷，且 <span class="math notranslate nohighlight">\(p_1/N\rightarrow 0\)</span>，则用 Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id12">5</a> 中的技巧可以证明</p>
+<p>其中 <span class="math notranslate nohighlight">\(d\)</span> 是 <span class="math notranslate nohighlight">\(\X_{\mathcal P}\)</span> 第一奇异值。这遵循第一主成分的定义。因此 thresholded PLS 采用 <span class="math notranslate nohighlight">\(\y\)</span> 与每个特征的内积作为权重，而有监督的主成分采用特征来导出“self-consistent”的估计量 <span class="math notranslate nohighlight">\(\hat\u\)</span>。因为许多特征都对估计 <span class="math notranslate nohighlight">\(\hat\u\)</span> 起到作用，而不是仅仅是单个输出 <span class="math notranslate nohighlight">\(\y\)</span>，我们可以期待 <span class="math notranslate nohighlight">\(\hat\u\)</span> 比 <span class="math notranslate nohighlight">\(\z\)</span> 的噪声更少。事实上，如果在集合 <span class="math notranslate nohighlight">\(\mathcal P\)</span> 中有 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征，且 <span class="math notranslate nohighlight">\(N,p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都趋于无穷，且 <span class="math notranslate nohighlight">\(p_1/N\rightarrow 0\)</span>，则用 Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id12">5</a> 中的技巧可以证明</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \z &amp; = \u +O_p(1)\\
 \hat\u &amp;= \u + O_p(\sqrt{p_1/N})
-\end{align}
+\end{align*}
 \tag{18.36}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\u\)</span> 是模型 (18.32) 中真实的（未观测的）潜变量。</p>

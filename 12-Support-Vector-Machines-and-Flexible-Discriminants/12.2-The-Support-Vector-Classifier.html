@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1186,7 +1186,7 @@ G(x)=\sign[x^T\beta+\beta_0]\tag{12.2}
 <p>超平面的结构在 <span class="xref myst">4.5 节</span>有讨论，我们证明了 \eqref{12.1} 中的 <span class="math notranslate nohighlight">\(f(x)\)</span> 给出了点 <span class="math notranslate nohighlight">\(x\)</span> 到超平面 <span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0=0\)</span> 的符号距离。因为类别是可分的，则我们可以找到一个函数<span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0\)</span>，满足<span class="math notranslate nohighlight">\(y_if(x_i)&gt;0,\forall i\)</span>。因此我们可以找到超平面在类别 1 和 -1 的训练点之间创造最大的 margin（图12.1）。</p>
 <p><img alt="" src="../_images/fig12.1.png" /></p>
 <blockquote>
-<div><p>图12.1. 支持向量分类器。左图显示了可分情形。判别边界是实线，而虚线确定了 margin（阴影部分）的最大宽度为 <span class="math notranslate nohighlight">\(2M=2/\Vert\beta\Vert\)</span>。右图中显示了不可分（重叠）情形。标记为 <span class="math notranslate nohighlight">\(\xi_j^\*\)</span> 的点是在 margin 错误的一侧，且 <span class="math notranslate nohighlight">\(\xi_j^\*=M\xi_j\)</span>；在正确一侧的点满足 <span class="math notranslate nohighlight">\(\xi_j^\*=0\)</span>. 在总代价 <span class="math notranslate nohighlight">\(\sum\xi_i\le constant\)</span> 的约束下最大化 margin. 因此，<span class="math notranslate nohighlight">\(\sum\xi_j^\*\)</span> 是在 margin 错误的一侧的点的距离总和。</p>
+<div><p>图12.1. 支持向量分类器。左图显示了可分情形。判别边界是实线，而虚线确定了 margin（阴影部分）的最大宽度为 <span class="math notranslate nohighlight">\(2M=2/\Vert\beta\Vert\)</span>。右图中显示了不可分（重叠）情形。标记为 <span class="math notranslate nohighlight">\(\xi_j^*\)</span> 的点是在 margin 错误的一侧，且 <span class="math notranslate nohighlight">\(\xi_j^*=M\xi_j\)</span>；在正确一侧的点满足 <span class="math notranslate nohighlight">\(\xi_j^*=0\)</span>. 在总代价 <span class="math notranslate nohighlight">\(\sum\xi_i\le constant\)</span> 的约束下最大化 margin. 因此，<span class="math notranslate nohighlight">\(\sum\xi_j^*\)</span> 是在 margin 错误的一侧的点的距离总和。</p>
 </div></blockquote>
 <p>优化问题是</p>
 <div class="math notranslate nohighlight">
@@ -1256,11 +1256,11 @@ L_P=\frac{1}{2}\Vert\beta\Vert^2+C\sum\limits_{i=1}^N\xi_i-\sum\limits_{i=1}^N\a
 <p>我们需要求关于 <span class="math notranslate nohighlight">\(\beta,\beta_0\)</span> 和 <span class="math notranslate nohighlight">\(\xi_i\)</span> 的最小值。令对应的微分为 0，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \beta&amp;=\sum\limits_{i=1}^N\alpha_iy_ix_i&amp; \tag{12.10}\label{12.10}\\
 0&amp;= \sum\limits_{i=1}^N\alpha_iy_i&amp; \tag{12.11}\\
 \alpha_i&amp;=C-\mu_i,\;\forall i,&amp; \tag{12.12}\label{12.12}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>同样有正值约束 <span class="math notranslate nohighlight">\(\alpha_i,\mu_i,\xi_i\ge 0\;\forall i\)</span>。把 \eqref{12.10}-\eqref{12.12} 代入 \eqref{12.9}，我们得到 Lagrangian(Wolfe) 对偶目标函数</p>
 <div class="math notranslate nohighlight">
@@ -1283,29 +1283,29 @@ $$
 $$
 Lagrangian函数为
 $$
-{\cal L}(x,\lambda)=f(x)-\lambda^Tc(x)
+{\mathcal L}(x,\lambda)=f(x)-\lambda^Tc(x)
 $$
 定义对偶目标函数$q:\IR^n\rightarrow \IR$：
 $$
-q(\lambda)\def\underset{x}{\inf}\cal L(x,\lambda)
+q(\lambda)\def\underset{x}{\inf}\mathcal L(x,\lambda)
 $$
 其定义域为
 $$
-\cal D\def\{\lambda\mid q(\lambda)&gt;-\infty\}
+\mathcal D\def\{\lambda\mid q(\lambda)&gt;-\infty\}
 $$
-**若$f$和$-c_i$均为凸函数**，则$\cal L(\cdot, \lambda)$也为凸函数，则可以很容易计算$q(\lambda)$。
+**若$f$和$-c_i$均为凸函数**，则$\mathcal L(\cdot, \lambda)$也为凸函数，则可以很容易计算$q(\lambda)$。
 
 参考资料: [Wright S, Nocedal J. Numerical optimization (Second Edition). Springer Science.](../references/opbook2.pdf)
 </pre></div>
 </div>
 <p>它给出了目标函数 \eqref{12.8} 对于任意可行解的一个下界。我们在满足 <span class="math notranslate nohighlight">\(0\le \alpha_i\le C\)</span> 和 <span class="math notranslate nohighlight">\(\sum_{i=1}^N\alpha_iy_i=0\)</span> 的条件下最大化<span class="math notranslate nohighlight">\(L_D\)</span>。再加上 \eqref{12.10}-\eqref{12.12} 条件，Karush-Kuhn-Tucker 条件包含下列约束：对于 <span class="math notranslate nohighlight">\(i=1,\ldots,N\)</span>，
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9da59a68-5bd2-4e0b-86c1-a18ede6e3d8f">
-<span class="eqno">(29)<a class="headerlink" href="#equation-9da59a68-5bd2-4e0b-86c1-a18ede6e3d8f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]&amp;=0&amp; \tag{12.14}\label{12.14}\\
 \mu_i\xi_i&amp;=0&amp; \tag{12.15}\label{12.15}\\
 y_i(x_i^T\beta+\beta_0)-(1-\xi_i)&amp;\ge 0&amp; \tag{12.16}\label{12.16}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}!!! note &quot;weiya 注：KKT 条件&quot;
     对于带约束的优化问题

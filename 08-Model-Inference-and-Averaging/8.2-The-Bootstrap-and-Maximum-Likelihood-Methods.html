@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.2 自助法和最大似然法 &#8212; 统计学习精要(中文)</title>
+    <title>8.2 自助法与最大似然 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,17 +1146,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   平滑的例子
+   8.2.1 平滑的例子
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   最大似然推断
+   8.2.2 最大似然推断
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   自助法和最大似然法
+  <a class="reference internal nav-link" href="#bootstrap-mle">
+   8.2.3 自助法（Bootstrap ）和最大似然法（MLE）
   </a>
  </li>
 </ul>
@@ -1171,223 +1171,212 @@
               <div>
                 
   <div class="section" id="id1">
-<h1>8.2 自助法和最大似然法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>8.2 自助法与最大似然<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <div class="section" id="id2">
-<h2>平滑的例子<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>自助法提供了一个通过在训练数据中取样来评估不确定性的直接计算的方式。这里我们用一个简单的一维平滑问题来解释自助法，并且展示它与最大似然之间的联系。</p>
+<h2>8.2.1 平滑的例子<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>自助法（Bootstrap ）提供了一个通过在训练数据中取样来评估不确定性的方法。本节用一维平滑问题来解释自助法，并且展示其与最大似然之间的联系。</p>
 <p><img alt="" src="../_images/fig8.1.png" /></p>
 <blockquote>
-<div><p>图 8.1. (左图)：光滑例子的数据。（右图：）7 个 B-样条基函数的集合。垂直虚线为放置树结点的地方。</p>
+<div><p>图 8.1. （左图）：光滑例子的数据。（右图）：7 个 B-样条基函数的集合。垂直虚线为放置树结点的地方。</p>
 </div></blockquote>
-<p>用 <span class="math notranslate nohighlight">\(\mathbf Z=\\{z_1,z_2,\ldots,z_N\\}\)</span> 表示训练数据，其中 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i),i=1,2,\ldots,N.\)</span> 这里 <span class="math notranslate nohighlight">\(x_i\)</span> 是一维输入，<span class="math notranslate nohighlight">\(y_i\)</span> 为输出，可以是连续的也可以是离散的。举个例子，考虑在图 8.1 的左图中展示的 <span class="math notranslate nohighlight">\(N=50\)</span> 个数据点。</p>
-<p>假设我们决定用三次样条去拟合数据，三个结点放置在 <span class="math notranslate nohighlight">\(X\)</span> 的分位数上。这是一个七维线性函数空间。</p>
-<p>!!! note “weiya 注”
-含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的普通三次样条有 <span class="math notranslate nohighlight">\(K+4\)</span> 个基函数，而自然三次样条有 <span class="math notranslate nohighlight">\(K\)</span> 个基函数。</p>
-<p>举个例子，可以通过 B-样条基函数的线性展开来表示（见 <span class="xref myst">5.9.2 节</span>）：
-$<span class="math notranslate nohighlight">\(
-\mu(x)=\sum\limits_{j=1}^7\beta_jh_j(x).\tag{8.1}
-\)</span><span class="math notranslate nohighlight">\(
-这里 \)</span>h_j(x),j=1,2,\ldots,7<span class="math notranslate nohighlight">\( 是在图 8.1 右图展示的 7 个函数。我们可以将 \)</span>\mu(x)<span class="math notranslate nohighlight">\( 看成是条件期望 \)</span>\E(Y\mid X=x)$.</p>
-<p>令 <span class="math notranslate nohighlight">\(\mathbf H\)</span> 为 <span class="math notranslate nohighlight">\(N\times 7\)</span> 的矩阵，且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 <span class="math notranslate nohighlight">\(h_j(x_i)\)</span>。<span class="math notranslate nohighlight">\(\beta\)</span> 的一般估计通过最小化训练集上的均方误差得到，由下式给出
-$<span class="math notranslate nohighlight">\(
-\hat \beta=\mathbf{(H^TH)^{-1}H^Ty}\tag{8.2}\label{8.2}
-\)</span>$</p>
-<p>对应的拟合值 <span class="math notranslate nohighlight">\(\hat \mu(x)=\sum_{j=1}^7\hat \beta_jh_j(x)\)</span> 显示在图8.2的左上图。</p>
-<p><span class="math notranslate nohighlight">\(\hat\beta\)</span> 的协方差矩阵估计为
-$<span class="math notranslate nohighlight">\(
-\widehat{\Var}(\hat\beta)=\mathbf{(H^TH)}^{-1}\hat\sigma^2\tag{8.3}\label{8.3}
-\)</span><span class="math notranslate nohighlight">\(
-其中白噪声方差的估计值由 \)</span>\hat\sigma^2=\sum_{i=1}^N(y_i-\hat\mu(x_i))^2/N<span class="math notranslate nohighlight">\( 给出。令 \)</span>h(x)^T=(h_1(x),h_2(x),\ldots,h_7(x))<span class="math notranslate nohighlight">\(,预测值 \)</span>\hat\mu(x)=h(x)^T\hat\beta<span class="math notranslate nohighlight">\( 的标准误差为
-\)</span><span class="math notranslate nohighlight">\(
-\widehat{se}[\hat\mu(x)]=[h(x)^T\mathbf{(H^TH)^{-1}}h(x)]^{\frac{1}{2}}\hat{\sigma}\tag{8.4}\label{8.4}
-\)</span>$
-<img alt="" src="../_images/fig8.2.png" /></p>
+<p>用 <span class="math notranslate nohighlight">\(\mathbf Z=\{z_1,z_2,\ldots,z_N\}\)</span> 表示训练数据，其中 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i),i=1,2,\ldots,N\)</span>。 这里 <span class="math notranslate nohighlight">\(x_i\)</span> 是一维输入，<span class="math notranslate nohighlight">\(y_i\)</span> 为输出，可以是连续的或离散的。考虑在图 8.1 的左图中展示的 <span class="math notranslate nohighlight">\(N=50\)</span> 个数据点。</p>
+<p>假设我们决定用三次样条去拟合数据，三个结点放置在 <span class="math notranslate nohighlight">\(X\)</span> 的分位数上（垂直虚线所在处）。这是一个七维的线性函数空间。</p>
+<div class="admonition- admonition">
+<p class="admonition-title">知识点</p>
+<p>含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的普通三次样条有 <span class="math notranslate nohighlight">\(K+4\)</span> 个基函数，而自然三次样条有 <span class="math notranslate nohighlight">\(K\)</span> 个基函数。</p>
+</div>
+<p>举个例子，可以通过 B-样条基函数的线性展开来表示（见 5.9.2 节）：</p>
+<div class="math notranslate nohighlight">
+\[
+\mu(x)=\sum\limits_{j=1}^7\beta_jh_j(x) \tag{8.1}
+\]</div>
+<p>这里 <span class="math notranslate nohighlight">\(h_j(x),j=1,2,\ldots,7\)</span> 是在图 8.1 右图展示的 7 个基函数。我们可以将 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 看成是条件期望 <span class="math notranslate nohighlight">\(\mathbb{E}(Y\mid X=x)\)</span>.</p>
+<p>令 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 为 <span class="math notranslate nohighlight">\(N \times 7\)</span> 的矩阵，且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 <span class="math notranslate nohighlight">\(h_j(x_i)\)</span> 。<span class="math notranslate nohighlight">\(\beta\)</span> 的一般估计通过最小化训练集上的均方误差得到，由下式给出：</p>
+<div class="math notranslate nohighlight">
+\[
+\hat \beta=(\mathbf{H}^T\mathbf{H})^{-1}\mathbf{H}^Ty\tag{8.2} 
+\]</div>
+<p>对应的拟合值 <span class="math notranslate nohighlight">\(\hat \mu(x)=\sum_{j=1}^7\hat \beta_jh_j(x)\)</span> 显示在图 8.2 的左上图。</p>
+<p><span class="math notranslate nohighlight">\(\hat\beta\)</span> 的协方差矩阵估计为：</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{\mathbb{Var}}(\hat\beta)=(\mathbf{H}^T\mathbf{H})^{-1}\hat\sigma^2     \tag{8.3} 
+\]</div>
+<p>其中白噪声方差的估计值由 <span class="math notranslate nohighlight">\(\hat \sigma^2=\sum_{i=1}^N(y_i-\hat \mu(x_i))^2/N\)</span> 给出。令 <span class="math notranslate nohighlight">\(h(x)^T=(h_1(x),h_2(x),\ldots,h_7(x))\)</span>, 预测值 <span class="math notranslate nohighlight">\(\hat\mu(x)=h(x)^T\hat\beta\)</span> 的标准误差为：</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{se}[\hat\mu(x)]=[h(x)^T(\mathbf{H}^T\mathbf{H})^{-1}h(x)]^{\frac{1}{2}}\hat{\sigma}\tag{8.4} 
+\]</div>
+<p><img alt="" src="../_images/fig8.2.png" /></p>
 <blockquote>
-<div><p>图 8.2. (左上图：)数据点的B-样条光滑。（右上图：）B-样条光滑加减1.96倍的标准误差得到的带状区域。（左下图：）B-样条光滑的自助法重复取样。（右下图：）从自助法的分布计算得到的B-样条和95%的标准误差区域带。</p>
+<div><p>图 8.2. （左上图：） 数据点的 B-样条光滑。（右上图：）B-样条光滑加减 1.96 倍的标准误差得到的带状区域。（左下图：）B-样条光滑的自助法重复取样。（右下图：）从自助法的分布计算得到的 B-样条和 95%的标准误差区域带。</p>
 </div></blockquote>
-<p>在图 8.2 的右上图中我们画出了 <span class="math notranslate nohighlight">\(\hat\mu(x)\pm 1.96\cdot\widehat{se}[\hat\mu(x)]\)</span>,因为 1.96 是标准正态分布函数 97.5% 的那个点，这表示 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 的近似 <span class="math notranslate nohighlight">\(100-2\times 2.5\%=95\%\)</span> 逐点置信域。</p>
-<p>这里我们介绍怎么在这个例子中运用自助法。我们从训练集中有放回抽取 <span class="math notranslate nohighlight">\(B\)</span> 个大小均为 <span class="math notranslate nohighlight">\(N=50\)</span> 的数据集，取样单元为数据对 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i)\)</span>。对于每一个自助法的数据集 <span class="math notranslate nohighlight">\(\mathbf Z^\*\)</span> 我们拟合三次样条 <span class="math notranslate nohighlight">\(\hat \mu^\*(x)\)</span>；从 10 个这样的自助样本中得到的拟合曲线如图 8.2 的左下图所示。利用 <span class="math notranslate nohighlight">\(B=200\)</span> 个自助法样本集，我们可以得到每个 <span class="math notranslate nohighlight">\(x\)</span> 处的 95% 置信区间：我们在每个 <span class="math notranslate nohighlight">\(x\)</span> 处找到第 <span class="math notranslate nohighlight">\(2.5\%\times 200=5\)</span> 大（小）的值。这在图 8.2的右下图画出来了。这些带状与右上角的带状显示，不过在终点处更宽点。</p>
-<p>实际上最小二乘估计 \eqref{8.2} 和 \eqref{8.3}，自助法和最大似然法有着很紧密的联系。进一步假设模型误差为高斯分布，
-$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e010b72-699e-4a99-acf5-1070a4b1afbf">
-<span class="eqno">(18)<a class="headerlink" href="#equation-4e010b72-699e-4a99-acf5-1070a4b1afbf" title="Permalink to this equation">¶</a></span>\[\begin{align}
-Y&amp;=\mu(X)+\varepsilon;\; \varepsilon\sim N(0,\sigma^2),\notag\\
-\mu(X)&amp;=\sum\limits_{j=1}^7\beta_jh_j(x)\notag
-\end{align}\]</div>
-<p>\tag{8.5}
-\label{8.5}
+<p>在图 8.2 的右上图中我们画出了 <span class="math notranslate nohighlight">\(\hat\mu(x)\pm 1.96\cdot\widehat{se}[\hat\mu(x)]\)</span>, 因为 1.96 是标准正态分布函数 97.5% 的那个点，这表示 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 的近似 <span class="math notranslate nohighlight">\(100-2\times 2.5\%=95\%\)</span> 逐点置信区间。</p>
+<p>这里我们介绍怎么在这个例子中运用自助法。我们从训练集中有放回抽取 <span class="math notranslate nohighlight">\(B\)</span> 个大小均为 <span class="math notranslate nohighlight">\(N=50\)</span> 的数据集，取样单元为数据对 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i)\)</span>。对于每一个自助法的数据集 <span class="math notranslate nohighlight">\(\mathbf Z^*\)</span> 我们拟合三次样条 <span class="math notranslate nohighlight">\(\hat \mu^*(x)\)</span>；从 10 个这样的自助样本中得到的拟合曲线如图 8.2 的左下图所示。利用 <span class="math notranslate nohighlight">\(B=200\)</span> 个自助法样本集，我们可以得到每个 <span class="math notranslate nohighlight">\(x\)</span> 处的 95% 置信区间：我们在每个 <span class="math notranslate nohighlight">\(x\)</span> 处找到第 <span class="math notranslate nohighlight">\(2.5\%\times 200=5\)</span> 大（小）的值。这在图 8.2 的右下图画出来了。这些带状与右上角的带状显示，不过在终点处更宽点。</p>
+<p>实际上最小二乘估计 式（8.2） 和 式（8.3），自助法和最大似然法有着很紧密的联系。进一步假设模型误差为高斯分布，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Y&amp;=\mu(X)+\varepsilon;\; \varepsilon\sim N(0,\sigma^2),\\
+\mu(X)&amp;=\sum\limits_{j=1}^7\beta_jh_j(x)
+\end{align*}
+\tag{8.5}
+\end{split}\]</div>
+<p>上面描述的自助法，通过从训练集中有放回地采样，称作 <strong>非参自助法 (nonparametric bootstrap)</strong>。这实际上意味着这个方法是与模型无关的，因为它使用原始数据来得到新的数据集，而不是一个特定的含参数的模型。考虑到自助法的一种变形，称为 <strong>参数自助法 (parametric bootstrap)</strong>，它通过对预测值加上高斯噪声模拟新的响应：
 $<span class="math notranslate nohighlight">\(
-上面描述的自助法，通过从训练集中有放回地采样，称作 **非参自助法(nonparametric bootstrap)**。这实际上意味着这个方法是与模型无关的，因为它使用原始数据来得到新的数据集，而不是一个特定的含参数的模型。考虑到自助法的一种变形，称为 **参数自助法 (parametric bootstrap)**，它通过对预测值加上高斯噪声模拟新的响应：
-\)</span><span class="math notranslate nohighlight">\(
 y_i^*=\hat\mu(x_i)+\varepsilon_i^*;\qquad \varepsilon_i^*\sim N(0,\hat\sigma^2);\qquad i=1,2,\ldots,N\tag{8.6}
 \)</span><span class="math notranslate nohighlight">\(
-这一过程重复 \)</span>B<span class="math notranslate nohighlight">\( 次，这里 \)</span>B=200<span class="math notranslate nohighlight">\(。得到的自助法数据集形式为 \)</span>(x_1,y_1^*),\ldots,(x_N,y_N^*)<span class="math notranslate nohighlight">\(，而且我们可以重新对每一个计算 \)</span>B<span class="math notranslate nohighlight">\(-样条光滑。这种方法得到的置信域实际上等于当自助法样本数趋于无穷时右上图的最小二乘置信域。自助法样本 \)</span>\mathbf y^*<span class="math notranslate nohighlight">\( 的函数估计由 \)</span>\hat\mu^*(x)=h(x)^T\mathbf{(H^TH)^{-1}H^Ty^*}<span class="math notranslate nohighlight">\( 给出，而且服从分布
-\)</span><span class="math notranslate nohighlight">\(
+这一过程重复 \)</span>B<span class="math notranslate nohighlight">\( 次，这里 \)</span>B=200<span class="math notranslate nohighlight">\(。得到的自助法数据集形式为 \)</span>(x_1,y_1^<em>),\ldots,(x_N,y_N^</em>)<span class="math notranslate nohighlight">\(，而且我们可以重新对每一个计算 \)</span>B<span class="math notranslate nohighlight">\(-样条光滑。这种方法得到的置信区间实际上等于当自助法样本数趋于无穷时右上图的最小二乘置信区间。自助法样本 \)</span>\mathbf y^<em><span class="math notranslate nohighlight">\( 的函数估计由 \)</span>\hat\mu^</em>(x)=h(x)^T\mathbf{(H^TH)^{-1}H^Ty^*}$ 给出，而且服从分布</p>
+<div class="math notranslate nohighlight">
+\[
 \hat\mu^*(x)\sim N(\hat \mu(x), h(x)^T\mathbf{(H^TH)^{-1}}h(x)\hat\sigma^2)\tag{8.7}
-\)</span>$
-注意到该分布的均值是最小二乘估计，标准误差和近似公式 \eqref{8.4} 相同。</p>
+\]</div>
+<p>注意到该分布的均值是最小二乘估计，标准误差和近似公式（8.4） 相同。</p>
 </div>
 <div class="section" id="id3">
-<h2>最大似然推断<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>结果证明在前面的例子中参数自助法和最小二乘是一致的，因为模型 \eqref{8.5} 有可加的高斯误差。一般地，参数自助法跟最小二乘不一致，但跟最大似然一致，我们现在再检验一下。</p>
-<p>首先确定我们观测值的概率密度或者概率质量函数
-$<span class="math notranslate nohighlight">\(
-z_i\sim g_\theta(z)\tag{8.8}
-\)</span><span class="math notranslate nohighlight">\(
-这个表达式中 \)</span>\theta<span class="math notranslate nohighlight">\( 表示一个或多个未知的决定 \)</span>Z<span class="math notranslate nohighlight">\( 分布的参数。这称为 \)</span>Z<span class="math notranslate nohighlight">\( 的参数模型。举个例子，如果 \)</span>Z<span class="math notranslate nohighlight">\( 服从均值为 \)</span>\mu<span class="math notranslate nohighlight">\(、方差为 \)</span>\sigma^2<span class="math notranslate nohighlight">\( 的正态分布，则
-\)</span><span class="math notranslate nohighlight">\(
-\theta=(\mu, \sigma^2)\tag{8.9}
-\)</span><span class="math notranslate nohighlight">\(
-和
-\)</span><span class="math notranslate nohighlight">\(
-g_\theta(z)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}(z-\mu)^2/\sigma^2}\tag{8.10}
-\)</span><span class="math notranslate nohighlight">\(
-最大似然基于似然函数，似然函数由下式给出
-\)</span><span class="math notranslate nohighlight">\(
-L(\theta;\mathbf Z)=\prod\limits_{i=1}^Ng_\theta(z_i)\tag{8.11}
-\)</span>$</p>
-<p>这也是观测数据在模型 <span class="math notranslate nohighlight">\(g_\theta\)</span> 下的概率。这个似然是在忽略正乘数情形下定义的，这里我们取为 1。我们将 <span class="math notranslate nohighlight">\(L(\theta;\Z)\)</span> 看成当 <span class="math notranslate nohighlight">\(\Z\)</span> 固定时 <span class="math notranslate nohighlight">\(\theta\)</span> 的函数。</p>
-<p>记 <span class="math notranslate nohighlight">\(L(\theta;\mathbf Z)\)</span> 的对数为
-$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-398de1ef-5d3f-4024-a050-7e98d2d2846d">
-<span class="eqno">(19)<a class="headerlink" href="#equation-398de1ef-5d3f-4024-a050-7e98d2d2846d" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\ell(\theta;\mathbf Z)&amp;=\sum\limits_{i=1}^N\ell(\theta;z_i)\notag\\
-&amp;=\sum\limits_{i=1}^N\log g_\theta(z_i)\qquad \tag{8.12}
-\end{align}\]</div>
+<h2>8.2.2 最大似然推断<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>结果证明在前面的例子中参数自助法和最小二乘是一致的，因为式（8.5） 有可加的高斯误差。一般地，参数自助法跟最小二乘不一致，但跟最大似然一致，我们现在再检验一下。</p>
+<p>首先确定我们观测值的概率密度或者概率质量函数：</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-有时简记为 $\ell(\theta)$. 该表达式称为对数似然，并且每个值 $\ell(\theta;z_i)=\mathbb{log} g_\theta(z_i)$ 称为对数似然组分。最大似然法选择 $\theta=\hat\theta$ 来最大化 $\ell(\theta;\mathbf Z)$.\\似然函数可以被用来评估 $\hat\theta$ 的准确性。我们需要更多的定义，**得分函数 (score function)** 由下式给出
-\end{aligned}\end{align} \]</div>
-<p>\dot\ell(\theta;\mathbf Z)=\sum\limits_{i=1}^N\dot \ell(\theta;z_i)\tag{8.13}
-$<span class="math notranslate nohighlight">\(
-其中 \)</span>\ell(\theta;z_i)=\partial \ell(\theta;z_i)/\partial \theta<span class="math notranslate nohighlight">\(。假设概率在参数空间的内部取得最大值，则 \)</span>\dot\ell(\hat\theta,\mathbf Z)=0<span class="math notranslate nohighlight">\(。信息矩阵为
-\)</span><span class="math notranslate nohighlight">\(
+\[
+z_i\sim g_\theta(z)\tag{8.8}
+\]</div>
+<p>这个表达式中 <span class="math notranslate nohighlight">\(\theta\)</span> 表示一个或多个未知的决定 <span class="math notranslate nohighlight">\(Z\)</span> 分布的参数。这称为 <span class="math notranslate nohighlight">\(Z\)</span> 的参数模型。举个例子，如果 <span class="math notranslate nohighlight">\(Z\)</span> 服从均值为 <span class="math notranslate nohighlight">\(\mu\)</span>、方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的正态分布，则：</p>
+<div class="math notranslate nohighlight">
+\[
+\theta=(\mu, \sigma^2) \tag{8.9}
+\]</div>
+<p>和</p>
+<div class="math notranslate nohighlight">
+\[
+g_\theta(z)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}(z-\mu)^2/\sigma^2} \tag{8.10}
+\]</div>
+<p>最大似然基于似然函数，似然函数由下式给出：</p>
+<div class="math notranslate nohighlight">
+\[
+L(\theta;\mathbf Z)=\prod\limits_{i=1}^Ng_\theta(z_i) \tag{8.11}
+\]</div>
+<p>这也是观测数据在模型 <span class="math notranslate nohighlight">\(g_\theta\)</span> 下的概率。这个似然是在忽略正乘数情形下定义的，这里我们取为 1。我们将 <span class="math notranslate nohighlight">\(L(\theta;\Z)\)</span> 看成当 <span class="math notranslate nohighlight">\(\Z\)</span> 固定时 <span class="math notranslate nohighlight">\(\theta\)</span> 的函数。</p>
+<p>记 <span class="math notranslate nohighlight">\(L(\theta;\mathbf Z)\)</span> 的对数为：</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ell(\theta;\mathbf Z)&amp;=\sum\limits_{i=1}^N\ell(\theta;z_i)\\
+&amp;=\sum\limits_{i=1}^N\log g_\theta(z_i)\qquad \tag{8.12}
+\end{align*}\]</div>
+<p>有时简记为 <span class="math notranslate nohighlight">\(\ell(\theta)\)</span> 。该表达式称为对数似然，并且每个值 <span class="math notranslate nohighlight">\(\ell(\theta;z_i)=\mathbb{log} g_\theta(z_i)\)</span> 称为对数似然组分。最大似然法选择 <span class="math notranslate nohighlight">\(\theta=\hat\theta\)</span> 来最大化 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 。</p>
+<p>似然函数可以被用来评估 <span class="math notranslate nohighlight">\(\hat\theta\)</span> 的准确性。我们需要更多的定义，<strong>得分函数 (score function)</strong> 由下式给出：</p>
+<div class="math notranslate nohighlight">
+\[
+\dot\ell(\theta;\mathbf Z)=\sum\limits_{i=1}^N\dot \ell(\theta;z_i)\tag{8.13}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\ell(\theta;z_i)=\partial \ell(\theta;z_i)/\partial \theta\)</span>。假设概率在参数空间的内部取得最大值，则 <span class="math notranslate nohighlight">\(\dot\ell(\hat\theta,\mathbf Z)=0\)</span>。信息矩阵为：</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf I(\theta)=-\sum\limits_{i=1}^N\frac{\partial ^2\ell(\theta;z_i)}{\partial \theta\partial \theta^T}\tag{8.14}
-\)</span><span class="math notranslate nohighlight">\(
-当 \)</span>\mathbf I(\theta)<span class="math notranslate nohighlight">\( 在 \)</span>\theta=\hat\theta<span class="math notranslate nohighlight">\( 处取值，则通常称为观测信息量。Fisher 信息量（或者期望信息量）是
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\(\mathbf I(\theta)\)</span> 在 <span class="math notranslate nohighlight">\(\theta=\hat\theta\)</span> 处取值，则通常称为观测信息量。Fisher 信息量（或者期望信息量）是：</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf i(\theta)=E_\theta[\mathbf I(\theta)]\tag{8.15}
-\)</span>$</p>
-<!--**weiya**注:
-> 设随机变（向）量$X$来自分布族$\cal F=\{p(x;\theta):\theta\in\Theta\}$,其中$p(x;\theta)$为其概率密度函数，$\Theta$为开区间，假设$p(x;\theta)$关于$\theta$可导，且
-> $$
-> \begin{align}
-> 0&=\frac{d}{d\theta}\int_{-\infty}^\infty p(x;\theta)dx\\
-> &=\int_{-\infty}^\infty \frac{\partial p(x;\theta)}{\partial \theta}dx\\
-> &=\int_{-\infty}^\infty\frac{\partial \mathbb{log}p(x;\theta)}{\partial\theta}p(x;\theta)dx\\
-> &=E_\theta[\frac{\partial \mathbb{log}p(X;\theta)}{\partial \theta}]
-> \end{align}
-> $$
-> 从而
-> $$
-> \begin{align}
-> I(\theta):&=\mathrm{Var}_\theta\{\frac{\partial \mathrm{log}p(X;\theta)}{\partial \theta}\}\\
-> &=E_\theta[\frac{\partial\mathrm{log}p(x;\theta)}{\partial\theta}]^2\\
-> &=\int_{-\infty}^\infty(\frac{\partial \mathrm{log}p(x;\theta)}{\partial \theta})^2p(x;\theta)dx
-> \end{align}
-> $$
-> $I(\theta)$称为$X$或分布族$\cal F$的Fisher Information。
->
-> 如果$\frac{\partial^2}{\partial\theta^2}p(x;\theta)$对任意的$\theta\in\Theta$都存在，且积分与求导可以交换，则
-> $$
-> \begin{align}
-> 0&=\frac{d^2}{d\theta^2}\int_{-\infty}^\infty p(x;\theta)dx\\
-> &=\int_{-\infty}^{\infty}\frac{\partial}{\partial \theta}[\frac{\partial \mathrm{log }p(x;\theta)}{\partial \theta}p(x;\theta)]dx\\
-> &=\int_{-\infty}^\infty[\frac{\partial^2\mathrm{log}p(x;\theta)}{\partial \theta^2}p(x;\theta)]dx+\int_{-\infty}^\infty[\frac{\partial\mathrm{log} p(x;\theta)}{\partial \theta}]^2p(x;\theta)dx
-> \end{align}
-> $$
-> 从而
-> $$
-> I(\theta)=-E_\theta[\frac{\partial^2\mathrm{log}p(X;\theta)}{\partial \theta^2}]
-> $$
->
--->
-<p>!!! note “weiya 注”
-设随机变（向）量 <span class="math notranslate nohighlight">\(X\)</span> 来自分布族 <span class="math notranslate nohighlight">\(\cal F=\\{p(x;\theta):\theta\in\Theta\\}\)</span>，其中 <span class="math notranslate nohighlight">\(p(x;\theta)\)</span> 为其概率密度函数，<span class="math notranslate nohighlight">\(\Theta\)</span>为开区间，假设 <span class="math notranslate nohighlight">\(p(x;\theta)\)</span> 关于 <span class="math notranslate nohighlight">\(\theta\)</span> 可导，且
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
-    0&amp;=\frac{d}{d\theta}\int_{-\infty}^\infty p(x;\theta)dx\\
-    &amp;=\int_{-\infty}^\infty \frac{\partial p(x;\theta)}{\partial \theta}dx\\
-    &amp;=\int_{-\infty}^\infty \frac{\partial \log p(x;\theta)}{\partial\theta}p(x;\theta)dx\\
-    &amp;=E_\theta\left[\frac{\partial \log p(X;\theta)}{\partial \theta}\right]
-    \end{align*}
-    \)</span><span class="math notranslate nohighlight">\(
-    从而
-    \)</span><span class="math notranslate nohighlight">\(
-    \begin{align*}
-    I(\theta):&amp;=\Var_\theta\left\{\frac{\partial \log p(X;\theta)}{\partial \theta}\right\}\\
-    &amp;=E_\theta\left[\frac{\partial\log p(x;\theta)}{\partial\theta}\right]^2\\
-    &amp;=\int_{-\infty}^\infty\left(\frac{\partial \log p(x;\theta)}{\partial \theta}\right)^2p(x;\theta)dx
-    \end{align*}
-    \)</span><span class="math notranslate nohighlight">\(
-    \)</span>I(\theta)<span class="math notranslate nohighlight">\( 称为 \)</span>X<span class="math notranslate nohighlight">\( 或分布族 \)</span>\cal F$ 的 Fisher Information。</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>如果 $\frac{\partial^2}{\partial\theta^2}p(x;\theta)$ 对任意的 $\theta\in\Theta$ 都存在，且积分与求导可以交换，则
-$$
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>设随机变（向）量 <span class="math notranslate nohighlight">\(X\)</span> 来自分布族 <span class="math notranslate nohighlight">\(\mathcal F=\\{p(x;\theta):\theta\in\Theta\\}\)</span>，其中 <span class="math notranslate nohighlight">\(p(x;\theta)\)</span> 为其概率密度函数，<span class="math notranslate nohighlight">\(\Theta\)</span>为开区间，假设 <span class="math notranslate nohighlight">\(p(x;\theta)\)</span> 关于 <span class="math notranslate nohighlight">\(\theta\)</span> 可导，且</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+0&amp;=\frac{d}{d\theta}\int_{-\infty}^\infty p(x;\theta)dx\\
+&amp;=\int_{-\infty}^\infty \frac{\partial p(x;\theta)}{\partial \theta}dx\\
+&amp;=\int_{-\infty}^\infty \frac{\partial \log p(x;\theta)}{\partial\theta}p(x;\theta)dx\\
+&amp;=E_\theta\left[\frac{\partial \log p(X;\theta)}{\partial \theta}\right]
+\end{align*}
+\end{split}\]</div>
+<p>从而</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+I(\theta):&amp;=\Var_\theta\left\{\frac{\partial \log p(X;\theta)}{\partial \theta}\right\}\\
+&amp;=E_\theta\left[\frac{\partial\log p(x;\theta)}{\partial\theta}\right]^2\\
+&amp;=\int_{-\infty}^\infty\left(\frac{\partial \log p(x;\theta)}{\partial \theta}\right)^2p(x;\theta)dx
+\end{align*}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(I(\theta)\)</span> 称为 <span class="math notranslate nohighlight">\(X\)</span> 或分布族 <span class="math notranslate nohighlight">\(\mathcal F\)</span> 的 Fisher Information。</p>
+<p>如果 <span class="math notranslate nohighlight">\(\frac{\partial^2}{\partial\theta^2}p(x;\theta)\)</span> 对任意的 <span class="math notranslate nohighlight">\(\theta\in\Theta\)</span> 都存在，且积分与求导可以交换，则</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 0&amp;=\frac{d^2}{d\theta^2}\int_{-\infty}^\infty p(x;\theta)dx\\
 &amp;=\int_{-\infty}^{\infty}\frac{\partial}{\partial \theta}\left[\frac{\partial \log p(x;\theta)}{\partial \theta}p(x;\theta)\right]dx\\
 &amp;=\int_{-\infty}^\infty\left[\frac{\partial^2\log p(x;\theta)}{\partial \theta^2}p(x;\theta)\right]dx + \int_{-\infty}^\infty\left[\frac{\partial\log p(x;\theta)}{\partial \theta}\right]^2p(x;\theta)dx
 \end{align*}
-$$
-从而
-$$
+\end{split}\]</div>
+<p>从而</p>
+<div class="math notranslate nohighlight">
+\[
 I(\theta)=-E_\theta\left[\frac{\partial^2\log p(X;\theta)}{\partial \theta^2}\right]\,.
-$$
-</pre></div>
+\]</div>
 </div>
-<p>最后，记 <span class="math notranslate nohighlight">\(\theta\)</span> 的真值为 <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
-<p>一个标准的结果表明最大似然估计量的样本分布渐近服从正态分布
-$<span class="math notranslate nohighlight">\(
+<p>最后，记 <span class="math notranslate nohighlight">\(\theta\)</span> 的真值为 <span class="math notranslate nohighlight">\(\theta_0\)</span> 。</p>
+<p>一个标准的结果表明最大似然估计量的样本分布渐近服从正态分布：</p>
+<div class="math notranslate nohighlight">
+\[
 \hat\theta\longrightarrow N(\theta_0,\mathbf i(\theta_0)^{-1})\tag{8.16}
-\)</span><span class="math notranslate nohighlight">\(
-当 \)</span>N\longrightarrow \infty<span class="math notranslate nohighlight">\(。这表明 \)</span>\hat\theta<span class="math notranslate nohighlight">\( 的样本分布可能近似服从
-\)</span><span class="math notranslate nohighlight">\(
-N(\hat\theta,\mathbf i(\hat\theta)^{-1})\text{   or   }N(\hat{\theta},\mathbf I(\hat\theta)^{-1})\tag{8.17}\label{8.17}
-\)</span><span class="math notranslate nohighlight">\(
-其中，\)</span>\hat\theta$ 表示由观测数据得到的最大似然估计。</p>
-<p><span class="math notranslate nohighlight">\(\hat\theta_j\)</span> 的标准误差对应的估计由下式给出
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\(N\longrightarrow \infty\)</span> 。这表明 <span class="math notranslate nohighlight">\(\hat\theta\)</span> 的样本分布可能近似服从：</p>
+<div class="math notranslate nohighlight">
+\[
+N(\hat\theta,\mathbf i(\hat\theta)^{-1})\text{or}N(\hat{\theta},\mathbf I(\hat\theta)^{-1}) \tag{8.17} 
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\hat\theta\)</span> 表示由观测数据得到的最大似然估计。</p>
+<p><span class="math notranslate nohighlight">\(\hat\theta_j\)</span> 的标准误差对应的估计由下式给出：</p>
+<div class="math notranslate nohighlight">
+\[
 \sqrt{\mathbf i(\hat\theta)_{jj}^{-1}}\text{ and }\sqrt{\mathbf I(\hat\theta)^{-1}_{jj}}\tag{8.18}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span>\theta_j<span class="math notranslate nohighlight">\( 的置信点可以通过 \eqref{8.17} 的任意一个近似得到。这样的置信点分别有如下形式
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p><span class="math notranslate nohighlight">\(\theta_j\)</span> 的置信点可以通过 式（8.17） 的任意一个近似得到。这样的置信点分别有如下形式：</p>
+<div class="math notranslate nohighlight">
+\[
 \hat\theta_j-z^{(1-\alpha)}\cdot\sqrt{\mathbf i(\hat\theta)_{jj}^{-1}}\text{ or }\hat\theta_j-z^{(1-\alpha)}\cdot\sqrt{\mathbf I(\hat\theta)_{jj}^{-1}}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>z^{(1-\alpha)}<span class="math notranslate nohighlight">\( 为标准正态分布的 \)</span>1-\alpha<span class="math notranslate nohighlight">\( 分位数。更精确的置信区间可以由似然函数得到，通过利用卡方分布的近似
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(z^{(1-\alpha)}\)</span> 为标准正态分布的 <span class="math notranslate nohighlight">\(1-\alpha\)</span> 分位数。更精确的置信区间可以由似然函数得到，通过利用卡方分布的近似：</p>
+<div class="math notranslate nohighlight">
+\[
 2[\ell(\hat\theta)-\ell(\theta_0)]\sim \chi_p^2\tag{8.19}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>p<span class="math notranslate nohighlight">\( 为 \)</span>\theta<span class="math notranslate nohighlight">\( 组分的个数。\)</span>1-2\alpha<span class="math notranslate nohighlight">\( 置信区间是所有满足 \)</span>2[\ell(\hat\theta)-\ell(\theta_0)]\le {\chi_p^2}^{(1-2\alpha)}<span class="math notranslate nohighlight">\( 的集合，其中，\)</span>{\chi_p^2}^{(1-2\alpha)}<span class="math notranslate nohighlight">\( 是自由度为 \)</span>p<span class="math notranslate nohighlight">\( 的卡方分布的 \)</span>1-2\alpha$ 分位数。</p>
-<p>回到光滑化的例子看看最大似然法的结果。参数为 <span class="math notranslate nohighlight">\(\theta=(\beta,\sigma^2)\)</span>。对数似然为
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(p\)</span> 为 <span class="math notranslate nohighlight">\(\theta\)</span> 组分的个数。<span class="math notranslate nohighlight">\(1-2\alpha\)</span> 置信区间是所有满足 <span class="math notranslate nohighlight">\(2[\ell(\hat\theta)-\ell(\theta_0)]\le {\chi_p^2}^{(1-2\alpha)}\)</span> 的集合，其中，<span class="math notranslate nohighlight">\({\chi_p^2}^{(1-2\alpha)}\)</span> 是自由度为 <span class="math notranslate nohighlight">\(p\)</span> 的卡方分布的 <span class="math notranslate nohighlight">\(1-2\alpha\)</span> 分位数。</p>
+<p>回到光滑化的例子看看最大似然法的结果。参数为 <span class="math notranslate nohighlight">\(\theta=(\beta,\sigma^2)\)</span>。对数似然为：</p>
+<div class="math notranslate nohighlight">
+\[
 \ell(\theta)=-\frac{N}{2}\mathbb{log}\sigma^22\pi-\frac{1}{2\sigma^2}\sum\limits_{i=1}^N(y_i-h(x_i)^T\beta)^2\tag{8.20}
-\)</span><span class="math notranslate nohighlight">\(
-最大似然估计由 \)</span>\partial \ell/\partial \beta=0<span class="math notranslate nohighlight">\( 和 \)</span>\partial \ell/\partial \sigma^2<span class="math notranslate nohighlight">\( 给出
-\)</span>$</p>
+\]</div>
+<p>最大似然估计由 <span class="math notranslate nohighlight">\(\partial \ell/\partial \beta=0\)</span> 和 <span class="math notranslate nohighlight">\(\partial \ell/\partial \sigma^2\)</span> 给出：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \hat\beta&amp;=\mathbf{(H^TH)^{-1}H^Ty}\\
 \hat\sigma&amp;=\frac{1}{N}\sum{(y_i-\hat\mu(x_i))^2}
 \end{align*}\]</div>
-<p>\tag{8.21}
-$$
-这与 \eqref{8.2} 给出的一般估计和 \eqref{8.3} 是一样的。</p>
-<p>对于 <span class="math notranslate nohighlight">\(\theta=(\beta,\sigma^2)\)</span> 的信息矩阵是分块对角，对应于 <span class="math notranslate nohighlight">\(\beta\)</span> 的对角元为
-$<span class="math notranslate nohighlight">\(
+<p>\tag{8.21}</p>
+<p>这与式（8.2） 给出的一般估计和式（8.3） 是一样的。</p>
+<p>对于 <span class="math notranslate nohighlight">\(\theta=(\beta,\sigma^2)\)</span> 的信息矩阵是分块对角，对应于 <span class="math notranslate nohighlight">\(\beta\)</span> 的对角元素为：</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf I(\beta)=\mathbf{(H^TH)}/\sigma^2\tag{8.22}
-\)</span><span class="math notranslate nohighlight">\(
-因此估计的方差 \)</span>\mathbf{(H^TH)}^{-1}\hat\sigma^2$ 与最小二乘一致。</p>
+\]</div>
+<p>因此估计的方差 <span class="math notranslate nohighlight">\(\mathbf{(H^TH)}^{-1}\hat\sigma^2\)</span> 与最小二乘一致。</p>
 </div>
-<div class="section" id="id4">
-<h2>自助法和最大似然法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bootstrap-mle">
+<h2>8.2.3 自助法（Bootstrap ）和最大似然法（MLE）<a class="headerlink" href="#bootstrap-mle" title="Permalink to this headline">¶</a></h2>
 <p>本质上自助法是非参最大似然或者参数最大似然法的计算机实现。</p>
-<p>!!! note “weiya 注：nonparametric MLE”
-<a class="reference external" href="https://www.ctanujit.org/uploads/2/5/3/9/25393293/_theory_of_point_estimation.pdf">Theory of Point Estimation (2nd Eds) p519</a> 中也写道：</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; The bootstrap can be thought of as a “nonparametric” MLE.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://www.ctanujit.org/uploads/2/5/3/9/25393293/_theory_of_point_estimation.pdf">Theory of Point Estimation (2nd Eds) p519</a> 中也写道：</p>
+<blockquote>
+<div><p>The bootstrap can be thought of as a “nonparametric” MLE.</p>
+</div></blockquote>
 </div>
-<p>与最大似然法相比自助法的好处是允许我们在没有公式的情况下计算标准误差和其他一些量的最大似然估计。</p>
-<p>在我们的例子中，假设我们通过对定义了 B 样条的结点的数目和位置进行交叉验证来自适应地选择，而不是事先固定住。记 <span class="math notranslate nohighlight">\(\lambda\)</span> 为结点和它们位置的集合。则标准误差和置信域说明了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的自适应选择，但是没有分析的方法可以实现。有了自助法，我们通过对每个自助法样本进行自适应选择来计算B-样条光滑。最终曲线的分位数既捕捉目标里面的噪声变化以及 <span class="math notranslate nohighlight">\(\hat\lambda\)</span> 的变化。在这个例子中置信域（没有显示出来）看起来与固定 <span class="math notranslate nohighlight">\(\lambda\)</span> 后的置信域没有太大不同。但是在其他问题里面，当使用更多的自适应，可以得到更多重要的结果。</p>
+<p>与最大似然法相比，自助法的好处是允许在没有公式的情况下计算标准误差和其他一些量的最大似然估计。</p>
+<p>在我们的例子中，假设通过对定义了 B 样条的结点数目和位置进行交叉验证来自适应地选择，而不是事先固定住。记 <span class="math notranslate nohighlight">\(\lambda\)</span> 为结点和其位置的集合。则标准误差和置信区间说明了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的自适应选择，但是没有分析的方法可以实现。有了自助法，我们通过对每个自助法样本进行自适应选择来计算 B-样条光滑。最终曲线的分位数既捕捉目标里面的噪声变化以及 <span class="math notranslate nohighlight">\(\hat\lambda\)</span> 的变化。在这个例子中置信区间（没有显示出来）看起来与固定 <span class="math notranslate nohighlight">\(\lambda\)</span> 后的置信区间没有太大不同。但是在其他问题里面，当使用更多的自适应，可以得到更多重要的结果。</p>
 </div>
 </div>
 

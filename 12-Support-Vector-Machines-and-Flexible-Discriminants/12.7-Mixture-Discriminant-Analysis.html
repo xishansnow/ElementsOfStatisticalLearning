@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1209,11 +1209,11 @@ W(c_{kr}\mid x_i, g_i)=\frac{\pi_{kr}\phi(x_i;\mu_{kr},\mathbf \Sigma)}{\sum\lim
 <p>现在我们在一个流行的模拟数据中说明这些想法，这个模拟数据取自 Breiman et al. (1984, pages 49–55)<a class="footnote-reference brackets" href="#id8" id="id4">2</a>，并且用在了 Hastie and Tibshirani (1996b)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 和其它地方。这是有着 21 个变量的三类别问题，并且被认为是复杂的模型识别问题。预测变量由下式定义</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-X_j &amp;= Uh_1(j) + (1-U)h_2(j)+\epsilon_j\qquad \text{Class 1,}\notag\\
-X_j &amp;= Uh_1(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 2,}\notag\\
-X_j &amp;= Uh_2(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 3,}\notag\\
-\end{align}
+\begin{align*}
+X_j &amp;= Uh_1(j) + (1-U)h_2(j)+\epsilon_j\qquad \text{Class 1,}\\
+X_j &amp;= Uh_1(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 2,}\\
+X_j &amp;= Uh_2(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 3,}\\
+\end{align*}
 \tag{12.64}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(j=1,2,\ldots,21\)</span>，<span class="math notranslate nohighlight">\(U\)</span> 是 <span class="math notranslate nohighlight">\((0,1)\)</span> 上的均匀分布，<span class="math notranslate nohighlight">\(\epsilon_j\)</span> 是标准的正态分布，并且 <span class="math notranslate nohighlight">\(h_\ell\)</span> 是平移的三角波形：<span class="math notranslate nohighlight">\(h_1(j)=\max (6-\vert j-11\vert,0)\)</span>，<span class="math notranslate nohighlight">\(h_2(j)=h_1(j-4)\)</span> 以及 <span class="math notranslate nohighlight">\(h_3(j)=h_1(j+4)\)</span>。图 12.14 展示了每个类的一些波形的例子。</p>

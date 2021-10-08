@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1180,13 +1180,13 @@ $<span class="math notranslate nohighlight">\(
 \[
 Y = f(X) = e^{−8\mid \mid X\mid \mid ^2},
 \]</div>
-<p>我们采用 <span class="math notranslate nohighlight">\(1\)</span>-最近邻规则去预测测试点 <span class="math notranslate nohighlight">\(x_0=0\)</span> 的值 <span class="math notranslate nohighlight">\(y_0\)</span>。记训练集为 <span class="math notranslate nohighlight">\({\cal{T}}\)</span>。对于我们的过程，可以通过平均所有的大小为 <span class="math notranslate nohighlight">\(1000\)</span> 的样本来计算在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的预测偏差的期望值。因为这个问题是确定性的，下面是估计 <span class="math notranslate nohighlight">\(f(0)\)</span> 的均方误差 <span class="math notranslate nohighlight">\(\MSE\)</span></p>
+<p>我们采用 <span class="math notranslate nohighlight">\(1\)</span>-最近邻规则去预测测试点 <span class="math notranslate nohighlight">\(x_0=0\)</span> 的值 <span class="math notranslate nohighlight">\(y_0\)</span>。记训练集为 <span class="math notranslate nohighlight">\({\mathcal{T}}\)</span>。对于我们的过程，可以通过平均所有的大小为 <span class="math notranslate nohighlight">\(1000\)</span> 的样本来计算在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的预测偏差的期望值。因为这个问题是确定性的，下面是估计 <span class="math notranslate nohighlight">\(f(0)\)</span> 的均方误差 <span class="math notranslate nohighlight">\(\MSE\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\MSE(x_0)&amp;=\E_{\cal{T}}[f(x_0)-\hat{y}_0]^2\notag\\
-&amp;=\E_{\cal{T}}[\hat{y}_0-E_{\cal{T}}(\hat{y}_0)]^2+[\E_{\cal T}(\hat y_0)-f(x_0)]^2\notag\\
-&amp;=\Var_{\cal{T}}(\hat{y}_0)+Bias^2(\hat{y}_0)\tag{2.25}
+\MSE(x_0)&amp;=\mathbb{E}_{\mathcal{T}}[f(x_0)-\hat{y}_0]^2\\
+&amp;=\mathbb{E}_{\mathcal{T}}[\hat{y}_0-E_{\mathcal{T}}(\hat{y}_0)]^2+[\mathbb{E}_{\mathcal T}(\hat y_0)-f(x_0)]^2\\
+&amp;=\Var_{\mathcal{T}}(\hat{y}_0)+Bias^2(\hat{y}_0)\tag{2.25}
 \end{align*}
 \end{split}\]</div>
 <p>图 2.7 显示了这个设定。我们已经把 <span class="math notranslate nohighlight">\(\MSE\)</span> 分解成两个部分，随着我们继续讨论，会越来越熟悉这两个部分，这两部分分别是方差和偏差平方。这一分解总是可行的而且经常有用，并且这一分解被称为 <strong>偏差-方差分解 (bias-variance decomposition)</strong>。除非最近邻在 <span class="math notranslate nohighlight">\(0\)</span> 处，这一例子中 <span class="math notranslate nohighlight">\(\hat{y}_0\)</span> 会比 <span class="math notranslate nohighlight">\(f(0)\)</span> 小，而且平均估计会向下偏。方差是因为 <span class="math notranslate nohighlight">\(1\)</span>-最近邻取样的方差。在低维度以及 <span class="math notranslate nohighlight">\(N=1000\)</span> 情况下，最近邻非常接近 <span class="math notranslate nohighlight">\(0\)</span>，于是偏差和方差都会非常小。当维数增大，最近邻有从目标点远离的趋势，而且都会带来偏差跟方差。<span class="math notranslate nohighlight">\(p=10\)</span> 时，超过 <span class="math notranslate nohighlight">\(99\%\)</span> 的样本的最近邻距离原点大于 <span class="math notranslate nohighlight">\(0.5\)</span>。因此，当 <span class="math notranslate nohighlight">\(p\)</span> 增长时，估计值多半有趋势趋于 <span class="math notranslate nohighlight">\(0\)</span>，因此 <span class="math notranslate nohighlight">\(\MSE\)</span> 保持在 <span class="math notranslate nohighlight">\(1.0\)</span> 附近，偏差也是如此，方差开始下降（这个例子的衍生）。</p>
@@ -1208,22 +1208,22 @@ Y = X^T\beta + \varepsilon\tag{2.26}
 <p>其中 <span class="math notranslate nohighlight">\(\varepsilon \sim N(0,\sigma^2)\)</span>，而且我们用最小二乘对训练数据进行拟合模型。对于任意测试点 <span class="math notranslate nohighlight">\(x_0\)</span>，我们有 <span class="math notranslate nohighlight">\(\hat y_0=x_0^T\hat{\beta}\)</span>，可以写成 <span class="math notranslate nohighlight">\(\hat y_0=x_0^T\beta+\sum_{i=1}^N\ell_i(x_0)\epsilon_i\)</span>，其中 <span class="math notranslate nohighlight">\(\ell_i(x_0)\)</span> 是 <span class="math notranslate nohighlight">\({\mathbf{X(X^TX)}}^{-1}x_0\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 个元素。因为在这个模型下，最小二乘估计是无偏的，我们发现</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\EPE(x_0) &amp;= \E_{y_0\mid x_0}\E_{{\cal T}}(y_0-\hat{y}_0)^2\notag\\
-&amp;={\color{red} {\E_{y_0\mid x_0}\E_{\cal T}(x_0^T\beta+\varepsilon-\hat{y}_0)^2}}\notag\\
-&amp;={\color{red} {\E_{y_0\mid x_0}\E_{\cal T}[(x_0^T\beta-\hat{y}_0)^2+2\varepsilon (x_0^T\beta-\hat{y}_0)+\varepsilon ^2]}}\notag\\
-&amp;={\color{red} {\E_{y_0\mid x_0}\varepsilon ^2+\E_{\cal T}(x_0^T\beta-\hat{y}_0)^2\qquad\qquad \because \E_{y_0\mid x_0}\varepsilon = 0}}\notag\\
-&amp;=\Var(y_0\mid x_0)+\E_{\cal T}[\hat{y}_0-\E_{\cal T}\hat{y}_0]^2+[\E_{\cal T}\hat{y}_0-x_0^T\beta]^2\notag\\
-&amp;=\Var(y_0\mid x_0)+\Var_{\cal T}(\hat{y}_0)+\Bias^2(\hat{y}_0)\notag\\
-&amp;=\sigma^2+E_{\cal T}x_0^T(\mathbf{X^TX})^{-1}x_0\sigma^2+0^2\qquad\qquad\tag{2.27}\label{2.27}
-\end{align}
+\begin{align*}
+\EPE(x_0) &amp;= \mathbb{E}_{y_0\mid x_0}\mathbb{E}_{{\mathcal T}}(y_0-\hat{y}_0)^2\\
+&amp;={\color{red} {\mathbb{E}_{y_0\mid x_0}\mathbb{E}_{\mathcal T}(x_0^T\beta+\varepsilon-\hat{y}_0)^2}}\\
+&amp;={\color{red} {\mathbb{E}_{y_0\mid x_0}\mathbb{E}_{\mathcal T}[(x_0^T\beta-\hat{y}_0)^2+2\varepsilon (x_0^T\beta-\hat{y}_0)+\varepsilon ^2]}}\\
+&amp;={\color{red} {\mathbb{E}_{y_0\mid x_0}\varepsilon ^2+\mathbb{E}_{\mathcal T}(x_0^T\beta-\hat{y}_0)^2\qquad\qquad \because \mathbb{E}_{y_0\mid x_0}\varepsilon = 0}}\\
+&amp;=\Var(y_0\mid x_0)+\mathbb{E}_{\mathcal T}[\hat{y}_0-\mathbb{E}_{\mathcal T}\hat{y}_0]^2+[\mathbb{E}_{\mathcal T}\hat{y}_0-x_0^T\beta]^2\\
+&amp;=\Var(y_0\mid x_0)+\Var_{\mathcal T}(\hat{y}_0)+\Bias^2(\hat{y}_0)\\
+&amp;=\sigma^2+E_{\mathcal T}x_0^T(\mathbf{X^TX})^{-1}x_0\sigma^2+0^2\qquad\qquad\tag{2.27}\label{2.27}
+\end{align*}
 \end{split}\]</div>
-<p>因为我们的目标不是确定的，所以在预测误差中带来了一个附加的方差<span class="math notranslate nohighlight">\(\sigma^2\)</span>。没有偏差，而且方差依赖于 <span class="math notranslate nohighlight">\(x_0\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 较大且 <span class="math notranslate nohighlight">\(\cal{T}\)</span> 随机选取，并且假设 <span class="math notranslate nohighlight">\(\E(X)=0\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf{X}^T\mathbf{X}\longrightarrow N\Cov(X)\)</span>，并且</p>
+<p>因为我们的目标不是确定的，所以在预测误差中带来了一个附加的方差<span class="math notranslate nohighlight">\(\sigma^2\)</span>。没有偏差，而且方差依赖于 <span class="math notranslate nohighlight">\(x_0\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 较大且 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 随机选取，并且假设 <span class="math notranslate nohighlight">\(\E(X)=0\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf{X}^T\mathbf{X}\longrightarrow N\Cov(X)\)</span>，并且</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\E_{x_0}\EPE(x_0)&amp;\sim \E_{x_0}x_0^T\Cov(X)^{-1}x_0\sigma^2/N+\sigma^2\notag\\
-&amp;=\trace[\Cov(X)^{-1}\Cov(x_0)]\sigma^2/N+\sigma^2\notag\\
+\mathbb{E}_{x_0}\EPE(x_0)&amp;\sim \mathbb{E}_{x_0}x_0^T\Cov(X)^{-1}x_0\sigma^2/N+\sigma^2\\
+&amp;=\trace[\Cov(X)^{-1}\Cov(x_0)]\sigma^2/N+\sigma^2\\
 &amp;=\sigma^2(p/N)+\sigma^2\qquad\qquad\tag{2.28}\label{2.28}
 \end{align*}
 \end{split}\]</div>
@@ -1234,11 +1234,11 @@ Y = X^T\beta + \varepsilon\tag{2.26}
 <p>!!! note “weiya 注:”
 对于 1NN，
 $<span class="math notranslate nohighlight">\(
-    \EPE(x_0) = \sigma^2 + \Var_{\cal T}(\hat{y}_0)+\Bias^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
+    \EPE(x_0) = \sigma^2 + \Var_{\mathcal T}(\hat{y}_0)+\Bias^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
     \)</span><span class="math notranslate nohighlight">\(
     而对于 OLS,
     \)</span><span class="math notranslate nohighlight">\(
-    \E_{x_0}\EPE(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
+    \mathbb{E}_{x_0}\EPE(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
     \)</span><span class="math notranslate nohighlight">\(
     则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 \)</span>p<span class="math notranslate nohighlight">\( 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 \)</span>p$ 增长。</p>
 <p>对于三次函数，最小二乘是有偏的，这使得比率变得缓和。显然我们可以构造最小二乘的偏差主导方差的例子，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻就会变成胜利者。</p>

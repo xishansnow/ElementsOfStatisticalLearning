@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1180,11 +1180,11 @@ $<span class="math notranslate nohighlight">\(
 因为此处 <span class="math notranslate nohighlight">\(G_m(x)\in\\{-1,1\\}\)</span>，则当 <span class="math notranslate nohighlight">\(y_i=G_i(x)\)</span> 时，<span class="math notranslate nohighlight">\(y_iG_i(x)=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_iG_i(x)=-1\)</span>。从式 \eqref{10.11} 显然可以看出\eqref{10.10} 是 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解。</p>
 <p>将 <span class="math notranslate nohighlight">\(G_m\)</span> 代入到 \eqref{10.9}，可以求解 <span class="math notranslate nohighlight">\(\beta\)</span>
 $<span class="math notranslate nohighlight">\(
-\beta_m=\frac{1}{2}\log\frac{1-\err_m}{\err_m}\qquad \tag{10.12}
+\beta_m=\frac{1}{2}\log\frac{1-\mathbb{err}_m}{\mathbb{err}_m}\qquad \tag{10.12}
 \)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\err_m<span class="math notranslate nohighlight">\( 为最小化的加权误差率
+其中 \)</span>\mathbb{err}_m<span class="math notranslate nohighlight">\( 为最小化的加权误差率
 \)</span><span class="math notranslate nohighlight">\(
-\err_m=\frac{\sum_{i=1}^N \omega_i^{(m)}I(y_i\neq G_m(x_i))}{\sum_{i=1}^N\omega_i^{(m)}}\tag{10.13}
+\mathbb{err}_m=\frac{\sum_{i=1}^N \omega_i^{(m)}I(y_i\neq G_m(x_i))}{\sum_{i=1}^N\omega_i^{(m)}}\tag{10.13}
 \)</span>$</p>
 <p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(\beta_m\)</span>”
 求解关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的函数的最小值，于是只要对 \eqref{10.11} 关于 <span class="math notranslate nohighlight">\(\beta\)</span> 求导并令导数等于 0。</p>

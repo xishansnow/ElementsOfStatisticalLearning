@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1149,8 +1149,9 @@
                 
   <div class="section" id="bumping">
 <h1>8.9 随机搜索： Bumping<a class="headerlink" href="#bumping" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>这章描述的最后一个方法不涉及平均或者结合模型，但是是寻找一个更好单模型的方法。Bumping 采用 bootstrap 采样在模型空间中随机移动。对于拟合方法经常会找到许多局部最小值的问题，bumping 可以帮助这些方法避免陷入坏的解。</p>
-<p>像在 bagging 中一样，我们抽取自助样本并且对每个样本拟合模型。但是不是对这些预测值进行平均，我们而是选择拟合训练数据最好的自助样本的模型。具体地，我们抽取自助样本 <span class="math notranslate nohighlight">\(Z^{\*1}, \ldots, Z^{\*B}\)</span> 并对每个样本拟合我们的模型，然后给出在输入点 <span class="math notranslate nohighlight">\(x\)</span> 处的预测 <span class="math notranslate nohighlight">\(\hat f^{*b},n=1,2,\ldots,B\)</span>。我们在原始训练集上平均选择产生最小预测误差的模型。举个例子，对于平方误差，我们选择从自助样本 <span class="math notranslate nohighlight">\(\hat b\)</span> 中得到的模型，其中</p>
+<p>像在 bagging 中一样，我们抽取自助样本并且对每个样本拟合模型。但是不是对这些预测值进行平均，我们而是选择拟合训练数据最好的自助样本的模型。具体地，我们抽取自助样本 <span class="math notranslate nohighlight">\(Z^{*1}, \ldots, Z^{*B}\)</span> 并对每个样本拟合我们的模型，然后给出在输入点 <span class="math notranslate nohighlight">\(x\)</span> 处的预测 <span class="math notranslate nohighlight">\(\hat f^{*b},n=1,2,\ldots,B\)</span>。我们在原始训练集上平均选择产生最小预测误差的模型。举个例子，对于平方误差，我们选择从自助样本 <span class="math notranslate nohighlight">\(\hat b\)</span> 中得到的模型，其中</p>
 <div class="math notranslate nohighlight">
 \[
 \hat b=\text{arg }\underset{b}{\text{min}}\sum\limits_{i=1}^N[y_i-\hat f^{*b}(x_i)]^2\tag{8.60}

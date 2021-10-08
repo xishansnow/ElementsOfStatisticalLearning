@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1168,7 +1168,7 @@
   <div class="section" id="id1">
 <h1>10.12 正则化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>除了候选树的大小 <span class="math notranslate nohighlight">\(J\)</span>，梯度 boosting 的另一个元参数 (meta-parameter) 是 boosting 的迭代次数 <span class="math notranslate nohighlight">\(M\)</span>。每一次迭代通常会降低训练风险 <span class="math notranslate nohighlight">\(L(f_M)\)</span>，所以对于充分大的 <span class="math notranslate nohighlight">\(M\)</span>，误差可以达到任意小。然而，对训练数据拟合得太好会导致过拟合，它会降低预测未来数据的效果。因此，存在一个最小
-化未来预测风险的最优大小 <span class="math notranslate nohighlight">\(M^\*\)</span>，它依赖于具体应用。估计 <span class="math notranslate nohighlight">\(M^\*\)</span>的一种方便方式是在验证样本上将预测风险看成是关于 <span class="math notranslate nohighlight">\(M\)</span> 的函数。最小化风险的 <span class="math notranslate nohighlight">\(M\)</span> 值则作为 <span class="math notranslate nohighlight">\(M^\*\)</span> 的一个估计。这类似于经常用在神经网络中的 <strong>早停 (early stopping)</strong> 策略（<span class="xref myst">11.4 节</span>）。</p>
+化未来预测风险的最优大小 <span class="math notranslate nohighlight">\(M^*\)</span>，它依赖于具体应用。估计 <span class="math notranslate nohighlight">\(M^*\)</span>的一种方便方式是在验证样本上将预测风险看成是关于 <span class="math notranslate nohighlight">\(M\)</span> 的函数。最小化风险的 <span class="math notranslate nohighlight">\(M\)</span> 值则作为 <span class="math notranslate nohighlight">\(M^*\)</span> 的一个估计。这类似于经常用在神经网络中的 <strong>早停 (early stopping)</strong> 策略（<span class="xref myst">11.4 节</span>）。</p>
 <div class="section" id="id2">
 <h2>收缩<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>控制 <span class="math notranslate nohighlight">\(M\)</span> 的值并不是唯一正则化的策略。与岭回归和神经网络一样，也可以应用收缩策略（见 <span class="xref myst">3.4.1 节</span>和 <span class="xref myst">11.5 节</span>）。Boosting 中收缩最简单的实现方式是使用因子 <span class="math notranslate nohighlight">\(0 &lt; \nu &lt; 1\)</span> 来收缩每棵树的贡献。也就是，算法 10.3 的第 2(d) 行用下式代替</p>
@@ -1180,7 +1180,7 @@ f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.4
 <p>经验上，(Friedman, 2001<a class="footnote-reference brackets" href="#id6" id="id3">1</a>) 已经发现较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 会得到更好的测试误差，并且需要更大的 <span class="math notranslate nohighlight">\(M\)</span> 与之对应。事实上，最好的策略是将 <span class="math notranslate nohighlight">\(\nu\)</span> 设得很小(<span class="math notranslate nohighlight">\(\nu &lt; 0.1\)</span>)，然后通过 <strong>早停 (early stopping)</strong> 来选择 <span class="math notranslate nohighlight">\(M\)</span>。这会给回归和概率估计带来重大的改善（与没有收缩时相比，<span class="math notranslate nohighlight">\(\nu = 1\)</span>）。通过 \eqref{10.20} 式改善对应的误分类风险虽然很小，但是仍然显著。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    G(x)={\cal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
+    G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
     \)</span>$</p>
 <p>这个改善需要以计算量为代价：较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 得到较大的 <span class="math notranslate nohighlight">\(M\)</span>，并且计算量与后者成比例。然而，将在下面看到，许多迭代的计算即使是在非常大的数据集上也是可行的。部分原因是每一步生成的树是没有剪枝的。</p>
 <p><img alt="" src="../_images/fig10.11.png" /></p>

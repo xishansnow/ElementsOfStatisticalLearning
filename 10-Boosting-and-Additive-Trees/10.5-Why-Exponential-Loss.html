@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,7 +1165,7 @@ $<span class="math notranslate nohighlight">\(
     G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}\label{10.1}
     \)</span>$</p>
 <p>!!! note “weiya注”
-此处 <span class="math notranslate nohighlight">\(f^\*(x)\)</span> 相当于 <span class="math notranslate nohighlight">\(\sum\alpha_mG_m\)</span>，当其大于 0，表明 <span class="math notranslate nohighlight">\(P(Y=1\mid x)&gt;P(Y=-1\mid x)\)</span>，所以称使用其符号作为分类规则是合理的。</p>
+此处 <span class="math notranslate nohighlight">\(f^*(x)\)</span> 相当于 <span class="math notranslate nohighlight">\(\sum\alpha_mG_m\)</span>，当其大于 0，表明 <span class="math notranslate nohighlight">\(P(Y=1\mid x)&gt;P(Y=-1\mid x)\)</span>，所以称使用其符号作为分类规则是合理的。</p>
 <p>另外一个有着同样的总体最小化的损失准则为 <strong>二项分布负对数似然 (the binomial negative log-likelihood)</strong> 或者 <strong>偏差 (deviance)</strong>（也称为交叉熵），将 <span class="math notranslate nohighlight">\(f\)</span> 解释为 logit 变换。</p>
 <p>!!! note “weiya 注”
 考虑
@@ -1222,7 +1222,7 @@ $<span class="math notranslate nohighlight">\(
     Y=1
     $$
 -->
-<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\Pr(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\E_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
+<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\Pr(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
 <p>!!! note “weiya 注”
 也就是说，不存在一个二项随机变量的密度函数，使得 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 成为其对数似然函数。</p>
 <hr class="footnotes docutils" />

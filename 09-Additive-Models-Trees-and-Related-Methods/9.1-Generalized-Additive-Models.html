@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1239,16 +1239,16 @@ $<span class="math notranslate nohighlight">\(
 \mathrm{PRSS}(\alpha,f_1,f_2,\ldots,f_p)=\sum\limits_{i=1}^N(y_i-\alpha-\sum\limits_{j=1}^pf_j(x_{ij}))^2+\sum\limits_{j=1}^p\lambda_j\int f_j''(t_j)^2dt_j\tag{9.7}\label{9.7}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\lambda_j\ge 0\)</span> 是调整参数。可以证明 \eqref{9.7} 的最小值是可加三次样条模型；每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是一个关于组分 <span class="math notranslate nohighlight">\(X_j\)</span> 的三次样条，结点在每个唯一的 <span class="math notranslate nohighlight">\(x_{ij},i=1,\ldots,N\)</span> 值处。然而，如果没有对模型有进一步的约束，解不是唯一的。常数 <span class="math notranslate nohighlight">\(\alpha\)</span> 不是唯一的，因为我们可以对每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 进行加减任意常数，然后因此调整 <span class="math notranslate nohighlight">\(\alpha\)</span>。标准的规定是假设 <span class="math notranslate nohighlight">\(\sum_1^Nf_j(x_{ij})=0,\forall j\)</span> ——这些函数在数据上均值为 0。可以很简单地证明得到在这种情形下 <span class="math notranslate nohighlight">\(\hat\alpha=\mathrm {ave}(y_i)\)</span>。除了这条约束，再加上输入矩阵（第 <span class="math notranslate nohighlight">\(ij\)</span> 位置值为 <span class="math notranslate nohighlight">\(x_{ij}\)</span>）是列满秩的条件，则 \eqref{9.7} 是严格凸准则并且最小值是唯一的。如果矩阵是奇异的，则不能唯一确定组分 <span class="math notranslate nohighlight">\(f_j\)</span> 的线性部分（尽管非线性部分可以！）(Buja et al., 1989<a class="footnote-reference brackets" href="#id14" id="id3">1</a>)</p>
-<p>进一步，有一个简单的迭代过程来寻找解。令 <span class="math notranslate nohighlight">\(\hat\alpha=\mathrm {ave}(y_i)\)</span>，而且保持不变。我们对关于 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 函数的目标<span class="math notranslate nohighlight">\(\\{y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\\}\_1^N\)</span> 应用三次光滑样条 <span class="math notranslate nohighlight">\(\cal S_j\)</span> 得到新估计 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span>。对每个预测变量轮流这样处理，当计算 <span class="math notranslate nohighlight">\(y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\)</span> 时使用其它函数的当前估计 <span class="math notranslate nohighlight">\(\hat f_k\)</span>。重复这个过程直到估计值 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 稳定。这个过程被称作 “backfitting”（算法 9.1 中给出了详细细节），而且最后的拟合与线性模型的多项式回归是相似的。</p>
+<p>进一步，有一个简单的迭代过程来寻找解。令 <span class="math notranslate nohighlight">\(\hat\alpha=\mathrm {ave}(y_i)\)</span>，而且保持不变。我们对关于 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 函数的目标<span class="math notranslate nohighlight">\(\\{y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\\}\_1^N\)</span> 应用三次光滑样条 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span> 得到新估计 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span>。对每个预测变量轮流这样处理，当计算 <span class="math notranslate nohighlight">\(y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\)</span> 时使用其它函数的当前估计 <span class="math notranslate nohighlight">\(\hat f_k\)</span>。重复这个过程直到估计值 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 稳定。这个过程被称作 “backfitting”（算法 9.1 中给出了详细细节），而且最后的拟合与线性模型的多项式回归是相似的。</p>
 <p><img alt="" src="../_images/alg9.1.png" /></p>
 <p>原则上，算法 9.1 中第 2(2) 步不是必需的，因为光滑样条对 0 均值响应变量拟合均值为 0（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/167">练习 9.1</a>）。实际中，机器舍入误差会导致下降，所以建议进行调整。</p>
-<p>当确定了合适的光滑算子 <span class="math notranslate nohighlight">\(\cal S_j\)</span>，同样的算法可以用完全相同的方式适应其他的拟合方法：</p>
+<p>当确定了合适的光滑算子 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span>，同样的算法可以用完全相同的方式适应其他的拟合方法：</p>
 <ul class="simple">
 <li><p>其它的单变量回归光滑器，比如局部多项式回归和核方法；</p></li>
 <li><p>线性回归算子，可以得到多项式拟合，分段常值拟合，参数化样条拟合，序列和傅里叶拟合；</p></li>
 <li><p>更加复杂的算子，比如对于二阶或者高阶交互项或者对于季节影响的周期光滑器。</p></li>
 </ul>
-<p>如果我们仅仅在训练集点上考虑光滑器算子 <span class="math notranslate nohighlight">\(\cal S_j\)</span>，则可以用 <span class="math notranslate nohighlight">\(N\times N\)</span> 的算子矩阵 <span class="math notranslate nohighlight">\(\mathbf S_j\)</span> 来表示（见<span class="xref myst"> 5.4.1 节</span>）。则第 <span class="math notranslate nohighlight">\(j\)</span> 项的自由度（近似）是 <span class="math notranslate nohighlight">\(\mathrm {df}_j=\mathrm{trace}[\mathbf S_j]-1\)</span>，这与第 5 和第 6 章中讨论的光滑器的自由度是类似的。</p>
+<p>如果我们仅仅在训练集点上考虑光滑器算子 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span>，则可以用 <span class="math notranslate nohighlight">\(N\times N\)</span> 的算子矩阵 <span class="math notranslate nohighlight">\(\mathbf S_j\)</span> 来表示（见<span class="xref myst"> 5.4.1 节</span>）。则第 <span class="math notranslate nohighlight">\(j\)</span> 项的自由度（近似）是 <span class="math notranslate nohighlight">\(\mathrm {df}_j=\mathrm{trace}[\mathbf S_j]-1\)</span>，这与第 5 和第 6 章中讨论的光滑器的自由度是类似的。</p>
 <p>对于一个大类别的线性光滑器 <span class="math notranslate nohighlight">\(\mathbf S_j\)</span>，backfitting 等价于求解确定线性系统的 Gauss-Seidel 算法。细节在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/68">练习 9.2</a>中给出。</p>
 <p>对于逻辑斯蒂回归和其他广义加性模型，合适的准则是带惩罚的对数似然。为了最大化它，backfitting 过程与概率最大化一起作用。在广义线性模型中最大化对数似然的 Newton-Raphson 方法可以重新改造成一个 IRLS（迭代重加权最小二乘）算法。这涉及在协变量上对工作中的响应变量重复进行加权线性回归；每个回归得到一个新的参数估计，反过来又给了新的工作相应变量和系数，而且这一过程迭代进行（见 <span class="xref myst">4.4.1 节</span>）。在广义加性模型中，加权线性回归可以简单地用加权 backfitting 算法来替换。我们将在下面讨论逻辑斯蒂回归时该算法的细节，更一般的讨论可以在 Hastie and Tibshirani(1990)<a class="footnote-reference brackets" href="#id15" id="id4">2</a>的第 6 章中找到。</p>
 </div>

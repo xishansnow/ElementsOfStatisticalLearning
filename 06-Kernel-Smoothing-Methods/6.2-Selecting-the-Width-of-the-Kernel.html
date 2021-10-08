@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1164,10 +1164,10 @@
 <p>相似的结论可以应用到局部回归估计，比如局部线性：当宽度趋于 <span class="math notranslate nohighlight">\(0\)</span>，估计量则近似为对训练数据插值得到的分段线性函数；当宽度趋于无穷大，则拟合值近似为对数据的整体最小二乘拟合。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
+    \begin{align*}
     \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\label{6.8}\\
     &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}\label{6.9}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正规化参数的讨论。局部回归光滑器是线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵由等价核 \eqref{6.8} 构成，并且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S\_\lambda\}\_{ij}=l\_{i}(x\_{j})\)</span>。舍一法交叉验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交叉验证，<span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>），以及 <span class="math notranslate nohighlight">\(k\)</span> 折交叉验证也很简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\trace(\mathbf S_\lambda)\)</span>，并且可以用来校准光滑的程度。</p>
 <p>!!! info “weiya 注：Ex. 6.7”

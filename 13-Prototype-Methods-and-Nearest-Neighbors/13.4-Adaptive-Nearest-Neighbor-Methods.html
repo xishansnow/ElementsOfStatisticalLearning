@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1214,10 +1214,10 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}\label{13.8}
 <p>其中</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\bSigma &amp;= \W^{-1/2}[\W^{-1/2}\B\W^{-1/2} + \epsilon \I]\W^{-1/2}\notag\\
+\begin{align*}
+\bSigma &amp;= \W^{-1/2}[\W^{-1/2}\B\W^{-1/2} + \epsilon \I]\W^{-1/2}\\
 &amp;=\W^{-1/2}[\B^* + \epsilon\I]\W^{-1/2}\,.\tag{13.9}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\W\)</span> 是 <strong>合并的 (pooled)</strong> 类别内协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k\W_k\)</span>，并且 <span class="math notranslate nohighlight">\(\B\)</span> 是类别间协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k(\bar x_k-\bar x)(\bar x_k-\bar x)^T\)</span>，其中 <span class="math notranslate nohighlight">\(\W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 仅用 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的 50 个最近邻点。计算完这个度量之后，可以用来构造 <span class="math notranslate nohighlight">\(x_0\)</span> 处的最近邻规则。</p>
 <p>这个复杂的公式实际上计算很简单。它首先将数据关于 <span class="math notranslate nohighlight">\(\W\)</span> 进行球面化，接着沿着 <span class="math notranslate nohighlight">\(\B^*\)</span>（球面化数据的类间方差）的零特征值方向拉伸邻域。参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 围绕着邻域，从无穷的长条到椭球，避免使用离查询点过远的点。一般 <span class="math notranslate nohighlight">\(\epsilon=1\)</span> 的效果很好。</p>

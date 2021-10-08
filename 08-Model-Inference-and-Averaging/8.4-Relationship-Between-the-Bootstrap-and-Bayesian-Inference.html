@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1149,24 +1149,28 @@
                 
   <div class="section" id="id1">
 <h1>8.4 自助法和贝叶斯推断之间的关系<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>首先考虑一个非常简单的例子，我们考虑服从正态分布的单个观测变量 <span class="math notranslate nohighlight">\(z\)</span>
-$<span class="math notranslate nohighlight">\(
+<style>p{text-indent:2em;2}</style>
+<p>首先考虑一个非常简单的例子，我们考虑服从正态分布的单个观测变量 <span class="math notranslate nohighlight">\(z\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 z\sim N(\theta,1)\tag{8.29}
-\)</span><span class="math notranslate nohighlight">\(
-为了完成关于 \)</span>\theta<span class="math notranslate nohighlight">\( 的贝叶斯分析，我们需要确定一个先验。最方便和普遍的选择是 \)</span>\theta\sim N(0, \tau)<span class="math notranslate nohighlight">\(，得到后验分布
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>为了完成关于 <span class="math notranslate nohighlight">\(\theta\)</span> 的贝叶斯分析，我们需要确定一个先验。最方便和普遍的选择是 <span class="math notranslate nohighlight">\(\theta\sim N(0, \tau)\)</span>，得到后验分布</p>
+<div class="math notranslate nohighlight">
+\[
 \theta\mid z\sim N\left(\frac{z}{1+1/\tau},\frac{1}{1+1/\tau}\right)\tag{8.30}
-\)</span><span class="math notranslate nohighlight">\(
-于是当我们选择的 \)</span>\tau<span class="math notranslate nohighlight">\( 越大，后验在最大似然估计 \)</span>\hat\theta=z<span class="math notranslate nohighlight">\( 附近越集中。当 \)</span>\tau\rightarrow\infty<span class="math notranslate nohighlight">\( 时，我们得到一个无信息（常值）先验，后验分布为
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>于是当我们选择的 <span class="math notranslate nohighlight">\(\tau\)</span> 越大，后验在最大似然估计 <span class="math notranslate nohighlight">\(\hat\theta=z\)</span> 附近越集中。当 <span class="math notranslate nohighlight">\(\tau\rightarrow\infty\)</span> 时，我们得到一个无信息（常值）先验，后验分布为</p>
+<div class="math notranslate nohighlight">
+\[
 \theta\mid z\sim N(z,1)\tag{8.31}
-\)</span><span class="math notranslate nohighlight">\(
-这与参数自助法（从采样密度 \)</span>N(z,1)<span class="math notranslate nohighlight">\( 的最大似然估计产生自助法值 \)</span>z^*$）的分布相同。</p>
+\]</div>
+<p>这与参数自助法（从采样密度 <span class="math notranslate nohighlight">\(N(z,1)\)</span> 的最大似然估计产生自助法值 <span class="math notranslate nohighlight">\(z^*\)</span>）的分布相同。</p>
 <p>有三点性质实现了这种对应关系。</p>
 <ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(\theta\)</span> 的无信息先验的选择；</p></li>
 <li><p>数据 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 上的对数似然函数<span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span>的独立性仅仅与最大似然估计<span class="math notranslate nohighlight">\(\hat\theta\)</span>有关。因此可以将对数似然函数写成<span class="math notranslate nohighlight">\(\ell(\theta;\hat\theta)\)</span></p></li>
-<li><p>关于<span class="math notranslate nohighlight">\(\theta\)</span>和<span class="math notranslate nohighlight">\(\hat\theta\)</span>的对数似然函数存在对称性，也就是，<span class="math notranslate nohighlight">\(\ell(\theta;\hat\theta)=\ell(\hat\theta;\theta)+\text{constant}\)</span></p></li>
+<li><p>关于 <span class="math notranslate nohighlight">\(\theta\)</span> 和 <span class="math notranslate nohighlight">\(\hat\theta\)</span> 的对数似然函数存在对称性，也就是，<span class="math notranslate nohighlight">\(\ell(\theta;\hat\theta)=\ell(\hat\theta;\theta)+\text{constant}\)</span> 。</p></li>
 </ol>
 <p>性质 (2) 和 (3) 本来只有当为高斯分布时才满足。然而，对于多项式分布也近似满足，导出非参自助法和贝叶斯推断之间的对应，我们将在下面阐述要点。</p>
 <p>假设我们有 <span class="math notranslate nohighlight">\(L\)</span> 个类别的离散样本空间。令 <span class="math notranslate nohighlight">\(w_j\)</span> 为样本点落入第 <span class="math notranslate nohighlight">\(j\)</span> 类的概率，而 <span class="math notranslate nohighlight">\(\hat w_j\)</span> 为第 <span class="math notranslate nohighlight">\(j\)</span> 类的观测比例。令 <span class="math notranslate nohighlight">\(w=(w_1,w_2,\ldots,w_L)\)</span>，<span class="math notranslate nohighlight">\(\hat w=(\hat w_1,\hat w_2,\ldots, \hat w_L)\)</span>。记我们的估计为 <span class="math notranslate nohighlight">\(S(\hat w)\)</span>；取参数为 <span class="math notranslate nohighlight">\(a\)</span> 的对称 <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_distribution">Dirichlet 分布</a>作为 <span class="math notranslate nohighlight">\(w\)</span> 的先验分布：</p>
@@ -1174,23 +1178,29 @@ z\sim N(\theta,1)\tag{8.29}
 \[
 w\sim \mathrm{Di}_L(a1)\tag{8.32}
 \]</div>
-<p>也就是，先验概率质量函数与 <span class="math notranslate nohighlight">\(\prod_{\ell=1}^Lw_\ell^{a-1}\)</span> 成比例。则 <span class="math notranslate nohighlight">\(w\)</span> 的后验密度为
-$<span class="math notranslate nohighlight">\(
+<p>也就是，先验概率质量函数与 <span class="math notranslate nohighlight">\(\prod_{\ell=1}^Lw_\ell^{a-1}\)</span> 成比例。则 <span class="math notranslate nohighlight">\(w\)</span> 的后验密度为</p>
+<div class="math notranslate nohighlight">
+\[
 w\sim \mathrm{Di}_L(a1+N\hat w)\tag{8.33}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>N<span class="math notranslate nohighlight">\( 为样本大小。令 \)</span>a\rightarrow 0<span class="math notranslate nohighlight">\( 得到无信息先验情形下的后验
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(N\)</span> 为样本大小。令 <span class="math notranslate nohighlight">\(a\rightarrow 0\)</span> 得到无信息先验情形下的后验</p>
+<div class="math notranslate nohighlight">
+\[
 w\sim \mathrm{Di}_L(N\hat w)\tag{8.34}
-\)</span><span class="math notranslate nohighlight">\(
-对于有放回取样得到的自助法分布，它可以表示成从多项式分布中对类别比例进行抽样，即
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>对于有放回取样得到的自助法分布，它可以表示成从多项式分布中对类别比例进行抽样，即</p>
+<div class="math notranslate nohighlight">
+\[
 N\hat w^*\sim \mathrm{Mult}(N,\hat w)\tag{8.35}
-\)</span><span class="math notranslate nohighlight">\(
-其中，\)</span>\mathrm {Mult}(N,\hat w)<span class="math notranslate nohighlight">\( 为多项式分布，概率质量函数为 \)</span>\binom{N}{N\hat w_1^*,\ldots,N\hat w_L^*}\prod\hat w_\ell^{N\hat w_\ell^*}<span class="math notranslate nohighlight">\(. 这个分布与上面的后验分布很相似，有着相同的支撑集，相同的均值，以及近似相同的协方差矩阵。因此 \)</span>S(\hat w^*)<span class="math notranslate nohighlight">\( 的自助法分布近似为 \)</span>S(w)$ 的后验分布。</p>
-<p>!!! note “weiya 注：”
-$<span class="math notranslate nohighlight">\(
-    \binom{N}{N\hat w_1^\*,\ldots,N\hat w_L^\*} = \frac{N!}{(N\hat w_1^* )!\cdots (N\hat w_L^*)!}\,.
-    \)</span>$</p>
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\mathrm {Mult}(N,\hat w)\)</span> 为多项式分布，概率质量函数为 <span class="math notranslate nohighlight">\(\binom{N}{N\hat w_1^*,\ldots,N\hat w_L^*}\prod\hat w_\ell^{N\hat w_\ell^*}\)</span>. 这个分布与上面的后验分布很相似，有着相同的支撑集，相同的均值，以及近似相同的协方差矩阵。因此 <span class="math notranslate nohighlight">\(S(\hat w^*)\)</span> 的自助法分布近似为 <span class="math notranslate nohighlight">\(S(w)\)</span> 的后验分布。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="math notranslate nohighlight">
+\[
+\binom{N}{N\hat w_1^*,\ldots,N\hat w_L^*} = \frac{N!}{(N\hat w_1^* )!\cdots (N\hat w_L^*)!}\,.
+\]</div>
+</div>
 <p>从这点看，自助法分布表示我们参数的（近似的）非参、无信息后验分布。但是自助法分布可以很方便地得到——不需要正式地确定一个先验而且不需要从后验分布中取样。因此我们或许可以把自助法分布看成一个“穷人的”贝叶斯后验。通过扰动数据，自助法近似于扰动参数后的贝叶斯效应，而且一般实施起来更简单。</p>
 </div>
 

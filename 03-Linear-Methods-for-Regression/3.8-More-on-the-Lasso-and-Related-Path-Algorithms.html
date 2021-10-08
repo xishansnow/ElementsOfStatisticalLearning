@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1216,7 +1216,7 @@
 ****
 4.通过求解下面的约束最小二乘问题找到新的方向
 $$
-\underset{b}{min}\Vert\mathbf r-\mathbf X_{\cal A}b\Vert^2_2 \;s.t.\; b_js_j\ge 0,\;j\in\cal A
+\underset{b}{min}\Vert\mathbf r-\mathbf X_{\mathcal A}b\Vert^2_2 \;s.t.\; b_js_j\ge 0,\;j\in\mathcal A
 $$
 其中，$s_j$是$\langle\mathbf x_j,\mathbf r \rangle$的方向。
 ****
@@ -1282,7 +1282,7 @@ $$
 <p>不幸的是 DS 方法的运算性质不够令人满意。这个方法想法上与 lasso 类似，特别是当我们观察 lasso 的平稳条件 \eqref{3.58}。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\cal B}\tag{3.58}\label{3.58}
+    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\mathcal B}\tag{3.58}\label{3.58}
     \)</span>$</p>
 <p>和 LAR 算法一样，对于活跃集中的所有变量，lasso 保持着与当前残差相同的内积（以及相关系数），并且将它们的系数向残差平方和的最优下降方向变化。在这个过程中，相同的相关系数单调下降（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a>），并且在任何时刻这个相关性大于非活跃集中的变量。</p>
 <p>!!! info “weiya 注：Ex. 3.23”
@@ -1304,9 +1304,9 @@ $<span class="math notranslate nohighlight">\(
 <p>许多这领域的结果对模型矩阵假设了如下条件</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{j\in \cal S^c}{\mathrm{max}}\Vert \mathbf x_j^T\mathbf X_{\cal S}(\mathbf X_{\cal S}^T\mathbf X_{\cal S})^{-1}\Vert_1\le (1-\epsilon)\text{ for some }\epsilon\in (0, 1]\tag{3.81}
+\underset{j\in \mathcal S^c}{\mathrm{max}}\Vert \mathbf x_j^T\mathbf X_{\mathcal S}(\mathbf X_{\mathcal S}^T\mathbf X_{\mathcal S})^{-1}\Vert_1\le (1-\epsilon)\text{ for some }\epsilon\in (0, 1]\tag{3.81}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\cal S\)</span> 标记真实的潜在模型中非零系数特征的子集，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中对应的这些特征的列。类似地，<span class="math notranslate nohighlight">\(\cal S^c\)</span>是真实系数为 0 的特征的集合，<span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 是对应的列。这说明 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S^c}\)</span> 的列在 <span class="math notranslate nohighlight">\(\mathbf X_{\cal S}\)</span> 上的最小二乘系数不会太大，也就是，信号变量 <span class="math notranslate nohighlight">\(\cal S\)</span> 与冗余变量 <span class="math notranslate nohighlight">\(\cal S^c\)</span> 之间不是高度相关。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 标记真实的潜在模型中非零系数特征的子集，<span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中对应的这些特征的列。类似地，<span class="math notranslate nohighlight">\(\mathcal S^c\)</span>是真实系数为 0 的特征的集合，<span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S^c}\)</span> 是对应的列。这说明 <span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S^c}\)</span> 的列在 <span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S}\)</span> 上的最小二乘系数不会太大，也就是，信号变量 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 与冗余变量 <span class="math notranslate nohighlight">\(\mathcal S^c\)</span> 之间不是高度相关。</p>
 <p>考虑这些系数本身，lasso 收缩导致非零系数的估计偏向 0，并且一般地他们不是一致的。降低这种偏差的一种方式是运行 lasso 来识别非零系数的集合，接着对选出的特征进行无约束线性模型拟合。另外，也可以采用 lasso 来选择非零预测变量，接着再次运用 lasso，但是从第一步开始便只用选择出的变量。这称为 relaxed lasso (Meinshausen, 2007<a class="footnote-reference brackets" href="#id59" id="id32">19</a>)。这个想法是采用交叉验证来估计 lasso 初始的惩罚参数，然后接着对选择出的变量再用一次惩罚参数。因为第二步中的变量与噪声变量之间的竞争变小，所以交叉验证会趋向于选择较小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，因此它们的系数会比初始估计时收缩得要小。</p>
 <p>另外，也可以修改 lasso 惩罚函数使得更大的系数收缩得不要太剧烈；Fan and Li (2005)<a class="footnote-reference brackets" href="#id65" id="id33">25</a>的 <strong>平稳削减绝对偏差法 (smoothly clipped absolute deviation, SCAD)</strong> 用 <span class="math notranslate nohighlight">\(J_a(\beta,\lambda)\)</span> 替换 <span class="math notranslate nohighlight">\(\lambda\vert\beta \vert\)</span>，其中对于 <span class="math notranslate nohighlight">\(a\ge 2\)</span></p>
 <div class="math notranslate nohighlight">

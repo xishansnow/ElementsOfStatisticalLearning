@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,9 +1170,9 @@
 <p>利用前面章节的知识得到更高效的集成模型。我们继续考虑下面形式的函数</p>
 <div class="math notranslate nohighlight">
 \[
-f(x)=\alpha_0+\sum\limits_{T_k\in \cal T}\alpha_kT_k(x)\tag{16.8}
+f(x)=\alpha_0+\sum\limits_{T_k\in \mathcal T}\alpha_kT_k(x)\tag{16.8}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\cal T\)</span> 是基函数的字典，一般是树。对于 gradient boosting 和随机森林，<span class="math notranslate nohighlight">\(\vert\cal T\vert\)</span> 非常大，而且最后的模型一般会涉及上千棵树。上一节中，我们论证带收缩的 gradient boosting 会在树的空间中拟合 <span class="math notranslate nohighlight">\(L_1\)</span> 正则化单调路径.</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathcal T\)</span> 是基函数的字典，一般是树。对于 gradient boosting 和随机森林，<span class="math notranslate nohighlight">\(\vert\mathcal T\vert\)</span> 非常大，而且最后的模型一般会涉及上千棵树。上一节中，我们论证带收缩的 gradient boosting 会在树的空间中拟合 <span class="math notranslate nohighlight">\(L_1\)</span> 正则化单调路径.</p>
 <p>Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id2">1</a> 提出混合的方式，将这个过程分解为下面两步：</p>
 <ul class="simple">
 <li><p>从训练集中导出有限的基函数字典集 <span class="math notranslate nohighlight">\(\cT_L=\\{T_1(x), T_2(x),\ldots, T_M(x)\\}\)</span>;</p></li>
@@ -1187,7 +1187,7 @@ $<span class="math notranslate nohighlight">\(
 <p>图 16.6 展示了 lasso post-processing 对随机森林（蓝色曲线）有了较大程度的改善，并且将森林降至了 <span class="math notranslate nohighlight">\(40\)</span> 棵树，而不是原来的 <span class="math notranslate nohighlight">\(1000\)</span> 棵。这个 post-processed 表现与 gradient boosting 相当。橘黄色曲线展示了修改版的随机森林，它是为了更大程度上降低树之间的相关性。这里训练样本 <span class="math notranslate nohighlight">\(5\%\)</span> 的子样本（无放回）用来生成每棵树，并且每棵树限制得很低（大约 6 个终止结点）。这种情形下 post-processing 有更显著的改善，而且训练花费大概降低了 <span class="math notranslate nohighlight">\(100\)</span> 倍。然而，这个 post-processed 模型的表现有点比蓝色曲线差。</p>
 <div class="section" id="id3">
 <h2>学习一个好的集成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>并非所有的集成 <span class="math notranslate nohighlight">\(\cal T_L\)</span> 采用 post-processing 都表现得很好。采用基函数，我们想要一个能够覆盖所需要的空间的集合，为了保证有效性，post-processor 彼此之间应显著不同。</p>
+<p>并非所有的集成 <span class="math notranslate nohighlight">\(\mathcal T_L\)</span> 采用 post-processing 都表现得很好。采用基函数，我们想要一个能够覆盖所需要的空间的集合，为了保证有效性，post-processor 彼此之间应显著不同。</p>
 <p>Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id4">1</a> 从 <strong>数值积分 (numerical quadrature)</strong> 和 <strong>重要性采样 (importance sampling)</strong> 中获得启发。他们将未知的函数看成如下的积分</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1199,13 +1199,13 @@ f(x)=\int\beta(\gamma)b(x;\gamma)d\gamma\tag{16.10}
 Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma))\tag{16.11}
 \]</div>
 <p>上式在训练数据上取值。</p>
-<p>如果选择了单个的基函数（比如，一棵树），则会有全局最小点 <span class="math notranslate nohighlight">\(\gamma^\*=\text{arg min}_{\gamma\in \Gamma}Q(\gamma)\)</span>。在选择 <span class="math notranslate nohighlight">\(\gamma\)</span> 的时候引进随机性必然会得到次优值，<span class="math notranslate nohighlight">\(Q(\gamma)\ge Q(\gamma^\*)\)</span>。他们提出采样模式 <span class="math notranslate nohighlight">\(\cal S\)</span> 的特征长度 <span class="math notranslate nohighlight">\(\sigma\)</span> 的自然度量，</p>
+<p>如果选择了单个的基函数（比如，一棵树），则会有全局最小点 <span class="math notranslate nohighlight">\(\gamma^*=\text{arg min}_{\gamma\in \Gamma}Q(\gamma)\)</span>。在选择 <span class="math notranslate nohighlight">\(\gamma\)</span> 的时候引进随机性必然会得到次优值，<span class="math notranslate nohighlight">\(Q(\gamma)\ge Q(\gamma^*)\)</span>。他们提出采样模式 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 的特征长度 <span class="math notranslate nohighlight">\(\sigma\)</span> 的自然度量，</p>
 <div class="math notranslate nohighlight">
 \[
-\sigma=\E_{\cal S}[Q(\gamma)-Q(\gamma^*)]\tag{16.12}
+\sigma=\mathbb{E}_{\mathcal S}[Q(\gamma)-Q(\gamma^*)]\tag{16.12}
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> 太窄意味着许多 <span class="math notranslate nohighlight">\(b(x;\gamma_m)\)</span> 很接近或者近似为 <span class="math notranslate nohighlight">\(b(x;\gamma^\*)\)</span>；</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> 太窄意味着许多 <span class="math notranslate nohighlight">\(b(x;\gamma_m)\)</span> 很接近或者近似为 <span class="math notranslate nohighlight">\(b(x;\gamma^*)\)</span>；</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma\)</span> 太宽意味着 <span class="math notranslate nohighlight">\(b(x;\gamma_m)\)</span> 过于分散，但是可能包含其他许多无关的情形。</p></li>
 </ul>
 <p>Friedman and Popescu (2003) <a class="footnote-reference brackets" href="#id12" id="id6">1</a> 提出采用 sub-sampling 作为引入随机性的机制，得到了他们的集成生成算法 16.2。</p>
@@ -1250,17 +1250,17 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 \tag{16.14}\label{16.14}
 \end{split}\]</div>
 <p>关于规则 1, 4, 5 和 6 的线性回归等价于树本身（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/189">练习 16.3</a>）；因此 \eqref{16.14} 是这棵树 <strong>过充分 (over-complete)</strong> 的基。</p>
-<p>对于一个 ensemble <span class="math notranslate nohighlight">\(\cal T\)</span>，我们可以构造规则的 mini-ensemble <span class="math notranslate nohighlight">\({\cal T}_{RULE}^m\)</span>，并且然后结合形成更大的 ensemble</p>
+<p>对于一个 ensemble <span class="math notranslate nohighlight">\(\mathcal T\)</span>，我们可以构造规则的 mini-ensemble <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}^m\)</span>，并且然后结合形成更大的 ensemble</p>
 <div class="math notranslate nohighlight">
 \[
-{\cal T}_{RULE}=\bigcup\limits_{m=1}^M{\cal T}^m_{RULE}\tag{16.15}
+{\mathcal T}_{RULE}=\bigcup\limits_{m=1}^M{\mathcal T}^m_{RULE}\tag{16.15}
 \]</div>
 <p>然后像其它 ensemble 一样处理，并且通过 lasso 或者类似的正则化过程进行 post-processed。</p>
 <p>对于从更复杂的树导出规则的这种方式有许多优点：</p>
 <ul class="simple">
 <li><p>模型空间被增大了，并且可以得到更好的表现。</p></li>
 <li><p>规则比树更好解释，所以有更简单模型的潜力。</p></li>
-<li><p>经常通过分开加入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 来增广 <span class="math notranslate nohighlight">\({\cal T}_{RULE}\)</span>，因此允许 ensemble 能够很好地建立线性模型。</p></li>
+<li><p>经常通过分开加入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 来增广 <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}\)</span>，因此允许 ensemble 能够很好地建立线性模型。</p></li>
 </ul>
 <p>Friedman and Popescu (2008)<a class="footnote-reference brackets" href="#id15" id="id11">4</a> 在一系列例子中展示了这个过程的能力，包括模拟例子 \eqref{16.13}。图 16.10 展示了从该模型得到的 20 次实现的真实模型的均方误差的箱线图。采用 <code class="docutils literal notranslate"><span class="pre">Rulefit</span></code> 软件所有模型都能拟合，这个软件可以在 <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">ESL 主页</a>找到，它采用自动的模式运行。</p>
 <p>如在图 16.8 中使用的同样的训练集，基于规则的模型能够达到 1.06 的均方误差。尽管这比图中最优的要略差，但是结果是不可比的，因为这里用的交叉验证是来选择最终模型的。</p>

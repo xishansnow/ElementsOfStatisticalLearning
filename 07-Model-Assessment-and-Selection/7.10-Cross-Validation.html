@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1173,24 +1173,18 @@
   <div class="section" id="id1">
 <h1>7.10 交叉验证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>“更新笔记”
-Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info">HumanitiesSciences’s StatLearning</a> 课程是基于ISLR 这本书，其中有采用 cv 来解决具体问题的代码，可以在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/tree/master/code/Resampling">这里</a>找到。</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@2018-01-12 更新 Ex. 7.7 的解答。
+<div class="admonition- admonition">
+<p class="admonition-title">更新笔记</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hastie 和 Tibshirani 他们的 [HumanitiesSciences&#39;s StatLearning](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info) 课程是基于ISLR 这本书，其中有采用 cv 来解决具体问题的代码，可以在[这里](https://github.com/szcf-weiya/ESL-CN/tree/master/code/Resampling)找到。
+
+@2018-01-12 更新 Ex. 7.7 的解答。
 </pre></div>
 </div>
 </div>
-<p>估计预测误差的最简单的并且使用最广泛的方法大概是交叉验证。这个方法直接估计 <strong>样本外 (extra-sample)</strong> 误差期望值 <span class="math notranslate nohighlight">\(\text{Err}=\E[L(Y,\hat f(X))]\)</span>，当方法 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 应用到与 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 联合分布独立采样的测试样本中，该值是广义误差的平均值。正如前面提到的，我们可能希望交叉验证估计当测试集 <span class="math notranslate nohighlight">\(\cal T\)</span> 固定时的条件误差。但是正如我们将在 7.12 节看到的那样，交叉验证一般仅仅对预测误差的期望值有良好的估计。</p>
+<p>估计预测误差的最简单的并且使用最广泛的方法大概是交叉验证。这个方法直接估计 <strong>样本外 (extra-sample)</strong> 误差期望值 <span class="math notranslate nohighlight">\(\text{Err}=\mathbb{E}[L(Y,\hat f(X))]\)</span>，当方法 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 应用到与 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 联合分布独立采样的测试样本中，该值是广义误差的平均值。正如前面提到的，我们可能希望交叉验证估计当测试集 <span class="math notranslate nohighlight">\(\mathcal T\)</span> 固定时的条件误差。但是正如我们将在 7.12 节看到的那样，交叉验证一般仅仅对预测误差的期望值有良好的估计。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>在 7.2 节，详细讨论了我们实际上最需要当训练集
-```{math}
-\cal T 
-``` 
-固定时的条件误差，而非预测误差的期望值。
-</pre></div>
-</div>
+<p>在 7.2 节，详细讨论了我们实际上最需要当训练集 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 固定时的条件误差，而非预测误差的期望值。</p>
 </div>
 <div class="section" id="k">
 <h2>K 折交叉验证<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h2>
@@ -1203,10 +1197,9 @@ Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagu
 \mathrm{CV}(\hat f)=\frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f^{-\kappa (i)}(x_i))\tag{7.48}
 \]</div>
 <p>一般地选择 <span class="math notranslate nohighlight">\(K\)</span> 为 5 或 10（见下）。<span class="math notranslate nohighlight">\(K=N\)</span> 的情形也称作 <strong>舍一法交叉验证</strong>。在 <span class="math notranslate nohighlight">\(\kappa(i)=i\)</span> 的情形中，对于第<span class="math notranslate nohighlight">\(i\)</span> 个观测的拟合是利用不包含第 <span class="math notranslate nohighlight">\(i\)</span> 个观测的全部数据进行计算的。</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>“weiya 注：LOOCV”
-一般地，舍一法交叉验证缩写为 LOOCV，在 R 等机器学习包中，经常作为参数，比如 <code class="docutils literal notranslate"><span class="pre">caret</span></code> 包中采用舍一法交叉验证的参数形式为<code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">&quot;LOOCV&quot;</span></code></p>
+<div class="admonition-loocv admonition">
+<p class="admonition-title">LOOCV</p>
+<p>一般地，舍一法交叉验证缩写为 LOOCV，在 R 等机器学习包中，经常作为参数，比如 <code class="docutils literal notranslate"><span class="pre">caret</span></code> 包中采用舍一法交叉验证的参数形式为<code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">&quot;LOOCV&quot;</span></code></p>
 </div>
 <p>给出一系列模型 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span>，它是由调整参数 <span class="math notranslate nohighlight">\(\alpha\)</span> 来编号，记 <span class="math notranslate nohighlight">\(\hat f^{-k}(x,\alpha)\)</span> 为去除第 <span class="math notranslate nohighlight">\(k\)</span> 部分数据的第 <span class="math notranslate nohighlight">\(\alpha\)</span> 个模型的拟合。则对于这一系列模型我们定义</p>
 <div class="math notranslate nohighlight">
@@ -1214,7 +1207,7 @@ Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagu
 \mathrm{CV}(\hat f,\alpha)=\frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f^{-\kappa (i)}(x_i,\alpha))\tag{7.49}
 \]</div>
 <p>函数 <span class="math notranslate nohighlight">\(\mathrm{CV}(\hat f,\alpha)\)</span> 给出了测试误差曲线的一个估计，而且我们可以找到调整参数 <span class="math notranslate nohighlight">\(\hat\alpha\)</span> 使其最小化。我们最终选择的模型是 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span>，接着我们对所有数据进行拟合。</p>
-<p>有趣的是，<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证估计的到底是什么量。<span class="math notranslate nohighlight">\(K=5\)</span> 或 <span class="math notranslate nohighlight">\(10\)</span> 时，我们可能猜测它估计了期望误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，因为每一折的训练集不同于原始训练集。另一方面，如果 <span class="math notranslate nohighlight">\(K=N\)</span> 我们可能会猜测交叉验证估计了条件误差 <span class="math notranslate nohighlight">\(\text{Err}_{\cal T}\)</span>。事实是交叉验证仅仅有效地估计出平均误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，正如将在 7.12 节讨论的那样。</p>
+<p>有趣的是，<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证估计的到底是什么量。<span class="math notranslate nohighlight">\(K=5\)</span> 或 <span class="math notranslate nohighlight">\(10\)</span> 时，我们可能猜测它估计了期望误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，因为每一折的训练集不同于原始训练集。另一方面，如果 <span class="math notranslate nohighlight">\(K=N\)</span> 我们可能会猜测交叉验证估计了条件误差 <span class="math notranslate nohighlight">\(\text{Err}_{\mathcal T}\)</span>。事实是交叉验证仅仅有效地估计出平均误差 <span class="math notranslate nohighlight">\(\text{Err}\)</span>，正如将在 7.12 节讨论的那样。</p>
 <p>那我们应该为 <span class="math notranslate nohighlight">\(K\)</span> 取什么值呢？<span class="math notranslate nohighlight">\(K=N\)</span> 时，交叉验证估计对于真实（期望的）预测误差近似无偏的，但是可能导致高方差，因为 <span class="math notranslate nohighlight">\(N\)</span> 个训练集彼此是很相似的。计算量也是很大的，要应用该学习方法 <span class="math notranslate nohighlight">\(N\)</span> 次。在特定的问题中，这个计算可以很快地完成——见练习 7.3 和练习 5.13。</p>
 <p>另一方面，比如 <span class="math notranslate nohighlight">\(K=5\)</span> 时，交叉验证有较低的方差。但是偏差便是一个问题了，这取决于当训练集大小变化时学习方法的表现效果。图 7.8 显示了在给定任务下某分类器的假定的“学习曲线”，<span class="math notranslate nohighlight">\(1-\text{Err}\)</span> 关于训练集大小 <span class="math notranslate nohighlight">\(N\)</span> 的曲线。当训练集大小增长到 100 前观测时分类器的效果不断在改善；当增长到 200 个观测时改进的效果很小。如果我们的训练集有 200 个观测，5 折交叉验证会估计 160 个训练样本时分类器的效果，从图 7.8 可以看到同训练集大小为 200 时的效果是一样的。因此交叉验证不会有太大的偏差。然而，如果训练集只有 50 个观测，5 折交叉验证会估计 40 个训练样本时分类器的效果，而且从图中可以看出对 <span class="math notranslate nohighlight">\(1-\text{Err}\)</span> 会有一个偏低的估计。因此作为 <span class="math notranslate nohighlight">\(\text{Err}\)</span> 的估计，交叉验证会有上偏。</p>
 <p><img alt="" src="../_images/fig7.8.png" /></p>
@@ -1244,6 +1237,23 @@ Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagu
 \]</div>
 <p><span class="math notranslate nohighlight">\(\text{trace}(\mathbf{S})\)</span> 的值是有效参数个数，在 7.6 节定义。</p>
 <p>GCV 在一些设定下有计算上的优点，其中 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 的迹计算起来比单个元素 <span class="math notranslate nohighlight">\(S_{ii}\)</span> 更简单。在光滑问题中，GCV也可以减轻交叉验证趋向于**欠光滑 (undersmooth) **的趋势。GCV 和 AIC 的相似性可以从近似等式 <span class="math notranslate nohighlight">\(1/(1-x)^2\approx 1+2x\)</span> 得到（ 练习 7.7 ）。</p>
+<div class="admonition- admonition">
+<p class="admonition-title">公式推导</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+GCV(\hat f)&amp;=\frac{1}{N}\sum\limits_{i=1}^N[\frac{y_i-\hat f(x_i)}{1-\text{trace}(\mathbf{S})/N}]^2\\
+&amp;=\frac 1N\sum\limits_{i=1}^N(y_i-\hat f(x_i))^2(1+\frac{2\text{trace}(S)}{N})\\
+&amp;=\overline{err} + \frac{2\text{trace}(S)}{N}\overline{err}
+\end{align*}
+\end{split}\]</div>
+<p>而</p>
+<div class="math notranslate nohighlight">
+\[
+AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon
+\]</div>
+<p>显然，它们的区别在于 <span class="math notranslate nohighlight">\(\sigma^2_{\varepsilon}\)</span> 的估计方法不同。</p>
+</div>
 </div>
 <div class="section" id="id4">
 <h2>做交叉验证的错误与正确方式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
@@ -1281,8 +1291,9 @@ Hastie 和 Tibshirani 他们的 <a class="reference external" href="https://lagu
 <blockquote>
 <div><p>对全数据集进行拟合，我们将会发现一个对数据集分离得很好的预测变量。如果我们做 5 折交叉验证，同样的预测变量应该对数据的 4/5 和 1/5 都分离得很好，因此交叉验证误差率会很小（远远小于 <span class="math notranslate nohighlight">\(50\%\)</span> ）。因此 CV 不能给出一个准确的误差估计。</p>
 </div></blockquote>
-<div class="highlight-{ notranslate"><div class="highlight"><pre><span></span>    这个论断是在蛋白质实验室会议上一名科学家向我们提出来的，于是便有了这一节的内容。
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这个论断是在蛋白质实验室会议上一名科学家向我们提出来的，于是便有了这一节的内容。</p>
 </div>
 <p>为了研究该论断是否正确，图 7.11 展示了该设定下的仿真结果。500 个预测变量和 20 个样本，两个类别大小相同，所有预测变量服从标准正态分布。左上图显示了对训练数据的 500 个 stumps 的每个训练错误的个数。我们已经用颜色标记了 6 个产生最小误差的预测变量。在右上图中，显示了对数据随机的 4/5 处划分（16 个样本）的 stump 拟合的测试误差，以及在剩下 1/5（4 个样本）中的测试误差。<!--用相同颜色标记的点表示与左上图中同种颜色点对应的预测变量-->每种颜色的点与左上图对应颜色的预测变量相对应。我们看到对于蓝色预测变量的 stump（它的 stump 在左上图中是最好的），得到 2/4 的测试误差（50%），但这并不比随机选择更好。</p>
 <p><img alt="" src="../_images/fig7.11.png" /></p>

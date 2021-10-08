@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1214,10 +1214,10 @@ f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}\label{14.49}
 <p>我们可以对上式关于 <span class="math notranslate nohighlight">\(\mu\)</span> 和 <span class="math notranslate nohighlight">\(\lambda_i\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/45">练习 14.7</a>）求微分得到</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \hat\mu&amp;=\bar x\tag{14.51}\label{14.51}\\
 \hat\lambda_i&amp;=\mathbf V_q^T(x_i-\bar x)\tag{14.52}\label{14.52}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>!!! note “weiya注: Ex. 14.7”
 \eqref{14.51} 和 \eqref{14.52} 的解并不是唯一的，<span class="math notranslate nohighlight">\(\mu -\bar x\)</span> 属于 <span class="math notranslate nohighlight">\(\mathbf I-\V_q\V_q^T\)</span> 的 Null Space，而注意到 <span class="math notranslate nohighlight">\(\mathrm{rank}(\mathbf I-\V_q\V_q^T) = p-q &gt;0\)</span>（除非 <span class="math notranslate nohighlight">\(q=p\)</span>），所以解不唯一。
@@ -1233,12 +1233,12 @@ f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}\label{14.49}
 <img alt="" src="../_images/projection_20200515_064251115_iOS.png" />
 首先，根据<span class="math notranslate nohighlight">\(\mathbf H_qx_i=\mathbf V_q\mathbf V^T_qx_i\)</span>可以得出投影点是在<span class="math notranslate nohighlight">\(\mathbf V_q\)</span>的列所张成的子空间中；其次，对于该子空间中任一点 <span class="math notranslate nohighlight">\(\mathbf V_qy\)</span>，因为
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
+    \begin{align*}
     (x_i-\mathbf H_qx_i)\cdot \mathbf V_qy_i&amp;=(\mathbf I-\mathbf H_q)x_i\cdot \mathbf V_qy_i\\
     &amp;=x_i^T(\mathbf I-\mathbf H_q)^T\mathbf V_qy_i\\
     &amp;=x_i^T\mathbf O_{p\times q}y_i\\
     &amp;=0
-    \end{align}
+    \end{align*}
     \)</span>$
 故为正交投影。</p>
 <p>\eqref{14.53} 的解可以按如下形式表示。将（中心化的）观测值放进 <span class="math notranslate nohighlight">\(N\times p\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的行中。构造 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的奇异值分解：</p>
@@ -1261,12 +1261,12 @@ $<span class="math notranslate nohighlight">\(
 <p>对于前两个主成分 <span class="math notranslate nohighlight">\(u_{i1}d_1\)</span> 和 <span class="math notranslate nohighlight">\(u_{i2}d_2\)</span>，我们计算 5%, 25%, 50%, 75%, 95% 分位数，并且用它们去定义叠加在图中的长方形网格。圆点表明靠近该网格顶点的图象，而距离主要用这些投影点的坐标来衡量，但也给正交子空间中的组分一些权重。右图显示了对应这些圆点的图象。这帮助我们观察前两个主成分的本质。我们看到 <span class="math notranslate nohighlight">\(v_1\)</span>（水平方向）主要与手写‘3’的下尾有关，而 <span class="math notranslate nohighlight">\(v_2\)</span>（垂直方向）与字体粗细有关。用 \eqref{14.49} 的参数化模型表示，这两个组分的模型有如下形式</p>
 <!--
 $$
-\begin{align}
+\begin{align*}
 \hat f(\lambda)&=\bar x+\lambda_1b_1+\lambda_2v_2\\
 &=\includegraphics[height=5.6ex]{../img/14/s1.png}+\lambda_1\cdot
 \includegraphics[height=5.6ex]{../img/14/s2.png}+\lambda_2\cdot
 \includegraphics[height=5.6ex]{../img/14/s3.png}
-\end{align}
+\end{align*}
 $$
 -->
 <p><img alt="" src="../_images/eq1455.png" /></p>
@@ -1406,7 +1406,7 @@ $<span class="math notranslate nohighlight">\(
 <p>谱聚类是标准聚类方法的推广，而且也是为这些情形所设计的。它与局部多维缩放技巧有着紧密的联系（<span class="xref myst">14.9 节</span>）。</p>
 <p>出发点是所有观测点对间的成对相似性 <span class="math notranslate nohighlight">\(s_{ii'}\ge 0\)</span> 构成的 <span class="math notranslate nohighlight">\(N\times N\)</span> 矩阵。我们将这些观测用无向相似性图 <span class="math notranslate nohighlight">\(G=\langle V, E \rangle\)</span> 来表示。<span class="math notranslate nohighlight">\(N\)</span> 个顶点 <span class="math notranslate nohighlight">\(v_i\)</span> 表示观测值，如果成对顶点的相似性为正值（或者超出某个阈值），则它们之间用一条边相连。边的权重为 <span class="math notranslate nohighlight">\(s_{ii'}\)</span>。我们希望对这个图进行划分，使得不同类之间的边有较低的权重，而在类间有着较高的权重。在谱聚类中，思想是构造相似性图来表示观测点间的局部邻居关系。</p>
 <p>更精确地，考虑 <span class="math notranslate nohighlight">\(N\)</span> 个点 <span class="math notranslate nohighlight">\(x_i\in \IR^p\)</span>，令 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 为 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 间的欧几里得距离。我们将 <strong>radical-kernel gram</strong> 矩阵作为我们的相似性矩阵；也就是 <span class="math notranslate nohighlight">\(s_{ii'}=\exp(-d_{ii'}^2/c)\)</span>，其中 <span class="math notranslate nohighlight">\(c &gt; 0\)</span> 是缩放参数。</p>
-<p>有许多方式来定义相似性矩阵及其反映局部行为的相似性图。最流行的方式是 <strong>mutual K-nearest-neighbor graph</strong>。定义 <span class="math notranslate nohighlight">\({\cal{N}}\_K\)</span> 为邻居点的对称子集；特别地，如果点 <span class="math notranslate nohighlight">\(i\)</span> 在 <span class="math notranslate nohighlight">\(i'\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span>-最近邻中，则点对 <span class="math notranslate nohighlight">\((i,i')\)</span> 在 <span class="math notranslate nohighlight">\({\cal{N}}\_K\)</span> 中，反之亦然。接着我们连接所有的对称最近邻，然后给出边的权重 <span class="math notranslate nohighlight">\(w_{ii'}=s_{ii'}\)</span>；否则边的权重为 <span class="math notranslate nohighlight">\(0\)</span>。等价地，我们对不属于 <span class="math notranslate nohighlight">\(\cal{N}_K\)</span> 的点的成对相关性赋为 <span class="math notranslate nohighlight">\(0\)</span>，然后画出这个修改版本的矩阵的图。</p>
+<p>有许多方式来定义相似性矩阵及其反映局部行为的相似性图。最流行的方式是 <strong>mutual K-nearest-neighbor graph</strong>。定义 <span class="math notranslate nohighlight">\({\mathcal{N}}\_K\)</span> 为邻居点的对称子集；特别地，如果点 <span class="math notranslate nohighlight">\(i\)</span> 在 <span class="math notranslate nohighlight">\(i'\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span>-最近邻中，则点对 <span class="math notranslate nohighlight">\((i,i')\)</span> 在 <span class="math notranslate nohighlight">\({\mathcal{N}}\_K\)</span> 中，反之亦然。接着我们连接所有的对称最近邻，然后给出边的权重 <span class="math notranslate nohighlight">\(w_{ii'}=s_{ii'}\)</span>；否则边的权重为 <span class="math notranslate nohighlight">\(0\)</span>。等价地，我们对不属于 <span class="math notranslate nohighlight">\(\mathcal{N}_K\)</span> 的点的成对相关性赋为 <span class="math notranslate nohighlight">\(0\)</span>，然后画出这个修改版本的矩阵的图。</p>
 <p>另外，全连接图包含所有的成对边，权重为 <span class="math notranslate nohighlight">\(w_{ii'}=s_{ii'}\)</span>，局部行为通过缩放参数 <span class="math notranslate nohighlight">\(c\)</span> 来控制。</p>
 <p>从相似图得到的边的矩阵 <span class="math notranslate nohighlight">\(\mathbf W=\\{w_{ii'}\\}\)</span> 称为 <strong>邻接矩阵 (adjacency matrix)</strong>。结点 <span class="math notranslate nohighlight">\(i\)</span> 的 <strong>度(degree)</strong> 为 <span class="math notranslate nohighlight">\(g_i=\sum_iw_{ii'}\)</span>，这是与该点相连的权重之和。令 <span class="math notranslate nohighlight">\(\mathbf G\)</span> 表示对角元为 <span class="math notranslate nohighlight">\(g_i\)</span> 的对角矩阵。</p>
 <p>最后，graph laplacian 定义为</p>

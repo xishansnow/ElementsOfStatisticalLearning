@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1159,7 +1159,7 @@ $<span class="math notranslate nohighlight">\(
 <p>可以考虑下式的 <strong>目标函数(target function)</strong> 的性质来得到 <span class="math notranslate nohighlight">\(J\)</span> 的有用值</p>
 <div class="math notranslate nohighlight">
 \[
-\eta = \mathrm{arg }\;\underset{f}{\min} \E_{XY}L(Y, f(X))\tag{10.39}
+\eta = \mathrm{arg }\;\underset{f}{\min} \mathbb{E}_{XY}L(Y, f(X))\tag{10.39}
 \]</div>
 <p>这里期望值是对 <span class="math notranslate nohighlight">\((X,Y)\)</span> 的总体联合分布而言。目标函数 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 是在未来数据上有最小预测风险的函数。这是我们试图近似的函数。</p>
 <p><span class="math notranslate nohighlight">\(\eta(X)\)</span> 一个相关的性质是坐标变量 <span class="math notranslate nohighlight">\(X^T=(X_1,X_2,\ldots, X_p)\)</span> 间交叉项的阶。这个可以通过它的 ANOVA 展开式得到</p>

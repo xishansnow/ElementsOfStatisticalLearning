@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,12 +1160,12 @@
 <p>在 <span class="math notranslate nohighlight">\(X\)</span> 的<strong>条件</strong>下，我们可以把 <span class="math notranslate nohighlight">\(\EPE\)</span> 写成</p>
 <div class="math notranslate nohighlight">
 \[
-\EPE(f) = \E_X\E_{Y\mid X}([Y-f(X)]^2\mid X)\tag{2.11}
+\EPE(f) = \mathbb{E}_X\mathbb{E}_{Y\mid X}([Y-f(X)]^2\mid X)\tag{2.11}
 \]</div>
 <p>而且我们看到使 <span class="math notranslate nohighlight">\(\EPE\)</span> 逐点最小就足够了：</p>
 <div class="math notranslate nohighlight">
 \[
-f(x) = \argmin_c\E_{Y\mid X}([Y-c]^2\mid X=x)\tag{2.12}
+f(x) = \argmin_c\mathbb{E}_{Y\mid X}([Y-c]^2\mid X=x)\tag{2.12}
 \]</div>
 <p>解为条件期望</p>
 <div class="math notranslate nohighlight">
@@ -1180,7 +1180,7 @@ f(x) = \E(Y\mid X=x)\tag{2.13}\,,
 \[
 \hat{f}(x)=\Ave(y_i\mid x_i\in N_k(x))\tag{2.14}
 \]</div>
-<p>其中“Ave”表示平均，<span class="math notranslate nohighlight">\(N_k(x)\)</span> 是集合 <span class="math notranslate nohighlight">\(\cal{T}\)</span> 中离 <span class="math notranslate nohighlight">\(x\)</span> 最近的 <span class="math notranslate nohighlight">\(k\)</span> 个点的邻域。这里有两个近似</p>
+<p>其中“Ave”表示平均，<span class="math notranslate nohighlight">\(N_k(x)\)</span> 是集合 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 中离 <span class="math notranslate nohighlight">\(x\)</span> 最近的 <span class="math notranslate nohighlight">\(k\)</span> 个点的邻域。这里有两个近似</p>
 <ul class="simple">
 <li><p>用样本数据的平均近似期望；</p></li>
 <li><p>在每一点的条件（期望）松弛为在离该目标点近的某个区域上的条件（期望）。</p></li>
@@ -1213,7 +1213,7 @@ $<span class="math notranslate nohighlight">\(
 \hat{f}(x) = \median(Y \mid X = x)\tag{2.18}
 \)</span>$</p>
 <p>条件中位数是另一种定位的方式，而且它的估计比条件均值更加鲁棒。 <span class="math notranslate nohighlight">\(L_1\)</span> 准则的导数不连续，阻碍了它们的广泛应用。其它更多耐抵抗 (resistant) 的损失函数会在后面章节中介绍，但是平方误差是分析方便而且是最受欢迎的。</p>
-<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误。预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\cal G\)</span> 中取值， <span class="math notranslate nohighlight">\(\cal G\)</span> 是可能的类别的集合。我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\card({\cal G})\)</span>。矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\cal G_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\cal G_\ell\)</span> 的代价。大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚。预测错误的期望为</p>
+<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误。预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 中取值， <span class="math notranslate nohighlight">\(\mathcal G\)</span> 是可能的类别的集合。我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\card({\mathcal G})\)</span>。矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\mathcal G_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\mathcal G_\ell\)</span> 的代价。大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚。预测错误的期望为</p>
 <div class="math notranslate nohighlight">
 \[
 \EPE = \E[L(G,\hat{G}(X))]\tag{2.19}
@@ -1221,17 +1221,17 @@ $<span class="math notranslate nohighlight">\(
 <p>同样关于联合分布 <span class="math notranslate nohighlight">\(\Pr(G,X)\)</span> 取期望。再一次考虑条件分布，我们可以写出如下的 <span class="math notranslate nohighlight">\(\EPE\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-\EPE = \E_X\sum\limits_{k=1}^KL[{\cal{G}}_k,\hat{G}(X)]\Pr({\cal{G}}_k\mid X)\tag{2.20}
+\EPE = \mathbb{E}_X\sum\limits_{k=1}^KL[{\mathcal{G}}_k,\hat{G}(X)]\Pr({\mathcal{G}}_k\mid X)\tag{2.20}
 \]</div>
 <p>同样逐点最小化 <span class="math notranslate nohighlight">\(\EPE\)</span> 就足够了:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{G}(x) = \argmin_{g\in \cal{G}}\sum\limits_{k=1}^KL({\cal{G}}_k,g)\Pr({\cal G}_k\mid X = x)\tag{2.21}
+\hat{G}(x) = \argmin_{g\in \mathcal{G}}\sum\limits_{k=1}^KL({\mathcal{G}}_k,g)\Pr({\mathcal G}_k\mid X = x)\tag{2.21}
 \]</div>
 <p>结合 0-1 损失函数上式简化为</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{G}(x) = \argmin_{g\in \cal{G}}[1 − \Pr(g\mid X = x)]\tag{2.22}\label{2.22}\,.
+\hat{G}(x) = \argmin_{g\in \mathcal{G}}[1 − \Pr(g\mid X = x)]\tag{2.22}\label{2.22}\,.
 \]</div>
 <p>!!! note “weiya 注：推导 \eqref{2.22}”
 注意到，对于 0-1 损失，
@@ -1243,12 +1243,12 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     则我们有
     \)</span><span class="math notranslate nohighlight">\(
-    \sum_{k=1}^KL({\cal{G}}_k,g)\Pr(G={\cal G}_k\mid X = x) = \sum_{\cG_k\neq g}\Pr(G=\cG_k \mid X=x)=1-\Pr(G=g\mid X=x)\,.
+    \sum_{k=1}^KL({\mathcal{G}}_k,g)\Pr(G={\mathcal G}_k\mid X = x) = \sum_{\cG_k\neq g}\Pr(G=\cG_k \mid X=x)=1-\Pr(G=g\mid X=x)\,.
     \)</span>$</p>
 <p>或者简单地</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{G}(X) = {\cal{G}}_k \text{ if } \Pr({\cal{G}}_k\mid X = x) = \underset{g\in{\cal{G}}}{\max } \Pr(g\mid X = x)\tag{2.23}
+\hat{G}(X) = {\mathcal{G}}_k \text{ if } \Pr({\mathcal{G}}_k\mid X = x) = \underset{g\in{\mathcal{G}}}{\max } \Pr(g\mid X = x)\tag{2.23}
 \]</div>
 <p>合理的解决方法被称作 <strong>贝叶斯分类 (Bayes classifier)</strong>，利用条件（离散）分布 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 分到最合适的类别。对于我们模拟的例子图 2.5 显示了最优的贝叶斯判别边界。贝叶斯分类的误差阶被称作 <strong>贝叶斯阶 (Bayes rate)</strong>。</p>
 <p><img alt="" src="../_images/fig2.5.png" /></p>
@@ -1256,7 +1256,7 @@ $<span class="math notranslate nohighlight">\(
 <div><p>图 2.5：在图 2.1，2.2，和 2.3 中模拟的例子的最优贝叶斯判别边界。因为每个类别的产生密度已知，则判别边界可以准确地计算出来。</p>
 </div></blockquote>
 <p>再一次我们看到 <span class="math notranslate nohighlight">\(k\)</span>-最近邻分类直接近似这个解决方法——在最近邻内占绝大多数恰好意味着这个，除了某一点的条件概率松弛为该点的邻域内的条件概率，而且概率是通过训练样本的比例来估计的。</p>
-<p>假设对于一个二分类的问题，我们采用虚拟变量的方法并且通过二进制变量 <span class="math notranslate nohighlight">\(Y\)</span> 编码 <span class="math notranslate nohighlight">\(G\)</span>，然后进行平方误差损失估计。当 <span class="math notranslate nohighlight">\({\cal{G}}_1\)</span> 对应 <span class="math notranslate nohighlight">\(Y=1\)</span>，有 <span class="math notranslate nohighlight">\(\hat{f}(X)=\E(Y\mid X)=\Pr(G={\cal{G}}_1\mid X)\)</span>。同样对于 <span class="math notranslate nohighlight">\(K\)</span> 个类别的问题 <span class="math notranslate nohighlight">\(\E(Y_k\mid X)=\Pr(G={\cal{G}}_k\mid X)\)</span>。这显示了我们虚拟变量回归的过程，然后根据最大的拟合值来分类，这是表示贝叶斯分类器的另一种方式。尽管这个理论是确定的，在实现中问题也会随着采用的回归模型不同而出现。举个例子，当采用线性回归模型，<span class="math notranslate nohighlight">\(\hat{f}(X)\)</span> 不必要为正值，而且我们可能会怀疑用这个作为概率的一个估计。我们将在第四章中讨论构建模型 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 的各种不同的方式。</p>
+<p>假设对于一个二分类的问题，我们采用虚拟变量的方法并且通过二进制变量 <span class="math notranslate nohighlight">\(Y\)</span> 编码 <span class="math notranslate nohighlight">\(G\)</span>，然后进行平方误差损失估计。当 <span class="math notranslate nohighlight">\({\mathcal{G}}_1\)</span> 对应 <span class="math notranslate nohighlight">\(Y=1\)</span>，有 <span class="math notranslate nohighlight">\(\hat{f}(X)=\E(Y\mid X)=\Pr(G={\mathcal{G}}_1\mid X)\)</span>。同样对于 <span class="math notranslate nohighlight">\(K\)</span> 个类别的问题 <span class="math notranslate nohighlight">\(\E(Y_k\mid X)=\Pr(G={\mathcal{G}}_k\mid X)\)</span>。这显示了我们虚拟变量回归的过程，然后根据最大的拟合值来分类，这是表示贝叶斯分类器的另一种方式。尽管这个理论是确定的，在实现中问题也会随着采用的回归模型不同而出现。举个例子，当采用线性回归模型，<span class="math notranslate nohighlight">\(\hat{f}(X)\)</span> 不必要为正值，而且我们可能会怀疑用这个作为概率的一个估计。我们将在第四章中讨论构建模型 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span> 的各种不同的方式。</p>
 </div>
 
     <script type="text/x-thebe-config">

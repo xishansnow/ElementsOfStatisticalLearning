@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1235,12 +1235,12 @@
 >
 >
 > $$
-> \begin{align}
+> \begin{align*}
 > f(\beta\mid y)&=\dfrac{f(\beta, y)}{f(y)}\\\
 > &=\dfrac{f(\beta,y)}{\int f(y\mid\beta)f(\beta)}\\\
 > &\sim f(y\mid\beta)f(\beta)\\\
 > &=Cexp\Big\{-\frac{1}{2\sigma^2}\Big[(y-\beta_0-X\beta)'(y-\beta_0-X\beta)+\frac{\sigma^2}{\tau^2}\beta'\beta\Big]\Big\}
-> \end{align}
+> \end{align*}
 > $$
 >
 > $\color{red} 疑问：C是多少？$
@@ -1322,18 +1322,18 @@ $$
 <p>利用奇异值分解，通过简化我们可以把最小二乘拟合向量写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\notag\\
+\begin{align*}
+\mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\\
 &amp;=\mathbf{UU^Ty}\tag{3.46}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>注意到 <span class="math notranslate nohighlight">\(\mathbf{U}^T\mathbf y\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 正交基 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 下的坐标。同时注意其与 \eqref{3.33} 的相似性；</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
+    \begin{align*}
     \hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32}\label{3.32} \\
     \hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}\label{3.33}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <p><span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 列空间的两个不同的正交基（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/97">练习 3.8</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.8”
@@ -1341,11 +1341,11 @@ $<span class="math notranslate nohighlight">\(
 <p>现在岭回归的解为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\mathbf{X}\hat{\beta}^{ridge}&amp;=\mathbf{X}(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X^Ty}\notag\\
-&amp;= \mathbf{UD}(\mathbf{D^2}+\lambda \mathbf{I})^{-1}\mathbf{DU^Ty}\notag\\
+\begin{align*}
+\mathbf{X}\hat{\beta}^{ridge}&amp;=\mathbf{X}(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X^Ty}\\
+&amp;= \mathbf{UD}(\mathbf{D^2}+\lambda \mathbf{I})^{-1}\mathbf{DU^Ty}\\
 &amp;= \sum\limits_{j=1}^p\mathbf{u}_j\dfrac{d_j^2}{d_j^2+\lambda}\mathbf{u_j^Ty}\tag{3.47}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{u}_j\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 的列向量。注意到因为 <span class="math notranslate nohighlight">\(\lambda \ge 0\)</span>，我们有 <span class="math notranslate nohighlight">\(d_j^2/(d^2_j+\lambda)\le 1\)</span>。类似线性回归，岭回归计算 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 关于正规基 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 的坐标。通过因子 <span class="math notranslate nohighlight">\(d^2_j/(d^2_j+\lambda)\)</span> 来收缩这些坐标。这意味着更小的 <span class="math notranslate nohighlight">\(d_j^2\)</span> 会在更大程度上收缩基向量的坐标。</p>
 <p><span class="math notranslate nohighlight">\(d_j^2\)</span> 值小意味着什么？中心化后的矩阵 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的奇异值分解是表示 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 中主成分变量的另一种方式。样本协方差矩阵为 <span class="math notranslate nohighlight">\(\mathbf{S=X^TX}/N\)</span><!--$\mathbf{S={\color{red} E((X-EX)^T(X-EX))=}X^TX}/N$-->，并且从 \eqref{3.45} 式我们得到</p>
@@ -1367,11 +1367,11 @@ $<span class="math notranslate nohighlight">\(
 <p>在图 3.7 中我们已经画了预测误差估计值关于 <span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 的曲线</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\df(\lambda)&amp;=\tr[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\notag\\
-&amp;=\tr(\mathbf{H}_{\lambda})\notag\\
+\begin{align*}
+\df(\lambda)&amp;=\tr[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\\
+&amp;=\tr(\mathbf{H}_{\lambda})\\
 &amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}\label{3.50}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>上面 <span class="math notranslate nohighlight">\(\lambda\)</span> 的单调递减函数是岭回归拟合的 <strong>有效自由度 (effective degrees of freedom)</strong>。通常在含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的线性回归拟合中，拟合的自由度为 <span class="math notranslate nohighlight">\(p\)</span>，也就是无约束参数的个数。这里想法是尽管岭回归拟合中所有的 <span class="math notranslate nohighlight">\(p\)</span> 个系数都不为 0，但是它们在由 <span class="math notranslate nohighlight">\(\lambda\)</span> 控制的约束下拟合。注意到当 <span class="math notranslate nohighlight">\(\lambda=0\)</span>（没有正则化）时 <span class="math notranslate nohighlight">\(\df(\lambda)=p\)</span>，并且当 <span class="math notranslate nohighlight">\(\lambda\rightarrow \infty\)</span> 时 <span class="math notranslate nohighlight">\(df(\lambda)\rightarrow 0\)</span>。当然总是对于截距总有一个额外的自由度，事先 (apriori) 已经去掉了。这个定义将在 <a class="reference external" href="#_2">3.4.4 节</a>和 <span class="xref myst">7.4-7.6 节</span>中详细介绍。图 3.7 中最小值在 <span class="math notranslate nohighlight">\(\df(\lambda)=5.0\)</span> 处。表 3.3 表明岭回归将全最小二乘估计的测试误差降低了一小部分。</p>
 </div>
@@ -1382,10 +1382,10 @@ lasso 是 “Least absolute shrinkage and seleetion operator” 的首字母缩�
 <p>lasso 像岭回归一样是个收缩方法，有微妙但很重要的区别。lasso 估计定义如下</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\hat{\beta}^{lasso}&amp;=\underset{\beta}{\arg\min}\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\notag\\
+\begin{align*}
+\hat{\beta}^{lasso}&amp;=\underset{\beta}{\arg\min}\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\\
 &amp;\text{subject to }\sum\limits_{j=1}^p\vert\beta_j\vert\le t \tag{3.51}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>正如在岭回归中一样，我们可以通过标准化预测变量来对常数 <span class="math notranslate nohighlight">\(\beta_0\)</span> 再参量化；<span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> 的解为 <span class="math notranslate nohighlight">\(\bar{y}\)</span>，并且后面我们拟合无截距的模型（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/95">练习 3.5</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.5”
@@ -1464,15 +1464,15 @@ $<span class="math notranslate nohighlight">\(
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![](../img/03/lars.png)
 </pre></div>
 </div>
-<p>假设 <span class="math notranslate nohighlight">\(\cal A_k\)</span> 是第 <span class="math notranslate nohighlight">\(k\)</span> 步开始时的变量活跃集，<span class="math notranslate nohighlight">\(\beta_{\cal A_k}\)</span> 是这一步中变量的系数向量；其中有 <span class="math notranslate nohighlight">\(k-1\)</span> 个非零值，刚刚进入的变量系数值为 0。如果当前残差为 <span class="math notranslate nohighlight">\(\mathbf r_k=\mathbf y-\mathbf X_{\cal A_k}\beta_{\cal A_k}\)</span>，则当前步的方向为</p>
+<p>假设 <span class="math notranslate nohighlight">\(\mathcal A_k\)</span> 是第 <span class="math notranslate nohighlight">\(k\)</span> 步开始时的变量活跃集，<span class="math notranslate nohighlight">\(\beta_{\mathcal A_k}\)</span> 是这一步中变量的系数向量；其中有 <span class="math notranslate nohighlight">\(k-1\)</span> 个非零值，刚刚进入的变量系数值为 0。如果当前残差为 <span class="math notranslate nohighlight">\(\mathbf r_k=\mathbf y-\mathbf X_{\mathcal A_k}\beta_{\mathcal A_k}\)</span>，则当前步的方向为</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_k=(\mathbf X^T_{ \cal A_k}\mathbf X_{\cal A_k})^{-1}\mathbf X^T_{\cal A_k}\mathbf r_k \tag{3.55}
+\delta_k=(\mathbf X^T_{ \mathcal A_k}\mathbf X_{\mathcal A_k})^{-1}\mathbf X^T_{\mathcal A_k}\mathbf r_k \tag{3.55}
 \]</div>
-<p>然后系数迭代为 <span class="math notranslate nohighlight">\(\beta_{\cal A_k} (\alpha) = \beta_{\cal A_k} + \alpha · \delta_k\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a> 证明这种方式下选择的方向满足断言：<strong>保持（各个预测变量与残差间的）相关系数相等和递减（tied and decreasing）</strong>。</p>
+<p>然后系数迭代为 <span class="math notranslate nohighlight">\(\beta_{\mathcal A_k} (\alpha) = \beta_{\mathcal A_k} + \alpha · \delta_k\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a> 证明这种方式下选择的方向满足断言：<strong>保持（各个预测变量与残差间的）相关系数相等和递减（tied and decreasing）</strong>。</p>
 <p>!!! info “weiya 注：Ex. 3.23”
 已解决，具体证明过程参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">Issue 100: Ex. 3.23</a>。起初翻译时，对 tied 的理解不够，通过求解该练习题，认为 tied 意思其实就是<strong>各个预测变量与残差之间的相关系数保持相等</strong>。</p>
-<p>如果该步的开始拟合向量为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\_k\)</span>，则迭代为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\_k(\alpha)=\mathbf f_k+\alpha\cdot\mathbf u_k\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf u_k=\mathbf X_{\cal A_k}\delta_k\)</span> 是新的拟合方向。“最小角”由该过程的几何解释得到；<span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 使得活跃集 <span class="math notranslate nohighlight">\({\cal A}_k \)</span>中预测变量间的角度最小（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/101">练习 3.24</a>）。</p>
+<p>如果该步的开始拟合向量为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\_k\)</span>，则迭代为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\_k(\alpha)=\mathbf f_k+\alpha\cdot\mathbf u_k\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf u_k=\mathbf X_{\mathcal A_k}\delta_k\)</span> 是新的拟合方向。“最小角”由该过程的几何解释得到；<span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 使得活跃集 <span class="math notranslate nohighlight">\({\mathcal A}_k \)</span>中预测变量间的角度最小（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/101">练习 3.24</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.24”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/101">Issue 101: Ex. 3.24</a>，欢迎交流讨论。</p>
 <p>图 3.14 使用模拟数据显示了相关系数的绝对值下降以及每一步 LAR 算法中变量进入的顺序。</p>
@@ -1498,25 +1498,25 @@ $<span class="math notranslate nohighlight">\(
 <p>4a. 如果一个非零的系数达到0，则从变量的活跃集中删除该变量并且重新计算当前的联合最小二乘方向。</p>
 <hr class="docutils" />
 <p>LAR(lasso) 算法是非常有效的，需要用 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量的单最小二乘拟合的相同步骤进行计算。最小角回归总是需要 <span class="math notranslate nohighlight">\(p\)</span> 步达到全最小二乘估计。lasso 路径可能超过 <span class="math notranslate nohighlight">\(p\)</span> 步，尽管这两者经常是非常相似的。经过 lasso 修正的 3.2a 的算法 3.2 是计算任何一个lasso 问题的有效方式，特别是当 <span class="math notranslate nohighlight">\(p &gt; &gt;N\)</span>。Osborne et al. (2000a)<a class="footnote-reference brackets" href="#id15" id="id9">5</a> 也发现了计算 lasso 的分段线性的路径，他们称之为<strong>同伦 (homotopy)</strong> 算法。</p>
-<p>我们已经给出一个为什么这些过程很相似的启发式的论据。尽管 LAR 算法是用相关性来叙述的，但如果输入特征是标准化的，它与内积是等价的并且用内积更简单。假设 <span class="math notranslate nohighlight">\(\cal A\)</span> 是算法中某些步的变量活跃集，它们与当前残差 <span class="math notranslate nohighlight">\(\mathbf y -\mathbf X\beta\)</span> 的内积的绝对值是结合在一起的。我们可以表达成</p>
+<p>我们已经给出一个为什么这些过程很相似的启发式的论据。尽管 LAR 算法是用相关性来叙述的，但如果输入特征是标准化的，它与内积是等价的并且用内积更简单。假设 <span class="math notranslate nohighlight">\(\mathcal A\)</span> 是算法中某些步的变量活跃集，它们与当前残差 <span class="math notranslate nohighlight">\(\mathbf y -\mathbf X\beta\)</span> 的内积的绝对值是结合在一起的。我们可以表达成</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\gamma\cdot s_j,\forall j\in {\cal A} \tag{3.56}\label{3.56}
+\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\gamma\cdot s_j,\forall j\in {\mathcal A} \tag{3.56}\label{3.56}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(s_j\in\\{-1,1\\}\)</span> 表示内积的符号，<span class="math notranslate nohighlight">\(\gamma\)</span> 是普通的数值。并且 <span class="math notranslate nohighlight">\(\vert \mathbf x_k^T(\mathbf y-\mathbf X\beta)\vert\le \gamma\; \forall k\notin \cal A\)</span>。现在我们考虑 \eqref{3.52} 的 lasso 准则，我们可以写成向量形式</p>
+<p>其中 <span class="math notranslate nohighlight">\(s_j\in\\{-1,1\\}\)</span> 表示内积的符号，<span class="math notranslate nohighlight">\(\gamma\)</span> 是普通的数值。并且 <span class="math notranslate nohighlight">\(\vert \mathbf x_k^T(\mathbf y-\mathbf X\beta)\vert\le \gamma\; \forall k\notin \mathcal A\)</span>。现在我们考虑 \eqref{3.52} 的 lasso 准则，我们可以写成向量形式</p>
 <div class="math notranslate nohighlight">
 \[
 R(\beta)=\frac{1}{2}\Vert\mathbf y-\mathbf X\beta\Vert_2^2+\lambda\Vert\beta\Vert_1\tag{3.57}
 \]</div>
-<p>令 <span class="math notranslate nohighlight">\(\cal B\)</span> 为在给定 <span class="math notranslate nohighlight">\(\lambda\)</span> 值下解中的变量的活跃集。对于这些变量 <span class="math notranslate nohighlight">\(R(\beta)\)</span> 是可导的，并且 <strong>平稳条件 (stationary condition)</strong> 为</p>
+<p>令 <span class="math notranslate nohighlight">\(\mathcal B\)</span> 为在给定 <span class="math notranslate nohighlight">\(\lambda\)</span> 值下解中的变量的活跃集。对于这些变量 <span class="math notranslate nohighlight">\(R(\beta)\)</span> 是可导的，并且 <strong>平稳条件 (stationary condition)</strong> 为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\cal B}\tag{3.58}\label{3.58}
+\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\mathcal B}\tag{3.58}\label{3.58}
 \]</div>
-<p>比较 \eqref{3.58} 和 \eqref{3.56}，我们看到只有当 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的符号与内积的符号相同时，这两个等式才相同。这也就是为什么 LAR 算法和 lasso 当一个活跃系数经过零开始出现不同；对于不满足条件 \eqref{3.58} 的变量，会被踢出活跃集 <span class="math notranslate nohighlight">\(\cal B\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a> 证明了这些等式表明随<span class="math notranslate nohighlight">\(\lambda\)</span> 减小的分段线性系数曲线。对于不活跃的变量的平稳条件要求</p>
+<p>比较 \eqref{3.58} 和 \eqref{3.56}，我们看到只有当 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的符号与内积的符号相同时，这两个等式才相同。这也就是为什么 LAR 算法和 lasso 当一个活跃系数经过零开始出现不同；对于不满足条件 \eqref{3.58} 的变量，会被踢出活跃集 <span class="math notranslate nohighlight">\(\mathcal B\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a> 证明了这些等式表明随<span class="math notranslate nohighlight">\(\lambda\)</span> 减小的分段线性系数曲线。对于不活跃的变量的平稳条件要求</p>
 <div class="math notranslate nohighlight">
 \[
-\vert\mathbf x_k^T(\mathbf y-\mathbf X\beta)\vert\le\lambda,\forall k\notin{\cal B}\tag{3.59}
+\vert\mathbf x_k^T(\mathbf y-\mathbf X\beta)\vert\le\lambda,\forall k\notin{\mathcal B}\tag{3.59}
 \]</div>
 <p>这与 LAR 算法一致。</p>
 <p><img alt="" src="../_images/fig3.16.png" /></p>

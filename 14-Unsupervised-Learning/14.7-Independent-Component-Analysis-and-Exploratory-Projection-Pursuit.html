@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1323,10 +1323,10 @@ I(Y)=\sum\limits_{j=1}^pH(Y_j)-H(Y)\tag{14.83}
 <p>值 <span class="math notranslate nohighlight">\(I(Y)\)</span> 称为 <span class="math notranslate nohighlight">\(Y\)</span> 的密度 <span class="math notranslate nohighlight">\(g(y)\)</span> 与其独立版本 <span class="math notranslate nohighlight">\(\prod\limits_{j=1}^pg_j(y_j)\)</span> 之间的 Kullback-Leibler 距离, 其中 <span class="math notranslate nohighlight">\(g_j(y_j)\)</span> 是 <span class="math notranslate nohighlight">\(Y_j\)</span> 的边缘密度. 如果 <span class="math notranslate nohighlight">\(X\)</span> 有协方差 <span class="math notranslate nohighlight">\(\I\)</span>, 且 <span class="math notranslate nohighlight">\(Y=\A^TX\)</span>, 其中 <span class="math notranslate nohighlight">\(\A\)</span> 是正交, 则易证</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 I(Y)&amp;= \sum\limits_{j=1}^pH(Y_j)-H(X)-\LOG\vert \det\A\vert\tag{14.84}\label{14.84}\\
 &amp;=\sum\limits_{j=1}^pH(Y_j)-H(X)\tag{14.85}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>!!! note “weiya 注: (14.85) 的证明”
 只要证
@@ -1353,11 +1353,11 @@ $<span class="math notranslate nohighlight">\(
 	\)</span><span class="math notranslate nohighlight">\(
 	于是 \)</span>(*)<span class="math notranslate nohighlight">\( 式可以写成
 	\)</span><span class="math notranslate nohighlight">\(
-	\begin{align}
+	\begin{align*}
 	H(Y) &amp;= -\int \frac{f(x)}{\vert\det\A\vert} \LOG\frac{f(x)}{\vert\det\A\vert}\cdot\vert\det\A\vert dx\\
 	&amp;=-\int f(x)[\LOG f(x)-\LOG\vert\det\A\vert]dx\\
 	&amp;=H(X)+\LOG\vert\det\A\vert
-	\end{align}
+	\end{align*}
 	\)</span>$
 证毕。</p>
 <p>寻找 <span class="math notranslate nohighlight">\(\A\)</span> 最小化 <span class="math notranslate nohighlight">\(I(Y)=I(\A^TX)\)</span> 也就是寻找使得组分间的独立性最强的正交变换。考虑到式 <span class="math notranslate nohighlight">\(\eqref{14.84}\)</span>, 这等价于最小化 <span class="math notranslate nohighlight">\(Y\)</span> 的各组分的熵的和, 反过来意味着最大化它们与高斯分布的距离。</p>
@@ -1457,7 +1457,7 @@ $<span class="math notranslate nohighlight">\(
 	A(g)=\frac 1n\sum g(x_i)-\int \exp(g(x))dx
 	\)</span><span class="math notranslate nohighlight">\(
 	的 \)</span>\arg\max<span class="math notranslate nohighlight">\(。
-	考虑\)</span>g^*=g-\LOG \int e^g<span class="math notranslate nohighlight">\(
+	考虑\)</span>g^<em>=g-\LOG \int e^g<span class="math notranslate nohighlight">\(
 	则
 	\)</span><span class="math notranslate nohighlight">\(
 	\int e^{g^*}=\int e^{g(x)}\cdot \frac{1}{\int e^{g(t)}dt}dx=1
@@ -1467,7 +1467,7 @@ $<span class="math notranslate nohighlight">\(
 	A(g^*)=A(g)+\int e^{g(x)}dx-\LOG(\int e^{g(x)}dx)-1
 	\)</span><span class="math notranslate nohighlight">\(
 	因 \)</span>t-\log t\ge 1, \forall t&gt;0<span class="math notranslate nohighlight">\(，当且仅当 \)</span>t=1<span class="math notranslate nohighlight">\( 取等号，
-	则 \)</span>A(g^*)\ge A(g)<span class="math notranslate nohighlight">\(，也就是当且仅当 \)</span>\int e^g = 1<span class="math notranslate nohighlight">\( 时，\)</span>A(g)<span class="math notranslate nohighlight">\(会取得最大值，而这时候\)</span>A(g)=A_0(g)-1<span class="math notranslate nohighlight">\(，所以\)</span>A_0(g)<span class="math notranslate nohighlight">\(也会取得最大值。由此看出，\)</span>A_0(g)<span class="math notranslate nohighlight">\(在\)</span>\int e^g=1<span class="math notranslate nohighlight">\(的约束下的\)</span>\arg\max<span class="math notranslate nohighlight">\(等于（无约束的）\)</span>A(g)<span class="math notranslate nohighlight">\(的\)</span>\arg\max<span class="math notranslate nohighlight">\(。
+	则 \)</span>A(g^</em>)\ge A(g)<span class="math notranslate nohighlight">\(，也就是当且仅当 \)</span>\int e^g = 1<span class="math notranslate nohighlight">\( 时，\)</span>A(g)<span class="math notranslate nohighlight">\(会取得最大值，而这时候\)</span>A(g)=A_0(g)-1<span class="math notranslate nohighlight">\(，所以\)</span>A_0(g)<span class="math notranslate nohighlight">\(也会取得最大值。由此看出，\)</span>A_0(g)<span class="math notranslate nohighlight">\(在\)</span>\int e^g=1<span class="math notranslate nohighlight">\(的约束下的\)</span>\arg\max<span class="math notranslate nohighlight">\(等于（无约束的）\)</span>A(g)<span class="math notranslate nohighlight">\(的\)</span>\arg\max<span class="math notranslate nohighlight">\(。
 	关于第二个点说得到四次样条，我想可以这样类比理解（但不严谨），我们知道四次样条有三阶连续的导函数，且对于[光滑样条（三次）](../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines/index.html)有如下形式
 	\)</span><span class="math notranslate nohighlight">\(
 	RSS(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
@@ -1497,7 +1497,7 @@ y_\ell^*[\log(\phi(s_\ell^*)) + g(s_\ell^*)]-\Delta\phi(s_\ell^*)e^{g(s_\ell^*)}
 \]</div>
 <p>!!! note “weiya 注：翻译相关”
 原文 <span class="math notranslate nohighlight">\(y\)</span> 的脚标是 <span class="math notranslate nohighlight">\(i\)</span>，但应该是个 typo，应为 <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
-<p>这个表达是可以看成是与惩罚的 Poisson 对数似然成比例，其中响应变量为 <span class="math notranslate nohighlight">\(y_\ell^\*/\Delta\)</span>，惩罚参数为 <span class="math notranslate nohighlight">\(\lambda/\Delta\)</span>，均值为 <span class="math notranslate nohighlight">\(\mu(s)=\phi(s)e^{g(s)}\)</span>。</p>
+<p>这个表达是可以看成是与惩罚的 Poisson 对数似然成比例，其中响应变量为 <span class="math notranslate nohighlight">\(y_\ell^*/\Delta\)</span>，惩罚参数为 <span class="math notranslate nohighlight">\(\lambda/\Delta\)</span>，均值为 <span class="math notranslate nohighlight">\(\mu(s)=\phi(s)e^{g(s)}\)</span>。</p>
 <p>!!! note “weiya 注：Poisson 对数似然”
 有关讨论详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/54">Issue 54</a></p>
 <p>这是一个 <strong>广义可加样条模型 (generalized additive spline model)</strong>(Hastie and Tibshirani, 1990<a class="footnote-reference brackets" href="#id35" id="id21">9</a>; Efron and Tibshirani, 1996<a class="footnote-reference brackets" href="#id36" id="id22">10</a>)，其中的 offset 项为 <span class="math notranslate nohighlight">\(\log \phi(s)\)</span>， 并且可以以 <span class="math notranslate nohighlight">\(O(L)\)</span> 的复杂度用牛顿算法进行拟合。尽管要求四次样条，但是实际中我们发现三次样条就足够了。我们有 <span class="math notranslate nohighlight">\(p\)</span> 个调整参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 需要设定，在实际中我们使得它们相等，然后通过有效自由度 <span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 来确定光滑的程度。我们的软件采用 <span class="math notranslate nohighlight">\(5\df\)</span> 作为默认值。</p>
@@ -1507,10 +1507,10 @@ y_\ell^*[\log(\phi(s_\ell^*)) + g(s_\ell^*)]-\Delta\phi(s_\ell^*)e^{g(s_\ell^*)}
 <p>因此我们只需要最大化</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 C(\A) &amp;= \frac 1N\sum\limits_{j=1}^p\sum\limits_{i=1}^N\hat g_j(a_j^Tx_i)\tag{14.95}\\
-&amp;= \sum\limits_{j=1}^pC_j(a_j)\notag
-\end{align}
+&amp;= \sum\limits_{j=1}^pC_j(a_j)
+\end{align*}
 \end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(C(\A)\)</span> 是拟合的密度与高斯密度间的对数似然比，而且可以看成是负熵 \eqref{14.86} 的一个估计， 其中每个 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 就像 \eqref{14.87} 中的差异函数。第 2(b) 步中的固定点更新是修改后的牛顿法（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/56">练习 14.20</a>）：</p>
 <ol class="simple">

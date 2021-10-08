@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1245,10 +1245,10 @@ D(t)=
 <p>定义向量值函数为 <span class="math notranslate nohighlight">\(b(x)^T=(1,x)\)</span>。令 <span class="math notranslate nohighlight">\(\mathbf B\)</span> 为 <span class="math notranslate nohighlight">\(N\times 2\)</span> 的回归矩阵，第 <span class="math notranslate nohighlight">\(i\)</span> 行为 <span class="math notranslate nohighlight">\(b(x_i)^T\)</span>，并且 <span class="math notranslate nohighlight">\(\mathbf W(x_0)\)</span> 为 <span class="math notranslate nohighlight">\(N\times N\)</span> 的对角矩阵，其中第 <span class="math notranslate nohighlight">\(i\)</span> 个对角元为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>。于是</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \begin{align}
+  \begin{align*}
   \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\label{6.8}\\
   &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}\label{6.9}
-  \end{align}
+  \end{align*}
 \end{split}\]</div>
 <p>!!! note “weiya 注”
 <strong>广义最小二乘估计 (GLSE)</strong>
@@ -1270,12 +1270,12 @@ $<span class="math notranslate nohighlight">\(
 更多细节可以参考 <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.ss/1177011002">T. Hastie and C. Loader (1993). Local Regression: Automatic Kernel Carpentry</a></p>
 <p>考虑下面 <span class="math notranslate nohighlight">\(\E\hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b89e4833-97f6-4af9-bb89-a2dc5589c2c0">
-<span class="eqno">(13)<a class="headerlink" href="#equation-b89e4833-97f6-4af9-bb89-a2dc5589c2c0" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\E\hat f(x_0)&amp;=\sum\limits_{i=1}^Nl_i(x_0)f(x_i)\notag\\
-&amp;=f(x_0)\sum\limits_{i=1}^Nl_i(x_0)+f'(x_0)\sum\limits_{i=1}^N(x_i-x_0)l_i(x_0)\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\E\hat f(x_0)&amp;=\sum\limits_{i=1}^Nl_i(x_0)f(x_i)\\
+&amp;=f(x_0)\sum\limits_{i=1}^Nl_i(x_0)+f'(x_0)\sum\limits_{i=1}^N(x_i-x_0)l_i(x_0)\\
 &amp;+\frac{f''(x_0)}{2}\sum\limits_{i=1}^N(x_i-x_0)^2l_i(x_0)+R\tag{6.10}\label{6.10}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}
 其中余项 $R$ 涉及 $f$ 的三阶微分和更高阶的微分，并且在合适的光滑性假设下一般是很小的。可以证明（[练习 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)）对于局部线性回归，$\sum_{i=1}^Nl_i(x_0)=1$ 并且 $\sum_{i=1}^N(x_i-x_0)l_i(x_0)=0$。因此中间项为 $f(x_0)$，并且因为偏差为 $\E\hat f(x_0)-f(x_0)$，我们看到它仅仅取决于 $f$ 的平方项或更高阶的项。\\!!! info &quot;weiya 注：&quot;

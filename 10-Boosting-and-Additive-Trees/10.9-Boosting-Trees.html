@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1206,10 +1206,10 @@ $<span class="math notranslate nohighlight">\(
 <p>在回归中，用绝对值误差或者 Huber 损失 \eqref{10.23} 来代替平方损失，以及在分类中，用偏差 \eqref{10.22} 代替指数损失，都会得到鲁棒的 Boosting 树。</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
-    L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\cal G_k)\log p_k(x)\notag\\
-    &amp;=-\sum\limits_{k=1}^KI(y={\cal G_k})f_k(x)+\log (\sum\limits_{\ell=1}^Ke^{f_\ell(x)})\tag{10.22}\label{10.22}
-    \end{align}
+    \begin{align*}
+    L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\mathcal G_k)\log p_k(x)\\
+    &amp;=-\sum\limits_{k=1}^KI(y={\mathcal G_k})f_k(x)+\log (\sum\limits_{\ell=1}^Ke^{f_\ell(x)})\tag{10.22}\label{10.22}
+    \end{align*}
     \)</span><span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     L(y,f(x))=

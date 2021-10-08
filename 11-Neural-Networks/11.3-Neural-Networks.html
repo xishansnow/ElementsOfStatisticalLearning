@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1196,10 +1196,10 @@ g_k(T)=\frac{e^{T_k}}{\sum_{\ell=1}^Ke^{T_\ell}}\tag{11.6}
 <p>也注意到含一个隐藏层的神经网络模型实际上与前面讨论的投影寻踪模型是一样的。不同之处在于 PPR 模型采用非参函数 <span class="math notranslate nohighlight">\(g_m(v)\)</span>，而神经网络模型采用一个基于 <span class="math notranslate nohighlight">\(\sigma(v)\)</span> 更简单的函数，变量里面有三个自由参数。具体点，将神经网络模型看成是一个 PPR 模型，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-g_m(\omega_m^TX)&amp;=\beta_m\sigma(\alpha_{0m}+\alpha_m^TX)\notag\\
+\begin{align*}
+g_m(\omega_m^TX)&amp;=\beta_m\sigma(\alpha_{0m}+\alpha_m^TX)\\
 &amp;=\beta_m\sigma(\alpha_{0m}+\Vert \alpha_m\Vert(\omega_m^TX))\tag{11.7}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\omega_m=\alpha_m/\Vert \alpha_m\Vert\)</span> 是 <span class="math notranslate nohighlight">\(m\)</span> 元单位向量。因为 <span class="math notranslate nohighlight">\(\sigma_{\beta,\alpha_0,s}(v)=\beta\sigma(\alpha_0+sv)\)</span> 比更一般的非参函数 <span class="math notranslate nohighlight">\(g(v)\)</span> 复杂度更低，所以当一个神经网络可能使用 20 或 100 个这样的函数，而 PPR 模型一般使用更少的项（举个例子，<span class="math notranslate nohighlight">\(M=5\)</span> 或 <span class="math notranslate nohighlight">\(10\)</span>），也不觉得奇怪了。</p>
 <p>!!! info “weiya 注：Ex. 11.1”

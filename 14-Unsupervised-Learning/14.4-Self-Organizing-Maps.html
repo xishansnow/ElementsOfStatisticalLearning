@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1163,14 +1163,14 @@
   <div class="section" id="id1">
 <h1>14.4 自组织图<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>这个方法可以看成是 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类的带约束的版本，其中原型落在特征空间的一维或二维流形中。因为原始的高维观测可以映射到二维的坐标系统中, 所以得到的流形也被称作 <strong>约束拓扑图 (constrained topological map)</strong>。原始的 <strong>自组织图 (self-organizing maps, SOM)</strong> 算法是 online 进行的——每次处理一个观测——后来提出了批量处理的版本。这个技巧也与 <strong>主曲线和主曲面 (principal curves and surfaces)</strong> 有着密切的联系，这将在下一节中进行讨论。</p>
-<p>我们考虑 <span class="math notranslate nohighlight">\(K\)</span> 个原型 <span class="math notranslate nohighlight">\(m_j\in \IR^p\)</span> 的二维长方形网格的 SOM（也有其它的选择，如六边形网格）。这 <span class="math notranslate nohighlight">\(K\)</span> 个原型用整数坐标对 <span class="math notranslate nohighlight">\(\ell_j\in\cal Q_1\times \cal Q_2\)</span> 进行参量化。这里 <span class="math notranslate nohighlight">\(\cal Q_1=\\{1,2,\ldots,q_1\\}\)</span>，<span class="math notranslate nohighlight">\(\cal Q_2\)</span> 也类似，并且 <span class="math notranslate nohighlight">\(K=q_1\cdot q_2\)</span>。举个例子， <span class="math notranslate nohighlight">\(m_j\)</span> 初始化后落在数据的二维主平面上（下一节进行讨论）。我们可以将这些原型看成是“纽扣 (button)”，以正常的方式“缝 (sewn)”在主成分平面上。SOM 过程试图弯曲平面使得这些纽扣尽可能近似数据点。一旦模型拟合好，这些观测可以映射到二维网格中。</p>
+<p>我们考虑 <span class="math notranslate nohighlight">\(K\)</span> 个原型 <span class="math notranslate nohighlight">\(m_j\in \IR^p\)</span> 的二维长方形网格的 SOM（也有其它的选择，如六边形网格）。这 <span class="math notranslate nohighlight">\(K\)</span> 个原型用整数坐标对 <span class="math notranslate nohighlight">\(\ell_j\in\mathcal Q_1\times \mathcal Q_2\)</span> 进行参量化。这里 <span class="math notranslate nohighlight">\(\mathcal Q_1=\\{1,2,\ldots,q_1\\}\)</span>，<span class="math notranslate nohighlight">\(\mathcal Q_2\)</span> 也类似，并且 <span class="math notranslate nohighlight">\(K=q_1\cdot q_2\)</span>。举个例子， <span class="math notranslate nohighlight">\(m_j\)</span> 初始化后落在数据的二维主平面上（下一节进行讨论）。我们可以将这些原型看成是“纽扣 (button)”，以正常的方式“缝 (sewn)”在主成分平面上。SOM 过程试图弯曲平面使得这些纽扣尽可能近似数据点。一旦模型拟合好，这些观测可以映射到二维网格中。</p>
 <p>每次处理一个观测 <span class="math notranslate nohighlight">\(x_i\)</span>。我们在 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中寻找离 <span class="math notranslate nohighlight">\(x_i\)</span> 的欧式距离最近的原型 <span class="math notranslate nohighlight">\(m_j\)</span>，接着对于 <span class="math notranslate nohighlight">\(m_j\)</span> 所有的邻居 <span class="math notranslate nohighlight">\(m_k\)</span>，通过下式将 <span class="math notranslate nohighlight">\(m_k\)</span> 向 <span class="math notranslate nohighlight">\(x_i\)</span> 移动</p>
 <div class="math notranslate nohighlight">
 \[
 m_k\leftarrow m_k+\alpha (x_i-m_k)\tag{14.46}\label{14.46}
 \]</div>
 <p><span class="math notranslate nohighlight">\(m_j\)</span> 的邻居定义为使得 <span class="math notranslate nohighlight">\(\ell_j\)</span> 和 <span class="math notranslate nohighlight">\(\ell_k\)</span> 间的距离小的所有 <span class="math notranslate nohighlight">\(m_k\)</span>。最简单的方式是采用欧式距离，通过阈值 <span class="math notranslate nohighlight">\(r\)</span> 来决定“小”。邻域经常包含最近的原型 <span class="math notranslate nohighlight">\(m_j\)</span> 本身。</p>
-<p>注意到这里的距离是定义在原型的整数拓扑坐标 <span class="math notranslate nohighlight">\(\cal Q_1\times \cal Q_2\)</span> 的空间中。式 \eqref{14.46} 的更新是将原型往数据点移动，但也是用来维持原型间的光滑的二维空间的关系。</p>
+<p>注意到这里的距离是定义在原型的整数拓扑坐标 <span class="math notranslate nohighlight">\(\mathcal Q_1\times \mathcal Q_2\)</span> 的空间中。式 \eqref{14.46} 的更新是将原型往数据点移动，但也是用来维持原型间的光滑的二维空间的关系。</p>
 <p>!!! note “weiya 注：”
 比如在“瑞士卷”流形上，三维中距离近的点并不意味着流形上距离近。因为最终是要得到低维表示，所以最近邻是定义在低维空间，而不是原始的高维空间，但是对点进行移动操作还是会回到高维空间本身。
 <img alt="" src="../_images/swiss_roll.png" /></p>

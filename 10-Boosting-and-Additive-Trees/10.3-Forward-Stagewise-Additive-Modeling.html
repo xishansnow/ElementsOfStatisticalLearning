@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1162,11 +1162,11 @@ L(y,f(x))=(y-f(x))^2\tag{10.6}
 \)</span><span class="math notranslate nohighlight">\(
 我们有
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-951371cf-369c-4b6b-a491-b91e4ef53317">
-<span class="eqno">(27)<a class="headerlink" href="#equation-951371cf-369c-4b6b-a491-b91e4ef53317" title="Permalink to this equation">¶</a></span>\[\begin{align}
-L(y_i,f_{m-1}(x)+\beta b(x_i;\gamma))&amp;=(y_i-f_{m-1}(x)-\beta b(x_i;\gamma))^2\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+L(y_i,f_{m-1}(x)+\beta b(x_i;\gamma))&amp;=(y_i-f_{m-1}(x)-\beta b(x_i;\gamma))^2\\
 &amp;=(\gamma_{im}-\beta b(x_i;\gamma))^2\qquad\tag{10.7}
-\end{align}\]</div>
+\end{align*}\]</div>
 <p>$<span class="math notranslate nohighlight">\(
 其中 \)</span>\gamma_{im}=y_i-f_{m-1}(x_i)<span class="math notranslate nohighlight">\( 是当前模型在第 \)</span>i<span class="math notranslate nohighlight">\( 个观测值上的残差。因此，对于平方误差损失，每一步中对当前残差最好的拟合项 \)</span>\beta_m b(x;\gamma_m)$ 加到展开式中。这个想法是将在 <span class="xref myst">10.10.2 节</span> 中讨论的最小二乘回归 boosting 的依据。然而，正如我们将在下一节最后展示的那样，平方误差损失通常不是一个用于分类的良好选择；因此需要考虑其他的损失准则。</p>
 </div>

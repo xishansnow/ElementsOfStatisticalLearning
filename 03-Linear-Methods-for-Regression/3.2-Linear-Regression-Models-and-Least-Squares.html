@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1188,11 +1188,11 @@ f(X)=\beta_0+\sum\limits_{j=1}^pX_j\beta_j \tag{3.1}\label{3.1}
 <p>无论 <span class="math notranslate nohighlight">\(X_j\)</span> 是哪个来源，模型关于参数都是线性的。</p>
 <p>一般地，我们有一个用来估计参数 <span class="math notranslate nohighlight">\(\beta\)</span> 的训练数据集合 <span class="math notranslate nohighlight">\((x_1,y_1),\ldots,(x_N,y_N)\)</span>。每个 <span class="math notranslate nohighlight">\(x_i=(x_{i1},x_{i2},\ldots,x_{ip})^T\)</span> 是第 <span class="math notranslate nohighlight">\(i\)</span> 种情形的特征测量值的向量。最受欢迎的估计方法是 <strong>最小二乘 (least squares)</strong>，我们取参数 <span class="math notranslate nohighlight">\(\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T\)</span> 使得下式的残差平方和最小
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1bd2d76-4b0d-42fd-8cde-3d1dbeebb1ad">
-<span class="eqno">(2)<a class="headerlink" href="#equation-e1bd2d76-4b0d-42fd-8cde-3d1dbeebb1ad" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\RSS(\beta)&amp;=\sum\limits_{i=1}^N(y_i-f(x_i))^2\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\RSS(\beta)&amp;=\sum\limits_{i=1}^N(y_i-f(x_i))^2\\
 &amp;=\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\tag{3.2}\label{3.2}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}从统计学的观点来看，如果训练观测值 $(x_i,y_i)$ 是从总体独立随机抽取的，则该标准是很合理的。即使 $x_i$'s 不是随机选取的，如果在给定输入 $x_i$ 的条件下 $y_i$ 条件独立，这个准则也是有效的。图 3.1 展示了在充满数据对 $(X,Y)$ 的 $\IR^{p+1}$ 维空间的最小二乘拟合的几何意义。注意到 \eqref{3.2} 对模型 (3.1) 的有效性没有作假设，而是简单地找到对数据最好的线性拟合。无论数据是怎样产生的，最小二乘拟合直观上看是满意的，这个准则衡量了平均的拟合误差。\\![](../img/03/fig3.1.png)\\&gt; 图 3.1 $X\in R^2$ 中的最小二乘拟合。我们寻找关于 $X$ 并且使 $Y$ 的残差最小的线性函数。\\那我们应该怎样最小化 \eqref{3.2}？记 $\mathbf{X}$ 为 $N\times (p+1)$ 的矩阵，矩阵每一行为一个输入向量（在第一个位置为 1），类似地令 $\mathbf{y}$ 为训练集里的 $N$ 维输出向量。然后我们可以将残差平方和写成如下形式
 \end{aligned}\end{align} \]</div>
@@ -1241,11 +1241,11 @@ $<span class="math notranslate nohighlight">\(
 <p>之所以分母是 <span class="math notranslate nohighlight">\(N-p-1\)</span> 而不是 <span class="math notranslate nohighlight">\(N\)</span>，是因为 <span class="math notranslate nohighlight">\(N-p-1\)</span> 使得 <span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span> 为无偏估计：<span class="math notranslate nohighlight">\(E(\hat{\sigma}^2)=\sigma^2\)</span></p>
 <p>为了对参数和模型进行推断，需要一些额外的假设。我们现在假设式 \eqref{3.1} 是关于均值的正确模型；则 <span class="math notranslate nohighlight">\(Y\)</span> 的条件期望关于 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 是线性的。我们也假设 <span class="math notranslate nohighlight">\(Y\)</span> 与其期望的偏差是可加的且是正态的。因此
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-70da0ba8-22bf-4d73-93c1-d887aad4a047">
-<span class="eqno">(3)<a class="headerlink" href="#equation-70da0ba8-22bf-4d73-93c1-d887aad4a047" title="Permalink to this equation">¶</a></span>\[\begin{align}
-Y&amp;=\E(Y\mid X_1,\ldots,X_p)+\varepsilon\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Y&amp;=\E(Y\mid X_1,\ldots,X_p)+\varepsilon\\
 &amp;=\beta_0+\sum\limits_{j=1}^pX_j\beta_j+\varepsilon\tag{3.9}\label{3.9}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}其中误差 $\epsilon$ 是期望值为 0 方差为 $\sigma^2$ 的高斯随机变量，记作 $\varepsilon\sim N(0,\sigma^2)$\\由式 \eqref{3.9}，可以很简单地证明
 \end{aligned}\end{align} \]</div>
@@ -1332,12 +1332,12 @@ F=\dfrac{(32.81-29.43)/(9-5)}{29.43/(67-9)}=1.67\tag{3.16}
 \]</div>
 <p>考虑固定 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>，则上式是关于响应变量 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 的线性函数 <span class="math notranslate nohighlight">\(\mathbf{c}_0^T\mathbf{y}\)</span>。如果我们假设线性模型是正确的，则 <span class="math notranslate nohighlight">\(a^T\hat{\beta}\)</span> 是无偏的，因为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89ed3526-a6eb-4d00-a3c0-366705871986">
-<span class="eqno">(4)<a class="headerlink" href="#equation-89ed3526-a6eb-4d00-a3c0-366705871986" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\E(a^T\hat{\beta})&amp;=E(a^T\mathbf{(X^TX)^{-1}X^Ty})\notag\\
-&amp;=a^T\mathbf{(X^TX)^{-1}X^TX}\beta\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\E(a^T\hat{\beta})&amp;=E(a^T\mathbf{(X^TX)^{-1}X^Ty})\\
+&amp;=a^T\mathbf{(X^TX)^{-1}X^TX}\beta\\
 &amp;=a^T\beta\tag{3.18}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[Gauss-Markov 定理说如果 $a^T\beta$ 存在其它无偏估计 $\tilde{\theta}=\mathbf{c}^T\mathbf{y}$，即 $\E(\mathbf{c}^T\mathbf{y})=a^T\beta$，则\]</div>
 <p>Var(a^T\hat{\beta})\le Var(\mathbf{c}^T\mathbf{y})\tag{3.19}
@@ -1348,10 +1348,10 @@ $$</p>
 <p>考虑 <span class="math notranslate nohighlight">\(\theta\)</span> 的估计值 <span class="math notranslate nohighlight">\(\tilde{\theta}\)</span> 的均方误差</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\MSE(\tilde{\theta})&amp;=\E(\tilde{\theta}-\theta)^2\notag\\
+\begin{align*}
+\MSE(\tilde{\theta})&amp;=\E(\tilde{\theta}-\theta)^2\\
 &amp;=\Var(\tilde{\theta})+[\E(\tilde{\theta})-\theta]^2\tag{3.20}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>第一项为方差，第二项为平方偏差。Gauss-Markov 定理表明最小二乘估计在所有无偏线性估计中有最小的均方误差。然而，或许存在有较小均方误差的有偏估计。这样的估计用小的偏差来换取方差大幅度的降低。实际中也会经常使用有偏估计。任何收缩或者将最小二乘的一些参数设为 0 的方法都可能导致有偏估计。我们将在这章的后半部分讨论许多例子，包括 <strong>变量子集选择</strong> 和 <strong>岭回归</strong>。从一个更加实际的观点来看，许多模型是对事实的曲解，因此是有偏的；挑选一个合适的模型意味着要在偏差和方差之间创造某种良好的平衡。我们将在第 7 章中详细讨论这些问题。</p>
 <p>正如在第 2 章中讨论的那样，均方误差与预测的正确性紧密相关。考虑在输入 <span class="math notranslate nohighlight">\(x_0\)</span> 处的新的响应变量</p>
@@ -1362,10 +1362,10 @@ Y_0=f(x_0)+\varepsilon_0 \tag{3.21}
 <p>其估计量 <span class="math notranslate nohighlight">\(\tilde{f}(x_0)=x_0^T\tilde{\beta}\)</span> 的期望预测误差为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\E(Y_0-\tilde{f}(x_0))^2 &amp;=\sigma^2+E(x_0^T\tilde{\beta}-f(x_0))^2\notag\\
+\begin{align*}
+\E(Y_0-\tilde{f}(x_0))^2 &amp;=\sigma^2+E(x_0^T\tilde{\beta}-f(x_0))^2\\
 &amp;= \sigma^2+MSE(\tilde{f}(x_0))\tag{3.22}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>因此，预测误差的估计值和均方误差只有常数值 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的差别，<span class="math notranslate nohighlight">\(\sigma^2\)</span> 表示了新观测 <span class="math notranslate nohighlight">\(y_0\)</span> 的方差。</p>
 </div>
@@ -1388,11 +1388,11 @@ r_i &amp;= y_i -x_i\hat{\beta}
 \end{split}\]</div>
 <p>为了简便用向量表示，我们令 <span class="math notranslate nohighlight">\(\mathbf{y}=(y_1,\ldots,y_N)^T\)</span>，<span class="math notranslate nohighlight">\(\mathbf{x}=(x_1,\ldots,x_N)^T\)</span>，并且定义
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d9fddd5-c77f-4b84-93ad-d94fad9a2d06">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7d9fddd5-c77f-4b84-93ad-d94fad9a2d06" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\langle\mathbf{x},\mathbf{y}\rangle &amp;= \sum\limits_{i=1}^Nx_iy_i\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle\mathbf{x},\mathbf{y}\rangle &amp;= \sum\limits_{i=1}^Nx_iy_i\\
 &amp;=\mathbf{x^Ty}\tag{3.25}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[$\mathbf{x}$ 和 $\mathbf{y}$ 之间的内积，于是我们可以写成\]</div>
 <div class="amsmath math notranslate nohighlight">
@@ -1458,38 +1458,38 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{z_j}\)</span>（按顺序）作为列向量的矩阵，<span class="math notranslate nohighlight">\(\mathbf{\Gamma}\)</span> 是值为 <span class="math notranslate nohighlight">\(\hat\gamma_{kj}\)</span> 的上三角矩阵。引入第 <span class="math notranslate nohighlight">\(j\)</span> 个对角元 <span class="math notranslate nohighlight">\(D_{jj}=\Vert \mathbf{z}_j \Vert\)</span> 的对角矩阵 <span class="math notranslate nohighlight">\(\mathbf{D}\)</span>，我们有
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba1f1639-5336-4f5d-90cb-fdd446e06d4f">
-<span class="eqno">(6)<a class="headerlink" href="#equation-ba1f1639-5336-4f5d-90cb-fdd446e06d4f" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\mathbf{X}&amp;=\mathbf{ZD^{-1}D\Gamma}\notag\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\mathbf{X}&amp;=\mathbf{ZD^{-1}D\Gamma}\\
 &amp;=\mathbf{QR}\tag{3.31}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}称为矩阵 $\mathbf{X}$ 的 QR 分解。这里 $\mathbf{Q}$ 为 $N\times (p+1)$ 正交矩阵，$\mathbf{Q^TQ=I}$，并且 $\mathbf{R}$ 为 $(p+1)\times (p+1)$ 上三角矩阵。\\$\mathbf{QR}$ 分解表示了 $\mathbf{X}$ 列空间的一组方便的正交基。举个例子，很容易可以看到，最小二乘的解由下式给出
 \end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-6208166a-fa4d-4c37-ad93-f58d5a397989">
-<span class="eqno">(7)<a class="headerlink" href="#equation-6208166a-fa4d-4c37-ad93-f58d5a397989" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32}\label{3.32} \\
 \hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}\label{3.33}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}等式 \eqref{3.32} 很容易求解，因为 $\mathbf{R}$ 为上三角（[练习 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)）\\!!! info &quot;weiya 注：Ex. 3.4&quot;
     已解决，详见 [Issue 72: Ex. 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)。\\## 多重输出\\假设有多重输出 $Y_1,Y_2,\ldots,Y_K$，我们希望通过输入变量 $X_0,X_1,X_2,\ldots,X_p$ 去预测。我们假设对于每一个输出变量有线性模型\end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-d20e6455-1990-4927-87ee-fa5b8c528519">
-<span class="eqno">(8)<a class="headerlink" href="#equation-d20e6455-1990-4927-87ee-fa5b8c528519" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 Y_k&amp;=\beta_{0k}+\sum\limits_{j=1}^pX_j\beta_{jk}+\varepsilon_k \tag{3.34}\label{3.34}\\
 &amp;= f_k(X)+\varepsilon_k \tag{3.35}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[有 $N$ 个训练情形时我们可以将模型写成矩阵形式\]</div>
 <p>\mathbf{Y=XB+E}\tag{3.36}
 $$</p>
 <p>这里 <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> 为 <span class="math notranslate nohighlight">\(N\times K\)</span> 的响应矩阵，<span class="math notranslate nohighlight">\(ik\)</span> 处值为 <span class="math notranslate nohighlight">\(y_{ik}\)</span>，<span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 为 <span class="math notranslate nohighlight">\(N\times (p+1)\)</span> 的输入矩阵，<span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 为 <span class="math notranslate nohighlight">\((p+1)\times K\)</span> 的系数矩阵 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 为 <span class="math notranslate nohighlight">\(N\times K\)</span> 的误差矩阵。单变量损失函数 \eqref{3.2} 的直接推广为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-edd60a0e-dfbd-498d-b0d9-013aa07e9186">
-<span class="eqno">(9)<a class="headerlink" href="#equation-edd60a0e-dfbd-498d-b0d9-013aa07e9186" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \RSS(\mathbf{B})&amp;=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{3.37}\label{3.37}\\
 &amp;= \tr[\mathbf{(Y-XB)^T(Y-XB)}]\tag{3.38}
-\end{align}\]</div>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[最小二乘估计有和前面一样的形式\]</div>
 <p>\mathbf{\hat{B}=(X^TX)^{-1}X^TY}\tag{3.39}\label{3.39}

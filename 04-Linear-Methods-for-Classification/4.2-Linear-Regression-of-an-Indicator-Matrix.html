@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1149,7 +1149,7 @@
                 
   <div class="section" id="id1">
 <h1>4.2 指示矩阵的线性回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>这里每个类别型响应变量用一个指示变量来编码。因此如果 <span class="math notranslate nohighlight">\(\cal G\)</span> 有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，则会有 <span class="math notranslate nohighlight">\(K\)</span> 个指示变量 <span class="math notranslate nohighlight">\(Y_k,\;k=1,\ldots,K\)</span>，若 <span class="math notranslate nohighlight">\(G=k\)</span>，则 <span class="math notranslate nohighlight">\(Y_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y_k=0\)</span>。用向量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_K)\)</span> 来表示它们, 则这种形式的 <span class="math notranslate nohighlight">\(N\)</span> 个训练实例组成了 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>。<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 由 0 和 1 组成，每一行只含有一个 1。我们对 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的每一列同时用线性回归模型做拟合，拟合值由下式给出</p>
+<p>这里每个类别型响应变量用一个指示变量来编码。因此如果 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，则会有 <span class="math notranslate nohighlight">\(K\)</span> 个指示变量 <span class="math notranslate nohighlight">\(Y_k,\;k=1,\ldots,K\)</span>，若 <span class="math notranslate nohighlight">\(G=k\)</span>，则 <span class="math notranslate nohighlight">\(Y_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y_k=0\)</span>。用向量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_K)\)</span> 来表示它们, 则这种形式的 <span class="math notranslate nohighlight">\(N\)</span> 个训练实例组成了 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>。<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 由 0 和 1 组成，每一行只含有一个 1。我们对 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的每一列同时用线性回归模型做拟合，拟合值由下式给出</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{ \hat Y = {X(X^TX)^{-1}X^TY}} \tag{4.3}
@@ -1162,11 +1162,11 @@
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\hat G(x)=\mathrm{argmax}_{k\in\cal G}\hat f_k(x)\tag{4.4}
+\hat G(x)=\mathrm{argmax}_{k\in\mathcal G}\hat f_k(x)\tag{4.4}
 \label{eq:4.4}
 \]</div>
 <p>这种方式的理论根据是什么？更加正式的理由是把回归看成条件期望的估计。对于随机变量 <span class="math notranslate nohighlight">\(Y_k\)</span>，<span class="math notranslate nohighlight">\(\E(Y_k\mid X=x)=\Pr(G=k\mid X=x)\)</span>，则每个随机变量 <span class="math notranslate nohighlight">\(Y_k\)</span> 的条件期望似乎是一个明智的选择。真正问题是，除了刚性的 (rigid) 线性回归模型，条件期望的近似还可以达到什么程度？或者说，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 是否是后验概率 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span> 的合理估计，以及更重要地，这是否有用？</p>
-<p>可以很直接地证明对于任意 <span class="math notranslate nohighlight">\(x\)</span>，只要模型中有截距（即 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中元素为 1 的列），则有 <span class="math notranslate nohighlight">\(\sum_{k\in\cal G}\hat f_k(x)=1\)</span>。然而，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以是负数或者比 1 大，而且事实上确实是这样。这是线性回归 <strong>刚性本质 (ridge nature)</strong> 的结果，特别是如果我们在训练数据之外做预测。这些违背常识的特点不能保证这个方法起作用，事实上在许多问题上它给出与标准的用于分类的线性方法类似的结果。如果我们允许在输入的基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上做线性回归，这个方法可以导出概率的一致估计。当训练集的规模 <span class="math notranslate nohighlight">\(N\)</span> 变大时，我们自适应地加入更多的基元素使得在这些基函数的线性回归达到条件期望。我们将在<span class="xref myst">第 5 章</span>中讨论。</p>
+<p>可以很直接地证明对于任意 <span class="math notranslate nohighlight">\(x\)</span>，只要模型中有截距（即 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中元素为 1 的列），则有 <span class="math notranslate nohighlight">\(\sum_{k\in\mathcal G}\hat f_k(x)=1\)</span>。然而，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以是负数或者比 1 大，而且事实上确实是这样。这是线性回归 <strong>刚性本质 (ridge nature)</strong> 的结果，特别是如果我们在训练数据之外做预测。这些违背常识的特点不能保证这个方法起作用，事实上在许多问题上它给出与标准的用于分类的线性方法类似的结果。如果我们允许在输入的基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上做线性回归，这个方法可以导出概率的一致估计。当训练集的规模 <span class="math notranslate nohighlight">\(N\)</span> 变大时，我们自适应地加入更多的基元素使得在这些基函数的线性回归达到条件期望。我们将在<span class="xref myst">第 5 章</span>中讨论。</p>
 <p>一个更简单的角度是对每个类别构造 <strong>目标值 (target)</strong> <span class="math notranslate nohighlight">\(t_k\)</span>，其中 <span class="math notranslate nohighlight">\(t_k\)</span> 是 <span class="math notranslate nohighlight">\(K\times K\)</span> 单位矩阵的第 <span class="math notranslate nohighlight">\(k\)</span> 列。我们的预测问题是对一个观测尝试并且再生出合适的目标值。和之前的编码一样，对于第 <span class="math notranslate nohighlight">\(i\)</span> 个观测的响应向量 <span class="math notranslate nohighlight">\(y_i\)</span>（<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 行），当 <span class="math notranslate nohighlight">\(g_i=k\)</span> 时，<span class="math notranslate nohighlight">\(y_i=t_k\)</span>。我们可以通过最小二乘法来拟合线性模型</p>
 <div class="math notranslate nohighlight">
 \[

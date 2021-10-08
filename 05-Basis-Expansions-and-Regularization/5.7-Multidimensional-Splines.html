@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1198,10 +1198,10 @@ f(x)=\beta_0+\beta^Tx+\sum\limits_{j=1}^N\alpha_jh_j(x),\tag{5.39}
 <p><span class="xref myst">第 9 章</span>讨论的可加样条模型是多维样条的限制版本。他们也可以用这种一般的方式来表示；也就是，存在惩罚 <span class="math notranslate nohighlight">\(J[f]\)</span> 保证解的形式为 <span class="math notranslate nohighlight">\(f(X)=\alpha+f_1(X_1)+\cdots+f_d(X_d)\)</span>，并且每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是单变量样条。在这种情形下，惩罚有时候退化，而且假设 <span class="math notranslate nohighlight">\(f\)</span> 为可加的会更自然，接着简单地在每个组分函数上加上额外的惩罚</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-J[f] &amp;= J(f_1+f_2+\cdots+f_d)\notag\\
+\begin{align*}
+J[f] &amp;= J(f_1+f_2+\cdots+f_d)\\
 &amp;=\sum\limits_{j=1}^d\int f_j^{(2)}(t_j)^2dt_j\tag{5.40}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>这些可以自然地推广到 ANOVA 样条分解，</p>
 <div class="math notranslate nohighlight">

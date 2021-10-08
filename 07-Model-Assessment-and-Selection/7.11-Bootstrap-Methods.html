@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.12 条件测试误差或期望测试误差？" href="7.12-Conditional-or-Expected-Test-Error.html" />
+    <link rel="next" title="7.12 “条件测试误差”还是“测试误差的期望”？" href="7.12-Conditional-or-Expected-Test-Error.html" />
     <link rel="prev" title="7.10 交叉验证" href="7.10-Cross-Validation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1163,96 +1163,92 @@
   <div class="section" id="id1">
 <h1>7.11 自助法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<blockquote>
-<div><p>写在前面</p>
-<p>自助法我觉得是最“独立”，最“自强”的方法了</p>
-<p>无论是那个传说中的 Baron pick himself up by his own bootstraps</p>
-<p>还是被作者称为 poor man’s Bayes posterior（8.4节）</p>
-<p>所以这也是我最喜欢的统计方法了。:grinning:</p>
-<p>另外，参照Hastie和Tibshirani他们 <a class="reference external" href="https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/info">HumanitiesSciences’s StatLearning</a>课程，<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/tree/master/code/Resampling">这里</a> 有bootstrap解决具体问题的代码。</p>
-</div></blockquote>
-<p>自助法是评价统计精确性的通用工具。首先我们描述一般的自助法，接着介绍它怎么用来估计 <strong>样本外预测误差 (extra-sample prediction error)</strong>。如同交叉验证一样，自助法力求估计条件误差 <span class="math notranslate nohighlight">\(\Err_{\cal T}\)</span>，但一般只对期望预测误差 <span class="math notranslate nohighlight">\(\Err\)</span> 有良好的估计。</p>
-<p>假设我们有一个根据训练数据拟合的模型。训练集记为 <span class="math notranslate nohighlight">\(\mathbf Z=(z_1,z_2,\ldots,z_N)\)</span>，其中 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i)\)</span>。基本思想是从训练集中有放回地随机选取数据集，每个样本的大小与原始数据集相同。做 <span class="math notranslate nohighlight">\(B\)</span> 次（如 <span class="math notranslate nohighlight">\(B=100\)</span>）选取的操作，得到 <span class="math notranslate nohighlight">\(B\)</span> 个自助训练集，正如图 7.12 显示的那样。接着我们对每个自助法数据集重新拟合模型，并且检验在 <span class="math notranslate nohighlight">\(B\)</span> 个复制集上拟合的表现。</p>
+<p>自助法（BootStrap）是评价统计精确性的通用工具。本节首先描述一般的自助法，接着介绍如何用它来估计样本外预测误差 （extra-sample prediction error）。同交叉验证一样，自助法力求得到条件误差 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 的估计，但典型地只能对预测误差的期望 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 做出良好估计。</p>
+<p>假设有一个根据训练数据拟合的模型，训练集记为 <span class="math notranslate nohighlight">\(\mathbf{Z}=(z_1,z_2,\ldots,z_N)\)</span>，其中 <span class="math notranslate nohighlight">\(z_i=(x_i,y_i)\)</span>。自助法的基本思想是：从训练集中<strong>有放回地</strong>随机抽取大小等于原始训练集的 <span class="math notranslate nohighlight">\(B\)</span> 个自助训练集，如图 7.12 所示。对每个自助训练集重新拟合模型，并检验在这 <span class="math notranslate nohighlight">\(B\)</span> 个复制集上拟合的表现。</p>
 <p><img alt="" src="../_images/fig7.12.png" /></p>
 <blockquote>
-<div><p>图 7.12. 自助法过程的原理图。我们希望评估根据数据集计算的 <span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 值的统计精确性。<span class="math notranslate nohighlight">\(B\)</span> 个训练集为<span class="math notranslate nohighlight">\(\mathbf Z^{\*b},b=1,\ldots,B\)</span>，每个都是从原始数据集中有放回抽取的样本。我们感兴趣的 <span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 值是从每个自助法训练集中计算得到，而且值 <span class="math notranslate nohighlight">\(S(\mathbf Z^{\*1}),\ldots,S(\mathbf Z^{\*B})\)</span> 用来评估 <span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 的统计精确性。</p>
+<div><p>图 7.12. 自助法过程的原理图。我们希望评估根据数据集计算的 <span class="math notranslate nohighlight">\(S(\mathbf{Z})\)</span> 值的统计精确性。<span class="math notranslate nohighlight">\(B\)</span> 个训练集为 <span class="math notranslate nohighlight">\(\mathbf{Z}^{*b},b=1,\ldots,B\)</span> ，每个都是从原始数据集中有放回抽取的样本。我们感兴趣的 <span class="math notranslate nohighlight">\(S(\mathbf{Z})\)</span> 值是从每个自助训练集中计算得到，而且值 <span class="math notranslate nohighlight">\(S(\mathbf{Z}^{*1}),\ldots,S(\mathbf{Z}^{*B})\)</span> 用来评估 <span class="math notranslate nohighlight">\(S(\mathbf{Z})\)</span> 的统计精确性。</p>
 </div></blockquote>
-<p>在图中，<span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 是根据数据 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 计算的任意值，例如，在部分输入点的预测值。从自助法采样我们可以估计 <span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 分布的任意统计量，例如，它的方差，</p>
-<p>!!! note “weiya 注：关于翻译”
-原文为“any aspect of the distribution”，考虑易读性，这里将“any aspect”具体翻译为“统计量”。</p>
+<p>在图中，<span class="math notranslate nohighlight">\(S(\mathbf{Z})\)</span> 是根据数据 <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> 计算的任意值，例如：在部分输入点的预测值。通过自助采样，我们可以估计 <span class="math notranslate nohighlight">\(S(\mathbf{Z})\)</span> 的任意统计量，例如：它的方差：</p>
 <div class="math notranslate nohighlight">
 \[
-\widehat{\Var}[S(\mathbf Z)]=\frac{1}{B-1}\sum\limits_{i=1}^B(S(\mathbf Z^{*b})-\bar S^*)^2,\tag{7.53}
+\widehat{\mathbb{Var}}[S(\mathbf{Z})]=\frac{1}{B-1}\sum\limits_{i=1}^B(S(\mathbf{Z}^{*b})-\bar S^*)^2 \tag{7.53}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\bar S^\*=\sum_b S(\mathbf Z^{\*b})/B\)</span>。注意到 <span class="math notranslate nohighlight">\(\widehat{\Var}[S(\mathbf Z)]\)</span> 可以认为是从数据 <span class="math notranslate nohighlight">\((z_1,z_2,\ldots,z_N)\)</span> 的经验分布 <span class="math notranslate nohighlight">\(\hat F\)</span> 中取样对 <span class="math notranslate nohighlight">\(S(\mathbf Z)\)</span> 的方差的蒙特卡洛估计。</p>
-<p>我们怎样应用自助法来估计预测误差？一种方式是在自助样本集合上拟合问题中的模型，然后跟踪它预测原始训练集的好坏。如果 <span class="math notranslate nohighlight">\(\hat f^{\*b}(x_i)\)</span> 是在 <span class="math notranslate nohighlight">\(x_i\)</span> 处根据第 <span class="math notranslate nohighlight">\(b\)</span> 个自助法数据集拟合出的模型的预测值，我们的估计为
-$<span class="math notranslate nohighlight">\(
-\widehat{\Err}_{boot}=\frac{1}{B}\frac{1}{N}\sum\limits_{b=1}^B\sum\limits_{i=1}^NL(y_i,\hat f^{*b}(x_i))\tag{7.54}
-\)</span><span class="math notranslate nohighlight">\(
-然而，可以简单地看到一般情形下 \)</span>\widehat{\Err}_{boot}<span class="math notranslate nohighlight">\( 不会给出良好估计。原因在于自助法数据集是作为训练样本，而原始训练集是作为测试样本，而且这两个样本有共同的观测。这种重合会使得过拟合的预测看起来不可思议地好，这也是交叉验证为什么明确地使用非重合的数据作为训练和测试样本。考虑二分类问题中应用 1 最近邻分类器的例子，每个类有相同数目的观测值，预测变量和类别标签实际上是独立的。于是真实误差率为 0.5。但是对自助法估计 \)</span>\widehat{\Err}_{boot}<span class="math notranslate nohighlight">\( 的贡献值会是 0，除非观测 \)</span>i<span class="math notranslate nohighlight">\( 不出现在自助法样本 \)</span>b<span class="math notranslate nohighlight">\( 中。后一种情形中会有正确的期望值 0.5。现在
-\)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3bc796ad-fddb-4fdf-977e-1941757e2f6b">
-<span class="eqno">(16)<a class="headerlink" href="#equation-3bc796ad-fddb-4fdf-977e-1941757e2f6b" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\Pr\{\text{观测}i\in\text{自助法样本}b\}&amp;=1-(1-\frac{1}{N})^N\notag\\
-&amp;\approx 1-e^{-1}\notag\\
-&amp;=0.632\tag{7.55}\label{7.55}
-\end{align}\]</div>
+<p>式中 <span class="math notranslate nohighlight">\(\bar S^*=\sum_b S(\mathbf{Z}^{*b})/B\)</span>。注意 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Var}}[S(\mathbf{Z})]\)</span> 可以视为从数据 <span class="math notranslate nohighlight">\((z_1,z_2,\ldots,z_N)\)</span> 的经验分布 <span class="math notranslate nohighlight">\(\hat F\)</span> 中采样，并进一步得到的 <span class="math notranslate nohighlight">\(\mathbb{Var}[S(\mathbf{Z})]\)</span> 的蒙特卡洛估计。</p>
+<p>那么如何应用自助法来估计预测误差呢？</p>
+<p>一种方式是在自助样本集合上拟合问题中的模型，然后跟踪它预测原始训练集的好坏。如果 <span class="math notranslate nohighlight">\(\hat f^{*b}(x_i)\)</span> 是在 <span class="math notranslate nohighlight">\(x_i\)</span> 处根据第 <span class="math notranslate nohighlight">\(b\)</span> 个自助数据集拟合出的模型的预测值，我们的估计为：</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-因此 $\widehat{\Err}_{boot}$ 的期望为 $0.5\times 0.368=0.184$，远远低于正确的误差率 0.5。\\通过模仿交叉验证，可以得到更好的自助法估计。对于每个观测，我们仅仅跟踪自助法样本中不包含该观测的预测。这个舍一法预测误差的自助法估计由下式定义
-\end{aligned}\end{align} \]</div>
-<p>\widehat{\Err}^{(1)}=\frac{1}{N}\sum\limits_{i=1}^N\frac{1}{\vert C^{-i}\vert}\sum\limits_{b\in C^{-i}}L(y_i,\hat f^{*b}(x_i))\tag{7.56}\label{7.56}
-$<span class="math notranslate nohighlight">\(
-这里 \)</span>C^{-i}<span class="math notranslate nohighlight">\( 是不包含观测 \)</span>i<span class="math notranslate nohighlight">\( 的自助法样本 \)</span>b<span class="math notranslate nohighlight">\( 的指标集，而且 \)</span>\vert C^{-i}\vert<span class="math notranslate nohighlight">\( 为这些样本的个数。在计算 \)</span>\widehat{\Err}^{(1)}<span class="math notranslate nohighlight">\( 时，我们要么必须选择充分大的 \)</span>B<span class="math notranslate nohighlight">\( 来保证所有的 \)</span>\vert C^{-i}\vert<span class="math notranslate nohighlight">\( 都大于 0，或者我们可以直接删掉 \eqref{7.56} 式中 \)</span>\vert C^{-i}\vert=0$ 的项。</p>
-<p>舍一自助法解决了 <span class="math notranslate nohighlight">\(\widehat{\Err}_{boot}\)</span> 遭受的过拟合问题，但是会有在讨论交叉验证中提到的 <strong>训练集大小偏差 (training-set-size)</strong> 问题。每个自助法样本中不同观测的平均个数大约为 <span class="math notranslate nohighlight">\(0.632\cdot N\)</span>，所以它的偏差会大致表现得和两折交叉验证一样。因此如果学习曲线在样本大小为 <span class="math notranslate nohighlight">\(N/2\)</span> 时有相当大的斜率，则舍一自助法作为真实误差的估计会有一个 <strong>向上的偏差 (upward bias)</strong>。</p>
-<p>“.632 估计”是为了减轻偏差而设计的。由下式定义
-$<span class="math notranslate nohighlight">\(
-\widehat{\Err}^{(.632)}=.368\cdot\overline{\err}+.632\cdot\widehat{\Err}^{(1)}\tag{7.57}
-\)</span>$
-0.632 估计的来源是很复杂的；直观上它将舍一自助的估计向训练误差率靠近，也因此降低了向上的偏差。常值 .632 与式 \eqref{7.55} 有关。</p>
-<p>.632 估计在“<strong>轻拟合 (light fitting)</strong>”情形下表现很好，但是在过拟合情形下会变糟。Breiman et al. (1984) <a class="footnote-reference brackets" href="#id4" id="id2">1</a>有一个例子。假设我们有两个相同大小的类，目标变量与类别标签独立，而且我们采用 1 最近邻规则。则 <span class="math notranslate nohighlight">\(\overline{\err}=0,\widehat{\Err}^{(1)}=0.5\)</span>，而且因此 <span class="math notranslate nohighlight">\(\widehat{\Err}^{(.632)}=.632\times 0.5=.316\)</span>。然而，真实误差率为0.5。</p>
-<p>可以通过考虑过拟合的程度来改善 .632 估计。首先我们定义 <span class="math notranslate nohighlight">\(\gamma\)</span> 为 <strong>无信息误差率 (no-information error rate)</strong>：这是如果输入变量与类别标签独立时的预测规则的误差率。<span class="math notranslate nohighlight">\(\gamma\)</span> 的估计可以通过在所有可能的目标 <span class="math notranslate nohighlight">\(y_i\)</span> 和预测 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 的组合上应用预测规则得到
-$<span class="math notranslate nohighlight">\(
+\[
+\widehat{\mathbb{Err}}_{boot}=\frac{1}{B}\frac{1}{N}\sum\limits_{b=1}^B\sum\limits_{i=1}^NL(y_i,\hat f^{*b}(x_i))\tag{7.54}
+\]</div>
+<p>然而，可以简单地看到一般情形下 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}\_{boot}\)</span> 不会给出良好估计。原因在于自助数据集是作为训练样本，而原始训练集是作为测试样本，而且这两个样本有共同的观测。这种重合会使得过拟合的预测看起来不可思议地好，这也是交叉验证为什么明确地使用非重合的数据作为训练和测试样本。考虑二分类问题中应用 <code class="docutils literal notranslate"><span class="pre">1-最近邻分类器</span></code> 的例子，每个类有相同数目的观测值，预测变量和类别标签实际上是独立的。于是真实错误率为 0.5。但是对自助法估计 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}\_{boot}\)</span> 的贡献值会是 0，除非观测 <span class="math notranslate nohighlight">\(i\)</span> 不出现在自助法样本 <span class="math notranslate nohighlight">\(b\)</span> 中。后一种情形中会有正确的期望值 0.5。现在：</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\Pr\{\text{观测}i\in\text{自助法样本}b\}&amp;=1-(1-\frac{1}{N})^N\\
+&amp;\approx 1-e^{-1}\\
+&amp;=0.632\tag{7.55} 
+\end{align*}\]</div>
+<p>因此 <span class="math notranslate nohighlight">\(\mathbb{Err}_\text{boot}\)</span> 的期望为 <span class="math notranslate nohighlight">\(0.5 \times 0.368=0.184\)</span> ，远远低于正确的错误率 0.5。</p>
+<p>通过模仿交叉验证，可以得到更好的自助法估计。对于每个观测，我们仅仅跟踪自助法样本中不包含该观测的预测。这个舍一法预测误差的自助法估计由下式定义：</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{\mathbb{Err}}^{(1)}=\frac{1}{N}\sum\limits_{i=1}^N\frac{1}{\vert C^{-i}\vert}\sum\limits_{b\in C^{-i}}L(y_i,\hat f^{*b}(x_i))\tag{7.56} 
+\]</div>
+<p>这里 <span class="math notranslate nohighlight">\(C^{-i}\)</span> 是不包含观测 <span class="math notranslate nohighlight">\(i\)</span> 的自助法样本 <span class="math notranslate nohighlight">\(b\)</span> 的指标集，而且 <span class="math notranslate nohighlight">\(\vert C^{-i}\vert\)</span> 为这些样本的个数。在计算 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(1)}\)</span> 时，我们要么必须选择充分大的 <span class="math notranslate nohighlight">\(B\)</span> 来保证所有的 <span class="math notranslate nohighlight">\(\vert C^{-i}\vert\)</span> 都大于 0，或者我们可以直接删掉式（ 7.56 ）中 <span class="math notranslate nohighlight">\(\vert C^{-i}\vert=0\)</span> 的项。</p>
+<p>舍一自助法解决了 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}_{boot}\)</span> 遇到的过拟合问题，但是会有在讨论交叉验证中提到的<strong>训练集大小偏差 (training-set-size)</strong> 问题。每个自助法样本中不同观测的平均个数大约为 <span class="math notranslate nohighlight">\(0.632\cdot N\)</span>，所以它的偏差会大致表现得和两折交叉验证一样。因此如果学习曲线在样本大小为 <span class="math notranslate nohighlight">\(N/2\)</span> 时有相当大的斜率，则舍一自助法作为真实误差的估计会有一个 <strong>向上的偏差 (upward bias)</strong>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">.632</span> <span class="pre">估计</span></code> 是为了减轻偏差而设计的。由下式定义：</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{\mathbb{Err}}^{(.632)}=.368\cdot\overline{\mathbb{err}}+.632\cdot\widehat{\mathbb{Err}}^{(1)}\tag{7.57}
+\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">0.632</span> <span class="pre">估计</span></code>的来源很复杂；直观上它将舍一自助的估计向训练错误率靠近，也因此降低了向上的偏差。常值 <code class="docutils literal notranslate"><span class="pre">.632</span></code> 与式（ 7.55 ）有关。</p>
+<p><code class="docutils literal notranslate"><span class="pre">.632</span> <span class="pre">估计</span></code> 在“<strong>轻拟合 (light fitting)</strong>”情形下表现很好，但是在过拟合情形下会变糟。Breiman et al. (1984) <a class="footnote-reference brackets" href="#id4" id="id2">1</a>有一个例子。假设有两个相同大小的类，目标变量与类别标签独立，而且采用 <code class="docutils literal notranslate"><span class="pre">1-最近邻规则</span></code>。则 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}=0,\widehat{\mathbb{Err}}^{(1)}=0.5\)</span> ，而且因此 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(.632)}=.632\times 0.5=.316\)</span> 。然而真实错误率为0.5。</p>
+<p>可以通过考虑过拟合的程度来改善 <code class="docutils literal notranslate"><span class="pre">.632</span> <span class="pre">估计</span></code>。首先定义 <span class="math notranslate nohighlight">\(\gamma\)</span> 为 <strong>无信息错误率 (no-information error rate)</strong>：这是如果输入变量与类别标签独立时的预测规则的错误率。<span class="math notranslate nohighlight">\(\gamma\)</span> 的估计可以通过在所有可能的目标 <span class="math notranslate nohighlight">\(y_i\)</span> 和预测 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 的组合上应用预测规则得到：</p>
+<div class="math notranslate nohighlight">
+\[
 \hat\gamma = \frac{1}{N^2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^NL(y_i,\hat f(x_{i'}))\tag{7.58}
-\)</span><span class="math notranslate nohighlight">\(
-举个例子，考虑二分类问题：令 \)</span>\hat p_1<span class="math notranslate nohighlight">\( 为响应变量 \)</span>y_i=1<span class="math notranslate nohighlight">\( 的观测比例，令 \)</span>\hat q_1<span class="math notranslate nohighlight">\( 为 \)</span>\hat f(x_{i’})=1<span class="math notranslate nohighlight">\( 的观测比例。于是
-\)</span><span class="math notranslate nohighlight">\(
-\hat\gamma = \hat p_1(1-\hat q_1)+(1-\hat p_1)\hat q_1\tag{7.59}\label{7.59}
-\)</span><span class="math notranslate nohighlight">\(
-像 1-最近邻的规则，\)</span>\hat q_1=\hat p_1<span class="math notranslate nohighlight">\(，则\)</span>\hat \gamma<span class="math notranslate nohighlight">\(值为\)</span>2\hat p_1(1-\hat p_1)<span class="math notranslate nohighlight">\(。\eqref{7.59} 的多类别推广形式为 \)</span>\hat \gamma=\sum_\ell \hat p_\ell(1-\hat q_\ell)$.</p>
-<p>用这些来定义<strong>相对过拟合率 (relative overfitting rate)</strong>：
-$<span class="math notranslate nohighlight">\(
-\hat R=\frac{\widehat{\Err}^{(1)}-\overline{\err}}{\hat\gamma-\overline{\err}}\tag{7.60}
-\)</span><span class="math notranslate nohighlight">\(
-这是一个取值为 0 到 1 的量，当不存在过拟合时等于 0 (\)</span>\widehat{\Err}^{(1)}=\overline{\err}<span class="math notranslate nohighlight">\()，当过拟合等于无信息值 \)</span>\hat\gamma-\overline{\err}<span class="math notranslate nohighlight">\( 时则等于 1。最后，我们定义“.632+”如下
-\)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a63a5b73-f1fd-4889-b89d-08c8275859e0">
-<span class="eqno">(17)<a class="headerlink" href="#equation-a63a5b73-f1fd-4889-b89d-08c8275859e0" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\widehat{\Err}^{(.632+)}&amp;=(1-\hat w)\cdot \overline{err}+\hat w\cdot \widehat{\Err}^{(1)}\tag{7.61}\label{7.61}\\
-\text{其中}\hat w &amp;=\frac{.632}{1-.368\hat R}\notag
-\end{align}\]</div>
-<p>$<span class="math notranslate nohighlight">\(
-系数 \)</span>w<span class="math notranslate nohighlight">\( 取值为 0.632（若 \)</span>\hat R=0<span class="math notranslate nohighlight">\(）到 1（若\)</span>\hat R=1<span class="math notranslate nohighlight">\(），所以 \)</span>\widehat{\Err}^{(.632+)}<span class="math notranslate nohighlight">\( 取值为 \)</span>\widehat{\Err}^{(.632)}<span class="math notranslate nohighlight">\( 到 \)</span>\widehat{\Err}^{(1)}<span class="math notranslate nohighlight">\(。同样地，\eqref{7.61} 的来源也是很复杂的：大致来讲，它得到舍一自助法和训练误差率之间的权衡，权衡依赖于模型过拟合的程度。对于类别标签与输入独立的 1 最近邻问题，\)</span>\hat w=\hat R=1<span class="math notranslate nohighlight">\(，因此 \)</span>\widehat{\Err}^{(.632+)}=\widehat{\Err}^{(1)}<span class="math notranslate nohighlight">\(，有正确的期望值0.5。在其它不太过拟合的问题中，\)</span>\widehat{\Err}^{.632+}<span class="math notranslate nohighlight">\( 会在 \)</span>\overline{\err}<span class="math notranslate nohighlight">\( 和 \)</span>\widehat{\Err}^{(1)}$ 之间取值。</p>
-<p>!!! tip “R Programming”
-R 语言中 <code class="docutils literal notranslate"><span class="pre">caret</span></code> 包中的函数 <code class="docutils literal notranslate"><span class="pre">trainControl()</span></code>，其输入参数 <code class="docutils literal notranslate"><span class="pre">method</span></code> 定义重采样方法，有<code class="docutils literal notranslate"><span class="pre">boot</span></code>，<code class="docutils literal notranslate"><span class="pre">boot632</span></code>， <code class="docutils literal notranslate"><span class="pre">cv</span></code>， <code class="docutils literal notranslate"><span class="pre">LOOCV</span></code>， <code class="docutils literal notranslate"><span class="pre">LGOCV</span></code>，具体方法名称如下</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- `boot`：自助法 (bootstrap)
-- `boot632`：.632 自助法
-- `cv`：$K$ 折交叉验证
-- `LOOCV`：舍一交叉验证 (leave-one-out cross validation)
-- `LGOCV`：LOOCV 应用于分层数据的变种 leave-group-out cross validation
-
-参考[r - Caret re-sampling methods - Cross Validated](https://stats.stackexchange.com/questions/17602/caret-re-sampling-methods/17610)
-</pre></div>
+\]</div>
+<p>举个例子，考虑二分类问题：令 <span class="math notranslate nohighlight">\(\hat p_1\)</span> 为响应变量 <span class="math notranslate nohighlight">\(y_i=1\)</span> 的观测比例，令 <span class="math notranslate nohighlight">\(\hat q_1\)</span> 为 <span class="math notranslate nohighlight">\(\hat f(x_{i'})=1\)</span> 的观测比例。于是：</p>
+<div class="math notranslate nohighlight">
+\[
+\hat\gamma = \hat p_1(1-\hat q_1)+(1-\hat p_1)\hat q_1\tag{7.59} 
+\]</div>
+<p>像 1-最近邻的规则，<span class="math notranslate nohighlight">\(\hat q_1=\hat p_1\)</span>，则<span class="math notranslate nohighlight">\(\hat \gamma\)</span>值为<span class="math notranslate nohighlight">\(2\hat p_1(1-\hat p_1)\)</span>。式（ 7.59 ）的多类别推广形式为 <span class="math notranslate nohighlight">\(\hat \gamma=\sum_\ell \hat p_\ell(1-\hat q_\ell)\)</span>.</p>
+<p>用这些来定义<strong>相对过拟合率 (relative overfitting rate)</strong>：</p>
+<div class="math notranslate nohighlight">
+\[
+\hat R=\frac{\widehat{\mathbb{Err}}^{(1)}-\overline{\mathbb{err}}}{\hat\gamma-\overline{\mathbb{err}}}\tag{7.60}
+\]</div>
+<p>这是一个取值为 0 到 1 的量，当不存在过拟合时等于 0 （ <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(1)}=\overline{\mathbb{err}}\)</span> ），当过拟合等于无信息值 <span class="math notranslate nohighlight">\(\hat\gamma-\overline{\mathbb{err}}\)</span> 时则等于 1。最后，我们定义 “.632+” 如下</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\widehat{\mathbb{Err}}^{(.632+)}&amp;=(1-\hat w)\cdot \overline{err}+\hat w\cdot \widehat{\mathbb{Err}}^{(1)}\tag{7.61} \\
+\text{其中}\hat w &amp;=\frac{.632}{1-.368\hat R}
+\end{align*}\]</div>
+<p>系数 <span class="math notranslate nohighlight">\(w\)</span> 取值为 0.632（若 <span class="math notranslate nohighlight">\(\hat R=0\)</span>）到 1（若<span class="math notranslate nohighlight">\(\hat R=1\)</span>），所以 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(.632+)}\)</span> 取值为 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(.632)}\)</span> 到 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(1)}\)</span>。同样地，式（ 7.61 ）的来源也很复杂：大致来讲，它得到舍一自助法和训练错误率之间的权衡，权衡依赖于模型过拟合的程度。对于类别标签与输入独立的 1 最近邻问题，<span class="math notranslate nohighlight">\(\hat w=\hat R=1\)</span>，因此 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(.632+)}=\widehat{\mathbb{Err}}^{(1)}\)</span>，有正确的期望值 0.5。在其它不太过拟合的问题中，<span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{.632+}\)</span> 会在 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 和 <span class="math notranslate nohighlight">\(\widehat{\mathbb{Err}}^{(1)}\)</span> 之间取值。</p>
+<div class="admonition-r-programming admonition">
+<p class="admonition-title">R Programming 实训</p>
+<p>R 语言中 <code class="docutils literal notranslate"><span class="pre">caret</span></code> 包中的函数 <code class="docutils literal notranslate"><span class="pre">trainControl()</span></code>，其输入参数 <code class="docutils literal notranslate"><span class="pre">method</span></code> 定义重采样方法，有<code class="docutils literal notranslate"><span class="pre">boot</span></code>，<code class="docutils literal notranslate"><span class="pre">boot632</span></code>， <code class="docutils literal notranslate"><span class="pre">cv</span></code>， <code class="docutils literal notranslate"><span class="pre">LOOCV</span></code>， <code class="docutils literal notranslate"><span class="pre">LGOCV</span></code>，具体方法名称如下</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">boot</span></code>：自助法 (bootstrap)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boot632</span></code>：.632 自助法</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cv</span></code>：<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOOCV</span></code>：舍一交叉验证 (leave-one-out cross validation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LGOCV</span></code>：LOOCV 应用于分层数据的变种 leave-group-out cross validation</p></li>
+</ul>
+<p>参考<a class="reference external" href="https://stats.stackexchange.com/questions/17602/caret-re-sampling-methods/17610">r - Caret re-sampling methods - Cross Validated</a></p>
 </div>
 <div class="section" id="id3">
 <h2>例子（继续）<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig7.13.png" /></p>
 <blockquote>
-<div><p>图 7.13. 箱线图显示了图 7.3 的四种情形下相对误差 <span class="math notranslate nohighlight">\(100\cdot [\Err_{\hat \alpha}-\min_\alpha \Err(\alpha)]/[\max_\alpha \Err(\alpha)-\min_\alpha \Err(\alpha)]\)</span> 的分布。这是使用选择的模型相对于使用最优模型的误差。每个箱线图中有 100 个训练集。</p>
+<div><p>图 7.13. 箱线图显示了图 7.3 的四种情形下相对误差 <span class="math notranslate nohighlight">\(100\cdot [\mathbb{Err}_{\hat \alpha}-\min_\alpha \mathbb{Err}(\alpha)]/[\max_\alpha \mathbb{Err}(\alpha)-\min_\alpha \mathbb{Err}(\alpha)]\)</span> 的分布。这是使用选择的模型相对于使用最优模型的误差。每个箱线图中有 100 个训练集。</p>
 </div></blockquote>
-<p>图 7.13 显示了图 7.7 中同样的 4 个问题应用 10 折交叉验证和 .632+ 自助法估计的结果。正如图中所示，图 7.13 展示了 <span class="math notranslate nohighlight">\(100\cdot [\Err_{\hat \alpha}-\min_\alpha \Err(\alpha)]/[\max_\alpha \Err(\alpha)-\min_\alpha \Err(\alpha)]\)</span> 的箱线图，这是使用选择的模型相对于使用最优模型的误差。每个箱线图表示 100 个不同的训练集。整体上看两种方式都表现不错，或许和图 7.7 的 AIC 一样或者略差点。</p>
-<p>我们的结论是，对于这些特定的问题和拟合方法，AIC 和交叉验证的最小化，或者自助法都得到相当接近最好的可行模型。注意到模型选择的目的，这些衡量方式可能都有偏差，但是这不会有影响，只要偏差不会改变这些方法的相对表现。举个例子，对所有的衡量方式都加上常数不会改变最终选择的模型。然而，对于许多自适应非线性技巧（比如树），估计参数的有效个数是非常困难的。这使得像 AIC 之类的方法不可行，只留下交叉验证和自助法供我们选择。</p>
-<p>换个不同的问题：每个方法对测试误差估计得有多好？平均上看，四种情形下 AIC 准则分别高估了所选模型的预测误差 38%，37%，51% 和 30%，BIC表现也类似。而交叉验证高估了 1%，4%，0% 和 4%，自助法表现也相同。因此如果需要正确估计测试误差，计算交叉误差或者自助法的衡量的额外工作是值得的。像树之类的其它拟合方法，交叉验证和自助法可以低估真实误差 10%。在这些情形下，只有分离的测试集会提供测试误差的无偏估计。</p>
+<p>图 7.13 显示了图 7.7 中同样的 4 个问题应用 10 折交叉验证和 .632+ 自助法估计的结果。正如图中所示，图 7.13 展示了 <span class="math notranslate nohighlight">\(100\cdot [\mathbb{Err}_{\hat \alpha}-\min_\alpha \mathbb{Err}(\alpha)]/[\max_\alpha \mathbb{Err}(\alpha)-\min_\alpha \mathbb{Err}(\alpha)]\)</span> 的箱线图，这是使用选择的模型相对于使用最优模型的误差。每个箱线图表示 100 个不同的训练集。整体上看两种方式都表现不错，或许和图 7.7 的 AIC 一样或者略差点。</p>
+<p>我们的结论是，对于这些特定问题和拟合方法，AIC、交叉验证最小化、自助法都得到相当接近最优的可行模型。注意到模型选择的目的，这些衡量方式可能都有偏差，但只要偏差不会改变这些方法的相对表现，就可以接受。举个例子，对所有衡量方式都加上常数不会改变最终选择的模型。然而，对于许多自适应非线性技巧（比如树），估计参数的有效个数是非常困难的。这使得像 AIC 之类的方法不可行，只留下交叉验证和自助法可供选择。</p>
+<p>换个不同的问题：每种方法对测试误差估计得有多好？</p>
+<p>平均上看，四种情形下 AIC 准则分别高估了所选模型 38%、37%、51% 和 30% 的预测误差，BIC表现也类似。交叉验证高估了 1% 、4% 、0% 和 4% ，自助法表现也相同。</p>
+<p>因此如果需要正确估计测试误差，用于计算交叉验证或自助法所涉及的额外工作是值得考虑的。像树之类的其它拟合方法，交叉验证和自助法可以低估真实误差 10%。在这些情形下，只有分离的测试集能够提供测试误差的无偏估计。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1304,7 +1300,7 @@ R 语言中 <code class="docutils literal notranslate"><span class="pre">caret</
         <a class="right-next" href="7.12-Conditional-or-Expected-Test-Error.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">7.12 条件测试误差或期望测试误差？</p>
+                <p class="prevnext-title">7.12 “条件测试误差”还是“测试误差的期望”？</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

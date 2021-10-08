@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1183,12 +1183,12 @@ $$
 <p>在训练过程的任一个时刻，指数标准对具有大的负边际的观测值上有更大的影响。二项偏差相对地在这些观测上影响较小，在所有数据上的影响分散更均匀。也因此在白噪声设定（贝叶斯误差率不接近于0）中更加鲁棒，特别在训练数据中存在误分类标签的情形中。在这些情形下，AdaBoost 的表现从经验上看显著退化。</p>
 <p>图中也显示了平方误差损失。在总体上对应风险的最小值点为
 $<span class="math notranslate nohighlight">\(
-f^*(x)=\mathrm{arg}\;\underset{f(x)}{\mathrm{min}}\E_{Y\mid x}(Y-f(x))^2=\E(Y\mid x)=2\cdot \Pr(Y=1\mid x)-1\tag{10.19}\label{10.19}
+f^*(x)=\mathrm{arg}\;\underset{f(x)}{\mathrm{min}}\mathbb{E}_{Y\mid x}(Y-f(x))^2=\E(Y\mid x)=2\cdot \Pr(Y=1\mid x)-1\tag{10.19}\label{10.19}
 \)</span>$</p>
 <p>和前面一样，分类的规则为 <span class="math notranslate nohighlight">\(G(x)=\sign[f(x)]\)</span>。平方误差损失不是误分类误差很好的选择。如图 10.4 所示，它不是关于 <span class="math notranslate nohighlight">\(yf(x)\)</span> 的单调递减函数。对于边界值 <span class="math notranslate nohighlight">\(y_if(x_i)&gt;1\)</span> 平方增长，从而对正确分类为增加确定性的观测结果产生越来越大的影响（误差），所以降低了未正确分类的 <span class="math notranslate nohighlight">\(y_if(x_i) &lt; 0\)</span> 的相对影响。因此，如果目标是类别划分，则一个更好的损失函数要满足单调下降的准则。第12章的图 12.4 包括对平方损失的一个改动，“Huberized”平方铰链损失 (Rosset et al.，2004b<a class="footnote-reference brackets" href="#id4" id="id3">1</a>)，结合了二项偏差、平方损失和 SVM 铰链损失优良的性质。它与平方损失 \eqref{10.19} 有相同的总体最小值，当 <span class="math notranslate nohighlight">\(y\cdot f(x) &gt; 1\)</span>为 0，当 <span class="math notranslate nohighlight">\(y\cdot f(x) &lt; -1\)</span> 变成线性。因为二项函数比指数更容易计算，我们的经验表明这是二项偏差的一个有用替代。</p>
-<p>在 <span class="math notranslate nohighlight">\(K\)</span> 分类问题中，响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 在无序集 <span class="math notranslate nohighlight">\(\cal G=\\{\cal G_1,\ldots,\cal G_k\\}\)</span> 中取值。我们已经在 <span class="math notranslate nohighlight">\(\cal G\)</span> 中寻找到了一个分类器 <span class="math notranslate nohighlight">\(G(x)\)</span>。若知道类别条件概率为 <span class="math notranslate nohighlight">\(p_k(x)=\Pr(Y={\cal G}\_k\mid x),k=1,2,\ldots,K\)</span>，则贝叶斯分类器为
+<p>在 <span class="math notranslate nohighlight">\(K\)</span> 分类问题中，响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 在无序集 <span class="math notranslate nohighlight">\(\mathcal G=\\{\mathcal G_1,\ldots,\mathcal G_k\\}\)</span> 中取值。我们已经在 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 中寻找到了一个分类器 <span class="math notranslate nohighlight">\(G(x)\)</span>。若知道类别条件概率为 <span class="math notranslate nohighlight">\(p_k(x)=\Pr(Y={\mathcal G}\_k\mid x),k=1,2,\ldots,K\)</span>，则贝叶斯分类器为
 $<span class="math notranslate nohighlight">\(
-G(x)={\cal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}
+G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}
 \)</span><span class="math notranslate nohighlight">\(
 尽管原则上我们不需要知道 \)</span>p_k(x)<span class="math notranslate nohighlight">\(，只需要知道哪个最大。然而，在数据挖掘应用中，我们感兴趣的经常是类别概率 \)</span>p_\ell(x),\ell=1,\ldots,K<span class="math notranslate nohighlight">\( 本身，而不是进行类别划分。像在 [4.4 节](../04-Linear-Methods-for-Classification/4.4-Logistic-Regression/index.html)中那样，逻辑斯蒂回归可以很自然地推广到 \)</span>K$ 个类别的情形，</p>
 <div class="math notranslate nohighlight">
@@ -1208,11 +1208,11 @@ $<span class="math notranslate nohighlight">\(
     \)</span>$</p>
 <p>这里我们更喜欢保持对称性，而且加上约束条件 <span class="math notranslate nohighlight">\(\sum_{k=1}^Kf_k(x)=0\)</span>。二项偏差可以自然地扩展到 <span class="math notranslate nohighlight">\(K\)</span> 个类别的 <strong>多项偏差 (multinomial deviance)</strong> 损失函数：
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ece7c8a1-1561-4a5d-9e25-21a91b82e908">
-<span class="eqno">(28)<a class="headerlink" href="#equation-ece7c8a1-1561-4a5d-9e25-21a91b82e908" title="Permalink to this equation">¶</a></span>\[\begin{align}
-L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\cal G_k)\mathrm{log}p_k(x)\notag\\
-&amp;=-\sum\limits_{k=1}^KI(y={\cal G_k})f_k(x)+\mathrm{log}\left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
-\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\mathcal G_k)\mathrm{log}p_k(x)\\
+&amp;=-\sum\limits_{k=1}^KI(y={\mathcal G_k})f_k(x)+\mathrm{log}\left(\sum\limits_{\ell=1}^Ke^{f_\ell(x)}\right)\tag{10.22}\label{10.22}
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}
 和在两个类别的情形中一样，准则 \eqref{10.22} 对不正确预测的惩罚关于不正确的程度仅仅是线性的。\\Zhu et al. (2005)[^2]一般化了 $K$ 类别问题的指数损失。更多细节见[练习 10.5](https://github.com/szcf-weiya/ESL-CN/issues/74)。\\!!! info &quot;weiya注：Ex. 10.5&quot;

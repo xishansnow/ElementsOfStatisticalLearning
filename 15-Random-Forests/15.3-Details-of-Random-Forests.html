@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1254,7 +1254,7 @@ $<span class="math notranslate nohighlight">\(
 <p>另外一个断言是随机森林不会过拟合数据。这显然是正确的，因为增大 <span class="math notranslate nohighlight">\(B\)</span> 不会使得随机森林序列过拟合；像 bagging 一样，随机森林估计式 \eqref{15.2} 在 <span class="math notranslate nohighlight">\(\Theta\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 个实现中取平均，这是对下面期望的近似</p>
 <div class="math notranslate nohighlight">
 \[
-\hat f_{rf}(x) = \E_\Theta T(x;\Theta)=\lim_{B\rightarrow \infty}\hat f(x)_{rf}^B\tag{15.3}
+\hat f_{rf}(x) = \mathbb{E}_\Theta T(x;\Theta)=\lim_{B\rightarrow \infty}\hat f(x)_{rf}^B\tag{15.3}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\Theta\)</span> 的分布是在训练数据的条件上的。然而，这个极限可以过拟合数据；充分生长的树的平均可以导致模型太丰富(too rich)，并且产生额外的方差。Segal (2004)<a class="footnote-reference brackets" href="#id7" id="id6">1</a>展示了通过控制随机森林中单个生成树的深度可以小幅度改善效果。我们的经验是采用充分生长的模型很少要付出太大代价，并且会少一个调整参数。</p>
 <p>图 15.8 显示了在一个简单的回归例子中控制深度对模型的影响。分类器对方差不够敏感，很少在随机森林的分类中看到过拟合的影响。</p>

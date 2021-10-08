@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1167,11 +1167,11 @@ Y=\sum\limits_{j=1}^pX_j\beta_j+\sigma\varepsilon\tag{18.1}
 <p>我们对数据进行岭回归拟合，其中采用了三个不同的正则参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span>。当 <span class="math notranslate nohighlight">\(\lambda=0.001\)</span>，这近似与最小二乘一样，仅仅有一点正则来保证当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，问题不是奇异的。图 18.1 显示了在每个情形下不同的估计达到的相对测试误差的箱线图。在每个岭回归拟合中使用的对应的平均自由度（\eqref{3.50}）也标出来了。</p>
 <p>!!! note “Recall: \eqref{3.50}”
 $<span class="math notranslate nohighlight">\(
-    \begin{align}
-    \df(\lambda)&amp;=\tr[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\notag\\
-    &amp;=\tr(\mathbf{H}_{\lambda})\notag\\
+    \begin{align*}
+    \df(\lambda)&amp;=\tr[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\\
+    &amp;=\tr(\mathbf{H}_{\lambda})\\
     &amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}\label{3.50}
-    \end{align}
+    \end{align*}
     \)</span>$</p>
 <p>自由度是一个比 <span class="math notranslate nohighlight">\(\lambda\)</span> 更有解释性的参数。从图中我们看到，在 <span class="math notranslate nohighlight">\(p=20\)</span> 时，<span class="math notranslate nohighlight">\(\lambda=0.001\)</span>(20df) 的岭回归最优；当 <span class="math notranslate nohighlight">\(p=100\)</span> 时 <span class="math notranslate nohighlight">\(\lambda=100\)</span>(35df) 最优，并且当 <span class="math notranslate nohighlight">\(p=1000\)</span>时 <span class="math notranslate nohighlight">\(\lambda=1000\)</span>(43df) 最优。</p>
 <p>这些结果可以解释如下。当 <span class="math notranslate nohighlight">\(p=20\)</span> 时，我们拟合所有的情形，并且可以以低偏差尽可能地识别更多的显著系数。当 <span class="math notranslate nohighlight">\(p=100\)</span> 时，我们可以采用中等程度的收缩识别一些非零的系数。最后，当 <span class="math notranslate nohighlight">\(p=1000\)</span> 时，即使有许多非零系数，我们并不希望找到它们，并且我们需要收缩它们。为了说明这个结论，令 <span class="math notranslate nohighlight">\(t_j=\hat\beta_j/\widehat{se}_j\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是岭回归估计，而 <span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是标准误差的估计。接着在这三种情形中取最优的岭回归参数，<span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 2.0,0.6 和 0.2，并且超过 2 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 的平均个数等于 9.8,1.2 和 0.0。</p>

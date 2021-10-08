@@ -416,7 +416,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.2-Bias-Variance-and-Model-Complexity.html">
-     7.2 偏差，方差和模型复杂度
+     7.2 偏差、方差和模型复杂度
     </a>
    </li>
    <li class="toctree-l2">
@@ -426,7 +426,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.4-Optimism-of-the-Training-Error-Rate.html">
-     7.4 训练误差率的 optimism
+     7.4 训练误差率的乐观估计
     </a>
    </li>
    <li class="toctree-l2">
@@ -466,7 +466,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
-     7.12 条件测试误差或期望测试误差？
+     7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
    </li>
    <li class="toctree-l2">
@@ -493,7 +493,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法和最大似然法
+     8.2 自助法与最大似然
     </a>
    </li>
    <li class="toctree-l2">
@@ -1269,10 +1269,10 @@ $<span class="math notranslate nohighlight">\(
 <p>给定 <span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span>，令</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{align*}
 \mathbf X &amp; = \mathbf {UDV^T}\tag{18.12}\label{18.12}\\
 &amp; = \mathbf{RV^T}\tag{18.13}\label{18.13}
-\end{align}
+\end{align*}
 \end{split}\]</div>
 <p>为 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的奇异值分解；也就是，<span class="math notranslate nohighlight">\(\mathbf V\)</span> 是有着正交列的 <span class="math notranslate nohighlight">\(p\times N\)</span> 矩阵，<span class="math notranslate nohighlight">\(\mathbf U\)</span> 是 <span class="math notranslate nohighlight">\(N\times N\)</span> 正交矩阵，<span class="math notranslate nohighlight">\(\mathbf D\)</span> 是元素为 <span class="math notranslate nohighlight">\(d_1\ge d_2\ge d_N\ge 0\)</span> 的对角矩阵。矩阵 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 是 <span class="math notranslate nohighlight">\(N\times N\)</span> 的，行为 <span class="math notranslate nohighlight">\(r_i^T\)</span>。</p>
 <p>举个简单的例子，我们首先考虑岭回归估计</p>
@@ -1291,14 +1291,14 @@ $<span class="math notranslate nohighlight">\(
 <p>因此 <span class="math notranslate nohighlight">\(\hat\beta = \mathbf V\hat\theta\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\theta\)</span> 是采用 <span class="math notranslate nohighlight">\(N\)</span> 个观测 <span class="math notranslate nohighlight">\((r_i,y_i),i=1,2,\ldots,N\)</span> 的岭回归估计。换句话说，我们可以简单地将数据矩阵从 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 降维成 <span class="math notranslate nohighlight">\(\mathbf R\)</span>，并且对 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的行进行操作。这个技巧将 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时的计算花费从 <span class="math notranslate nohighlight">\(O(p^3)\)</span> 降为 <span class="math notranslate nohighlight">\(O(pN^2)\)</span>。</p>
 <p>这些结果可以推广到所有参数为线性并且有二次惩罚的模型。考虑任意的监督学习问题，我们采用线性函数 <span class="math notranslate nohighlight">\(f(X)=\beta_0+X^T\beta\)</span> 来建立条件分布 <span class="math notranslate nohighlight">\(Y\mid X\)</span> 的参数模型。我们通过在数据上最小化损失函数 <span class="math notranslate nohighlight">\(\sum_{i=1}^NL(y_i,f(x_i))\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span> 上的二次惩罚来拟合参数 <span class="math notranslate nohighlight">\(\beta\)</span>。逻辑斯蒂回归是个很有用的例子。接着我们有下面简单的定理：</p>
 <blockquote>
-<div><p>令 <span class="math notranslate nohighlight">\(f^\*(r_i)=\theta_0+r_i^T\theta\)</span>， <span class="math notranslate nohighlight">\(r_i\)</span> 如 \eqref{18.13} 定义，并且考虑成对优化问题：</p>
+<div><p>令 <span class="math notranslate nohighlight">\(f^*(r_i)=\theta_0+r_i^T\theta\)</span>， <span class="math notranslate nohighlight">\(r_i\)</span> 如 \eqref{18.13} 定义，并且考虑成对优化问题：</p>
 <p>$$</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-e4a08b32-482a-4567-b2a9-cc1489737171">
-<span class="eqno">(35)<a class="headerlink" href="#equation-e4a08b32-482a-4567-b2a9-cc1489737171" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 (\hat\beta_0,\hat\beta) &amp;= \arg\underset{\beta_0,\beta\in \IR^p}{\min}\sum\limits_{i=1}^NL(y_i,\beta_0+x_i^T\beta)+\lambda\beta^T\beta\tag{18.16}\\
 (\hat\theta_0,\hat\theta) &amp;= \arg\underset{\theta_0,\theta\in \IR^N}{\min}\sum\limits_{i=1}^NL(y_i,\theta_0+r_i^T\theta)+\lambda\theta^T\theta\tag{18.17}
-\end{align}\]</div>
+\end{align*}\]</div>
 <p>$$</p>
 <blockquote>
 <div><p>于是有 <span class="math notranslate nohighlight">\(\hat\beta_0=\hat\theta_0, \hat\beta=\mathbf V\hat\theta\)</span>。</p>
