@@ -1188,8 +1188,8 @@ f(X)=\beta_0+\sum\limits_{j=1}^pX_j\beta_j \tag{3.1}\label{3.1}
 <p>无论 <span class="math notranslate nohighlight">\(X_j\)</span> 是哪个来源，模型关于参数都是线性的。</p>
 <p>一般地，我们有一个用来估计参数 <span class="math notranslate nohighlight">\(\beta\)</span> 的训练数据集合 <span class="math notranslate nohighlight">\((x_1,y_1),\ldots,(x_N,y_N)\)</span>。每个 <span class="math notranslate nohighlight">\(x_i=(x_{i1},x_{i2},\ldots,x_{ip})^T\)</span> 是第 <span class="math notranslate nohighlight">\(i\)</span> 种情形的特征测量值的向量。最受欢迎的估计方法是 <strong>最小二乘 (least squares)</strong>，我们取参数 <span class="math notranslate nohighlight">\(\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T\)</span> 使得下式的残差平方和最小
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56b19b7b-19da-4368-8d52-49a61a071829">
-<span class="eqno">(2)<a class="headerlink" href="#equation-56b19b7b-19da-4368-8d52-49a61a071829" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e1bd2d76-4b0d-42fd-8cde-3d1dbeebb1ad">
+<span class="eqno">(2)<a class="headerlink" href="#equation-e1bd2d76-4b0d-42fd-8cde-3d1dbeebb1ad" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \RSS(\beta)&amp;=\sum\limits_{i=1}^N(y_i-f(x_i))^2\notag\\
 &amp;=\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\tag{3.2}\label{3.2}
 \end{align}\]</div>
@@ -1241,8 +1241,8 @@ $<span class="math notranslate nohighlight">\(
 <p>之所以分母是 <span class="math notranslate nohighlight">\(N-p-1\)</span> 而不是 <span class="math notranslate nohighlight">\(N\)</span>，是因为 <span class="math notranslate nohighlight">\(N-p-1\)</span> 使得 <span class="math notranslate nohighlight">\(\hat{\sigma}^2\)</span> 为无偏估计：<span class="math notranslate nohighlight">\(E(\hat{\sigma}^2)=\sigma^2\)</span></p>
 <p>为了对参数和模型进行推断，需要一些额外的假设。我们现在假设式 \eqref{3.1} 是关于均值的正确模型；则 <span class="math notranslate nohighlight">\(Y\)</span> 的条件期望关于 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 是线性的。我们也假设 <span class="math notranslate nohighlight">\(Y\)</span> 与其期望的偏差是可加的且是正态的。因此
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-72dfda6b-60da-4adf-9532-a0291fd0ba1f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-72dfda6b-60da-4adf-9532-a0291fd0ba1f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-70da0ba8-22bf-4d73-93c1-d887aad4a047">
+<span class="eqno">(3)<a class="headerlink" href="#equation-70da0ba8-22bf-4d73-93c1-d887aad4a047" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y&amp;=\E(Y\mid X_1,\ldots,X_p)+\varepsilon\notag\\
 &amp;=\beta_0+\sum\limits_{j=1}^pX_j\beta_j+\varepsilon\tag{3.9}\label{3.9}
 \end{align}\]</div>
@@ -1332,8 +1332,8 @@ F=\dfrac{(32.81-29.43)/(9-5)}{29.43/(67-9)}=1.67\tag{3.16}
 \]</div>
 <p>考虑固定 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>，则上式是关于响应变量 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 的线性函数 <span class="math notranslate nohighlight">\(\mathbf{c}_0^T\mathbf{y}\)</span>。如果我们假设线性模型是正确的，则 <span class="math notranslate nohighlight">\(a^T\hat{\beta}\)</span> 是无偏的，因为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90ed365e-f776-4767-b34f-fe14fa96a463">
-<span class="eqno">(4)<a class="headerlink" href="#equation-90ed365e-f776-4767-b34f-fe14fa96a463" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-89ed3526-a6eb-4d00-a3c0-366705871986">
+<span class="eqno">(4)<a class="headerlink" href="#equation-89ed3526-a6eb-4d00-a3c0-366705871986" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \E(a^T\hat{\beta})&amp;=E(a^T\mathbf{(X^TX)^{-1}X^Ty})\notag\\
 &amp;=a^T\mathbf{(X^TX)^{-1}X^TX}\beta\notag\\
 &amp;=a^T\beta\tag{3.18}
@@ -1388,8 +1388,8 @@ r_i &amp;= y_i -x_i\hat{\beta}
 \end{split}\]</div>
 <p>为了简便用向量表示，我们令 <span class="math notranslate nohighlight">\(\mathbf{y}=(y_1,\ldots,y_N)^T\)</span>，<span class="math notranslate nohighlight">\(\mathbf{x}=(x_1,\ldots,x_N)^T\)</span>，并且定义
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2bb46fe1-a275-45e4-ad8f-ad94713f589e">
-<span class="eqno">(5)<a class="headerlink" href="#equation-2bb46fe1-a275-45e4-ad8f-ad94713f589e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7d9fddd5-c77f-4b84-93ad-d94fad9a2d06">
+<span class="eqno">(5)<a class="headerlink" href="#equation-7d9fddd5-c77f-4b84-93ad-d94fad9a2d06" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \langle\mathbf{x},\mathbf{y}\rangle &amp;= \sum\limits_{i=1}^Nx_iy_i\notag\\
 &amp;=\mathbf{x^Ty}\tag{3.25}
 \end{align}\]</div>
@@ -1458,24 +1458,24 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{z_j}\)</span>（按顺序）作为列向量的矩阵，<span class="math notranslate nohighlight">\(\mathbf{\Gamma}\)</span> 是值为 <span class="math notranslate nohighlight">\(\hat\gamma_{kj}\)</span> 的上三角矩阵。引入第 <span class="math notranslate nohighlight">\(j\)</span> 个对角元 <span class="math notranslate nohighlight">\(D_{jj}=\Vert \mathbf{z}_j \Vert\)</span> 的对角矩阵 <span class="math notranslate nohighlight">\(\mathbf{D}\)</span>，我们有
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-853547eb-35fd-4f49-94db-e9ecb418d4a5">
-<span class="eqno">(6)<a class="headerlink" href="#equation-853547eb-35fd-4f49-94db-e9ecb418d4a5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba1f1639-5336-4f5d-90cb-fdd446e06d4f">
+<span class="eqno">(6)<a class="headerlink" href="#equation-ba1f1639-5336-4f5d-90cb-fdd446e06d4f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathbf{X}&amp;=\mathbf{ZD^{-1}D\Gamma}\notag\\
 &amp;=\mathbf{QR}\tag{3.31}
 \end{align}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}称为矩阵 $\mathbf{X}$ 的 QR 分解。这里 $\mathbf{Q}$ 为 $N\times (p+1)$ 正交矩阵，$\mathbf{Q^TQ=I}$，并且 $\mathbf{R}$ 为 $(p+1)\times (p+1)$ 上三角矩阵。\\$\mathbf{QR}$ 分解表示了 $\mathbf{X}$ 列空间的一组方便的正交基。举个例子，很容易可以看到，最小二乘的解由下式给出
 \end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-af8ebe00-84b4-4ecc-a7e3-c42cc770de0e">
-<span class="eqno">(7)<a class="headerlink" href="#equation-af8ebe00-84b4-4ecc-a7e3-c42cc770de0e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6208166a-fa4d-4c37-ad93-f58d5a397989">
+<span class="eqno">(7)<a class="headerlink" href="#equation-6208166a-fa4d-4c37-ad93-f58d5a397989" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32}\label{3.32} \\
 \hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}\label{3.33}
 \end{align}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}等式 \eqref{3.32} 很容易求解，因为 $\mathbf{R}$ 为上三角（[练习 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)）\\!!! info &quot;weiya 注：Ex. 3.4&quot;
     已解决，详见 [Issue 72: Ex. 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)。\\## 多重输出\\假设有多重输出 $Y_1,Y_2,\ldots,Y_K$，我们希望通过输入变量 $X_0,X_1,X_2,\ldots,X_p$ 去预测。我们假设对于每一个输出变量有线性模型\end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-4c0c706d-a611-4e07-96c1-74b05a07ad50">
-<span class="eqno">(8)<a class="headerlink" href="#equation-4c0c706d-a611-4e07-96c1-74b05a07ad50" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d20e6455-1990-4927-87ee-fa5b8c528519">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d20e6455-1990-4927-87ee-fa5b8c528519" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y_k&amp;=\beta_{0k}+\sum\limits_{j=1}^pX_j\beta_{jk}+\varepsilon_k \tag{3.34}\label{3.34}\\
 &amp;= f_k(X)+\varepsilon_k \tag{3.35}
 \end{align}\]</div>
@@ -1485,8 +1485,8 @@ Y_k&amp;=\beta_{0k}+\sum\limits_{j=1}^pX_j\beta_{jk}+\varepsilon_k \tag{3.34}\la
 $$</p>
 <p>这里 <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> 为 <span class="math notranslate nohighlight">\(N\times K\)</span> 的响应矩阵，<span class="math notranslate nohighlight">\(ik\)</span> 处值为 <span class="math notranslate nohighlight">\(y_{ik}\)</span>，<span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 为 <span class="math notranslate nohighlight">\(N\times (p+1)\)</span> 的输入矩阵，<span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 为 <span class="math notranslate nohighlight">\((p+1)\times K\)</span> 的系数矩阵 <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> 为 <span class="math notranslate nohighlight">\(N\times K\)</span> 的误差矩阵。单变量损失函数 \eqref{3.2} 的直接推广为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-385e4587-37bc-4f32-97ad-90a248f93d79">
-<span class="eqno">(9)<a class="headerlink" href="#equation-385e4587-37bc-4f32-97ad-90a248f93d79" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-edd60a0e-dfbd-498d-b0d9-013aa07e9186">
+<span class="eqno">(9)<a class="headerlink" href="#equation-edd60a0e-dfbd-498d-b0d9-013aa07e9186" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \RSS(\mathbf{B})&amp;=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{3.37}\label{3.37}\\
 &amp;= \tr[\mathbf{(Y-XB)^T(Y-XB)}]\tag{3.38}
 \end{align}\]</div>

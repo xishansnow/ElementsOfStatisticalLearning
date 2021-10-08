@@ -1194,8 +1194,8 @@
 </div></blockquote>
 <p>我们想要建立数据点的密度模型，然后由于数据点呈现明显的双峰，高斯分布不是合适的选择。这里似乎有两个潜在的分开的形式，所以我们将 <span class="math notranslate nohighlight">\(Y\)</span> 看成两个正态分布混合的模型：
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48d80a37-2048-41e5-8f5f-13894303d589">
-<span class="eqno">(24)<a class="headerlink" href="#equation-48d80a37-2048-41e5-8f5f-13894303d589" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4b4552ac-362d-44d2-99d2-b7f268305f4a">
+<span class="eqno">(23)<a class="headerlink" href="#equation-4b4552ac-362d-44d2-99d2-b7f268305f4a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y_1&amp;\sim N(\mu_1,\sigma^2_1)\notag\\
 Y_2&amp;\sim N(\mu_2,\sigma_2^2)\qquad \qquad \qquad\tag{8.36}\label{8.36}\\
 Y&amp;=(1-\Delta)\cdot Y_1 + \Delta\cdot Y_2\notag
@@ -1216,8 +1216,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 直接对 \)</span>\ell(\theta;\mathbf Z)<span class="math notranslate nohighlight">\( 进行最大化在数值上是很困难的，因为求和项在 \)</span>\log<span class="math notranslate nohighlight">\( 函数里面。然而，这里有一个更简单的方式。我们考虑一个类似 \eqref{8.36} 中取 0 或 1 的潜变量 \)</span>\Delta_i<span class="math notranslate nohighlight">\(：若 \)</span>\Delta_i=1<span class="math notranslate nohighlight">\( 则 \)</span>Y_i<span class="math notranslate nohighlight">\( 来自模型 2，否则来自模型 1。假设我们已经知道了 \)</span>\Delta_i<span class="math notranslate nohighlight">\( 的值。则对数概率为
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80754038-3778-483c-b8ae-ee4232a20b04">
-<span class="eqno">(25)<a class="headerlink" href="#equation-80754038-3778-483c-b8ae-ee4232a20b04" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-27ecdb93-3f3c-4702-ac6f-c8755e42bd40">
+<span class="eqno">(24)<a class="headerlink" href="#equation-27ecdb93-3f3c-4702-ac6f-c8755e42bd40" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell_0(\theta;\bf Z,\bf{\Delta})&amp;=\sum\limits_{i=1}^N[(1-\Delta_i)\log\phi_{\theta_1}(y_i)+\Delta_i\log\phi_{\theta_2}(y_i)]\notag\\
 &amp;+\sum\limits_{i=1}^N[(1-\Delta_i)\log(1-\pi)+\Delta_i\log\pi]\tag{8.40}\label{8.40}
 \end{align}\]</div>
@@ -1278,8 +1278,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 表示成对数似然函数，我们有 \)</span>\ell(\theta’;\mathbf Z)=\ell_0(\theta’;\mathbf T)-\ell_1(\theta’;\mathbf{Z^m\mid Z})<span class="math notranslate nohighlight">\(，其中 \)</span>\ell_1<span class="math notranslate nohighlight">\( 是基于条件密度 \)</span>\Pr(\mathbf{Z^m\mid Z,\theta’})<span class="math notranslate nohighlight">\(。取关于由参数 \)</span>\theta<span class="math notranslate nohighlight">\( 确定的 \)</span>\mathbf{T\mid Z}<span class="math notranslate nohighlight">\( 分布的条件期望有
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee0fdbfc-361c-4412-906d-3bf9c944133e">
-<span class="eqno">(26)<a class="headerlink" href="#equation-ee0fdbfc-361c-4412-906d-3bf9c944133e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3dc3b6d1-87a4-499f-b42a-ce70e643de5a">
+<span class="eqno">(25)<a class="headerlink" href="#equation-3dc3b6d1-87a4-499f-b42a-ce70e643de5a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell(\theta';\mathbf Z)&amp;=\E[\ell_0(\theta';\mathbf T)\mid \mathbf Z,\theta]-\E[\ell_1(\theta';\mathbf{Z^m\mid Z)\mid Z,\theta}]\notag\\
 &amp;\equiv Q(\theta',\theta)-R(\theta',\theta)\qquad\tag{8.46}\label{8.46}
 \end{align}\]</div>
@@ -1310,8 +1310,8 @@ $<span class="math notranslate nohighlight">\(
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/125">Issue 125: Ex. 8.1</a>。</p>
 <p>所以如果 <span class="math notranslate nohighlight">\(\theta'\)</span> 最大化 <span class="math notranslate nohighlight">\(Q(\theta',\theta)\)</span>，我们可以看到
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-01dbc537-d009-457d-992b-92adabd57a2a">
-<span class="eqno">(27)<a class="headerlink" href="#equation-01dbc537-d009-457d-992b-92adabd57a2a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8b918053-d67c-4f6b-8f6e-577d75607b9b">
+<span class="eqno">(26)<a class="headerlink" href="#equation-8b918053-d67c-4f6b-8f6e-577d75607b9b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell(\theta';\mathbf Z) - \ell(\theta;\mathbf Z) &amp;= [Q(\theta',\theta)-Q(\theta,\theta)]-[R(\theta',\theta)-R(\theta,\theta)]\notag\\
 &amp;\ge 0\qquad\qquad\qquad \tag{8.47}
 \end{align}\]</div>

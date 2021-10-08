@@ -1214,8 +1214,8 @@ $<span class="math notranslate nohighlight">\(
 <h2>当图结构已知时估计参数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>从模型中给出一些数据，我们可以怎么估计参数？假设我们有观测 <span class="math notranslate nohighlight">\(x_i=(x_{i1},x_{i2},\ldots,x_{ip})\in\\{0,1\\}^p,i=1,\ldots,N\)</span>。对数似然为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-82a33245-7b9c-4a7c-bc42-a3df39546bb3">
-<span class="eqno">(33)<a class="headerlink" href="#equation-82a33245-7b9c-4a7c-bc42-a3df39546bb3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-121b4724-1eca-414a-9af0-3bba06073d32">
+<span class="eqno">(32)<a class="headerlink" href="#equation-121b4724-1eca-414a-9af0-3bba06073d32" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell(\mathbf\Theta)&amp;=\sum\limits_{i=1}^N\log \Pr\nolimits_{\mathbf\Theta}(X_i=x_i)\notag\\
 &amp;=\sum\limits_{i=1}^N\Big[\sum\limits_{(j,k)\in E}\theta_{jk}x_{ij}x_{ik}-\Phi(\mathbf\Theta) \Big]\tag{17.31}
 \end{align}\]</div>
@@ -1227,8 +1227,8 @@ $$</p>
 $<span class="math notranslate nohighlight">\(
 并且
 \)</span>$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e649c9c4-243f-4b2c-87c9-121d22a34892">
-<span class="eqno">(34)<a class="headerlink" href="#equation-e649c9c4-243f-4b2c-87c9-121d22a34892" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6f446714-ac30-4a9b-9ef5-a51099df7854">
+<span class="eqno">(33)<a class="headerlink" href="#equation-6f446714-ac30-4a9b-9ef5-a51099df7854" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{\partial \Phi(\mathbf\Theta)}{\partial \theta_{jk}}&amp;=\sum\limits_{x\in\cal X}x_jx_k\cdot p(x,\mathbf\Theta)\notag\\
 &amp;=\E_{\mathbf\Theta}(X_jX_k)\tag{17.33}
 \end{align}\]</div>
@@ -1275,8 +1275,8 @@ $<span class="math notranslate nohighlight">\(
 <p>##　隐藏结点</p>
 <p>我们可以通过引入潜在或隐藏结点来增加离散马尔科夫网络的复杂性。假设变量的子集 <span class="math notranslate nohighlight">\(X_{\cal H}\)</span> 是未观测的或者“隐藏的”，并且剩余的变量 <span class="math notranslate nohighlight">\(X_{\cal V}\)</span> 是观测的或者“可见的”。则观测数据的对数似然为
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-70f636dd-5b95-4fb1-9d42-86f0df11ef9b">
-<span class="eqno">(35)<a class="headerlink" href="#equation-70f636dd-5b95-4fb1-9d42-86f0df11ef9b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-29cff76a-d837-4745-a9a2-68d761ef2746">
+<span class="eqno">(34)<a class="headerlink" href="#equation-29cff76a-d837-4745-a9a2-68d761ef2746" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \ell(\mathbf\Theta)&amp;=\sum_{i=1}^N\mathrm{log}[\Pr\nolimits_{\mathbf\Theta}(X_{\cal V}=x_{i\cal V})]\notag\\
 &amp;=\sum_{i=1}^N\left[\mathrm{log}\sum\limits_{x_{\cal H}\in{\cal X_H}}\exp\sum\limits_{(j,k)\in E}(\theta_{jk}x_{ij}x_{jk}-\Phi(\mathbf\Theta))\right]\tag{17.36}
 \end{align}\]</div>
