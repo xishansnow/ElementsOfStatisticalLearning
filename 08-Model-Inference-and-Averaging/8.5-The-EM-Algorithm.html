@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8.5 EM 算法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -54,9 +54,12 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8.6 从后验分布采样的 MCMC" href="8.6-MCMC-for-Sampling-from-the-Posterior.html" />
-    <link rel="prev" title="8.4 自助法和贝叶斯推断之间的关系" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html" />
+    <link rel="prev" title="8.3 贝叶斯方法" href="8.3-Bayesian-Methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -1170,13 +1158,13 @@
         
               <div>
                 
-  <div class="section" id="em">
+  <div class="tex2jax_ignore mathjax_ignore section" id="em">
 <h1>8.5 EM 算法<a class="headerlink" href="#em" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>EM 算法是简化复杂极大似然问题的一种很受欢迎的工具。我们首先在一个简单的混合模型中讨论它。</p>
 <div class="section" id="id1">
 <h2>两个组分的混合模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>这一节我们描述一个密度估计的简单混合模型，以及对应的求解极大似然估计的 EM 算法。这与贝叶斯推断中的 Gibbs 取样方法有着本质的联系。混合模型在本书其他部分的章节有讨论，特别是 <span class="xref myst">6.8</span>，<span class="xref myst">12.7</span> 和 <span class="xref myst">13.2.3 节</span>。</p>
+<p>这一节我们描述一个密度估计的简单混合模型，以及对应的求解极大似然估计的 EM 算法。这与贝叶斯推断中的 Gibbs 采样方法有着本质的联系。混合模型在本书其他部分的章节有讨论，特别是 <span class="xref myst">6.8</span>，<span class="xref myst">12.7</span> 和 <span class="xref myst">13.2.3 节</span>。</p>
 <div class="admonition-gibbs-sampling admonition">
 <p class="admonition-title">Gibbs sampling</p>
 <p>假设我们需要从 <span class="math notranslate nohighlight">\(\mathbf X=(x_1,x_2,\ldots,x_n)\)</span> 中得到 <span class="math notranslate nohighlight">\(k\)</span> 个样本，联合分布为 <span class="math notranslate nohighlight">\(p(x_1,x_2,\ldots,x_n)\)</span>。</p>
@@ -1204,7 +1192,7 @@ Y_1&amp;\sim N(\mu_1,\sigma^2_1)\\
 Y_2&amp;\sim N(\mu_2,\sigma_2^2)\qquad \qquad \qquad\tag{8.36}\\
 Y&amp;=(1-\Delta)\cdot Y_1 + \Delta\cdot Y_2
 \end{align*}\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\Delta\in \{0,1\}\)</span>，且 <span class="math notranslate nohighlight">\(\Pr(\Delta =1)=\pi\)</span>。产生过程是很显然的：以概率 <span class="math notranslate nohighlight">\(\pi\)</span> 产生 <span class="math notranslate nohighlight">\(\Delta\in\{0,1\}\)</span>，然后根据输出结果，分配给 <span class="math notranslate nohighlight">\(Y_1\)</span> 或 <span class="math notranslate nohighlight">\(Y_2\)</span>。令 <span class="math notranslate nohighlight">\(\phi_{\theta}(x)\)</span> 记为参数为<span class="math notranslate nohighlight">\(\theta=(\mu,\sigma^2)\)</span> 的正态分布。则 <span class="math notranslate nohighlight">\(Y\)</span> 的密度为</p>
+<p>其中 <span class="math notranslate nohighlight">\(\Delta\in \{0,1\}\)</span>，且 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\Delta =1)=\pi\)</span>。产生过程是很显然的：以概率 <span class="math notranslate nohighlight">\(\pi\)</span> 产生 <span class="math notranslate nohighlight">\(\Delta\in\{0,1\}\)</span>，然后根据输出结果，分配给 <span class="math notranslate nohighlight">\(Y_1\)</span> 或 <span class="math notranslate nohighlight">\(Y_2\)</span>。令 <span class="math notranslate nohighlight">\(\phi_{\theta}(x)\)</span> 记为参数为<span class="math notranslate nohighlight">\(\theta=(\mu,\sigma^2)\)</span> 的正态分布。则 <span class="math notranslate nohighlight">\(Y\)</span> 的密度为</p>
 <div class="math notranslate nohighlight">
 \[
 g_Y(y)=(1-\pi)\phi_{\theta_1}(y)+\pi\phi_{\theta_2}(y)\tag{8.37}
@@ -1241,7 +1229,7 @@ $$
 <p>因为 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值实际上是不知道的，我们用一种迭代方式，替换 \eqref{8.40} 中的每个 <span class="math notranslate nohighlight">\(\Delta_i\)</span>，它的期望值</p>
 <div class="math notranslate nohighlight">
 \[
-\gamma_i(\theta)=\mathbb{E}(\Delta_i\mid\theta,\mathbf Z)=\Pr(\Delta_i=1\mid \theta,\mathbf Z)\tag{8.41}
+\gamma_i(\theta)=\mathbb{E}(\Delta_i\mid\theta,\mathbf Z)=\mathrm{Pr}(\Delta_i=1\mid \theta,\mathbf Z)\tag{8.41}
 \]</div>
 <p>也称为模型 2 对于每个观测 <span class="math notranslate nohighlight">\(i\)</span> 的责任 (responsibility)。我们用一种称作 EM 算法（算法 8.1 中给出）的过程来求解这个特殊的高斯混合模型。在期望 (expectation) 这一步，我们对每一个模型的每一个观测做一个软赋值：根据每个模型下训练集点的相对密度，参数的当前估计用来给 responsibilities 赋值。在最大化(maximization) 那一步，对极大似然估计中使用的 responsibilities 进行加权用来更新参数估计。</p>
 <p>构造初始的 <span class="math notranslate nohighlight">\(\hat\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\hat\mu_2\)</span> 的一种很好的方式便是简单地随机选择 <span class="math notranslate nohighlight">\(y_i\)</span> 中的两个值。<span class="math notranslate nohighlight">\(\hat\sigma^2_1\)</span> 和 <span class="math notranslate nohighlight">\(\hat\sigma^2_2\)</span> 都等于整体的样本方差 <span class="math notranslate nohighlight">\(\sum_{i=1}^N(y_i-\bar y)^2/N\)</span>。最大比例的 <span class="math notranslate nohighlight">\(\hat\pi\)</span> 可以从 0.5 开始。</p>
@@ -1274,14 +1262,14 @@ $$
 <p>因为</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\mathbf Z^m\mid \mathbf Z,\theta')=\frac{\Pr(\mathbf Z^m,\mathbf Z\mid \theta')}{\Pr(\mathbf Z\mid \theta')}\tag{8.44}
+\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')=\frac{\mathrm{Pr}(\mathbf Z^m,\mathbf Z\mid \theta')}{\mathrm{Pr}(\mathbf Z\mid \theta')}\tag{8.44}
 \]</div>
 <p>我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\mathbf Z\mid \theta')=\frac{\Pr(\mathbf T\mid \theta')}{\Pr(\mathbf Z^m\mid \mathbf Z,\theta')}\tag{8.45}
+\mathrm{Pr}(\mathbf Z\mid \theta')=\frac{\mathrm{Pr}(\mathbf T\mid \theta')}{\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')}\tag{8.45}
 \]</div>
-<p>表示成对数似然函数，我们有 <span class="math notranslate nohighlight">\(\ell(\theta';\mathbf Z)=\ell_0(\theta';\mathbf T)-\ell_1(\theta';\mathbf{Z^m\mid Z})\)</span>，其中 <span class="math notranslate nohighlight">\(\ell_1\)</span> 是基于条件密度 <span class="math notranslate nohighlight">\(\Pr(\mathbf{Z^m\mid Z,\theta'})\)</span>。取关于由参数 <span class="math notranslate nohighlight">\(\theta\)</span> 确定的 <span class="math notranslate nohighlight">\(\mathbf{T\mid Z}\)</span> 分布的条件期望有</p>
+<p>表示成对数似然函数，我们有 <span class="math notranslate nohighlight">\(\ell(\theta';\mathbf Z)=\ell_0(\theta';\mathbf T)-\ell_1(\theta';\mathbf{Z^m\mid Z})\)</span>，其中 <span class="math notranslate nohighlight">\(\ell_1\)</span> 是基于条件密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mathbf{Z^m\mid Z,\theta'})\)</span>。取关于由参数 <span class="math notranslate nohighlight">\(\theta\)</span> 确定的 <span class="math notranslate nohighlight">\(\mathbf{T\mid Z}\)</span> 分布的条件期望有</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \ell(\theta';\mathbf Z)&amp;=\mathbb{E}[\ell_0(\theta';\mathbf T)\mid \mathbf Z,\theta]-\mathbb{E}[\ell_1(\theta';\mathbf{Z^m\mid Z)\mid Z,\theta}]\\
@@ -1304,14 +1292,14 @@ $$
 \[
 F(\theta',\tilde P) = \mathbb{E}_{\tilde P}[\ell_0(\theta';\mathbf T)] - \mathbb{E}_{\tilde P}[\log\tilde P(\mathbf Z^m)]\tag{8.48}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 是潜在数据 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span> 的任意分布。在混合例子中，<span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 构成了概率 <span class="math notranslate nohighlight">\(\gamma_i=\Pr(\Delta_i=1\mid \theta,\mathbf Z)\)</span> 的集合。注意到从 \eqref{8.46} 式看，<span class="math notranslate nohighlight">\(F\)</span> 是观测数据的对数似然函数（在 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\Pr(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 上取值）。函数 <span class="math notranslate nohighlight">\(F\)</span> 扩大了对数似然的定义域来，使得能够进行最大化。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 是潜在数据 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span> 的任意分布。在混合例子中，<span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 构成了概率 <span class="math notranslate nohighlight">\(\gamma_i=\mathrm{Pr}(\Delta_i=1\mid \theta,\mathbf Z)\)</span> 的集合。注意到从 \eqref{8.46} 式看，<span class="math notranslate nohighlight">\(F\)</span> 是观测数据的对数似然函数（在 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 上取值）。函数 <span class="math notranslate nohighlight">\(F\)</span> 扩大了对数似然的定义域来，使得能够进行最大化。</p>
 <p>EM 算法可以看成 <span class="math notranslate nohighlight">\(F\)</span> 关于 <span class="math notranslate nohighlight">\(\theta'\)</span> 和 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 的联合最大化，通过固定一个变量来最大化另外一个变量。固定 <span class="math notranslate nohighlight">\(\theta'\)</span> 来对 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 最大化可以证明是</p>
 <div class="math notranslate nohighlight">
 \[
-\tilde P(\mathbf Z^m) = \Pr(\mathbf Z^m\mid \mathbf Z,\theta')\tag{8.49}
+\tilde P(\mathbf Z^m) = \mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')\tag{8.49}
 \]</div>
 <p>这是在求期望的步骤 E 计算得到的分布，举个例子，如在混合的例子中计算得到的 <span class="math notranslate nohighlight">\((8.42)\)</span>。在 M 步骤时，我们固定 <span class="math notranslate nohighlight">\(\tilde P\)</span> 来对 <span class="math notranslate nohighlight">\(\theta'\)</span> 最大化 <span class="math notranslate nohighlight">\(F(\theta',\tilde P)\)</span>：因为第二项不涉及 <span class="math notranslate nohighlight">\(\theta'\)</span>，所以这与最大化第一项 <span class="math notranslate nohighlight">\(\mathbb{E}_{\tilde P}[\ell_0(\theta';\mathbf T)\mid \mathbf Z,\theta]\)</span> 是一样的。</p>
-<p>最后，因为当 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\Pr(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 时，<span class="math notranslate nohighlight">\(F(\theta',\tilde P)\)</span> 和观测数据的对数似然函数是一致的，对前者的最大化也实现了对后者的最大化。图 8.7 展现了这一过程的示意图。</p>
+<p>最后，因为当 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 时，<span class="math notranslate nohighlight">\(F(\theta',\tilde P)\)</span> 和观测数据的对数似然函数是一致的，对前者的最大化也实现了对后者的最大化。图 8.7 展现了这一过程的示意图。</p>
 <p><img alt="" src="../_images/fig8.7.png" /></p>
 <blockquote>
 <div><p>图 8.7. EM 算法的最大化-最大化角度。图中画出了（增广）观测数据对数似然函数 <span class="math notranslate nohighlight">\(F(\theta',\tilde P)\)</span> 的等高线。步骤 E 等价于在潜在数据分布的参数上最大化对数似然函数。步骤 M 在对数似然参数上进行最大化。红色曲线对应观测数据的对数似然函数，这是对每个 <span class="math notranslate nohighlight">\(\theta'\)</span> 值进行最大化 <span class="math notranslate nohighlight">\(F(\theta',\tilde P)\)</span> 得到的曲线。</p>
@@ -1345,31 +1333,22 @@ F(\theta',\tilde P) = \mathbb{E}_{\tilde P}[\ell_0(\theta';\mathbf T)] - \mathbb
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">8.4 自助法和贝叶斯推断之间的关系</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="8.3-Bayesian-Methods.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">8.3 贝叶斯方法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8.6-MCMC-for-Sampling-from-the-Posterior.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8.6 从后验分布采样的 MCMC</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="8.6-MCMC-for-Sampling-from-the-Posterior.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">8.6 从后验分布采样的 MCMC</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1390,8 +1369,7 @@ F(\theta',\tilde P) = \mathbb{E}_{\tilde P}[\ell_0(\theta';\mathbf T)] - \mathbb
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

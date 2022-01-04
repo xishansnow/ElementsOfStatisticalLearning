@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>12.2 支持向量分类器 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="12.3 支持向量机和核" href="12.3-Support-Vector-Machines-and-Kernels.html" />
     <link rel="prev" title="12.1 导言" href="12.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,7 +1153,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>12.2 支持向量分类器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>!!! note “更新笔记”
 &#64;2017.10.15 关于SVM的具体应用，我写了一篇博客展示了使用R来实现SVM分类，以及通过ROC、AUC来评估分类的好坏。博客链接为<a class="reference external" href="https://stats.hohoweiya.xyz//2017/05/18/Support-Vector-Classifier/">Illustrations of Support Vector Machines</a></p>
@@ -1173,15 +1161,15 @@
 </pre></div>
 </div>
 <p><span class="xref myst">第 4 章</span>中我们讨论了在两个可分类别之间构造一个最优的分离超平面。我们先复习一下，然后推广到不可分的情形下（类别可能不会被线性边界分离）。</p>
-<p>我们的训练数据包含 <span class="math notranslate nohighlight">\(N\)</span> 对数据点 <span class="math notranslate nohighlight">\((x_1,y_1),(x_2,y_2),\ldots,(x_N,y_N)\)</span>，其中 <span class="math notranslate nohighlight">\(x_i\in \IR^p,y_i\in \\{-1,1\\}\)</span>。定义超平面</p>
+<p>我们的训练数据包含 <span class="math notranslate nohighlight">\(N\)</span> 对数据点 <span class="math notranslate nohighlight">\((x_1,y_1),(x_2,y_2),\ldots,(x_N,y_N)\)</span>，其中 <span class="math notranslate nohighlight">\(x_i\in \mathbb{R}^p,y_i\in \\{-1,1\\}\)</span>。定义超平面</p>
 <div class="math notranslate nohighlight">
 \[
-\{x:f(x)=x^T\beta+\beta_0=0\}\tag{12.1}\label{12.1}
+\{x:f(x)=x^T\beta+\beta_0=0\}\tag{12.1}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\beta\)</span> 是单位向量 <span class="math notranslate nohighlight">\(\Vert \beta\Vert=1\)</span>。由 <span class="math notranslate nohighlight">\(f(x)\)</span> 导出的分类准则为</p>
 <div class="math notranslate nohighlight">
 \[
-G(x)=\sign[x^T\beta+\beta_0]\tag{12.2}
+G(x)=\mathrm{sign}[x^T\beta+\beta_0]\tag{12.2}
 \]</div>
 <p>超平面的结构在 <span class="xref myst">4.5 节</span>有讨论，我们证明了 \eqref{12.1} 中的 <span class="math notranslate nohighlight">\(f(x)\)</span> 给出了点 <span class="math notranslate nohighlight">\(x\)</span> 到超平面 <span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0=0\)</span> 的符号距离。因为类别是可分的，则我们可以找到一个函数<span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0\)</span>，满足<span class="math notranslate nohighlight">\(y_if(x_i)&gt;0,\forall i\)</span>。因此我们可以找到超平面在类别 1 和 -1 的训练点之间创造最大的 margin（图12.1）。</p>
 <p><img alt="" src="../_images/fig12.1.png" /></p>
@@ -1195,7 +1183,7 @@ G(x)=\sign[x^T\beta+\beta_0]\tag{12.2}
 \underset{\beta,\beta_0,\Vert \beta\Vert=1}{\max}\; M\\
 s.t.\;y_i(x_i^T\beta+\beta_0)\ge M,\;i=1,\ldots,N,
 \end{array}
-\tag{12.3}\label{12.3}
+\tag{12.3}
 \end{split}\]</div>
 <p>图中的条纹宽度为<span class="math notranslate nohighlight">\(M\)</span>，它是分离超平面到其中一边的距离，因此总共宽度为 <span class="math notranslate nohighlight">\(2M\)</span>。这称为 <strong>margin</strong>。</p>
 <p>我们已经证明了这个问题可以更方便地写成</p>
@@ -1205,7 +1193,7 @@ s.t.\;y_i(x_i^T\beta+\beta_0)\ge M,\;i=1,\ldots,N,
 &amp;\underset{\beta,\beta_0}{\min}\;\Vert\beta\Vert\\
 s.t.&amp;\; y_i(x_i^T\beta+\beta_0)\ge 1,\; i=1,\ldots,N
 \end{array}
-\tag{12.4}\label{12.4}
+\tag{12.4}
 \end{split}\]</div>
 <p>我们删掉了对于 <span class="math notranslate nohighlight">\(\beta\)</span> 模长的约束。注意到 <span class="math notranslate nohighlight">\(M=1/\Vert\beta\Vert\)</span>。表达式 \eqref{12.4} 是稀疏数据的支持向量准则的通常形式。这是一个凸优化问题（二次准则，线性不等约束），解在 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes/index.html#452">4.5.2 节</a>已经讨论了。</p>
 <p>假设在特征空间中类别有重叠。一种处理重叠的方式仍然是最大化 <span class="math notranslate nohighlight">\(M\)</span>，但是只允许一些点在边缘空白的错误一侧。定义松弛变量 <span class="math notranslate nohighlight">\(\xi=(\xi_1,\xi_2,\ldots,\xi_N)\)</span>。有两种自然的方式去修改 \eqref{12.3} 中的约束：</p>
@@ -1216,7 +1204,7 @@ y_i(x_i^T\beta+\beta_0)\ge M-\xi_i\tag{12.5}
 <p>或者</p>
 <div class="math notranslate nohighlight">
 \[
-y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}\label{12.6}
+y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}
 \]</div>
 <p><span class="math notranslate nohighlight">\(\forall i,\xi_i\ge 0,\sum_{i=1}^N\xi_i\le constant\)</span>。这两个选择会导出不同的解。第一个选择似乎更加自然，因为它衡量了到 margin 的实际距离；第二个选择衡量了相对距离，它会随着 margin 的宽度 <span class="math notranslate nohighlight">\(M\)</span> 的改变而改变。然而，第一个选择是一个非凸的优化问题，而第二个是凸的；因此 \eqref{12.6} 导出标准的支持向量分类器，我们从这里开始使用它。</p>
 <p>下面介绍该想法的形成过程。约束条件 <span class="math notranslate nohighlight">\(y_i(x_i^T\beta+\beta_0)\ge M(1-\xi_i)\)</span> 中的 <span class="math notranslate nohighlight">\(\xi_i\)</span> 与通过 <span class="math notranslate nohighlight">\(f(x_i)=x_i^T\beta+\beta_0\)</span> 预测得到的错误分类总数成比例。因此通过约束 <span class="math notranslate nohighlight">\(\sum\xi_i\)</span>，我们约束了错误预测总数的比例。当 <span class="math notranslate nohighlight">\(\xi_i&gt;1\)</span> 则为错误分类，所以在 <span class="math notranslate nohighlight">\(K\)</span> 的水平下约束 <span class="math notranslate nohighlight">\(\sum\xi_i\)</span> 表示为限制训练集中错分类个数小于 <span class="math notranslate nohighlight">\(K\)</span>.</p>
@@ -1225,14 +1213,14 @@ y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}\label{12.6}
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
     \underset{\beta,\beta_0}{\min}&amp;\frac{1}{2}\Vert\beta\Vert^2\\
-    \st &amp; y_i(x_i^T\beta+\beta_0)\ge 1 \; i=1,\ldots,N 
+    \mathrm{st}&amp; y_i(x_i^T\beta+\beta_0)\ge 1 \; i=1,\ldots,N 
     \end{align*}
-    \tag{4.48}\label{4.48}
+    \tag{4.48}
     \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \min\;\Vert\beta\Vert\qquad s.t.\;\left\{\begin{array}{ll}y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i\;\forall i,\\
-\xi_i\ge 0,\sum\xi_i\le constant.\end{array}\right.\tag{12.7}\label{12.7}
+\xi_i\ge 0,\sum\xi_i\le constant.\end{array}\right.\tag{12.7}
 \end{split}\]</div>
 <p>这是非分离情形下支持向量分类器定义的通常方式。然而我们会对约束 <span class="math notranslate nohighlight">\(y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i\)</span> 中的固定常数 1 感到困惑，更喜欢使用 \eqref{12.6} 式。图12.1的右图说明了重叠的情形。</p>
 <p>从准则 \eqref{12.7} 可以看出，在类别里面的点不会对边界的形成有太大的影响。这似乎是个很吸引人的性质，这与线性判别边界（<span class="xref myst">4.3 节</span>）不同。LDA 中，判别边界是由类别的分布的协方差和重心来决定。我们将在 <span class="xref myst">12.3.3 节</span> 看到逻辑斯蒂回归在这点上很像。</p>
@@ -1245,32 +1233,32 @@ $<span class="math notranslate nohighlight">\(
 \underset{\beta,\beta_0}{\min}&amp;\;\frac{1}{2}\Vert\beta\Vert^2+C\sum\limits_{i=1}^N\xi_i\\
 s.t.&amp; \xi_i\ge 0\;,y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i,\forall i
 \end{array}
-\tag{12.8}\label{12.8}
+\tag{12.8}
 \end{split}\]</div>
 <p>其中“代价”参数 <span class="math notranslate nohighlight">\(C\)</span> 替换 \eqref{12.7} 中的常数；可分情况下对应 <span class="math notranslate nohighlight">\(C=\infty\)</span>.</p>
 <p>Lagrange 函数（原问题）为</p>
 <div class="math notranslate nohighlight">
 \[
-L_P=\frac{1}{2}\Vert\beta\Vert^2+C\sum\limits_{i=1}^N\xi_i-\sum\limits_{i=1}^N\alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]-\sum\limits_{i=1}^{N}\mu_i\xi_i\tag{12.9}\label{12.9}
+L_P=\frac{1}{2}\Vert\beta\Vert^2+C\sum\limits_{i=1}^N\xi_i-\sum\limits_{i=1}^N\alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]-\sum\limits_{i=1}^{N}\mu_i\xi_i\tag{12.9}
 \]</div>
 <p>我们需要求关于 <span class="math notranslate nohighlight">\(\beta,\beta_0\)</span> 和 <span class="math notranslate nohighlight">\(\xi_i\)</span> 的最小值。令对应的微分为 0，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\beta&amp;=\sum\limits_{i=1}^N\alpha_iy_ix_i&amp; \tag{12.10}\label{12.10}\\
+\beta&amp;=\sum\limits_{i=1}^N\alpha_iy_ix_i&amp; \tag{12.10}\\
 0&amp;= \sum\limits_{i=1}^N\alpha_iy_i&amp; \tag{12.11}\\
-\alpha_i&amp;=C-\mu_i,\;\forall i,&amp; \tag{12.12}\label{12.12}
+\alpha_i&amp;=C-\mu_i,\;\forall i,&amp; \tag{12.12}
 \end{align*}
 \end{split}\]</div>
 <p>同样有正值约束 <span class="math notranslate nohighlight">\(\alpha_i,\mu_i,\xi_i\ge 0\;\forall i\)</span>。把 \eqref{12.10}-\eqref{12.12} 代入 \eqref{12.9}，我们得到 Lagrangian(Wolfe) 对偶目标函数</p>
 <div class="math notranslate nohighlight">
 \[
-L_D = \sum\limits_{i=1}^N\alpha_i-\frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^N\alpha_i\alpha_{i'}y_iy_{i'}x_i^Tx_{i'}\tag{12.13}\label{12.13}
+L_D = \sum\limits_{i=1}^N\alpha_i-\frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^N\alpha_i\alpha_{i'}y_iy_{i'}x_i^Tx_{i'}\tag{12.13}
 \]</div>
 <p>!!! note “weiya注：对偶问题”
 对于无等值约束的优化问题</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-\underset{x\in\IR^n}{\min}f(x)\; \st c_i(x)\ge 0,\; i=1,2,\ldots,m
+\underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{st}c_i(x)\ge 0,\; i=1,2,\ldots,m
 $$
 
 记
@@ -1279,13 +1267,13 @@ c(x)\def(c_1(x), c_2(x),\ldots, c_m(x))^T
 $$
 则原问题写为
 $$
-\underset{x\in\IR^n}{\min}f(x)\; \st c(x)\ge 0
+\underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{st}c(x)\ge 0
 $$
 Lagrangian函数为
 $$
 {\mathcal L}(x,\lambda)=f(x)-\lambda^Tc(x)
 $$
-定义对偶目标函数$q:\IR^n\rightarrow \IR$：
+定义对偶目标函数$q:\mathbb{R}^n\rightarrow \mathbb{R}$：
 $$
 q(\lambda)\def\underset{x}{\inf}\mathcal L(x,\lambda)
 $$
@@ -1302,9 +1290,9 @@ $$
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]&amp;=0&amp; \tag{12.14}\label{12.14}\\
-\mu_i\xi_i&amp;=0&amp; \tag{12.15}\label{12.15}\\
-y_i(x_i^T\beta+\beta_0)-(1-\xi_i)&amp;\ge 0&amp; \tag{12.16}\label{12.16}
+\alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]&amp;=0&amp; \tag{12.14}\\
+\mu_i\xi_i&amp;=0&amp; \tag{12.15}\\
+y_i(x_i^T\beta+\beta_0)-(1-\xi_i)&amp;\ge 0&amp; \tag{12.16}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}!!! note &quot;weiya 注：KKT 条件&quot;
@@ -1321,8 +1309,8 @@ $$</p>
 <p>给定解 <span class="math notranslate nohighlight">\(\hat\beta_0\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span>，判别函数可以写成
 $<span class="math notranslate nohighlight">\(
 \begin{array}{ll}
-\hat G(x)&amp;=\sign[\hat f(x)]\\
-&amp;=\sign[x^T\hat\beta+\hat\beta_0]\tag{12.18}
+\hat G(x)&amp;=\mathrm{sign}[\hat f(x)]\\
+&amp;=\mathrm{sign}[x^T\hat\beta+\hat\beta_0]\tag{12.18}
 \end{array}
 \)</span><span class="math notranslate nohighlight">\(
 这个过程的调整参数是代价参数 \)</span>C$。</p>
@@ -1372,31 +1360,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="12.1-Introduction.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">12.1 导言</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="12.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">12.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="12.3-Support-Vector-Machines-and-Kernels.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">12.3 支持向量机和核</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="12.3-Support-Vector-Machines-and-Kernels.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">12.3 支持向量机和核</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1417,8 +1396,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

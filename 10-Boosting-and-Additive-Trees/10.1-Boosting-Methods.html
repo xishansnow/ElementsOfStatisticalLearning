@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.1 boosting方法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.2 Boosting 拟合可加模型" href="10.2-Boosting-Fits-an-Additive-Model.html" />
     <link rel="prev" title="第十章 提升方法和加法树" href="10.0-Overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,11 +1148,11 @@
         
               <div>
                 
-  <div class="section" id="boosting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.1 boosting方法<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <p>!!! note “更新笔记”
 &#64;2017.08.26 很早以前，略读了杨灿学长的<a class="reference external" href="https://cosx.org/2011/12/stories-about-statistical-learning/">《统计学习那些事》</a>，但其实没什么感受，因为当时也没看到 boosting，对 lasso 了解也不多。而当我早早完成 boosting 的翻译后，又一直搁着没有再次阅读学长的文章。杨灿学长用风趣的笔墨从 lasso 和 boosting 的发展来看统计学习的那些事，个人觉得对于了解统计大佬们开创这些“绝世武功”的历史进程是很有帮助的。杨灿学长的<a class="reference external" href="https://cosx.org/2014/04/lmmandme">《昔日因，今日意》</a>和<a class="reference external" href="https://cosx.org/2012/05/chase-after-eb/">《那些年，我们一起追的 EB》</a>，我也是非常喜欢的，相信看了这么有趣的标题，不去拜读都不行啊hhh:grinning:在今年北京 R 会议上还听了杨灿学长的汇报，报告的主题也是跟 boosting 有关，当时还激动地跟他互动了一下，提了几个问题 :raised_hand:。也是从那时候才知道，杨灿学长原来还是校友。</p>
-<p>Boosting 是最近 20 年内提出的最有力的学习方法。最初是为了分类问题而设计的，但是我们将在这章中看到，它也可以很好地扩展到回归问题上。Boosting的动机是集合许多弱学习的结果来得到有用的“committee”。从这点看 boosting 与 bagging 以及其他的基于 committee 的方式（<span class="xref myst">8.8 节</span>）类似。然而，我们应该看到这种联系最多是表面上的，boosting 在根本上存在不同。</p>
+<p>Boosting 是最近 20 年内提出的最有力的学习方法。最初是为了分类问题而设计的，但是我们将在这章中看到，它也可以很好地扩展到回归问题上。Boosting的动机是集合许多弱学习的结果来得到有用的“committee”。从这点看 boosting 与 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 以及其他的基于 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 的方式（<span class="xref myst">8.8 节</span>）类似。然而，我们应该看到这种联系最多是表面上的，boosting 在根本上存在不同。</p>
 <p>我们以最流行的被称为 “AdaBoost.M1” 的 boosting 算法开始，这归功于 Freund and Schapire (1997)<a class="footnote-reference brackets" href="#id5" id="id1">1</a>。考虑两个类别的分类问题，输出变量编码为 <span class="math notranslate nohighlight">\(Y\in\\{-1,1\\}\)</span>。给定预报向量 <span class="math notranslate nohighlight">\(X\)</span>，分类器 <span class="math notranslate nohighlight">\(G(X)\)</span> 在二值 <span class="math notranslate nohighlight">\(\\{-1,1\\}\)</span> 中取一个值得到一个预测。在训练样本上的误差率是</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1174,7 +1162,7 @@
 <p>弱分类器是误差率仅仅比随机猜测要好一点的分类器。Boosting 的目的是依次对反复修改的数据应用弱分类器算法，因此得到弱分类器序列 <span class="math notranslate nohighlight">\(G_m(x),m=1,2,\ldots,M\)</span> 根据它们得到的预测再通过一个加权来得到最终的预测</p>
 <div class="math notranslate nohighlight">
 \[
-G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}\label{10.1}
+G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\alpha_1,\alpha_2,\ldots,\alpha_M\)</span> 通过 boosting 算法进行计算，它们对每个单独的 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的贡献度赋予权重。它们的作用是赋予分类器序列中更精确的分类器更大的影响力。图 10.1 显示了 AdaBoost 过程的概要图。</p>
 <p><img alt="" src="../_images/fig10.1.png" /></p>
@@ -1194,7 +1182,7 @@ Y=
 -1 &amp; \text{otherwise}
 \end{array}
 \right.
-\tag{10.2}\label{10.2}
+\tag{10.2}
 \)</span><span class="math notranslate nohighlight">\(
 这里 \)</span>\chi_{10}^2(0.5)=9.34<span class="math notranslate nohighlight">\( 是自由度为 10 的卡方随机变量的中位数（10 个标准的高斯分布的平方和）。有 2000 个训练样本，每个类别大概有 1000 个样本，以及 10000 个测试观测。这里的弱分类器仅仅是一个“stump”：含两个终止结点的分类树。仅仅对训练数据应用分类器会得到非常差的测试集误差率（45.8%），与 50% 的随机猜测相差不多。然而，当不断进行 boosting 迭代，误差率将稳定下降，直到 400 次迭代之后达到 5.8%。因此，对这一简单的非常弱的分类器进行boosting，其预测误差率可以几乎降低四分之一。它也比单个的大规模分类树（误差率为 24.7%）表现得要好。自从它的提出，有很多理论来解释 AdaBoost 能成功得到正确分类器。很多工作集中在用分类树作为“基学习者(base learner)”\)</span>G(x)$，改善经常是非常显著的。事实上，Breiman(NIPS Workshop，1996) 将树的 AdaBoost 称为“世界上最好的现成分类器”(best off-the-shelf classifier in the world)。这对于数据挖掘方面的应用尤其如此，本章的后面将更全面地讨论。</p>
 <p><img alt="" src="../_images/fig10.2.png" /></p>
@@ -1250,31 +1238,22 @@ Y=
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.0-Overview.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">第十章 提升方法和加法树</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.0-Overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">第十章 提升方法和加法树</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.2-Boosting-Fits-an-Additive-Model.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.2 Boosting 拟合可加模型</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.2-Boosting-Fits-an-Additive-Model.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.2 Boosting 拟合可加模型</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1295,8 +1274,7 @@ Y=
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

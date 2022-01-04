@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>16.2 Boosting 和正则化路径 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="16.3 学习集成" href="16.3-Learning-Ensembles.html" />
     <link rel="prev" title="16.1 导言" href="16.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,7 +1158,7 @@
         
               <div>
                 
-  <div class="section" id="boosting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>16.2 Boosting 和正则化路径<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <p>在<a class="reference external" href="https://www.springer.com/gp/book/9780387216065">这本书第一版</a>的第 10.12.2 节中，我们表明了由 <strong>gradient boosting</strong> 算法产生的模型序列与在高维特征空间中正则化模型是相似的。这最初是通过观测到 boosted 版本的线性模型和 lasso 之间（<span class="xref myst">第 3.4.2 节</span>）有着紧密联系得到的。我们和其他人一起研究这些联系，并且在这里放上我们对这个领域当前的思考。我们从最初的动机开始，这更自然地适合于本章的 <strong>集成学习 (ensemble learning)</strong>。</p>
 <div class="section" id="id1">
@@ -1178,24 +1166,24 @@
 <p><strong>Gradient boosting</strong> 的收缩策略 \eqref{10.41} 的成功直觉上可以通过类比含有很多基展开的带惩罚的线性回归得到。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}\label{10.41}
+    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}
     \)</span>$</p>
-<p>考虑所有可能的 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树 <span class="math notranslate nohighlight">\(\mathcal T=\{T_k\}\)</span> 的字典作为 <span class="math notranslate nohighlight">\(\IR^p\)</span> 的基函数，这在训练数据上可以实现。线性模型为</p>
+<p>考虑所有可能的 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树 <span class="math notranslate nohighlight">\(\mathcal T=\{T_k\}\)</span> 的字典作为 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 的基函数，这在训练数据上可以实现。线性模型为</p>
 <div class="math notranslate nohighlight">
 \[
-f(x)=\sum\limits_{k=1}^K\alpha_kT_k(x)\tag{16.1}\label{16.1}
+f(x)=\sum\limits_{k=1}^K\alpha_kT_k(x)\tag{16.1}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(K=\mathrm{card}(\mathcal T)\)</span>。假设系数通过最小二乘进行估计。因为这些树的个数可能比最大训练集还要大很多，所以需要一些正则化。令 <span class="math notranslate nohighlight">\(\hat\alpha(\lambda)\)</span> 是下式的解</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\alpha}{\min}\left\{\sum\limits_{i=1}^N(y_i-\sum\limits_{k=1}^K\alpha_kT_k(x_i))^2+\lambda\cdot J(\alpha)\right\}\tag{16.2}\label{16.2}
+\underset{\alpha}{\min}\left\{\sum\limits_{i=1}^N(y_i-\sum\limits_{k=1}^K\alpha_kT_k(x_i))^2+\lambda\cdot J(\alpha)\right\}\tag{16.2}
 \]</div>
 <p><span class="math notranslate nohighlight">\(J(\alpha)\)</span> 是关于系数的函数，并且一般惩罚较大的值。比如</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 J(\alpha) &amp;=\sum\limits_{k=1}^K\vert \alpha_k\vert^2\qquad \text{岭回归}\tag{16.3}\\
-J(\alpha) &amp;=\sum\limits_{k=1}^K\vert\alpha_K\vert\qquad\text{lasso}\tag{16.4}\label{16.4}
+J(\alpha) &amp;=\sum\limits_{k=1}^K\vert\alpha_K\vert\qquad\text{lasso}\tag{16.4}
 \end{align*}
 \end{split}\]</div>
 <p>这些都在 <span class="xref myst">3.4 节</span>介绍了。正如这里讨论的那样，从中等大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 到较大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 的 lasso 问题的解是趋向于稀疏的；许多 <span class="math notranslate nohighlight">\(\hat\alpha_k(\lambda)=0\)</span>。也就是，只有所有候选树的一小部分会选进模型 \eqref{16.1}。这似乎是合理的，因为似乎只有所有候选树的一小部分对任意特定的目标函数的近似是恰当的。然而，对于不同的目标值，相关的子集也会不一样。</p>
@@ -1235,7 +1223,7 @@ J(\alpha) &amp;=\sum\limits_{k=1}^K\vert\alpha_K\vert\qquad\text{lasso}\tag{16.4
 <li><p>字典集的大小也很重要。增大字典集的大小可能导出我们函数的更稀疏的表示，但是寻找问题会变得更困难，导致更高的方差。</p></li>
 </ul>
 <p><img alt="" src="../_images/fig16.2.png" /></p>
-<p>图 16.2 用模拟实验解释了在线性模型的情形下这些结论。我们在分类和回归问题中比较了岭回归和 lasso。每次实验中有 <span class="math notranslate nohighlight">\(300\)</span> 个独立高斯变量以及 <span class="math notranslate nohighlight">\(50\)</span> 个观测。在最上面的一行，<span class="math notranslate nohighlight">\(300\)</span> 个系数都是非零的，是从高斯分布中生成的。在中间的一行，只有 <span class="math notranslate nohighlight">\(10\)</span> 个是非零的并且从高斯分布中生成，最后一行有 <span class="math notranslate nohighlight">\(30\)</span> 个非零高斯系数。对于回归，对线性预测变量 <span class="math notranslate nohighlight">\(\eta(X) = X^T\beta\)</span> 加上标准高斯噪声来得到连续的响应值。对于分类，线性预测变量通过 logit 的逆变换转换为概率，并生成一个二值响应变量。图中展现了五个不同的噪信比，这通过在生成响应变量前通过缩放 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 得到。两种情形下，都定义 <span class="math notranslate nohighlight">\(NSR = \Var(Y\mid \eta(X))/\Var(\eta(X))\)</span>。岭回归和 lasso 的系数路径都采用对应自由度 <span class="math notranslate nohighlight">\(df\)</span> 从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(50\)</span> 变化的 <span class="math notranslate nohighlight">\(\lambda\)</span> 范围中的 <span class="math notranslate nohighlight">\(50\)</span> 个值（更多细节见第 3 章）。这些模型在某个大的测试集（高斯变量时取无穷大，二值变量取 <span class="math notranslate nohighlight">\(5000\)</span>）上取值，并且在每种情形下选择 <span class="math notranslate nohighlight">\(\lambda\)</span> 使得测试误差最小。我们报告回归问题中 <strong>解释的方差的百分比 (Percentage Squared Prediction Explained)</strong>，以及分类问题中 <strong>解释的误分类率的百分比 (Percentage Misclassification Error Explained)</strong>（相对于基础误差率 <span class="math notranslate nohighlight">\(0.5\)</span>）。这里每种情形有 <span class="math notranslate nohighlight">\(20\)</span> 次模拟实验。</p>
+<p>图 16.2 用模拟实验解释了在线性模型的情形下这些结论。我们在分类和回归问题中比较了岭回归和 lasso。每次实验中有 <span class="math notranslate nohighlight">\(300\)</span> 个独立高斯变量以及 <span class="math notranslate nohighlight">\(50\)</span> 个观测。在最上面的一行，<span class="math notranslate nohighlight">\(300\)</span> 个系数都是非零的，是从高斯分布中生成的。在中间的一行，只有 <span class="math notranslate nohighlight">\(10\)</span> 个是非零的并且从高斯分布中生成，最后一行有 <span class="math notranslate nohighlight">\(30\)</span> 个非零高斯系数。对于回归，对线性预测变量 <span class="math notranslate nohighlight">\(\eta(X) = X^T\beta\)</span> 加上标准高斯噪声来得到连续的响应值。对于分类，线性预测变量通过 logit 的逆变换转换为概率，并生成一个二值响应变量。图中展现了五个不同的噪信比，这通过在生成响应变量前通过缩放 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 得到。两种情形下，都定义 <span class="math notranslate nohighlight">\(NSR = \mathrm{Var}(Y\mid \eta(X))/\mathrm{Var}(\eta(X))\)</span>。岭回归和 lasso 的系数路径都采用对应自由度 <span class="math notranslate nohighlight">\(df\)</span> 从 <span class="math notranslate nohighlight">\(1\)</span> 到 <span class="math notranslate nohighlight">\(50\)</span> 变化的 <span class="math notranslate nohighlight">\(\lambda\)</span> 范围中的 <span class="math notranslate nohighlight">\(50\)</span> 个值（更多细节见第 3 章）。这些模型在某个大的测试集（高斯变量时取无穷大，二值变量取 <span class="math notranslate nohighlight">\(5000\)</span>）上取值，并且在每种情形下选择 <span class="math notranslate nohighlight">\(\lambda\)</span> 使得测试误差最小。我们报告回归问题中 <strong>解释的方差的百分比 (Percentage Squared Prediction Explained)</strong>，以及分类问题中 <strong>解释的误分类率的百分比 (Percentage Misclassification Error Explained)</strong>（相对于基础误差率 <span class="math notranslate nohighlight">\(0.5\)</span>）。这里每种情形有 <span class="math notranslate nohighlight">\(20\)</span> 次模拟实验。</p>
 <p>!!! note “weiya 注：”
 此处 Percentage Squared Prediction Explained 应该指的是
 $<span class="math notranslate nohighlight">\(
@@ -1263,7 +1251,7 @@ $<span class="math notranslate nohighlight">\(
 <p>单调的 lasso 路径可以用微分方程表示：</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \alpha}{\partial \ell} = \rho^{ml}(\alpha(\ell))\tag{16.6}\label{16.6}
+\frac{\partial \alpha}{\partial \ell} = \rho^{ml}(\alpha(\ell))\tag{16.6}
 \]</div>
 <p>以及初始条件为 <span class="math notranslate nohighlight">\(\alpha(0)=0\)</span>，其中 <span class="math notranslate nohighlight">\(\ell\)</span> 是路径 <span class="math notranslate nohighlight">\(\alpha(\ell)\)</span> 的 <span class="math notranslate nohighlight">\(L_1\)</span> 弧长（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/153">练习 16.2</a>）。</p>
 <p>!!! info “weiya 注：Ex. 16.2”
@@ -1281,7 +1269,7 @@ m(f) = \underset{i}{\min}\frac{y_if(x_i)}{\sum_{k=1}^K\vert \alpha_k\vert}\tag{1
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
     {\beta^*}^T(x-x_0)&amp;=\frac{1}{\Vert\beta\Vert}(\beta^Tx+\beta_0)\\
-    &amp;=\frac{1}{\Vert f'(x)\Vert}f(x)\tag{4.40}\label{4.40}
+    &amp;=\frac{1}{\Vert f'(x)\Vert}f(x)\tag{4.40}
     \end{align*}
     \)</span>$</p>
 <p>Schapire et al. (1998)<a class="footnote-reference brackets" href="#id25" id="id13">9</a> 证明了对于可分数据，Adaboost 在每步迭代都增加 <span class="math notranslate nohighlight">\(m(f)\)</span>，收敛到 margin-symmetric 的解。Rätsch and Warmuth (2002)<a class="footnote-reference brackets" href="#id26" id="id14">10</a> 证明了带收缩的 Adaboost 渐近收敛到 <span class="math notranslate nohighlight">\(L_1\)</span>-margin-maximizing 的解。Rosset et al. (2004a)<a class="footnote-reference brackets" href="#id18" id="id15">3</a> 考虑对一般损失函数 \eqref{16.2} 形式的正则化模型。他们证明了当 <span class="math notranslate nohighlight">\(\lambda\downarrow 0\)</span> 时，对于特定的损失函数，解收敛到 margin-maximizing 的情形。特别地，他们证明 Adaboost 的指数损失属于这种情形，二项偏差也是这种情形。</p>
@@ -1350,31 +1338,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="16.1-Introduction.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">16.1 导言</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="16.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">16.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="16.3-Learning-Ensembles.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">16.3 学习集成</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="16.3-Learning-Ensembles.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">16.3 学习集成</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1395,8 +1374,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

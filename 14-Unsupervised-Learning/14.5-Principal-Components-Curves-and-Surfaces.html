@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>14.5 主成分，主曲线和主曲面 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="14.6 非负矩阵分解" href="14.6-Non-negative-Matrix-Factorization.html" />
     <link rel="prev" title="14.4 自组织图" href="14.4-Self-Organizing-Maps.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1187,12 +1175,12 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.5 主成分，主曲线和主曲面<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>!!! note “更新笔记”
 &#64;2018-01-18 完成第一小节（不包含例子），并完成<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/45">Ex. 14.7</a>
 &#64;2018-01-19 完成主曲线（面）和谱聚类。</p>
-<p>主成分已经在 <span class="xref myst">3.4.1 节</span>中讨论了，主成分阐释了岭回归的收缩机理。主成分是数据的一系列投影，互相不相关且按照方差大小排序。在下一节我们将要把主成分表示成逼近 <span class="math notranslate nohighlight">\(N\)</span> 个点 <span class="math notranslate nohighlight">\(x_i\in \IR^p\)</span> 的 <strong>线性流形 (linear manifolds)</strong>。接着在 <a class="reference external" href="#_3">14.5.2 节</a>讨论非线性的推广。最近提出的关于非线性逼近流形的方法将在 <span class="xref myst">14.9 节</span>讨论。</p>
+<p>主成分已经在 <span class="xref myst">3.4.1 节</span>中讨论了，主成分阐释了岭回归的收缩机理。主成分是数据的一系列投影，互相不相关且按照方差大小排序。在下一节我们将要把主成分表示成逼近 <span class="math notranslate nohighlight">\(N\)</span> 个点 <span class="math notranslate nohighlight">\(x_i\in \mathbb{R}^p\)</span> 的 <strong>线性流形 (linear manifolds)</strong>。接着在 <a class="reference external" href="#_3">14.5.2 节</a>讨论非线性的推广。最近提出的关于非线性逼近流形的方法将在 <span class="xref myst">14.9 节</span>讨论。</p>
 <p>!!! note “weiya 注：流形学习”
 参考<a class="reference external" href="https://www.zhihu.com/question/24015486/answer/26524937">&#64;Jason Gu</a>的知乎回答,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 流形学习（manifold learning）是机器学习、模式识别中的一种方法，在维数约简方面具有广泛的应用。它的主要思想是将高维的数据映射到低维，使该低维的数据能够反映原高维数据的某些本质结构特征。流形学习的前提是有一种假设，即某些高维数据，实际是一种低维的流形结构嵌入在高维空间中。流形学习的目的是将其映射回低维空间中，揭示其本质。
@@ -1200,13 +1188,13 @@
 </div>
 <div class="section" id="id2">
 <h2>主成分<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><span class="math notranslate nohighlight">\(\IR^p\)</span> 中数据的主成分给出了这些数据在秩 <span class="math notranslate nohighlight">\(q\le p\)</span> 下最好的线性逼近。</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中数据的主成分给出了这些数据在秩 <span class="math notranslate nohighlight">\(q\le p\)</span> 下最好的线性逼近。</p>
 <p>记观测值为 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span>，然后考虑用秩为 <span class="math notranslate nohighlight">\(q\)</span> 的线性模型来表示它们</p>
 <div class="math notranslate nohighlight">
 \[
-f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}\label{14.49}
+f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\mu\)</span> 是 <span class="math notranslate nohighlight">\(\IR^p \)</span>中的位置向量，<span class="math notranslate nohighlight">\(\mathbf V_q\)</span> 是有 <span class="math notranslate nohighlight">\(q\)</span> 个正交单位列向量的 <span class="math notranslate nohighlight">\(p\times q\)</span> 的矩阵，<span class="math notranslate nohighlight">\(\lambda\)</span> 是一个 <span class="math notranslate nohighlight">\(q\)</span> 维的参数向量。这是一个秩为 <span class="math notranslate nohighlight">\(q\)</span> 的仿射超平面的系数表示。图 14.20 和图 14.21 分别展示了<span class="math notranslate nohighlight">\(q=1\)</span> 和 <span class="math notranslate nohighlight">\(q=2\)</span> 的情形。对数据进行最小二乘拟合这个模型等价最小化 <strong>重构误差 (reconstruction error)</strong></p>
+<p>其中，<span class="math notranslate nohighlight">\(\mu\)</span> 是 <span class="math notranslate nohighlight">\(\mathbb{R}^p \)</span>中的位置向量，<span class="math notranslate nohighlight">\(\mathbf V_q\)</span> 是有 <span class="math notranslate nohighlight">\(q\)</span> 个正交单位列向量的 <span class="math notranslate nohighlight">\(p\times q\)</span> 的矩阵，<span class="math notranslate nohighlight">\(\lambda\)</span> 是一个 <span class="math notranslate nohighlight">\(q\)</span> 维的参数向量。这是一个秩为 <span class="math notranslate nohighlight">\(q\)</span> 的仿射超平面的系数表示。图 14.20 和图 14.21 分别展示了<span class="math notranslate nohighlight">\(q=1\)</span> 和 <span class="math notranslate nohighlight">\(q=2\)</span> 的情形。对数据进行最小二乘拟合这个模型等价最小化 <strong>重构误差 (reconstruction error)</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\mu,\{\lambda_i\},\mathbf V_q}{\min}\sum\limits_{i=1}^N\Vert x_i-\mu-\mathbf V_q\lambda_i\Vert^2\tag{14.50}
@@ -1215,8 +1203,8 @@ f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}\label{14.49}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\hat\mu&amp;=\bar x\tag{14.51}\label{14.51}\\
-\hat\lambda_i&amp;=\mathbf V_q^T(x_i-\bar x)\tag{14.52}\label{14.52}
+\hat\mu&amp;=\bar x\tag{14.51}\\
+\hat\lambda_i&amp;=\mathbf V_q^T(x_i-\bar x)\tag{14.52}
 \end{align*}
 \end{split}\]</div>
 <p>!!! note “weiya注: Ex. 14.7”
@@ -1225,7 +1213,7 @@ f(\lambda)=\mu+\mathbf V_q\lambda\tag{14.49}\label{14.49}
 <p>接下来需要去寻找正交矩阵 <span class="math notranslate nohighlight">\(\mathbf V_q\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\mathbf V_q}{\min}\sum\limits_{i=1}^N\Vert (x_i-\bar x)-\mathbf V_q\mathbf V_q^T(x_i-\bar x)\Vert^2\tag{14.53}\label{14.53}
+\underset{\mathbf V_q}{\min}\sum\limits_{i=1}^N\Vert (x_i-\bar x)-\mathbf V_q\mathbf V_q^T(x_i-\bar x)\Vert^2\tag{14.53}
 \]</div>
 <p>为了方便，我们假设 <span class="math notranslate nohighlight">\(\bar x=0\)</span>（否则我们只需要简单地对数据进行中心化 <span class="math notranslate nohighlight">\(\tilde x_i=x_i-\bar x\)</span>）。<span class="math notranslate nohighlight">\(p\times p\)</span> 矩阵 <span class="math notranslate nohighlight">\(\mathbf H_q=\mathbf V_q\mathbf V_q^T\)</span> 是 <strong>投影矩阵 (projection matrix)</strong>，并且将每个点 <span class="math notranslate nohighlight">\(x_i\)</span> 投影到它的秩为 <span class="math notranslate nohighlight">\(q\)</span> 的重构 <span class="math notranslate nohighlight">\(\mathbf H_qx_i\)</span> 上，这是 <span class="math notranslate nohighlight">\(x_i\)</span> 在由 <span class="math notranslate nohighlight">\(\mathbf V_q\)</span> 的列张成的子空间上的正交投影。</p>
 <p>!!! note “weiya 注：投影矩阵”
@@ -1244,17 +1232,17 @@ $<span class="math notranslate nohighlight">\(
 <p>\eqref{14.53} 的解可以按如下形式表示。将（中心化的）观测值放进 <span class="math notranslate nohighlight">\(N\times p\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的行中。构造 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的奇异值分解：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{X=UDV^T}\tag{14.54}\label{14.54}
+\mathbf{X=UDV^T}\tag{14.54}
 \]</div>
 <p>这是数值分析中标准的分解，并且对该分解有很多的算法（比如，Golub and Van Loan, 1983<a class="footnote-reference brackets" href="#id15" id="id3">1</a>）。这里 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 是<span class="math notranslate nohighlight">\(N\times p\)</span> 的正交矩阵 (<span class="math notranslate nohighlight">\(\mathbf{U^TU}=\mathbf I_p\)</span>)，它的列向量 <span class="math notranslate nohighlight">\(\mathbf u_j\)</span> 称为 <strong>左奇异向量 (left singular vectors)</strong>，<span class="math notranslate nohighlight">\(\mathbf V\)</span> 是<span class="math notranslate nohighlight">\(p\times p\)</span> 的正交矩阵 (<span class="math notranslate nohighlight">\(\mathbf V^T\mathbf V=\mathbf I_p\)</span>)，其中的列向量 <span class="math notranslate nohighlight">\(\mathbf v_j\)</span> 称之为 <strong>右奇异向量 (right singular vectors)</strong>。对每个秩 <span class="math notranslate nohighlight">\(q\)</span>，\eqref{14.53} 的解 <span class="math notranslate nohighlight">\(\mathbf V_q\)</span> 包含 <span class="math notranslate nohighlight">\(\mathbf V\)</span> 的前 <span class="math notranslate nohighlight">\(q\)</span> 列。<span class="math notranslate nohighlight">\(\mathbf{UD}\)</span> 的列称为 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的主成分（见 <a class="reference external" href="../03-Linear-Methods-for-Regression/3.5-Methods-Using-Derived-Input-Directions/index.html#_1">3.5.1 节</a>）。\eqref{14.52} 中 <span class="math notranslate nohighlight">\(N\)</span> 个最优的 <span class="math notranslate nohighlight">\(\hat\lambda_i\)</span> 由前 <span class="math notranslate nohighlight">\(q\)</span> 个主成分给出（<span class="math notranslate nohighlight">\(N\times q\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf U_q\mathbf D_q\)</span> 的 <span class="math notranslate nohighlight">\(N\)</span> 个行向量）。</p>
-<p>图 14.20 展示了 <span class="math notranslate nohighlight">\(\IR^2\)</span> 中的一维主成分分析。</p>
+<p>图 14.20 展示了 <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> 中的一维主成分分析。</p>
 <p><img alt="" src="../_images/fig14.20.png" /></p>
 <p>对于每个数据点 <span class="math notranslate nohighlight">\(x_i\)</span>，在直线上有个离它最近的点，由 <span class="math notranslate nohighlight">\(u_{i1}d_1v_1\)</span> 给出。这里 <span class="math notranslate nohighlight">\(v_1\)</span> 是该直线的方向，并且 <span class="math notranslate nohighlight">\(\hat \lambda_i=u_{i1}d_1\)</span> 衡量了沿着直线离原点的距离。类似地，图 14.21 展示了拟合 half-sphere 数据的二维主成分曲面（左图）。右图显示了数据在前两个主成分上的投影。这个投影是之前介绍的 SOM 方法的初始化的基础。这个过程在分离簇方面表现得非常成功。因为 half-sphere 是非线性的，非线性的投影会做得更好，这将是下一节的主题。</p>
 <p><img alt="" src="../_images/fig14.21.png" /></p>
 <p>主成分还有许多其它的性质，举个例子，线性组合 <span class="math notranslate nohighlight">\(\mathbf Xv_1\)</span> 在特征的所有线性组合中有最大的方差；<span class="math notranslate nohighlight">\(\mathbf Xv_2\)</span> 在满足<span class="math notranslate nohighlight">\(v_2\)</span> 正交 <span class="math notranslate nohighlight">\(v_1\)</span> 的所有线性组合中有最大的方差，以此类推。</p>
 <div class="section" id="id4">
 <h3>例子：手写数字<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>主成分是降低和压缩维度的有效工具。我们用第一章中描述的手写数字的例子来说明这个特点。图 14.22 显示了从 658 个 ‘3’ 中抽取的 130 个 ‘3’ 的样本，每一个都是 <strong>数字化的 (digitized)</strong> <span class="math notranslate nohighlight">\(16\times 16\)</span> 的灰度图象。我们看到书写风格、字体粗细以及字体方向上有显著差异。我们将这些图象看成是 <span class="math notranslate nohighlight">\(\IR^{256}\)</span> 中的点 <span class="math notranslate nohighlight">\(x_i\)</span>，并且通过 SVD \eqref{14.54} 来计算它们的主成分。</p>
+<p>主成分是降低和压缩维度的有效工具。我们用第一章中描述的手写数字的例子来说明这个特点。图 14.22 显示了从 658 个 ‘3’ 中抽取的 130 个 ‘3’ 的样本，每一个都是 <strong>数字化的 (digitized)</strong> <span class="math notranslate nohighlight">\(16\times 16\)</span> 的灰度图象。我们看到书写风格、字体粗细以及字体方向上有显著差异。我们将这些图象看成是 <span class="math notranslate nohighlight">\(\mathbb{R}^{256}\)</span> 中的点 <span class="math notranslate nohighlight">\(x_i\)</span>，并且通过 SVD \eqref{14.54} 来计算它们的主成分。</p>
 <p><img alt="" src="../_images/fig14.22.png" /></p>
 <p>图 14.23 显示了这些数据的前两个主成分。</p>
 <p><img alt="" src="../_images/fig14.23.png" /></p>
@@ -1284,11 +1272,11 @@ $$
 <p>!!! note “weiya 注：warping function”
 听过的一个报告 <a class="reference external" href="https://stats.hohoweiya.xyz/2020/01/21/registration/">Registration Problem in Functional Data Analysis</a>，其中介绍到为了将曲线 <span class="math notranslate nohighlight">\(w_i\)</span> 匹配到参考曲线 <span class="math notranslate nohighlight">\(w_j\)</span>，我们需要一个 <strong>翘曲函数 (warping function)</strong> <span class="math notranslate nohighlight">\(h_i(t)\)</span> 使得
 $<span class="math notranslate nohighlight">\(
-    w_i^\star(t) = w_i[h_i(t)]
+    w_i^\mathrm{st}ar(t) = w_i[h_i(t)]
     \)</span><span class="math notranslate nohighlight">\(
     以及
     \)</span><span class="math notranslate nohighlight">\(
-    w_i^\star(t_{j,\text{landmark}}) \approx w_j(t_{j,\text{landmark}})\,.
+    w_i^\mathrm{st}ar(t_{j,\text{landmark}}) \approx w_j(t_{j,\text{landmark}})\,.
     \)</span>$</p>
 <p>右图中，我们已经对绿色点已经采用了 <strong>平移 (translation)</strong> 和 <strong>旋转 (rotation)</strong> 的方式来尽可能与橘黄色点匹配——这称之为 Procrustes 变换（如，Mardia et al., 1979<a class="footnote-reference brackets" href="#id17" id="id6">3</a>）。</p>
 <p>!!! note “weiya 注：Procrustes 变换”
@@ -1296,12 +1284,12 @@ $<span class="math notranslate nohighlight">\(
 <p>考虑下面的问题：</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\mu, \mathbf R}{\min}\Vert \mathbf X_2-(\mathbf X_1\mathbf R+\boldsymbol 1\mu^T)\Vert_F\tag{14.56}\label{14.56}
+\underset{\mu, \mathbf R}{\min}\Vert \mathbf X_2-(\mathbf X_1\mathbf R+\boldsymbol 1\mu^T)\Vert_F\tag{14.56}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf X_1\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf X_2\)</span> 都是对应点的 <span class="math notranslate nohighlight">\(N\times p\)</span> 矩阵，<span class="math notranslate nohighlight">\(\mathbf R\)</span> 是标准正交 <span class="math notranslate nohighlight">\(p\times p\)</span> 的矩阵，<span class="math notranslate nohighlight">\(\mu\)</span> 是 <span class="math notranslate nohighlight">\(p\)</span> 维的位置向量。</p>
 <p>!!! note “原书注：<span class="math notranslate nohighlight">\(\mathbf R\)</span>”
 为了简化问题，只考虑包含反射和旋转的正交矩阵（<span class="math notranslate nohighlight">\(O(p)\)</span>群）；尽管这里不可能有反射，这些方法可以进一步限制为只允许旋转（<span class="math notranslate nohighlight">\(SO(p)\)</span>群）。</p>
-<p>这里 <span class="math notranslate nohighlight">\(\Vert \mathbf X\Vert_F^2=\trace(\mathbf X^T\mathbf X)\)</span> 是 Frobenius 矩阵范数的平方。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\Vert \mathbf X\Vert_F^2=\mathrm{trace}(\mathbf X^T\mathbf X)\)</span> 是 Frobenius 矩阵范数的平方。</p>
 <p>令 <span class="math notranslate nohighlight">\(\bar x_1\)</span> 和 <span class="math notranslate nohighlight">\(\bar x_2\)</span> 是矩阵的列均值向量，<span class="math notranslate nohighlight">\(\tilde{\mathbf X}_1\)</span> 和 <span class="math notranslate nohighlight">\(\tilde{\mathbf X}_2\)</span> 是这些矩阵减去均值得到的。考虑 SVD 分解 <span class="math notranslate nohighlight">\(\tilde {\mathbf X}_1^T\tilde{\mathbf X}_2=\mathbf U\mathbf D\mathbf V^T\)</span>。则 \eqref{14.56} 的解由下式给出（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/46">练习 14.8</a>）</p>
 <p>!!! info “weiya 注：Ex. 14.8”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/46">Issue 46: Ex. 14.8</a>.</p>
@@ -1319,11 +1307,11 @@ $<span class="math notranslate nohighlight">\(
 \[
 \underset{\beta,\mathbf R}{\min}\Vert \mathbf X_2-\beta\mathbf X_1\mathbf R\Vert_F\tag{14.58}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> 是正的标量值。<span class="math notranslate nohighlight">\(\mathbf R\)</span> 的解和前面一样，<span class="math notranslate nohighlight">\(\hat\beta=\trace(D)/\Vert \mathbf X_1\Vert_F^2\)</span>.</p>
+<p>其中 <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> 是正的标量值。<span class="math notranslate nohighlight">\(\mathbf R\)</span> 的解和前面一样，<span class="math notranslate nohighlight">\(\hat\beta=\mathrm{trace}(D)/\Vert \mathbf X_1\Vert_F^2\)</span>.</p>
 <p>与 Procrustes 距离有关的是 <span class="math notranslate nohighlight">\(L\)</span> 个形状的 Procrustes 平均，它解决了下面的问题</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\{\mathbf R_\ell\}_1^L,M}{\min}\sum\limits_{\ell=1}^L\Vert \mathbf X_\ell \mathbf R_\ell -\mathbf M\Vert_F^2\tag{14.59}\label{14.59}
+\underset{\{\mathbf R_\ell\}_1^L,M}{\min}\sum\limits_{\ell=1}^L\Vert \mathbf X_\ell \mathbf R_\ell -\mathbf M\Vert_F^2\tag{14.59}
 \]</div>
 <p>也就是，寻找到所有形状的平均 Procrustes 距离平方最近的形状 <span class="math notranslate nohighlight">\(\mathbf M\)</span>。这可以通过简单的算法实现：</p>
 <ol class="simple">
@@ -1352,11 +1340,11 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="id7">
 <h2>主曲线和主曲面<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>主曲线推广了主成分直线，用一维光滑曲线来近似 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中的数据点。主曲面更一般化，它给出了二维或更高维的流形近似。</p>
-<p>我们首先定义随机变量 <span class="math notranslate nohighlight">\(X\in \IR^p\)</span> 的主曲线，然后讨论有限数据的情形。令 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 为 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中参数化的光滑曲线。因此 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 是有着 <span class="math notranslate nohighlight">\(p\)</span> 个坐标的向量函数，每个都是关于单参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑函数。举个例子，可以选择参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 为沿着曲线到固定原点的弧长。对于每个数据点 <span class="math notranslate nohighlight">\(x\)</span>，令 <span class="math notranslate nohighlight">\(\lambda_f(x)\)</span> 为曲线上离 <span class="math notranslate nohighlight">\(x\)</span> 最近的点。如果满足</p>
+<p>主曲线推广了主成分直线，用一维光滑曲线来近似 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的数据点。主曲面更一般化，它给出了二维或更高维的流形近似。</p>
+<p>我们首先定义随机变量 <span class="math notranslate nohighlight">\(X\in \mathbb{R}^p\)</span> 的主曲线，然后讨论有限数据的情形。令 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 为 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中参数化的光滑曲线。因此 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 是有着 <span class="math notranslate nohighlight">\(p\)</span> 个坐标的向量函数，每个都是关于单参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑函数。举个例子，可以选择参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 为沿着曲线到固定原点的弧长。对于每个数据点 <span class="math notranslate nohighlight">\(x\)</span>，令 <span class="math notranslate nohighlight">\(\lambda_f(x)\)</span> 为曲线上离 <span class="math notranslate nohighlight">\(x\)</span> 最近的点。如果满足</p>
 <div class="math notranslate nohighlight">
 \[
-f(\lambda) = \E(X\mid \lambda_f(X)=\lambda)\tag{14.61}\label{14.61}
+f(\lambda) = \mathbb{E}(X\mid \lambda_f(X)=\lambda)\tag{14.61}
 \]</div>
 <p>则 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 称为随机向量 <span class="math notranslate nohighlight">\(X\)</span> 的分布的主曲线。这也就是说 <span class="math notranslate nohighlight">\(f(\lambda)\)</span> 是投影到曲线上的所有数据点的平均，这些点也称为有“责任”的点。这也称作 self-consistency 性质。尽管在实际中，多元连续随机变量的分布有无穷多个主曲线(Duchamp and Stuetzle, 1996<a class="footnote-reference brackets" href="#id18" id="id8">4</a>)，但是我们主要对光滑的主曲线感兴趣。图 14.27 展示了一个主曲线。</p>
 <p><img alt="" src="../_images/fig14.27.png" /></p>
@@ -1375,10 +1363,10 @@ $<span class="math notranslate nohighlight">\(
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-(a) &amp; \hat{f_j}(\lambda)\leftarrow \E(X_j\mid \lambda(X)=\lambda); \;j=1,2,\ldots, p\\
+(a) &amp; \hat{f_j}(\lambda)\leftarrow \mathbb{E}(X_j\mid \lambda(X)=\lambda); \;j=1,2,\ldots, p\\
 (b) &amp; \hat \lambda_f(x)\leftarrow \argmin_{\lambda'}\Vert x-\hat f(\lambda')\Vert^2
 \end{align*}
-\tag{14.62} \label{14.62}
+\tag{14.62} 
 \end{split}\]</div>
 <p>第一个等式固定 <span class="math notranslate nohighlight">\(\lambda\)</span>，并且加上 self-consistentcy 的要求 \eqref{14.61}。第二个等式固定曲线，并在曲线上寻找距离每个点最近的点。在有限的数据情形下，主曲线算法以线性主成分开始，迭代 \eqref{14.62} 中的两步直至收敛。散点图光滑器用于估计步骤 (a) 中的条件期望，这通过将每个 <span class="math notranslate nohighlight">\(X_j\)</span> 看成关于弧长 <span class="math notranslate nohighlight">\(\hat \lambda(X)\)</span> 的函数来光滑，而且 (b) 中的投影对于每个观测数据点来实现。证明一般情况下的收敛是很困难的，但是可以证明如果散点图光滑中采用线性最小二乘拟合，则该过程将会收敛至第一线性主成分，这等价寻找矩阵最大特征值的幂法。</p>
 <p>主曲面与主曲线有着完全相同的形式，不过是在更高维度下的。使用最普遍的是二维主曲面，其坐标函数为</p>
@@ -1391,7 +1379,7 @@ f(\lambda_1,\lambda_2)=[f_1(\lambda_1,\lambda_2),\ldots, f_p(\lambda_1, \lambda_
 <p>图 14.28 展示了对 half-sphere 数据进行主曲面光滑的结果。图中将数据点看成是估计的非线性坐标 <span class="math notranslate nohighlight">\(\hat \lambda_1(x_i), \hat \lambda_2(x_i)\)</span> 的函数。图中的类别划分是很显然的。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    m_j=\frac{\sum w_kx_k}{\sum w_k}\tag{14.48}\label{14.48}
+    m_j=\frac{\sum w_kx_k}{\sum w_k}\tag{14.48}
     \)</span>$</p>
 <p>主曲面非常类似 <strong>自组织图 (self-organizing maps)</strong>。如果我们采用核曲面光滑器来估计坐标函数 <span class="math notranslate nohighlight">\(f_j(\lambda_1,\lambda_2)\)</span>，这与 SOMs 的 batch 版本 \eqref{14.48} 有着相同的形式。SOM 的权重 <span class="math notranslate nohighlight">\(w_k\)</span> 恰恰是核的权重。然而，有一个区别，主曲面估计对每个数据点 <span class="math notranslate nohighlight">\(x_i\)</span> 估计单独的原型 <span class="math notranslate nohighlight">\(f(\lambda_1(x_i),\lambda_2(x_i))\)</span>，而 SOM 会在所有数据中间共享一小部分的原型点。结果是，SOM 与主曲面仅仅当 SOM 原型的个数非常大时两者才一致。</p>
 <p>两者之间还有一个概念上的区别。主曲面给出了关于坐标函数的整个流形的光滑参量化，而 SOMs 是离散的并且仅仅产生近似数据的那些估计的原型。主曲面的光滑参量化保持局部的距离：在图 14.28 中，红色聚类点比绿色或蓝色聚类点更紧凑。</p>
@@ -1405,14 +1393,14 @@ $<span class="math notranslate nohighlight">\(
 <p><img alt="" src="../_images/fig14.29.png" /></p>
 <p>谱聚类是标准聚类方法的推广，而且也是为这些情形所设计的。它与局部多维缩放技巧有着紧密的联系（<span class="xref myst">14.9 节</span>）。</p>
 <p>出发点是所有观测点对间的成对相似性 <span class="math notranslate nohighlight">\(s_{ii'}\ge 0\)</span> 构成的 <span class="math notranslate nohighlight">\(N\times N\)</span> 矩阵。我们将这些观测用无向相似性图 <span class="math notranslate nohighlight">\(G=\langle V, E \rangle\)</span> 来表示。<span class="math notranslate nohighlight">\(N\)</span> 个顶点 <span class="math notranslate nohighlight">\(v_i\)</span> 表示观测值，如果成对顶点的相似性为正值（或者超出某个阈值），则它们之间用一条边相连。边的权重为 <span class="math notranslate nohighlight">\(s_{ii'}\)</span>。我们希望对这个图进行划分，使得不同类之间的边有较低的权重，而在类间有着较高的权重。在谱聚类中，思想是构造相似性图来表示观测点间的局部邻居关系。</p>
-<p>更精确地，考虑 <span class="math notranslate nohighlight">\(N\)</span> 个点 <span class="math notranslate nohighlight">\(x_i\in \IR^p\)</span>，令 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 为 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 间的欧几里得距离。我们将 <strong>radical-kernel gram</strong> 矩阵作为我们的相似性矩阵；也就是 <span class="math notranslate nohighlight">\(s_{ii'}=\exp(-d_{ii'}^2/c)\)</span>，其中 <span class="math notranslate nohighlight">\(c &gt; 0\)</span> 是缩放参数。</p>
+<p>更精确地，考虑 <span class="math notranslate nohighlight">\(N\)</span> 个点 <span class="math notranslate nohighlight">\(x_i\in \mathbb{R}^p\)</span>，令 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 为 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 间的欧几里得距离。我们将 <strong>radical-kernel gram</strong> 矩阵作为我们的相似性矩阵；也就是 <span class="math notranslate nohighlight">\(s_{ii'}=\exp(-d_{ii'}^2/c)\)</span>，其中 <span class="math notranslate nohighlight">\(c &gt; 0\)</span> 是缩放参数。</p>
 <p>有许多方式来定义相似性矩阵及其反映局部行为的相似性图。最流行的方式是 <strong>mutual K-nearest-neighbor graph</strong>。定义 <span class="math notranslate nohighlight">\({\mathcal{N}}\_K\)</span> 为邻居点的对称子集；特别地，如果点 <span class="math notranslate nohighlight">\(i\)</span> 在 <span class="math notranslate nohighlight">\(i'\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span>-最近邻中，则点对 <span class="math notranslate nohighlight">\((i,i')\)</span> 在 <span class="math notranslate nohighlight">\({\mathcal{N}}\_K\)</span> 中，反之亦然。接着我们连接所有的对称最近邻，然后给出边的权重 <span class="math notranslate nohighlight">\(w_{ii'}=s_{ii'}\)</span>；否则边的权重为 <span class="math notranslate nohighlight">\(0\)</span>。等价地，我们对不属于 <span class="math notranslate nohighlight">\(\mathcal{N}_K\)</span> 的点的成对相关性赋为 <span class="math notranslate nohighlight">\(0\)</span>，然后画出这个修改版本的矩阵的图。</p>
 <p>另外，全连接图包含所有的成对边，权重为 <span class="math notranslate nohighlight">\(w_{ii'}=s_{ii'}\)</span>，局部行为通过缩放参数 <span class="math notranslate nohighlight">\(c\)</span> 来控制。</p>
 <p>从相似图得到的边的矩阵 <span class="math notranslate nohighlight">\(\mathbf W=\\{w_{ii'}\\}\)</span> 称为 <strong>邻接矩阵 (adjacency matrix)</strong>。结点 <span class="math notranslate nohighlight">\(i\)</span> 的 <strong>度(degree)</strong> 为 <span class="math notranslate nohighlight">\(g_i=\sum_iw_{ii'}\)</span>，这是与该点相连的权重之和。令 <span class="math notranslate nohighlight">\(\mathbf G\)</span> 表示对角元为 <span class="math notranslate nohighlight">\(g_i\)</span> 的对角矩阵。</p>
 <p>最后，graph laplacian 定义为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{L=G-W}\tag{14.63}\label{14.63}
+\mathbf{L=G-W}\tag{14.63}
 \]</div>
 <p>这称为未标准化的 graph lapacian，人们提出一系列标准化的版本——对 laplacian 关于结点的度进行标准化，举个例子，<span class="math notranslate nohighlight">\(\tilde{\mathbf L}=\mathbf I-\mathbf G^{-1}\mathbf W\)</span>。</p>
 <p>谱聚类寻找 <span class="math notranslate nohighlight">\(\mathbf L\)</span> 最小的 <span class="math notranslate nohighlight">\(m\)</span> 个特征值对应的 <span class="math notranslate nohighlight">\(m\)</span> 个特征向量 <span class="math notranslate nohighlight">\(\mathbf Z_{N\times m}\)</span>（忽略平凡的常值特征向量）。采用如 K-means 的标准方法，我们可以对 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 的行聚类得到原始数据点的聚类。</p>
@@ -1422,7 +1410,7 @@ $<span class="math notranslate nohighlight">\(
 \[\begin{split}
 \begin{align*}
 \mathbf f^T\mathbf L\mathbf f&amp;=\sum\limits_{i=1}^Ng_if_i^2-\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nf_if_{i'}w_{ii'}\\
-&amp; = \frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nw_{ii'}(f_i-f_{i'})^2\tag{14.64}\label{14.64}
+&amp; = \frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nw_{ii'}(f_i-f_{i'})^2\tag{14.64}
 \end{align*}
 \end{split}\]</div>
 <p>公式 \eqref{14.64} 表明如果有较大邻接 <span class="math notranslate nohighlight">\(w_{ii'}\)</span> 的数据对的坐标 <span class="math notranslate nohighlight">\(f_i\)</span> 和 <span class="math notranslate nohighlight">\(f_{i'}\)</span> 很接近，则 <span class="math notranslate nohighlight">\(\mathbf f^T\mathbf L\mathbf f\)</span> 将达到较小的值。</p>
@@ -1435,23 +1423,23 @@ $<span class="math notranslate nohighlight">\(
 <div class="section" id="id9">
 <h2>核主成分<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>谱聚类与 <strong>核主成分 (kernel principal components)</strong> 有关联，这是线性主成分的非线性版本。标准的线性主成分 (PCA) 可以通过协方差矩阵的特征向量得到，并且给出了数据有最大方差的方向。核主成分 (KPCA) 扩充了 PCA 的范围，模仿扩充特征时采用的非线性变换方法，然后在变换后的特征空间中应用 PCA。</p>
-<p>在 <span class="xref myst">18.5.2 节</span>，我们展示了数据矩阵 <span class="math notranslate nohighlight">\(\X\)</span> 的主成分变量 <span class="math notranslate nohighlight">\(\Z\)</span> 可以通过内积矩阵 (gram 矩阵) <span class="math notranslate nohighlight">\(\K=\X\X^T\)</span> 得到。具体地，对双重中心化的 gram 矩阵进行特征分解</p>
+<p>在 <span class="xref myst">18.5.2 节</span>，我们展示了数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 的主成分变量 <span class="math notranslate nohighlight">\(Z\)</span> 可以通过内积矩阵 (gram 矩阵) <span class="math notranslate nohighlight">\(K=XX^T\)</span> 得到。具体地，对双重中心化的 gram 矩阵进行特征分解</p>
 <div class="math notranslate nohighlight">
 \[
-\tilde \K = (\I-\M)\K(\I-\M) = \U\D^2\U^T\,,
+\tilde K = (\I-\M)K(\I-\M) = \U\D^2\U^T\,,
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\M=\1\1^T/N\)</span>, 然后我们有 <span class="math notranslate nohighlight">\(\Z=\U\D\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">练习 18.15</a> 展示了怎么计算这个空间中新观测的投影。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\M=11^T/N\)</span>, 然后我们有 <span class="math notranslate nohighlight">\(Z=\U\D\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">练习 18.15</a> 展示了怎么计算这个空间中新观测的投影。</p>
 <p>!!! info “weiya 注：Ex. 18.15”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/184">Issue 184: Ex. 18.15</a>.</p>
-<p>核主成分简单地模仿了这个过程，将核矩阵 <span class="math notranslate nohighlight">\(\K=\\{K(x_i,x_{i'})\\}\)</span> 看成隐含特征 <span class="math notranslate nohighlight">\(\langle \phi(x_i),\phi(x_i')\rangle\)</span> 的内积矩阵，然后寻找其特征向量。第 <span class="math notranslate nohighlight">\(m\)</span> 个组分 <span class="math notranslate nohighlight">\(\z_m\)</span>（<span class="math notranslate nohighlight">\(\Z\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 列）的元素（在忽略中心化的情况下）可以写成 <span class="math notranslate nohighlight">\(z_{im}=\sum_{j=1}^N\alpha_{jm}K(x_i,x_j)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha_{jm} = u_{jm}/d_m\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/185">练习 14.16</a>）。</p>
+<p>核主成分简单地模仿了这个过程，将核矩阵 <span class="math notranslate nohighlight">\(K=\\{K(x_i,x_{i'})\\}\)</span> 看成隐含特征 <span class="math notranslate nohighlight">\(\langle \phi(x_i),\phi(x_i')\rangle\)</span> 的内积矩阵，然后寻找其特征向量。第 <span class="math notranslate nohighlight">\(m\)</span> 个组分 <span class="math notranslate nohighlight">\(\z_m\)</span>（<span class="math notranslate nohighlight">\(Z\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 列）的元素（在忽略中心化的情况下）可以写成 <span class="math notranslate nohighlight">\(z_{im}=\sum_{j=1}^N\alpha_{jm}K(x_i,x_j)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha_{jm} = u_{jm}/d_m\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/185">练习 14.16</a>）。</p>
 <p>!!! info “weiya 注：Ex. 14.16”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/185">Issue 185: Ex. 14.16</a>。</p>
 <p>将 <span class="math notranslate nohighlight">\(\z_m\)</span> 看成主成分函数 <span class="math notranslate nohighlight">\(g_m\in\cH_K\)</span> 在样本处的取值，其中 <span class="math notranslate nohighlight">\(\cH_K\)</span> 是由 <span class="math notranslate nohighlight">\(K\)</span> 生成的再生核希尔伯特空间（<span class="xref myst">5.8.1 节</span>），这可以帮助我们进一步理解核主成分。第一主成分函数 <span class="math notranslate nohighlight">\(g_1\)</span> 求解了</p>
 <div class="math notranslate nohighlight">
 \[
-\max_{g_1\in\cH_K}\Var_{\cT}g_1(X) \text{ subject to } \Vert g_1\Vert_{\cH_K}=1\tag{14.66}\label{14.66}.
+\max_{g_1\in\cH_K}\mathrm{Var}_{\cT}g_1(X) \text{ subject to } \Vert g_1\Vert_{\cH_K}=1\tag{14.66}.
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\Var_\cT\)</span> 表示在训练数据 <span class="math notranslate nohighlight">\(\cT\)</span> 上的样本方差。范数约束 <span class="math notranslate nohighlight">\(\Vert g_1\Vert_{\cH_K}=1\)</span> 控制了函数 <span class="math notranslate nohighlight">\(g_1\)</span> 的大小及光滑度，这由核 <span class="math notranslate nohighlight">\(K\)</span> 控制。在回归情形中，可以证明 \eqref{14.66} 的解是有限维的，并且可以表示为 <span class="math notranslate nohighlight">\(g_1(x)=\sum_{j=1}^Nc_jK(x,x_j)\)</span>. <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/202">练习 14.17</a> 证明了这个解为 <span class="math notranslate nohighlight">\(\hat c_j=\alpha_{j1},j=1,\ldots,N\)</span>. 第二主成分函数也是类似定义的，但多了额外的限制 <span class="math notranslate nohighlight">\(\langle g_1,g_2\rangle_{\cH_K}=0\)</span>，以此类推。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\mathrm{Var}_\cT\)</span> 表示在训练数据 <span class="math notranslate nohighlight">\(\cT\)</span> 上的样本方差。范数约束 <span class="math notranslate nohighlight">\(\Vert g_1\Vert_{\cH_K}=1\)</span> 控制了函数 <span class="math notranslate nohighlight">\(g_1\)</span> 的大小及光滑度，这由核 <span class="math notranslate nohighlight">\(K\)</span> 控制。在回归情形中，可以证明 \eqref{14.66} 的解是有限维的，并且可以表示为 <span class="math notranslate nohighlight">\(g_1(x)=\sum_{j=1}^Nc_jK(x,x_j)\)</span>. <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/202">练习 14.17</a> 证明了这个解为 <span class="math notranslate nohighlight">\(\hat c_j=\alpha_{j1},j=1,\ldots,N\)</span>. 第二主成分函数也是类似定义的，但多了额外的限制 <span class="math notranslate nohighlight">\(\langle g_1,g_2\rangle_{\cH_K}=0\)</span>，以此类推。</p>
 <p>!!! note “weiya 注：Ex. 14.17”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/202">Issue 202: Ex. 14.17</a>。</p>
 <p>Schölkopf et al. (1999)<a class="footnote-reference brackets" href="#id19" id="id10">5</a> 演示了核主成分作为手写数字分类中的特征的应用，并且说明了相对于线性主成分，分类器的表现有改善。</p>
@@ -1460,15 +1448,15 @@ $<span class="math notranslate nohighlight">\(
 \[
 K(x,x')=\exp(-\Vert x-x'\Vert^2/c)\,\tag{14.67}
 \]</div>
-<p>则核矩阵 <span class="math notranslate nohighlight">\(\K\)</span> 与谱聚类中的相似度矩阵 <span class="math notranslate nohighlight">\(\S\)</span> 有着相同的形式。边的权重矩阵 <span class="math notranslate nohighlight">\(\W\)</span> 是 <span class="math notranslate nohighlight">\(\K\)</span> 的局部化版本，将不是最近邻的成对点的相似度设为 0。</p>
-<p>核主成分寻找 <span class="math notranslate nohighlight">\(\tilde \K\)</span> 最大特征值对应的特征向量；这等价于寻找</p>
+<p>则核矩阵 <span class="math notranslate nohighlight">\(K\)</span> 与谱聚类中的相似度矩阵 <span class="math notranslate nohighlight">\(\S\)</span> 有着相同的形式。边的权重矩阵 <span class="math notranslate nohighlight">\(W\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 的局部化版本，将不是最近邻的成对点的相似度设为 0。</p>
+<p>核主成分寻找 <span class="math notranslate nohighlight">\(\tilde K\)</span> 最大特征值对应的特征向量；这等价于寻找</p>
 <div class="math notranslate nohighlight">
 \[
-\I - \tilde \K\tag{14.68}
+\I - \tilde K\tag{14.68}
 \]</div>
-<p>的最小特征值对应的特征向量。这几乎与 Laplacian \eqref{14.63} 一样，区别在于 <span class="math notranslate nohighlight">\(\tilde \K\)</span> 的中心化和 <span class="math notranslate nohighlight">\(\G\)</span> 对角元有结点的度。</p>
+<p>的最小特征值对应的特征向量。这几乎与 Laplacian \eqref{14.63} 一样，区别在于 <span class="math notranslate nohighlight">\(\tilde K\)</span> 的中心化和 <span class="math notranslate nohighlight">\(\G\)</span> 对角元有结点的度。</p>
 <p><img alt="" src="../_images/fig14.30.png" /></p>
-<p>图 14.30 检验了在图 14.29 的小例子中，核主成分的表现效果。左上角我们使用 <span class="math notranslate nohighlight">\(c=2\)</span> 的径向核，跟谱聚类中使用的值一样。这并没有将类别分开，但是当 <span class="math notranslate nohighlight">\(c=10\)</span>（右上图），第一主成分能很好地将类别分开。在左下图采用谱聚类中的最近邻径向核 <span class="math notranslate nohighlight">\(\W\)</span> 来应用核 PCA。在右下角我们用核矩阵作为谱聚类中构造 \eqref{14.63} 的相似度矩阵。这两种情形都不能很好地把两个类别分开。调节 <span class="math notranslate nohighlight">\(c\)</span> 也没有帮助。</p>
+<p>图 14.30 检验了在图 14.29 的小例子中，核主成分的表现效果。左上角我们使用 <span class="math notranslate nohighlight">\(c=2\)</span> 的径向核，跟谱聚类中使用的值一样。这并没有将类别分开，但是当 <span class="math notranslate nohighlight">\(c=10\)</span>（右上图），第一主成分能很好地将类别分开。在左下图采用谱聚类中的最近邻径向核 <span class="math notranslate nohighlight">\(W\)</span> 来应用核 PCA。在右下角我们用核矩阵作为谱聚类中构造 \eqref{14.63} 的相似度矩阵。这两种情形都不能很好地把两个类别分开。调节 <span class="math notranslate nohighlight">\(c\)</span> 也没有帮助。</p>
 <p>在这个小例子中，我们看到核主成分对于核的尺度以及本性很敏感。我们也看到核的最近邻截断对于谱聚类能否成功很重要。</p>
 <p>!!! note “weiya 注：”
 粗略地说，谱聚类要求最近邻截断，而核主成分要求中心化的核矩阵。</p>
@@ -1476,13 +1464,13 @@ K(x,x')=\exp(-\Vert x-x'\Vert^2/c)\,\tag{14.67}
 <div class="section" id="id11">
 <h2>稀疏主成分<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>我们经常通过查看方向向量 <span class="math notranslate nohighlight">\(v_j\)</span>，或者称 <strong>载荷 (loadings)</strong>，来判断哪个变量在起作用，进而对主成分进行解释。我们在 <span class="math notranslate nohighlight">\((14.55)\)</span> 中对图象载荷采用了这种方法。如果载荷是稀疏的，这种解释通常会很简单。这一节我们简要讨论能导出具有稀疏载荷的主成分方法。它们都是基于 lasso (<span class="math notranslate nohighlight">\(L_1\)</span>) 惩罚。</p>
-<p>首先以 <span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(\X\)</span> 开始，其中列进行了中心化。这些方法要么关注主成分的最大方差性质，要么最小重构误差。Joliffe et al. (2003)<a class="footnote-reference brackets" href="#id20" id="id12">6</a> 的 SCoTLASS procedure 采用第一种方法，求解</p>
+<p>首先以 <span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 开始，其中列进行了中心化。这些方法要么关注主成分的最大方差性质，要么最小重构误差。Joliffe et al. (2003)<a class="footnote-reference brackets" href="#id20" id="id12">6</a> 的 SCoTLASS procedure 采用第一种方法，求解</p>
 <div class="math notranslate nohighlight">
 \[
-\max\; v^T(\X^T\X)v\,, \text{ subject to }\sum_{j=1}^p\vert v_j\vert\le t, v^Tv=1\,.\tag{14.69}
+\max\; v^T(X^TX)v\,, \text{ subject to }\sum_{j=1}^p\vert v_j\vert\le t, v^Tv=1\,.\tag{14.69}
 \]</div>
 <p>绝对值约束促使某些载荷为 0，因此 <span class="math notranslate nohighlight">\(v\)</span> 是稀疏的。进一步，通过限制第 <span class="math notranslate nohighlight">\(k\)</span> 个主成分与前 <span class="math notranslate nohighlight">\(k-1\)</span> 个主成分正交来寻找稀疏的主成分。不幸的是，这个问题是非凸的，并且计算很困难。</p>
-<p>Zou et al. (2006)<a class="footnote-reference brackets" href="#id21" id="id13">7</a> 而是以主成分的回归/重构性质开始，类似 <span class="xref myst">14.5.1</span> 的方法。令 <span class="math notranslate nohighlight">\(x_i\)</span> 为 <span class="math notranslate nohighlight">\(\X\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 行。对于单个主成分，他们的稀疏主成分技巧解决了</p>
+<p>Zou et al. (2006)<a class="footnote-reference brackets" href="#id21" id="id13">7</a> 而是以主成分的回归/重构性质开始，类似 <span class="xref myst">14.5.1</span> 的方法。令 <span class="math notranslate nohighlight">\(x_i\)</span> 为 <span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 行。对于单个主成分，他们的稀疏主成分技巧解决了</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1499,7 +1487,7 @@ K(x,x')=\exp(-\Vert x-x'\Vert^2/c)\,\tag{14.67}
 <p>对于多重组分，稀疏主成分过程最小化</p>
 <div class="math notranslate nohighlight">
 \[
-\sum_{i=1}^N\Vert x_i-\bTheta\V^Tx_i\Vert^2+\lambda \sum_{k=1}^K\vert v_k\vert^2_2 + \sum_{k=1}^K\lambda_{1k}\Vert v_k\Vert_1\,,\tag{14.71}\label{14.71}
+\sum_{i=1}^N\Vert x_i-\bTheta\V^Tx_i\Vert^2+\lambda \sum_{k=1}^K\vert v_k\vert^2_2 + \sum_{k=1}^K\lambda_{1k}\Vert v_k\Vert_1\,,\tag{14.71}
 \]</div>
 <p>约束为 <span class="math notranslate nohighlight">\(\bTheta^T\bTheta=\I_K\)</span>。这里 <span class="math notranslate nohighlight">\(\V\)</span> 是 <span class="math notranslate nohighlight">\(p\times K\)</span> 的矩阵，其列向量为 <span class="math notranslate nohighlight">\(v_k\)</span>，<span class="math notranslate nohighlight">\(\bTheta\)</span> 也是 <span class="math notranslate nohighlight">\(p\times K\)</span>.</p>
 <p>准则 \eqref{14.71} 关于 <span class="math notranslate nohighlight">\(\V\)</span> 和 <span class="math notranslate nohighlight">\(\bTheta\)</span> 不是联合凸的，但是当固定一个参数，这关于另一参数是凸的。固定 <span class="math notranslate nohighlight">\(\bTheta\)</span> 然后对 <span class="math notranslate nohighlight">\(\V\)</span> 最小化等价于 <span class="math notranslate nohighlight">\(K\)</span> 个 elastic net 问题（<span class="xref myst">18.4 节</span>），并且可以有效地解决。另一方面，固定 <span class="math notranslate nohighlight">\(\V\)</span> 然后对 <span class="math notranslate nohighlight">\(\Theta\)</span> 最小化是 Procrustes 问题 \eqref{14.56} 的一个版本，并且可以通过简单的 SVD 进行求解（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/186">练习 14.12</a>）。这些步骤交替进行直至收敛。</p>
@@ -1563,31 +1551,22 @@ K(x,x')=\exp(-\Vert x-x'\Vert^2/c)\,\tag{14.67}
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="14.4-Self-Organizing-Maps.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">14.4 自组织图</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="14.4-Self-Organizing-Maps.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">14.4 自组织图</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="14.6-Non-negative-Matrix-Factorization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">14.6 非负矩阵分解</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="14.6-Non-negative-Matrix-Factorization.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">14.6 非负矩阵分解</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1608,8 +1587,7 @@ K(x,x')=\exp(-\Vert x-x'\Vert^2/c)\,\tag{14.67}
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.8 Lasso 和相关路径算法的补充 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="3.9 计算上的考虑" href="3.9-Computational-Considerations.html" />
     <link rel="prev" title="3.7 多重输出的收缩和选择" href="3.7-Multiple-Outcome-Shrinkage-and-Selection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1185,7 +1173,7 @@
         
               <div>
                 
-  <div class="section" id="lasso">
+  <div class="tex2jax_ignore mathjax_ignore section" id="lasso">
 <h1>3.8 Lasso 和相关路径算法的补充<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h1>
 <p>自从 LAR 算法（Efron et al., 2004<a class="footnote-reference brackets" href="#id41" id="id1">1</a>）的提出，许多研究都在发展对于不同问题的正则化拟合算法。另外，<span class="math notranslate nohighlight">\(L_1\)</span> 正则有它自己的用处，它促进了信号处理领域的 <strong>压缩传感 (compressed sensing)</strong> 的发展（Donoho, 2006a<a class="footnote-reference brackets" href="#id42" id="id2">2</a>; Candes, 2006<a class="footnote-reference brackets" href="#id43" id="id3">3</a>）。在这部分我们讨论一些相关的想法和以 LAR 算法为先驱的其它路径算法。</p>
 <div class="section" id="incremental-forward-stagewise-regression">
@@ -1282,7 +1270,7 @@ $$
 <p>不幸的是 DS 方法的运算性质不够令人满意。这个方法想法上与 lasso 类似，特别是当我们观察 lasso 的平稳条件 \eqref{3.58}。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\mathcal B}\tag{3.58}\label{3.58}
+    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \mathrm{sign}(\beta_j),\forall j\in {\mathcal B}\tag{3.58}
     \)</span>$</p>
 <p>和 LAR 算法一样，对于活跃集中的所有变量，lasso 保持着与当前残差相同的内积（以及相关系数），并且将它们的系数向残差平方和的最优下降方向变化。在这个过程中，相同的相关系数单调下降（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a>），并且在任何时刻这个相关性大于非活跃集中的变量。</p>
 <p>!!! info “weiya 注：Ex. 3.23”
@@ -1294,7 +1282,7 @@ $<span class="math notranslate nohighlight">\(
 <p>在一些问题中，预测变量属于预定义的群体中；举个例子，属于同一个生物路径的基因，或者表示类别型数据层次的指示变量（哑变量）。在这种情形中，或许想要对群体中每个成员一起进行收缩或选择。Grouped lasso 便是一种实现方式。假设 <span class="math notranslate nohighlight">\(p\)</span> 个预测变量被分到 <span class="math notranslate nohighlight">\(L\)</span> 个群中，在第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群中有 <span class="math notranslate nohighlight">\(p_\ell\)</span> 个成员。为了简便，我们采用矩阵 <span class="math notranslate nohighlight">\(\mathbf X_\ell\)</span> 来表示对应第 <span class="math notranslate nohighlight">\(\ell\)</span> 个群的预测变量，对应的系数向量为<span class="math notranslate nohighlight">\(\beta_\ell\)</span>。grouped-lasso 最小化下面的凸准则</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\beta\in \IR^p}{\mathrm{min}}\Big(\Vert \mathbf y-\beta_0\boldsymbol 1-\sum\limits_{\ell=1}^L\mathbf X_\ell\beta_\ell\Vert_2^2+\lambda \sum\limits_{\ell=1}^L\sqrt{p_\ell}\Vert \beta_\ell\Vert_2\Big)\tag{3.80}
+\underset{\beta\in \mathbb{R}^p}{\mathrm{min}}\Big(\Vert \mathbf y-\beta_0\boldsymbol 1-\sum\limits_{\ell=1}^L\mathbf X_\ell\beta_\ell\Vert_2^2+\lambda \sum\limits_{\ell=1}^L\sqrt{p_\ell}\Vert \beta_\ell\Vert_2\Big)\tag{3.80}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\sqrt{p_\ell}\)</span> 项对应不同的群体大小，并且 <span class="math notranslate nohighlight">\(\Vert\cdot\Vert_2\)</span> 是欧几里得范数。因为一个向量 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的欧式范数为 0 当且仅当其各组分都为 0，这个过程保证了群体层次和个体水平的稀疏性。也就是，对于某些 <span class="math notranslate nohighlight">\(\lambda\)</span>，预测变量的整个群体都排除在模型之外。这个过程由 Bakin (1999)<a class="footnote-reference brackets" href="#id50" id="id14">8</a> 和 Lin and Zhang (2006)<a class="footnote-reference brackets" href="#id51" id="id15">9</a> 提出，以及 Yuan and Lin (2007)<a class="footnote-reference brackets" href="#id52" id="id16">10</a> 的研究和推广。推广包括更一般的 <span class="math notranslate nohighlight">\(L_2\)</span> 范数 <span class="math notranslate nohighlight">\(\Vert \eta\Vert=(\eta^TK\eta)^{1/2}\)</span>，并且允许重复的预测变量 (Zhao et al., 2008<a class="footnote-reference brackets" href="#id53" id="id17">11</a>)。拟合离散的可加模型的方法之间也有联系（Lin and Zhang, 2006<a class="footnote-reference brackets" href="#id51" id="id18">9</a>; Ravikumar et al., 2008<a class="footnote-reference brackets" href="#id54" id="id19">12</a>）</p>
 </div>
@@ -1321,7 +1309,7 @@ $<span class="math notranslate nohighlight">\(
 <p>一种替代计算 lasso 的 LARS 算法是 <strong>简单坐标下降 (simple coordinate descent)</strong>。这个想法由 Fu (1998)<a class="footnote-reference brackets" href="#id67" id="id35">27</a> 和 Daubechies et al. (2004)<a class="footnote-reference brackets" href="#id68" id="id36">28</a> 提出，后来被 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id37">29</a>, Wu and Lange (2008)<a class="footnote-reference brackets" href="#id70" id="id38">30</a> 和其他人研究及推广。想法是固定 Lagrangian 形式 \eqref{3.52} 中的惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，在控制其它参数固定不变时，相继地优化每一个参数。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    \hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}\label{3.52}
+    \hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}
     \)</span>$</p>
 <p>假设预测变量都经过标准化得到 0 均值和单位范数。用 <span class="math notranslate nohighlight">\(\tilde\beta_k(\lambda)\)</span> 表示惩罚参数为 <span class="math notranslate nohighlight">\(\lambda\)</span> 时对 <span class="math notranslate nohighlight">\(\beta_k\)</span> 的当前估计。我们可以分离出 \eqref{3.52} 的 <span class="math notranslate nohighlight">\(\beta_j\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -1331,9 +1319,9 @@ R(\tilde\beta(\lambda),\beta_j)=\frac{1}{2}\sum\limits_{i=1}^N(y_i-\sum\limits_{
 <p>其中我们压缩了截距并且为了方便引出因子 <span class="math notranslate nohighlight">\(\frac 12\)</span>。这个可以看成是响应变量为部分残差 <span class="math notranslate nohighlight">\(y_i-\tilde y_i^{(j)}=y_i-\sum_{k\neq j}x_{ik}\tilde \beta_k(\lambda)\)</span>。这有显式解，得到下面的更新</p>
 <div class="math notranslate nohighlight">
 \[
-\tilde \beta_j(\lambda)\leftarrow S(\sum_{i=1}^Nx_{ij}(y_i-\tilde y_i^{(j)}),\lambda)\tag{3.84}\label{3.84}
+\tilde \beta_j(\lambda)\leftarrow S(\sum_{i=1}^Nx_{ij}(y_i-\tilde y_i^{(j)}),\lambda)\tag{3.84}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(S(t,\lambda)=\sign(t)(\vert t\vert-\lambda)\_+\)</span> 是表 3.4 中的软阈值算子。<span class="math notranslate nohighlight">\(S(\cdot)\)</span> 中的第一个变量是部分残差在标准化变量 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 上的简单最小二乘系数。\eqref{3.84} 的重复迭代——轮流考虑每个变量直到收敛——得到 lasso 估计 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span>。</p>
+<p>这里 <span class="math notranslate nohighlight">\(S(t,\lambda)=\mathrm{sign}(t)(\vert t\vert-\lambda)\_+\)</span> 是表 3.4 中的软阈值算子。<span class="math notranslate nohighlight">\(S(\cdot)\)</span> 中的第一个变量是部分残差在标准化变量 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 上的简单最小二乘系数。\eqref{3.84} 的重复迭代——轮流考虑每个变量直到收敛——得到 lasso 估计 <span class="math notranslate nohighlight">\(\hat\beta(\lambda)\)</span>。</p>
 <p>我们也可以采用这种简单的算法来有效地计算在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的每个网格结点上 lasso 的解。我们从使得 <span class="math notranslate nohighlight">\(\hat\beta(\lambda_{\max})=0\)</span> 的最小 <span class="math notranslate nohighlight">\(\lambda_{\max}\)</span> 开始，每次降低一点点来循环考虑每个变量直到收敛。采用前一个解作为 <span class="math notranslate nohighlight">\(\lambda\)</span> 新值的“warm start”，<span class="math notranslate nohighlight">\(\lambda\)</span> 再一次降低，并且重复该过程。这个可能比 LARS 算法快，特别是在大型问题中。它速度的关键在于 \eqref{3.84} 中的量随着 <span class="math notranslate nohighlight">\(j\)</span> 变化可以快速更新，并且通常更新后有 <span class="math notranslate nohighlight">\(\tilde \beta_j=0\)</span>。另一方面，它在 <span class="math notranslate nohighlight">\(\lambda\)</span> 的网格处求解，而不是整个解的路径。同样类型的算法可以应用到 elastic net，grouped lasso 以及许多其它惩罚为个体参数的函数之和的模型（Friedman et al., 2010<a class="footnote-reference brackets" href="#id71" id="id39">31</a>）。通过一些修改，这也可以应用到 fused lasso（<a class="reference internal" href="../18-High-Dimensional-Problems/18.4-Linear-Classifiers-with-L1-Regularization.html"><span class="doc std std-doc">18.4.2 节</span></a>）；细节在 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id40">29</a>中给出。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1457,31 +1445,22 @@ R(\tilde\beta(\lambda),\beta_j)=\frac{1}{2}\sum\limits_{i=1}^N(y_i-\sum\limits_{
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3.7-Multiple-Outcome-Shrinkage-and-Selection.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3.7 多重输出的收缩和选择</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3.7-Multiple-Outcome-Shrinkage-and-Selection.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.7 多重输出的收缩和选择</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3.9-Computational-Considerations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.9 计算上的考虑</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3.9-Computational-Considerations.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.9 计算上的考虑</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1502,8 +1481,7 @@ R(\tilde\beta(\lambda),\beta_j)=\frac{1}{2}\sum\limits_{i=1}^N(y_i-\sum\limits_{
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

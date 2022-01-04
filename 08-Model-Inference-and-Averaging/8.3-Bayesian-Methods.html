@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8.3 贝叶斯方法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -53,10 +53,13 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.4 自助法和贝叶斯推断之间的关系" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html" />
-    <link rel="prev" title="8.2 自助法与最大似然" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html" />
+    <link rel="next" title="8.5 EM 算法" href="8.5-The-EM-Algorithm.html" />
+    <link rel="prev" title="8.1 导言" href="8.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -491,19 +489,9 @@
      8.1 导言
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,22 +1135,22 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>8.3 贝叶斯方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>贝叶斯推断中，需要确定一个在给定参数 <span class="math notranslate nohighlight">\(\theta\)</span> 时数据的采样模型 <span class="math notranslate nohighlight">\(\Pr(\mathbf Z | \theta)\)</span> ，以及在得到数据之前对于参数 <span class="math notranslate nohighlight">\(\theta\)</span> 认知的先验分布 <span class="math notranslate nohighlight">\(\Pr(\theta)\)</span> 。然后计算后验分布：</p>
+<p>贝叶斯推断中，需要确定一个在给定参数 <span class="math notranslate nohighlight">\(\theta\)</span> 时数据的采样模型 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mathbf Z | \theta)\)</span> ，以及在得到数据之前对于参数 <span class="math notranslate nohighlight">\(\theta\)</span> 认知的先验分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\theta)\)</span> 。然后计算后验分布：</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\theta\mid\mathbf Z)=\frac{\Pr(\mathbf Z\mid\theta)\cdot \Pr(\theta)}{\int \Pr(\mathbf Z\mid \theta)\cdot \Pr(\theta)d\theta}\tag{8.23}
+\mathrm{Pr}(\theta\mid\mathbf Z)=\frac{\mathrm{Pr}(\mathbf Z\mid\theta)\cdot \mathrm{Pr}(\theta)}{\int \mathrm{Pr}(\mathbf Z\mid \theta)\cdot \mathrm{Pr}(\theta)d\theta}\tag{8.23}
 \]</div>
-<p>它表示当我们知道数据后更新了对 <span class="math notranslate nohighlight">\(\theta\)</span> 的认知。为了理解后验分布，可以从中抽取样本或者通过计算均值或众数来描述它。</p>
+<p>它表示当我们知道数据后更新了对 <span class="math notranslate nohighlight">\(\theta\)</span> 的认知。为了理解后验分布，可以从中抽采样本或者通过计算均值或众数来描述它。</p>
 <p>贝叶斯方法与一般推断方法的不同之处在于：<strong>用先验分布来表达知道数据之前的不确定性，而且在知道数据之后允许不确定性继续存在，并将不确定性表示成后验分布</strong>。</p>
 <p>后验分布提供了预测未来观测 <span class="math notranslate nohighlight">\(z^{new}\)</span> 的基础，可以通过计算预测分布 (predictive distribution) 来表达预测的不确定性，注意预测值是一个随机变量，存在概率分布：</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(z^{new}\mid \mathbf  Z)=\int \Pr(z^{new}\mid \theta)\cdot \Pr(\theta\mid \mathbf Z)d\theta\tag{8.24} 
+\mathrm{Pr}(z^{new}\mid \mathbf  Z)=\int \mathrm{Pr}(z^{new}\mid \theta)\cdot \mathrm{Pr}(\theta\mid \mathbf Z)d\theta\tag{8.24} 
 \]</div>
-<p>在上述贝叶斯框架内，最大似然方法会使用上式分布中概率值最大那个点的密度 <span class="math notranslate nohighlight">\(\Pr(z^{new}\mid \hat\theta)\)</span> 来预测未来的数据。不同于式（ 8.24 ）的预测分布，它不能说明 <span class="math notranslate nohighlight">\(\theta\)</span> 估计的不确定性。</p>
+<p>在上述贝叶斯框架内，最大似然方法会使用上式分布中概率值最大那个点的密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(z^{new}\mid \hat\theta)\)</span> 来预测未来的数据。不同于式（ 8.24 ）的预测分布，它不能说明 <span class="math notranslate nohighlight">\(\theta\)</span> 估计的不确定性。</p>
 <p>让我们在光滑化的例子中使用贝叶斯方法。</p>
 <p>首先，从由式 8.5 给出的参数模型开始，假设 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 已知。</p>
 <div class="admonition- admonition">
@@ -1188,13 +1176,13 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
 <p><span class="math notranslate nohighlight">\(\beta\)</span> 的后验分布也是高斯的，均值和方差分别为：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\E(\beta\mid \mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
-\Cov(\beta\mid\mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf \Sigma^{-1})^{-1}\sigma^2 \tag{8.27}
+\mathbb{E}(\beta\mid \mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
+\mathrm{Cov}(\beta\mid\mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf \Sigma^{-1})^{-1}\sigma^2 \tag{8.27}
 \end{align*}\]</div>
 <p>后验 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 对应的值为：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\E(\mu(x)\mid\mathbf Z)&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
+\mathbb{E}(\mu(x)\mid\mathbf Z)&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
 \cov[\mu(x),\mu(x')\mid\mathbf Z]&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}h(x')\sigma^2 \tag{8.28}
 \end{align*}\]</div>
 <p>我们应该怎样选取先验协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 呢？在某些设定下先验可以从对参数的主观感受来选择。这里我们想说函数 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 应该为光滑的，而且已经通过将 <span class="math notranslate nohighlight">\(\mu\)</span> 表示成低维度的 <span class="math notranslate nohighlight">\(B\)</span>-样条的基来保证。因此可以选取先验协方差阵为单位矩阵 <span class="math notranslate nohighlight">\(\mathbf {\Sigma=I}\)</span>。当基函数个数很多，这或许不是充分的，通过对 <span class="math notranslate nohighlight">\(\mathbf\Sigma\)</span> 上施加限制条件来保证更多的光滑；这恰巧是光滑样条的情形（ 5.8.1 节）。</p>
@@ -1207,7 +1195,7 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
 <p class="admonition-title">Note</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\mu^*(x)\sim N(\hat \mu(x), h(x)^T\mathbf{(H^TH)^{-1}}h(x)\hat\sigma^2)\tag{8.7}\label{8.7}
+\hat\mu^*(x)\sim N(\hat \mu(x), h(x)^T\mathbf{(H^TH)^{-1}}h(x)\hat\sigma^2)\tag{8.7}
 \]</div>
 </div>
 <p>另一方面，对于<span class="math notranslate nohighlight">\(\tau=1\)</span>，图 8.4 左图的后验曲线 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 比自助法曲线更加光滑，因为在光滑性上面强加了更多先验权重。</p>
@@ -1251,31 +1239,22 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">8.2 自助法与最大似然</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="8.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">8.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8.5-The-EM-Algorithm.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8.5 EM 算法</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">8.4 自助法和贝叶斯推断之间的关系</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1296,8 +1275,7 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

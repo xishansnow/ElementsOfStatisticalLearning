@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>15.2 随机森林的定义 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="15.3 随机森林的细节" href="15.3-Details-of-Random-Forests.html" />
     <link rel="prev" title="15.1 导言" href="15.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,12 +1135,12 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.2 随机森林的定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差。树是用于 bagging 的理想模型，因为它们可以捕捉数据中复杂的交叉项，而且如果树长得足够深的话，会有相对较低的偏差。因为树是充满噪声的，所以通过平均可以很大程度地改善它们。而且，因为 bagging 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的。这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差。这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的。</p>
+<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差。树是用于 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 的理想模型，因为它们可以捕捉数据中复杂的交叉项，而且如果树长得足够深的话，会有相对较低的偏差。因为树是充满噪声的，所以通过平均可以很大程度地改善它们。而且，因为 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的。这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差。这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的。</p>
 <p><span class="math notranslate nohighlight">\(B\)</span> 棵独立同分布、方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的随机变量的平均方差为 <span class="math notranslate nohighlight">\(\frac{1}{B}\sigma^2\)</span>。如果变量是简单的同分布（不一定独立），有着正的成对相关系数 <span class="math notranslate nohighlight">\(\rho\)</span>，则平均的方差为（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">练习 15.1</a>）
 $<span class="math notranslate nohighlight">\(
-\rho\sigma^2+\frac{1-\rho}{B}\sigma^2 \tag{15.1}\label{15.1}
+\rho\sigma^2+\frac{1-\rho}{B}\sigma^2 \tag{15.1}
 \)</span>$</p>
 <p>!!! info “weiya 注：Ex. 15.1”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">Issue 23: Ex. 15.1</a>。</p>
@@ -1169,7 +1157,7 @@ $<span class="math notranslate nohighlight">\(
 \hat f_{rf}^B(x) = \frac{1}{B}\sum\limits_{b=1}^BT(x;\Theta_b)\tag{15.2}
 \]</div>
 <p>如 <span class="xref myst">10.9 节</span>一样，<span class="math notranslate nohighlight">\(\Theta_b\)</span> 根据分离变量、每个结点的分离值以及终止结点的值来表征第 <span class="math notranslate nohighlight">\(b\)</span> 个随机森林树。直观上，降低 <span class="math notranslate nohighlight">\(m\)</span> 会降低任意两棵树之间的相关系数，也因此通过 \eqref{15.1} 来降低平均的方差。</p>
-<p>并非所有的估计都可以通过像这样震荡数据来改善。似乎强非线性估计，比如树，改善最大。对于其 bootstrapped 树，<span class="math notranslate nohighlight">\(\rho\)</span>一般很小（一般是 0.05 或更小；见图 15.9），而 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 不比原树的方差要大。另一方面，bagging 不会改变线性估计，比如样本均值（因此也不会改变方差）；其bootstrapped 均值之间的成对相关系数大约为 50%（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/191">练习 15.4</a>）。</p>
+<p>并非所有的估计都可以通过像这样震荡数据来改善。似乎强非线性估计，比如树，改善最大。对于其 bootstrapped 树，<span class="math notranslate nohighlight">\(\rho\)</span>一般很小（一般是 0.05 或更小；见图 15.9），而 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 不比原树的方差要大。另一方面，<code class="docutils literal notranslate"><span class="pre">bagging</span></code> 不会改变线性估计，比如样本均值（因此也不会改变方差）；其bootstrapped 均值之间的成对相关系数大约为 50%（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/191">练习 15.4</a>）。</p>
 <p>!!! note “weiya 注：”
 Bagging 可以看成是特殊的随机森林，即 <span class="math notranslate nohighlight">\(m=p\)</span> 的随机森林。</p>
 <p>随机森林很流行。Leo Breiman 的合作者 Adele Cutler 维护一个随机森林的网站 <a class="reference external" href="http://www.math.usu.edu/~adele/forests/">http://www.math.usu.edu/~adele/forests/</a>。R 语言中有一个 <code class="docutils literal notranslate"><span class="pre">randomForest</span></code> 的包，由 Andy Liaw 维护，可以从 <code class="docutils literal notranslate"><span class="pre">CRAN</span></code> 网站上下载。</p>
@@ -1225,31 +1213,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="15.1-Introduction.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">15.1 导言</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="15.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">15.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="15.3-Details-of-Random-Forests.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">15.3 随机森林的细节</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="15.3-Details-of-Random-Forests.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">15.3 随机森林的细节</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1270,8 +1249,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>12.5 FDA &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="12.6 惩罚判别分析" href="12.6-Penalized-Discriminant-Analysis.html" />
     <link rel="prev" title="12.4 广义线性判别分析" href="12.4-Generalizing-Linear-Discriminant-Analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,15 +1148,15 @@
         
               <div>
                 
-  <div class="section" id="fda">
+  <div class="tex2jax_ignore mathjax_ignore section" id="fda">
 <h1>12.5 FDA<a class="headerlink" href="#fda" title="Permalink to this headline">¶</a></h1>
-<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\({\mathcal G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \mathcal G\mapsto\IR^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
+<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\({\mathcal G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \mathcal G\mapsto\mathbb{R}^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta,\theta}{\min}\sum\limits_{i=1}^N(\theta(g_i)-x_i^T\beta)^2\tag{12.52}
 \]</div>
 <p>这得到类别间的一维划分。</p>
-<p>更一般地，我们可以寻找至多 <span class="math notranslate nohighlight">\(L\le K-1\)</span> 个类别标签的独立得分， <span class="math notranslate nohighlight">\(\theta_1,\theta_2,\ldots,\theta_L\)</span>，以及 <span class="math notranslate nohighlight">\(L\)</span> 个对应的线性映射 <span class="math notranslate nohighlight">\(\eta_\ell(X)=X^T\beta_\ell,\ell=1,\ldots,L\)</span>，它们的选择使得 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中的多重回归达到最优。得分 <span class="math notranslate nohighlight">\(\theta_\ell(g)\)</span> 以及映射 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的选择使得均方残差最小</p>
+<p>更一般地，我们可以寻找至多 <span class="math notranslate nohighlight">\(L\le K-1\)</span> 个类别标签的独立得分， <span class="math notranslate nohighlight">\(\theta_1,\theta_2,\ldots,\theta_L\)</span>，以及 <span class="math notranslate nohighlight">\(L\)</span> 个对应的线性映射 <span class="math notranslate nohighlight">\(\eta_\ell(X)=X^T\beta_\ell,\ell=1,\ldots,L\)</span>，它们的选择使得 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的多重回归达到最优。得分 <span class="math notranslate nohighlight">\(\theta_\ell(g)\)</span> 以及映射 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的选择使得均方残差最小</p>
 <div class="math notranslate nohighlight">
 \[
 ASR=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-x_i^T\beta_\ell)^2]\tag{12.53}
@@ -1177,7 +1165,7 @@ ASR=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-x_i^T\be
 <p>为什么我们要采用这种方式？可以证明 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis/index.html#_2">4.3.3 节</a>导出的判别（典则）向量 <span class="math notranslate nohighlight">\(\nu_\ell\)</span> 的序列在忽略常数的意义下等于 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> (Mardia et al., 1979; Hastie et al., 1995)。更多地，测试点 <span class="math notranslate nohighlight">\(x\)</span> 到第 <span class="math notranslate nohighlight">\(k\)</span> 个类别重心 <span class="math notranslate nohighlight">\(\hat\mu_k\)</span> 的 Mahalanobis 距离由下式给出</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_J(x,\hat\mu_k)=\sum\limits_{\ell=1}^{K-1}w_\ell(\hat\eta_\ell(x)-\bar\eta_\ell^k)^2+D(x)\tag{12.54}\label{12.54}
+\delta_J(x,\hat\mu_k)=\sum\limits_{\ell=1}^{K-1}w_\ell(\hat\eta_\ell(x)-\bar\eta_\ell^k)^2+D(x)\tag{12.54}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\bar \eta_\ell^k\)</span> 是第 <span class="math notranslate nohighlight">\(k\)</span> 类的 <span class="math notranslate nohighlight">\(\hat\eta_\ell(x_i)\)</span> 的均值，且 <span class="math notranslate nohighlight">\(D(x)\)</span> 不依赖 <span class="math notranslate nohighlight">\(k\)</span>。这里 <span class="math notranslate nohighlight">\(w_\ell\)</span> 是坐标权重，并且用第 <span class="math notranslate nohighlight">\(\ell\)</span> 个最优的得分的均方残差 <span class="math notranslate nohighlight">\(r_\ell^2\)</span> 来拟合</p>
 <div class="math notranslate nohighlight">
@@ -1246,31 +1234,22 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="12.4-Generalizing-Linear-Discriminant-Analysis.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">12.4 广义线性判别分析</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="12.4-Generalizing-Linear-Discriminant-Analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">12.4 广义线性判别分析</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="12.6-Penalized-Discriminant-Analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">12.6 惩罚判别分析</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="12.6-Penalized-Discriminant-Analysis.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">12.6 惩罚判别分析</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1291,8 +1270,7 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

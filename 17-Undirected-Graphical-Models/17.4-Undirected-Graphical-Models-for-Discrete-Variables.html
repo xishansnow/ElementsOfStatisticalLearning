@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>17.4 离散变量的无向图模型 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="17.5 文献笔记" href="Bibliographic-Notes.html" />
     <link rel="prev" title="17.3 连续变量的无向图模型" href="17.3-Undirected-Graphical-Models-for-Continuous-Variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,7 +1158,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>17.4 离散变量的无向图模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>写在前面</p>
@@ -1183,7 +1171,7 @@
 <p>另外，每个结点处的值可以 <strong>被观测到 (visible)</strong> 或者 <strong>观测不到 (hidden)</strong>。结点通常由层来构成，这类似神经网络。玻尔兹曼机对于非监督学习和监督学习都是很有用的，特别对有结构化输入数据，比如图像，但是也受到计算上的限制。图 17.6 显示了一个约束的玻尔兹曼机（后面讨论），其中一些变量是隐藏的，而且只有一些结点对是相连的。我们所有 <span class="math notranslate nohighlight">\(p\)</span> 个结点都是可见的简单情形，并且边的对 <span class="math notranslate nohighlight">\((j,k)\)</span> 取自 <span class="math notranslate nohighlight">\(E\)</span>。</p>
 <p>用 <span class="math notranslate nohighlight">\(X_j\)</span> 标记结点 <span class="math notranslate nohighlight">\(j\)</span> 处的二值变量，它们联合分布的 Ising 模型由下式给出
 $<span class="math notranslate nohighlight">\(
-p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mathbf{\Theta})\right]\text{  for  }X\in{\mathcal X}\tag{17.28}\label{17.28}
+p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mathbf{\Theta})\right]\text{  for  }X\in{\mathcal X}\tag{17.28}
 \)</span><span class="math notranslate nohighlight">\(
 其中 \)</span>{\mathcal X}=\{0,1\}^p<span class="math notranslate nohighlight">\(。和上一节的高斯模型一样，只对成对交叉项进行建模。Ising 模型是在统计力学中发展的，而且现在更一般地用来建立成对交叉的联合影响。\)</span>\Phi\mathbf{(\Theta)}<span class="math notranslate nohighlight">\( 为 **分割函数 (partition function)** 的对数，而且由下式定义
 \)</span><span class="math notranslate nohighlight">\(
@@ -1195,7 +1183,7 @@ $<span class="math notranslate nohighlight">\(
 	f^{(2)}(x,y,z)&amp;=\frac{1}{Z}\psi(x,y)\psi(x,z)\psi(y,z)\\
 	f^{(3)}(x,y,z)&amp;=\frac{1}{Z}\psi(x,y,z)
 	\end{align*}
-	\tag{17.5}\label{17.5}
+	\tag{17.5}
 	\)</span>$</p>
 <p>分割函数保证在样本空间中概率相加起来为 1。<span class="math notranslate nohighlight">\(\theta_{jk}X_jX_k\)</span> 项表示（对数）势函数 \eqref{17.5} 的特定参量化，而且因为技术上的原因需要包含 <strong>常值结点 (constant node)</strong> <span class="math notranslate nohighlight">\(X_0\equiv 1\)</span>，即与其他结点都有边相连.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/139">练习 17.10</a>）。</p>
 <p>!!! note “weiya 注：Ex. 17.10”
@@ -1205,7 +1193,7 @@ $<span class="math notranslate nohighlight">\(
 Agresti (2002) 在 p17 介绍到，如果一个 <strong>列联表 (contigency table)</strong> 对两个（类别型）变量进行交叉分类，则称为 two-way table；如果对三个变量交叉分类，则称为 three-way table，以此类推.</p>
 <p>Ising 模型暗示着每个结点在其它结点条件下有逻辑斯蒂形式（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/140">练习 17.11</a>）
 $<span class="math notranslate nohighlight">\(
-\Pr(X_j=1\mid X_{-j}=x_{-j})=\frac{1}{1+\exp(-\theta_{j0}-\sum_{(j,k)\in E}\theta_{jk}x_k)}\tag{17.30}\label{17.30}
+\mathrm{Pr}(X_j=1\mid X_{-j}=x_{-j})=\frac{1}{1+\exp(-\theta_{j0}-\sum_{(j,k)\in E}\theta_{jk}x_k)}\tag{17.30}
 \)</span><span class="math notranslate nohighlight">\(
 其中 \)</span>X_{-j}<span class="math notranslate nohighlight">\( 记除了 \)</span>j<span class="math notranslate nohighlight">\( 的所有结点。因此参数 \)</span>\theta_{jk}<span class="math notranslate nohighlight">\( 衡量了在给定其它结点条件下，\)</span>X_j<span class="math notranslate nohighlight">\( 在 \)</span>X_k$ 上的依赖性。</p>
 <p>!!! note “weiya 注：Ex. 17.11”
@@ -1236,11 +1224,11 @@ $<span class="math notranslate nohighlight">\(
 \[
 令梯度等于 0 得到
 \]</div>
-<p>\hat \E(X_jX_k)-\mathbb{E}_{\mathbf \Theta}(X_jX_k)=0\tag{17.34}\label{17.34}
+<p>\hat \mathbb{E}(X_jX_k)-\mathbb{E}_{\mathbf \Theta}(X_jX_k)=0\tag{17.34}
 $<span class="math notranslate nohighlight">\(
 其中我们定义
 \)</span><span class="math notranslate nohighlight">\(
-\hat \E(X_jX_k)=\frac{1}{N}\sum\limits_{i=1}^Nx_{ij}x_{ik},\tag{17.35}
+\hat \mathbb{E}(X_jX_k)=\frac{1}{N}\sum\limits_{i=1}^Nx_{ij}x_{ik},\tag{17.35}
 \)</span>$
 这是关于数据的经验分布取期望。注意 \eqref{17.34} 式，我们看到极大似然估计简单地把结点之间的内积估计和观测的内积匹配上了。这是指数族模型得分（梯度）等式的标准形式，其中令充分统计量等于模型下的期望。</p>
 <p>为了寻找极大似然估计，我们可以利用梯度搜索或者牛顿法。然而 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span> 的计算涉及 <span class="math notranslate nohighlight">\(p(X,\mathbf\Theta)\)</span> 在 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\vert{\mathcal X}\vert=2^p\)</span> 种可能值中的 <span class="math notranslate nohighlight">\(2^{p-2}\)</span> 种情形，</p>
@@ -1284,7 +1272,7 @@ $$</p>
 \[\begin{split}
 对 $x_{\mathcal H}$ 求和意味着我们对隐藏单元的所有可能 $\\{0,1\\}$ 值进行求和。梯度为
 \end{split}\]</div>
-<p>\frac{d\ell(\mathbf\Theta)}{d\theta_{jk}}=\hat \mathbb{E}<em>{\mathcal V}\mathbb{E}</em>{\mathbf \Theta}(X_jX_k\mid X_{\mathcal V})-\mathbb{E}_{\mathbf\Theta}(X_jX_k)\tag{17.37}\label{17.37}
+<p>\frac{d\ell(\mathbf\Theta)}{d\theta_{jk}}=\hat \mathbb{E}<em>{\mathcal V}\mathbb{E}</em>{\mathbf \Theta}(X_jX_k\mid X_{\mathcal V})-\mathbb{E}_{\mathbf\Theta}(X_jX_k)\tag{17.37}
 $<span class="math notranslate nohighlight">\(
 第一项是当 \)</span>X_jX_k<span class="math notranslate nohighlight">\( 都可见时的经验均值；如果其中一个或都隐藏，则在给定可见数据下进行第一次插值，然后在隐藏变量上平均。第二项是 \)</span>X_jX_k$ 的无条件期望。</p>
 <p>第一项中的内层期望可以用条件期望的基本法则和伯努利随机变量的性质进行赋值。具体地，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，
@@ -1296,11 +1284,11 @@ x_{ij}x_{ik}&amp; \text{if }j,k\in\mathcal V\\
 x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal V})&amp;\text{if }j\in\mathcal V,k\in\mathcal H\\
 \Pr\nolimits_{\mathbf\Theta}(X_j=1,X_k=1\mid X_{\mathcal V}=x_{i\mathcal V})&amp;\text{if }j,k\in{\mathcal H}\end{array}
 \right.
-\tag{17.38}\label{17.38}
+\tag{17.38}
 \)</span>$</p>
 <p>!!! note “weiya 注：推导 \eqref{17.38}”
 参见<a class="reference external" href="http://disq.us/p/22yh4r6">评论</a>.</p>
-<p>现在需要进行两个独立的吉布斯采样；第一个是从上面的模型中采样估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span>，第二个是估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})\)</span>。对于后者，固定（“夹住”）可见单元为观测值，并且仅仅对隐藏变量进行取样。吉布斯采样必须对训练集中的每一个观测进行，在梯度搜索的每一阶段。结果是这个过程可以变得非常慢，甚至对于中等规模的模型也是如此。在 <span class="xref myst">17.4.4 节</span>我们考虑进一步的模型约束来使得计算可行。</p>
+<p>现在需要进行两个独立的吉布斯采样；第一个是从上面的模型中采样估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span>，第二个是估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})\)</span>。对于后者，固定（“夹住”）可见单元为观测值，并且仅仅对隐藏变量进行采样。吉布斯采样必须对训练集中的每一个观测进行，在梯度搜索的每一阶段。结果是这个过程可以变得非常慢，甚至对于中等规模的模型也是如此。在 <span class="xref myst">17.4.4 节</span>我们考虑进一步的模型约束来使得计算可行。</p>
 </div>
 <div class="section" id="id12">
 <h2>图结构的估计<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
@@ -1332,10 +1320,10 @@ $<span class="math notranslate nohighlight">\(
 <div><p>图 17.6. 同一层中的结点没有连接的 <strong>限制玻尔兹曼机 (RBM)</strong>。可见单元细分成了 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span>，允许 RBM 建立特征 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和标签 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 之间的联合密度。</p>
 </div></blockquote>
 <p>举个例子， <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 可以是手写字体图像的二值像素，<span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 可以有10个单元，每个单元是观测的类别标签 0-9 中的一个。</p>
-<p>这个模型的约束形式简化了估计 \eqref{17.37} 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 \eqref{17.30} 给出的条件概率一起取样。</p>
-<p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替取样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 部分在交替取样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 的标签分布中取样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
+<p>这个模型的约束形式简化了估计 \eqref{17.37} 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 \eqref{17.30} 给出的条件概率一起采样。</p>
+<p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替采样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 部分在交替采样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 的标签分布中采样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
 <p>正如所注意到的约束玻尔兹曼机有与单层隐藏层神经网络一样的一般形式（<span class="xref myst">11.3 节</span>）。神经网络中边是有向的，隐藏单元经常是实值的，并且拟合准则不一样。神经网络在输入特征的情况下，最小化目标与模型预测之间的误差（交叉熵）。相反地，约束玻尔兹曼机最大化所有可见单元（也就是，特征和目标）的联合分布的对数似然。可以从输入特征中提取对预测标签有用的信息，但是，与监督学习方法不同，可能也使用一些隐藏单元对特征向量中的结构进行建模，而这与预测标签不是直接相关的。然而，这些特征当与从隐藏层中导出的特征结合起来会变得有用。</p>
-<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 \eqref{17.37} 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 取样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 取样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 取样。思想是，当参数与解相差很多，迭代吉布斯取样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
+<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 \eqref{17.37} 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 采样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 采样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 采样。思想是，当参数与解相差很多，迭代吉布斯采样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
 <p>!!! note “weiya 注”
 <img alt="" src="../_images/hvGibbs.png" />
 截图自<a class="reference external" href="http://deeplearning.net/tutorial/">http://deeplearning.net/tutorial/</a></p>
@@ -1412,31 +1400,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="17.3-Undirected-Graphical-Models-for-Continuous-Variables.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">17.3 连续变量的无向图模型</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="17.3-Undirected-Graphical-Models-for-Continuous-Variables.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">17.3 连续变量的无向图模型</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Bibliographic-Notes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">17.5 文献笔记</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="Bibliographic-Notes.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">17.5 文献笔记</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1457,8 +1436,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

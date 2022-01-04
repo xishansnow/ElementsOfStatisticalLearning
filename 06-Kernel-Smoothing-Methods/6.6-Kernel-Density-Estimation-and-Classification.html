@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6.6 核密度估计和分类 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="6.7 径向基函数和核" href="6.7-Radial-Basis-Functions-and-Kernels.html" />
     <link rel="prev" title="6.5 局部似然和其他模型" href="6.5-Local-Likelihood-and-Other-Models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,33 +1158,33 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.6 核密度估计和分类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>核密度估计是非监督学习过程，在历史上先于核回归。它还自然地导出了非参分类的一系列简单的过程。</p>
 <div class="section" id="id2">
 <h2>核密度估计<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>假设我们从概率密度 <span class="math notranslate nohighlight">\(f_X(x)\)</span> 中取随机样本 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span>，并且希望估计 <span class="math notranslate nohighlight">\(x_0\)</span> 处的 <span class="math notranslate nohighlight">\(f_X\)</span>。为了简化，我们现在假设 <span class="math notranslate nohighlight">\(X\in \IR\)</span>。与前面一样，一个自然的局部估计有如下形式</p>
+<p>假设我们从概率密度 <span class="math notranslate nohighlight">\(f_X(x)\)</span> 中取随机样本 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span>，并且希望估计 <span class="math notranslate nohighlight">\(x_0\)</span> 处的 <span class="math notranslate nohighlight">\(f_X\)</span>。为了简化，我们现在假设 <span class="math notranslate nohighlight">\(X\in \mathbb{R}\)</span>。与前面一样，一个自然的局部估计有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_X(x_0)=\frac{\#x_i\in \mathcal N(x_0)}{N\lambda}\tag{6.21}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathcal N(x_0)\)</span> 为 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的宽度为 <span class="math notranslate nohighlight">\(\lambda\)</span> 的很小的邻域。这个估计非常振荡，所以更倾向于使用光滑的 Parzen 估计
 $<span class="math notranslate nohighlight">\(
-\hat f(x_0)=\frac{1}{N\lambda}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\tag{6.22}\label{6.22}
+\hat f(x_0)=\frac{1}{N\lambda}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\tag{6.22}
 \)</span><span class="math notranslate nohighlight">\(
 因为它考虑离 \)</span>x_0<span class="math notranslate nohighlight">\( 近的观测点，并且观测点的权重系数随着离 \)</span>x_0<span class="math notranslate nohighlight">\( 的距离增大而减小。这种情形下 \)</span>K_\lambda<span class="math notranslate nohighlight">\( 受欢迎的选择是高斯核 \)</span>K_\lambda(x_0,x)=\phi(\vert x-x_0\vert/\lambda)<span class="math notranslate nohighlight">\(。图 6.13 显示了根据 CHD 群中 `systolic blood pressure` 的样本值来拟合高斯核密度。令 \)</span>\phi_\lambda<span class="math notranslate nohighlight">\( 是均值为 0 标准误差为 \)</span>\lambda<span class="math notranslate nohighlight">\( 的高斯密度，则 \eqref{6.22} 有如下形式
 \)</span>$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \hat f_X(x)&amp; = \frac{1}{N}\sum\limits_{i=1}^N\phi_\lambda(x-x_i)\\
-&amp;=(\hat F\star\phi_\lambda)(x)\qquad\tag{6.23}\label{6.23}
+&amp;=(\hat F\mathrm{st}ar\phi_\lambda)(x)\qquad\tag{6.23}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}这是经验分布函数 $\hat F$ 和 $\phi_\lambda$ 的卷积。\\!!! note &quot;weiya 注：&quot;
     按照[卷积](https://en.wikipedia.org/wiki/Convolution)的定义，
     \end{aligned}\end{align} \]</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(\hat F\star\phi_\lambda)(x) = \sum_{i=1}^n \hat F(x_i)\phi_\lambda(x-x_i) = \frac 1N \sum_{i=1}^n \phi_\lambda(x-x_i)\,.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(\hat F\mathrm{st}ar\phi_\lambda)(x) = \sum_{i=1}^n \hat F(x_i)\phi_\lambda(x-x_i) = \frac 1N \sum_{i=1}^n \phi_\lambda(x-x_i)\,.
 $$
 另外，两个独立随机变量和的分布也可以表示为卷积形式。具体地，假设 $X$ 和 $Y$ 独立，分布函数分别为 $F(x)=P(X\le x), G(y)=P(Y\le y)$，则 $X+Y$ 的分布函数为
 $$
@@ -1205,7 +1193,7 @@ $$
 </pre></div>
 </div>
 <p>分布函数 <span class="math notranslate nohighlight">\(\hat F(x)\)</span> 在每个观测 <span class="math notranslate nohighlight">\(x_i\)</span> 处赋予 <span class="math notranslate nohighlight">\(1/N\)</span> 的权重，并且是跳跃的；在 <span class="math notranslate nohighlight">\(\hat f_X(x)\)</span> 中我们已经对每个观测 <span class="math notranslate nohighlight">\(x_i\)</span> 加上独立高斯噪声来光滑 <span class="math notranslate nohighlight">\(\hat F\)</span>.</p>
-<p>Parzen 密度估计是局部平均的等价，并且根据局部回归提出了改进【在密度的对数尺度下；见 Loader (1999)<a class="footnote-reference brackets" href="#id6" id="id3">1</a>】。我们这里不继续讨论这些。在<span class="math notranslate nohighlight">\(\IR^p\)</span>中，高斯密度的自然推广意味着在 \eqref{6.23} 中使用高斯积的核，</p>
+<p>Parzen 密度估计是局部平均的等价，并且根据局部回归提出了改进【在密度的对数尺度下；见 Loader (1999)<a class="footnote-reference brackets" href="#id6" id="id3">1</a>】。我们这里不继续讨论这些。在<span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span>中，高斯密度的自然推广意味着在 \eqref{6.23} 中使用高斯积的核，</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_X(x_0)=\frac{1}{N(2\lambda^2\pi)^{p/2}}\sum\limits_{i=1}^Ne^{-\frac{1}{2}(\Vert x_i-x_0\Vert/\lambda)^2}\tag{6.24}
@@ -1224,7 +1212,7 @@ $<span class="math notranslate nohighlight">\(
 <blockquote>
 <div><p>左图显示了在 CHD 和 no-CHD 群体中 systolic blood pressure 的两个独立的密度估计，每个都采用高斯核估计。右图显示了用（6.25）估计的CHD的后验概率。</p>
 </div></blockquote>
-<p>如果分类是最终的目标，则将单独的类别密度学得很好可能不是必要的，并且可以实际上有误导。图 6.15 显示了密度都是 <strong>多模的 (multimodal)</strong> 的例子，但是后验比例非常光滑。从数据中学习单独的密度，可能考虑设置一个更粗糙，高方差的拟合来捕捉这些特征，这与估计后验概率的目的是不相关的。实际上，如果分类是最终目标，我们仅仅需要估计在判别边界附近的后验（对于两个类别，这也就是集合 <span class="math notranslate nohighlight">\(\\{x\mid \Pr(G=1\mid X=x)=\frac{1}{2}\\}\)</span>）</p>
+<p>如果分类是最终的目标，则将单独的类别密度学得很好可能不是必要的，并且可以实际上有误导。图 6.15 显示了密度都是 <strong>多模的 (multimodal)</strong> 的例子，但是后验比例非常光滑。从数据中学习单独的密度，可能考虑设置一个更粗糙，高方差的拟合来捕捉这些特征，这与估计后验概率的目的是不相关的。实际上，如果分类是最终目标，我们仅仅需要估计在判别边界附近的后验（对于两个类别，这也就是集合 <span class="math notranslate nohighlight">\(\\{x\mid \mathrm{Pr}(G=1\mid X=x)=\frac{1}{2}\\}\)</span>）</p>
 <p><img alt="" src="../_images/fig6.15.png" /></p>
 <blockquote>
 <div><p>总体类别的密度可能会有有趣的结构（左图），但是这种结构会在后验概率中消失（右图）。</p>
@@ -1235,7 +1223,7 @@ $<span class="math notranslate nohighlight">\(
 <p>不管它的名字（也称为“白痴的贝叶斯”！），这是这些年仍然流行的技巧。当特征空间的维数 <span class="math notranslate nohighlight">\(p\)</span> 很高，这种方式特别合适，使得密度估计不再吸引人。朴素贝叶斯模型假设给定类别 <span class="math notranslate nohighlight">\(G=j\)</span>，特征 <span class="math notranslate nohighlight">\(X_k\)</span> 是独立的:</p>
 <div class="math notranslate nohighlight">
 \[
-f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}\label{6.26}
+f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}
 \]</div>
 <p>尽管这个假设一般是不对的，但是确实很大程度上简化了估计：</p>
 <ul class="simple">
@@ -1247,7 +1235,7 @@ f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}\label{6.26}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\log\frac{\Pr(G=\ell\mid X)}{\Pr(G=J\mid X)}&amp;=\log\frac{\pi_\ell f_\ell(X)}{\pi_Jf_J(X)}\\
+\log\frac{\mathrm{Pr}(G=\ell\mid X)}{\mathrm{Pr}(G=J\mid X)}&amp;=\log\frac{\pi_\ell f_\ell(X)}{\pi_Jf_J(X)}\\
 &amp;=\log\frac{\pi_\ell\prod_{k=1}^pf_{\ell k}(X_k)}{\pi_J\prod_{k=1}^pf_{Jk}(X_k)}\\
 &amp;=\log\frac{\pi_\ell}{\pi_J}+\sum\limits_{k=1}^p\log\frac{f_{\ell k}(X_k)}{f_{Jk}(X_k)}\\
 &amp;=\alpha_\ell + \sum\limits_{k=1}^pg_{\ell k}(X_k)
@@ -1292,31 +1280,22 @@ f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}\label{6.26}
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="6.5-Local-Likelihood-and-Other-Models.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">6.5 局部似然和其他模型</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="6.5-Local-Likelihood-and-Other-Models.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">6.5 局部似然和其他模型</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6.7-Radial-Basis-Functions-and-Kernels.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6.7 径向基函数和核</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="6.7-Radial-Basis-Functions-and-Kernels.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">6.7 径向基函数和核</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1337,8 +1316,7 @@ f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}\label{6.26}
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

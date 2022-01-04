@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.11 大小合适的boosting树 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.12 正则化" href="10.12-Regularization.html" />
     <link rel="prev" title="10.10 Gradient Boosting的数值优化" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,12 +1135,12 @@
         
               <div>
                 
-  <div class="section" id="boosting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.11 大小合适的boosting树<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <p>曾经，boosting 被认为是一种将模型结合起来(combing models)的技巧，在这里模型是树。同样地，生成树的算法可看成是产生用于 boosting 进行结合的模型的 <strong>原型(primitive)</strong>。这种情形下，在生成树的时候以通常的方式分别估计每棵树的最优大小（<span class="xref myst">9.2 节</span>）。首先诱导出非常大（过大的）的一棵树，接着应用自下而上的过程剪枝得到估计的最优终止结点个数的树。这种方式隐含地假设了每棵树是式 \eqref{10.28} 中的最后一棵。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}\label{10.28}
+    f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}
     \)</span>$, 详见 <span class="xref myst">10.9 节</span>。</p>
 <p>除了真正的最后一棵树，这显然是个很差的假设。结果导致树都趋向于很大，特别是前几步迭代中。这显著降低了模型的效果，并且增大了计算量。</p>
 <p>避免这个问题最简单的策略是将所有树限制为相同的大小， <span class="math notranslate nohighlight">\(J_m=J\;\forall m\)</span>。在每次迭代中，得到 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树。因此 <span class="math notranslate nohighlight">\(J\)</span> 成为了整个 boosting 过程的 <strong>元参数(meta-parameter)</strong>，根据手头上的数据来调整该参数以期最大化估计的效果。</p>
@@ -1165,7 +1153,7 @@ $<span class="math notranslate nohighlight">\(
 <p><span class="math notranslate nohighlight">\(\eta(X)\)</span> 一个相关的性质是坐标变量 <span class="math notranslate nohighlight">\(X^T=(X_1,X_2,\ldots, X_p)\)</span> 间交叉项的阶。这个可以通过它的 ANOVA 展开式得到</p>
 <div class="math notranslate nohighlight">
 \[
-\eta(X)=\sum\limits_{j}\eta_j(X_j)+\sum\limits_{jk}\eta_{jk}(X_j,X_k)+\sum\limits_{jkl}\eta_{jkl}(X_j,X_k, X_l)+\cdots\tag{10.40}\label{10.40}
+\eta(X)=\sum\limits_{j}\eta_j(X_j)+\sum\limits_{jk}\eta_{jk}(X_j,X_k)+\sum\limits_{jkl}\eta_{jkl}(X_j,X_k, X_l)+\cdots\tag{10.40}
 \]</div>
 <p>式子 \eqref{10.40} 中的第一项是只有一个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的函数和。这些函数 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 是在所采用的误差损失准则下联合起来最能近似 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 的项。每一个 <span class="math notranslate nohighlight">\(\eta_j(X_j)\)</span> 称为 <span class="math notranslate nohighlight">\(X_j\)</span> 的主影响。式中第二项是那些加入到主影响中将 <span class="math notranslate nohighlight">\(\eta(X)\)</span> 拟合得最好的含两个变量的函数。这些函数被称为每个变量对 <span class="math notranslate nohighlight">\((X_j,X_k)\)</span> 的二阶交叉项。式中第三项表示三阶交叉项，以此类推。对于许多实际的问题，低阶交叉影响占主要地位。如果模型得到强烈的高阶交叉影响，比如大型的决策树，则可能正确性不好。</p>
 <p>基于树的近似的交叉性阶数被树的大小 <span class="math notranslate nohighlight">\(J\)</span> 所限制。也就是，不存在大于 <span class="math notranslate nohighlight">\(J-1\)</span> 阶数的交叉项。因为 \eqref{10.28} 的 boosted 模型关于树是可加的，这个限制对于它也适用。<span class="math notranslate nohighlight">\(J=2\)</span> 时（单个分割点的“decision stump”），则只能得到仅主影响的 boosted 模型，其中不允许有交叉项。当 <span class="math notranslate nohighlight">\(J=3\)</span> 时，可以允许有含两个变量的交叉项，以此类推。这表明选择的 <span class="math notranslate nohighlight">\(J\)</span> 值应该反映 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 占优势的交叉项的阶数。当然这在一般情形下是未知的，但是在大部分情况下往往很低。</p>
@@ -1180,7 +1168,7 @@ $<span class="math notranslate nohighlight">\(
     -1 &amp; \text{otherwise}
     \end{array}
     \right.
-    \tag{10.2}\label{10.2}
+    \tag{10.2}
     \)</span>$</p>
 <p>生成函数是可加的（二次单项式的和），所以 <span class="math notranslate nohighlight">\(J&gt;2\)</span> 的 boosting 模型产生多余的方差，也因此更高的测试误差。图 10.10 比较了用真实函数构造的 boosted stump 的坐标函数。</p>
 <p><img alt="" src="../_images/fig10.10.png" /></p>
@@ -1210,31 +1198,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">10.10 Gradient Boosting的数值优化</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">10.10 Gradient Boosting的数值优化</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.12-Regularization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.12 正则化</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.12-Regularization.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.12 正则化</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1255,8 +1234,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

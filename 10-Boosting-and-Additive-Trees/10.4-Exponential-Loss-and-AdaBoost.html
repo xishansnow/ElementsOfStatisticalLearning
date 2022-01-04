@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.4 指数损失和AdaBoost &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.5 为什么是指数损失？" href="10.5-Why-Exponential-Loss.html" />
     <link rel="prev" title="10.3 向前逐步加法建模" href="10.3-Forward-Stagewise-Additive-Modeling.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,7 +1135,7 @@
         
               <div>
                 
-  <div class="section" id="adaboost">
+  <div class="tex2jax_ignore mathjax_ignore section" id="adaboost">
 <h1>10.4 指数损失和AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">¶</a></h1>
 <!--
 !!! note "weiya注：Recall"
@@ -1161,12 +1149,12 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 上式可以写成
 \)</span><span class="math notranslate nohighlight">\(
-(\beta_m,G_m)=\mathrm{arg}\;\underset{\beta, G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}\exp(-\beta y_iG(x_i))\tag{10.9}\label{10.9}
+(\beta_m,G_m)=\mathrm{arg}\;\underset{\beta, G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}\exp(-\beta y_iG(x_i))\tag{10.9}
 \)</span><span class="math notranslate nohighlight">\(
 其中，\)</span>w^{(m)}_i=\exp(-y_if_{m-1}(x))<span class="math notranslate nohighlight">\(。因为每个 \)</span>w^{(m)}_i<span class="math notranslate nohighlight">\( 既不依赖 \)</span>\beta<span class="math notranslate nohighlight">\( 也不依赖 \)</span>G(x)<span class="math notranslate nohighlight">\(，可以看成是应用到每个观测上的权重。权重取决于 \)</span>f_{m-1}(x_i)<span class="math notranslate nohighlight">\(，因此个体的权重值随着迭代次数 \)</span>m$ 而变化。</p>
 <p>\eqref{10.9} 式的解可以通过两步得到。首先，对于任意 <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>，\eqref{10.9} 式 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解为
 $<span class="math notranslate nohighlight">\(
-G_m=\mathrm{arg}\;\underset{G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i))\tag{10.10}\label{10.10}
+G_m=\mathrm{arg}\;\underset{G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i))\tag{10.10}
 \)</span><span class="math notranslate nohighlight">\(
 这是使得在预测 \)</span>y<span class="math notranslate nohighlight">\( 时加权误差率最小化的分类器。这个可以通过将 \eqref{10.9} 的准则表达成下式看出来
 \)</span><span class="math notranslate nohighlight">\(
@@ -1174,7 +1162,7 @@ e^{-\beta}\sum\limits_{y_i=G(x_i)}\omega_i^{(m)}+e^\beta\sum\limits_{y_i\neq G(x
 \)</span>$</p>
 <p>进一步，这个也可以写成
 $<span class="math notranslate nohighlight">\(
-(e^{\beta}-e^{-\beta})\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i)) + e^{-\beta}\sum\limits_{i=1}^N\omega_i^{(m)}\tag{10.11}\label{10.11}
+(e^{\beta}-e^{-\beta})\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i)) + e^{-\beta}\sum\limits_{i=1}^N\omega_i^{(m)}\tag{10.11}
 \)</span>$</p>
 <p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(G_m\)</span>”
 因为此处 <span class="math notranslate nohighlight">\(G_m(x)\in\\{-1,1\\}\)</span>，则当 <span class="math notranslate nohighlight">\(y_i=G_i(x)\)</span> 时，<span class="math notranslate nohighlight">\(y_iG_i(x)=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_iG_i(x)=-1\)</span>。从式 \eqref{10.11} 显然可以看出\eqref{10.10} 是 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解。</p>
@@ -1194,11 +1182,11 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
 \)</span><span class="math notranslate nohighlight">\(
 导出下一次迭代的权重为
 \)</span><span class="math notranslate nohighlight">\(
-\omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{-\beta_my_iG_m(x_i)}\tag{10.14}\label{10.14}
+\omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{-\beta_my_iG_m(x_i)}\tag{10.14}
 \)</span><span class="math notranslate nohighlight">\(
 使用 \)</span>-y_iG_m(x_i)=2\cdot I(y_i\neq G_m(x_i))-1<span class="math notranslate nohighlight">\( 的事实，\eqref{10.14} 式变成
 \)</span><span class="math notranslate nohighlight">\(
-\omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{\alpha_mI(y_i\neq G_m(x_i))}\cdot e^{-\beta_m}\tag{10.15}\label{10.15}
+\omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{\alpha_mI(y_i\neq G_m(x_i))}\cdot e^{-\beta_m}\tag{10.15}
 \)</span><span class="math notranslate nohighlight">\(
 其中 \)</span>\alpha_m=2\beta_m<span class="math notranslate nohighlight">\( 是 AdaBoost.M1 算法（算法 10.1）中第 2(c) 行定义的常数。\eqref{10.15} 式的因子 \)</span>e^{-\beta_m}$ 对所有的权重都乘以同样的值，所以没有影响。因此 \eqref{10.15} 等价于算法 10.1 中的第 2(d) 行。</p>
 <p>我们可以把 AdaBoost.M1 算法的第 2(a) 行看成近似求解 \eqref{10.11} 最小化问题的方法，从而得到 \eqref{10.10} 式。因此我们将 AdaBoost.M1 总结为通过向前逐步加法建模方式来最小化指数损失函数。</p>
@@ -1237,31 +1225,22 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.3-Forward-Stagewise-Additive-Modeling.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">10.3 向前逐步加法建模</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.3-Forward-Stagewise-Additive-Modeling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">10.3 向前逐步加法建模</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.5-Why-Exponential-Loss.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.5 为什么是指数损失？</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.5-Why-Exponential-Loss.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.5 为什么是指数损失？</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1282,8 +1261,7 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

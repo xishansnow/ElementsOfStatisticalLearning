@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>11.4 拟合神经网络 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="11.5 训练神经网络的一些问题" href="11.5-Some-Issues-in-Training-Neural-Networks.html" />
     <link rel="prev" title="11.3 神经网络" href="11.3-Neural-Networks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,7 +1135,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>11.4 拟合神经网络<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>神经网络模型中未知的参数，通常称为 <strong>权重 (weights)</strong>，我们需要寻找它们的值使得模型很好地拟合训练数据。我们将参数的全集记为 <span class="math notranslate nohighlight">\(\theta\)</span>，包括</p>
 <div class="math notranslate nohighlight">
@@ -1172,15 +1160,16 @@ R(\theta)=-\sum\limits_{i=1}^N\sum\limits_{k=1}^Ky_{ik}\mathrm{log}\;f_k(x_i)\ta
 <p>一般地，我们不想要 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的全局最小值，因为这可能会是一个过拟合解。而是需要一些正则化：这个可以通过惩罚项来直接实现，或者提前终止来间接实现。下一节中将给出详细的细节。</p>
 <p>最小化 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的一般方法是通过梯度下降，在这种情形下称作 <strong>向后传播 (back-propagation)</strong>。因为模型的组成成分，运用微分的链式法则可以很简单地得到梯度。这个可以通过对网络向前或向后遍历计算得到，仅跟踪每个单元的局部量。</p>
 <p>!!! note “weiya 注：Recall \eqref{11.5}”
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
-    Z_m&amp;=\sigma(\alpha_{0m}+\alpha_m^TX),m=1,2,\ldots,M\\
-    T_k&amp;=\beta_{0k}+\beta_k^TZ,k=1,\ldots,K,\\
-    f_k(X)&amp;=g_k(T),k=1,\ldots,K
-    \end{align*}
-    \tag{11.5}
-    \label{11.5}
-    \)</span>$</p>
+$$
+\begin{align*}
+Z_m&amp;=\sigma(\alpha_{0m}+\alpha_m^TX),m=1,2,\ldots,M\
+T_k&amp;=\beta_{0k}+\beta_k^TZ,k=1,\ldots,K,\
+f_k(X)&amp;=g_k(T),k=1,\ldots,K
+\end{align*}
+\tag{11.5}</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
+</pre></div>
+</div>
 <p>下面是对于平方误差损失的向后传播的细节。由 \eqref{11.5} 式令 <span class="math notranslate nohighlight">\(z_{mi}=\sigma(\alpha_{0m}+\alpha_m^Tx_i)\)</span>，并令 <span class="math notranslate nohighlight">\(z_i=(z_{1i},z_{2i},\ldots,z_{Mi})\)</span>，则我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1196,9 +1185,7 @@ R(\theta)&amp;\equiv\sum\limits_{i=1}^NR_i\\
 \frac{\partial R_i}{\partial \beta_{km}}&amp;=-2(y_{ik}-f_k(x_i))g'_k(\beta_k^Tz_i)z_{mi}\\
 \frac{\partial R_i}{\partial \alpha_{m\ell}}&amp;=-\sum\limits_{k=1}^K2(y_{ik}-f_k(x_i))g'_k(\beta_k^Tz_i)\beta_{km}\sigma'(\alpha_m^Tx_i)x_{i\ell}
 \end{align*}
-\tag{11.12}
-\label{11.12}
-\end{split}\]</div>
+\tag{11.12}\end{split}\]</div>
 <p>给定这些微分，梯度下降在第 <span class="math notranslate nohighlight">\((r+1)\)</span> 步迭代更新为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1206,9 +1193,7 @@ R(\theta)&amp;\equiv\sum\limits_{i=1}^NR_i\\
 \beta_{km}^{(r+1)}&amp;=\beta_{km}^{(r)}-\gamma_r\sum\limits_{i=1}^N\frac{\partial R_i}{\partial \beta_{km}^{(r)}}\\
 \alpha_{m\ell}^{(r+1)}&amp;=\alpha_{m\ell}^{(r)}-\gamma_r\sum\limits_{i=1}^N\frac{\partial R_i}{\partial\alpha_{m\ell}^{(r)}}
 \end{align*}
-\tag{11.13}
-\label{11.13}
-\end{split}\]</div>
+\tag{11.13}\end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\gamma_r\)</span> 为 <strong>学习速度 (learning rate)</strong>，将在下面讨论。</p>
 <p>现在将 <span class="math notranslate nohighlight">\(\eqref{11.12}\)</span> 式写成
 $$</p>
@@ -1217,23 +1202,23 @@ $$</p>
 \frac{\partial R_i}{\partial \beta_{km}}&amp;=\delta_{ki}z_{mi}\\
 \frac{\partial R_i}{\partial \alpha_{m\ell}}&amp;=s_{mi}x_{i\ell}
 \end{align*}\]</div>
-<p>\tag{11.14}
-\label{11.14}
+<p>\tag{11.14}</p>
+<div class="math notranslate nohighlight">
+\[
+$\delta_{ki}$ 和 $s_{mi}$ 的值分别为当前模型在输出和隐藏层单元的误差。从它们的定义来看，它们满足
+\]</div>
+<p>s_{mi}=\sigma’(\alpha_m^Tx_i)\sum\limits_{k=1}^K\beta_{km}\delta_{ki}\tag{11.15}
 $<span class="math notranslate nohighlight">\(
-\)</span>\delta_{ki}<span class="math notranslate nohighlight">\( 和 \)</span>s_{mi}<span class="math notranslate nohighlight">\( 的值分别为当前模型在输出和隐藏层单元的误差。从它们的定义来看，它们满足
-\)</span><span class="math notranslate nohighlight">\(
-s_{mi}=\sigma'(\alpha_m^Tx_i)\sum\limits_{k=1}^K\beta_{km}\delta_{ki}\tag{11.15}\label{11.15}
-\)</span><span class="math notranslate nohighlight">\(
 上式称为 **向后传播等式 (back-propagation equations)**。用这个等式，\)</span>\eqref{11.13}<span class="math notranslate nohighlight">\( 的更新可以通过 two-pass 算法来实现。在 forward pass，固定当前权重，预测值 \)</span>\hat f_k(x_i)<span class="math notranslate nohighlight">\( 通过 (11.5) 式计算。在 backward pass，计算当前误差 \)</span>\delta_{ki}<span class="math notranslate nohighlight">\(，接着向后传播通过 \)</span>\eqref{11.15}<span class="math notranslate nohighlight">\( 式给出误差 \)</span>s_{mi}<span class="math notranslate nohighlight">\(。则两个误差都用来计算 \)</span>\eqref{11.13}<span class="math notranslate nohighlight">\(、\)</span>\eqref{11.14}$ 中更新的梯度。</p>
 <p>!!! note “weiya 注：向后传播的算法形式”
 记
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
-    z^{(k)} &amp;= \W^{(k-1)}a^{(k-1)}\\
+    z^{(k)} &amp;= W^{(k-1)}a^{(k-1)}\\
     a^{(k)} &amp;= g^{(k)}(z^{(k)})\,,
     \end{align*}
     \)</span><span class="math notranslate nohighlight">\(
-    其中 \)</span>\W^{(k-1)}<span class="math notranslate nohighlight">\( 表示从 \)</span>L_{k-1}<span class="math notranslate nohighlight">\( 层到 \)</span>L_k<span class="math notranslate nohighlight">\(，\)</span>a^{(k)}<span class="math notranslate nohighlight">\( 是 \)</span>L_k<span class="math notranslate nohighlight">\( 层所有的激活向量，并假设激活函数 \)</span>g^{(k)}$ 逐个元素地作用在向量上，则可以整理出向后传播的算法形式：</p>
+    其中 \)</span>W^{(k-1)}<span class="math notranslate nohighlight">\( 表示从 \)</span>L_{k-1}<span class="math notranslate nohighlight">\( 层到 \)</span>L_k<span class="math notranslate nohighlight">\(，\)</span>a^{(k)}<span class="math notranslate nohighlight">\( 是 \)</span>L_k<span class="math notranslate nohighlight">\( 层所有的激活向量，并假设激活函数 \)</span>g^{(k)}$ 逐个元素地作用在向量上，则可以整理出向后传播的算法形式：</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![](assets/bp_alg.png)
 
 注意图中的符号含义与 ESL 中稍有不同。
@@ -1278,31 +1263,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="11.3-Neural-Networks.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">11.3 神经网络</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="11.3-Neural-Networks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">11.3 神经网络</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="11.5-Some-Issues-in-Training-Neural-Networks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">11.5 训练神经网络的一些问题</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="11.5-Some-Issues-in-Training-Neural-Networks.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">11.5 训练神经网络的一些问题</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1323,8 +1299,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

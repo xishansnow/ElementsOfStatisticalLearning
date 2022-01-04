@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4.3 线性判别分析 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="4.4 逻辑斯蒂回归" href="4.4-Logistic-Regression.html" />
     <link rel="prev" title="4.2 指示矩阵的线性回归" href="4.2-Linear-Regression-of-an-Indicator-Matrix.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,14 +1158,14 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>4.3 线性判别分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>分类的判别理论（<span class="xref myst">2.4节</span>）告诉我们，我们需要知道的是最优分类的类别后验概率 <span class="math notranslate nohighlight">\(\Pr(G\mid X)\)</span>。假设 <span class="math notranslate nohighlight">\(f_k(x)\)</span> 是类别 <span class="math notranslate nohighlight">\(G=k\)</span> 中 <span class="math notranslate nohighlight">\(X\)</span> 的类别条件密度，并令 <span class="math notranslate nohighlight">\(\pi_k\)</span> 为类别 <span class="math notranslate nohighlight">\(k\)</span> 的先验概率，满足 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k=1\)</span>。简单地应用一下贝叶斯定理得到</p>
+<p>分类的判别理论（<span class="xref myst">2.4节</span>）告诉我们，我们需要知道的是最优分类的类别后验概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G\mid X)\)</span>。假设 <span class="math notranslate nohighlight">\(f_k(x)\)</span> 是类别 <span class="math notranslate nohighlight">\(G=k\)</span> 中 <span class="math notranslate nohighlight">\(X\)</span> 的类别条件密度，并令 <span class="math notranslate nohighlight">\(\pi_k\)</span> 为类别 <span class="math notranslate nohighlight">\(k\)</span> 的先验概率，满足 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k=1\)</span>。简单地应用一下贝叶斯定理得到</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(G=k\mid X=x)=\dfrac{f_k(x)\pi_k}{\sum_{\ell=1}^Kf_{\ell}(x)\pi_\ell}\tag{4.7}
+\mathrm{Pr}(G=k\mid X=x)=\dfrac{f_k(x)\pi_k}{\sum_{\ell=1}^Kf_{\ell}(x)\pi_\ell}\tag{4.7}
 \]</div>
-<p>我们看到就 <strong>判别能力(ability to classify)</strong> 而言，知道 <span class="math notranslate nohighlight">\(f_k(x)\)</span> 几乎等价于知道概率 <span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)\)</span>。</p>
+<p>我们看到就 <strong>判别能力(ability to classify)</strong> 而言，知道 <span class="math notranslate nohighlight">\(f_k(x)\)</span> 几乎等价于知道概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span>。</p>
 <p>许多方法是基于类别密度的模型：</p>
 <ul class="simple">
 <li><p>采用高斯密度的线性和二次判别分析</p></li>
@@ -1188,13 +1176,13 @@
 <p>假设我们每个类别密度用多元高斯分布来建模</p>
 <div class="math notranslate nohighlight">
 \[
-f_k(x)=\frac{1}{(2\pi)^{p/2}\vert \boldsymbol\Sigma_k\vert^{1/2}}e^{-\frac{1}{2}(x-\mu_k)^T\boldsymbol\Sigma^{-1}_k(x-\mu_k)} \tag{4.8}\label{4.8}
+f_k(x)=\frac{1}{(2\pi)^{p/2}\vert \boldsymbol\Sigma_k\vert^{1/2}}e^{-\frac{1}{2}(x-\mu_k)^T\boldsymbol\Sigma^{-1}_k(x-\mu_k)} \tag{4.8}
 \]</div>
 <p>假设类别有相同的协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma_k=\Sigma\;\forall k\)</span> 时，会导出 <strong>线性判别分析 (LDA)</strong>。在比较两个类别 <span class="math notranslate nohighlight">\(k\)</span> 和 <span class="math notranslate nohighlight">\(\ell\)</span> 时，比较 log-ratio 就足够了，而且我们可以看到
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-&amp;\log\frac{\Pr(G=k\mid X=x)}{\Pr(G=\ell\mid X=x)}\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\\
+&amp;\log\frac{\mathrm{Pr}(G=k\mid X=x)}{\mathrm{Pr}(G=\ell\mid X=x)}\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\\
 =&amp;\log\frac{\pi_k}{\pi_\ell}-\frac{1}{2}(\mu_k+\mu_\ell)^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)+x^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
@@ -1205,7 +1193,7 @@ $$</p>
 $$    
 </pre></div>
 </div>
-<p>这是个关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性等式。协方差矩阵相等时会消除了正规化因子，以及指数中的二次项。这个线性的 log-odds 函数表明类别 <span class="math notranslate nohighlight">\(k\)</span> 和类别 <span class="math notranslate nohighlight">\(\ell\)</span> 的判别边界为 <span class="math notranslate nohighlight">\(p\)</span> 维超平面——<span class="math notranslate nohighlight">\(\Pr(G=k\mid X=x)=\Pr(G=\ell\mid X=x)\)</span> 的集合，这关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的。对于任意类别对也是成立的，所以所有的判别边界都是线性的。如果我们把 <span class="math notranslate nohighlight">\(\IR^p\)</span> 分成不同区域，记为类别 1，类别 2 等等，这些区域会被超平面所分离。图 4.5（左图）显示了有三个类别且 <span class="math notranslate nohighlight">\(p=2\)</span> 的假想的例子。这里数据是从 3 个协方差矩阵相等的高斯分布中产生的。我们已经在图中画出了对应 95% 概率密度的等高图，以及三个类别的形心。注意到判别边界不是连接两个形心的垂直平分线。如果协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma\)</span> 是 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span>，且类别的先验概率相等。从 \eqref{4.9} 我们可以看出线性判别函数为</p>
+<p>这是个关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性等式。协方差矩阵相等时会消除了正规化因子，以及指数中的二次项。这个线性的 log-odds 函数表明类别 <span class="math notranslate nohighlight">\(k\)</span> 和类别 <span class="math notranslate nohighlight">\(\ell\)</span> 的判别边界为 <span class="math notranslate nohighlight">\(p\)</span> 维超平面——<span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)=\mathrm{Pr}(G=\ell\mid X=x)\)</span> 的集合，这关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的。对于任意类别对也是成立的，所以所有的判别边界都是线性的。如果我们把 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 分成不同区域，记为类别 1，类别 2 等等，这些区域会被超平面所分离。图 4.5（左图）显示了有三个类别且 <span class="math notranslate nohighlight">\(p=2\)</span> 的假想的例子。这里数据是从 3 个协方差矩阵相等的高斯分布中产生的。我们已经在图中画出了对应 95% 概率密度的等高图，以及三个类别的形心。注意到判别边界不是连接两个形心的垂直平分线。如果协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma\)</span> 是 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span>，且类别的先验概率相等。从 \eqref{4.9} 我们可以看出线性判别函数为</p>
 <div class="math notranslate nohighlight">
 \[
 \delta_k(x)=x^T\boldsymbol\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T\boldsymbol\Sigma^{-1}\mu_k+\log\pi_k\tag{4.10}
@@ -1226,7 +1214,7 @@ $$
 <p>图 4.5（右图）显示了基于从 3 个高斯分布中取出的大小为 30 的样本集得到的判别边界的估计，图 4.1 是另外一个例子，但是那里类别不是高斯分布。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    \underset{\B}{\min}\sum\limits_{i=1}^N\Vert y_i-[(1,x_i^T)\mathbf B]^T\Vert^2\tag{4.5}\label{4.5}
+    \underset{\B}{\min}\sum\limits_{i=1}^N\Vert y_i-[(1,x_i^T)\mathbf B]^T\Vert^2\tag{4.5}
     \)</span>$</p>
 <p>两个类别的情况下在线性判别分析和线性最小二乘之间有一个简单的对应，如 \eqref{4.5} 所示。如果满足下面条件则 LDA 分类规则分给第二类</p>
 <!--
@@ -1236,7 +1224,7 @@ $$
 -->
 <div class="math notranslate nohighlight">
 \[
-x^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)&gt;\frac{1}{2}(\hat\mu_2+\hat\mu_1)^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)-\log(N_2/N_1)\tag{4.11}\label{4.11}
+x^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)&gt;\frac{1}{2}(\hat\mu_2+\hat\mu_1)^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)-\log(N_2/N_1)\tag{4.11}
 \]</div>
 <p>否则分为第一类。假设我们将两个类别分别编码为 <span class="math notranslate nohighlight">\(+1\)</span> 和 <span class="math notranslate nohighlight">\(-1\)</span>。可以简单地证明得出最小二乘的系数向量与 \eqref{4.11} 式给出的 LDA 方向成比例（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/108">练习 4.2</a>）。【实际上，这种对应关系对于任意的编码都会有，见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/108">练习 4.2</a>】。然而除了 <span class="math notranslate nohighlight">\(N_1=N_2\)</span> 的情形，截距不同因此得到的判别边界不一样。</p>
 <p>!!! info “weiya 注：Ex. 4.2”
@@ -1245,7 +1233,7 @@ x^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)&gt;\frac{1}{2}(\hat\mu_2+\h
 <p>多于两个类别的情形时，LDA 与类别指示矩阵的线性回归不是一样的，而且它避免了跟这个方法有关的掩藏问题 (Hastie et al., 1994<a class="footnote-reference brackets" href="#id7" id="id2">1</a>)。 回归与 LDA 之间的对应可以通过在 <span class="xref myst">12.5 节</span>中讨论的最优评分来建立。</p>
 <p>回到一般的判别问题 \eqref{4.8}，如果没有假设 <span class="math notranslate nohighlight">\(\boldsymbol\Sigma_k\)</span> 相等，则 \eqref{4.9} 中的抵消不会发生；特别地，关于 <span class="math notranslate nohighlight">\(x\)</span> 的平方项保留了下来。于是我们得到了平方判别函数 QDA
 $<span class="math notranslate nohighlight">\(
-\delta_k(x)=-\frac{1}{2}\log\vert\Sigma_k\vert-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)+\log\pi_k\tag{4.12}\label{4.12}
+\delta_k(x)=-\frac{1}{2}\log\vert\Sigma_k\vert-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)+\log\pi_k\tag{4.12}
 \)</span><span class="math notranslate nohighlight">\(
 每个 **类别对 (pair of classes)** \)</span>k<span class="math notranslate nohighlight">\( 和 \)</span>\ell<span class="math notranslate nohighlight">\( 的判别边界由二次等式来描述 \)</span>\{x:\delta_k(x)=\delta_\ell(x)\}$。</p>
 <p>图 4.6 显示了一个例子（图 4.1），这三个类别都是混合高斯分布（<span class="xref myst">6.8 节</span>），并且判别边界由关于 <span class="math notranslate nohighlight">\(x\)</span> 的二次函数近似给出。这里我们描述两种拟合这些判别边界的方式。右图使用这里描述的 QDA，而左图是在增广的五维二次多项式空间中使用 LDA。两者之间的差别很小，QDA 是最好的方式，LDA 方法是更方便的替换。</p>
@@ -1258,7 +1246,7 @@ $<span class="math notranslate nohighlight">\(
 <h2>正则化判别分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Friedman (1989)<a class="footnote-reference brackets" href="#id9" id="id5">2</a> 提出 LDA 和 QDA 之间的一个权衡，使得 QDA 的协方差阵向 LDA 中的共同协方差阵收缩。这些方法非常类似岭回归。正则化协方差矩阵有如下形式
 $<span class="math notranslate nohighlight">\(
-\hat{\boldsymbol\Sigma}_k(\alpha)=\alpha\hat{\boldsymbol\Sigma}_k+(1-\alpha)\hat{\boldsymbol\Sigma}\tag{4.13}\label{4.13}
+\hat{\boldsymbol\Sigma}_k(\alpha)=\alpha\hat{\boldsymbol\Sigma}_k+(1-\alpha)\hat{\boldsymbol\Sigma}\tag{4.13}
 \)</span><span class="math notranslate nohighlight">\(
 其中，\)</span>\hat\Sigma<span class="math notranslate nohighlight">\( 是和 LDA 一样用的联合协方差矩阵。这里 \)</span>\alpha\in[0,1]<span class="math notranslate nohighlight">\( 允许在 LDA 和 QDA 之间连续变化的模型，而且需要指定。实际中，\)</span>\alpha$ 可以基于在验证数据的表现上进行选择，或者通过交叉验证。</p>
 <p><img alt="" src="../_images/fig4.7.png" /></p>
@@ -1268,7 +1256,7 @@ $<span class="math notranslate nohighlight">\(
 <p>图 4.7 显示了将 RDA 运用到元音数据的结果。训练和测试误差都随着 <span class="math notranslate nohighlight">\(\alpha\)</span> 的增大获得了改善，尽管在 <span class="math notranslate nohighlight">\(\alpha=0.9\)</span> 后测试误差急剧上升。训练和测试误差最大的区别部分因为在小数量的个体上有很多重复观测，在训练和测试集上是不同的。</p>
 <p>类似的修改使得 <span class="math notranslate nohighlight">\(\hat\Sigma\)</span> 向着标量协方差收缩，对于 <span class="math notranslate nohighlight">\(\gamma\in[0,1]\)</span>，有
 $<span class="math notranslate nohighlight">\(
-\hat{\boldsymbol\Sigma}(\gamma)=\gamma\hat{\boldsymbol\Sigma}+(1-\gamma)\hat{\sigma}^2\mathbf I.\tag{4.14}\label{4.14}
+\hat{\boldsymbol\Sigma}(\gamma)=\gamma\hat{\boldsymbol\Sigma}+(1-\gamma)\hat{\sigma}^2\mathbf I.\tag{4.14}
 \)</span><span class="math notranslate nohighlight">\(
 用 \)</span>\hat{\boldsymbol\Sigma}(\gamma)<span class="math notranslate nohighlight">\( 替换掉 \eqref{4.13} 的 \)</span>\hat{\boldsymbol\Sigma}<span class="math notranslate nohighlight">\( 导出了一个更加一般的协方差阵族 \)</span>\hat{\boldsymbol\Sigma}(\alpha,\gamma)$，这是由一对参数来表示的。</p>
 <p>在 12 章，我们将讨论 LDA 的另一种正则化版本，当数据来自数字化的相似的信号和图像时，这种方法会更加地合适。在这些情形下特征是高维的且相关的，LDA 系数可以通过正则化在原始信号域变得光滑和稀疏。这导出了更好的一般化并且对于这些系数有着简单的解释。在第 18 章中我们也处理非常高维的问题，举个例子如微阵列研究中基因表达测量的特征。那里方法集中在 \eqref{4.14} 中 <span class="math notranslate nohighlight">\(\gamma=0\)</span> 的情形，以及其它 LDA 的正则化版本。</p>
@@ -1305,9 +1293,9 @@ $<span class="math notranslate nohighlight">\(
 <li><p>使用 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 特征值分解计算 <span class="math notranslate nohighlight">\(\mathbf M^*=\mathbf M\mathbf W^{-\frac{1}{2}}\)</span></p></li>
 <li><p>计算 <span class="math notranslate nohighlight">\(\mathbf M^*\)</span> 的协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf B^*\)</span>，（<span class="math notranslate nohighlight">\(\mathbf B\)</span> 是 <strong>组间 (between-class)</strong> 协方差），以及特征值分解 <span class="math notranslate nohighlight">\(\mathbf B^*=\mathbf V^*\mathbf D_B{\mathbf V^*}^T\)</span>。<span class="math notranslate nohighlight">\(\mathbf V^*\)</span> 的列 <span class="math notranslate nohighlight">\(v_\ell^*\)</span> 从第一个到最后一个依次定义了最优子空间的坐标。</p></li>
 </ul>
-<p>结合上述的操作，第 <span class="math notranslate nohighlight">\(\ell\)</span> 个 <strong>判别变量 (discriminant variable)</strong> 由 <span class="math notranslate nohighlight">\(Z_\ell=v_\ell^TX\)</span> 给出，其中 <span class="math notranslate nohighlight">\(v_\ell=\W^{-\frac{1}{2}}v_\ell^*\)</span>。</p>
+<p>结合上述的操作，第 <span class="math notranslate nohighlight">\(\ell\)</span> 个 <strong>判别变量 (discriminant variable)</strong> 由 <span class="math notranslate nohighlight">\(Z_\ell=v_\ell^TX\)</span> 给出，其中 <span class="math notranslate nohighlight">\(v_\ell=W^{-\frac{1}{2}}v_\ell^*\)</span>。</p>
 <p>!!! note “weiya 注：”
-结合 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/142">Ex. 4.1</a> 的证明过程来理解上述算法。主要思想是先求 <span class="math notranslate nohighlight">\(\mathbf W^{-\frac 12}\mathbf B\mathbf W^{-\frac 12}\)</span> 的特征向量 <span class="math notranslate nohighlight">\(v_\ell^*\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf W^{-1}\mathbf B\)</span> 的特征向量为 <span class="math notranslate nohighlight">\(\mathbf W^{-\frac 12}v_\ell^*\)</span>。同时注意到我们有 <span class="math notranslate nohighlight">\(\Var(v_\ell^TX)=1\)</span> 及 <span class="math notranslate nohighlight">\(\Cov(v_\ell^TX,v_k^TX)=0, \ell\neq k\)</span>，则判别函数 <span class="math notranslate nohighlight">\(\delta_k(z)\)</span> 中的平方和项为
+结合 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/142">Ex. 4.1</a> 的证明过程来理解上述算法。主要思想是先求 <span class="math notranslate nohighlight">\(\mathbf W^{-\frac 12}\mathbf B\mathbf W^{-\frac 12}\)</span> 的特征向量 <span class="math notranslate nohighlight">\(v_\ell^*\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf W^{-1}\mathbf B\)</span> 的特征向量为 <span class="math notranslate nohighlight">\(\mathbf W^{-\frac 12}v_\ell^*\)</span>。同时注意到我们有 <span class="math notranslate nohighlight">\(\mathrm{Var}(v_\ell^TX)=1\)</span> 及 <span class="math notranslate nohighlight">\(\mathrm{Cov}(v_\ell^TX,v_k^TX)=0, \ell\neq k\)</span>，则判别函数 <span class="math notranslate nohighlight">\(\delta_k(z)\)</span> 中的平方和项为
 $<span class="math notranslate nohighlight">\(
     (Z - \mu_k[Z])'(Z - \mu_k[Z]) = \sum_{\ell=1}^s(Z_\ell - \mu_{k}[Z_\ell])^2\,,
     \)</span><span class="math notranslate nohighlight">\(
@@ -1332,15 +1320,17 @@ $<span class="math notranslate nohighlight">\(
     \end{align*}
     \)</span><span class="math notranslate nohighlight">\(
     它们自由度分别为 \)</span>K-1<span class="math notranslate nohighlight">\(，\)</span>N-K<span class="math notranslate nohighlight">\( 和 \)</span>N-1<span class="math notranslate nohighlight">\(，易证 \)</span>\mathbf{T=B+W}$。</p>
-<p>Fisher 问题因此等价于最大化 Rayleigh quotient,
-$<span class="math notranslate nohighlight">\(
+<p>Fisher 问题因此等价于最大化 Rayleigh quotient,</p>
+<div class="math notranslate nohighlight">
+\[
 \underset{a}{\max}\;\dfrac{a^T\mathbf Ba}{a^T\mathbf Wa}\tag{4.15}
-\)</span><span class="math notranslate nohighlight">\(
-或者等价地，
-\)</span><span class="math notranslate nohighlight">\(
-\underset{a}{\max}\;a^T\mathbf Ba \; \st \; a^T\mathbf Wa=1\tag{4.16}
-\)</span><span class="math notranslate nohighlight">\(
-这是一个一般化的特征值问题，\)</span>a<span class="math notranslate nohighlight">\( 是由 \)</span>\mathbf W^{-1}\mathbf B<span class="math notranslate nohighlight">\( 的最大特征值给出。不难证明（[练习 4.1](https://github.com/szcf-weiya/ESL-CN/issues/142)）最优 \)</span>a_1<span class="math notranslate nohighlight">\( 等于上面定义的 \)</span>v_1<span class="math notranslate nohighlight">\(。类似地，可以找到下一个方向 \)</span>a_2<span class="math notranslate nohighlight">\(，在 \)</span>\mathbf W<span class="math notranslate nohighlight">\( 中与 \)</span>a_1<span class="math notranslate nohighlight">\( 正交，使得 \)</span>a_2^T{\mathbf B}a_2/a_2^T{\mathbf W}a_2<span class="math notranslate nohighlight">\( 最大化；解为 \)</span>a_2=v_2<span class="math notranslate nohighlight">\(，其余类似。\)</span>a_\ell<span class="math notranslate nohighlight">\( 被称作 **判别坐标 (discriminant coordinates)**，不要与判别函数相混淆。他们也被称作 **典则变量 (canonical variables)**，因为这些结果的一个变形是通过在预测变量矩阵 \)</span>\mathbf X<span class="math notranslate nohighlight">\( 上对指示响应矩阵 \)</span>\mathbf Y$ 进行典则相关分析得到的。这一点将在 <span class="xref myst">12.5 节</span>继续讨论。</p>
+\]</div>
+<p>或者等价地，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\underset{a}{\max}\;a^T\mathbf Ba \; \\ \mathrm{st}\; a^T\mathbf Wa=1\tag{4.16}
+\end{split}\]</div>
+<p>这是一个一般化的特征值问题，<span class="math notranslate nohighlight">\(a\)</span> 是由 <span class="math notranslate nohighlight">\(\mathbf W^{-1}\mathbf B\)</span> 的最大特征值给出。不难证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/142">练习 4.1</a>）最优 <span class="math notranslate nohighlight">\(a_1\)</span> 等于上面定义的 <span class="math notranslate nohighlight">\(v_1\)</span>。类似地，可以找到下一个方向 <span class="math notranslate nohighlight">\(a_2\)</span>，在 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 中与 <span class="math notranslate nohighlight">\(a_1\)</span> 正交，使得 <span class="math notranslate nohighlight">\(a_2^T{\mathbf B}a_2/a_2^T{\mathbf W}a_2\)</span> 最大化；解为 <span class="math notranslate nohighlight">\(a_2=v_2\)</span>，其余类似。<span class="math notranslate nohighlight">\(a_\ell\)</span> 被称作 <strong>判别坐标 (discriminant coordinates)</strong>，不要与判别函数相混淆。他们也被称作 <strong>典则变量 (canonical variables)</strong>，因为这些结果的一个变形是通过在预测变量矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 上对指示响应矩阵 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 进行典则相关分析得到的。这一点将在 <span class="xref myst">12.5 节</span>继续讨论。</p>
 <p>!!! info “weiya 注：Ex. 4.1”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/142">Issue 142: Ex. 4.1</a>。</p>
 <p>总结一下至今为止的发展：</p>
@@ -1349,7 +1339,7 @@ $<span class="math notranslate nohighlight">\(
 <li><p>因为只计算了到形心的相对距离，所以可以把数据局限于在球空间的形心张成的子空间。</p></li>
 <li><p>子空间可以进一步分解为关于形心分离的最优子空间。这个分解与 Fisher 的分解相同。</p></li>
 </ul>
-<p>降维后的子空间可以看成是数据降维（为了观察）的一个工具。它们是否可以用于分类以及它的基本原理是什么？很明显它们可以用在分类中，正如我们在最初的变形中一样；我们可以简单地把到形心的距离计算限制到选定的子空间中。可以证明这是有着额外限制条件——高斯形心位于 <span class="math notranslate nohighlight">\(\IR^p\)</span> 的 <span class="math notranslate nohighlight">\(L\)</span> 维子空间中——的高斯分类器。通过极大似然法拟合这样一个模型，然后运用贝叶斯定理构造后验概率，恰巧是上面描述的分类准则。（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">练习 4.8</a>）</p>
+<p>降维后的子空间可以看成是数据降维（为了观察）的一个工具。它们是否可以用于分类以及它的基本原理是什么？很明显它们可以用在分类中，正如我们在最初的变形中一样；我们可以简单地把到形心的距离计算限制到选定的子空间中。可以证明这是有着额外限制条件——高斯形心位于 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 的 <span class="math notranslate nohighlight">\(L\)</span> 维子空间中——的高斯分类器。通过极大似然法拟合这样一个模型，然后运用贝叶斯定理构造后验概率，恰巧是上面描述的分类准则。（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">练习 4.8</a>）</p>
 <p>高斯分类器在距离计算时要求矫正因子 <span class="math notranslate nohighlight">\(\log\pi_k\)</span>。使用矫正因子的理由可以在图 4.9 中看出。错分类率是基于两个密度计算的重叠部分的面积。如果 <span class="math notranslate nohighlight">\(\pi_k\)</span> 是相等的（图中隐含了），则最优的分离点是在投射均值之间。如果 <span class="math notranslate nohighlight">\(\pi_k\)</span> 不相等，朝着最小类别移动分类点会改善错误率。正如之前提到的两个类别，可以通过使用 LDA（或者其他任何方法）导出线性规则，然后选择分类点去最小化训练集上的误判率。</p>
 <p>作为一个展现降维限制优点的例子，我们回到元音数据。这里有 11 个类别 10 个变量，因此该分类器有 10 个可能的维数。我们可以在每个层次空间计算训练和测试误差；图 4.10 显示了这个结果。图 4.11 显示了基于二维 LDA 的解的分类器的判别边界。</p>
 <p><img alt="" src="../_images/fig4.10.png" /></p>
@@ -1401,31 +1391,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="4.2-Linear-Regression-of-an-Indicator-Matrix.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">4.2 指示矩阵的线性回归</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="4.2-Linear-Regression-of-an-Indicator-Matrix.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">4.2 指示矩阵的线性回归</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="4.4-Logistic-Regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4.4 逻辑斯蒂回归</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="4.4-Logistic-Regression.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">4.4 逻辑斯蒂回归</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1446,8 +1427,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

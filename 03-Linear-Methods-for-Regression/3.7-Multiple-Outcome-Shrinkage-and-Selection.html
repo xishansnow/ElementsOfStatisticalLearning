@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.7 多重输出的收缩和选择 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="3.8 Lasso 和相关路径算法的补充" href="3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html" />
     <link rel="prev" title="3.6 讨论：选择和收缩方法的比较" href="3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,40 +1135,40 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.7 多重输出的收缩和选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>如 <a class="reference external" href="3.2-Linear-Regression-Models-and-Least-Squares/index.html#_3">3.2.4 节</a>所述，多重输出线性模型的最小二乘估计可以简单地看成是关于每个输出的最小二乘估计。</p>
 <p>!!! note “weiya 注：”
 $<span class="math notranslate nohighlight">\(
-    \hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}\label{3.44}
+    \hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}
     \)</span>$</p>
 <p>为了在多重输出情形中应用选择和收缩的方法，可以对每个输出变量单独地应用单变量的技巧，或对全部的输出变量同时进行。举个例子，对于岭回归，我们可以对输出矩阵 <span class="math notranslate nohighlight">\(Y\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 列中的每一列应用 \eqref{3.44}，其中参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 可能不同，或者采用相同的 <span class="math notranslate nohighlight">\(\lambda\)</span>。第一种策略允许对不同的输出应用不同程度的正则化，但是需要估计 <span class="math notranslate nohighlight">\(k\)</span> 个独立的正则化参数 <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_k\)</span>，而第二种策略可以在估计单独的正则化参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 时应用全部的 <span class="math notranslate nohighlight">\(k\)</span> 个输出。</p>
 <p>其它更复杂的收缩和选择的策略利用了多重输出情形中不同响应变量间的相关性，这可能会有帮助。举个例子，假设在这些输出变量中，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Y_k &amp; = f(X) + \varepsilon_k\tag{3.65}\label{3.65}\\
-Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}\label{3.66}
+Y_k &amp; = f(X) + \varepsilon_k\tag{3.65}\\
+Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}
 \end{align*}
 \end{split}\]</div>
 <p>也就是说，<span class="math notranslate nohighlight">\(\eqref{3.65}\)</span> 和 <span class="math notranslate nohighlight">\(\eqref{3.66}\)</span> 在它们的模型中共享相同的结构 <span class="math notranslate nohighlight">\(f(X)\)</span>。这种情形下很明显我们应该合并 <span class="math notranslate nohighlight">\(Y_k\)</span> 和 <span class="math notranslate nohighlight">\(Y_\ell\)</span> 来估计共同的 <span class="math notranslate nohighlight">\(f\)</span>。</p>
-<p>合并响应变量是 <strong>典则相关分析 (canonical correlation analysis, CCA)</strong> 的核心，这是一种为多元输出情形提出的数据降维的技巧。类似 PCA，CCA 寻找 <span class="math notranslate nohighlight">\(\x_j\)</span> 的一列不相关的线性组合 <span class="math notranslate nohighlight">\(\X v_m, m=1,\ldots,M\)</span>，以及对应的响应变量 <span class="math notranslate nohighlight">\(\y_k\)</span> 的不相关的线性组合 <span class="math notranslate nohighlight">\(\Y u_m\)</span>，使得相关系数</p>
+<p>合并响应变量是 <strong>典则相关分析 (canonical correlation analysis, CCA)</strong> 的核心，这是一种为多元输出情形提出的数据降维的技巧。类似 PCA，CCA 寻找 <span class="math notranslate nohighlight">\(x_j\)</span> 的一列不相关的线性组合 <span class="math notranslate nohighlight">\(X v_m, m=1,\ldots,M\)</span>，以及对应的响应变量 <span class="math notranslate nohighlight">\(y_k\)</span> 的不相关的线性组合 <span class="math notranslate nohighlight">\(Y u_m\)</span>，使得相关系数</p>
 <div class="math notranslate nohighlight">
 \[
-\Corr^2(\Y u_m,\X v_m)\tag{3.67}\label{3.67}
+\Corr^2(Y u_m,X v_m)\tag{3.67}
 \]</div>
-<p>相继最大化。注意到最多可以找到 <span class="math notranslate nohighlight">\(M=\min(k,p)\)</span> 个方向。第一典则响应变量是被 <span class="math notranslate nohighlight">\(\x_j\)</span> 最优预测的线性组合（导出的响应变量）；相反地，最后的典则响应变量是被 <span class="math notranslate nohighlight">\(\x_j\)</span> 估计最差的，并且可以考虑舍弃。CCA 的解通过对样本交叉协方差矩阵 <span class="math notranslate nohighlight">\(\Y^T\X/N\)</span> 进行广义的 SVD 分解得到（假设 <span class="math notranslate nohighlight">\(\Y\)</span> 和 <span class="math notranslate nohighlight">\(\X\)</span> 均被中心化；<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">练习 3.20</a>）</p>
+<p>相继最大化。注意到最多可以找到 <span class="math notranslate nohighlight">\(M=\min(k,p)\)</span> 个方向。第一典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 最优预测的线性组合（导出的响应变量）；相反地，最后的典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 估计最差的，并且可以考虑舍弃。CCA 的解通过对样本交叉协方差矩阵 <span class="math notranslate nohighlight">\(Y^TX/N\)</span> 进行广义的 SVD 分解得到（假设 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 均被中心化；<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">练习 3.20</a>）</p>
 <p>!!! info “weiya 注：Ex. 3.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">Issue 172: Ex. 3.20</a>，欢迎讨论交流！</p>
-<p><strong>降秩回归 (reduced-rank regression)</strong> (Izenman, 1975<a class="footnote-reference brackets" href="#id7" id="id2">1</a>; van der Merwe and Zidek, 1980<a class="footnote-reference brackets" href="#id8" id="id3">2</a>) 采用显式地合并信息的回归模型来 <em>正式化 (formalize)</em> 这个方法。给定误差协方差 <span class="math notranslate nohighlight">\(\Cov(\varepsilon)=\bSigma\)</span>，求解下列带约束的多元回归问题：</p>
+<p><strong>降秩回归 (reduced-rank regression)</strong> (Izenman, 1975<a class="footnote-reference brackets" href="#id7" id="id2">1</a>; van der Merwe and Zidek, 1980<a class="footnote-reference brackets" href="#id8" id="id3">2</a>) 采用显式地合并信息的回归模型来 <em>正式化 (formalize)</em> 这个方法。给定误差协方差 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\varepsilon)=\bSigma\)</span>，求解下列带约束的多元回归问题：</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(m) = \underset{\rank(\B)=m}{\argmin}\sum_{i=1}^N(y_i-\B^Tx_i)^T\bSigma^{-1}(y_i-\B^Tx_i)\,.\tag{3.68}\label{3.68}
+\hat\B^{rr}(m) = \underset{\rank(\B)=m}{\argmin}\sum_{i=1}^N(y_i-\B^Tx_i)^T\bSigma^{-1}(y_i-\B^Tx_i)\,.\tag{3.68}
 \]</div>
-<p>将 <span class="math notranslate nohighlight">\(\bSigma\)</span> 用估计值 <span class="math notranslate nohighlight">\(\Y^T\Y/N\)</span> 替换，可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/174">练习 3.21</a>）解由 <span class="math notranslate nohighlight">\(\Y\)</span> 和 <span class="math notranslate nohighlight">\(\X\)</span> 的 CCA 给出：</p>
+<p>将 <span class="math notranslate nohighlight">\(\bSigma\)</span> 用估计值 <span class="math notranslate nohighlight">\(Y^TY/N\)</span> 替换，可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/174">练习 3.21</a>）解由 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 的 CCA 给出：</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(m)=\hat\B\U_m\U_m^-\,,\tag{3.69}\label{3.69}
+\hat\B^{rr}(m)=\hat\B\U_m\U_m^-\,,\tag{3.69}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\U_m\)</span> 是 <span class="math notranslate nohighlight">\(\U\)</span> 中由前 <span class="math notranslate nohighlight">\(m\)</span> 列构成的 <span class="math notranslate nohighlight">\(K\times m\)</span> 的子矩阵，<span class="math notranslate nohighlight">\(\U\)</span> 是 <span class="math notranslate nohighlight">\(K\times M\)</span> 的左典则向量 <span class="math notranslate nohighlight">\(u_1,u_2,\ldots,u_M\)</span> 构成的矩阵。<span class="math notranslate nohighlight">\(\U_m^-\)</span> 是其广义逆。</p>
 <p>!!! info “weiya 注：Ex. 3.21”
@@ -1188,20 +1176,20 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}\label{3.66}
 <p>将解改写成</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(M) = (\X^T\X)^{-1}\X^T(\Y\U_m)\U_m^-\,, \tag{3.70}
+\hat\B^{rr}(M) = (X^TX)^{-1}X^T(Y\U_m)\U_m^-\,, \tag{3.70}
 \]</div>
-<p>我们看到降秩回归在合并的响应矩阵 <span class="math notranslate nohighlight">\(\Y\U_m\)</span> 上进行线性回归，然后将系数映射回原来的响应变量空间中（因此能拟合得很好）。降秩拟合由下式给出：</p>
+<p>我们看到降秩回归在合并的响应矩阵 <span class="math notranslate nohighlight">\(Y\U_m\)</span> 上进行线性回归，然后将系数映射回原来的响应变量空间中（因此能拟合得很好）。降秩拟合由下式给出：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\hat\Y^{rr}(m) &amp;= \X(\X^T\X)^{-1}\X^T\Y\U_m\U_m^-\\
-&amp;=\H\Y\P_m\,,\tag{3.71}
+\hatY^{rr}(m) &amp;= X(X^TX)^{-1}X^TY\U_m\U_m^-\\
+&amp;=\HY\P_m\,,\tag{3.71}
 \end{align*}
 \end{split}\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\H\)</span> 是一般的线性回归映射算子，而 <span class="math notranslate nohighlight">\(\P_m\)</span> 是秩为 <span class="math notranslate nohighlight">\(m\)</span> 的 CCA 响应变量投影算子。尽管 <span class="math notranslate nohighlight">\(\bSigma\)</span> 更好的估计为 <span class="math notranslate nohighlight">\((\Y-\X\hat\B)^T(\Y-\X\hat\B)/(N-pK)\)</span>，但是可以证明解是一样的（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">练习 3.22</a>）。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\H\)</span> 是一般的线性回归映射算子，而 <span class="math notranslate nohighlight">\(\P_m\)</span> 是秩为 <span class="math notranslate nohighlight">\(m\)</span> 的 CCA 响应变量投影算子。尽管 <span class="math notranslate nohighlight">\(\bSigma\)</span> 更好的估计为 <span class="math notranslate nohighlight">\((Y-X\hat\B)^T(Y-X\hat\B)/(N-pK)\)</span>，但是可以证明解是一样的（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">练习 3.22</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.22”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">Issue 175: Ex. 3.22</a>，欢迎交流讨论！</p>
-<p>降秩回归通过截断 CCA 从响应变量中借来了优势变量。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id4">3</a> 探索了 <span class="math notranslate nohighlight">\(\X\)</span> 和 <span class="math notranslate nohighlight">\(\Y\)</span> 间典则变量的逐步收缩，这是光滑版本的降秩回归。他们的方法有如下形式（与 \eqref{3.69} 对应）</p>
+<p>降秩回归通过截断 CCA 从响应变量中借来了优势变量。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id4">3</a> 探索了 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 间典则变量的逐步收缩，这是光滑版本的降秩回归。他们的方法有如下形式（与 \eqref{3.69} 对应）</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\B^{c+w} = \hat\B\U\bLambda\U^{-1}\,,\tag{3.72}
@@ -1214,20 +1202,20 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}\label{3.66}
 <p>其中 <span class="math notranslate nohighlight">\(c_m\)</span> 是第 <span class="math notranslate nohighlight">\(m\)</span> 个典则相关系数。注意到随着输入变量个数与样本大小的比率 <span class="math notranslate nohighlight">\(p/N\)</span> 变小，收缩因子趋向于 1。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 基于训练数据和交叉验证提出了修改版本的 <span class="math notranslate nohighlight">\(\bLambda\)</span>，但是一般形式是相同的。这里拟合响应形式为</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\Y^{c+w} = \H\Y\S^{c+w}\,,\tag{3.74}
+\hatY^{c+w} = \HY\S^{c+w}\,,\tag{3.74}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\S^{c+w} = \U\bLambda\U^{-1}\)</span> 是响应变量收缩算子。</p>
 <p>Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id6">3</a> 还建议同时在 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 的空间中进行收缩。这导出混合收缩模型：</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\Y^{\mathrm{ridge},c+w}=\A_\lambda\Y\S^{c+w}\,,\tag{3.75}
+\hatY^{\mathrm{ridge},c+w}=\A_\lambdaY\S^{c+w}\,,\tag{3.75}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = \X(\X^T\X+\lambda\I)^{-1}\X^T\)</span> 是岭回归收缩算子，和 \eqref{3.46} 一样。他们的文章及其讨论有更多细节。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = X(X^TX+\lambda\I)^{-1}X^T\)</span> 是岭回归收缩算子，和 \eqref{3.46} 一样。他们的文章及其讨论有更多细节。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
     \mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\\
-    &amp;=\mathbf{UU^Ty}\tag{3.46}\label{3.46}
+    &amp;=\mathbf{UU^Ty}\tag{3.46}
     \end{align*}
     \)</span>$</p>
 <hr class="footnotes docutils" />
@@ -1267,31 +1255,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3.6 讨论：选择和收缩方法的比较</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.6 讨论：选择和收缩方法的比较</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.8 Lasso 和相关路径算法的补充</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.8 Lasso 和相关路径算法的补充</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1312,8 +1291,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

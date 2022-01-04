@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>13.4 自适应最近邻方法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="13.5 计算上的考虑" href="13.5-Computational-Considerations.html" />
     <link rel="prev" title="13.3 k最近邻分类器" href="13.3-k-Nearest-Neighbor-Classifiers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,13 +1153,13 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>13.4 自适应最近邻方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>当在高维特征空间中做最近邻分类时，最近邻的点可以离得非常远，带来偏差，并且降低了分类器的效果。</p>
 <p>为了量化这一点，考虑在单位立方体 <span class="math notranslate nohighlight">\([-\frac{1}{2},\frac{1}{2}]^p\)</span> 中均匀分布的 <span class="math notranslate nohighlight">\(N\)</span> 个数据点。令 <span class="math notranslate nohighlight">\(R\)</span> 为中心在原点的 1-最近邻的半径。则</p>
 <div class="math notranslate nohighlight">
 \[
-\text{median}(R) = v_p^{-\frac{1}{p}}\left(1-\frac{1}{2}^{1/N}\right)^{1/p}\tag{13.7}\label{13.7}
+\text{median}(R) = v_p^{-\frac{1}{p}}\left(1-\frac{1}{2}^{1/N}\right)^{1/p}\tag{13.7}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(v_pr^p\)</span> 是 <span class="math notranslate nohighlight">\(p\)</span> 维空间半径为 <span class="math notranslate nohighlight">\(r\)</span> 的球的体积。</p>
 <p>!!! note “weiya 注：推导 \eqref{13.7}”
@@ -1209,18 +1197,18 @@ $<span class="math notranslate nohighlight">\(
 <p><strong>判别自适应最近邻 (DANN)</strong> 在查询点 <span class="math notranslate nohighlight">\(x_0\)</span> 的度量定义为</p>
 <div class="math notranslate nohighlight">
 \[
-D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}\label{13.8}
+D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}
 \]</div>
 <p>其中</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\bSigma &amp;= \W^{-1/2}[\W^{-1/2}\B\W^{-1/2} + \epsilon \I]\W^{-1/2}\\
-&amp;=\W^{-1/2}[\B^* + \epsilon\I]\W^{-1/2}\,.\tag{13.9}
+\bSigma &amp;= W^{-1/2}[W^{-1/2}\BW^{-1/2} + \epsilon \I]W^{-1/2}\\
+&amp;=W^{-1/2}[\B^* + \epsilon\I]W^{-1/2}\,.\tag{13.9}
 \end{align*}
 \end{split}\]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\W\)</span> 是 <strong>合并的 (pooled)</strong> 类别内协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k\W_k\)</span>，并且 <span class="math notranslate nohighlight">\(\B\)</span> 是类别间协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k(\bar x_k-\bar x)(\bar x_k-\bar x)^T\)</span>，其中 <span class="math notranslate nohighlight">\(\W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 仅用 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的 50 个最近邻点。计算完这个度量之后，可以用来构造 <span class="math notranslate nohighlight">\(x_0\)</span> 处的最近邻规则。</p>
-<p>这个复杂的公式实际上计算很简单。它首先将数据关于 <span class="math notranslate nohighlight">\(\W\)</span> 进行球面化，接着沿着 <span class="math notranslate nohighlight">\(\B^*\)</span>（球面化数据的类间方差）的零特征值方向拉伸邻域。参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 围绕着邻域，从无穷的长条到椭球，避免使用离查询点过远的点。一般 <span class="math notranslate nohighlight">\(\epsilon=1\)</span> 的效果很好。</p>
+<p>这里 <span class="math notranslate nohighlight">\(W\)</span> 是 <strong>合并的 (pooled)</strong> 类别内协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_kW_k\)</span>，并且 <span class="math notranslate nohighlight">\(\B\)</span> 是类别间协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k(\bar x_k-\bar x)(\bar x_k-\bar x)^T\)</span>，其中 <span class="math notranslate nohighlight">\(W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 仅用 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的 50 个最近邻点。计算完这个度量之后，可以用来构造 <span class="math notranslate nohighlight">\(x_0\)</span> 处的最近邻规则。</p>
+<p>这个复杂的公式实际上计算很简单。它首先将数据关于 <span class="math notranslate nohighlight">\(W\)</span> 进行球面化，接着沿着 <span class="math notranslate nohighlight">\(\B^*\)</span>（球面化数据的类间方差）的零特征值方向拉伸邻域。参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 围绕着邻域，从无穷的长条到椭球，避免使用离查询点过远的点。一般 <span class="math notranslate nohighlight">\(\epsilon=1\)</span> 的效果很好。</p>
 <p><img alt="" src="../_images/fig13.14.png" /></p>
 <p>图 13.14 展示了某个问题中得到的邻域，其中类别构成了两个同心圆。注意到当邻域中同时存在两个类别的点时，邻域是怎么沿着判别边界的方向进行拉伸。在只有一个类别的区域中，邻居仍保持圆形；这种情形下类间协方差矩阵 <span class="math notranslate nohighlight">\(\B=0\)</span>，并且 \eqref{13.8} 是单位矩阵。</p>
 <p>!!! note “weiya 注：”
@@ -1242,7 +1230,7 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}\label{13.8}
 <p>令 <span class="math notranslate nohighlight">\(e_1,e_2,\ldots,e_p\)</span> 为 <span class="math notranslate nohighlight">\(\bar \B\)</span> 的特征向量，按照特征值 <span class="math notranslate nohighlight">\(\theta_k\)</span> 从大到小排序。则这些特征向量张成了全局子空间降维的最优子空间。推导过程基于 <span class="math notranslate nohighlight">\(\bar \B\)</span> 的秩为 <span class="math notranslate nohighlight">\(L\)</span> 的最优近似，<span class="math notranslate nohighlight">\(\bar \B_{[L]}=\sum_{\ell=1}^L\theta_\ell e_\ell e_\ell^T\)</span>，它是下式最小二乘问题的解</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\rank(\M)=L}{\min}\sum_{i=1}^N\trace[(\B_i - \M)^2]\,.\tag{13.11}\label{13.11}
+\underset{\rank(\M)=L}{\min}\sum_{i=1}^N\mathrm{trace}[(\B_i - \M)^2]\,.\tag{13.11}
 \]</div>
 <p>因为每个 <span class="math notranslate nohighlight">\(\B_i\)</span> 包含的信息有 (a) 局部判别子空间 (b) 子空间差异的强度，\eqref{13.11} 可以看成是通过加权最小二乘寻找 <span class="math notranslate nohighlight">\(N\)</span> 个子空间序列的秩为 <span class="math notranslate nohighlight">\(L\)</span> 的最优子空间近似（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/170">练习 13.5</a>）。</p>
 <p>上面提到的四维球体例子，Hastie and Tibshirani (1996a)<a class="footnote-reference brackets" href="#id12" id="id9">2</a> 进行了研究，四个特征值 <span class="math notranslate nohighlight">\(\theta_\ell\)</span> 很大（其特征向量几乎张成了感兴趣的子空间），并且剩下的 6 个接近为 0。操作上，我们将数据投影到该四维子空间中，接着应用最近邻分类。在 13.3.2 节中的卫星图象分类例子，图 13.8 中标签为 <code class="docutils literal notranslate"><span class="pre">DANN</span></code> 的方法采用全局降维子空间的 5 最近邻。 Duan and Li (1991)<a class="footnote-reference brackets" href="#id15" id="id10">5</a> 的 sliced inverse regression 方法与这个方法也有些联系。他们在回归设定中采用类似的想法，但是进行全局的计算，而不是局部的。他们假设并利用特征分布的球对称性来估计感兴趣的子空间。</p>
@@ -1292,31 +1280,22 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}\label{13.8}
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="13.3-k-Nearest-Neighbor-Classifiers.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">13.3 k最近邻分类器</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="13.3-k-Nearest-Neighbor-Classifiers.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">13.3 k最近邻分类器</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="13.5-Computational-Considerations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">13.5 计算上的考虑</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="13.5-Computational-Considerations.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">13.5 计算上的考虑</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1337,8 +1316,7 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}\label{13.8}
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

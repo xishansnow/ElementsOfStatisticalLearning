@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5.2 分段多项式和样条 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="5.3 过滤和特征提取" href="5.3-Filtering-and-Feature-Extraction.html" />
     <link rel="prev" title="5.1 导言" href="5.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,7 +1158,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.2 分段多项式和样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>直到 <span class="xref myst">5.7 节</span> 我们都假设 <span class="math notranslate nohighlight">\(X\)</span> 为一维向量。分段多项式函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 通过将 <span class="math notranslate nohighlight">\(X\)</span> 的定义域分成连续的区间得到，并且在每个区间内用单独的多项式来表示 <span class="math notranslate nohighlight">\(f\)</span>。图 5.1 显示了两个简单的分段多项式。第一个是分段常值，含有三个基函数：
 $<span class="math notranslate nohighlight">\(
@@ -1277,7 +1265,7 @@ $$
 <h2>例子：南非心脏病（继续）<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>在 4.4.2 节我们对南非心脏病数据进行了线性逻辑斯蒂回归拟合。这里我们以采用自然样条的函数来探索非线性。模型的函数有如下形式：
 $<span class="math notranslate nohighlight">\(
-\mathrm{logit}[\Pr(chd\mid X)]=\theta_0+h_1(X_1)^T\theta_1+h_2(X_2)^T\theta_2+\cdots+h_p(X_p)^T\theta_p\tag{5.6}
+\mathrm{logit}[\mathrm{Pr}(chd\mid X)]=\theta_0+h_1(X_1)^T\theta_1+h_2(X_2)^T\theta_2+\cdots+h_p(X_p)^T\theta_p\tag{5.6}
 \)</span><span class="math notranslate nohighlight">\(
 其中每个 \)</span>\theta_i<span class="math notranslate nohighlight">\( 都是乘以对应自然样条基函数 \)</span>h_j$ 的系数向量。</p>
 <p>我们在模型中对每一项采用4个自然样条基。举个例子，<span class="math notranslate nohighlight">\(X_1\)</span> 代表 <code class="docutils literal notranslate"><span class="pre">sbp</span></code>，<span class="math notranslate nohighlight">\(h_1(X_1)\)</span> 是包含四个基函数的基。因为我们把 <span class="math notranslate nohighlight">\(h_j\)</span> 的常数项提取出来了，所以这实际上表明有三个而非两个内结点（在 <code class="docutils literal notranslate"><span class="pre">sbp</span></code> 的均匀分位数结点处取值），另外在数据端点有两个边界结点。</p>
@@ -1318,7 +1306,7 @@ $<span class="math notranslate nohighlight">\(
 <p>因为 <code class="docutils literal notranslate"><span class="pre">famhist</span></code> 是含两个水平的因子，所以用一个二值变量或者虚拟变量来编码，而且它与拟合的模型中的单个系数有关。</p>
 <p>更简洁地，我们将 <span class="math notranslate nohighlight">\(p\)</span> 维基函数（以及常数项）向量结合成一个向量 <span class="math notranslate nohighlight">\(h(X)\)</span>，则模型简化为 <span class="math notranslate nohighlight">\(h(X)^T\theta\)</span>，总参数个数为 <span class="math notranslate nohighlight">\(df=1+\sum_{j=1}^pdf_j\)</span>，是每个组分中参数个数的和。每个基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个样本中分别取值，得到一个 <span class="math notranslate nohighlight">\(N\times df\)</span> 的基矩阵 <span class="math notranslate nohighlight">\(\mathbf H\)</span>。在这点上看，模型类似于其他的线性逻辑斯蒂回归模型，应用的算法在 4.4.1 节描述。</p>
 <p><img alt="" src="../_images/fig5.4.png" /></p>
-<p>我们采用向后逐步删除过程，从模型中删除项并且保持每个项的整体结构，而不是每次删除一个系数。AIC 统计量（7.5 节）用来删除项，并且在最后模型中保留下来的所有项如果被删掉都会导致 AIC 增大（见表 5.1）。图 5.4 显示了通过逐步回归选择出的最终模型的图象。对于每个变量 <span class="math notranslate nohighlight">\(X_j\)</span>，画出的函数是<span class="math notranslate nohighlight">\(\hat{f_j}(X_j)=h_j(X_j)^T\hat\theta_j\)</span>。协方差矩阵 <span class="math notranslate nohighlight">\(\Cov(\hat\theta)=\mathbf\Sigma\)</span> 通过 <span class="math notranslate nohighlight">\(\mathbf{\hat\Sigma=(H^TWH)^{-1}}\)</span> 来估计，其中 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 为逻辑斯蒂回归的对角元素构成的权重矩阵。因此 <span class="math notranslate nohighlight">\(v_j(X_j)=\Var[\hat{f_j}(X_j)]=h_j(X_j)^T\mathbf{\hat \Sigma}\_{jj}h_j(X_j)\)</span> 是 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的逐点方差函数，其中 <span class="math notranslate nohighlight">\(\Cov(\hat\theta_j)=\hat{\mathbf\Sigma}\_{jj}\)</span> 是 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma}\)</span> 对应的子矩阵。图 5.4 中每张图的阴影区域由 <span class="math notranslate nohighlight">\(\hat{f_j}(X_j)\pm2\sqrt{v_j(X_j)}\)</span> 定义。</p>
+<p>我们采用向后逐步删除过程，从模型中删除项并且保持每个项的整体结构，而不是每次删除一个系数。AIC 统计量（7.5 节）用来删除项，并且在最后模型中保留下来的所有项如果被删掉都会导致 AIC 增大（见表 5.1）。图 5.4 显示了通过逐步回归选择出的最终模型的图象。对于每个变量 <span class="math notranslate nohighlight">\(X_j\)</span>，画出的函数是<span class="math notranslate nohighlight">\(\hat{f_j}(X_j)=h_j(X_j)^T\hat\theta_j\)</span>。协方差矩阵 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\hat\theta)=\mathbf\Sigma\)</span> 通过 <span class="math notranslate nohighlight">\(\mathbf{\hat\Sigma=(H^TWH)^{-1}}\)</span> 来估计，其中 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 为逻辑斯蒂回归的对角元素构成的权重矩阵。因此 <span class="math notranslate nohighlight">\(v_j(X_j)=\mathrm{Var}[\hat{f_j}(X_j)]=h_j(X_j)^T\mathbf{\hat \Sigma}\_{jj}h_j(X_j)\)</span> 是 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的逐点方差函数，其中 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\hat\theta_j)=\hat{\mathbf\Sigma}\_{jj}\)</span> 是 <span class="math notranslate nohighlight">\(\hat{\mathbf\Sigma}\)</span> 对应的子矩阵。图 5.4 中每张图的阴影区域由 <span class="math notranslate nohighlight">\(\hat{f_j}(X_j)\pm2\sqrt{v_j(X_j)}\)</span> 定义。</p>
 <p>AIC统计量比似然比检验（偏差检验）更“宽容”（generous）。<code class="docutils literal notranslate"><span class="pre">sbp</span></code>和<code class="docutils literal notranslate"><span class="pre">obesity</span></code>都被包含进模型中，而这两个量都不在线性模型中。图象解释了为什么它们的贡献本质上是非线性。这些影响乍看或许很奇怪，但这因为是回顾性数据的本质。这些指标有时是当病人患上心脏病后测出来的，而且在很多情形下他们已经受益于健康饮食和生活状态，因此在<code class="docutils literal notranslate"><span class="pre">obesity</span></code>和<code class="docutils literal notranslate"><span class="pre">sbp</span></code>值较低时会有明显的增长。表5.1总结了部分模型的效果。</p>
 <p><img alt="" src="../_images/tab5.1.png" /></p>
 </div>
@@ -1332,11 +1320,11 @@ $<span class="math notranslate nohighlight">\(
 <p>!!! note “weiya注”
 周期图（Periodogram）：在信号处理中，周期图是信号谱密度的估计。
 抛开背景知识，直观理解便是上图绘制了每条曲线代表一个例子，其中 15 条表示”aa”，另外 15 条表示”ao”。</p>
-<p>输入特征是长度为 256 的向量 <span class="math notranslate nohighlight">\(x\)</span>，我们可以看成是在频率 <span class="math notranslate nohighlight">\(f\)</span> 的节点上取值的函数值 <span class="math notranslate nohighlight">\(X(f)\)</span> 向量。实际上，存在一个连续的类似信号，它是频率的函数，这里我们可以将 <span class="math notranslate nohighlight">\(X(f)\)</span> 看成是它的一个取样版本。</p>
+<p>输入特征是长度为 256 的向量 <span class="math notranslate nohighlight">\(x\)</span>，我们可以看成是在频率 <span class="math notranslate nohighlight">\(f\)</span> 的节点上取值的函数值 <span class="math notranslate nohighlight">\(X(f)\)</span> 向量。实际上，存在一个连续的类似信号，它是频率的函数，这里我们可以将 <span class="math notranslate nohighlight">\(X(f)\)</span> 看成是它的一个采样版本。</p>
 <p>图 5.5 的下图显示了对从 695 个“aa”和 1022 个“ao”选出的 1000 个训练样本进行极大似然拟合得到的线性逻辑斯蒂回归模型的系数。也作出了系数关于频率的函数图象，而且实际上我们可以根据下面的连续形式来思考模型</p>
 <div class="math notranslate nohighlight">
 \[
-\log\frac{\Pr(\mathrm{aa}\mid X)}{\Pr(\mathrm{ao}\mid X)}=\int X(f)\beta(f)df\tag{5.7}
+\log\frac{\mathrm{Pr}(\mathrm{aa}\mid X)}{\mathrm{Pr}(\mathrm{ao}\mid X)}=\int X(f)\beta(f)df\tag{5.7}
 \]</div>
 <p>可以用下式来近似</p>
 <div class="math notranslate nohighlight">
@@ -1378,31 +1366,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="5.1-Introduction.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">5.1 导言</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="5.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">5.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="5.3-Filtering-and-Feature-Extraction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5.3 过滤和特征提取</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="5.3-Filtering-and-Feature-Extraction.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">5.3 过滤和特征提取</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1423,8 +1402,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

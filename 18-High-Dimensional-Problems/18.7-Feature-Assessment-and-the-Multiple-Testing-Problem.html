@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>18.7 特征评估和多重检验问题 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="18.8 文献笔记" href="Bioliographic-Notes.html" />
     <link rel="prev" title="18.6 高维回归: 有监督的主成分" href="18.6-High-Dimensional-Regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,7 +1158,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.7 特征评估和多重检验问题<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>在本章的第一部分中我们讨论了 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下的预测模型。这里我们考虑在评估 <span class="math notranslate nohighlight">\(p\)</span> 个特征中每一个特征的显著性的这一基本问题。考虑 <span class="xref myst">18.4.1 节</span>中蛋白质质谱的例子。在这个问题中，对病人作预测时，研究者可能不关心他是否患有前列腺癌。感兴趣的而是识别出哪种蛋白质在正常群体和癌症群体中的含量有差异，由此加深对疾病的了解，这对药物的研制有指导意义。因此我们的目标是评估单个特征的显著性。这个评估通常不用在本章中第一部分使用多变量预测模型来实现。特征评估问题将我们的关注点从预测移到传统的统计学话题——多重假设检验。在本章接下来的章节中，我们将用 <span class="math notranslate nohighlight">\(M\)</span> 来表示特征的个数，而不是 <span class="math notranslate nohighlight">\(p\)</span>，因为我们将频繁用 <span class="math notranslate nohighlight">\(p\)</span> 表示 <span class="math notranslate nohighlight">\(p\)</span> 值。</p>
 <p><img alt="" src="../_images/table18.4.png" /></p>
@@ -1198,7 +1186,7 @@ $$
 <p>那我们怎么能够评估所有 12625 个基因的结果呢？这称为 <strong>多重检验(multiple testing)</strong> 问题。我们可以像上面一样开始，计算每个基因的 <span class="math notranslate nohighlight">\(p\)</span> 值。当假设特征服从正态分布，这个可以使用理论上的 <span class="math notranslate nohighlight">\(t\)</span> 分布概率实现。一个吸引人的替代方案是使用 <strong>置换分布(permutation distribution)</strong>，因为它避免了数据分布的假设。（理论上）我们计算样本的所有 <span class="math notranslate nohighlight">\(K = \binom{58}{14}\)</span> 种排列，并且对于每个排列 <span class="math notranslate nohighlight">\(k\)</span> 计算 <span class="math notranslate nohighlight">\(t\)</span> 统计量 <span class="math notranslate nohighlight">\(t_j^k\)</span>。于是基因 <span class="math notranslate nohighlight">\(j\)</span> 的 <span class="math notranslate nohighlight">\(p\)</span> 值为</p>
 <div class="math notranslate nohighlight">
 \[
-p_j=\frac{1}{K}\sum\limits_{k=1}^KI(\vert t_j^k\vert &gt; \vert t_j\vert)\tag{18.40}\label{18.40}
+p_j=\frac{1}{K}\sum\limits_{k=1}^KI(\vert t_j^k\vert &gt; \vert t_j\vert)\tag{18.40}
 \]</div>
 <p>当然，<span class="math notranslate nohighlight">\(\binom{58}{14}\)</span> 是很大的数（大约 <span class="math notranslate nohighlight">\(10^{13}\)</span>），因此我们不能列举出所有可能的排列。相反地，我们取可能的排列的一个随机样本，这里我们取一个 <span class="math notranslate nohighlight">\(K=1000\)</span> 种排列的随机样本。为了利用基因都是相似的这一事实（比如，在同一尺度下测量），我们可以将所有基因混合一起计算 <span class="math notranslate nohighlight">\(p\)</span> 值</p>
 <div class="math notranslate nohighlight">
@@ -1214,7 +1202,7 @@ H_{1j} = \text{治疗对基因 }j\text{ 有作用}\\
 \text{for } j=1,2,\ldots, M
 \end{split}\]</div>
 <p>如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha\)</span>，我们在 <span class="math notranslate nohighlight">\(\alpha\)</span> 的水平下拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>。这个检验的第一类错误等于 <span class="math notranslate nohighlight">\(\alpha\)</span>，也就是，错误拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 的概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>现在考虑更多的检验，我们应该采用什么作为误差的整体衡量不是很清楚。令 <span class="math notranslate nohighlight">\(A_j\)</span> 为 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 被错误拒绝的事件，由定义知 <span class="math notranslate nohighlight">\(\Pr(A_j)=\alpha\)</span>。<strong>FWER(family-wise error rate)</strong> 是至少存在一个被错误拒绝的概率，并且经常用它作为整体错误的衡量。具体地，如果 <span class="math notranslate nohighlight">\(A=\cup_{j=1}^MA_j\)</span> 是至少有一个被错误拒绝的事件，于是 FWER 为 <span class="math notranslate nohighlight">\(\Pr(A)\)</span>。一般地，对于较大的 <span class="math notranslate nohighlight">\(M\)</span>，<span class="math notranslate nohighlight">\(\Pr(A) &gt; &gt; \alpha\)</span>，并且取决于检验之间的相关性。如果检验之间互相独立，且第一类错误概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>，则 FWER 为 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。另一方面，如果检验之间有正依赖，即 <span class="math notranslate nohighlight">\(\Pr(A_j\mid A_k)&gt;\Pr(A_j)\)</span>，则 FWER 会小于 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。测试之间的正依赖在实际中经常发生，特别是基因研究中。</p>
+<p>现在考虑更多的检验，我们应该采用什么作为误差的整体衡量不是很清楚。令 <span class="math notranslate nohighlight">\(A_j\)</span> 为 <span class="math notranslate nohighlight">\(H_{0j}\)</span> 被错误拒绝的事件，由定义知 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A_j)=\alpha\)</span>。<strong>FWER(family-wise error rate)</strong> 是至少存在一个被错误拒绝的概率，并且经常用它作为整体错误的衡量。具体地，如果 <span class="math notranslate nohighlight">\(A=\cup_{j=1}^MA_j\)</span> 是至少有一个被错误拒绝的事件，于是 FWER 为 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A)\)</span>。一般地，对于较大的 <span class="math notranslate nohighlight">\(M\)</span>，<span class="math notranslate nohighlight">\(\mathrm{Pr}(A) &gt; &gt; \alpha\)</span>，并且取决于检验之间的相关性。如果检验之间互相独立，且第一类错误概率为 <span class="math notranslate nohighlight">\(\alpha\)</span>，则 FWER 为 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。另一方面，如果检验之间有正依赖，即 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A_j\mid A_k)&gt;\mathrm{Pr}(A_j)\)</span>，则 FWER 会小于 <span class="math notranslate nohighlight">\((1-(1-\alpha)^M)\)</span>。测试之间的正依赖在实际中经常发生，特别是基因研究中。</p>
 <p>做多重检验的一个很简单的方式是 Bonferroni 方法。它让每个个体的检验更加严格，使得 FWER 至多等于 <span class="math notranslate nohighlight">\(\alpha\)</span>: 如果 <span class="math notranslate nohighlight">\(p_j&lt;\alpha/M\)</span>， 我们拒绝 <span class="math notranslate nohighlight">\(H_{0j}\)</span>。可以很简单地证明这会使得 FWER <span class="math notranslate nohighlight">\(\le\alpha\)</span>（练习 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/228">18.16</a>）。Bonferroni 方法在 <span class="math notranslate nohighlight">\(M\)</span> 相对较小的情形下有用，但是对于大的 <span class="math notranslate nohighlight">\(M\)</span> 则太过保守，也就是，得到的显著基因数目过少。</p>
 <p>!!! info “weiya 注：Ex. 18.16”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/228">Issue 228: Ex. 18.16</a></p>
@@ -1230,19 +1218,19 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 <div class="section" id="fdr">
 <h2>FDR<a class="headerlink" href="#fdr" title="Permalink to this headline">¶</a></h2>
 <p>多重检验的另一种不同的方式不是试图控制 FWER，而是关注假阳性基因的比例。正如我们将要看到的，这个方法在实际中有很强的吸引力。</p>
-<p>表 18.5 总结了 <span class="math notranslate nohighlight">\(M\)</span> 个假设检验的理论结果。注意到 FWER 为 <span class="math notranslate nohighlight">\(\Pr(V\ge 1)\)</span>。</p>
+<p>表 18.5 总结了 <span class="math notranslate nohighlight">\(M\)</span> 个假设检验的理论结果。注意到 FWER 为 <span class="math notranslate nohighlight">\(\mathrm{Pr}(V\ge 1)\)</span>。</p>
 <p><img alt="" src="../_images/tab18.5.png" /></p>
 <p>这里我们关注 <strong>误发现率 FDR (false discovery rate)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{FDR}=\E(V/R)\tag{18.43}\label{18.43}
+\mathrm{FDR}=\mathbb{E}(V/R)\tag{18.43}
 \]</div>
 <p>在微阵列中，这是被错误称为显著的基因占所有被称为显著的 <span class="math notranslate nohighlight">\(R\)</span> 个基因的比例的期望。这个期望从数据所产生的总体中取。Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id16" id="id4">3</a>第一次提出误发现率的记号，并且给出了一个检验过程（算法 18.2），该过程中 FDR 被用户所定义的层次 <span class="math notranslate nohighlight">\(\alpha\)</span> 所界定。Benjamini–Hochberg (BH) 过程是基于 <span class="math notranslate nohighlight">\(p\)</span> 值；这些可以从检验估计量（如，高斯）的渐近近似得到，或者通过排列分布获得，这里采取排列分布。</p>
 <p><img alt="" src="../_images/alg18.2.png" /></p>
 <p>如果假设是独立的，Benjamini and Hochberg (1995)<a class="footnote-reference brackets" href="#id16" id="id5">3</a> 证明了不管零假设对的个数、也不管零假设为错的时候 <span class="math notranslate nohighlight">\(p\)</span> 值的分布，这个过程有如下性质</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{FDR}\le \frac{M_0}{M}\alpha\le \alpha\tag{18.45}\label{18.45}
+\mathrm{FDR}\le \frac{M_0}{M}\alpha\le \alpha\tag{18.45}
 \]</div>
 <p>为了解释这个性质，我们取 <span class="math notranslate nohighlight">\(\alpha=0.15\)</span>。图 18.19 展示了有序 <span class="math notranslate nohighlight">\(p\)</span> 值 <span class="math notranslate nohighlight">\(p_{j}\)</span>，以及斜率为 <span class="math notranslate nohighlight">\(0.15/12625\)</span> 的直线。</p>
 <p><img alt="" src="../_images/fig18.19.png" /></p>
@@ -1260,9 +1248,9 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 <p>plug-in 估计基于下列的近似</p>
 <div class="math notranslate nohighlight">
 \[
-\E(V/R)\approx\frac{E(V)}{E(R)}\tag{18.47}
+\mathbb{E}(V/R)\approx\frac{E(V)}{E(R)}\tag{18.47}
 \]</div>
-<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)。注意到分子 <span class="math notranslate nohighlight">\(\widehat{\E(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\E(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设。因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式。最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）。等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 \eqref{18.45} 用来改善 BH 方法。</p>
+<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)。注意到分子 <span class="math notranslate nohighlight">\(\widehat{\mathbb{E}(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\mathbb{E}(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设。因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式。最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）。等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 \eqref{18.45} 用来改善 BH 方法。</p>
 <p>!!! info “weiya 注：Ex. 18.19”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">Issue 133: Ex. 18.19</a>。</p>
 <p>读者可能会惊讶我们选了一个较大的数 0.15 作为 FDR 的界 <span class="math notranslate nohighlight">\(\alpha\)</span>。我们必须记住 FDR 不同于第一类误差，后者经常选择 0.05。对于科学家，FDR 是假阳性在被统计学家称为显著的基因中比例的期望。微阵列实验表明 FDR 达到 0.15 仍然有用，特别是当我们探索自然时。</p>
@@ -1292,15 +1280,15 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 <p>这里有个 FDR 的有趣的贝叶斯解释，在 Storey (2002)<a class="footnote-reference brackets" href="#id17" id="id10">4</a> 和 Efron and Tibshirani (2002)<a class="footnote-reference brackets" href="#id19" id="id11">6</a> 中发展起来。首先我们需要定义 <strong>正误发现率 pFDR (positive false discovery rate)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{pFDR}=\E\left[\frac VR\mid R&gt;0\right]
+\mathrm{pFDR}=\mathbb{E} \left[\frac VR\mid R&gt;0\right]
 \]</div>
-<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 \eqref{18.43}）当 <span class="math notranslate nohighlight">\(\Pr(R=0)&gt;0\)</span> 时没有定义。</p>
+<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 \eqref{18.43}）当 <span class="math notranslate nohighlight">\(\mathrm{Pr}(R=0)&gt;0\)</span> 时没有定义。</p>
 <p>令 <span class="math notranslate nohighlight">\(\Gamma\)</span> 为单个测试的拒绝域；在上面的例子中我们采用 <span class="math notranslate nohighlight">\(\Gamma=(-\infty,-4.10)\cup (4.10,\infty)\)</span>。假设对独立同分布的统计量 <span class="math notranslate nohighlight">\(t_1,\ldots,t_M\)</span> 及拒绝域 <span class="math notranslate nohighlight">\(\Gamma\)</span> 进行了 <span class="math notranslate nohighlight">\(M\)</span> 个相同的简单假设检验。定义随机变量 <span class="math notranslate nohighlight">\(Z_j\)</span>，如果第 <span class="math notranslate nohighlight">\(j\)</span> 个假设是对的，则等于 0，否则等于 1。我们假设对于某分布 <span class="math notranslate nohighlight">\(F_0\)</span> 和 <span class="math notranslate nohighlight">\(F_1\)</span>，每对 <span class="math notranslate nohighlight">\((t_j,Z_j)\)</span> 是独立同分布的随机变量，满足</p>
 <div class="math notranslate nohighlight">
 \[
-t_j\mid Z_j\sim (1-Z_j)\cdot F_0+Z_j\cdot F_1\tag{18.51}\label{18.51}
+t_j\mid Z_j\sim (1-Z_j)\cdot F_0+Z_j\cdot F_1\tag{18.51}
 \]</div>
-<p>这表明每个测试统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 都来自两个分布中的其中一个：如果零假设是对的，则为 <span class="math notranslate nohighlight">\(F_0\)</span>，否则为 <span class="math notranslate nohighlight">\(F_1\)</span>。令 <span class="math notranslate nohighlight">\(\Pr(Z_j=0)=\pi_0\)</span>，我们有边缘分布：</p>
+<p>这表明每个测试统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 都来自两个分布中的其中一个：如果零假设是对的，则为 <span class="math notranslate nohighlight">\(F_0\)</span>，否则为 <span class="math notranslate nohighlight">\(F_1\)</span>。令 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Z_j=0)=\pi_0\)</span>，我们有边缘分布：</p>
 <div class="math notranslate nohighlight">
 \[
 t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
@@ -1308,7 +1296,7 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
 <p>接下来可以证明 (Efron et al., 2001<a class="footnote-reference brackets" href="#id20" id="id12">7</a>; Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id13">4</a>):</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{pFDR}(\Gamma)=\Pr(Z_j=0\mid t_j\in\Gamma)\tag{18.53}
+\mathrm{pFDR}(\Gamma)=\mathrm{Pr}(Z_j=0\mid t_j\in\Gamma)\tag{18.53}
 \]</div>
 <p>因此在混合模型 \eqref{18.51} 的假设下，如果测试统计量落在该测试的拒绝域中，也就是，如果我们拒绝原假设时，则 pFDR 是零假设为真的后验概率.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">练习 18.20</a>）。</p>
 <p>!!! note “weiya 注：Ex. 18.20”
@@ -1316,7 +1304,7 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
 <p>误发现率提供了基于整个拒绝域（比如 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>）的检验的准确性的度量。但是如果这样一个检验的 FDR 为 <span class="math notranslate nohighlight">\(10\%\)</span>，则 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的基因会比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 的基因更显著。因此导出 FDR 的局部版本（比如特定基因）是我们感兴趣的。检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的 q-value 定义为在所有拒绝 <span class="math notranslate nohighlight">\(t_j\)</span> 的区域中最小的 FDR。也就是，对于对称的拒绝域，<span class="math notranslate nohighlight">\(t_j=2\)</span> 的 q-value 定义为拒绝域 <span class="math notranslate nohighlight">\(\Gamma=\\{-(\infty,-2)\cup(2,\infty)\\}\)</span>的 FDR。因此 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的 FDR 要小于 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时的 FDR，这反映了 <span class="math notranslate nohighlight">\(t_j=5\)</span> 比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时更显著。<span class="math notranslate nohighlight">\(t=t_0\)</span> 时的局部误分类率定义为</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(Z_j=0\mid t_j=t_0)\tag{18.54}
+\mathrm{Pr}(Z_j=0\mid t_j=t_0)\tag{18.54}
 \]</div>
 <p>这是 <span class="math notranslate nohighlight">\(t_j=t_0\)</span> 附近无穷小拒绝域中正的 FDR。</p>
 <hr class="footnotes docutils" />
@@ -1369,31 +1357,22 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="18.6-High-Dimensional-Regression.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">18.6 高维回归: 有监督的主成分</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="18.6-High-Dimensional-Regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">18.6 高维回归: 有监督的主成分</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Bioliographic-Notes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">18.8 文献笔记</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="Bioliographic-Notes.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">18.8 文献笔记</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1414,8 +1393,7 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

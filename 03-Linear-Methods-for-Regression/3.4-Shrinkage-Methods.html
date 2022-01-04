@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.4 收缩的方法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="3.5 运用派生输入方向的方法" href="3.5-Methods-Using-Derived-Input-Directions.html" />
     <link rel="prev" title="3.3 子集的选择" href="3.3-Subset-Selection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1182,7 +1170,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.4 收缩的方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>通过保留一部分预测变量而丢弃剩余的变量，<strong>子集选择 (subset selection)</strong> 可得到一个可解释的、预测误差可能比全模型低的模型。然而，因为这是一个离散的过程（变量不是保留就是丢弃），所以经常表现为高方差，因此不会降低全模型的预测误差。而<strong>收缩方法 (shrinkage methods)</strong> 更加连续，因此不会受 <strong>高易变性 (high variability)</strong> 太大的影响。</p>
 <div class="section" id="id2">
@@ -1190,7 +1178,7 @@
 <p><strong>岭回归 (Ridge regression)</strong> 根据回归系数的大小加上惩罚因子对它们进行收缩。岭回归的系数使得带惩罚的残差平方和最小</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}^{ridge}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\beta_j^2\Big\}\tag{3.41}\label{3.41}
+\hat{\beta}^{ridge}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\beta_j^2\Big\}\tag{3.41}
 \]</div>
 <p>这里<span class="math notranslate nohighlight">\(\lambda\ge 0 \)</span>是控制收缩程度的参数：<span class="math notranslate nohighlight">\(\lambda\)</span>值越大，收缩的程度越大。每个系数都向零收缩。<!--系数向零收缩（并且彼此收缩到一起）。-->通过参数的平方和来惩罚的想法也用在了神经网络，也被称作 <strong>权重衰减 (weight decay)</strong>（<span class="xref myst">第 11 章</span>）。</p>
 <p>岭回归问题可以等价地写成</p>
@@ -1200,7 +1188,7 @@
 \hat{\beta}^{ridge}&amp;=\underset{\beta}{\arg\min}\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\\\
 &amp; \text{subject to }\sum\limits_{j=1}^p\beta_j^2 \le t
 \end{align*}
-\tag{3.42}\label{3.42}
+\tag{3.42}
 \end{split}\]</div>
 <p>上式用参数显式表达了对回归参数大小的约束。</p>
 <p>!!! note “weiya 注：”
@@ -1214,18 +1202,18 @@
 <p>将 \eqref{3.41} 的准则写成矩阵形式</p>
 <div class="math notranslate nohighlight">
 \[
-\RSS(\lambda)=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)+\lambda\beta^T\beta \tag{3.43}
+\mathrm{RSS}(\lambda)=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)+\lambda\beta^T\beta \tag{3.43}
 \]</div>
 <p>可以简单地看出岭回归的解为</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}\label{3.44}
+\hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> 为 <span class="math notranslate nohighlight">\(p\times p\)</span> 的单位矩阵。注意到选择二次函数惩罚 <span class="math notranslate nohighlight">\(\beta^T\beta\)</span>，岭回归的解仍是 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 的线性函数。解在求逆之前向矩阵 <span class="math notranslate nohighlight">\(\mathbf{X^TX}\)</span> 的对角元上加入正的常数值。即使 <span class="math notranslate nohighlight">\(\mathbf{X^TX}\)</span> 不是满秩，这样会使得问题非奇异，而且这是第一次将岭回归引入统计学中 (Hoerl and Kennard, 1970<a class="footnote-reference brackets" href="#id11" id="id3">1</a>）的主要动力。传统的岭回归的描述从定义 \eqref{3.44} 开始。我们选择通过 \eqref{3.41} 和 \eqref{3.42} 来阐述，因为这两式让我们看清楚了它是怎样实现的。</p>
-<p>图 3.8 展示了前列腺癌例子的岭回归系数估计，绘制成关于 <span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 的函数图象，<span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 为由惩罚 <span class="math notranslate nohighlight">\(\lambda\)</span> 得到的 <strong>有效自由度 (effective degrees of freedom)</strong>（由式 \eqref{3.50} 中定义）。在正交输入的情形下，岭回归估计仅仅是最小二乘估计的缩小版本，也就是 <span class="math notranslate nohighlight">\(\hat{\beta}^{ridge}=\hat{\beta}/(1+\lambda)\)</span>。</p>
+<p>图 3.8 展示了前列腺癌例子的岭回归系数估计，绘制成关于 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)\)</span> 的函数图象，<span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)\)</span> 为由惩罚 <span class="math notranslate nohighlight">\(\lambda\)</span> 得到的 <strong>有效自由度 (effective degrees of freedom)</strong>（由式 \eqref{3.50} 中定义）。在正交输入的情形下，岭回归估计仅仅是最小二乘估计的缩小版本，也就是 <span class="math notranslate nohighlight">\(\hat{\beta}^{ridge}=\hat{\beta}/(1+\lambda)\)</span>。</p>
 <p><img alt="" src="../_images/fig3.8.png" /></p>
 <blockquote>
-<div><p>图 3.8 当惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 不同时，前列腺癌例子岭回归的变化曲线。画出系数关于有效自由度 <span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 的曲线。垂直直线画在 <span class="math notranslate nohighlight">\(\df=5.0\)</span> 处，这是由交叉验证选择出来的。</p>
+<div><p>图 3.8 当惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 不同时，前列腺癌例子岭回归的变化曲线。画出系数关于有效自由度 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)\)</span> 的曲线。垂直直线画在 <span class="math notranslate nohighlight">\(\mathrm{df}=5.0\)</span> 处，这是由交叉验证选择出来的。</p>
 </div></blockquote>
 <p>当给定一个合适的先验分布，岭回归也可以从后验分布的均值或众数得到。具体地，假设 <span class="math notranslate nohighlight">\(y_i \sim N(\beta_0+x^T_i\beta,\sigma^2)\)</span>，参数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的分布均为 <span class="math notranslate nohighlight">\(N(0,\tau^2)\)</span>，每个都相互独立。则当 <span class="math notranslate nohighlight">\(\tau^2\)</span> 和 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 值已知时，<span class="math notranslate nohighlight">\(\beta\)</span> 后验分布密度函数的对数值（的负数）与 \eqref{3.41} 中花括号里面的表达式成比例 <strong>(weiya 注：原文直接说与花括号的表达式相等，但应该是常数倍)</strong>，且 <span class="math notranslate nohighlight">\(\lambda=\sigma^2/\tau^2\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/96">练习 3.6</a>)。因此岭回归估计是后验分布的众数；又因分布为高斯分布，则也是后验分布的均值。</p>
 <p>!!! info “weiya 注：Ex. 3.6”
@@ -1264,13 +1252,13 @@
 <p>中心化输入矩阵 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的 <strong>奇异值分解 (SVD)</strong> 让我们进一步了解了岭回归的本质。这个分解在许多统计方法分析中非常有用。<span class="math notranslate nohighlight">\(N\times p\)</span> 阶矩阵 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的 SVD 分解有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf{X=UDV^T}\tag{3.45}\label{3.45}
+\mathbf{X=UDV^T}\tag{3.45}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> 分别是 <span class="math notranslate nohighlight">\(N\times p\)</span> 和 <span class="math notranslate nohighlight">\(p\times p\)</span> 的正交矩阵，<span class="math notranslate nohighlight">\(\mathbf{U}\)</span>的列张成 <span class="math notranslate nohighlight">\(X\)</span> 的列空间，<span class="math notranslate nohighlight">\(\mathbf{V}\)</span> 的列张成 <span class="math notranslate nohighlight">\(X\)</span> 的行空间。<span class="math notranslate nohighlight">\(\mathbf{D}\)</span> 为 <span class="math notranslate nohighlight">\(p\times p\)</span> 的对角矩阵，对角元 <span class="math notranslate nohighlight">\(d_1\ge d_2 \ge \cdots \ge d_p \ge 0\)</span> 称作 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的奇异值。如果一个或多个 <span class="math notranslate nohighlight">\(d_j=0\)</span>，则 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 为奇异的。</p>
 <p>!!! note “weiya 注: 奇异值分解（张贤达的《矩阵分析与应用》）”
 奇异值分解最早由 Beltrami 在 1873 年对实正方矩阵提出来的。Beltrami 从双线性函数
 $<span class="math notranslate nohighlight">\(
-    f(x,y)=x^TAy,\qquad A\in \IR^{n\times m}
+    f(x,y)=x^TAy,\qquad A\in \mathbb{R}^{n\times m}
     \)</span><span class="math notranslate nohighlight">\(
     出发，通过引入线性变换
     \)</span><span class="math notranslate nohighlight">\(
@@ -1284,12 +1272,12 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     S=U^TAV\,.
     \)</span><span class="math notranslate nohighlight">\(
-    若选择 \)</span>U<span class="math notranslate nohighlight">\( 和 \)</span>V<span class="math notranslate nohighlight">\( 为正交矩阵，则他们的选择各存在 \)</span>n^2-n<span class="math notranslate nohighlight">\( 个自由度。他提出利用这些自由度使矩阵 \)</span>S<span class="math notranslate nohighlight">\( 的非对角元为0，即矩阵\)</span>S=\Sigma=\diag(\sigma_1,\sigma_2,\ldots,\sigma_n)<span class="math notranslate nohighlight">\(为对角矩阵。则
+    若选择 \)</span>U<span class="math notranslate nohighlight">\( 和 \)</span>V<span class="math notranslate nohighlight">\( 为正交矩阵，则他们的选择各存在 \)</span>n^2-n<span class="math notranslate nohighlight">\( 个自由度。他提出利用这些自由度使矩阵 \)</span>S<span class="math notranslate nohighlight">\( 的非对角元为0，即矩阵\)</span>S=\Sigma=\mathrm{diag}(\sigma_1,\sigma_2,\ldots,\sigma_n)<span class="math notranslate nohighlight">\(为对角矩阵。则
     \)</span><span class="math notranslate nohighlight">\(
     A=U\Sigma V^T
     \)</span>$
 这是 Beltrami 于 1873 年得到的实正方矩阵的奇异值分解。后来，Autonne 于 1902 年把奇异值分解推广到复正方矩阵；Eckart 与 Young 于 1939 年又进一步把它推广到一般的长方形矩阵。因此，现在常将任意复长方矩阵奇异值分解定理称为 Autonee-Eckart-Young 定理，即</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>令 $A\in \IR^{m\times n}$(或$C^{m\times n}$),则存在正交（或酉）矩阵 $U\in \IR^{m\times m}$(或 $C^{m\times m}$)和 $V\in \IR^{n\times n}$(或$C^{n\times n}$)使得
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>令 $A\in \mathbb{R}^{m\times n}$(或$C^{m\times n}$),则存在正交（或酉）矩阵 $U\in \mathbb{R}^{m\times m}$(或 $C^{m\times m}$)和 $V\in \mathbb{R}^{n\times n}$(或$C^{n\times n}$)使得
 $$
 A=U\Sigma V^T(or\quad U\Sigma V^H)
 $$
@@ -1331,8 +1319,8 @@ $$
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
-    \hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32}\label{3.32} \\
-    \hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}\label{3.33}
+    \hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32} \\
+    \hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}
     \end{align*}
     \)</span>$</p>
 <p><span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 列空间的两个不同的正交基（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/97">练习 3.8</a>）。</p>
@@ -1356,7 +1344,7 @@ $<span class="math notranslate nohighlight">\(
 <p>上式是 <span class="math notranslate nohighlight">\(\mathbf{X^TX}\)</span>（当忽略因子 <span class="math notranslate nohighlight">\(N\)</span> 时，也是 <span class="math notranslate nohighlight">\(S\)</span>）的 <strong>特征值分解 (eigen decomposition)</strong>。特征向量 <span class="math notranslate nohighlight">\(v_j\)</span>（<span class="math notranslate nohighlight">\(\mathbf{V}\)</span> 的列向量）也称作 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的 <strong>主成分 (principal components)</strong>（或 Karhunen-Loeve）方向。第一主成分方向 <span class="math notranslate nohighlight">\(v_1\)</span> 有下面性质：<span class="math notranslate nohighlight">\(\mathbf{z}_1=\mathbf{X}v_1\)</span> 在所有 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 列的标准化线性组合中有最大的样本方差。样本方差很容易看出来是</p>
 <div class="math notranslate nohighlight">
 \[
-\Var(\mathbf{z}_1)=\Var(\mathbf{X}v_1)=\dfrac{d_1^2}{N}\tag{3.49}
+\mathrm{Var}(\mathbf{z}_1)=\mathrm{Var}(\mathbf{X}v_1)=\dfrac{d_1^2}{N}\tag{3.49}
 \]</div>
 <p>事实上 <span class="math notranslate nohighlight">\(\mathbf{z}_1=\mathbf{X}v_1=\mathbf{u}_1d_1\)</span>。导出变量 <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span> 称作 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的第一主成分，因此 <span class="math notranslate nohighlight">\(\mathbf{u_1}\)</span> 是标准化的第一主成分。后面的主成分 <span class="math notranslate nohighlight">\(z_j\)</span> 在与前一个保持正交的前提下有最大的方差 <span class="math notranslate nohighlight">\(d_j^2/N\)</span>。所以，最后一个主成分有最小的方差。因此越小的奇异值 <span class="math notranslate nohighlight">\(d_j\)</span> 对应 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 列空间中方差越小的方向，并且岭回归在这些方向上收缩得最厉害。</p>
 <p>图 3.9 展示了两个维度下部分数据点的主成分。如果我们考虑在这个区域（<span class="math notranslate nohighlight">\(Y\)</span> 轴垂直纸面）内拟合线性曲面，数据的结构形态使得确定梯度时长方向会比短方向更精确。岭回归防止在短方向上估计梯度可能存在的高方差。隐含的假设是响应变量往往在高方差的输入方向上变化。这往往是个合理的假设，因为我们所研究的预测变量随响应变量变化而变化，而不需要保持不变。</p>
@@ -1364,16 +1352,16 @@ $<span class="math notranslate nohighlight">\(
 <blockquote>
 <div><p>图 3.9 部分输入数据点的主成分。最大主成分是使得投影数据方差最大的方向，最小主成分是使得方差最小的方向。岭回归将 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 投射到这些成分上，然后对低方差成分的系数比高方差收缩得更厉害。</p>
 </div></blockquote>
-<p>在图 3.7 中我们已经画了预测误差估计值关于 <span class="math notranslate nohighlight">\(\df(\lambda)\)</span> 的曲线</p>
+<p>在图 3.7 中我们已经画了预测误差估计值关于 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)\)</span> 的曲线</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\df(\lambda)&amp;=\tr[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\\
-&amp;=\tr(\mathbf{H}_{\lambda})\\
-&amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}\label{3.50}
+\mathrm{df}(\lambda)&amp;=\mathrm{tr}[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\\
+&amp;=\mathrm{tr}(\mathbf{H}_{\lambda})\\
+&amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}
 \end{align*}
 \end{split}\]</div>
-<p>上面 <span class="math notranslate nohighlight">\(\lambda\)</span> 的单调递减函数是岭回归拟合的 <strong>有效自由度 (effective degrees of freedom)</strong>。通常在含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的线性回归拟合中，拟合的自由度为 <span class="math notranslate nohighlight">\(p\)</span>，也就是无约束参数的个数。这里想法是尽管岭回归拟合中所有的 <span class="math notranslate nohighlight">\(p\)</span> 个系数都不为 0，但是它们在由 <span class="math notranslate nohighlight">\(\lambda\)</span> 控制的约束下拟合。注意到当 <span class="math notranslate nohighlight">\(\lambda=0\)</span>（没有正则化）时 <span class="math notranslate nohighlight">\(\df(\lambda)=p\)</span>，并且当 <span class="math notranslate nohighlight">\(\lambda\rightarrow \infty\)</span> 时 <span class="math notranslate nohighlight">\(df(\lambda)\rightarrow 0\)</span>。当然总是对于截距总有一个额外的自由度，事先 (apriori) 已经去掉了。这个定义将在 <a class="reference external" href="#_2">3.4.4 节</a>和 <span class="xref myst">7.4-7.6 节</span>中详细介绍。图 3.7 中最小值在 <span class="math notranslate nohighlight">\(\df(\lambda)=5.0\)</span> 处。表 3.3 表明岭回归将全最小二乘估计的测试误差降低了一小部分。</p>
+<p>上面 <span class="math notranslate nohighlight">\(\lambda\)</span> 的单调递减函数是岭回归拟合的 <strong>有效自由度 (effective degrees of freedom)</strong>。通常在含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的线性回归拟合中，拟合的自由度为 <span class="math notranslate nohighlight">\(p\)</span>，也就是无约束参数的个数。这里想法是尽管岭回归拟合中所有的 <span class="math notranslate nohighlight">\(p\)</span> 个系数都不为 0，但是它们在由 <span class="math notranslate nohighlight">\(\lambda\)</span> 控制的约束下拟合。注意到当 <span class="math notranslate nohighlight">\(\lambda=0\)</span>（没有正则化）时 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)=p\)</span>，并且当 <span class="math notranslate nohighlight">\(\lambda\rightarrow \infty\)</span> 时 <span class="math notranslate nohighlight">\(df(\lambda)\rightarrow 0\)</span>。当然总是对于截距总有一个额外的自由度，事先 (apriori) 已经去掉了。这个定义将在 <a class="reference external" href="#_2">3.4.4 节</a>和 <span class="xref myst">7.4-7.6 节</span>中详细介绍。图 3.7 中最小值在 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)=5.0\)</span> 处。表 3.3 表明岭回归将全最小二乘估计的测试误差降低了一小部分。</p>
 </div>
 <div class="section" id="lasso">
 <h2>Lasso<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
@@ -1394,7 +1382,7 @@ lasso 是 “Least absolute shrinkage and seleetion operator” 的首字母缩�
 <p>我们也可以把 lasso 问题等价地写成 <strong>拉格朗日形式 (Lagrangian form)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}\label{3.52}
+\hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}
 \]</div>
 <p>注意到这与岭回归问题 \eqref{3.42} 或 \eqref{3.41} 的相似性：<span class="math notranslate nohighlight">\(L_2\)</span> 的岭回归惩罚 <span class="math notranslate nohighlight">\(\sum_1^p\beta^2_j\)</span> 替换为 <span class="math notranslate nohighlight">\(L_1\)</span> 的 lasso 惩罚<span class="math notranslate nohighlight">\(\sum_1^p\vert\beta_j\vert\)</span>。后一约束使得解在 <span class="math notranslate nohighlight">\(y_i\)</span> 处非线性，并且在岭回归中没有相近的表达式。计算 lasso 的解是一个二次规划问题，尽管我们在 3.4.4 节看到当 <span class="math notranslate nohighlight">\(\lambda\)</span> 不同时计算解的整个路径存在与岭回归同样计算量的有效算法。由于该约束的本质，令 <span class="math notranslate nohighlight">\(t\)</span> 充分小会造成一些参数恰恰等于 0。因此 lasso 完成一个温和的连续子集选择。如果所选的 <span class="math notranslate nohighlight">\(t\)</span> 大于<span class="math notranslate nohighlight">\(t_0=\sum_1^p\vert\hat{\beta}_j\vert\)</span>（其中 <span class="math notranslate nohighlight">\(\hat{\beta}_j=\hat{\beta}_j^{ls}\)</span>，<span class="math notranslate nohighlight">\(\hat{\beta}_j^{ls}\)</span> 为最小二乘估计），则 lasso 估计为 <span class="math notranslate nohighlight">\(\hat{\beta}_j\)</span>。另一方面，当 <span class="math notranslate nohighlight">\(t=t_0/2\)</span>，最小二乘系数平均收缩 <span class="math notranslate nohighlight">\(50\%\)</span>。然而，收缩的本质不是很显然，我们将在 3.4.4 节进一步研究。类似在变量子集选择中子集的大小，或者岭回归的惩罚参数，应该自适应地选择 <span class="math notranslate nohighlight">\(t\)</span> 使预测误差期望值的估计最小化。</p>
 <p>图 3.7 中，为了方便解释，我们已经画出 lasso 的预测误差估计关于标准化参数 <span class="math notranslate nohighlight">\(s=t/\sum^p_1\vert\hat{\beta}_j\vert\)</span> 的曲线。通过 10 折交叉验证选择 <span class="math notranslate nohighlight">\(s\approx 0.36\)</span>；这使得 4 个系数为 0（表 3.3 的第 5 列）。最终模型有第二低的测试误差，比全最小二乘模型略低，但是测试误差估计的标准误差（表 3.3 的最后一行）相当大。</p>
@@ -1420,7 +1408,7 @@ lasso 是 “Least absolute shrinkage and seleetion operator” 的首字母缩�
 </div></blockquote>
 <p>我们可以把岭回归和 lasso 一般化，并且可以看成是贝叶斯估计。考虑下面准则
 $<span class="math notranslate nohighlight">\(
-\tilde{\beta}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert^q\Big\}\tag{3.53}\label{3.53}
+\tilde{\beta}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert^q\Big\}\tag{3.53}
 \)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(q\ge 0\)</span>。图 3.12 显示了两个输入情形下常数值 <span class="math notranslate nohighlight">\(\sum_j\vert\beta_j\vert^q\)</span> 的等高线。</p>
 <p><img alt="" src="../_images/fig3.12.png" /></p>
@@ -1501,7 +1489,7 @@ $<span class="math notranslate nohighlight">\(
 <p>我们已经给出一个为什么这些过程很相似的启发式的论据。尽管 LAR 算法是用相关性来叙述的，但如果输入特征是标准化的，它与内积是等价的并且用内积更简单。假设 <span class="math notranslate nohighlight">\(\mathcal A\)</span> 是算法中某些步的变量活跃集，它们与当前残差 <span class="math notranslate nohighlight">\(\mathbf y -\mathbf X\beta\)</span> 的内积的绝对值是结合在一起的。我们可以表达成</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\gamma\cdot s_j,\forall j\in {\mathcal A} \tag{3.56}\label{3.56}
+\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\gamma\cdot s_j,\forall j\in {\mathcal A} \tag{3.56}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(s_j\in\\{-1,1\\}\)</span> 表示内积的符号，<span class="math notranslate nohighlight">\(\gamma\)</span> 是普通的数值。并且 <span class="math notranslate nohighlight">\(\vert \mathbf x_k^T(\mathbf y-\mathbf X\beta)\vert\le \gamma\; \forall k\notin \mathcal A\)</span>。现在我们考虑 \eqref{3.52} 的 lasso 准则，我们可以写成向量形式</p>
 <div class="math notranslate nohighlight">
@@ -1511,7 +1499,7 @@ R(\beta)=\frac{1}{2}\Vert\mathbf y-\mathbf X\beta\Vert_2^2+\lambda\Vert\beta\Ver
 <p>令 <span class="math notranslate nohighlight">\(\mathcal B\)</span> 为在给定 <span class="math notranslate nohighlight">\(\lambda\)</span> 值下解中的变量的活跃集。对于这些变量 <span class="math notranslate nohighlight">\(R(\beta)\)</span> 是可导的，并且 <strong>平稳条件 (stationary condition)</strong> 为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \sign(\beta_j),\forall j\in {\mathcal B}\tag{3.58}\label{3.58}
+\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \mathrm{sign}(\beta_j),\forall j\in {\mathcal B}\tag{3.58}
 \]</div>
 <p>比较 \eqref{3.58} 和 \eqref{3.56}，我们看到只有当 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的符号与内积的符号相同时，这两个等式才相同。这也就是为什么 LAR 算法和 lasso 当一个活跃系数经过零开始出现不同；对于不满足条件 \eqref{3.58} 的变量，会被踢出活跃集 <span class="math notranslate nohighlight">\(\mathcal B\)</span>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/100">练习 3.23</a> 证明了这些等式表明随<span class="math notranslate nohighlight">\(\lambda\)</span> 减小的分段线性系数曲线。对于不活跃的变量的平稳条件要求</p>
 <div class="math notranslate nohighlight">
@@ -1530,12 +1518,12 @@ R(\beta)=\frac{1}{2}\Vert\mathbf y-\mathbf X\beta\Vert_2^2+\lambda\Vert\beta\Ver
 <p>首先考虑采用 <span class="math notranslate nohighlight">\(k\)</span> 个特征的子集的线性回归。如果这个子集是没有通过训练数据而事先确定好的，然后在该拟合模型中的自由度定义为<span class="math notranslate nohighlight">\(k\)</span>。当然，在经典统计学中，线性独立参数的个数也就是自由度。另外地，假设我们用一个最优子集选择确定了最优的 <span class="math notranslate nohighlight">\(k\)</span> 个预测变量。于是结果模型中有 <span class="math notranslate nohighlight">\(k\)</span> 个参数，但在某种意义上我们用了大于 <span class="math notranslate nohighlight">\(k\)</span> 个的自由度。</p>
 <p>我们需要一个对于自适应拟合模型的有效自由度的一般定义。我们定义拟合向量 <span class="math notranslate nohighlight">\(\hat{\mathbf y}=(\hat y_1,\hat y_2,\ldots,\hat y_N)\)</span> 的自由度为
 $<span class="math notranslate nohighlight">\(
-\df(\hat{\mathbf y})=\frac{1}{\sigma^2}\sum\limits_{i=1}^N\Cov(\hat y_i,y_i)\tag{3.60}\label{3.60}
+\mathrm{df}(\hat{\mathbf y})=\frac{1}{\sigma^2}\sum\limits_{i=1}^N\mathrm{Cov}(\hat y_i,y_i)\tag{3.60}
 \)</span><span class="math notranslate nohighlight">\(
-这里 \)</span>\Cov(\hat y_i,y_i)<span class="math notranslate nohighlight">\( 指的是预测值 \)</span>\hat y_i<span class="math notranslate nohighlight">\( 和其对应的输出向量 \)</span>y_i<span class="math notranslate nohighlight">\( 之间的协方差。直观上看有意义：当拟合数据越困难，协方差会越大，从而 \)</span>\df(\hat{\mathbf y})<span class="math notranslate nohighlight">\( 越大。表达式 \eqref{3.60} 是一个有用的自由度的概念，可以应用到任何模型的预测向量 \)</span>\hat{\mathbf y}$。其中包括那些对训练数据自适应拟合的模型。这个定义将在 <span class="xref myst">7.4-7.6 节</span> 中进一步讨论。</p>
-<p>现在对于有 <span class="math notranslate nohighlight">\(k\)</span> 个固定预测变量的线性回归模型，可以简单地证明 <span class="math notranslate nohighlight">\(\df(\hat{\mathbf y})=k\)</span>。同样地，对于岭回归，这一定义导出表达式（3.50）的 <strong>闭型解 (closed-form)</strong>：<span class="math notranslate nohighlight">\(\df(\hat{\mathbf{y}})=\tr(\mathbf S_\lambda)\)</span>。</p>
-<p>在这些情况下，\eqref{3.60} 可以很简单地进行赋值因为 <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}=\mathbf{H}_\lambda\mathbf y\)</span> 关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是线性的。如果我们考虑在大小为 <span class="math notranslate nohighlight">\(k\)</span> 的最优子集选择中的定义 \eqref{3.60}，似乎显然有 <span class="math notranslate nohighlight">\(\df(\hat{\mathbf y})\)</span> 会大于 <span class="math notranslate nohighlight">\(k\)</span>，并且可以通过运用模拟的方法直接地估计 <span class="math notranslate nohighlight">\(\Cov(\hat y_i,y_i)/\sigma^2\)</span> 来验证。然而估计最优子集选择的 <span class="math notranslate nohighlight">\(\df(\hat{\mathbf y})\)</span> 没有闭型解。</p>
-<p>对于 LAR 和 lasso，会发生很奇怪的事情。这些技巧的自适应方式比最优集选择更加光滑，因此估计自由度会更加地难以驾驭。特别地，可以证明经过 <span class="math notranslate nohighlight">\(k\)</span> 步 LAR 过程，拟合向量的有效自由度恰巧是 <span class="math notranslate nohighlight">\(k\)</span>。对于 lasso，（改进的）LAR 过程经常需要多余 <span class="math notranslate nohighlight">\(k\)</span> 的步骤，因为可以删去预测变量。因此，定义有点不一样；对于 lasso，在任一小步 <span class="math notranslate nohighlight">\(\df(\hat{\mathbf y})\)</span> 近似等于模型中预测变量的个数。然而这种近似在 lasso 路径中的任何地方都表现得很好，但是对于每个 <span class="math notranslate nohighlight">\(k\)</span>，它在包含 <span class="math notranslate nohighlight">\(k\)</span> 个预测变量的序列中最后一个模型表现得最好。关于 lasso 自由度详细的研究或许可以在 Zou et al. (2007)<a class="footnote-reference brackets" href="#id16" id="id10">6</a> 中找到。</p>
+这里 \)</span>\mathrm{Cov}(\hat y_i,y_i)<span class="math notranslate nohighlight">\( 指的是预测值 \)</span>\hat y_i<span class="math notranslate nohighlight">\( 和其对应的输出向量 \)</span>y_i<span class="math notranslate nohighlight">\( 之间的协方差。直观上看有意义：当拟合数据越困难，协方差会越大，从而 \)</span>\mathrm{df}(\hat{\mathbf y})<span class="math notranslate nohighlight">\( 越大。表达式 \eqref{3.60} 是一个有用的自由度的概念，可以应用到任何模型的预测向量 \)</span>\hat{\mathbf y}$。其中包括那些对训练数据自适应拟合的模型。这个定义将在 <span class="xref myst">7.4-7.6 节</span> 中进一步讨论。</p>
+<p>现在对于有 <span class="math notranslate nohighlight">\(k\)</span> 个固定预测变量的线性回归模型，可以简单地证明 <span class="math notranslate nohighlight">\(\mathrm{df}(\hat{\mathbf y})=k\)</span>。同样地，对于岭回归，这一定义导出表达式（3.50）的 <strong>闭型解 (closed-form)</strong>：<span class="math notranslate nohighlight">\(\mathrm{df}(\hat{\mathbf{y}})=\mathrm{tr}(\mathbf S_\lambda)\)</span>。</p>
+<p>在这些情况下，\eqref{3.60} 可以很简单地进行赋值因为 <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}=\mathbf{H}_\lambda\mathbf y\)</span> 关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是线性的。如果我们考虑在大小为 <span class="math notranslate nohighlight">\(k\)</span> 的最优子集选择中的定义 \eqref{3.60}，似乎显然有 <span class="math notranslate nohighlight">\(\mathrm{df}(\hat{\mathbf y})\)</span> 会大于 <span class="math notranslate nohighlight">\(k\)</span>，并且可以通过运用模拟的方法直接地估计 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\hat y_i,y_i)/\sigma^2\)</span> 来验证。然而估计最优子集选择的 <span class="math notranslate nohighlight">\(\mathrm{df}(\hat{\mathbf y})\)</span> 没有闭型解。</p>
+<p>对于 LAR 和 lasso，会发生很奇怪的事情。这些技巧的自适应方式比最优集选择更加光滑，因此估计自由度会更加地难以驾驭。特别地，可以证明经过 <span class="math notranslate nohighlight">\(k\)</span> 步 LAR 过程，拟合向量的有效自由度恰巧是 <span class="math notranslate nohighlight">\(k\)</span>。对于 lasso，（改进的）LAR 过程经常需要多余 <span class="math notranslate nohighlight">\(k\)</span> 的步骤，因为可以删去预测变量。因此，定义有点不一样；对于 lasso，在任一小步 <span class="math notranslate nohighlight">\(\mathrm{df}(\hat{\mathbf y})\)</span> 近似等于模型中预测变量的个数。然而这种近似在 lasso 路径中的任何地方都表现得很好，但是对于每个 <span class="math notranslate nohighlight">\(k\)</span>，它在包含 <span class="math notranslate nohighlight">\(k\)</span> 个预测变量的序列中最后一个模型表现得最好。关于 lasso 自由度详细的研究或许可以在 Zou et al. (2007)<a class="footnote-reference brackets" href="#id16" id="id10">6</a> 中找到。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
@@ -1584,31 +1572,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3.3-Subset-Selection.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3.3 子集的选择</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3.3-Subset-Selection.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.3 子集的选择</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3.5-Methods-Using-Derived-Input-Directions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.5 运用派生输入方向的方法</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3.5-Methods-Using-Derived-Input-Directions.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.5 运用派生输入方向的方法</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1629,8 +1608,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

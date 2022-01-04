@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6.7 径向基函数和核 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="6.8 混合模型的密度估计和分类" href="6.8-Mixture-Models-for-Density-Estimation-and-Classification.html" />
     <link rel="prev" title="6.6 核密度估计和分类" href="6.6-Kernel-Density-Estimation-and-Classification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,10 +1135,10 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.7 径向基函数和核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>在第五章中，函数表示成基函数展开的形式：<span class="math notranslate nohighlight">\(f(x)=\sum_{j=1}^M\beta_jh_j(x)\)</span>。使用基函数展开进行灵活建模的技术有两部分构成，首先需要选取合适的基函数族，然后通过选择、正则化、或者两者都有的方法来控制表达式的复杂度。有些基函数族的元素是局部定义的，比如，B 样条在 <span class="math notranslate nohighlight">\(\IR\)</span> 中局部定义。如果在特定区域中需要更多的灵活性，这个区域则需要用更多的基函数来表示（对于 B 样条，也就是需要更多结点）。<span class="math notranslate nohighlight">\(\IR\)</span> 局部基函数的张量积构成了 <span class="math notranslate nohighlight">\(\IR^p\)</span> 中的局部基函数。不是所有的基函数都是局部的——举个例子，对于样条的截断幂基，或者在神经网络中使用的 S 型基函数 <span class="math notranslate nohighlight">\(\sigma(\alpha_0+\alpha x)\)</span>（见 <span class="xref myst">第 11 章</span>）。虽然如此，复合函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 也可以显示出局部行为，因为参数的特定符号和值造成全局影响的抵消。举个例子，对于同样的函数空间截断幂基有等价的 B 样条基；这种情况下恰恰就是因为抵消。</p>
+<p>在第五章中，函数表示成基函数展开的形式：<span class="math notranslate nohighlight">\(f(x)=\sum_{j=1}^M\beta_jh_j(x)\)</span>。使用基函数展开进行灵活建模的技术有两部分构成，首先需要选取合适的基函数族，然后通过选择、正则化、或者两者都有的方法来控制表达式的复杂度。有些基函数族的元素是局部定义的，比如，B 样条在 <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 中局部定义。如果在特定区域中需要更多的灵活性，这个区域则需要用更多的基函数来表示（对于 B 样条，也就是需要更多结点）。<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 局部基函数的张量积构成了 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的局部基函数。不是所有的基函数都是局部的——举个例子，对于样条的截断幂基，或者在神经网络中使用的 S 型基函数 <span class="math notranslate nohighlight">\(\sigma(\alpha_0+\alpha x)\)</span>（见 <span class="xref myst">第 11 章</span>）。虽然如此，复合函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 也可以显示出局部行为，因为参数的特定符号和值造成全局影响的抵消。举个例子，对于同样的函数空间截断幂基有等价的 B 样条基；这种情况下恰恰就是因为抵消。</p>
 <p>核方法通过在目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 局部的区域中拟合简单的模型来实现灵活性。局部化通过加权核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 来实现，并且单个观测权重为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>。</p>
 <p><strong>径向基函数 (Radial basis functions)</strong> 将核函数 <span class="math notranslate nohighlight">\(K_\lambda(\xi,x)\)</span> 看成基函数。</p>
 <p>!!! note “weiya 注：Isotropic covariance vs. Radial basis functions”
@@ -1173,34 +1161,34 @@ f(x) &amp;= \sum\limits_{j=1}^MK_{\lambda_j}(\xi_j,x)\beta_j\\
 $$</p>
 <p>​这个模型一般称为 RBF 网络，这是 S 型神经网络的替代选择，将在 <span class="xref myst">第 11 章</span> 讨论；<span class="math notranslate nohighlight">\(\xi_j\)</span> 和 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 在参数中有重要作用。这个准则是有着多重局部最小点的非凸函数，并且优化的算法类似神经网络中的算法。</p>
 <ul class="simple">
-<li><p>分开估计 <span class="math notranslate nohighlight">\(\\{\lambda_j,\xi_j\\}\)</span> 和 <span class="math notranslate nohighlight">\(\beta_j\)</span>。给定前者，后者的估计是简单的最小二乘问题。通常单独用 <span class="math notranslate nohighlight">\(X\)</span> 的分布，以非监督的方式选择核参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 和 <span class="math notranslate nohighlight">\(\xi_j\)</span>。其中一种方式是在给定中心 <span class="math notranslate nohighlight">\(\xi_j\)</span> 和缩放 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 时，对训练 <span class="math notranslate nohighlight">\(x_i\)</span> 拟合高斯混合密度模型。一种特别的方式是使用聚类方法来确定原型 <span class="math notranslate nohighlight">\(\xi_j\)</span>，并且将 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 看成是超参数。这些方式的显然缺点是条件分布 <span class="math notranslate nohighlight">\(\Pr(Y\mid X)\)</span> 以及 <span class="math notranslate nohighlight">\(\E(Y\mid X)\)</span> 是不起作用的。不过它们的优点是，可以更简单地实现。</p></li>
+<li><p>分开估计 <span class="math notranslate nohighlight">\(\\{\lambda_j,\xi_j\\}\)</span> 和 <span class="math notranslate nohighlight">\(\beta_j\)</span>。给定前者，后者的估计是简单的最小二乘问题。通常单独用 <span class="math notranslate nohighlight">\(X\)</span> 的分布，以非监督的方式选择核参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 和 <span class="math notranslate nohighlight">\(\xi_j\)</span>。其中一种方式是在给定中心 <span class="math notranslate nohighlight">\(\xi_j\)</span> 和缩放 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 时，对训练 <span class="math notranslate nohighlight">\(x_i\)</span> 拟合高斯混合密度模型。一种特别的方式是使用聚类方法来确定原型 <span class="math notranslate nohighlight">\(\xi_j\)</span>，并且将 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 看成是超参数。这些方式的显然缺点是条件分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y\mid X)\)</span> 以及 <span class="math notranslate nohighlight">\(\mathbb{E}(Y\mid X)\)</span> 是不起作用的。不过它们的优点是，可以更简单地实现。</p></li>
 </ul>
 <p>!!! question “weiya 注：翻译相关”
 原文的 <strong>不起作用 (having no say)</strong> 后面用 “in where the action is concentrated” 进行了修饰，但是不太清楚 “action” 是指什么，以及修饰语想表达什么？</p>
 <p><img alt="" src="../_images/fig6.16.png" /></p>
-<p>尽管看起来减少参数的个数，并假设 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 为常数的方法很吸引人，但是这会带来糟糕的副作用——产生 <strong>洞 (holes)</strong>，也就是 <span class="math notranslate nohighlight">\(\IR^p\)</span> 存在某个区域，其中没有核有合适的支撑（如图 6.16（上）所示）。对径向基函数重标准化，</p>
+<p>尽管看起来减少参数的个数，并假设 <span class="math notranslate nohighlight">\(\lambda_j=\lambda\)</span> 为常数的方法很吸引人，但是这会带来糟糕的副作用——产生 <strong>洞 (holes)</strong>，也就是 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 存在某个区域，其中没有核有合适的支撑（如图 6.16（上）所示）。对径向基函数重标准化，</p>
 <div class="math notranslate nohighlight">
 \[
 h_j(x)=\frac{D(\Vert x-\xi_j\Vert/\lambda)}{\sum_{k=1}^MD(\Vert x-\xi_k\Vert/\lambda)}\,,\tag{6.30}
 \]</div>
 <p>可以避免这个问题（图 6.16（下））。</p>
-<p><span class="math notranslate nohighlight">\(\IR^p\)</span> 中的 Nadaraya-Watson 核回归估计量 \eqref{6.2} 可以看成是重标准化后径向基函数的展开，</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的 Nadaraya-Watson 核回归估计量 \eqref{6.2} 可以看成是重标准化后径向基函数的展开，</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
-    \hat f(x_0)=\frac{\sum_{i=1}^NK_{\lambda}(x_0,x_i)y_i}{\sum_{i=1}^NK_{\lambda}(x_0,x_i)}\tag{6.2}\label{6.2}
+    \hat f(x_0)=\frac{\sum_{i=1}^NK_{\lambda}(x_0,x_i)y_i}{\sum_{i=1}^NK_{\lambda}(x_0,x_i)}\tag{6.2}
     \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 \hat f(x_0) &amp;= \sum_{i=1}^Ny_i\frac{K_\lambda(x_0,x_i)}{\sum_{i=1}^NK_\lambda(x_0,x_i)}\\
-&amp;=\sum_{i=1}^Ny_ih_i(x_0)\tag{6.31}\label{6.31}
+&amp;=\sum_{i=1}^Ny_ih_i(x_0)\tag{6.31}
 \end{align*}
 \end{split}\]</div>
 <p>其中基函数 <span class="math notranslate nohighlight">\(h_i\)</span> 确定了每个观测的位置以及系数；也就是说，<span class="math notranslate nohighlight">\(\xi_i=x_i,\hat\beta_i=y_i,i=1,\ldots,N\)</span>.</p>
 <p>注意到展开式 \eqref{6.31} 与由 <span class="math notranslate nohighlight">\(K\)</span> 导出的正则化问题的解 \eqref{5.50} 间的相似性。径向基函数搭建了现代“核方法”与局部拟合技巧间的桥梁。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
-    f(x)=\sum\limits_{i=1}^N\alpha_i K(x, x_i)\tag{5.50}\label{5.50}
+    f(x)=\sum\limits_{i=1}^N\alpha_i K(x, x_i)\tag{5.50}
     \)</span>$</p>
 </div>
 
@@ -1227,31 +1215,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="6.6-Kernel-Density-Estimation-and-Classification.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">6.6 核密度估计和分类</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="6.6-Kernel-Density-Estimation-and-Classification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">6.6 核密度估计和分类</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6.8-Mixture-Models-for-Density-Estimation-and-Classification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6.8 混合模型的密度估计和分类</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="6.8-Mixture-Models-for-Density-Estimation-and-Classification.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">6.8 混合模型的密度估计和分类</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1272,8 +1251,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

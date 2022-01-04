@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2.8 限制性估计的种类 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="2.9 模型选择和偏差-方差的权衡" href="2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html" />
     <link rel="prev" title="2.7 结构化的回归模型" href="2.7-Structured-Regression-Models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,23 +1158,23 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>2.8 限制性估计的种类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>非参回归技巧的多样性或学习方法的类型根据其限制条件的本质可以分成不同的种类。这些种类不是完全不同的，而且确实一些方法可以归为好几种不同的类别。这里我们进行一个简短的概要，因为详细的描述将在后面章节中给出。每个类都有与之对应的一个或多个参数，有时恰当地称之为 <strong>光滑化(smoothing)</strong> 参数，这些参数控制着局部邻域的有效大小。这里我们描述三个大的类别。</p>
 <div class="section" id="id2">
 <h2>粗糙度惩罚和贝叶斯方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>这是由显式的惩罚 <span class="math notranslate nohighlight">\(\RSS(f)\)</span> 以及粗糙度惩罚控制的函数类别：
+<p>这是由显式的惩罚 <span class="math notranslate nohighlight">\(\mathrm{RSS}(f)\)</span> 以及粗糙度惩罚控制的函数类别：
 $<span class="math notranslate nohighlight">\(
-\PRSS(f;\lambda)=\RSS(f)+\lambda J(f)\tag{2.38}
+\mathrm{PRSS}(f;\lambda)=\mathrm{RSS}(f)+\lambda J(f)\tag{2.38}
 \)</span><span class="math notranslate nohighlight">\(
 对于在输入空间的小邻域变换太快的函数 \)</span>f<span class="math notranslate nohighlight">\(，用户选择的函数 \)</span>J(f)<span class="math notranslate nohighlight">\( 会变大。举个例子，著名的用于一维输入的 **三次光滑样条 (cubic smoothing spline)** 的是带惩罚的最小二乘的准则的解。
 \)</span><span class="math notranslate nohighlight">\(
-\PRSS(f;\lambda)=\sum\limits_{i=1}^N(y_i-f(x_i))^2+\lambda \int [f''(x)]^2dx
+\mathrm{PRSS}(f;\lambda)=\sum\limits_{i=1}^N(y_i-f(x_i))^2+\lambda \int [f''(x)]^2dx
 \tag{2.39}
 \)</span><span class="math notranslate nohighlight">\(
 这里的粗糙惩罚控制了 \)</span>f<span class="math notranslate nohighlight">\( 的二阶微分较大的值，而且惩罚的程度由 \)</span>\lambda \ge 0<span class="math notranslate nohighlight">\( 来决定。\)</span>\lambda=0<span class="math notranslate nohighlight">\( 表示没有惩罚，则可以使用任意插值函数，而 \)</span>\lambda=\infty<span class="math notranslate nohighlight">\( 仅仅允许关于 \)</span>x$ 的线性函数。</p>
 <p>可以在任意维数下构造惩罚函数 <span class="math notranslate nohighlight">\(J\)</span> ，而且一些特殊的版本可以用来插入特殊的结构。举个例子，可加性惩罚 <span class="math notranslate nohighlight">\(J(f)=\sum_{j=1}^pJ(f_j)\)</span> 与可加性函数 <span class="math notranslate nohighlight">\(f(X)=\sum_{j=1}^pf_j(X_j)\)</span> 联合使用去构造可加的光滑坐标函数的模型。类似地，<strong>投影寻踪回归 (projection pursuit regression)</strong> 模型有 <span class="math notranslate nohighlight">\(f(X)=\sum_{m=1}^Mg_m(\alpha_m^TX)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha_m\)</span> 为自适应选择的方向，每个函数 <span class="math notranslate nohighlight">\(g_m\)</span> 有对应的粗糙惩罚。</p>
-<p>惩罚函数，或者说 <strong>正则 (regularization)</strong> 方法，表达了我们的 <strong>先验信仰 (prior belief)</strong>——寻找具有一个特定类型的光滑行为函数类型，而且确实可以套进贝叶斯的模型中。惩罚 <span class="math notranslate nohighlight">\(J\)</span> 对应先验概率，<span class="math notranslate nohighlight">\(\PRSS(f;\lambda)\)</span> 为后验分布，最小化 <span class="math notranslate nohighlight">\(\PRSS(f;\lambda)\)</span> 意味着寻找后验模式。我们将在<span class="xref myst">第 5 章</span>中讨论粗糙惩罚方法并在<span class="xref myst">第 8 章</span>中讨论贝叶斯范式。</p>
+<p>惩罚函数，或者说 <strong>正则 (regularization)</strong> 方法，表达了我们的 <strong>先验信仰 (prior belief)</strong>——寻找具有一个特定类型的光滑行为函数类型，而且确实可以套进贝叶斯的模型中。惩罚 <span class="math notranslate nohighlight">\(J\)</span> 对应先验概率，<span class="math notranslate nohighlight">\(\mathrm{PRSS}(f;\lambda)\)</span> 为后验分布，最小化 <span class="math notranslate nohighlight">\(\mathrm{PRSS}(f;\lambda)\)</span> 意味着寻找后验模式。我们将在<span class="xref myst">第 5 章</span>中讨论粗糙惩罚方法并在<span class="xref myst">第 8 章</span>中讨论贝叶斯范式。</p>
 </div>
 <div class="section" id="id3">
 <h2>核方法和局部回归<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -1202,7 +1190,7 @@ K_{\lambda}(x_0,x)=\frac{1}{\lambda}\exp\Big[-\frac{\mid \mid x-x_0\mid \mid ^2}
 \)</span><span class="math notranslate nohighlight">\(
 一般地，我们可以定义 \)</span>f(x_0)<span class="math notranslate nohighlight">\( 的局部回归估计为 \)</span>f_{\hat{\theta}}(x_0)<span class="math notranslate nohighlight">\(，其中 \)</span>\hat{\theta}<span class="math notranslate nohighlight">\( 使下式最小化
 \)</span><span class="math notranslate nohighlight">\(
-\RSS(f_{\theta},x_0)=\sum\limits_{i=1}^NK_{\lambda}(x_0,x_i)(y_i-f_{\theta}(x_i))^2
+\mathrm{RSS}(f_{\theta},x_0)=\sum\limits_{i=1}^NK_{\lambda}(x_0,x_i)(y_i-f_{\theta}(x_i))^2
 \tag{2.42}
 \)</span><span class="math notranslate nohighlight">\(
 并且 \)</span>f_{\theta}$ 为含参函数，比如低阶的多项式。有如下例子：</p>
@@ -1266,31 +1254,22 @@ f_{\theta}(x)=\sum\limits_{m=1}^M\beta_m\sigma(\alpha_m^Tx+b_m)
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="2.7-Structured-Regression-Models.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">2.7 结构化的回归模型</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2.7-Structured-Regression-Models.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2.7 结构化的回归模型</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2.9 模型选择和偏差-方差的权衡</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="2.9-Model-Selection-and-the-Bias-Variance-Tradeoff.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">2.9 模型选择和偏差-方差的权衡</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1311,8 +1290,7 @@ f_{\theta}(x)=\sum\limits_{m=1}^M\beta_m\sigma(\alpha_m^Tx+b_m)
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

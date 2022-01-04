@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>18.2 对角线性判别分析和最近收缩重心 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="18.3 二次正则化的线性分类器" href="18.3-Linear-Classifiers-with-Quadratic-Regularization.html" />
     <link rel="prev" title="18.1 当p远大于N" href="18.1-When-p-is-Much-Bigger-than-N.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,18 +1135,18 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.2 对角线性判别分析和最近收缩重心<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>基因表达阵列 (gene expression arrays)</strong> 是生物中一项重要的新的技术，并且在<span class="xref myst">第 1 章</span>和<span class="xref myst">第 14 章</span>有讨论。我们下一个例子的数据构造了 2308 个基因（列）和 63 个样本（行）的矩阵，这是从一系列微阵列实验中得到的。每个表达值是对数比率 <span class="math notranslate nohighlight">\(\log(R/G)\)</span>。<span class="math notranslate nohighlight">\(R\)</span> 是目标样本中 gene-specific RNA 在微阵列上特定位点杂化的量，而 <span class="math notranslate nohighlight">\(G\)</span> 是参考样本中对应的 RNA 杂化的量。样本来自儿童身上发现的小、圆蓝色细胞肿瘤(SRBCT)，并且分成 4 个主要的类别：BL (Burkitt lymphoma), EWS (Ewing’s sarcoma), NB (neuroblastoma), 和 RMS (rhabdomyosarcoma)。另外有包含 20 个观测的额外数据集。我们将不再讨论其背景。</p>
 <p>因为 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span>，我们不能对数据采用 <strong>全线性判别分析(LDA)</strong>；需要进行一些正则化。我们这里描述的方法类似在<a class="reference external" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis/index.html#_1">第 4.3.1 节</a>中描述的方法，但是为了达到特征选择要有更重要的改动。正则化的最简单的形式假设特征在每一类中独立，也就是，类内协方差阵是对角阵。尽管事实上特征很少在一个类别中独立，但当 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 时，我们没有充足的数据来估计它们的依赖性。独立性的假设很大程度上降低了模型中参数的个数，并且经常导出更有效和更有解释性的分类器。</p>
 <p>因此我们考虑 <strong>对角协方差 (diagonal-covariance)</strong> LDA 准则来对类别分类。类别 <span class="math notranslate nohighlight">\(k\)</span> 的 <strong>判别得分(discriminant score)</strong> \eqref{4.12} 是</p>
 <p>!!! note “Recall: \eqref{4.12}”
 $<span class="math notranslate nohighlight">\(
-    \delta_k(x)=-\frac{1}{2}\log\vert\Sigma_k\vert-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)+\log\pi_k\tag{4.12}\label{4.12}
+    \delta_k(x)=-\frac{1}{2}\log\vert\Sigma_k\vert-\frac{1}{2}(x-\mu_k)^T\Sigma_k^{-1}(x-\mu_k)+\log\pi_k\tag{4.12}
     \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[
-\delta_k(x^*)=-\sum\limits_{j=1}^p\frac{(x_j^*-\bar x_{kj})^2}{s_j^2}+2\log\pi_k\tag{18.2}\label{18.2}
+\delta_k(x^*)=-\sum\limits_{j=1}^p\frac{(x_j^*-\bar x_{kj})^2}{s_j^2}+2\log\pi_k\tag{18.2}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(x^*=(x_1^*,x_2^*,\ldots,x_p^*)^T\)</span> 是测试观测表达值的向量，<span class="math notranslate nohighlight">\(s_j\)</span> 为第 <span class="math notranslate nohighlight">\(j\)</span> 个基因的混合类内标准误差，并且 <span class="math notranslate nohighlight">\(\bar x_{kj}=\sum_{i\in C_k}x_{ij}/N_k\)</span> 是 <span class="math notranslate nohighlight">\(N_k\)</span> 个属于类别 <span class="math notranslate nohighlight">\(k\)</span> 的基因 <span class="math notranslate nohighlight">\(j\)</span> 的平均，其中 <span class="math notranslate nohighlight">\(C_k\)</span> 是类别 <span class="math notranslate nohighlight">\(k\)</span> 的索引集。我们称 <span class="math notranslate nohighlight">\(\tilde x_k=(\bar x_{k1},\bar x_{k2},\ldots,\bar x_{kp})^T\)</span> 为类别 <span class="math notranslate nohighlight">\(k\)</span> 的重心。式 \eqref{18.2} 的第一部分是 <span class="math notranslate nohighlight">\(x^*\)</span> 到第 <span class="math notranslate nohighlight">\(k\)</span> 个类别重心的（负）标准平方距离。第二部分是基于类别 <strong>先验概率 (prior probability)</strong> <span class="math notranslate nohighlight">\(\pi_k\)</span> 的矫正，其中 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k=1\)</span>。分类规则于是为</p>
 <div class="math notranslate nohighlight">
@@ -1176,17 +1164,17 @@ C(x^*)=\ell\text{ if } \delta_{\ell}(x^*)=\max_k\delta_k(x^*)\tag{18.3}
 <p>收缩过程按如下定义。令</p>
 <div class="math notranslate nohighlight">
 \[
-d_{kj}=\frac{\bar x_{kj}-\bar x_j}{m_k(s_j+s_0)}\tag{18.4}\label{18.4}
+d_{kj}=\frac{\bar x_{kj}-\bar x_j}{m_k(s_j+s_0)}\tag{18.4}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\bar x_j\)</span> 是基因 <span class="math notranslate nohighlight">\(j\)</span> 的整体均值，<span class="math notranslate nohighlight">\(m_k^2=1/N_k-1/N\)</span>，且 <span class="math notranslate nohighlight">\(s_0\)</span> 是一个小的正值，一般取为 <span class="math notranslate nohighlight">\(s_j\)</span> 的中值。这个常值防止因分母接近 0 导致太大的 <span class="math notranslate nohighlight">\(d_{kj}\)</span>。类内方差为常值 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，分子中差异 <span class="math notranslate nohighlight">\(\bar x_{kj}-\bar x_j\)</span>的方差为 <span class="math notranslate nohighlight">\(m_k^2\sigma^2\)</span>，因此便有了如分母中的标准化。</p>
 <p><img alt="" src="../_images/fig18.2.png" /></p>
 <blockquote>
-<div><p>软阈值函数 <span class="math notranslate nohighlight">\(\sign(x)(\vert x\vert-\Delta)\_+\)</span> 用橘黄色表示，并且图中也画出了 <span class="math notranslate nohighlight">\(45^\circ\)</span> 的直线。</p>
+<div><p>软阈值函数 <span class="math notranslate nohighlight">\(\mathrm{sign}(x)(\vert x\vert-\Delta)\_+\)</span> 用橘黄色表示，并且图中也画出了 <span class="math notranslate nohighlight">\(45^\circ\)</span> 的直线。</p>
 </div></blockquote>
 <p>如图 18.2，我们采用 <strong>软阈值 (soft thresholding)</strong> 将 <span class="math notranslate nohighlight">\(d_{kj}\)</span> 收缩到 0</p>
 <div class="math notranslate nohighlight">
 \[
-d_{kj}'=\sign(d_{kj})(\vert d_{kj}\vert-\Delta)_+\tag{18.5}
+d_{kj}'=\mathrm{sign}(d_{kj})(\vert d_{kj}\vert-\Delta)_+\tag{18.5}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\Delta\)</span> 是需要确定的参数；我们在例子中采取 10 折交叉验证（见图 18.4 的上图）。</p>
 <p><img alt="" src="../_images/fig18.4.png" /></p>
@@ -1201,7 +1189,7 @@ d_{kj}'=d_{kj}\cdot I(\vert d_{kj}\vert\ge \Delta)\tag{18.6}
 <p>我们倾向于软阈值，因为这是一个更光滑的处理并且一般效果更好。<span class="math notranslate nohighlight">\(\bar x_{kj}\)</span> 的收缩版本接着通过反解 \eqref{18.4} 的转换得到</p>
 <div class="math notranslate nohighlight">
 \[
-\bar x_{kj}'=\bar x_j'+m_k(s_j+s_0)d_{kj}'\tag{18.7}\label{18.7}
+\bar x_{kj}'=\bar x_j'+m_k(s_j+s_0)d_{kj}'\tag{18.7}
 \]</div>
 <p>我们用收缩重心 <span class="math notranslate nohighlight">\(\bar x_{kj}'\)</span> 代替判别得分 \eqref{18.2} 的原始 <span class="math notranslate nohighlight">\(x_{kj}\)</span>。估计量 \eqref{18.7} 可以认为是类别均值的 lasso 风格的估计量（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/83">练习 18.2</a>）。</p>
 <p>!!! info “weiya 注：Ex. 18.2”
@@ -1253,31 +1241,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="18.1-When-p-is-Much-Bigger-than-N.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">18.1 当p远大于N</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="18.1-When-p-is-Much-Bigger-than-N.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">18.1 当p远大于N</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="18.3-Linear-Classifiers-with-Quadratic-Regularization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">18.3 二次正则化的线性分类器</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="18.3-Linear-Classifiers-with-Quadratic-Regularization.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">18.3 二次正则化的线性分类器</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1298,8 +1277,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

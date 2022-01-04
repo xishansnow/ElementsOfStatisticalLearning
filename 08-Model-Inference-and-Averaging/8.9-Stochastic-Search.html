@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8.9 随机搜索： Bumping &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="8.10 文献笔记" href="Bibliographic-Notes.html" />
     <link rel="prev" title="8.8 模型平均和堆栈" href="8.8-Model-Averaging-and-Stacking.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,21 +1135,21 @@
         
               <div>
                 
-  <div class="section" id="bumping">
+  <div class="tex2jax_ignore mathjax_ignore section" id="bumping">
 <h1>8.9 随机搜索： Bumping<a class="headerlink" href="#bumping" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>这章描述的最后一个方法不涉及平均或者结合模型，但是是寻找一个更好单模型的方法。Bumping 采用 bootstrap 采样在模型空间中随机移动。对于拟合方法经常会找到许多局部最小值的问题，bumping 可以帮助这些方法避免陷入坏的解。</p>
-<p>像在 bagging 中一样，我们抽取自助样本并且对每个样本拟合模型。但是不是对这些预测值进行平均，我们而是选择拟合训练数据最好的自助样本的模型。具体地，我们抽取自助样本 <span class="math notranslate nohighlight">\(Z^{*1}, \ldots, Z^{*B}\)</span> 并对每个样本拟合我们的模型，然后给出在输入点 <span class="math notranslate nohighlight">\(x\)</span> 处的预测 <span class="math notranslate nohighlight">\(\hat f^{*b},n=1,2,\ldots,B\)</span>。我们在原始训练集上平均选择产生最小预测误差的模型。举个例子，对于平方误差，我们选择从自助样本 <span class="math notranslate nohighlight">\(\hat b\)</span> 中得到的模型，其中</p>
+<p>这章描述的最后一个方法不涉及平均或者结合模型，但是是寻找一个更好单模型的方法。Bumping 采用 bootstrap 采样在模型空间中随机移动。对于拟合方法经常会找到许多局部最小值的问题，<code class="docutils literal notranslate"><span class="pre">bumping</span></code> 可以帮助这些方法避免陷入坏的解。</p>
+<p>像在 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 中一样，我们抽取自助样本并且对每个样本拟合模型。但是不是对这些预测值进行平均，我们而是选择拟合训练数据最好的自助样本的模型。具体地，我们抽取自助样本 <span class="math notranslate nohighlight">\(Z^{*1}, \ldots, Z^{*B}\)</span> 并对每个样本拟合我们的模型，然后给出在输入点 <span class="math notranslate nohighlight">\(x\)</span> 处的预测 <span class="math notranslate nohighlight">\(\hat f^{*b},n=1,2,\ldots,B\)</span>。我们在原始训练集上平均选择产生最小预测误差的模型。举个例子，对于平方误差，我们选择从自助样本 <span class="math notranslate nohighlight">\(\hat b\)</span> 中得到的模型，其中</p>
 <div class="math notranslate nohighlight">
 \[
 \hat b=\text{arg }\underset{b}{\text{min}}\sum\limits_{i=1}^N[y_i-\hat f^{*b}(x_i)]^2\tag{8.60}
 \]</div>
 <p>对应的模型预测为 <span class="math notranslate nohighlight">\(\hat f^{*\hat b}(x)\)</span>。按照约定，我们也把原始训练样本包含进自助样本的集合中，所以如果原始模型有更低的训练误差，这种方法也能选择原始模型。</p>
-<p>通过打乱数据，bumping 试图将拟合过程移动到模型空间的好区域中。举个例子，如果只有少数的数据点会导致这个过程找到差的解，则任意删除掉这些数据点的自助样本应该会产生更好的解。</p>
+<p>通过打乱数据，<code class="docutils literal notranslate"><span class="pre">bumping</span></code> 试图将拟合过程移动到模型空间的好区域中。举个例子，如果只有少数的数据点会导致这个过程找到差的解，则任意删除掉这些数据点的自助样本应该会产生更好的解。</p>
 <p>举另一个例子，考虑图 8.13 中的分类数据，臭名昭著的异或(exclusive or)(XOR)问题。其中有两个类别（蓝色和橘黄色）以及两个输入特征，并且特征间存在单纯的交叉。</p>
 <p><img alt="" src="../_images/fig8.13.png" /></p>
-<p>通过先在 <span class="math notranslate nohighlight">\(x_1=0\)</span> 处分离数据，然后在每个分层的 <span class="math notranslate nohighlight">\(x_2=0\)</span> 处分离数据（或者反过来），一个基于树的分类器可以达到完美的判别。然而，贪婪的、见识短的 CART 算法（9.2节）试图寻找任意一个特征上的最优分割，接着再对得到的分层进行分割。由于数据的平衡特性，所有在 <span class="math notranslate nohighlight">\(x_1\)</span> 或 <span class="math notranslate nohighlight">\(x_2\)</span> 上的初始分割似乎无用，而且这个过程本质上在第一层产生随机的分割。对于这些数据找到的实际分割展示在图 8.13 的左图。通过对数据 bootstrap 采样，bumping 打破了类别之间的平衡，以一个合理大小的自助样本（这里是20），这至少会随机产生一个初始分割点在 <span class="math notranslate nohighlight">\(x_1=0\)</span> 或 <span class="math notranslate nohighlight">\(x_2=0\)</span> 附近的树。仅仅使用 20 个自助样本，bumping 找到了图 8.13 的右图中展示的接近最优的分割。如果我们添加一系列独立于类别标签的噪声特征，贪婪的生成树的算法的缺点会被加重。则生成树的算法不能区分 <span class="math notranslate nohighlight">\(x_1\)</span> 或 <span class="math notranslate nohighlight">\(x_2\)</span>，并且将会更加迷路。</p>
-<p>因为 bumping 在训练数据上比较了不同的模型，必须保证模型近似有相同的复杂度。在树的情形下，这意味着在每个自助样本上生成终止结点个数相同的树。bumping 在很难最优化拟合准则的问题中也有帮助，或许是因为缺少光滑性。技巧是在自助样本上优化一个不同的、但更方便的准则，接着选择在训练样本上产生原始准则达到最优的模型。</p>
+<p>通过先在 <span class="math notranslate nohighlight">\(x_1=0\)</span> 处分离数据，然后在每个分层的 <span class="math notranslate nohighlight">\(x_2=0\)</span> 处分离数据（或者反过来），一个基于树的分类器可以达到完美的判别。然而，贪婪的、见识短的 CART 算法（9.2节）试图寻找任意一个特征上的最优分割，接着再对得到的分层进行分割。由于数据的平衡特性，所有在 <span class="math notranslate nohighlight">\(x_1\)</span> 或 <span class="math notranslate nohighlight">\(x_2\)</span> 上的初始分割似乎无用，而且这个过程本质上在第一层产生随机的分割。对于这些数据找到的实际分割展示在图 8.13 的左图。通过对数据 bootstrap 采样，<code class="docutils literal notranslate"><span class="pre">bumping</span></code> 打破了类别之间的平衡，以一个合理大小的自助样本（这里是20），这至少会随机产生一个初始分割点在 <span class="math notranslate nohighlight">\(x_1=0\)</span> 或 <span class="math notranslate nohighlight">\(x_2=0\)</span> 附近的树。仅仅使用 20 个自助样本，<code class="docutils literal notranslate"><span class="pre">bumping</span></code> 找到了图 8.13 的右图中展示的接近最优的分割。如果我们添加一系列独立于类别标签的噪声特征，贪婪的生成树的算法的缺点会被加重。则生成树的算法不能区分 <span class="math notranslate nohighlight">\(x_1\)</span> 或 <span class="math notranslate nohighlight">\(x_2\)</span>，并且将会更加迷路。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">bumping</span></code> 在训练数据上比较了不同的模型，必须保证模型近似有相同的复杂度。在树的情形下，这意味着在每个自助样本上生成终止结点个数相同的树。<code class="docutils literal notranslate"><span class="pre">bumping</span></code> 在很难最优化拟合准则的问题中也有帮助，或许是因为缺少光滑性。技巧是在自助样本上优化一个不同的、但更方便的准则，接着选择在训练样本上产生原始准则达到最优的模型。</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1187,31 +1175,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="8.8-Model-Averaging-and-Stacking.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">8.8 模型平均和堆栈</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="8.8-Model-Averaging-and-Stacking.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">8.8 模型平均和堆栈</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Bibliographic-Notes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8.10 文献笔记</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="Bibliographic-Notes.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">8.10 文献笔记</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1232,8 +1211,7 @@
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8.8 模型平均和堆栈 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="8.9 随机搜索： Bumping" href="8.9-Stochastic-Search.html" />
     <link rel="prev" title="8.7 Bagging" href="8.7-Bagging.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,10 +1135,10 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>8.8 模型平均和堆栈<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>在 <span class="xref myst">8.4 节</span>我们根据一种非参贝叶斯分析，将估计器的 bootstrap 值看成对应参数近似的后验值。从这个角度看，bagged 估计 \eqref{8.51} 是后验贝叶斯均值的近似。相反，训练样本估计量 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 对应后验的<strong>最大值 (mode)</strong>。因为后验均值（不是最大值）最小化平方误差损失，所以 bagging 可以经常降低均方误差也不奇怪。</p>
+<p>在 <span class="xref myst">8.4 节</span>我们根据一种非参贝叶斯分析，将估计器的 bootstrap 值看成对应参数近似的后验值。从这个角度看，bagged 估计 \eqref{8.51} 是后验贝叶斯均值的近似。相反，训练样本估计量 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 对应后验的<strong>最大值 (mode)</strong>。因为后验均值（不是最大值）最小化平方误差损失，所以 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 可以经常降低均方误差也不奇怪。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \hat f_{bag}(x)=\frac{1}{B}\sum\limits_{b=1}^B\hat f^{* b}(x) \tag{8.51}
@@ -1161,12 +1149,12 @@ $<span class="math notranslate nohighlight">\(
 <p>假设 <span class="math notranslate nohighlight">\(\zeta\)</span> 是我们关心的某个值，举个例子，在某个固定的特征值 <span class="math notranslate nohighlight">\(x\)</span> 处的预测值 <span class="math notranslate nohighlight">\(f(x)\)</span>。<span class="math notranslate nohighlight">\(\zeta\)</span> 的后验分布为</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\Pr(\zeta\mid \mathcal{M}_m,\mathbf Z)\Pr(\mathcal{M}_m\mid \mathbf Z)\tag{8.53}
+\mathrm{Pr}(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\mathrm{Pr}(\zeta\mid \mathcal{M}_m,\mathbf Z)\mathrm{Pr}(\mathcal{M}_m\mid \mathbf Z)\tag{8.53}
 \]</div>
 <p>其中后验均值为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{E}(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\mathbb{E}(\zeta\mid \mathcal{M}_m,\mathbf Z)\Pr(\mathcal{M}_m\mid \mathbf Z)\tag{8.54} 
+\mathbb{E}(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\mathbb{E}(\zeta\mid \mathcal{M}_m,\mathbf Z)\mathrm{Pr}(\mathcal{M}_m\mid \mathbf Z)\tag{8.54} 
 \]</div>
 <p>这个贝叶斯预测是每个预测的加权，其中权重与每个模型的后验概率成比例。</p>
 <p>这种形式导出了一系列模型平均的策略。<strong>委员会方法 (Committee methods)</strong> 从每个模型的预测中取简单的无加权平均，本质上就是对每个模型赋予相等的概率。更雄心勃勃地 (More ambitiously)，<span class="xref myst">第 7.7 节</span>展现了 BIC 准则可以用来估计模型的后验概率。</p>
@@ -1178,11 +1166,11 @@ $<span class="math notranslate nohighlight">\(
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\Pr(\mathcal{M}_m\mid \Z)&amp;\propto \Pr(\mathcal{M}_m)\cdot\Pr(\Z\mid \mathcal{M}_m)\\
-&amp;\propto \Pr(\mathcal{M}_m)\cdot \int \Pr(\Z \mid \theta_m,\mathcal{M}_m)\Pr(\theta_m\mid \mathcal{M}_m)d\theta_m\tag{8.55}
+\mathrm{Pr}(\mathcal{M}_m\mid Z)&amp;\propto \mathrm{Pr}(\mathcal{M}_m)\cdot\mathrm{Pr}(Z\mid \mathcal{M}_m)\\
+&amp;\propto \mathrm{Pr}(\mathcal{M}_m)\cdot \int \mathrm{Pr}(Z \mid \theta_m,\mathcal{M}_m)\mathrm{Pr}(\theta_m\mid \mathcal{M}_m)d\theta_m\tag{8.55}
 \end{align*}
 \end{split}\]</div>
-<p>原则上，可以确定先验 <span class="math notranslate nohighlight">\(\Pr(\theta_m\mid \mathcal{M}_m)\)</span>，然后根据式 \eqref{8.55} 数值上计算后验概率，从而作为模型平均的权重。然而，相比更简单的 BIC 近似，我们没有看到任何实际的证据来表明值得这样做。</p>
+<p>原则上，可以确定先验 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\theta_m\mid \mathcal{M}_m)\)</span>，然后根据式 \eqref{8.55} 数值上计算后验概率，从而作为模型平均的权重。然而，相比更简单的 BIC 近似，我们没有看到任何实际的证据来表明值得这样做。</p>
 <p>我们怎么从频率的角度来实现模型平均？给定平方损失下的预测值 <span class="math notranslate nohighlight">\(\hat f_{\\!1}(x),\hat f_{\\!2}(x),\ldots, \hat f_{\\!M}(x)\)</span>，我们可以寻找权重 <span class="math notranslate nohighlight">\(w=(w_1,w_2,\ldots,w_M)\)</span> 使得</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1200,7 +1188,7 @@ $<span class="math notranslate nohighlight">\(
 \]</div>
 <p>所以在总体水平下，结合后的模型不会变得更糟。</p>
 <p>当然总体线性回归 \eqref{8.57} 不可行，很自然地用在训练集上的线性回归来替换。但是有简单的例子表明这效果并不好。举个例子，如果 <span class="math notranslate nohighlight">\(\hat f_{\\!m}(x),m=1,2,...,M\)</span> 表示从 <span class="math notranslate nohighlight">\(M\)</span> 个输入中取 <span class="math notranslate nohighlight">\(m\)</span> 个输入的最优子集的预测，则线性回归将会把所有的权重放在最大的模型上面，也就是，<span class="math notranslate nohighlight">\(\hat w_M=1,\hat w_m=0,m &lt; M\)</span>。问题是没有考虑模型的复杂性（例子中输入的个数 <span class="math notranslate nohighlight">\(m\)</span>）将每个模型放在同一水平。</p>
-<p><strong>堆栈泛化 (Stacked generalization)</strong>，或者称为 <strong>堆栈 (stacking)</strong>，是一种做这件事的方式。令 <span class="math notranslate nohighlight">\(\hat f^{-i}_m(x)\)</span> 采用模型 <span class="math notranslate nohighlight">\(m\)</span>，应用到除去第 <span class="math notranslate nohighlight">\(i\)</span> 个训练观测的数据集上得到的 <span class="math notranslate nohighlight">\(x\)</span> 处的预测。权重的堆栈估计是通过 <span class="math notranslate nohighlight">\(y_i\)</span> 在 <span class="math notranslate nohighlight">\(\hat f_m^{-i}(x_i),m=1,2, \ldots,M\)</span> 上的最小二乘线性回归得到。具体地，堆栈参数由下式给出</p>
+<p><strong>堆栈泛化 (Stacked generalization)</strong>，或者称为 <strong>堆栈 (<code class="docutils literal notranslate"><span class="pre">stacking</span></code>)</strong>，是一种做这件事的方式。令 <span class="math notranslate nohighlight">\(\hat f^{-i}_m(x)\)</span> 采用模型 <span class="math notranslate nohighlight">\(m\)</span>，应用到除去第 <span class="math notranslate nohighlight">\(i\)</span> 个训练观测的数据集上得到的 <span class="math notranslate nohighlight">\(x\)</span> 处的预测。权重的堆栈估计是通过 <span class="math notranslate nohighlight">\(y_i\)</span> 在 <span class="math notranslate nohighlight">\(\hat f_m^{-i}(x_i),m=1,2, \ldots,M\)</span> 上的最小二乘线性回归得到。具体地，堆栈参数由下式给出</p>
 <div class="math notranslate nohighlight">
 \[
 \hat w^{st}=\underset{w}{\argmin}\sum\limits_{i=1}^N\left[y_i-\sum\limits_{m=1}^Mw_m\hat f_{\!m}^{-i}(x_i)\right]^2\tag{8.59}
@@ -1240,31 +1228,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="8.7-Bagging.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">8.7 Bagging</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="8.7-Bagging.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">8.7 Bagging</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8.9-Stochastic-Search.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8.9 随机搜索： Bumping</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="8.9-Stochastic-Search.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">8.9 随机搜索： Bumping</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1285,8 +1264,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

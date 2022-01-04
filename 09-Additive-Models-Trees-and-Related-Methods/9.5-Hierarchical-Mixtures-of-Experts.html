@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>9.5 专家的分层混合 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="9.6 缺失数据" href="9.6-Missing-Data.html" />
     <link rel="prev" title="9.4 MARS: 多变量自适应回归样条" href="9.4-MARS.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,7 +1135,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>9.5 专家的分层混合<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>专家的分层混合 (HME)</strong> 过程可以看成是基于树方法的变种。主要的差异是树的分割不是<strong>硬决定 (hard decision)</strong>，而是<strong>软概率的决定 (soft probabilistic)</strong>。在每个结点观测往左或者往右的概率取决于输入值。因为最后的参数优化问题是光滑的，所以有一些计算的优势，不像在基于树的方式中的离散分割点的搜索。软分割或许也可以帮助预测准确性，并且提供另外一种有用的数据描述方式。</p>
 <p>HMEs 和 CART 树的实现还有其他的差异。在HME中，在每个终止结点处拟合线性（或者逻辑斯蒂回归）模型，而不是像 CART 中那样是常值。分割点可以是多重的，而不仅仅是二值的，并且分割点是输入的线性组合的概率函数，而不是在标准 CART 中的单个输入。然而，这些选择的相对优点不是清晰的，大部分将在 9.2 节的后面中讨论。</p>
@@ -1171,7 +1159,7 @@ g_{\ell\mid j}(x,\gamma_{j\ell})=\frac{e^{\gamma_{j\ell}^Tx}}{\sum_{k=1}^Ke^{\ga
 <p>在每个专家（终止结点），我们有如下形式的响应变量的模型</p>
 <div class="math notranslate nohighlight">
 \[
-Y\sim  \Pr(y\mid x,\theta_{jl})\tag{9.27}
+Y\sim  \mathrm{Pr}(y\mid x,\theta_{jl})\tag{9.27}
 \]</div>
 <p>这根据问题而有不同。</p>
 <p><strong>回归：</strong> 使用高斯线性回归模型，其中<span class="math notranslate nohighlight">\(\theta_{j\ell}=(\beta_{i\ell},\sigma^2_{j\ell})\)</span>:
@@ -1180,14 +1168,14 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
 \)</span><span class="math notranslate nohighlight">\(
 **分类：** 使用线性逻辑斯蒂回归模型：
 \)</span><span class="math notranslate nohighlight">\(
-\Pr(Y=1\mid x,\theta_{j\ell})=\frac{1}{1+e^{-\theta_{j\ell}^Tx}}\tag{9.29}
+\mathrm{Pr}(Y=1\mid x,\theta_{j\ell})=\frac{1}{1+e^{-\theta_{j\ell}^Tx}}\tag{9.29}
 \)</span><span class="math notranslate nohighlight">\(
 用\)</span>\Psi=\{\gamma_j,\gamma_{j\ell},\theta_{j\ell}\}<span class="math notranslate nohighlight">\(表示参数的集合，\)</span>Y=y<span class="math notranslate nohighlight">\( 整体概率为
 \)</span><span class="math notranslate nohighlight">\(
-\Pr(y\mid x,\Psi)=\sum\limits_{j=1}^Kg_j(x,\gamma_j)\sum\limits_{\ell=1}^Kg_{\ell\mid j}(x,\gamma_{j\ell})Pr(y\mid x,\theta_{j\ell})\tag{9.30}
+\mathrm{Pr}(y\mid x,\Psi)=\sum\limits_{j=1}^Kg_j(x,\gamma_j)\sum\limits_{\ell=1}^Kg_{\ell\mid j}(x,\gamma_{j\ell})Pr(y\mid x,\theta_{j\ell})\tag{9.30}
 \)</span>$
 这是个混合模型，其中混合概率由门控网络模型确定。</p>
-<p>为了估计这些参数，我们在 <span class="math notranslate nohighlight">\(\Psi\)</span> 的参数上最大化数据的对数似然，<span class="math notranslate nohighlight">\(\sum_i \log \Pr(y_i\mid x_i,\Psi)\)</span>。处理这个的最方便是 EM 算法，我们已经在<span class="xref myst">8.5节</span>中描述了。我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_j\)</span>， 除了一个元素为 1，所有的都是 0。我们把这个解释为由顶层门控网络作出的分支判断。类似地，我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 来描述第二层的门控判断。</p>
+<p>为了估计这些参数，我们在 <span class="math notranslate nohighlight">\(\Psi\)</span> 的参数上最大化数据的对数似然，<span class="math notranslate nohighlight">\(\sum_i \log \mathrm{Pr}(y_i\mid x_i,\Psi)\)</span>。处理这个的最方便是 EM 算法，我们已经在<span class="xref myst">8.5节</span>中描述了。我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_j\)</span>， 除了一个元素为 1，所有的都是 0。我们把这个解释为由顶层门控网络作出的分支判断。类似地，我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 来描述第二层的门控判断。</p>
 <p>在 E 步，EM 算法在给定当前参数值的情况下计算 <span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望。这些期望接着作为 M 步的观测权重，来估计专家网络的参数。中间结点的参数由多重逻辑斯蒂回归来估计。<span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望是概率，并且这些用作逻辑斯蒂回归的响应向量。</p>
 <p>专家的分层混合方式是 CART 树的一个有潜力的对手。采用<strong>软分割 (soft splits)</strong>，而不是硬分割，它可以捕捉到从低到高响应变量的转变是渐增的情形。对数似然是未知系数的光滑函数，因此更适合数值优化。和 CART 类似，都是线性组合的分割，但是后者更难优化。另一方面，基于我们的了解，寻找 HME 模型的一个好的树拓扑结构是没有方法的，正如 CART 中一样。一般地，可以采用一些深度固定的树，很可能得到 CART 过程的输出。HMEs 上的研究强调预测而不是最终模型的解释。与 HME 很相近的模型是<strong>潜类别模型(latent class model)</strong> (Lin et. al, 2000<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)，一般只有一层；且结点或者潜在类别解释成表现出相似响应变量行为的个体的群体。</p>
 <hr class="footnotes docutils" />
@@ -1221,31 +1209,22 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="9.4-MARS.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">9.4 MARS: 多变量自适应回归样条</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="9.4-MARS.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">9.4 MARS: 多变量自适应回归样条</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9.6-Missing-Data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">9.6 缺失数据</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="9.6-Missing-Data.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">9.6 缺失数据</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1266,8 +1245,7 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

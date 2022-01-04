@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.3 子集的选择 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="3.4 收缩的方法" href="3.4-Shrinkage-Methods.html" />
     <link rel="prev" title="3.2 线性回归模型和最小二乘法" href="3.2-Linear-Regression-Models-and-Least-Squares.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1175,7 +1163,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.3 子集的选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>两个原因使得我们经常不满足最小二乘估计 (3.6)</p>
 <ul class="simple">
@@ -1197,7 +1185,7 @@
 <h2>向前和向后逐步选择<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>与其搜索所有可能的子集（当 <span class="math notranslate nohighlight">\(p\)</span> 大于 40 不可行），我们可以寻找一个很好的通过它们的途径。<strong>向前逐步选择 (Forward-stepwise selection)</strong> 从截距开始，然后向模型中依次添加最大程度提升拟合效果的预测变量。有大量的备选预测变量时，会需要大量的计算；然而，聪明的更新算法可以利用 QR 分解从当前拟合快速得到下一步的备选预测变量（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/179">练习 3.9</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.9”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/179">Issue 179: Ex. 3.9</a>。简单说，假设当前残差为 <span class="math notranslate nohighlight">\(\r\)</span>，下一步选择的 <span class="math notranslate nohighlight">\(\x_i\)</span> 能够最大化 <span class="math notranslate nohighlight">\(\vert \r^T\x_i \vert/\Vert \x_i\Vert\)</span>.</p>
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/179">Issue 179: Ex. 3.9</a>。简单说，假设当前残差为 <span class="math notranslate nohighlight">\(\r\)</span>，下一步选择的 <span class="math notranslate nohighlight">\(x_i\)</span> 能够最大化 <span class="math notranslate nohighlight">\(\vert \r^Tx_i \vert/\Vert x_i\Vert\)</span>.</p>
 <p>类似最优子集回归，向前逐步产生由 <span class="math notranslate nohighlight">\(k\)</span> 索引的模型序列，<span class="math notranslate nohighlight">\(k\)</span> 为子集规模，也是必须要确定的值。</p>
 <p>向前逐步选择是 <strong>贪心算法 (greedy algorithm)</strong>，产生一个嵌套的模型序列。从这点来看与最优子集选择相比似乎是次优的。然而，有许多原因表明向前逐步可能是更好的：</p>
 <ul class="simple">
@@ -1214,7 +1202,7 @@
 </div></blockquote>
 <p>在前列腺癌例子中，最优子集、向前和向后选择都给出了完全相同的变量序列。</p>
 <p>一些软件包实现混合的逐步选择策略，在每一步同时考虑向前和向后的移动，然后选择两者中最好的一个。举个例子，<code class="docutils literal notranslate"><span class="pre">R</span></code> 包中 <code class="docutils literal notranslate"><span class="pre">step</span></code> 函数使用 AIC 准则来加权选择，能够合理考虑到拟合参数的个数；在每一步执行添加或删除来最小化 AIC 分数。</p>
-<p>其它传统的包中的选择基于 <span class="math notranslate nohighlight">\(F\)</span> 统计量，加入“显著性”的项，然后删掉“非显著性”的项。这些不再流行，因为它们没有合理考虑到多重检验的问题。模型搜索后打印出所选择的模型的小结是很吸引人的，如表 3.2 所示；然而，标准误差不是有效的，因为它们不考虑搜索的过程。自助法（<a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html"><span class="doc std std-doc">8.2 节</span></a>）在这些设定下是有用的。</p>
+<p>其它传统的包中的选择基于 <span class="math notranslate nohighlight">\(F\)</span> 统计量，加入“显著性”的项，然后删掉“非显著性”的项。这些不再流行，因为它们没有合理考虑到多重检验的问题。模型搜索后打印出所选择的模型的小结是很吸引人的，如表 3.2 所示；然而，标准误差不是有效的，因为它们不考虑搜索的过程。自助法（<span class="xref myst">8.2 节</span>）在这些设定下是有用的。</p>
 <p>最后，我们注意到变量经常成群出现（比如用来编码多层次类别型预测变量的虚拟变量）。智能逐步过程（比如 <code class="docutils literal notranslate"><span class="pre">R</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">step</span></code> 函数）会合理考虑到它们的自由度会一次添加或删除整个群体。</p>
 </div>
 <div class="section" id="forward-stagewise">
@@ -1262,31 +1250,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3.2-Linear-Regression-Models-and-Least-Squares.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3.2 线性回归模型和最小二乘法</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3.2-Linear-Regression-Models-and-Least-Squares.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.2 线性回归模型和最小二乘法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3.4-Shrinkage-Methods.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.4 收缩的方法</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3.4-Shrinkage-Methods.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.4 收缩的方法</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1307,8 +1286,7 @@
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

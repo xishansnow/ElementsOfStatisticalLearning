@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>6.1 一维核光滑器 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="6.2 选择核的宽度" href="6.2-Selecting-the-Width-of-the-Kernel.html" />
     <link rel="prev" title="第六章 核平滑方法" href="6.0-Overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,14 +1148,14 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.1 一维核光滑器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>第二章中，我们将 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均
 $<span class="math notranslate nohighlight">\(
-\hat f(x)=\mathrm{Ave}(y_i\mid x_i\in N_k(x))\tag{6.1}\label{6.1}
+\hat f(x)=\mathrm{Ave}(y_i\mid x_i\in N_k(x))\tag{6.1}
 \)</span><span class="math notranslate nohighlight">\(
-作为回归函数 \)</span>\E(Y\mid X=x)<span class="math notranslate nohighlight">\( 的估计。这里 \)</span>N_k(x)<span class="math notranslate nohighlight">\( 为在平方距离下，离 \)</span>x<span class="math notranslate nohighlight">\( 最近的 \)</span>k<span class="math notranslate nohighlight">\( 个点的集合，并且 \)</span>\mathrm{Ave}<span class="math notranslate nohighlight">\( 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— \)</span>x_0<span class="math notranslate nohighlight">\( 处的拟合值为离 \)</span>x_0<span class="math notranslate nohighlight">\( 最近的 30 个点的平均。在不同的 \)</span>x_0<span class="math notranslate nohighlight">\( 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 \)</span>\hat f(x)<span class="math notranslate nohighlight">\( 在 \)</span>x<span class="math notranslate nohighlight">\( 处不连续。当我们将 \)</span>x_0<span class="math notranslate nohighlight">\( 从左移到右，\)</span>k<span class="math notranslate nohighlight">\( 最近邻保持一致，直到 \)</span>x_0<span class="math notranslate nohighlight">\( 右侧的点 \)</span>x_i<span class="math notranslate nohighlight">\( 变得比 \)</span>x_0<span class="math notranslate nohighlight">\( 左侧的邻域的最远点 \)</span>x_i’<span class="math notranslate nohighlight">\( 更近，这时 \)</span>x_i<span class="math notranslate nohighlight">\( 换成 \)</span>x_i’<span class="math notranslate nohighlight">\(。\eqref{6.1} 的平均以离散的方式变换，得到离散的 \)</span>\hat f(x)$。</p>
+作为回归函数 \)</span>\mathbb{E}(Y\mid X=x)<span class="math notranslate nohighlight">\( 的估计。这里 \)</span>N_k(x)<span class="math notranslate nohighlight">\( 为在平方距离下，离 \)</span>x<span class="math notranslate nohighlight">\( 最近的 \)</span>k<span class="math notranslate nohighlight">\( 个点的集合，并且 \)</span>\mathrm{Ave}<span class="math notranslate nohighlight">\( 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— \)</span>x_0<span class="math notranslate nohighlight">\( 处的拟合值为离 \)</span>x_0<span class="math notranslate nohighlight">\( 最近的 30 个点的平均。在不同的 \)</span>x_0<span class="math notranslate nohighlight">\( 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 \)</span>\hat f(x)<span class="math notranslate nohighlight">\( 在 \)</span>x<span class="math notranslate nohighlight">\( 处不连续。当我们将 \)</span>x_0<span class="math notranslate nohighlight">\( 从左移到右，\)</span>k<span class="math notranslate nohighlight">\( 最近邻保持一致，直到 \)</span>x_0<span class="math notranslate nohighlight">\( 右侧的点 \)</span>x_i<span class="math notranslate nohighlight">\( 变得比 \)</span>x_0<span class="math notranslate nohighlight">\( 左侧的邻域的最远点 \)</span>x_i’<span class="math notranslate nohighlight">\( 更近，这时 \)</span>x_i<span class="math notranslate nohighlight">\( 换成 \)</span>x_i’<span class="math notranslate nohighlight">\(。\eqref{6.1} 的平均以离散的方式变换，得到离散的 \)</span>\hat f(x)$。</p>
 <p><img alt="" src="../_images/fig6.1.png" /></p>
 <blockquote>
 <div><p>图6.1. 每张图中从蓝色曲线加上高斯误差中随机产生100个数据对 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>：<span class="math notranslate nohighlight">\(Y=\sin(4X)+\varepsilon,X\sim U[0,1],\varepsilon\sim N(0,1/3)\)</span>。左图的绿色曲线是 30-最近邻滑动均值光滑器的结果。红色点是拟合的常数值 <span class="math notranslate nohighlight">\(\hat f(x_0)\)</span>，红色圆圈表明对 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合有贡献的观测。实心黄色区域为赋予给观测的权重。右图中，绿色曲线是核权重平均，采用（半）窗宽度 <span class="math notranslate nohighlight">\(\lambda=0.2\)</span> 的 Epanechnikov 核。</p>
@@ -1178,7 +1166,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 其中 Epanechnikov 平方核为
 \)</span><span class="math notranslate nohighlight">\(
-K_\lambda(x_0,x) = D\left(\frac{\vert x-x_0\vert}{\lambda}\right)\tag{6.3}\label{6.3}
+K_\lambda(x_0,x) = D\left(\frac{\vert x-x_0\vert}{\lambda}\right)\tag{6.3}
 \)</span><span class="math notranslate nohighlight">\(
 其中
 \)</span><span class="math notranslate nohighlight">\(
@@ -1246,15 +1234,15 @@ D(t)=
 <div class="math notranslate nohighlight">
 \[\begin{split}
   \begin{align*}
-  \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\label{6.8}\\
-  &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}\label{6.9}
+  \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\\
+  &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
   \end{align*}
 \end{split}\]</div>
 <p>!!! note “weiya 注”
 <strong>广义最小二乘估计 (GLSE)</strong>
 线性模型为
 $<span class="math notranslate nohighlight">\(
-    \mathbf{Y=X}\beta+e,\; \E(e)=0,\; \Cov(e)=\sigma^2\mathbf\Sigma
+    \mathbf{Y=X}\beta+e,\; \mathbb{E}(e)=0,\; \mathrm{Cov}(e)=\sigma^2\mathbf\Sigma
     \)</span><span class="math notranslate nohighlight">\(
     \)</span>\beta<span class="math notranslate nohighlight">\( 估计为
     \)</span><span class="math notranslate nohighlight">\(
@@ -1262,23 +1250,23 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     当
     \)</span><span class="math notranslate nohighlight">\(
-    \Cov(e)=\diag(\sigma_1^2,\cdots,\sigma^2_n)
+    \mathrm{Cov}(e)=\mathrm{diag}(\sigma_1^2,\cdots,\sigma^2_n)
     \)</span>$
 有<strong>加权最小二乘估计 (WLSE)</strong></p>
 <p>等式 \eqref{6.8} 给出了局部线性回归估计的显式表达，式 \eqref{6.9} 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
 <p>!!! info “weiya 注：automatic kernel carpentry”
 更多细节可以参考 <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.ss/1177011002">T. Hastie and C. Loader (1993). Local Regression: Automatic Kernel Carpentry</a></p>
-<p>考虑下面 <span class="math notranslate nohighlight">\(\E\hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，
+<p>考虑下面 <span class="math notranslate nohighlight">\(\mathbb{E} \hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\E\hat f(x_0)&amp;=\sum\limits_{i=1}^Nl_i(x_0)f(x_i)\\
+\mathbb{E} \hat f(x_0)&amp;=\sum\limits_{i=1}^Nl_i(x_0)f(x_i)\\
 &amp;=f(x_0)\sum\limits_{i=1}^Nl_i(x_0)+f'(x_0)\sum\limits_{i=1}^N(x_i-x_0)l_i(x_0)\\
-&amp;+\frac{f''(x_0)}{2}\sum\limits_{i=1}^N(x_i-x_0)^2l_i(x_0)+R\tag{6.10}\label{6.10}
+&amp;+\frac{f''(x_0)}{2}\sum\limits_{i=1}^N(x_i-x_0)^2l_i(x_0)+R\tag{6.10}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}
-其中余项 $R$ 涉及 $f$ 的三阶微分和更高阶的微分，并且在合适的光滑性假设下一般是很小的。可以证明（[练习 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)）对于局部线性回归，$\sum_{i=1}^Nl_i(x_0)=1$ 并且 $\sum_{i=1}^N(x_i-x_0)l_i(x_0)=0$。因此中间项为 $f(x_0)$，并且因为偏差为 $\E\hat f(x_0)-f(x_0)$，我们看到它仅仅取决于 $f$ 的平方项或更高阶的项。\\!!! info &quot;weiya 注：&quot;
+其中余项 $R$ 涉及 $f$ 的三阶微分和更高阶的微分，并且在合适的光滑性假设下一般是很小的。可以证明（[练习 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)）对于局部线性回归，$\sum_{i=1}^Nl_i(x_0)=1$ 并且 $\sum_{i=1}^N(x_i-x_0)l_i(x_0)=0$。因此中间项为 $f(x_0)$，并且因为偏差为 $\mathbb{E} \hat f(x_0)-f(x_0)$，我们看到它仅仅取决于 $f$ 的平方项或更高阶的项。\\!!! info &quot;weiya 注：&quot;
     已解决，详见 [Issue 148: Ex. 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)。\\![](../img/06/fig6.4.png)\\&gt; 图 6.4. 绿色点显示了局部回归的等价核。这是 $\hat f(x_0)=\sum_{i=1}^Nl_i(x_0)y_i$ 中的系数，是关于对应 $x_i$ 的图像。为了展示的目的，这些已经进行了缩放，因为实际上它们相加等于 1。因为黄色阴影区域是 Nadaraya–Watson 局部平均的（缩放的）等价核，所以我们看到局部回归是怎样自动修改权重核来纠正由于光滑窗口的不对称窗口的偏差。\\## 局部多项式回归\\为什么止步于局部线性拟合处？其实我们可以拟合任意阶 $d$ 的局部多项式拟合，
 \end{aligned}\end{align} \]</div>
 <p>\underset{\alpha(x_0),\beta_j(x_0),j=1,\ldots,d}{\min}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\Big[y_i-\alpha(x_0)-\sum\limits_{j=1}^d\beta_j(x_0)x_i^j\Big]^2\tag{6.11}
@@ -1288,7 +1276,7 @@ $<span class="math notranslate nohighlight">\(
 <blockquote>
 <div><p>图 6.5. 局部线性拟合在真实函数曲线区域中的偏差。局部二次拟合趋向于消除这个偏差。</p>
 </div></blockquote>
-<p>当然为了减小这个偏差需要付出代价，也就是增加方差。图 6.5 的右图更摇摆，特别在尾巴处。假设模型 <span class="math notranslate nohighlight">\(y_i=f(x_i)+\varepsilon_i\)</span>，并且 <span class="math notranslate nohighlight">\(\varepsilon_i\)</span> 独立，并且是均值为 <span class="math notranslate nohighlight">\(0\)</span> 方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的同分布，<span class="math notranslate nohighlight">\(\Var(\hat f(x_0))=\sigma^2\Vert l(x_0)\Vert^2\)</span>，其中 <span class="math notranslate nohighlight">\(l(x_0)\)</span> 是在 <span class="math notranslate nohighlight">\(x_0\)</span> 处等价核权重的向量。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/149">练习 6.3</a>）<span class="math notranslate nohighlight">\(\Vert l(x_0)\Vert\)</span> 随着 <span class="math notranslate nohighlight">\(d\)</span> 增加而增加，所以在选择多项式次数时存在偏差和方差之间的权衡。</p>
+<p>当然为了减小这个偏差需要付出代价，也就是增加方差。图 6.5 的右图更摇摆，特别在尾巴处。假设模型 <span class="math notranslate nohighlight">\(y_i=f(x_i)+\varepsilon_i\)</span>，并且 <span class="math notranslate nohighlight">\(\varepsilon_i\)</span> 独立，并且是均值为 <span class="math notranslate nohighlight">\(0\)</span> 方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的同分布，<span class="math notranslate nohighlight">\(\mathrm{Var}(\hat f(x_0))=\sigma^2\Vert l(x_0)\Vert^2\)</span>，其中 <span class="math notranslate nohighlight">\(l(x_0)\)</span> 是在 <span class="math notranslate nohighlight">\(x_0\)</span> 处等价核权重的向量。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/149">练习 6.3</a>）<span class="math notranslate nohighlight">\(\Vert l(x_0)\Vert\)</span> 随着 <span class="math notranslate nohighlight">\(d\)</span> 增加而增加，所以在选择多项式次数时存在偏差和方差之间的权衡。</p>
 <p>!!! info “weiya 注：Ex. 6.3”
 证明了 <span class="math notranslate nohighlight">\(W=I\)</span> 的情形，但是对于一般的权重系数矩阵，卡住了。欢迎交流讨论，<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/149">Issue 149: Ex. 6.3</a>.</p>
 <p>图 6.6 说明了次数为 0,1 和 2 的局部多项式的方差曲线。总结一下这个问题上一些正确的做法：</p>
@@ -1328,31 +1316,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="6.0-Overview.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">第六章 核平滑方法</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="6.0-Overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">第六章 核平滑方法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="6.2-Selecting-the-Width-of-the-Kernel.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">6.2 选择核的宽度</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="6.2-Selecting-the-Width-of-the-Kernel.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">6.2 选择核的宽度</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1373,8 +1352,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

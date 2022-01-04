@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.12 正则化 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.13 解释性" href="10.13-Interpretation.html" />
     <link rel="prev" title="10.11 大小合适的boosting树" href="10.11-Right-Sized-Trees-for-Boosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,7 +1153,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>10.12 正则化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>除了候选树的大小 <span class="math notranslate nohighlight">\(J\)</span>，梯度 boosting 的另一个元参数 (meta-parameter) 是 boosting 的迭代次数 <span class="math notranslate nohighlight">\(M\)</span>。每一次迭代通常会降低训练风险 <span class="math notranslate nohighlight">\(L(f_M)\)</span>，所以对于充分大的 <span class="math notranslate nohighlight">\(M\)</span>，误差可以达到任意小。然而，对训练数据拟合得太好会导致过拟合，它会降低预测未来数据的效果。因此，存在一个最小
 化未来预测风险的最优大小 <span class="math notranslate nohighlight">\(M^*\)</span>，它依赖于具体应用。估计 <span class="math notranslate nohighlight">\(M^*\)</span>的一种方便方式是在验证样本上将预测风险看成是关于 <span class="math notranslate nohighlight">\(M\)</span> 的函数。最小化风险的 <span class="math notranslate nohighlight">\(M\)</span> 值则作为 <span class="math notranslate nohighlight">\(M^*\)</span> 的一个估计。这类似于经常用在神经网络中的 <strong>早停 (early stopping)</strong> 策略（<span class="xref myst">11.4 节</span>）。</p>
@@ -1180,7 +1168,7 @@ f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.4
 <p>经验上，(Friedman, 2001<a class="footnote-reference brackets" href="#id6" id="id3">1</a>) 已经发现较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 会得到更好的测试误差，并且需要更大的 <span class="math notranslate nohighlight">\(M\)</span> 与之对应。事实上，最好的策略是将 <span class="math notranslate nohighlight">\(\nu\)</span> 设得很小(<span class="math notranslate nohighlight">\(\nu &lt; 0.1\)</span>)，然后通过 <strong>早停 (early stopping)</strong> 来选择 <span class="math notranslate nohighlight">\(M\)</span>。这会给回归和概率估计带来重大的改善（与没有收缩时相比，<span class="math notranslate nohighlight">\(\nu = 1\)</span>）。通过 \eqref{10.20} 式改善对应的误分类风险虽然很小，但是仍然显著。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}\label{10.20}
+    G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}
     \)</span>$</p>
 <p>这个改善需要以计算量为代价：较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 得到较大的 <span class="math notranslate nohighlight">\(M\)</span>，并且计算量与后者成比例。然而，将在下面看到，许多迭代的计算即使是在非常大的数据集上也是可行的。部分原因是每一步生成的树是没有剪枝的。</p>
 <p><img alt="" src="../_images/fig10.11.png" /></p>
@@ -1194,14 +1182,14 @@ $<span class="math notranslate nohighlight">\(
     -1 &amp; \text{otherwise}
     \end{array}
     \right.
-    \tag{10.2}\label{10.2}
+    \tag{10.2}
     \)</span>$</p>
 <p>Gradient boosted 模型(MART)通过采用二项偏差来训练，分 stump 和 6 个终止结点树的情况讨论，以及分有无收缩进行讨论。收缩的好处是很显然的，特别是当跟踪二项偏差时。有了收缩，每个测试误差曲线达到较低的值，并且在许多迭代中保持不变。</p>
 <p><span class="xref myst">16.2.1 节</span>将 boosting 的向前逐步收缩和为了正则化模型参数使用的 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚(lasso)联系起来。我们认为 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚可能会比用在一些方法（比如支持向量机）中的 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚要更好。</p>
 </div>
 <div class="section" id="id4">
 <h2>子采样<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>我们在 <span class="xref myst">8.7 节</span>看到bootstrap averaging (bagging) 通过 averaging 提高了噪声分类器的表现效果。<span class="xref myst">第 15 章</span>详细讨论了通过平均实现的降低方差的机制。我们也可以在gradient boosting 中采用这一方法，同时提高了效果和计算效率。</p>
+<p>我们在 <span class="xref myst">8.7 节</span>看到bootstrap averaging (<code class="docutils literal notranslate"><span class="pre">bagging</span></code>) 通过 averaging 提高了噪声分类器的表现效果。<span class="xref myst">第 15 章</span>详细讨论了通过平均实现的降低方差的机制。我们也可以在gradient boosting 中采用这一方法，同时提高了效果和计算效率。</p>
 <p>采用 stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id7" id="id5">2</a>)，在每一步我们采样 <span class="math notranslate nohighlight">\(\eta\)</span> 倍的训练观测值（无放回），并且采用这种子采样来生成下一棵树。剩下的算法同样。一般可以取 <span class="math notranslate nohighlight">\(\eta\)</span> 为 <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>，尽管对于大的 <span class="math notranslate nohighlight">\(N\)</span>，<span class="math notranslate nohighlight">\(\eta\)</span> 可以比 <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> 小很多。</p>
 <p>这种采样不仅仅降低了 <span class="math notranslate nohighlight">\(\eta\)</span> 倍的计算时间，在很多情况下也实际上得到了更精确的模型。</p>
 <p><img alt="" src="../_images/fig10.12.png" /></p>
@@ -1246,31 +1234,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.11-Right-Sized-Trees-for-Boosting.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">10.11 大小合适的boosting树</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.11-Right-Sized-Trees-for-Boosting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">10.11 大小合适的boosting树</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.13-Interpretation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.13 解释性</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.13-Interpretation.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.13 解释性</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1291,8 +1270,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

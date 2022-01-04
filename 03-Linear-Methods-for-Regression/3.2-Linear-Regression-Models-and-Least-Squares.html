@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.2 线性回归模型和最小二乘法 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="3.3 子集的选择" href="3.3-Subset-Selection.html" />
     <link rel="prev" title="3.1 导言" href="3.1-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,14 +1158,14 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.2 线性回归模型和最小二乘法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>正如第二章介绍的那样，我们有输入向量 <span class="math notranslate nohighlight">\(X^T=(X\_1,X\_2,\ldots,X\_p)\)</span>，而且想要预测实值输出变量 <span class="math notranslate nohighlight">\(Y\)</span>。线性回归模型有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
-f(X)=\beta_0+\sum\limits_{j=1}^pX_j\beta_j \tag{3.1}\label{3.1}
+f(X)=\beta_0+\sum\limits_{j=1}^pX_j\beta_j \tag{3.1}
 \]</div>
-<p>线性模型要么假设回归函数 <span class="math notranslate nohighlight">\(\E(Y\mid X)\)</span> 是线性的，要么假设它本身是一个合理的近似。这里 <span class="math notranslate nohighlight">\(\beta_j\)</span> 是未知的参数或系数，变量 <span class="math notranslate nohighlight">\(X_j\)</span> 可以有下列不同的来源：</p>
+<p>线性模型要么假设回归函数 <span class="math notranslate nohighlight">\(\mathbb{E}(Y\mid X)\)</span> 是线性的，要么假设它本身是一个合理的近似。这里 <span class="math notranslate nohighlight">\(\beta_j\)</span> 是未知的参数或系数，变量 <span class="math notranslate nohighlight">\(X_j\)</span> 可以有下列不同的来源：</p>
 <ul class="simple">
 <li><p>定量的输入变量</p></li>
 <li><p>定量输入变量的变换，比如对数变换，平方根变换或者平方变换</p></li>
@@ -1190,46 +1178,46 @@ f(X)=\beta_0+\sum\limits_{j=1}^pX_j\beta_j \tag{3.1}\label{3.1}
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\RSS(\beta)&amp;=\sum\limits_{i=1}^N(y_i-f(x_i))^2\\
-&amp;=\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\tag{3.2}\label{3.2}
+\mathrm{RSS}(\beta)&amp;=\sum\limits_{i=1}^N(y_i-f(x_i))^2\\
+&amp;=\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2\tag{3.2}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}从统计学的观点来看，如果训练观测值 $(x_i,y_i)$ 是从总体独立随机抽取的，则该标准是很合理的。即使 $x_i$'s 不是随机选取的，如果在给定输入 $x_i$ 的条件下 $y_i$ 条件独立，这个准则也是有效的。图 3.1 展示了在充满数据对 $(X,Y)$ 的 $\IR^{p+1}$ 维空间的最小二乘拟合的几何意义。注意到 \eqref{3.2} 对模型 (3.1) 的有效性没有作假设，而是简单地找到对数据最好的线性拟合。无论数据是怎样产生的，最小二乘拟合直观上看是满意的，这个准则衡量了平均的拟合误差。\\![](../img/03/fig3.1.png)\\&gt; 图 3.1 $X\in R^2$ 中的最小二乘拟合。我们寻找关于 $X$ 并且使 $Y$ 的残差最小的线性函数。\\那我们应该怎样最小化 \eqref{3.2}？记 $\mathbf{X}$ 为 $N\times (p+1)$ 的矩阵，矩阵每一行为一个输入向量（在第一个位置为 1），类似地令 $\mathbf{y}$ 为训练集里的 $N$ 维输出向量。然后我们可以将残差平方和写成如下形式
+\[ \begin{align}\begin{aligned}从统计学的观点来看，如果训练观测值 $(x_i,y_i)$ 是从总体独立随机抽取的，则该标准是很合理的。即使 $x_i$'s 不是随机选取的，如果在给定输入 $x_i$ 的条件下 $y_i$ 条件独立，这个准则也是有效的。图 3.1 展示了在充满数据对 $(X,Y)$ 的 $\mathbb{R}^{p+1}$ 维空间的最小二乘拟合的几何意义。注意到 \eqref{3.2} 对模型 (3.1) 的有效性没有作假设，而是简单地找到对数据最好的线性拟合。无论数据是怎样产生的，最小二乘拟合直观上看是满意的，这个准则衡量了平均的拟合误差。\\![](../img/03/fig3.1.png)\\&gt; 图 3.1 $X\in R^2$ 中的最小二乘拟合。我们寻找关于 $X$ 并且使 $Y$ 的残差最小的线性函数。\\那我们应该怎样最小化 \eqref{3.2}？记 $\mathbf{X}$ 为 $N\times (p+1)$ 的矩阵，矩阵每一行为一个输入向量（在第一个位置为 1），类似地令 $\mathbf{y}$ 为训练集里的 $N$ 维输出向量。然后我们可以将残差平方和写成如下形式
 \end{aligned}\end{align} \]</div>
-<p>\RSS(\beta)=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)\tag{3.3}
+<p>\mathrm{RSS}(\beta)=(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)\tag{3.3}
 $$</p>
 <p>这是含 <span class="math notranslate nohighlight">\(p+1\)</span> 个参数的二次函数。关于 <span class="math notranslate nohighlight">\(\beta\)</span> 求导有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
-\dfrac{\partial \RSS}{\partial \beta}&amp;=-2\mathbf{X}^T(\mathbf{y}-\mathbf{X}\beta)\\
-\dfrac{\partial^2 \RSS}{\partial \beta\partial \beta^T}&amp;=2\mathbf{X}^T\mathbf{X}
+\dfrac{\partial \mathrm{RSS}}{\partial \beta}&amp;=-2\mathbf{X}^T(\mathbf{y}-\mathbf{X}\beta)\\
+\dfrac{\partial^2 \mathrm{RSS}}{\partial \beta\partial \beta^T}&amp;=2\mathbf{X}^T\mathbf{X}
 \end{array}
 \tag{3.4}
 \end{split}\]</div>
 <p>假设 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 列满秩，因此 <span class="math notranslate nohighlight">\(\mathbf{X}^T\mathbf{X}\)</span> 是正定的，我们令一阶微分为 0，即
 $<span class="math notranslate nohighlight">\(
-\mathbf{X}^T(\mathbf{y}-\mathbf{X}\beta)=0\tag{3.5}\label{3.5}
+\mathbf{X}^T(\mathbf{y}-\mathbf{X}\beta)=0\tag{3.5}
 \)</span>$</p>
 <p>得到唯一解
 $<span class="math notranslate nohighlight">\(
-\hat{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.6}\label{3.6}
+\hat{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.6}
 \)</span>$</p>
 <p>在输入向量 <span class="math notranslate nohighlight">\(x_0\)</span> 下的预测值由 <span class="math notranslate nohighlight">\(\hat{f}(x_0)=(1:x_0)^T\hat{\beta}\)</span> 给出；在训练输入值下的拟合值为
 $<span class="math notranslate nohighlight">\(
-\hat{y}=\mathbf{X}\hat{\beta}=\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.7}\label{3.7}
+\hat{y}=\mathbf{X}\hat{\beta}=\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.7}
 \)</span>$</p>
 <p>其中，<span class="math notranslate nohighlight">\(\hat y_i=\hat f(x_i)\)</span>。在式 \eqref{3.7} 中出现的矩阵 <span class="math notranslate nohighlight">\(\mathbf{H=X(X^TX)^{-1}X^T}\)</span> 有时称之为“帽子”矩阵，因为其为 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 戴了一顶帽子。</p>
 <p><img alt="" src="../_images/fig3.2.png" /></p>
 <blockquote>
 <div><p>图 3.2 含两个预测的最小二乘回归的 <span class="math notranslate nohighlight">\(N\)</span> 维几何图形。输出向量 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 正交投影在输入向量 <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> 和<span class="math notranslate nohighlight">\(\mathbf{x}_2\)</span> 张成的超平面中。投影向量 <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span> 表示最小二乘法的预测值。</p>
 </div></blockquote>
-<p>图 3.2 展示了在 <span class="math notranslate nohighlight">\(\IR^N\)</span> 中最小二乘估计的另一种几何表示。我们记 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列向量为 <span class="math notranslate nohighlight">\(\x_0,\x_1,\ldots,\x_p\)</span>，其中 <span class="math notranslate nohighlight">\(\x_0 \equiv \1\)</span>。下文中第一列都是这样假设。这些向量张成了 <span class="math notranslate nohighlight">\(\IR^N\)</span> 的子空间，也被称作 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列空间。我们通过选择 <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 来最小化 <span class="math notranslate nohighlight">\(\RSS(\beta)=\lVert(\mathbf{y}-\mathbf{X}\beta)\rVert^2\)</span>，则残差向量 <span class="math notranslate nohighlight">\(\mathbf{y-\hat{y}}\)</span> 正交于子空间。\eqref{3.5} 式描述了这种正交，然后估计值 <span class="math notranslate nohighlight">\(\hat{\y}\)</span> 因此可以看成是 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 在子空间中的正交投影。帽子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 计算了正交投影，因此也被称作投影矩阵。</p>
+<p>图 3.2 展示了在 <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> 中最小二乘估计的另一种几何表示。我们记 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列向量为 <span class="math notranslate nohighlight">\(x_0,x_1,\ldots,x_p\)</span>，其中 <span class="math notranslate nohighlight">\(x_0 \equiv 1\)</span>。下文中第一列都是这样假设。这些向量张成了 <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> 的子空间，也被称作 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列空间。我们通过选择 <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 来最小化 <span class="math notranslate nohighlight">\(\mathrm{RSS}(\beta)=\lVert(\mathbf{y}-\mathbf{X}\beta)\rVert^2\)</span>，则残差向量 <span class="math notranslate nohighlight">\(\mathbf{y-\hat{y}}\)</span> 正交于子空间。\eqref{3.5} 式描述了这种正交，然后估计值 <span class="math notranslate nohighlight">\(\hat{y}\)</span> 因此可以看成是 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 在子空间中的正交投影。帽子矩阵 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 计算了正交投影，因此也被称作投影矩阵。</p>
 <p>可能会出现 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列不是线性独立的，则 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 不是满秩的。举个例子，如果两个输入是完全相关的，（比如，<span class="math notranslate nohighlight">\(x_2=3x_1\)</span>）。则矩阵 <span class="math notranslate nohighlight">\(\mathbf{X^TX}\)</span> 是奇异的，并且最小二乘的系数 <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 不是唯一的。然而，拟合值 <span class="math notranslate nohighlight">\(\mathbf{\hat{y}}=\mathbf{X}\hat{\beta}\)</span> 仍然是 <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> 在列空间 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的投影；用 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列向量来表示这种投射的方式不止一种。当一个或多个定性输入用一种冗余的方式编码时经常出现非满秩的情形。通过重编码或去除 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 中冗余的列等方式可以解决非唯一表示的问题。大多数回归软件包会监测这些冗余并且自动采用一些策略去除冗余项。信号和图像分析中经常发生秩缺失，其中输入的个数 <span class="math notranslate nohighlight">\(p\)</span> 可以大于训练的情形个数 <span class="math notranslate nohighlight">\(N\)</span>。在这种情形下，特征经常通过滤波来降维或者对拟合进行正则化。（<a class="reference external" href="https://esl.hohoweiya.xyz/05-Basis-Expansions-and-Regularization/5.2-Piecewise-Polynomials-and-Splines/index.html#_4">5.2.3节</a>和第 18 章）</p>
-<p>截至目前我们已经对数据的真实分布做的假设非常少。为了约束 <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 的取样特点，我们现在假设观测值 <span class="math notranslate nohighlight">\(y\_i\)</span> 不相关，且有固定的方差 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，并且 <span class="math notranslate nohighlight">\(x\_i\)</span> 是固定的（非随机）。最小二乘法的参数估计的 <strong>协方差矩阵 (variance-covariance matrix)</strong> 可以很容易从式 \eqref{3.6} 导出：</p>
+<p>截至目前我们已经对数据的真实分布做的假设非常少。为了约束 <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 的采样特点，我们现在假设观测值 <span class="math notranslate nohighlight">\(y\_i\)</span> 不相关，且有固定的方差 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，并且 <span class="math notranslate nohighlight">\(x\_i\)</span> 是固定的（非随机）。最小二乘法的参数估计的 <strong>协方差矩阵 (variance-covariance matrix)</strong> 可以很容易从式 \eqref{3.6} 导出：</p>
 <div class="math notranslate nohighlight">
 \[
-\Var(\hat{\beta})=(\mathbf{X}^T\mathbf{X})^{-1}\sigma^2\tag{3.8}\label{3.8}
+\mathrm{Var}(\hat{\beta})=(\mathbf{X}^T\mathbf{X})^{-1}\sigma^2\tag{3.8}
 \]</div>
 <p>!!! note “weiya 注：”
 根据<a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_matrix">维基百科</a>，协方差矩阵的英文表达有，covariance matrix, variance-covariance matrix, dispersion matrix 等等. 经 <a class="reference external" href="http://disq.us/p/27ffai6">&#64;fengxiang guo</a> 提醒，为避免误解，统一翻译成协方差矩阵.</p>
@@ -1243,13 +1231,13 @@ $<span class="math notranslate nohighlight">\(
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-Y&amp;=\E(Y\mid X_1,\ldots,X_p)+\varepsilon\\
-&amp;=\beta_0+\sum\limits_{j=1}^pX_j\beta_j+\varepsilon\tag{3.9}\label{3.9}
+Y&amp;=\mathbb{E}(Y\mid X_1,\ldots,X_p)+\varepsilon\\
+&amp;=\beta_0+\sum\limits_{j=1}^pX_j\beta_j+\varepsilon\tag{3.9}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}其中误差 $\epsilon$ 是期望值为 0 方差为 $\sigma^2$ 的高斯随机变量，记作 $\varepsilon\sim N(0,\sigma^2)$\\由式 \eqref{3.9}，可以很简单地证明
 \end{aligned}\end{align} \]</div>
-<p>\hat{\beta}\sim N(\beta,(\mathbf{X}^T\mathbf{X})^{-1}\sigma^2) \tag{3.10}\label{3.10}
+<p>\hat{\beta}\sim N(\beta,(\mathbf{X}^T\mathbf{X})^{-1}\sigma^2) \tag{3.10}
 $$</p>
 <p>这是一个有上述均值向量和协方差矩阵的多元正态分布。同时有
 $<span class="math notranslate nohighlight">\(
@@ -1258,19 +1246,19 @@ $<span class="math notranslate nohighlight">\(
 <p>是一个自由度为 <span class="math notranslate nohighlight">\(N-p-1\)</span> 的卡方分布。另外，<span class="math notranslate nohighlight">\(\hat{\beta}\)</span> 和 <span class="math notranslate nohighlight">\(\hat\sigma^2\)</span> 是统计独立的。我们利用这些分布性质得到假设检验以及对于参数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的置信区间</p>
 <p><img alt="" src="../_images/fig3.3.png" /></p>
 <blockquote>
-<div><p>图 3.3 <span class="math notranslate nohighlight">\(t_{30}\)</span>,<span class="math notranslate nohighlight">\(t_{100}\)</span>以及标准正态三种分布的尾概率 <span class="math notranslate nohighlight">\(\Pr(|Z|&gt;z)\)</span>。图中显示了在 <span class="math notranslate nohighlight">\(p=0.05\)</span> 和 <span class="math notranslate nohighlight">\(0.01\)</span> 水平下检验显著性的合适分位数。当 <span class="math notranslate nohighlight">\(N\)</span> 大于 100 时 <span class="math notranslate nohighlight">\(t\)</span> 分布与标准正态分布之间的差异很小。</p>
+<div><p>图 3.3 <span class="math notranslate nohighlight">\(t_{30}\)</span>,<span class="math notranslate nohighlight">\(t_{100}\)</span>以及标准正态三种分布的尾概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(|Z|&gt;z)\)</span>。图中显示了在 <span class="math notranslate nohighlight">\(p=0.05\)</span> 和 <span class="math notranslate nohighlight">\(0.01\)</span> 水平下检验显著性的合适分位数。当 <span class="math notranslate nohighlight">\(N\)</span> 大于 100 时 <span class="math notranslate nohighlight">\(t\)</span> 分布与标准正态分布之间的差异很小。</p>
 </div></blockquote>
 <p>为了检验系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的这一假设，我们构造标准化因数或者 Z-分数。
 $<span class="math notranslate nohighlight">\(
-z_j=\dfrac{\hat{\beta}_j}{\hat{\sigma}\sqrt{v_j}}\tag{3.12}\label{3.12}
+z_j=\dfrac{\hat{\beta}_j}{\hat{\sigma}\sqrt{v_j}}\tag{3.12}
 \)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(v_j\)</span> 是 <span class="math notranslate nohighlight">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span> 的第 <span class="math notranslate nohighlight">\(j\)</span> 个对角元。零假设为 <span class="math notranslate nohighlight">\(\beta_j=0\)</span>，<span class="math notranslate nohighlight">\(z_j\)</span> 分布为 <span class="math notranslate nohighlight">\(t_{N-p-1}\)</span>（自由度为 <span class="math notranslate nohighlight">\(N-p-1\)</span> 的 <span class="math notranslate nohighlight">\(t\)</span> 分布），因此当 <span class="math notranslate nohighlight">\(z_j\)</span> 的绝对值较大时会拒绝零假设。如果用已知的 <span class="math notranslate nohighlight">\(\sigma\)</span> 值替换 <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span>，则 <span class="math notranslate nohighlight">\(z_j\)</span> 服从标准正态分布。<span class="math notranslate nohighlight">\(t\)</span> 分布和标准正态分布在尾概率之间的差异随着样本规模增大可以忽略，因此我们一般使用正态的分位数（图 3.3）。</p>
 <p>我们经常需要同时检验多个系数 (groups of coefficients) 的显著性。举个例子，检验有 <span class="math notranslate nohighlight">\(k\)</span> 个水平的分类变量是否要从模型中排除，我们需要检验用来表示水平的虚拟变量的系数是否可以全部设为 0。这里我们利用 <span class="math notranslate nohighlight">\(F\)</span> 统计量</p>
 <div class="math notranslate nohighlight">
 \[
-F=\dfrac{(\RSS_0-\RSS_1)/(p_1-p_0)}{\RSS_1/(N-p_1-1)}\tag{3.13}\label{3.13}
+F=\dfrac{(\mathrm{RSS}_0-\mathrm{RSS}_1)/(p_1-p_0)}{\mathrm{RSS}_1/(N-p_1-1)}\tag{3.13}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\RSS_1\)</span> 是有 <span class="math notranslate nohighlight">\(p_1+1\)</span> 个参数的大模型的最小二乘法拟合的残差平方和，<span class="math notranslate nohighlight">\(\RSS_0\)</span> 是有 <span class="math notranslate nohighlight">\(p_0+1\)</span> 参数的小模型的最小二乘法拟合的残差平方和，其有 <span class="math notranslate nohighlight">\(p_1-p_0\)</span> 个参数约束为 0。<span class="math notranslate nohighlight">\(F\)</span> 统计量衡量了在大模型中每个增加的系数对残差平方和的改变，而且用 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的估计值进行标准化。在高斯分布以及小模型的零假设为正确的情况下，<span class="math notranslate nohighlight">\(F\)</span> 统计量服从 <span class="math notranslate nohighlight">\(F_{p_1-p_0,N-p_1-1}\)</span> 分布。可以证明 \eqref{3.12} 式中的 <span class="math notranslate nohighlight">\(z_j\)</span> 等于从模型中去除单系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的 <span class="math notranslate nohighlight">\(F\)</span> 统计量（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/69">习题 3.1</a>），当 <span class="math notranslate nohighlight">\(N\)</span> 足够大时，<span class="math notranslate nohighlight">\(F_{p_1-p_0,N-p_1-1}\)</span> 近似 <span class="math notranslate nohighlight">\(\chi^2_{p_1-p_0}\)</span>。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathrm{RSS}_1\)</span> 是有 <span class="math notranslate nohighlight">\(p_1+1\)</span> 个参数的大模型的最小二乘法拟合的残差平方和，<span class="math notranslate nohighlight">\(\mathrm{RSS}_0\)</span> 是有 <span class="math notranslate nohighlight">\(p_0+1\)</span> 参数的小模型的最小二乘法拟合的残差平方和，其有 <span class="math notranslate nohighlight">\(p_1-p_0\)</span> 个参数约束为 0。<span class="math notranslate nohighlight">\(F\)</span> 统计量衡量了在大模型中每个增加的系数对残差平方和的改变，而且用 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的估计值进行标准化。在高斯分布以及小模型的零假设为正确的情况下，<span class="math notranslate nohighlight">\(F\)</span> 统计量服从 <span class="math notranslate nohighlight">\(F_{p_1-p_0,N-p_1-1}\)</span> 分布。可以证明 \eqref{3.12} 式中的 <span class="math notranslate nohighlight">\(z_j\)</span> 等于从模型中去除单系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 的 <span class="math notranslate nohighlight">\(F\)</span> 统计量（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/69">习题 3.1</a>），当 <span class="math notranslate nohighlight">\(N\)</span> 足够大时，<span class="math notranslate nohighlight">\(F_{p_1-p_0,N-p_1-1}\)</span> 近似 <span class="math notranslate nohighlight">\(\chi^2_{p_1-p_0}\)</span>。</p>
 <p>!!! info “weiya 注：Ex. 3.1”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/69">Issue 69: Ex. 3.1</a>。</p>
 <p>!!! note “weiya 注”
@@ -1320,7 +1308,7 @@ $$</p>
 \[
 F=\dfrac{(32.81-29.43)/(9-5)}{29.43/(67-9)}=1.67\tag{3.16}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(p\)</span> 值为 0.17（<span class="math notranslate nohighlight">\(\Pr(F_{4,58}&gt;1.67)=0.17\)</span>），因此不是显著的。</p>
+<p>其中，<span class="math notranslate nohighlight">\(p\)</span> 值为 0.17（<span class="math notranslate nohighlight">\(\mathrm{Pr}(F_{4,58}&gt;1.67)=0.17\)</span>），因此不是显著的。</p>
 <p>测试数据的平均预测误差为 0.521。相反地，使用 <code class="docutils literal notranslate"><span class="pre">lpsa</span></code> 训练数据的平均值预测的测试误差为 1.057，称作“基本误差阶”。因此线性模型将基本误差阶降低了大概 <span class="math notranslate nohighlight">\(50\%\)</span>。下文中我们将要回到这个例子来比较不同的选择和收缩方法。</p>
 </div>
 <div class="section" id="guass-markov">
@@ -1334,12 +1322,12 @@ F=\dfrac{(32.81-29.43)/(9-5)}{29.43/(67-9)}=1.67\tag{3.16}
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\E(a^T\hat{\beta})&amp;=E(a^T\mathbf{(X^TX)^{-1}X^Ty})\\
+\mathbb{E}(a^T\hat{\beta})&amp;=E(a^T\mathbf{(X^TX)^{-1}X^Ty})\\
 &amp;=a^T\mathbf{(X^TX)^{-1}X^TX}\beta\\
 &amp;=a^T\beta\tag{3.18}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
-\[Gauss-Markov 定理说如果 $a^T\beta$ 存在其它无偏估计 $\tilde{\theta}=\mathbf{c}^T\mathbf{y}$，即 $\E(\mathbf{c}^T\mathbf{y})=a^T\beta$，则\]</div>
+\[Gauss-Markov 定理说如果 $a^T\beta$ 存在其它无偏估计 $\tilde{\theta}=\mathbf{c}^T\mathbf{y}$，即 $\mathbb{E}(\mathbf{c}^T\mathbf{y})=a^T\beta$，则\]</div>
 <p>Var(a^T\hat{\beta})\le Var(\mathbf{c}^T\mathbf{y})\tag{3.19}
 $$</p>
 <p>该证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/70">习题3.3a</a>）运用三角不等式。为了简化我们已经用单个参数 <span class="math notranslate nohighlight">\(a^T\beta\)</span> 估计来叙述结果，但若额外增加<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/71">习题3.3b</a>中的定义，则可以用整个参数向量 <span class="math notranslate nohighlight">\(\beta\)</span> 来说明Gauss-Markov 定理。</p>
@@ -1349,8 +1337,8 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\MSE(\tilde{\theta})&amp;=\E(\tilde{\theta}-\theta)^2\\
-&amp;=\Var(\tilde{\theta})+[\E(\tilde{\theta})-\theta]^2\tag{3.20}
+\mathrm{MSE}(\tilde{\theta})&amp;=\mathbb{E}(\tilde{\theta}-\theta)^2\\
+&amp;=\mathrm{Var}(\tilde{\theta})+[\mathbb{E}(\tilde{\theta})-\theta]^2\tag{3.20}
 \end{align*}
 \end{split}\]</div>
 <p>第一项为方差，第二项为平方偏差。Gauss-Markov 定理表明最小二乘估计在所有无偏线性估计中有最小的均方误差。然而，或许存在有较小均方误差的有偏估计。这样的估计用小的偏差来换取方差大幅度的降低。实际中也会经常使用有偏估计。任何收缩或者将最小二乘的一些参数设为 0 的方法都可能导致有偏估计。我们将在这章的后半部分讨论许多例子，包括 <strong>变量子集选择</strong> 和 <strong>岭回归</strong>。从一个更加实际的观点来看，许多模型是对事实的曲解，因此是有偏的；挑选一个合适的模型意味着要在偏差和方差之间创造某种良好的平衡。我们将在第 7 章中详细讨论这些问题。</p>
@@ -1363,7 +1351,7 @@ Y_0=f(x_0)+\varepsilon_0 \tag{3.21}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\E(Y_0-\tilde{f}(x_0))^2 &amp;=\sigma^2+E(x_0^T\tilde{\beta}-f(x_0))^2\\
+\mathbb{E}(Y_0-\tilde{f}(x_0))^2 &amp;=\sigma^2+E(x_0^T\tilde{\beta}-f(x_0))^2\\
 &amp;= \sigma^2+MSE(\tilde{f}(x_0))\tag{3.22}
 \end{align*}
 \end{split}\]</div>
@@ -1400,15 +1388,15 @@ $$</p>
 \hat{\beta}&amp;=\dfrac{\langle \mathbf{x,y}\rangle}{\langle\mathbf{x,x} \rangle}\\
 \mathbf{r}&amp;=\mathbf{y}-\mathbf{x}\hat{\beta}
 \end{align*}\]</div>
-<p>\tag{3.26}\label{3.26}
+<p>\tag{3.26}
 $$</p>
 <p>!!! note “weiya 注：原书脚注”
 The inner-product notation is suggestive of generalizations of linear regression to different metric spaces, as well as to probability spaces. 内积表示是线性回归模型一般化到不同度量空间（包括概率空间）建议的方式。</p>
-<p>正如我们所看到的，这个简单的单变量回归提供了多重线性回归的框架 (building block)。进一步假设输入变量 <span class="math notranslate nohighlight">\(\mathbf{x}_1,\mathbf{x_2,\ldots,x_p}\)</span>（数据矩阵 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列）是正交的；也就是对于所有的 <span class="math notranslate nohighlight">\(j\neq k\)</span> 有<span class="math notranslate nohighlight">\(\langle \x_j,\x_k\rangle=0\)</span>。于是很容易得到多重最小二乘估计 <span class="math notranslate nohighlight">\(\hat{\beta}_j\)</span> 等于 <span class="math notranslate nohighlight">\(\langle \mathbf{x}_j,\mathbf{y}\rangle/\langle\mathbf{x}_j,\mathbf{x}_j\rangle \)</span> ——单变量估计。换句话说，当输入变量为正交的，它们对模型中其它的参数估计没有影响。</p>
+<p>正如我们所看到的，这个简单的单变量回归提供了多重线性回归的框架 (building block)。进一步假设输入变量 <span class="math notranslate nohighlight">\(\mathbf{x}_1,\mathbf{x_2,\ldots,x_p}\)</span>（数据矩阵 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> 的列）是正交的；也就是对于所有的 <span class="math notranslate nohighlight">\(j\neq k\)</span> 有<span class="math notranslate nohighlight">\(\langle x_j,x_k\rangle=0\)</span>。于是很容易得到多重最小二乘估计 <span class="math notranslate nohighlight">\(\hat{\beta}_j\)</span> 等于 <span class="math notranslate nohighlight">\(\langle \mathbf{x}_j,\mathbf{y}\rangle/\langle\mathbf{x}_j,\mathbf{x}_j\rangle \)</span> ——单变量估计。换句话说，当输入变量为正交的，它们对模型中其它的参数估计没有影响。</p>
 <p>正交输入变量经常发生于平衡的、设定好的实验（强制了正交），但是对于实验数据几乎不会发生。因此为了后面实施这一想法我们将要对它们进行正交化。进一步假设我们有一个截距和单输入 <span class="math notranslate nohighlight">\(\bf{x}\)</span>。则 <span class="math notranslate nohighlight">\(\bf{x}\)</span> 的最小二乘系数有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}_1=\dfrac{\langle \mathbf{x}-\bar{x}\mathbf{1},\mathbf{y}\rangle}{\langle \mathbf{x}-\bar{x}\mathbf{1},\mathbf{x}-\bar{x}\mathbf{1}\rangle}\tag{3.27}\label{3.27}
+\hat{\beta}_1=\dfrac{\langle \mathbf{x}-\bar{x}\mathbf{1},\mathbf{y}\rangle}{\langle \mathbf{x}-\bar{x}\mathbf{1},\mathbf{x}-\bar{x}\mathbf{1}\rangle}\tag{3.27}
 \]</div>
 <p>其中，<span class="math notranslate nohighlight">\(\bar{x}=\sum_ix_i/N\)</span>,且 <span class="math notranslate nohighlight">\(N\)</span> 个元素全为 1 的向量 <span class="math notranslate nohighlight">\(\mathbf{1}=\mathbf{x_0}\)</span>。我们可以将式 \eqref{3.27} 的估计看成简单回归 \eqref{3.26} 的两次应用。这两步是：</p>
 <ol class="simple">
@@ -1436,7 +1424,7 @@ The inner-product notation is suggestive of generalizations of linear regression
 <p>算法的结果为</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}_p=\dfrac{\langle \mathbf{z}_p,\mathbf{y} \rangle}{\langle \mathbf{z}_p,\mathbf{z}_p \rangle}\tag{3.28}\label{3.28}
+\hat{\beta}_p=\dfrac{\langle \mathbf{z}_p,\mathbf{y} \rangle}{\langle \mathbf{z}_p,\mathbf{z}_p \rangle}\tag{3.28}
 \]</div>
 <p>对第二步中的残差进行重排列，我们可以看到每个 <span class="math notranslate nohighlight">\(\mathbf x_j​\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf z_k,k\le j​\)</span> 的线性组合。因为 <span class="math notranslate nohighlight">\(\mathbf z_j​\)</span> 是正交的，它们形成了 <span class="math notranslate nohighlight">\(\mathbf{X}​\)</span> 列空间的基，从而得到最小二乘在该子空间上投影为 <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}​\)</span>。因为 <span class="math notranslate nohighlight">\(\mathbf z_p​\)</span>仅与 <span class="math notranslate nohighlight">\(\mathbf x_p​\)</span> 有关（系数为 1），则式 \eqref{3.28} 确实是 <span class="math notranslate nohighlight">\(\mathbf{y}​\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf x_p​\)</span> 上多重回归的系数。</p>
 <p>这一重要结果揭示了在多重回归中输入变量相关性的影响。注意到通过对 <span class="math notranslate nohighlight">\(\mathbf x_j​\)</span> 重排列，其中的任何一个都有可能成为最后一个，然后得到一个类似的结果。因此一般来说，我们已经展示了多重回归的第 <span class="math notranslate nohighlight">\(j​\)</span> 个系数是 <span class="math notranslate nohighlight">\(\mathbf{y}​\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf x_{j\cdot 012...(j-1)(j+1)...,p}​\)</span> 的单变量回归，<span class="math notranslate nohighlight">\(\mathbf x_{j\cdot 012...(j-1)(j+1)...,p}​\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf x_j​\)</span> 在<span class="math notranslate nohighlight">\(\mathbf x_0,\mathbf x_1,...,\mathbf x_{j-1},\mathbf{j+1},...,\mathbf{x}_p​\)</span> 回归后的残差向量：</p>
@@ -1445,7 +1433,7 @@ The inner-product notation is suggestive of generalizations of linear regression
 </div></blockquote>
 <p>如果 <span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> 与某些 <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> 高度相关，残差向量 <span class="math notranslate nohighlight">\(\mathbf{z}_p\)</span> 会近似等于 0，而且由 \eqref{3.28} 得到的系数 <span class="math notranslate nohighlight">\(\hat{\beta}_p\)</span> 会非常不稳定。对于相关变量集中所有的变量都是正确的。在这些情形下我们可能得到所有的 Z 分数（如表 3.2 所示）都很小——相关变量集中的任何一个变量都可以删掉——然而我们不可能删掉所有的变量。由 \eqref{3.28} 我们也得到估计方差 \eqref{3.8} 的另一种方法
 $<span class="math notranslate nohighlight">\(
-\Var(\hat{\beta}_p)=\dfrac{\sigma^2}{\langle \mathbf{z}_p,\mathbf{z}_p \rangle}=\dfrac{\sigma^2}{\Vert\mathbf{z}_p\Vert ^2}\tag{3.29}
+\mathrm{Var}(\hat{\beta}_p)=\dfrac{\sigma^2}{\langle \mathbf{z}_p,\mathbf{z}_p \rangle}=\dfrac{\sigma^2}{\Vert\mathbf{z}_p\Vert ^2}\tag{3.29}
 \)</span>$</p>
 <p>换句话说，我们估计 <span class="math notranslate nohighlight">\(\hat{\beta}_p\)</span> 的精度取决于残差向量 <span class="math notranslate nohighlight">\(\mathbf{z}_p\)</span> 的长度；它表示 <span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> 不能被其他 <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> 解释的程度。</p>
 <p>算法 3.1 被称作多重回归的 Gram-Schmidt 正交化，也是一个计算估计的有用的数值策略。我们从中不仅可以得到 <span class="math notranslate nohighlight">\(\hat{\beta}_p\)</span>，而且可以得到整个多重最小二乘拟合，如<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/72">练习 3.4</a> 所示。</p>
@@ -1468,15 +1456,15 @@ $$</p>
 \end{aligned}\end{align} \]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32}\label{3.32} \\
-\hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}\label{3.33}
+\hat{\beta}&amp;=\mathbf{R^{-1}Q^Ty}\tag{3.32} \\
+\hat{\mathbf{y}}&amp;=\mathbf{QQ^Ty}\tag{3.33}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}等式 \eqref{3.32} 很容易求解，因为 $\mathbf{R}$ 为上三角（[练习 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)）\\!!! info &quot;weiya 注：Ex. 3.4&quot;
     已解决，详见 [Issue 72: Ex. 3.4](https://github.com/szcf-weiya/ESL-CN/issues/72)。\\## 多重输出\\假设有多重输出 $Y_1,Y_2,\ldots,Y_K$，我们希望通过输入变量 $X_0,X_1,X_2,\ldots,X_p$ 去预测。我们假设对于每一个输出变量有线性模型\end{aligned}\end{align} \]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-Y_k&amp;=\beta_{0k}+\sum\limits_{j=1}^pX_j\beta_{jk}+\varepsilon_k \tag{3.34}\label{3.34}\\
+Y_k&amp;=\beta_{0k}+\sum\limits_{j=1}^pX_j\beta_{jk}+\varepsilon_k \tag{3.34}\\
 &amp;= f_k(X)+\varepsilon_k \tag{3.35}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
@@ -1487,18 +1475,18 @@ $$</p>
 $$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\RSS(\mathbf{B})&amp;=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{3.37}\label{3.37}\\
-&amp;= \tr[\mathbf{(Y-XB)^T(Y-XB)}]\tag{3.38}
+\mathrm{RSS}(\mathbf{B})&amp;=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{3.37}\\
+&amp;= \mathrm{tr}[\mathbf{(Y-XB)^T(Y-XB)}]\tag{3.38}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
 \[最小二乘估计有和前面一样的形式\]</div>
-<p>\mathbf{\hat{B}=(X^TX)^{-1}X^TY}\tag{3.39}\label{3.39}
+<p>\mathbf{\hat{B}=(X^TX)^{-1}X^TY}\tag{3.39}
 $$</p>
 <p>因此第 <span class="math notranslate nohighlight">\(k\)</span> 个输出的系数恰恰是 <span class="math notranslate nohighlight">\(\mathbf{y}_k\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf{x}_0,\mathbf{x}_1,\ldots,\mathbf{x}_p\)</span> 上回归的最小二乘估计。多重输出不影响其他的最小二乘估计。</p>
-<p>如果式 \eqref{3.34} 中的误差 <span class="math notranslate nohighlight">\(\varepsilon = (\varepsilon_1,\ldots,\varepsilon_K)\)</span> 相关，则似乎更恰当的方式是修正 \eqref{3.37} 来改成多重变量版本。特别地，假设 <span class="math notranslate nohighlight">\(\Cov(\varepsilon)=\Sigma\)</span>，则 <strong>多重变量加权准则</strong> 为</p>
+<p>如果式 \eqref{3.34} 中的误差 <span class="math notranslate nohighlight">\(\varepsilon = (\varepsilon_1,\ldots,\varepsilon_K)\)</span> 相关，则似乎更恰当的方式是修正 \eqref{3.37} 来改成多重变量版本。特别地，假设 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\varepsilon)=\Sigma\)</span>，则 <strong>多重变量加权准则</strong> 为</p>
 <div class="math notranslate nohighlight">
 \[
-\RSS(\mathbf{B;\Sigma})=\sum\limits_{i=1}^N(y_i-f(x_i))^T\Sigma^{-1}(y_i-f(x_i))\tag{3.40}
+\mathrm{RSS}(\mathbf{B;\Sigma})=\sum\limits_{i=1}^N(y_i-f(x_i))^T\Sigma^{-1}(y_i-f(x_i))\tag{3.40}
 \]</div>
 <p>这可以由 <strong>多变量高斯定理</strong> 自然得出。这里 <span class="math notranslate nohighlight">\(f(x)\)</span> 为向量函数 <span class="math notranslate nohighlight">\((f_1(x),\ldots,f_K(x))\)</span>，而且 <span class="math notranslate nohighlight">\(y_i\)</span> 为观测值 <span class="math notranslate nohighlight">\(i\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 维响应向量。然而，可以证明解也是由式 \eqref{3.39} 给出；<span class="math notranslate nohighlight">\(K\)</span> 个单独的回归忽略了相关性（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/73">练习 3.11</a>）。如果 <span class="math notranslate nohighlight">\(\Sigma_i\)</span> 对于不同观测取值不同，则不再是这种情形，而且关于 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 的解不再退化 (decouple).</p>
 <p>!!! info “weiya 注：Ex. 3.11”
@@ -1536,31 +1524,22 @@ $$</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="3.1-Introduction.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">3.1 导言</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3.1-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">3.1 导言</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3.3-Subset-Selection.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.3 子集的选择</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="3.3-Subset-Selection.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.3 子集的选择</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1581,8 +1560,7 @@ $$</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

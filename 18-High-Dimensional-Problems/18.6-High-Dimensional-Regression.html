@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>18.6 高维回归: 有监督的主成分 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="18.7 特征评估和多重检验问题" href="18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html" />
     <link rel="prev" title="18.5 当特征不可用时的分类" href="18.5-Classification-When-Features-are-Unavailable.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,7 +1158,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.6 高维回归: 有监督的主成分<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>这一节中我们将要描述一种在 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 情形下特别有用的回归和广义回归的简单方法。我们用另外一个微阵列数据的例子来解释这一方法。 数据取自 Rosenwald et al. (2002)<a class="footnote-reference brackets" href="#id17" id="id2">1</a>，其中包含 240 个患有 DLBCL 的病人，有 7399 个基因表达水平的测量值。输出变量为生存时间，取值为 “observed” 或者 “right censored”。我们将样本随机分成大小为 160 的训练集和大小为 80 的测试集。</p>
 <p>尽管有监督的主成分对线性回归很有用，但是它最有趣的应用也许是在生存分析中，这也是这个例子所要关注的地方。</p>
@@ -1231,14 +1219,14 @@ X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \mathcal P\tag{18.33}
 <p>Thresholded PLS 可以看成是监督主成分的噪声版本，因此我们不会期待它在实际中效果会很好。假设我们的变量全部标准化了，第一 PLS 变量有如下的形式</p>
 <div class="math notranslate nohighlight">
 \[
-\z = \sum_{j\in \mathcal P}\langle \y,\x_j\rangle\x_j\tag{18.34}
+\z = \sum_{j\in \mathcal P}\langle y,x_j\ranglex_j\tag{18.34}
 \]</div>
 <p>并且可以看成对模型 (18.33) 中潜因子 <span class="math notranslate nohighlight">\(U\)</span> 的估计。相反地，监督主成分方向 <span class="math notranslate nohighlight">\(\hat\u\)</span> 满足</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\u = \frac{1}{d^2}\sum\limits_{j\in\mathcal P}\langle \hat\u,\x_j\rangle\x_j\tag{18.35}
+\hat\u = \frac{1}{d^2}\sum\limits_{j\in\mathcal P}\langle \hat\u,x_j\ranglex_j\tag{18.35}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(d\)</span> 是 <span class="math notranslate nohighlight">\(\X_{\mathcal P}\)</span> 第一奇异值。这遵循第一主成分的定义。因此 thresholded PLS 采用 <span class="math notranslate nohighlight">\(\y\)</span> 与每个特征的内积作为权重，而有监督的主成分采用特征来导出“self-consistent”的估计量 <span class="math notranslate nohighlight">\(\hat\u\)</span>。因为许多特征都对估计 <span class="math notranslate nohighlight">\(\hat\u\)</span> 起到作用，而不是仅仅是单个输出 <span class="math notranslate nohighlight">\(\y\)</span>，我们可以期待 <span class="math notranslate nohighlight">\(\hat\u\)</span> 比 <span class="math notranslate nohighlight">\(\z\)</span> 的噪声更少。事实上，如果在集合 <span class="math notranslate nohighlight">\(\mathcal P\)</span> 中有 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征，且 <span class="math notranslate nohighlight">\(N,p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都趋于无穷，且 <span class="math notranslate nohighlight">\(p_1/N\rightarrow 0\)</span>，则用 Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id12">5</a> 中的技巧可以证明</p>
+<p>其中 <span class="math notranslate nohighlight">\(d\)</span> 是 <span class="math notranslate nohighlight">\(X_{\mathcal P}\)</span> 第一奇异值。这遵循第一主成分的定义。因此 thresholded PLS 采用 <span class="math notranslate nohighlight">\(y\)</span> 与每个特征的内积作为权重，而有监督的主成分采用特征来导出“self-consistent”的估计量 <span class="math notranslate nohighlight">\(\hat\u\)</span>。因为许多特征都对估计 <span class="math notranslate nohighlight">\(\hat\u\)</span> 起到作用，而不是仅仅是单个输出 <span class="math notranslate nohighlight">\(y\)</span>，我们可以期待 <span class="math notranslate nohighlight">\(\hat\u\)</span> 比 <span class="math notranslate nohighlight">\(\z\)</span> 的噪声更少。事实上，如果在集合 <span class="math notranslate nohighlight">\(\mathcal P\)</span> 中有 <span class="math notranslate nohighlight">\(p_1\)</span> 个特征，且 <span class="math notranslate nohighlight">\(N,p\)</span> 和 <span class="math notranslate nohighlight">\(p_1\)</span> 都趋于无穷，且 <span class="math notranslate nohighlight">\(p_1/N\rightarrow 0\)</span>，则用 Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id12">5</a> 中的技巧可以证明</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1314,31 +1302,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="18.5-Classification-When-Features-are-Unavailable.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">18.5 当特征不可用时的分类</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="18.5-Classification-When-Features-are-Unavailable.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">18.5 当特征不可用时的分类</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">18.7 特征评估和多重检验问题</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="18.7-Feature-Assessment-and-the-Multiple-Testing-Problem.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">18.7 特征评估和多重检验问题</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1359,8 +1338,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.9 Boosting 树 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.10 Gradient Boosting的数值优化" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" />
     <link rel="prev" title="10.8 例子: 垃圾邮件" href="10.8-Spam-Data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,7 +1135,7 @@
         
               <div>
                 
-  <div class="section" id="boosting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.9 Boosting 树<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <p>回归和分类树在第 <span class="xref myst">9.2 节</span> 已经详细讨论了。它们将所有联合预测变量的空间划分为不相交的区域 <span class="math notranslate nohighlight">\(R_j,j=1,2,\ldots,J\)</span>，这些区域用树的终止结点表示。常数值 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 赋予到每个区域中，预测规则为</p>
 <div class="math notranslate nohighlight">
@@ -1161,14 +1149,14 @@ T(x;\Theta)=\sum\limits_{j=1}^J\gamma_jI(x\in R_j)\tag{10.25}
 \]</div>
 <p>其中参数为 <span class="math notranslate nohighlight">\(\Theta=\\{R_j,\gamma_j\\}_1^J\)</span>。<span class="math notranslate nohighlight">\(J\)</span> 通常看成是元参数。通过最小化 <strong>经验风险 (empirical risk)</strong> 来确定
 $<span class="math notranslate nohighlight">\(
-\hat\Theta = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{j=1}^J\sum\limits_{x_i\in R_j}L(y_i,\gamma_j)\tag{10.26}\label{10.26}
+\hat\Theta = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{j=1}^J\sum\limits_{x_i\in R_j}L(y_i,\gamma_j)\tag{10.26}
 \)</span>$</p>
 <p>这是个艰巨的组合优化问题，我们通常去寻求近似次优解。将该优化问题分成两个部分是很有用的：</p>
 <ol class="simple">
 <li><p><strong>给定 <span class="math notranslate nohighlight">\(R_j\)</span> 求 <span class="math notranslate nohighlight">\(\gamma_j\)</span>:</strong> 给定 <span class="math notranslate nohighlight">\(R_j\)</span>，估计 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是小菜一碟，而且通常有 <span class="math notranslate nohighlight">\(\hat\gamma_j=\bar y_j\)</span>，这是那些落在区域<span class="math notranslate nohighlight">\(R_j\)</span> 的 <span class="math notranslate nohighlight">\(y_i\)</span> 的均值。对于误分类损失，<span class="math notranslate nohighlight">\(\gamma_j\)</span> 是落在区域 <span class="math notranslate nohighlight">\(R_j\)</span> 的观测值的 <strong>众数 (modal class)</strong>。</p></li>
 <li><p><strong>求 <span class="math notranslate nohighlight">\(R_j\)</span>:</strong> 对于求近似解，这是很困难的一部分。注意到寻找 <span class="math notranslate nohighlight">\(R_j\)</span> 意味着也估计 <span class="math notranslate nohighlight">\(\gamma_j\)</span>。一个典型的策略是使用贪婪的，自上而下的递归划分算法来寻找<span class="math notranslate nohighlight">\(R_j\)</span>。另外，为了优化<span class="math notranslate nohighlight">\(R_j\)</span>，有时也需要通过一个更光滑以及更方便的准则来近似 \eqref{10.26}:
 $<span class="math notranslate nohighlight">\(
-\hat\Theta = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{i=1}^N\tilde L(y_i,T(x_i,\Theta))\tag{10.27}\label{10.27}
+\hat\Theta = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{i=1}^N\tilde L(y_i,T(x_i,\Theta))\tag{10.27}
 \)</span><span class="math notranslate nohighlight">\(
 接着给定 \)</span>\hat R_j=\tilde R_j<span class="math notranslate nohighlight">\(，\)</span>\gamma_j$ 可以运用原来的准则精确估计出。</p></li>
 </ol>
@@ -1176,16 +1164,16 @@ $<span class="math notranslate nohighlight">\(
 <p>Boosted 树模型是这些树的和</p>
 <div class="math notranslate nohighlight">
 \[
-f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}\label{10.28}
+f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}
 \]</div>
 <p>由 <strong>向前逐步(forward stagewise)</strong> 的方式导出（算法 10.2）。在向前逐步过程中的每一步, 给定当前树模型 <span class="math notranslate nohighlight">\(f_{m-1}(x)\)</span>，求出下一棵树的区域和常数 <span class="math notranslate nohighlight">\(\Theta_m=\\{R_{jm},\gamma_{jm}\\}^{J_m}_1\)</span> 需要求解
 $<span class="math notranslate nohighlight">\(
-\hat\Theta_m = \text{arg }\underset{\Theta_m}{\text{min}}\sum\limits_{i=1}^NL(y_i,f_{m-1}(x_i)+T(x_i;\Theta_m))\tag{10.29}\label{10.29}
+\hat\Theta_m = \text{arg }\underset{\Theta_m}{\text{min}}\sum\limits_{i=1}^NL(y_i,f_{m-1}(x_i)+T(x_i;\Theta_m))\tag{10.29}
 \)</span>$</p>
 <p>给定区域 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，寻找每个区域的最优的常数值 <span class="math notranslate nohighlight">\(\gamma_{jm}\)</span> 是很直接的</p>
 <div class="math notranslate nohighlight">
 \[
-\hat \gamma_{jm}=\text{arg }\underset{\gamma_{jm}}{\text{min}}\sum\limits_{x_i\in R_{jm}}L(y_i,f_{m-1}(x_i)+\gamma_{jm})\tag{10.30}\label{10.30}
+\hat \gamma_{jm}=\text{arg }\underset{\gamma_{jm}}{\text{min}}\sum\limits_{x_i\in R_{jm}}L(y_i,f_{m-1}(x_i)+\gamma_{jm})\tag{10.30}
 \]</div>
 <p>寻找这些区域是很困难的，甚至比寻找单棵树的区域还要困难。对于一些特殊情形，这个问题可以进行简化。</p>
 <p>对于平方误差损失，\eqref{10.29} 的解不比单棵树复杂。此时解是当前残差 <span class="math notranslate nohighlight">\(y_i-f_{m-1}(x)\)</span> 的最好预测的回归树，并且 <span class="math notranslate nohighlight">\(\hat\gamma_{jm}\)</span> 是每个对应区域中的残差的均值。</p>
@@ -1208,7 +1196,7 @@ $<span class="math notranslate nohighlight">\(
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
     L(y,p(x))&amp;=-\sum\limits_{k=1}^KI(y=\mathcal G_k)\log p_k(x)\\
-    &amp;=-\sum\limits_{k=1}^KI(y={\mathcal G_k})f_k(x)+\log (\sum\limits_{\ell=1}^Ke^{f_\ell(x)})\tag{10.22}\label{10.22}
+    &amp;=-\sum\limits_{k=1}^KI(y={\mathcal G_k})f_k(x)+\log (\sum\limits_{\ell=1}^Ke^{f_\ell(x)})\tag{10.22}
     \end{align*}
     \)</span><span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
@@ -1219,7 +1207,7 @@ $<span class="math notranslate nohighlight">\(
     2\delta\vert y-f(x)\vert-\delta^2&amp;\text{otherwise}
     \end{array}
     \right.
-    \tag{10.23}\label{10.23}
+    \tag{10.23}
     \)</span>$</p>
 <p>不幸的是，不像相对应的欠鲁棒的 (nonrobust) 准则，这些鲁棒准则不会得到简单快速的 boosting 算法。</p>
 <p>给定 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，对于更一般的损失准则，\eqref{10.30} 的解是很直接的，因为只是一个简单的局部估计。对于绝对值损失，这就是每个单独区域的残差的中位数。对于其它的准则，求解 \eqref{10.30} 存在快速的迭代算法，而且通常它们快速的单步近似就已经够了。问题在于树的生成。对于这些一般的损失准则，求解 \eqref{10.29} 不存在简单的快速算法，此时类似 \eqref{10.27} 的近似变得很重要。</p>
@@ -1248,31 +1236,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.8-Spam-Data.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">10.8 例子: 垃圾邮件</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.8-Spam-Data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">10.8 例子: 垃圾邮件</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.10 Gradient Boosting的数值优化</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.10 Gradient Boosting的数值优化</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1293,8 +1272,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>16.3 学习集成 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="16.4 文献笔记" href="Bibliographic-Notes.html" />
     <link rel="prev" title="16.2 Boosting 和正则化路径" href="16.2-Boosting-and-Regularization-Paths.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,7 +1153,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>16.3 学习集成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>利用前面章节的知识得到更高效的集成模型。我们继续考虑下面形式的函数</p>
 <div class="math notranslate nohighlight">
@@ -1178,7 +1166,7 @@ f(x)=\alpha_0+\sum\limits_{T_k\in \mathcal T}\alpha_kT_k(x)\tag{16.8}
 <li><p>从训练集中导出有限的基函数字典集 <span class="math notranslate nohighlight">\(\cT_L=\\{T_1(x), T_2(x),\ldots, T_M(x)\\}\)</span>;</p></li>
 <li><p>通过在字典集中拟合 lasso 路径来构造 <span class="math notranslate nohighlight">\(f_\lambda(x)\)</span> 函数族。
 $<span class="math notranslate nohighlight">\(
-\alpha(\lambda)=\argmin_\alpha\sum_{i=1}^NL[y_i, \alpha_0+\sum_{m=1}^M\alpha_mT_m(x_i)]+\lambda\sum_{m=1}^M\vert \alpha_m\vert\tag{16.9}\label{16.9}
+\alpha(\lambda)=\argmin_\alpha\sum_{i=1}^NL[y_i, \alpha_0+\sum_{m=1}^M\alpha_mT_m(x_i)]+\lambda\sum_{m=1}^M\vert \alpha_m\vert\tag{16.9}
 \)</span>$</p></li>
 </ul>
 <p>在这种简单的形式里面，将 <span class="math notranslate nohighlight">\(\cT_L\)</span> 看成是由 gradient boosting 算法或者随机森林算法得到的树的集合，该模型可以看成是 boosting 或者是随机森林的某种 post-processing 方式。通过对这些树进行 lasso 路径拟合，一般我们会得到更加简化的集合，它会大大减少未来预测的计算量和存储量。在下一节，我们将讨论这种方法的变种，进而降低 <span class="math notranslate nohighlight">\(\cT_L\)</span> 的相关性，并且提高 lasso post processor 的表现。</p>
@@ -1219,7 +1207,7 @@ Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma)
 </ul>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
-    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}\label{10.41}
+    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}
     \)</span>$</p>
 <p>作者建议 <span class="math notranslate nohighlight">\(\nu=0.1\)</span> 且 <span class="math notranslate nohighlight">\(\eta\le \frac 12\)</span>，并且称他们的结合过程（ensemble 的产生和后处理）为 Importance sampled learning ensemble (ISLE)。</p>
 <p><img alt="" src="../_images/fig16.7.png" /></p>
@@ -1228,9 +1216,9 @@ $<span class="math notranslate nohighlight">\(
 <p>图 16.8 显示了回归例子上不同的 ISLE。生成函数为</p>
 <div class="math notranslate nohighlight">
 \[
-f(X)=10\cdot \prod\limits_{j=1}^5e^{-2X_j^2}+\sum\limits_{j=6}^{35}X_j\tag{16.13}\label{16.13}
+f(X)=10\cdot \prod\limits_{j=1}^5e^{-2X_j^2}+\sum\limits_{j=6}^{35}X_j\tag{16.13}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(X\sim U[0,1]^{100}\)</span>（最后 65 个元素是噪声变量）。响应变量 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\varepsilon\sim N(0,\sigma^2)\)</span>；我们选择 <span class="math notranslate nohighlight">\(\sigma=1.3\)</span> 使得信噪比大致为 2。我们采用大小为 1000 的训练样本，并且通过在 500 个样本的测试集上平均来估计 <span class="math notranslate nohighlight">\(\E(\hat f(X)-f(X))^2\)</span>。子采样的 GBM 曲线（浅蓝色）是在 <span class="xref myst">10.12 节</span>讨论的 stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id14" id="id9">3</a>) 的例子，并且在这个例子上比 gradient boosting 要好。</p>
+<p>其中 <span class="math notranslate nohighlight">\(X\sim U[0,1]^{100}\)</span>（最后 65 个元素是噪声变量）。响应变量 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\varepsilon\sim N(0,\sigma^2)\)</span>；我们选择 <span class="math notranslate nohighlight">\(\sigma=1.3\)</span> 使得信噪比大致为 2。我们采用大小为 1000 的训练样本，并且通过在 500 个样本的测试集上平均来估计 <span class="math notranslate nohighlight">\(\mathbb{E}(\hat f(X)-f(X))^2\)</span>。子采样的 GBM 曲线（浅蓝色）是在 <span class="xref myst">10.12 节</span>讨论的 stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id14" id="id9">3</a>) 的例子，并且在这个例子上比 gradient boosting 要好。</p>
 </div>
 <div class="section" id="rule-ensembles">
 <h2>规则集成 (Rule Ensembles)<a class="headerlink" href="#rule-ensembles" title="Permalink to this headline">¶</a></h2>
@@ -1247,7 +1235,7 @@ R_4(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{M,L\})\\
 R_5(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7&lt;4.5)\\
 R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 \end{align*}
-\tag{16.14}\label{16.14}
+\tag{16.14}
 \end{split}\]</div>
 <p>关于规则 1, 4, 5 和 6 的线性回归等价于树本身（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/189">练习 16.3</a>）；因此 \eqref{16.14} 是这棵树 <strong>过充分 (over-complete)</strong> 的基。</p>
 <p>对于一个 ensemble <span class="math notranslate nohighlight">\(\mathcal T\)</span>，我们可以构造规则的 mini-ensemble <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}^m\)</span>，并且然后结合形成更大的 ensemble</p>
@@ -1270,7 +1258,7 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 <dd><p>Friedman, J. and Popescu, B. (2003). Importance sampled learning ensembles, Technical report, Stanford University, Department of Statistics. <a class="reference external" href="https://pdfs.semanticscholar.org/966f/fe536f84efd15c1379dad9adffe90b20676f.pdf">链接</a></p>
 </dd>
 <dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
-<dd><p>Friedman, J. and Hall, P. (2007). On bagging and nonlinear estimation, Journal of Statistical Planning and Inference 137: 669–683.</p>
+<dd><p>Friedman, J. and Hall, P. (2007). On <code class="docutils literal notranslate"><span class="pre">bagging</span></code> and nonlinear estimation, Journal of Statistical Planning and Inference 137: 669–683.</p>
 </dd>
 <dt class="label" id="id14"><span class="brackets">3</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id9">2</a>)</span></dt>
 <dd><p>Friedman, J. (1999). Stochastic gradient boosting, Technical report, Stanford University.</p>
@@ -1305,31 +1293,22 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="16.2-Boosting-and-Regularization-Paths.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">16.2 Boosting 和正则化路径</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="16.2-Boosting-and-Regularization-Paths.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">16.2 Boosting 和正则化路径</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Bibliographic-Notes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">16.4 文献笔记</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="Bibliographic-Notes.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">16.4 文献笔记</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1350,8 +1329,7 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

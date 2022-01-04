@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>9.1 广义可加模型 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="9.2 基于树的方法(CART)" href="9.2-Tree-Based-Methods.html" />
     <link rel="prev" title="第九章 加法模型、树及相关方法" href="9.0-Overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1177,17 +1165,17 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>9.1 广义可加模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>回归模型在许多数据分析中起着重要的作用，提供了预测和分类的规则、以及理解不同输入变量重要性的数据分析工具。</p>
 <p>尽管非常简单，但是传统的线性模型经常在这些情形下失效：实际生活中，变量的影响往往不是线性的。在前面的章节中我们讨论使用预定义的基函数来实现非线性的技巧。这部分描述更多 <strong>自动灵活 (automatic flexible)</strong> 的统计方法来识别和表征非线性回归的影响。这些方法被称为“广义可加模型”。</p>
 <p>在回归的设定中，广义可加模型有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
-\E(Y\mid X_1,X_2,\ldots,X_p) = \alpha+f_1(X_1)+f_2(X_2)+\cdots+f_p(X_p).\tag{9.1}
+\mathbb{E}(Y\mid X_1,X_2,\ldots,X_p) = \alpha+f_1(X_1)+f_2(X_2)+\cdots+f_p(X_p).\tag{9.1}
 \]</div>
 <p>和通常一样，<span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 代表预测变量，<span class="math notranslate nohighlight">\(Y\)</span> 表示输出变量；<span class="math notranslate nohighlight">\(f_j\)</span> 是未定义的（非参）光滑函数。如果我们用基函数的展开（<span class="xref myst">第 5 章</span>）对每个函数进行建模，则最终的模型可以通过简单的最小二乘实现。我们这里的方式有些不同：我们用散点图光滑器来拟合每个函数（比如，三次光滑样条或核光滑），并且提供了同时估计所有 <span class="math notranslate nohighlight">\(p\)</span> 个函数的算法（<a class="reference external" href="#_1">9.1.1节</a>）</p>
-<p>对于二分类，回忆在<span class="xref myst"> 4.4 节</span> 中讨论的二值数据的逻辑斯蒂回归模型。我们通过一个线性回归模型和 logit 链接函数将预测变量与二进制响应变量的均值 <span class="math notranslate nohighlight">\(\mu(X)=\Pr(Y=1\mid X)\)</span> 关联起来：</p>
+<p>对于二分类，回忆在<span class="xref myst"> 4.4 节</span> 中讨论的二值数据的逻辑斯蒂回归模型。我们通过一个线性回归模型和 logit 链接函数将预测变量与二进制响应变量的均值 <span class="math notranslate nohighlight">\(\mu(X)=\mathrm{Pr}(Y=1\mid X)\)</span> 关联起来：</p>
 <div class="math notranslate nohighlight">
 \[
 \log\left(\frac{\mu(X)}{1-\mu(X)}\right)=\alpha+\beta_1X_1+\cdots+\beta_pX_p\tag{9.2}
@@ -1205,7 +1193,7 @@ g[\mu(X)]=\alpha+f_1(X_1)+\cdots+f_p(X_p)\tag{9.4}
 <p>典型的链接函数的例子如下：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(g(\mu)=\mu\)</span> 是等值链接，用于高斯响应数据的线性和可加模型</p></li>
-<li><p>如上面所示的对二项分布概率建模的 <span class="math notranslate nohighlight">\(g(\mu)=\logit(\mu)\)</span>，或者 <span class="math notranslate nohighlight">\(g(\mu)=\probit(\mu)\)</span> （probit 链接函数）。probit 函数是高斯分布函数的反函数：<span class="math notranslate nohighlight">\(\probit(\mu)=\Phi^{-1}(\mu)\)</span></p></li>
+<li><p>如上面所示的对二项分布概率建模的 <span class="math notranslate nohighlight">\(g(\mu)=\mathrm{logit}(\mu)\)</span>，或者 <span class="math notranslate nohighlight">\(g(\mu)=\probit(\mu)\)</span> （probit 链接函数）。probit 函数是高斯分布函数的反函数：<span class="math notranslate nohighlight">\(\probit(\mu)=\Phi^{-1}(\mu)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g(\mu)=\log(\mu)\)</span> 应用于处理泊松计数数据的对数线性或者对数加性模型。</p></li>
 </ul>
 <p>上面的三种情形都是来自指数族采样模型，另外也包括 Gamma 分布和负二项分布。这个分布族产生了著名的广义线性模型类，它们都是以同样的方式扩展为广义可加模型。</p>
@@ -1232,11 +1220,11 @@ Y=\alpha + \sum_{j=1}^pf_j(X_j)+\varepsilon\tag{9.6}
 <p>其中误差项 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 均值为 <span class="math notranslate nohighlight">\(0\)</span>。给定观测值 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>，类似 <span class="xref myst">5.4 节</span>中讨论的惩罚平方和 \eqref{5.9} 准则，可以确定出下面的准则，</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
-    \mathrm{RSS}(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}\label{5.9}
+    \mathrm{RSS}(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
     \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{PRSS}(\alpha,f_1,f_2,\ldots,f_p)=\sum\limits_{i=1}^N(y_i-\alpha-\sum\limits_{j=1}^pf_j(x_{ij}))^2+\sum\limits_{j=1}^p\lambda_j\int f_j''(t_j)^2dt_j\tag{9.7}\label{9.7}
+\mathrm{PRSS}(\alpha,f_1,f_2,\ldots,f_p)=\sum\limits_{i=1}^N(y_i-\alpha-\sum\limits_{j=1}^pf_j(x_{ij}))^2+\sum\limits_{j=1}^p\lambda_j\int f_j''(t_j)^2dt_j\tag{9.7}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\lambda_j\ge 0\)</span> 是调整参数。可以证明 \eqref{9.7} 的最小值是可加三次样条模型；每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是一个关于组分 <span class="math notranslate nohighlight">\(X_j\)</span> 的三次样条，结点在每个唯一的 <span class="math notranslate nohighlight">\(x_{ij},i=1,\ldots,N\)</span> 值处。然而，如果没有对模型有进一步的约束，解不是唯一的。常数 <span class="math notranslate nohighlight">\(\alpha\)</span> 不是唯一的，因为我们可以对每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 进行加减任意常数，然后因此调整 <span class="math notranslate nohighlight">\(\alpha\)</span>。标准的规定是假设 <span class="math notranslate nohighlight">\(\sum_1^Nf_j(x_{ij})=0,\forall j\)</span> ——这些函数在数据上均值为 0。可以很简单地证明得到在这种情形下 <span class="math notranslate nohighlight">\(\hat\alpha=\mathrm {ave}(y_i)\)</span>。除了这条约束，再加上输入矩阵（第 <span class="math notranslate nohighlight">\(ij\)</span> 位置值为 <span class="math notranslate nohighlight">\(x_{ij}\)</span>）是列满秩的条件，则 \eqref{9.7} 是严格凸准则并且最小值是唯一的。如果矩阵是奇异的，则不能唯一确定组分 <span class="math notranslate nohighlight">\(f_j\)</span> 的线性部分（尽管非线性部分可以！）(Buja et al., 1989<a class="footnote-reference brackets" href="#id14" id="id3">1</a>)</p>
 <p>进一步，有一个简单的迭代过程来寻找解。令 <span class="math notranslate nohighlight">\(\hat\alpha=\mathrm {ave}(y_i)\)</span>，而且保持不变。我们对关于 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 函数的目标<span class="math notranslate nohighlight">\(\\{y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\\}\_1^N\)</span> 应用三次光滑样条 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span> 得到新估计 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span>。对每个预测变量轮流这样处理，当计算 <span class="math notranslate nohighlight">\(y_i-\hat\alpha-\sum_{k\neq j}\hat f_k(x_{ik})\)</span> 时使用其它函数的当前估计 <span class="math notranslate nohighlight">\(\hat f_k\)</span>。重复这个过程直到估计值 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 稳定。这个过程被称作 “backfitting”（算法 9.1 中给出了详细细节），而且最后的拟合与线性模型的多项式回归是相似的。</p>
@@ -1254,10 +1242,10 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="id5">
 <h2>例子：可加逻辑斯蒂回归<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>在医学研究中应用最广的模型或许是对二值数据的逻辑斯蒂回归模型。在这个模型中，输出 <span class="math notranslate nohighlight">\(Y\)</span> 可以编码成 0 或 1，其中 1 代表事件发生（比如死亡，疾病复发），0 代表没有事件发生。我们希望建立 <span class="math notranslate nohighlight">\(\Pr(Y=1\mid X)\)</span> 的模型，其中 <span class="math notranslate nohighlight">\(\Pr(Y=1\mid X)\)</span> 是给定预测因子 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span> 后事件发生的概率。目标通常是确定预测因子的作用，而不是对新个体进行分类。逻辑斯蒂回归也应用到当对估计类别比例感兴趣的情况下，比如 risk screening。除了医学上的应用，信用风险 screening 也是一个受欢迎的应用方面。</p>
+<p>在医学研究中应用最广的模型或许是对二值数据的逻辑斯蒂回归模型。在这个模型中，输出 <span class="math notranslate nohighlight">\(Y\)</span> 可以编码成 0 或 1，其中 1 代表事件发生（比如死亡，疾病复发），0 代表没有事件发生。我们希望建立 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的模型，其中 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 是给定预测因子 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span> 后事件发生的概率。目标通常是确定预测因子的作用，而不是对新个体进行分类。逻辑斯蒂回归也应用到当对估计类别比例感兴趣的情况下，比如 risk screening。除了医学上的应用，信用风险 screening 也是一个受欢迎的应用方面。</p>
 <p>广义加性模型有如下形式
 $<span class="math notranslate nohighlight">\(
-\log\frac{\Pr(Y=1\mid X)}{\Pr(Y=0\mid X)}=\alpha+f_1(X_1)+\cdots+f_p(X_p)\tag{9.8}\label{9.8}
+\log\frac{\mathrm{Pr}(Y=1\mid X)}{\mathrm{Pr}(Y=0\mid X)}=\alpha+f_1(X_1)+\cdots+f_p(X_p)\tag{9.8}
 \)</span>$</p>
 <p>函数 <span class="math notranslate nohighlight">\(f_1,f_2,\ldots,f_p\)</span> 是通过在 Newton-Raphson 过程中运用 backfitting 算法估计得到的，算法 9.2 中显示了具体过程。</p>
 <p><img alt="" src="../_images/alg9.2.png" /></p>
@@ -1346,31 +1334,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="9.0-Overview.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">第九章 加法模型、树及相关方法</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="9.0-Overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">第九章 加法模型、树及相关方法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9.2-Tree-Based-Methods.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">9.2 基于树的方法(CART)</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="9.2-Tree-Based-Methods.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">9.2 基于树的方法(CART)</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1391,8 +1370,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

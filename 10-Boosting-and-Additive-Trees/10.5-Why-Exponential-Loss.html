@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>10.5 为什么是指数损失？ &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="10.6 损失函数和鲁棒性" href="10.6-Loss-Functions-and-Robustness.html" />
     <link rel="prev" title="10.4 指数损失和AdaBoost" href="10.4-Exponential-Loss-and-AdaBoost.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,22 +1135,22 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>10.5 为什么是指数损失？<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>AdaBoost.M1 算法最初是从一个非常不一样的角度出发得到的，而不是上一节中提出的。它与基于指数损失的向前逐步加性建模的等价性仅在其提出后五年后就被发现。通过研究指数损失函数准则的性质，可以深入了解这个过程并且找出可能改善的方式。</p>
 <p>在加性模型中指数损失的主要吸引点在于计算上的方便；它导出简单的模块化重加权的 AdaBoost 算法。然而，研究它的统计性质也是我们关注的。它估计什么，估计有多么好？第一个问题可以通过寻找总体最小化来回答。</p>
 <p>可以很简单地证明 (Friedman et al., 2000)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>
 $<span class="math notranslate nohighlight">\(
-f^*(x)=\mathrm{arg}\;\underset{f(x)}{\min}\mathrm{E}_{Y\mid x}(e^{-Yf(x)})=\frac{1}{2}\log\frac{\Pr(Y=1\mid X)}{\Pr(Y=-1\mid X)}\tag{10.16}
+f^*(x)=\mathrm{arg}\;\underset{f(x)}{\min}\mathrm{E}_{Y\mid x}(e^{-Yf(x)})=\frac{1}{2}\log\frac{\mathrm{Pr}(Y=1\mid X)}{\mathrm{Pr}(Y=-1\mid X)}\tag{10.16}
 \)</span><span class="math notranslate nohighlight">\(
 或者等价地，
 \)</span><span class="math notranslate nohighlight">\(
-\Pr(Y=1\mid x)=\frac{1}{1+e^{-2f^*(x)}}
+\mathrm{Pr}(Y=1\mid x)=\frac{1}{1+e^{-2f^*(x)}}
 \)</span><span class="math notranslate nohighlight">\(
 因此，由 AdaBoost 得到的加性展开是在估计 \)</span>P(Y=1\mid x)$ <strong>对数比率值 (log-odds)</strong> 的二分之一。这证明使用它的符号作为 \eqref{10.1} 的分类规则是合理的。</p>
 <p>!!! info “Recall”
 $<span class="math notranslate nohighlight">\(
-    G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}\label{10.1}
+    G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}
     \)</span>$</p>
 <p>!!! note “weiya注”
 此处 <span class="math notranslate nohighlight">\(f^*(x)\)</span> 相当于 <span class="math notranslate nohighlight">\(\sum\alpha_mG_m\)</span>，当其大于 0，表明 <span class="math notranslate nohighlight">\(P(Y=1\mid x)&gt;P(Y=-1\mid x)\)</span>，所以称使用其符号作为分类规则是合理的。</p>
@@ -1170,7 +1158,7 @@ $<span class="math notranslate nohighlight">\(
 <p>!!! note “weiya 注”
 考虑
 $<span class="math notranslate nohighlight">\(
-    z = \logit(p) = \log\frac{p}{1-p}
+    z = \mathrm{logit}(p) = \log\frac{p}{1-p}
     \)</span><span class="math notranslate nohighlight">\(
     我们有 \)</span>p=\frac{1}{1+e^{-z}}<span class="math notranslate nohighlight">\(，则二项分布似然函数为
     \)</span><span class="math notranslate nohighlight">\(
@@ -1183,7 +1171,7 @@ $<span class="math notranslate nohighlight">\(
 也称为 logit 损失函数。</p>
 <p>令
 $<span class="math notranslate nohighlight">\(
-p(x)=\Pr(Y=1\mid x)=\frac{e^{f(x)}}{e^{-f(x)}+e^{f(x)}}=\frac{1}{1+e^{-2f(x)}}\tag{10.17}\label{10.17}
+p(x)=\mathrm{Pr}(Y=1\mid x)=\frac{e^{f(x)}}{e^{-f(x)}+e^{f(x)}}=\frac{1}{1+e^{-2f(x)}}\tag{10.17}
 \)</span><span class="math notranslate nohighlight">\(
 并且定义 \)</span>Y’=(Y+1)/2\in \{0,1\}$。则二项对数对数似然损失函数为</p>
 <div class="math notranslate nohighlight">
@@ -1200,7 +1188,7 @@ l(Y,p(x))=Y'\mathrm{log}p(x)+(1-Y')\mathrm{log}(1-p(x))
 -->
 <p>或者等价地，偏差为
 $<span class="math notranslate nohighlight">\(
--l(Y,f(x))=\mathrm{log}(1+e^{-2Yf(x)})\tag{10.18}\label{10.18}
+-l(Y,f(x))=\mathrm{log}(1+e^{-2Yf(x)})\tag{10.18}
 \)</span>$</p>
 <p>!!! note “weiya 注：推导 \eqref{10.18}”
 直接按照 <span class="math notranslate nohighlight">\(Y=-1, 1\)</span> 进行讨论，
@@ -1222,7 +1210,7 @@ $<span class="math notranslate nohighlight">\(
     Y=1
     $$
 -->
-<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\Pr(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
+<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\mathrm{Pr}(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
 <p>!!! note “weiya 注”
 也就是说，不存在一个二项随机变量的密度函数，使得 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 成为其对数似然函数。</p>
 <hr class="footnotes docutils" />
@@ -1256,31 +1244,22 @@ $<span class="math notranslate nohighlight">\(
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="10.4-Exponential-Loss-and-AdaBoost.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">10.4 指数损失和AdaBoost</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="10.4-Exponential-Loss-and-AdaBoost.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">10.4 指数损失和AdaBoost</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="10.6-Loss-Functions-and-Robustness.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">10.6 损失函数和鲁棒性</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.6-Loss-Functions-and-Robustness.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">10.6 损失函数和鲁棒性</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1301,8 +1280,7 @@ $<span class="math notranslate nohighlight">\(
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

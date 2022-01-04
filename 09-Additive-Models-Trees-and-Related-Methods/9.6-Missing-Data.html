@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>9.6 缺失数据 &#8212; 统计学习精要(中文)</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -56,7 +56,10 @@
     <link rel="next" title="9.7 计算的考虑" href="9.7-Computational-Considerations.html" />
     <link rel="prev" title="9.5 专家的分层混合" href="9.5-Hierarchical-Mixtures-of-Experts.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -460,11 +463,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods.html">
-     7.11 自助法
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error.html">
      7.12 “条件测试误差”还是“测试误差的期望”？
     </a>
@@ -492,18 +490,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods.html">
-     8.2 自助法与最大似然
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.3-Bayesian-Methods.html">
      8.3 贝叶斯方法
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference.html">
-     8.4 自助法和贝叶斯推断之间的关系
     </a>
    </li>
    <li class="toctree-l2">
@@ -1147,17 +1135,17 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>9.6 缺失数据<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>一个或多个输入特征的观测含有缺失值是很常见的。通常的方式是以某种方式来插补（填补）缺失值。</p>
 <p>然而，处理这个问题的第一步是确定缺失数据的机制是否使观测数据失真。大致地说，如果导致其缺失的机制与其（未观测到的）值无关，则是随机丢失数据。更精确的定义由 Little and Rubin (2002)<a class="footnote-reference brackets" href="#id3" id="id2">1</a> 给出。假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\mathbf X\)</span> 为 <span class="math notranslate nohighlight">\(N\times p\)</span> 的输入矩阵（某些值缺失）。用 <span class="math notranslate nohighlight">\(\mathbf X_{obs}\)</span> 记 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中的观测值，并令 <span class="math notranslate nohighlight">\(\mathbf{Z=(y,X),Z_{obs}=(y,X_{obs})}\)</span>。最后令 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 为指示矩阵，如果 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 缺失，则第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 1，否则为 0，则如果 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的分布仅仅通过 <span class="math notranslate nohighlight">\(\mathbf Z_{obs}\)</span> 来依赖 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，数据称为 <strong>随机缺失 (MAR)</strong>：</p>
 <div class="math notranslate nohighlight">
 \[
-\Pr(\mathbf R\mid \mathbf Z,\theta) = \Pr(\mathbf R\mid\mathbf Z_{obs}, \theta)\tag{9.31}
+\mathrm{Pr}(\mathbf R\mid \mathbf Z,\theta) = \mathrm{Pr}(\mathbf R\mid\mathbf Z_{obs}, \theta)\tag{9.31}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\theta\)</span> 为 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的分布中的任意参数。如果 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的分布不依赖观测数据或者缺失数据，则数据称为<strong>完全随机缺失 (MCAR)</strong>：
 $<span class="math notranslate nohighlight">\(
-\Pr(\mathbf R\mid \mathbf Z,\theta) = \Pr(\mathbf R\mid \theta)\tag{9.32}
+\mathrm{Pr}(\mathbf R\mid \mathbf Z,\theta) = \mathrm{Pr}(\mathbf R\mid \theta)\tag{9.32}
 \)</span>$
 MCAR 是比 MAR 更强的假设：为了保证有效性，大部分的插补方法依赖 MCAR。</p>
 <p>举个例子，如果一个病人的测量没有被采用，是因为医生认为他病了，则这个观测不是 MAR 或者 MACR。这种情形下，缺失数据的缺失机制导致我们观测的训练数据是扭曲的真实总体的样本，这种情形下对数据插补是很危险的。通常确定特征是否是 MACR 必须从数据收集的过程中的信息做出判断。对于类别型特征，诊断这个问题是把缺失作为一个新的类别“缺失”。接着对训练数据拟合我们的模型来看看“缺失”这个类别是否预测了一些响应变量。</p>
@@ -1170,7 +1158,7 @@ MCAR 是比 MAR 更强的假设：为了保证有效性，大部分的插补方�
 <p>方式 (1) 用在缺失数据相对较少的情形，其它情形应该避免使用。至于 (2)，通过 <strong>代理分割 (surrogate splits)</strong> 的 CART 是有效处理缺失数据的一个学习算法（第 <span class="xref myst">9.2.4 节</span>）。MARS 和 PRIM 采用类似的方式。在广义加性建模中，在 backfitting 算法中对某特征的部分残差进行光滑时，忽略该给定输入特征的所有缺失观测，并且将它们的拟合值设为 0。因为拟合曲线的均值为 0（当模型包含截距时），这等价于对缺失的观测赋予平均的拟合值。</p>
 <p>对于大部分学习方法，插补方式 (3) 是必要的。最简单的策略是用该特征的非缺失数据的均值或中值进行插补。（注意到上面对广义加性模型的过程与这个类似。）</p>
 <p>如果特征至少有中等程度的依赖，可以通过估计每个特征在给定其他特征的情形下的预测模型，然后对每个缺失数据用模型的预测值进行插补。在选择插补特征的学习算法时，必须记住这个选择与从 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 估计 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的方法不同。因此通常更倾向于灵活的，自适应的方法，甚至对于在 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 上运用线性回归 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的最终目的。另外，如果在训练集中有许多缺失的特征值，学习算法自身要能够处理缺失的特征值。CART 因此是插补的理想选择。</p>
-<p>插补之后，缺失数据一般视为和实际观测的一样。这忽略了由于插补带来的不确定性，本身会对响应变量模型的估计和预测引入额外的不确定性。可以通过进行多重插补来衡量这种额外的不确定性，因此得到许多不同的训练集。对 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的预测模型可以对每个训练集进行拟合，并且可以评估训练集的方差。如果 CART 作为插补的工具，多重插补可以通过在对应的终止结点取样得到。</p>
+<p>插补之后，缺失数据一般视为和实际观测的一样。这忽略了由于插补带来的不确定性，本身会对响应变量模型的估计和预测引入额外的不确定性。可以通过进行多重插补来衡量这种额外的不确定性，因此得到许多不同的训练集。对 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的预测模型可以对每个训练集进行拟合，并且可以评估训练集的方差。如果 CART 作为插补的工具，多重插补可以通过在对应的终止结点采样得到。</p>
 <p>!!! info “weiya 注：R Programming”
 笔记<span class="xref myst">R 语言处理缺失数据</span>总结了 R 语言中处理缺失数据的一般步骤及代码。</p>
 <hr class="footnotes docutils" />
@@ -1204,31 +1192,22 @@ MCAR 是比 MAR 更强的假设：为了保证有效性，大部分的插补方�
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="9.5-Hierarchical-Mixtures-of-Experts.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">9.5 专家的分层混合</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="9.5-Hierarchical-Mixtures-of-Experts.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">9.5 专家的分层混合</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9.7-Computational-Considerations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">9.7 计算的考虑</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="9.7-Computational-Considerations.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">9.7 计算的考虑</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1249,8 +1228,7 @@ MCAR 是比 MAR 更强的假设：为了保证有效性，大部分的插补方�
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
