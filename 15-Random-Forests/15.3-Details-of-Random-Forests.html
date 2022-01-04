@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1165,7 +1165,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.3 随机森林的细节<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>我们忽略了随机森林用于分类和回归的区别。当用于分类，随机森林从每棵树中得到类别投票，接着采用多数投票来分类（见 <span class="xref myst">8.7 节</span> <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 类似的讨论）。当用于回归时，如式 \eqref{15.2}，在目标点 <span class="math notranslate nohighlight">\(x\)</span> 处每棵树的预测被简单地平均。</p>
+<style>p{text-indent:2em;2}</style>
+<p>我们忽略了随机森林用于分类和回归的区别。当用于分类，随机森林从每棵树中得到类别投票，接着采用多数投票来分类（见 <span class="xref myst">8.7 节</span> <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 类似的讨论）。当用于回归时，如式 式（ 15.2 ），在目标点 <span class="math notranslate nohighlight">\(x\)</span> 处每棵树的预测被简单地平均。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \hat f_{rf}^B(x) = \frac{1}{B}\sum\limits_{b=1}^BT(x;\Theta_b)\tag{15.2}
@@ -1239,7 +1240,7 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 <p>根据图 15.7，与 boosting 相比，这不会损害随机森林的表现。这种鲁棒性大部分是因为误分类代价相对于每棵树中概率估计的偏差和方差的不敏感性。我们在下一节考虑用于回归的随机森林。</p>
-<p>另外一个断言是随机森林不会过拟合数据。这显然是正确的，因为增大 <span class="math notranslate nohighlight">\(B\)</span> 不会使得随机森林序列过拟合；像 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 一样，随机森林估计式 \eqref{15.2} 在 <span class="math notranslate nohighlight">\(\Theta\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 个实现中取平均，这是对下面期望的近似</p>
+<p>另外一个断言是随机森林不会过拟合数据。这显然是正确的，因为增大 <span class="math notranslate nohighlight">\(B\)</span> 不会使得随机森林序列过拟合；像 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 一样，随机森林估计式 式（ 15.2 ） 在 <span class="math notranslate nohighlight">\(\Theta\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 个实现中取平均，这是对下面期望的近似</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_{rf}(x) = \mathbb{E}_\Theta T(x;\Theta)=\lim_{B\rightarrow \infty}\hat f(x)_{rf}^B\tag{15.3}

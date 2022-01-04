@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>前面的章节我们考虑了给定输入或预测变量 <span class="math notranslate nohighlight">\(X^T=(X_1,\ldots,X_p)\)</span> 来预测一个或多个输出或响应变量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_m)\)</span> 的值。记 <span class="math notranslate nohighlight">\(x_i^T=(x_{i1},\ldots,x_{ip})\)</span> 为第 <span class="math notranslate nohighlight">\(i\)</span> 个训练情形的输入，令 <span class="math notranslate nohighlight">\(y_i\)</span> 是响应变量的一个测量值。预测是基于已经知道的训练样本 <span class="math notranslate nohighlight">\((x_1,y_1),\ldots,(x_N,y_N)\)</span>，其中所有变量的联合分布值是知道的。这称为<strong>监督学习 (supervised learning)</strong> 或者“有老师指导的学习”。在这个比喻下，“学生”表示在训练样本中每个 <span class="math notranslate nohighlight">\(x_i\)</span> 的一个回答 <span class="math notranslate nohighlight">\(\hat y_i\)</span>，监督或者“老师”要么（不仅）提供正确的答案，要么（并且）给出该学生回答的误差。这通常用一些损失函数来表示 <span class="math notranslate nohighlight">\(L(y,\hat y)\)</span>，举个例子，<span class="math notranslate nohighlight">\(L(y,\hat y)=(y-\hat y)^2\)</span>。</p>
 <p>如果我们假设 <span class="math notranslate nohighlight">\((X,Y)\)</span> 是用某联合概率密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X,Y)\)</span> 表示的随机变量，则监督学习可以正式地表征为密度估计的问题，其中涉及确定条件密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y\mid X)\)</span>的性质。通常我们感兴趣的性质是在每个 <span class="math notranslate nohighlight">\(x\)</span> 处最小化期望误差的“位置”参数<span class="math notranslate nohighlight">\(\mu\)</span>，</p>
 <div class="math notranslate nohighlight">

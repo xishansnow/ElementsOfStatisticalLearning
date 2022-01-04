@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.9 非线性降维和局部多维缩放<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>最近有人提出了一些用于非线性降维的方法，类似主曲面的思想。想法是将数据看成位于一个嵌在高维空间中的 <strong>固有低维非线性流形 (intrinsically low-dimensional nonlinear manifold)</strong> 的附近。这些方法可以看成是“压扁(flattening)”流形，因此将数据降低至低维坐标系统中，用于表示点在流形中的相对位置。在信噪比非常高的问题中非常有用（比如，物理系统），而且对于有低信噪比的观测数据不是很有用。</p>
 <p><img alt="" src="../_images/fig14.44.png" /></p>
 <p>基本的目标在图 14.44 的左图中进行了说明。数据落在有较大曲率的抛物线附近。经典的 MDS 不能保持沿着这条曲线的点的顺序，因为它会将处于曲线两端的点看成离得非常近。右图显示了 <strong>局部多维缩放 (local multi-dimensional scaling, Local MDS)</strong> 的结果，我们将在下面讨论非线性多维缩放的三个方法中的其中一个。这些方法仅仅使用 <span class="math notranslate nohighlight">\(p\)</span> 维中点的坐标，不需要流形的其它信息。<strong>局部多维缩放</strong> 能够很好地保持沿着曲线的点的顺序。</p>
@@ -1171,12 +1172,12 @@ $<span class="math notranslate nohighlight">\(
 \[
 S_L(z_1,z_2,\ldots, z_N) = \sum\limits_{(i,i')\in \mathcal N}(d_{ii'}-\Vert z_i-z_{i'}\Vert)^2 + \sum\limits_{(i,i')\not\in \mathcal N}w\cdot (D-\Vert z_i-z_{i'}\Vert)^2\tag{14.105}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(D\)</span> 是某个较大的常数，<span class="math notranslate nohighlight">\(w\)</span> 是权重。想法是将不是邻居的点看成是距离非常远；这些点对被赋予小权重 <span class="math notranslate nohighlight">\(w\)</span> 使得它们不会主导整个压力函数。为了简化表达式，取 <span class="math notranslate nohighlight">\(w\sim 1/D\)</span>，并令 <span class="math notranslate nohighlight">\(D\rightarrow \infty\)</span>。展开式 \eqref{14.105}，得到</p>
+<p>这里 <span class="math notranslate nohighlight">\(D\)</span> 是某个较大的常数，<span class="math notranslate nohighlight">\(w\)</span> 是权重。想法是将不是邻居的点看成是距离非常远；这些点对被赋予小权重 <span class="math notranslate nohighlight">\(w\)</span> 使得它们不会主导整个压力函数。为了简化表达式，取 <span class="math notranslate nohighlight">\(w\sim 1/D\)</span>，并令 <span class="math notranslate nohighlight">\(D\rightarrow \infty\)</span>。展开式 式（ 14.105 ），得到</p>
 <div class="math notranslate nohighlight">
 \[
 S_L(z_1,z_2,\ldots, z_N)=\sum\limits_{(i, i')\in\mathcal N}(d_{ii'}-\Vert z_i-z_{i'}\Vert)^2-\tau \sum\limits_{(i,i')\not \in \mathcal N}\Vert z_i-z_{i'}\Vert\tag{14.106}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\tau =2wD\)</span>。式 \eqref{14.106} 试图保持数据的局部性质，而第二项促使非邻居对 <span class="math notranslate nohighlight">\((i, i')\)</span> 的 <span class="math notranslate nohighlight">\(z_i,z_{i'}\)</span> 更远。局部多维缩放在固定邻居个数 <span class="math notranslate nohighlight">\(K\)</span> 以及调整参数 <span class="math notranslate nohighlight">\(\tau\)</span> 的情况下，在 <span class="math notranslate nohighlight">\(z_i\)</span> 上最小化压力函数 \eqref{14.106}。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\tau =2wD\)</span>。式 式（ 14.106 ） 试图保持数据的局部性质，而第二项促使非邻居对 <span class="math notranslate nohighlight">\((i, i')\)</span> 的 <span class="math notranslate nohighlight">\(z_i,z_{i'}\)</span> 更远。局部多维缩放在固定邻居个数 <span class="math notranslate nohighlight">\(K\)</span> 以及调整参数 <span class="math notranslate nohighlight">\(\tau\)</span> 的情况下，在 <span class="math notranslate nohighlight">\(z_i\)</span> 上最小化压力函数 式（ 14.106 ）。</p>
 <p>图 14.44 的右图显示了采用 <span class="math notranslate nohighlight">\(k=2\)</span> 个邻居和 <span class="math notranslate nohighlight">\(\tau = 0.01\)</span> 的局部多维缩放的结果。我们采用多个起始值的 <strong>坐标下降 (coordinate descent)</strong> 来寻找（非凸）损失函数一个好的最小值。沿着曲线的点的顺序大部分都被保持了。</p>
 <p><img alt="" src="../_images/fig14.45.png" /></p>
 <p>图 14.45 显示了 LLE 方法的一个有趣的应用。数据包含 1965 张图象，数字化为 <span class="math notranslate nohighlight">\(20\times 28\)</span> 的灰白图象。图中展示了 LLE 的前两个坐标结果，它们解释了摆放位置以及表情的一些变异。类似的图象可以通过局部多维缩放得到。</p>

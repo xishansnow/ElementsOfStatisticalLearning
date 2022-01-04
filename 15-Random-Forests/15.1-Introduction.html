@@ -201,7 +201,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1135,6 +1135,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><span class="xref myst">8.7 节</span>中的 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 或者 bootstrap aggregation 都是为了降低估计的预测函数的方差。Bagging 似乎对于高方差、低偏差的过程表现得特别好，比如树。对于回归， 我们简单地对训练数据的 bootstrap 版本进行多次同样的回归树，然后取结果的平均。对于分类，作为 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 的每棵树对预测的类别进行投票。</p>
 <p>!!! note “weiya 注”
 在 <span class="xref myst">8.8 节</span>，用了这样一句话来介绍 Committee Method，“Committee methods take a simple unweighted average of the predictions from each model, essentially giving equal probability to each model.” 简单来说就是，对于一系列模型，committee 方法将这一系列模型得到的预测值进行简单平均。比如，对于分类而言，模型的预测值是类别标签，Committee 方法则是统计各个模型预测的类别标签（然后进行平均，如果只关注票数，是否平均并不重要），这就类似选举时委员会投票。</p>

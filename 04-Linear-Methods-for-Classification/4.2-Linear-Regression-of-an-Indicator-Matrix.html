@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>4.2 指示矩阵的线性回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>这里每个类别型响应变量用一个指示变量来编码。因此如果 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，则会有 <span class="math notranslate nohighlight">\(K\)</span> 个指示变量 <span class="math notranslate nohighlight">\(Y_k,\;k=1,\ldots,K\)</span>，若 <span class="math notranslate nohighlight">\(G=k\)</span>，则 <span class="math notranslate nohighlight">\(Y_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y_k=0\)</span>。用向量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_K)\)</span> 来表示它们, 则这种形式的 <span class="math notranslate nohighlight">\(N\)</span> 个训练实例组成了 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>。<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 由 0 和 1 组成，每一行只含有一个 1。我们对 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的每一列同时用线性回归模型做拟合，拟合值由下式给出</p>
 <div class="math notranslate nohighlight">
 \[

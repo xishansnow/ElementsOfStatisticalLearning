@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1150,6 +1150,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="prim">
 <h1>9.3 PRIM<a class="headerlink" href="#prim" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>基于树的方法（用于回归）将特征空间分成盒状的区域，来试图使每个盒子中的响应变量尽可能不同。通过二叉树定义了与每个盒子相关的分割规则，这有利于它们的解释性。</p>
 <p><strong>耐心规则归纳法 (PRIM)</strong> 也在特征空间中找盒子，但是它是寻找具有高平均响应的盒子。因此它是在寻找目标函数的最大值，称为<strong>bump hunting</strong>。（如果需要最小值而非最大值，可以简单地用负的响应变量值来转化。）</p>
 <p>!!! note “weiya 注：翻译相关”

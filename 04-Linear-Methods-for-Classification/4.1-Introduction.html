@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>4.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>这章我们重新回到分类问题，并且集中讨论分类的线性方法。因为我们的预测变量 <span class="math notranslate nohighlight">\(G(x)\)</span> 是在离散集 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 中取值，所以我们总是可以根据类别把输入空间分成一些区域的集合。在<span class="xref myst">第 2 章</span>我们看到这些区域的边界会随着预测函数的不同而变得粗糙或者光滑。这个过程的一个很重要的类是 <strong>线性判别边界 (decision boundaries)</strong>；这也是我们说的分类的线性方法。</p>
 <p>可以通过许多不同的方式找到线性判别边界。在第二章中，我们根据类别指示变量拟合线性回归模型，并将观测点分到拟合值最大的类别。假设有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，为了方便记为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>，第 <span class="math notranslate nohighlight">\(k\)</span> 个响应的指示变量拟合的线性模型为 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat\beta_{k0}+\hat\beta_k^Tx\)</span>。第 <span class="math notranslate nohighlight">\(k\)</span> 类和第 <span class="math notranslate nohighlight">\(l\)</span> 类的判别边界是满足 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat f_\ell(x)\)</span> 的点的集合，也就是集合 <span class="math notranslate nohighlight">\(\\{x:(\hat\beta_{k0}-\hat\beta_{\ell 0})+(\hat\beta_k-\hat\beta_\ell)^Tx=0\\}\)</span>，这是一个仿射集或者超平面。</p>
 <p>!!! note “weiya 注：作者脚注”

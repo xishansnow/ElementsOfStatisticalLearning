@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.7 多重输出的收缩和选择 &#8212; 统计学习精要(中文)</title>
+    <title>3.7 多输出的收缩和选择 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1136,13 +1136,14 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>3.7 多重输出的收缩和选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>3.7 多输出的收缩和选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>如 <a class="reference external" href="3.2-Linear-Regression-Models-and-Least-Squares/index.html#_3">3.2.4 节</a>所述，多重输出线性模型的最小二乘估计可以简单地看成是关于每个输出的最小二乘估计。</p>
 <p>!!! note “weiya 注：”
 $<span class="math notranslate nohighlight">\(
     \hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}
     \)</span>$</p>
-<p>为了在多重输出情形中应用选择和收缩的方法，可以对每个输出变量单独地应用单变量的技巧，或对全部的输出变量同时进行。举个例子，对于岭回归，我们可以对输出矩阵 <span class="math notranslate nohighlight">\(Y\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 列中的每一列应用 \eqref{3.44}，其中参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 可能不同，或者采用相同的 <span class="math notranslate nohighlight">\(\lambda\)</span>。第一种策略允许对不同的输出应用不同程度的正则化，但是需要估计 <span class="math notranslate nohighlight">\(k\)</span> 个独立的正则化参数 <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_k\)</span>，而第二种策略可以在估计单独的正则化参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 时应用全部的 <span class="math notranslate nohighlight">\(k\)</span> 个输出。</p>
+<p>为了在多重输出情形中应用选择和收缩的方法，可以对每个输出变量单独地应用单变量的技巧，或对全部的输出变量同时进行。举个例子，对于岭回归，我们可以对输出矩阵 <span class="math notranslate nohighlight">\(Y\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 列中的每一列应用 式（ 3.44 ），其中参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 可能不同，或者采用相同的 <span class="math notranslate nohighlight">\(\lambda\)</span>。第一种策略允许对不同的输出应用不同程度的正则化，但是需要估计 <span class="math notranslate nohighlight">\(k\)</span> 个独立的正则化参数 <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_k\)</span>，而第二种策略可以在估计单独的正则化参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 时应用全部的 <span class="math notranslate nohighlight">\(k\)</span> 个输出。</p>
 <p>其它更复杂的收缩和选择的策略利用了多重输出情形中不同响应变量间的相关性，这可能会有帮助。举个例子，假设在这些输出变量中，我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1151,7 +1152,7 @@ Y_k &amp; = f(X) + \varepsilon_k\tag{3.65}\\
 Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}
 \end{align*}
 \end{split}\]</div>
-<p>也就是说，<span class="math notranslate nohighlight">\(\eqref{3.65}\)</span> 和 <span class="math notranslate nohighlight">\(\eqref{3.66}\)</span> 在它们的模型中共享相同的结构 <span class="math notranslate nohighlight">\(f(X)\)</span>。这种情形下很明显我们应该合并 <span class="math notranslate nohighlight">\(Y_k\)</span> 和 <span class="math notranslate nohighlight">\(Y_\ell\)</span> 来估计共同的 <span class="math notranslate nohighlight">\(f\)</span>。</p>
+<p>也就是说，<span class="math notranslate nohighlight">\(式（ 3.65 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 3.66 ）\)</span> 在它们的模型中共享相同的结构 <span class="math notranslate nohighlight">\(f(X)\)</span>。这种情形下很明显我们应该合并 <span class="math notranslate nohighlight">\(Y_k\)</span> 和 <span class="math notranslate nohighlight">\(Y_\ell\)</span> 来估计共同的 <span class="math notranslate nohighlight">\(f\)</span>。</p>
 <p>合并响应变量是 <strong>典则相关分析 (canonical correlation analysis, CCA)</strong> 的核心，这是一种为多元输出情形提出的数据降维的技巧。类似 PCA，CCA 寻找 <span class="math notranslate nohighlight">\(x_j\)</span> 的一列不相关的线性组合 <span class="math notranslate nohighlight">\(X v_m, m=1,\ldots,M\)</span>，以及对应的响应变量 <span class="math notranslate nohighlight">\(y_k\)</span> 的不相关的线性组合 <span class="math notranslate nohighlight">\(Y u_m\)</span>，使得相关系数</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1189,7 +1190,7 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}
 <p>其中 <span class="math notranslate nohighlight">\(\H\)</span> 是一般的线性回归映射算子，而 <span class="math notranslate nohighlight">\(\P_m\)</span> 是秩为 <span class="math notranslate nohighlight">\(m\)</span> 的 CCA 响应变量投影算子。尽管 <span class="math notranslate nohighlight">\(\bSigma\)</span> 更好的估计为 <span class="math notranslate nohighlight">\((Y-X\hat\B)^T(Y-X\hat\B)/(N-pK)\)</span>，但是可以证明解是一样的（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">练习 3.22</a>）。</p>
 <p>!!! info “weiya 注：Ex. 3.22”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">Issue 175: Ex. 3.22</a>，欢迎交流讨论！</p>
-<p>降秩回归通过截断 CCA 从响应变量中借来了优势变量。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id4">3</a> 探索了 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 间典则变量的逐步收缩，这是光滑版本的降秩回归。他们的方法有如下形式（与 \eqref{3.69} 对应）</p>
+<p>降秩回归通过截断 CCA 从响应变量中借来了优势变量。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id4">3</a> 探索了 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 间典则变量的逐步收缩，这是光滑版本的降秩回归。他们的方法有如下形式（与 式（ 3.69 ） 对应）</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\B^{c+w} = \hat\B\U\bLambda\U^{-1}\,,\tag{3.72}
@@ -1210,7 +1211,7 @@ Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}
 \[
 \hatY^{\mathrm{ridge},c+w}=\A_\lambdaY\S^{c+w}\,,\tag{3.75}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = X(X^TX+\lambda\I)^{-1}X^T\)</span> 是岭回归收缩算子，和 \eqref{3.46} 一样。他们的文章及其讨论有更多细节。</p>
+<p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = X(X^TX+\lambda\I)^{-1}X^T\)</span> 是岭回归收缩算子，和 式（ 3.46 ） 一样。他们的文章及其讨论有更多细节。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}

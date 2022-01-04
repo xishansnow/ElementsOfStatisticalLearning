@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1155,6 +1155,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>16.3 学习集成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>利用前面章节的知识得到更高效的集成模型。我们继续考虑下面形式的函数</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1181,7 +1182,7 @@ $<span class="math notranslate nohighlight">\(
 \[
 f(x)=\int\beta(\gamma)b(x;\gamma)d\gamma\tag{16.10}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\gamma\in \Gamma\)</span> 对基函数 <span class="math notranslate nohighlight">\(b(x;\gamma)\)</span> 进行了编号。举个例子，如果基函数为树，则 <span class="math notranslate nohighlight">\(\gamma\)</span> 索引了分离变量、分离点以及终止结点里面的值。<strong>数值积分 (numerical quadrature)</strong> 意味着寻找 <span class="math notranslate nohighlight">\(M\)</span> 个赋值点 <span class="math notranslate nohighlight">\(\gamma_m\in\Gamma\)</span> 的集合，以及对应的权重 <span class="math notranslate nohighlight">\(\alpha_m\)</span> 使得 <span class="math notranslate nohighlight">\(f_M(x)=\alpha_0+\sum\limits_{m=1}^M\alpha_mb(x;\gamma_m)\)</span> 在 <span class="math notranslate nohighlight">\(x\)</span> 的定义域内近似 <span class="math notranslate nohighlight">\(f(x)\)</span>。<strong>重要度采样 (Importance Sampling)</strong> 意味着随机对 <span class="math notranslate nohighlight">\(\gamma\)</span> 采样，但是对于空间 <span class="math notranslate nohighlight">\(\Gamma\)</span> 的相关区域赋予更大的权重。Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id5">1</a> 建议采用损失函数 \eqref{16.9} 来衡量相关性（的缺失）：</p>
+<p>其中 <span class="math notranslate nohighlight">\(\gamma\in \Gamma\)</span> 对基函数 <span class="math notranslate nohighlight">\(b(x;\gamma)\)</span> 进行了编号。举个例子，如果基函数为树，则 <span class="math notranslate nohighlight">\(\gamma\)</span> 索引了分离变量、分离点以及终止结点里面的值。<strong>数值积分 (numerical quadrature)</strong> 意味着寻找 <span class="math notranslate nohighlight">\(M\)</span> 个赋值点 <span class="math notranslate nohighlight">\(\gamma_m\in\Gamma\)</span> 的集合，以及对应的权重 <span class="math notranslate nohighlight">\(\alpha_m\)</span> 使得 <span class="math notranslate nohighlight">\(f_M(x)=\alpha_0+\sum\limits_{m=1}^M\alpha_mb(x;\gamma_m)\)</span> 在 <span class="math notranslate nohighlight">\(x\)</span> 的定义域内近似 <span class="math notranslate nohighlight">\(f(x)\)</span>。<strong>重要度采样 (Importance Sampling)</strong> 意味着随机对 <span class="math notranslate nohighlight">\(\gamma\)</span> 采样，但是对于空间 <span class="math notranslate nohighlight">\(\Gamma\)</span> 的相关区域赋予更大的权重。Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id5">1</a> 建议采用损失函数 式（ 16.9 ） 来衡量相关性（的缺失）：</p>
 <div class="math notranslate nohighlight">
 \[
 Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma))\tag{16.11}
@@ -1202,7 +1203,7 @@ Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma)
 <ul class="simple">
 <li><p>Bagging：<span class="math notranslate nohighlight">\(\eta=1\)</span>，但是是有放回地采样，并且有 <span class="math notranslate nohighlight">\(\nu=0\)</span>。Friedman and Hall (2007)<a class="footnote-reference brackets" href="#id13" id="id7">2</a> 认为 <span class="math notranslate nohighlight">\(\eta=\frac 12\)</span> 时无放回抽样等价于 <span class="math notranslate nohighlight">\(\eta=1\)</span> 时的采样，并且前者更有效。</p></li>
 <li><p>Random forest 的采样也类似，只是通过分离变量的选择引入了更多的随机性。在算法 16.2 中降低 <span class="math notranslate nohighlight">\(\eta&lt;\frac 12\)</span> 与随机森林中减低 <span class="math notranslate nohighlight">\(m\)</span> 有类似的效果，但是不会有 <span class="xref myst">15.4.2 节</span> 中讨论的潜在的偏差问题。</p></li>
-<li><p>Gradient boosting，收缩为 \eqref{10.41} 时采用 <span class="math notranslate nohighlight">\(\eta=1\)</span>，但是一般不会得到充分大的 <span class="math notranslate nohighlight">\(\sigma\)</span>。</p></li>
+<li><p>Gradient boosting，收缩为 式（ 10.41 ） 时采用 <span class="math notranslate nohighlight">\(\eta=1\)</span>，但是一般不会得到充分大的 <span class="math notranslate nohighlight">\(\sigma\)</span>。</p></li>
 <li><p>Stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id14" id="id8">3</a>) 完全遵循这个方法。</p></li>
 </ul>
 <p>!!! note “Recall”
@@ -1211,7 +1212,7 @@ $<span class="math notranslate nohighlight">\(
     \)</span>$</p>
 <p>作者建议 <span class="math notranslate nohighlight">\(\nu=0.1\)</span> 且 <span class="math notranslate nohighlight">\(\eta\le \frac 12\)</span>，并且称他们的结合过程（ensemble 的产生和后处理）为 Importance sampled learning ensemble (ISLE)。</p>
 <p><img alt="" src="../_images/fig16.7.png" /></p>
-<p>图 16.7 展示了 ISLE 在垃圾短信数据上的表现。它不能提高预测表现，却能得到更简单的模型。注意到实际中后处理包括 \eqref{16.9} 中正规参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的选取，这可以通过交叉验证来选择。这里我们仅仅简单地通过展示测试数据上整个路径来表明后处理的影响。</p>
+<p>图 16.7 展示了 ISLE 在垃圾短信数据上的表现。它不能提高预测表现，却能得到更简单的模型。注意到实际中后处理包括 式（ 16.9 ） 中正规参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的选取，这可以通过交叉验证来选择。这里我们仅仅简单地通过展示测试数据上整个路径来表明后处理的影响。</p>
 <p><img alt="" src="../_images/fig16.8.png" /></p>
 <p>图 16.8 显示了回归例子上不同的 ISLE。生成函数为</p>
 <div class="math notranslate nohighlight">
@@ -1237,7 +1238,7 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 \end{align*}
 \tag{16.14}
 \end{split}\]</div>
-<p>关于规则 1, 4, 5 和 6 的线性回归等价于树本身（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/189">练习 16.3</a>）；因此 \eqref{16.14} 是这棵树 <strong>过充分 (over-complete)</strong> 的基。</p>
+<p>关于规则 1, 4, 5 和 6 的线性回归等价于树本身（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/189">练习 16.3</a>）；因此 式（ 16.14 ） 是这棵树 <strong>过充分 (over-complete)</strong> 的基。</p>
 <p>对于一个 ensemble <span class="math notranslate nohighlight">\(\mathcal T\)</span>，我们可以构造规则的 mini-ensemble <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}^m\)</span>，并且然后结合形成更大的 ensemble</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1250,7 +1251,7 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 <li><p>规则比树更好解释，所以有更简单模型的潜力。</p></li>
 <li><p>经常通过分开加入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 来增广 <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}\)</span>，因此允许 ensemble 能够很好地建立线性模型。</p></li>
 </ul>
-<p>Friedman and Popescu (2008)<a class="footnote-reference brackets" href="#id15" id="id11">4</a> 在一系列例子中展示了这个过程的能力，包括模拟例子 \eqref{16.13}。图 16.10 展示了从该模型得到的 20 次实现的真实模型的均方误差的箱线图。采用 <code class="docutils literal notranslate"><span class="pre">Rulefit</span></code> 软件所有模型都能拟合，这个软件可以在 <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">ESL 主页</a>找到，它采用自动的模式运行。</p>
+<p>Friedman and Popescu (2008)<a class="footnote-reference brackets" href="#id15" id="id11">4</a> 在一系列例子中展示了这个过程的能力，包括模拟例子 式（ 16.13 ）。图 16.10 展示了从该模型得到的 20 次实现的真实模型的均方误差的箱线图。采用 <code class="docutils literal notranslate"><span class="pre">Rulefit</span></code> 软件所有模型都能拟合，这个软件可以在 <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">ESL 主页</a>找到，它采用自动的模式运行。</p>
 <p>如在图 16.8 中使用的同样的训练集，基于规则的模型能够达到 1.06 的均方误差。尽管这比图中最优的要略差，但是结果是不可比的，因为这里用的交叉验证是来选择最终模型的。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

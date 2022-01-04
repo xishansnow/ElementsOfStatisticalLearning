@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1150,6 +1150,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.1 boosting方法<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>!!! note “更新笔记”
 &#64;2017.08.26 很早以前，略读了杨灿学长的<a class="reference external" href="https://cosx.org/2011/12/stories-about-statistical-learning/">《统计学习那些事》</a>，但其实没什么感受，因为当时也没看到 boosting，对 lasso 了解也不多。而当我早早完成 boosting 的翻译后，又一直搁着没有再次阅读学长的文章。杨灿学长用风趣的笔墨从 lasso 和 boosting 的发展来看统计学习的那些事，个人觉得对于了解统计大佬们开创这些“绝世武功”的历史进程是很有帮助的。杨灿学长的<a class="reference external" href="https://cosx.org/2014/04/lmmandme">《昔日因，今日意》</a>和<a class="reference external" href="https://cosx.org/2012/05/chase-after-eb/">《那些年，我们一起追的 EB》</a>，我也是非常喜欢的，相信看了这么有趣的标题，不去拜读都不行啊hhh:grinning:在今年北京 R 会议上还听了杨灿学长的汇报，报告的主题也是跟 boosting 有关，当时还激动地跟他互动了一下，提了几个问题 :raised_hand:。也是从那时候才知道，杨灿学长原来还是校友。</p>
 <p>Boosting 是最近 20 年内提出的最有力的学习方法。最初是为了分类问题而设计的，但是我们将在这章中看到，它也可以很好地扩展到回归问题上。Boosting的动机是集合许多弱学习的结果来得到有用的“committee”。从这点看 boosting 与 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 以及其他的基于 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 的方式（<span class="xref myst">8.8 节</span>）类似。然而，我们应该看到这种联系最多是表面上的，boosting 在根本上存在不同。</p>
@@ -1187,7 +1188,7 @@ Y=
 这里 \)</span>\chi_{10}^2(0.5)=9.34<span class="math notranslate nohighlight">\( 是自由度为 10 的卡方随机变量的中位数（10 个标准的高斯分布的平方和）。有 2000 个训练样本，每个类别大概有 1000 个样本，以及 10000 个测试观测。这里的弱分类器仅仅是一个“stump”：含两个终止结点的分类树。仅仅对训练数据应用分类器会得到非常差的测试集误差率（45.8%），与 50% 的随机猜测相差不多。然而，当不断进行 boosting 迭代，误差率将稳定下降，直到 400 次迭代之后达到 5.8%。因此，对这一简单的非常弱的分类器进行boosting，其预测误差率可以几乎降低四分之一。它也比单个的大规模分类树（误差率为 24.7%）表现得要好。自从它的提出，有很多理论来解释 AdaBoost 能成功得到正确分类器。很多工作集中在用分类树作为“基学习者(base learner)”\)</span>G(x)$，改善经常是非常显著的。事实上，Breiman(NIPS Workshop，1996) 将树的 AdaBoost 称为“世界上最好的现成分类器”(best off-the-shelf classifier in the world)。这对于数据挖掘方面的应用尤其如此，本章的后面将更全面地讨论。</p>
 <p><img alt="" src="../_images/fig10.2.png" /></p>
 <blockquote>
-<div><p>图 10.2. \eqref{10.2} 的模拟数据：对 stumps 进行 boosting 的测试误差率作为迭代次数的函数。图中也显示了单个 stump 和 244 个结点的分类树的测试误差率。</p>
+<div><p>图 10.2. 式（ 10.2 ） 的模拟数据：对 stumps 进行 boosting 的测试误差率作为迭代次数的函数。图中也显示了单个 stump 和 244 个结点的分类树的测试误差率。</p>
 </div></blockquote>
 <p>!!! note “weiya注”
 笔记<a class="reference external" href="https://esl.hohoweiya.xyz/notes/boosting/sim-eq-10-2/index.html">模拟：Eq. 10.2</a>记录了用Julia和R实现的模拟过程。</p>

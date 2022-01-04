@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>17.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><strong>图 (Graph)</strong> 由顶点（结点）集，以及连接顶点对的边集构成。在图模型中，每个顶点表示一个随机变量，并且图给出了一种理解全体随机变量联合分布的可视化方式。对于监督学习和非监督学习它们都是很有用的。在 <strong>无向图 (undirected graph)</strong> 中，边是没有方向的。我们仅限于讨论无向图模型，也称作 <strong>马尔科夫随机域 (Markov random fields)</strong> 或者 <strong>马尔科夫网络 (Markov networks)</strong>。在这些图中，两个顶点间缺失一条边有着特殊的含义：对应的随机变量在给定其它变量下是条件独立的。</p>
 <p>图 17.1 显示了一个图模型的例子，这是 <span class="math notranslate nohighlight">\(p=11\)</span> 个蛋白质在 <span class="math notranslate nohighlight">\(N=7466\)</span> 个细胞中的 <code class="docutils literal notranslate"><span class="pre">flow-cytometry</span></code> 数据集，取自 Sachs et. al (2005)<a class="footnote-reference brackets" href="#id4" id="id2">1</a>。图中的每一个顶点对应蛋白质表达水平的真实值。网络结构是在假定多元高斯分布情况下利用本章后面将要讨论的 graphical lasso 过程估计得到的。</p>
 <p><img alt="" src="../_images/fig17.1.png" /></p>

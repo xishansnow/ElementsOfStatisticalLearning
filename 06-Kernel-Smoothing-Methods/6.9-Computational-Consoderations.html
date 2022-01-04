@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.9 计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>核和局部回归以及密度估计都是 <strong>基于内存的 (memory-based)</strong> 方法：模型是整个训练数据集，并且在赋值或者预测的时候完成拟合。对于许多实时的应用，这使得这类方法不可行。</p>
 <p>在单个观测点 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合的计算代价为 <span class="math notranslate nohighlight">\(O(N)\)</span> 次 flop，除了过于简单的情形（比如平方核）。通过比较，包含 <span class="math notranslate nohighlight">\(M\)</span> 个基函数的展开式一次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>，一般有 <span class="math notranslate nohighlight">\(M\sim O(\log N)\)</span>。基函数方法至少有 <span class="math notranslate nohighlight">\(O(NM^2+M^3)\)</span>的初始代价。</p>

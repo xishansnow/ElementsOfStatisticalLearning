@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1155,6 +1155,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>13.4 自适应最近邻方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>当在高维特征空间中做最近邻分类时，最近邻的点可以离得非常远，带来偏差，并且降低了分类器的效果。</p>
 <p>为了量化这一点，考虑在单位立方体 <span class="math notranslate nohighlight">\([-\frac{1}{2},\frac{1}{2}]^p\)</span> 中均匀分布的 <span class="math notranslate nohighlight">\(N\)</span> 个数据点。令 <span class="math notranslate nohighlight">\(R\)</span> 为中心在原点的 1-最近邻的半径。则</p>
 <div class="math notranslate nohighlight">
@@ -1162,7 +1163,7 @@
 \text{median}(R) = v_p^{-\frac{1}{p}}\left(1-\frac{1}{2}^{1/N}\right)^{1/p}\tag{13.7}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(v_pr^p\)</span> 是 <span class="math notranslate nohighlight">\(p\)</span> 维空间半径为 <span class="math notranslate nohighlight">\(r\)</span> 的球的体积。</p>
-<p>!!! note “weiya 注：推导 \eqref{13.7}”
+<p>!!! note “weiya 注：推导 式（ 13.7 ）”
 记 <span class="math notranslate nohighlight">\(X\)</span> 为离原点的距离，根据点的均匀分布知
 $<span class="math notranslate nohighlight">\(
 	F(X) = P(X&lt;x)=v_px^p
@@ -1210,7 +1211,7 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}
 <p>这里 <span class="math notranslate nohighlight">\(W\)</span> 是 <strong>合并的 (pooled)</strong> 类别内协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_kW_k\)</span>，并且 <span class="math notranslate nohighlight">\(\B\)</span> 是类别间协方差矩阵 <span class="math notranslate nohighlight">\(\sum_{k=1}^K\pi_k(\bar x_k-\bar x)(\bar x_k-\bar x)^T\)</span>，其中 <span class="math notranslate nohighlight">\(W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 仅用 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的 50 个最近邻点。计算完这个度量之后，可以用来构造 <span class="math notranslate nohighlight">\(x_0\)</span> 处的最近邻规则。</p>
 <p>这个复杂的公式实际上计算很简单。它首先将数据关于 <span class="math notranslate nohighlight">\(W\)</span> 进行球面化，接着沿着 <span class="math notranslate nohighlight">\(\B^*\)</span>（球面化数据的类间方差）的零特征值方向拉伸邻域。参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 围绕着邻域，从无穷的长条到椭球，避免使用离查询点过远的点。一般 <span class="math notranslate nohighlight">\(\epsilon=1\)</span> 的效果很好。</p>
 <p><img alt="" src="../_images/fig13.14.png" /></p>
-<p>图 13.14 展示了某个问题中得到的邻域，其中类别构成了两个同心圆。注意到当邻域中同时存在两个类别的点时，邻域是怎么沿着判别边界的方向进行拉伸。在只有一个类别的区域中，邻居仍保持圆形；这种情形下类间协方差矩阵 <span class="math notranslate nohighlight">\(\B=0\)</span>，并且 \eqref{13.8} 是单位矩阵。</p>
+<p>图 13.14 展示了某个问题中得到的邻域，其中类别构成了两个同心圆。注意到当邻域中同时存在两个类别的点时，邻域是怎么沿着判别边界的方向进行拉伸。在只有一个类别的区域中，邻居仍保持圆形；这种情形下类间协方差矩阵 <span class="math notranslate nohighlight">\(\B=0\)</span>，并且 式（ 13.8 ） 是单位矩阵。</p>
 <p>!!! note “weiya 注：”
 谢谢 <a class="reference external" href="https://disqus.com/by/qianyy/">&#64;ian Chin</a> 提醒，这里可能是作者笔误，应当是沿着 <strong>判别边界的方向</strong> 进行拉伸，而非 <strong>垂直判别边界的方向</strong>。</p>
 <div class="section" id="id6">
@@ -1232,7 +1233,7 @@ D(x,x_0)=(x-x_0)^T\bSigma(x-x_0)\,,\tag{13.8}
 \[
 \underset{\rank(\M)=L}{\min}\sum_{i=1}^N\mathrm{trace}[(\B_i - \M)^2]\,.\tag{13.11}
 \]</div>
-<p>因为每个 <span class="math notranslate nohighlight">\(\B_i\)</span> 包含的信息有 (a) 局部判别子空间 (b) 子空间差异的强度，\eqref{13.11} 可以看成是通过加权最小二乘寻找 <span class="math notranslate nohighlight">\(N\)</span> 个子空间序列的秩为 <span class="math notranslate nohighlight">\(L\)</span> 的最优子空间近似（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/170">练习 13.5</a>）。</p>
+<p>因为每个 <span class="math notranslate nohighlight">\(\B_i\)</span> 包含的信息有 (a) 局部判别子空间 (b) 子空间差异的强度，式（ 13.11 ） 可以看成是通过加权最小二乘寻找 <span class="math notranslate nohighlight">\(N\)</span> 个子空间序列的秩为 <span class="math notranslate nohighlight">\(L\)</span> 的最优子空间近似（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/170">练习 13.5</a>）。</p>
 <p>上面提到的四维球体例子，Hastie and Tibshirani (1996a)<a class="footnote-reference brackets" href="#id12" id="id9">2</a> 进行了研究，四个特征值 <span class="math notranslate nohighlight">\(\theta_\ell\)</span> 很大（其特征向量几乎张成了感兴趣的子空间），并且剩下的 6 个接近为 0。操作上，我们将数据投影到该四维子空间中，接着应用最近邻分类。在 13.3.2 节中的卫星图象分类例子，图 13.8 中标签为 <code class="docutils literal notranslate"><span class="pre">DANN</span></code> 的方法采用全局降维子空间的 5 最近邻。 Duan and Li (1991)<a class="footnote-reference brackets" href="#id15" id="id10">5</a> 的 sliced inverse regression 方法与这个方法也有些联系。他们在回归设定中采用类似的想法，但是进行全局的计算，而不是局部的。他们假设并利用特征分布的球对称性来估计感兴趣的子空间。</p>
 <p>!!! tip “weiya 注：SIR (Sliced Inverse Regression)”
 <a class="reference external" href="https://stats.hohoweiya.xyz//2019/01/05/SIR/">SIR and Its Implementation | WeiYa’s Work Yard</a> 记录了 Duan and Li (1991) 的主要算法，并用 R 语言重现了论文的结果。</p>

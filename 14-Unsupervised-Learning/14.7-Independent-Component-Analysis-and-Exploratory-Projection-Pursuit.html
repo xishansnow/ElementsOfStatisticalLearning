@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1184,6 +1184,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.7 独立成分分析和探索投影寻踪<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>多元数据经常被看成是从未知来源多次间接测量的数据，一般不能被直接测量。例子有：</p>
 <ul class="simple">
 <li><p>在教育或心理学测试中，采用问卷调查来衡量潜在的智商以及其他的心理特征。</p></li>
@@ -1197,7 +1198,7 @@
 $<span class="math notranslate nohighlight">\(
 	\mathbf{X=UDV^T}\tag{14.54}
 	\)</span>$</p>
-<p>奇异值分解 \eqref{14.54} <span class="math notranslate nohighlight">\(\mathbf X=\mathbf{UDV}^T\)</span> 可以表示成潜变量的形式。记 <span class="math notranslate nohighlight">\(\mathbf S=\sqrt{N}\mathbf U\)</span>，以及 <span class="math notranslate nohighlight">\(\mathbf A^T=\mathbf{DV}^T/\sqrt{N}\)</span>，我们有 <span class="math notranslate nohighlight">\(\mathbf{X=SA}^T\)</span>，因此 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的每一列是 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的列的线性组合。现在因为 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 是正交的，并且和之前一样假设 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列均值为 0（因此 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 也是），这意味着 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 列均值为 0，而且不相关，有单位方差。</p>
+<p>奇异值分解 式（ 14.54 ） <span class="math notranslate nohighlight">\(\mathbf X=\mathbf{UDV}^T\)</span> 可以表示成潜变量的形式。记 <span class="math notranslate nohighlight">\(\mathbf S=\sqrt{N}\mathbf U\)</span>，以及 <span class="math notranslate nohighlight">\(\mathbf A^T=\mathbf{DV}^T/\sqrt{N}\)</span>，我们有 <span class="math notranslate nohighlight">\(\mathbf{X=SA}^T\)</span>，因此 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的每一列是 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的列的线性组合。现在因为 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 是正交的，并且和之前一样假设 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列均值为 0（因此 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 也是），这意味着 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 列均值为 0，而且不相关，有单位方差。</p>
 <p>!!! note “weiya 注：”
 对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行列中心化相当于左乘 <span class="math notranslate nohighlight">\(\mathbf{I - M}\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf M = 11^T/N\)</span>，进行 SVD 分解
 $<span class="math notranslate nohighlight">\(
@@ -1248,8 +1249,8 @@ X_p&amp;=a_{p1}S_1+a_{p2}S_2+\cdots+a_{pq}S_q+\varepsilon_p
 \bSigma=\A\A^T+\D_\varepsilon \tag{14.81}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\D_\varepsilon = \mathrm{diag}[\mathrm{Var}(\varepsilon_1),\ldots, \mathrm{Var}(\varepsilon_p)]\)</span>。<span class="math notranslate nohighlight">\(S_\ell\)</span> 为高斯并且不相关，这使得它们在统计上是独立随机变量。因此一系列的教育考试成绩可以认为是有潜在独立的因子，比如 <em>智力 (intelligence)</em>，<em>动机 (drive)</em> 等等所决定的。 <span class="math notranslate nohighlight">\(\A\)</span> 的列被称为<strong>因子载荷(factor loadings)</strong>，而且用来命名因子和解释因子。</p>
-<p>不幸的是, 唯一性问题 <span class="math notranslate nohighlight">\(\eqref{14.79}\)</span> 仍然存在, 因为在式 <span class="math notranslate nohighlight">\(\eqref{14.81}\)</span> 中, 对于任意 <span class="math notranslate nohighlight">\(q\times q\)</span> 的正交矩阵 <span class="math notranslate nohighlight">\(\R\)</span>, <span class="math notranslate nohighlight">\(\A\)</span> 和 <span class="math notranslate nohighlight">\(\A\R^T\)</span> 是等价的。这导致了因子分析中的主观性, 因为用户可以寻找因子更易解释的旋转版本. 这点使得许多分析学家对因子分析表示怀疑, 而且这可能是它在当代统计中不受欢迎的原因。尽管我们这里不继续讨论细节，但是 SVD 分解在 \eqref{14.81} 的估计上发挥重要作用。举个例子，假设 <span class="math notranslate nohighlight">\(\mathrm{Var}(\varepsilon_j)\)</span> 相等，SVD 的前 <span class="math notranslate nohighlight">\(q\)</span> 个成分确定了由 <span class="math notranslate nohighlight">\(\A\)</span> 张成的子空间。</p>
-<p>因为每个 <span class="math notranslate nohighlight">\(X_j\)</span> 独立的扰动 <span class="math notranslate nohighlight">\(\varepsilon_j\)</span>，因子分析可以看成是对 <span class="math notranslate nohighlight">\(X_j\)</span> 的相关性结构进行建模，而非对协方差结构建模。这个可以通过对 <span class="math notranslate nohighlight">\(\eqref{14.81}\)</span> 的协方差结构进行标准化后得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/51">练习 14.14</a>）。</p>
+<p>不幸的是, 唯一性问题 <span class="math notranslate nohighlight">\(式（ 14.79 ）\)</span> 仍然存在, 因为在式 <span class="math notranslate nohighlight">\(式（ 14.81 ）\)</span> 中, 对于任意 <span class="math notranslate nohighlight">\(q\times q\)</span> 的正交矩阵 <span class="math notranslate nohighlight">\(\R\)</span>, <span class="math notranslate nohighlight">\(\A\)</span> 和 <span class="math notranslate nohighlight">\(\A\R^T\)</span> 是等价的。这导致了因子分析中的主观性, 因为用户可以寻找因子更易解释的旋转版本. 这点使得许多分析学家对因子分析表示怀疑, 而且这可能是它在当代统计中不受欢迎的原因。尽管我们这里不继续讨论细节，但是 SVD 分解在 式（ 14.81 ） 的估计上发挥重要作用。举个例子，假设 <span class="math notranslate nohighlight">\(\mathrm{Var}(\varepsilon_j)\)</span> 相等，SVD 的前 <span class="math notranslate nohighlight">\(q\)</span> 个成分确定了由 <span class="math notranslate nohighlight">\(\A\)</span> 张成的子空间。</p>
+<p>因为每个 <span class="math notranslate nohighlight">\(X_j\)</span> 独立的扰动 <span class="math notranslate nohighlight">\(\varepsilon_j\)</span>，因子分析可以看成是对 <span class="math notranslate nohighlight">\(X_j\)</span> 的相关性结构进行建模，而非对协方差结构建模。这个可以通过对 <span class="math notranslate nohighlight">\(式（ 14.81 ）\)</span> 的协方差结构进行标准化后得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/51">练习 14.14</a>）。</p>
 <p>!!! note “weiya 注: Ex. 14.14”
 练习 14.14 表明，因子分析实质上是对相关矩阵进行分解。详见解答见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/51">Issue 51: Ex. 14.14</a></p>
 <p>这是因子分析与 PCA 的重要区别，尽管这不是我们讨论的重点。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/50">练习 14.15</a> 讨论了一个简单的例子，因为这个差异，因子分析和主成分的解完全不同。</p>
@@ -1258,7 +1259,7 @@ X_p&amp;=a_{p1}S_1+a_{p2}S_2+\cdots+a_{pq}S_q+\varepsilon_p
 </div>
 <div class="section" id="id4">
 <h2>独立成分分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>**独立成分分析 (ICA)**模型与 <span class="math notranslate nohighlight">\(\eqref{14.78}\)</span> 有相同的形式, 除了假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是统计上独立而非不相关。</p>
+<p>**独立成分分析 (ICA)**模型与 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 有相同的形式, 除了假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是统计上独立而非不相关。</p>
 <p>!!! note “weiya 注: 独立与不相关”
 统计上, 连续型随机变量 <span class="math notranslate nohighlight">\(X\)</span> 与 <span class="math notranslate nohighlight">\(Y\)</span> 独立的定义为
 $<span class="math notranslate nohighlight">\(
@@ -1269,8 +1270,8 @@ $<span class="math notranslate nohighlight">\(
 	\mathrm{Cov}(X, Y)=0
     \)</span>$
 独立意味着不相关，但反之不对。对于二元正态随机变量，两者等价。</p>
-<p>直观上, 不相关确定了多元变量分布的二阶交叉矩（协方差）, 而一般地, 统计独立确定了所有的交叉矩。 这些额外的矩条件能让我们找到唯一的 <span class="math notranslate nohighlight">\(\A\)</span>。 因为多元正态分布只要二阶矩就可以确定, 所以这是一个特例, 在忽略一个旋转的情况下任意高斯独立成分可以像之前被确定。 因此如果假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立且非高斯的, 则可以避免 <span class="math notranslate nohighlight">\(\eqref{14.78}\)</span> 和 <span class="math notranslate nohighlight">\(\eqref{14.80}\)</span> 的唯一性问题.</p>
-<p>这里我们将要讨论 <span class="math notranslate nohighlight">\(\eqref{14.78}\)</span> 中全 <span class="math notranslate nohighlight">\(p\)</span> 个成分的模型, 其中 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立的且有单位方差; 因子分析模型 <span class="math notranslate nohighlight">\(\eqref{14.80}\)</span> 的 ICA 版本也同样存在。 我们的处理是基于 Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id5">2</a> 的综述文章.</p>
+<p>直观上, 不相关确定了多元变量分布的二阶交叉矩（协方差）, 而一般地, 统计独立确定了所有的交叉矩。 这些额外的矩条件能让我们找到唯一的 <span class="math notranslate nohighlight">\(\A\)</span>。 因为多元正态分布只要二阶矩就可以确定, 所以这是一个特例, 在忽略一个旋转的情况下任意高斯独立成分可以像之前被确定。 因此如果假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立且非高斯的, 则可以避免 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的唯一性问题.</p>
+<p>这里我们将要讨论 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 中全 <span class="math notranslate nohighlight">\(p\)</span> 个成分的模型, 其中 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立的且有单位方差; 因子分析模型 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的 ICA 版本也同样存在。 我们的处理是基于 Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id5">2</a> 的综述文章.</p>
 <p>我们希望恢复 <span class="math notranslate nohighlight">\(X=\A S\)</span> 中的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>。 不失一般性, 我们假设 <span class="math notranslate nohighlight">\(X\)</span> 已经 <strong>白化 (whitened)</strong> 使得 <span class="math notranslate nohighlight">\(\mathrm{Cov}(X)=\I\)</span>; 这一般可以通过前面描述的 SVD 实现。</p>
 <p>!!! note “weiya 注：白化 (whitened)”
 根据<a class="reference external" href="https://en.wikipedia.org/wiki/Whitening_transformation">维基百科</a>，因为白噪声的协方差矩阵为单位阵，所以称这一过程为白化。白化矩阵 <span class="math notranslate nohighlight">\(W\)</span> 使得 <span class="math notranslate nohighlight">\(WX\)</span> 协方差为单位阵（此处 <span class="math notranslate nohighlight">\(X\)</span> 表示为随机向量，若作用在矩阵上，则右乘），则 <span class="math notranslate nohighlight">\(W^TW = \Sigma^{-1}\)</span>. 根据求解 <span class="math notranslate nohighlight">\(W\)</span> 的算法，可以分类为</p>
@@ -1315,7 +1316,7 @@ I(Y)&amp;= \sum\limits_{j=1}^pH(Y_j)-H(X)-\log\vert \det\A\vert\tag{14.84}\\
 $<span class="math notranslate nohighlight">\(
 	H(Y)=H(X)+\log \vert \det \A \vert
 	\)</span><span class="math notranslate nohighlight">\(
-	对 \eqref{14.82} 进行变量替换有
+	对 式（ 14.82 ） 进行变量替换有
 	\)</span><span class="math notranslate nohighlight">\(
 	H(Y)=-\int g(\A'x)\log g(\A'x)\cdot \vert \det \J\vert dx\qquad (*)
 	\)</span><span class="math notranslate nohighlight">\(
@@ -1342,7 +1343,7 @@ $<span class="math notranslate nohighlight">\(
 	\end{align*}
 	\)</span>$
 证毕。</p>
-<p>寻找 <span class="math notranslate nohighlight">\(\A\)</span> 最小化 <span class="math notranslate nohighlight">\(I(Y)=I(\A^TX)\)</span> 也就是寻找使得组分间的独立性最强的正交变换。考虑到式 <span class="math notranslate nohighlight">\(\eqref{14.84}\)</span>, 这等价于最小化 <span class="math notranslate nohighlight">\(Y\)</span> 的各组分的熵的和, 反过来意味着最大化它们与高斯分布的距离。</p>
+<p>寻找 <span class="math notranslate nohighlight">\(\A\)</span> 最小化 <span class="math notranslate nohighlight">\(I(Y)=I(\A^TX)\)</span> 也就是寻找使得组分间的独立性最强的正交变换。考虑到式 <span class="math notranslate nohighlight">\(式（ 14.84 ）\)</span>, 这等价于最小化 <span class="math notranslate nohighlight">\(Y\)</span> 的各组分的熵的和, 反过来意味着最大化它们与高斯分布的距离。</p>
 <p>!!! note “weiya 注”
 因为高斯随机变量的熵最大, 则让各组分熵之和最小, 意味着各组分远离高斯分布。</p>
 <p>为了简便, 与其采用熵 <span class="math notranslate nohighlight">\(H(Y_j)\)</span>, Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id6">2</a> 采用 <strong>负熵 (negentropy)</strong> <span class="math notranslate nohighlight">\(J(Y_j)\)</span></p>
@@ -1414,8 +1415,8 @@ f_j(s_j)=\phi(s_j)e^{g_j(s_j)}\tag{14.89}
 \ell(\A, \{g_j\}_1^p;X)=\sum\limits_{i=1}^N\sum\limits_{j=1}^p[\log \phi(a_j^Tx_i)+g_j(a_j^Tx_i)]\tag{14.90}
 \]</div>
 <p>!!! note “weiya 注：”
-\eqref{14.90}原书中 <span class="math notranslate nohighlight">\(\phi\)</span> 有下标 <span class="math notranslate nohighlight">\(j\)</span>， 但是因为 <span class="math notranslate nohighlight">\(\phi\)</span> 为标准正态， 所以应该直接忽略下标， 原书中后面的 \eqref{14.91} 也确实没有下标。</p>
-<p>我们希望在 <span class="math notranslate nohighlight">\(\A\)</span> 为正交且 <span class="math notranslate nohighlight">\(\eqref{14.89}\)</span> 定义的 <span class="math notranslate nohighlight">\(g_j\)</span> 的条件下, 最大化上式。对 <span class="math notranslate nohighlight">\(g_j\)</span> 不添加额外的约束, 模型 \eqref{14.90} 是过参数化的, 所以我们最大化下面的正则化版本</p>
+式（ 14.90 ）原书中 <span class="math notranslate nohighlight">\(\phi\)</span> 有下标 <span class="math notranslate nohighlight">\(j\)</span>， 但是因为 <span class="math notranslate nohighlight">\(\phi\)</span> 为标准正态， 所以应该直接忽略下标， 原书中后面的 式（ 14.91 ） 也确实没有下标。</p>
+<p>我们希望在 <span class="math notranslate nohighlight">\(\A\)</span> 为正交且 <span class="math notranslate nohighlight">\(式（ 14.89 ）\)</span> 定义的 <span class="math notranslate nohighlight">\(g_j\)</span> 的条件下, 最大化上式。对 <span class="math notranslate nohighlight">\(g_j\)</span> 不添加额外的约束, 模型 式（ 14.90 ） 是过参数化的, 所以我们最大化下面的正则化版本</p>
 <div class="math notranslate nohighlight">
 \[
 \sum\limits_{j=1}^p\Big[
@@ -1424,7 +1425,7 @@ f_j(s_j)=\phi(s_j)e^{g_j(s_j)}\tag{14.89}
 \lambda_j\int\{g_j^{(3)}\}^2(t)dt
 \Big]\tag{14.91}
 \]</div>
-<p>受 Silverman (1986)<a class="footnote-reference brackets" href="#id34" id="id20">8</a>的启发，在 <span class="math notranslate nohighlight">\(\eqref{14.91}\)</span> 中, 我们（对每个 <span class="math notranslate nohighlight">\(j\)</span>）减去了两个惩罚项:</p>
+<p>受 Silverman (1986)<a class="footnote-reference brackets" href="#id34" id="id20">8</a>的启发，在 <span class="math notranslate nohighlight">\(式（ 14.91 ）\)</span> 中, 我们（对每个 <span class="math notranslate nohighlight">\(j\)</span>）减去了两个惩罚项:</p>
 <ul class="simple">
 <li><p>第一个在任意解 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 上强制要求密度约束 <span class="math notranslate nohighlight">\(\int \phi(t)e^{\hat g_j(t)}dt=1\)</span></p></li>
 <li><p>第二个是鲁棒性惩罚, 保证了解 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 是结点在观测值 <span class="math notranslate nohighlight">\(s_{ij}=a_j^Tx_i\)</span> 的四次样条.</p></li>
@@ -1457,7 +1458,7 @@ $<span class="math notranslate nohighlight">\(
 可以类比看出第二个惩罚正是针对四次样条。</p>
 <p>可以进一步证明每个解密度 <span class="math notranslate nohighlight">\(\hat{f_j}=\phi e^{\hat g_j}\)</span> 的均值为 0, 方差为 1（练习 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/53">14.18</a>）。当我们增大 <span class="math notranslate nohighlight">\(\lambda_j\)</span>，这些解近似标准高斯密度 <span class="math notranslate nohighlight">\(\phi\)</span>。</p>
 <p><img alt="" src="../_images/alg14.3.png" /></p>
-<p>如在算法 14.3 中描述, 以一种轮换的方式优化 <span class="math notranslate nohighlight">\(\eqref{14.91}\)</span> 来拟合函数 <span class="math notranslate nohighlight">\(g_i\)</span> 和方向 <span class="math notranslate nohighlight">\(a_j\)</span>。</p>
+<p>如在算法 14.3 中描述, 以一种轮换的方式优化 <span class="math notranslate nohighlight">\(式（ 14.91 ）\)</span> 来拟合函数 <span class="math notranslate nohighlight">\(g_i\)</span> 和方向 <span class="math notranslate nohighlight">\(a_j\)</span>。</p>
 <p>第 2(a) 步等价于半参密度估计，可以采用广义可加模型来求解。为了方便，我们取 <span class="math notranslate nohighlight">\(p\)</span> 个独立问题中的一个</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1465,12 +1466,12 @@ $<span class="math notranslate nohighlight">\(
 \int \phi(t)e^{g_j(t)}dt - 
 \lambda_j\int\{g_j^{(3)}\}^2(t)dt\tag{14.92}
 \]</div>
-<p>尽管 <span class="math notranslate nohighlight">\(\eqref{14.92}\)</span> 的第二个积分导出光滑样条， 但第一个积分比较困难，需要近似。我们构造一个 <span class="math notranslate nohighlight">\(L\)</span> 个值为 <span class="math notranslate nohighlight">\(s_\ell^*\)</span> 的细网格，这些值间距为 <span class="math notranslate nohighlight">\(\Delta\)</span>、覆盖观测值 <span class="math notranslate nohighlight">\(s_i\)</span> 的取值范围， 并且统计得到的小块中 <span class="math notranslate nohighlight">\(s_i\)</span> 的个数：</p>
+<p>尽管 <span class="math notranslate nohighlight">\(式（ 14.92 ）\)</span> 的第二个积分导出光滑样条， 但第一个积分比较困难，需要近似。我们构造一个 <span class="math notranslate nohighlight">\(L\)</span> 个值为 <span class="math notranslate nohighlight">\(s_\ell^*\)</span> 的细网格，这些值间距为 <span class="math notranslate nohighlight">\(\Delta\)</span>、覆盖观测值 <span class="math notranslate nohighlight">\(s_i\)</span> 的取值范围， 并且统计得到的小块中 <span class="math notranslate nohighlight">\(s_i\)</span> 的个数：</p>
 <div class="math notranslate nohighlight">
 \[
 y_\ell^*=\frac{\#s_i\in (s_\ell^*-\Delta/2, s_\ell^*+\Delta/2)}{N}\tag{14.93}
 \]</div>
-<p>一般我们取 <span class="math notranslate nohighlight">\(L\)</span> 为 1000 就已经足够了。 则 <span class="math notranslate nohighlight">\(\eqref{14.92}\)</span> 可以近似为</p>
+<p>一般我们取 <span class="math notranslate nohighlight">\(L\)</span> 为 1000 就已经足够了。 则 <span class="math notranslate nohighlight">\(式（ 14.92 ）\)</span> 可以近似为</p>
 <div class="math notranslate nohighlight">
 \[
 \sum\limits_{\ell=1}^L\Big\{
@@ -1494,7 +1495,7 @@ C(\A) &amp;= \frac 1N\sum\limits_{j=1}^p\sum\limits_{i=1}^N\hat g_j(a_j^Tx_i)\ta
 &amp;= \sum\limits_{j=1}^pC_j(a_j)
 \end{align*}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(C(\A)\)</span> 是拟合的密度与高斯密度间的对数似然比，而且可以看成是负熵 \eqref{14.86} 的一个估计， 其中每个 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 就像 \eqref{14.87} 中的差异函数。第 2(b) 步中的固定点更新是修改后的牛顿法（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/56">练习 14.20</a>）：</p>
+<p><span class="math notranslate nohighlight">\(C(\A)\)</span> 是拟合的密度与高斯密度间的对数似然比，而且可以看成是负熵 式（ 14.86 ） 的一个估计， 其中每个 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 就像 式（ 14.87 ） 中的差异函数。第 2(b) 步中的固定点更新是修改后的牛顿法（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/56">练习 14.20</a>）：</p>
 <ol class="simple">
 <li><p>对于每个 <span class="math notranslate nohighlight">\(j\)</span>，更新
 $<span class="math notranslate nohighlight">\(
@@ -1530,7 +1531,7 @@ $<span class="math notranslate nohighlight">\(
 	\)</span><span class="math notranslate nohighlight">\(
 	其中\)</span>\lambda<span class="math notranslate nohighlight">\(为特征值。
 	当\)</span>A<span class="math notranslate nohighlight">\(为单位阵时，\)</span>\kappa(A)=1$。</p>
-<p>我们采用<code class="docutils literal notranslate"><span class="pre">FastICA</span></code>的 R 语言实现，采用 <span class="math notranslate nohighlight">\(\eqref{14.87}\)</span> 的负熵准则，<code class="docutils literal notranslate"><span class="pre">ProDenICA</span></code>也是这样。对于<code class="docutils literal notranslate"><span class="pre">KernelICA</span></code>，我们采用作者的MATLAB代码。因为搜索准则是非凸的，我们对每种方法采用 5 个随机初始值。每个算法都传入正交的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>（数据已经进行了白化），这可以用来比较产生的正交混合矩阵 <span class="math notranslate nohighlight">\(\A_0\)</span>。我们采用 Amari 距离(Bach and Jordan, 2002<a class="footnote-reference brackets" href="#id37" id="id25">11</a>)来度量两个矩阵接近程度：</p>
+<p>我们采用<code class="docutils literal notranslate"><span class="pre">FastICA</span></code>的 R 语言实现，采用 <span class="math notranslate nohighlight">\(式（ 14.87 ）\)</span> 的负熵准则，<code class="docutils literal notranslate"><span class="pre">ProDenICA</span></code>也是这样。对于<code class="docutils literal notranslate"><span class="pre">KernelICA</span></code>，我们采用作者的MATLAB代码。因为搜索准则是非凸的，我们对每种方法采用 5 个随机初始值。每个算法都传入正交的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>（数据已经进行了白化），这可以用来比较产生的正交混合矩阵 <span class="math notranslate nohighlight">\(\A_0\)</span>。我们采用 Amari 距离(Bach and Jordan, 2002<a class="footnote-reference brackets" href="#id37" id="id25">11</a>)来度量两个矩阵接近程度：</p>
 <div class="math notranslate nohighlight">
 \[
 d(\A_0, \A)=\frac{1}{2p}\sum_{i=1}^p\Big(\frac{\sum_{j=1}^p\vert r_{ij}\vert}{\max_j\vert r_{ij}\vert}-1\Big)+

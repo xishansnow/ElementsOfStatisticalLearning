@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1138,19 +1138,20 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.5 样本内误差的估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <p>样本内误差估计的一般形式为：</p>
 <div class="math notranslate nohighlight">
 \[
 \widehat{\text{Err}}_{in}=\overline{\text{err}}+\hat\omega \tag{7.25}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\hat\omega\)</span> 是乐观值期望的估计。</p>
-<p>当在平方误差损失下拟合 <span class="math notranslate nohighlight">\(d\)</span> 个参数后，是可以应用式 \eqref{7.24} 的；利用表达式 \eqref{7.24} 可以导出被称作 <span class="math notranslate nohighlight">\(C_p\)</span> 的统计量：</p>
+<p>当在平方误差损失下拟合 <span class="math notranslate nohighlight">\(d\)</span> 个参数后，是可以应用式 式（ 7.24 ） 的；利用表达式 式（ 7.24 ） 可以导出被称作 <span class="math notranslate nohighlight">\(C_p\)</span> 的统计量：</p>
 <div class="math notranslate nohighlight">
 \[
 C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\hat\sigma_\varepsilon^2\)</span> 是噪声方差的估计，由低偏差模型的均方误差得到。使用这个准则，我们用一个与使用的基函数个数成比例的因子来调节训练误差。</p>
-<p>当采用对数似然损失函数时，<strong>Akaike 信息准则 (Akaike information criterion)</strong> 是类似的但使用更普遍的 <span class="math notranslate nohighlight">\(\text{err}_{in}\)</span> 的估计。它依赖于与 \eqref{7.24} 类似的关系式，在 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 渐近地有下式成立：</p>
+<p>当采用对数似然损失函数时，<strong>Akaike 信息准则 (Akaike information criterion)</strong> 是类似的但使用更普遍的 <span class="math notranslate nohighlight">\(\text{err}_{in}\)</span> 的估计。它依赖于与 式（ 7.24 ） 类似的关系式，在 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 渐近地有下式成立：</p>
 <div class="math notranslate nohighlight">
 \[
 -2\cdot \mathbf{E}[\mathrm{log}\Pr\nolimits_{\hat \theta}(Y)]\approx -\frac{2}{N}\cdot \mathbf{E}[\mathrm{loglik}]+2\cdot\frac{d}{N}\tag{7.27}
@@ -1181,7 +1182,7 @@ C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 \[
 \mathrm{AIC}(\alpha)=\overline{\text{err}}(\alpha)+2\cdot\frac{d(\alpha)}{N}\hat\sigma_\varepsilon^2\tag{7.30}
 \]</div>
-<p>函数 <span class="math notranslate nohighlight">\(\mathrm{AIC}(\alpha)\)</span> 给出了测试误差曲线的一个估计，而且我们找到最小化它的调整参数 <span class="math notranslate nohighlight">\(\hat \alpha\)</span>。我们最终选择的模型是 <span class="math notranslate nohighlight">\(f_{\hat\alpha}(x)\)</span>。注意到如果我们基函数是自适应地选择，\eqref{7.23}不再成立。举个例子，如果我们总共有 <span class="math notranslate nohighlight">\(p\)</span> 个输入，选择含有 <span class="math notranslate nohighlight">\(d &lt; p\)</span> 个输入的最优线性拟合模型，optimism 将会超过 <span class="math notranslate nohighlight">\((2d/N)\sigma_\varepsilon^2\)</span>。换句话说，通过选择含有 <span class="math notranslate nohighlight">\(d\)</span> 个输入的最优拟合模型，有效参数的个数将会超过 <span class="math notranslate nohighlight">\(d\)</span>。</p>
+<p>函数 <span class="math notranslate nohighlight">\(\mathrm{AIC}(\alpha)\)</span> 给出了测试误差曲线的一个估计，而且我们找到最小化它的调整参数 <span class="math notranslate nohighlight">\(\hat \alpha\)</span>。我们最终选择的模型是 <span class="math notranslate nohighlight">\(f_{\hat\alpha}(x)\)</span>。注意到如果我们基函数是自适应地选择，式（ 7.23 ）不再成立。举个例子，如果我们总共有 <span class="math notranslate nohighlight">\(p\)</span> 个输入，选择含有 <span class="math notranslate nohighlight">\(d &lt; p\)</span> 个输入的最优线性拟合模型，optimism 将会超过 <span class="math notranslate nohighlight">\((2d/N)\sigma_\varepsilon^2\)</span>。换句话说，通过选择含有 <span class="math notranslate nohighlight">\(d\)</span> 个输入的最优拟合模型，有效参数的个数将会超过 <span class="math notranslate nohighlight">\(d\)</span>。</p>
 <p>图 7.4 显示了将 AIC 用于 <a class="reference external" href="../05-Basis-Expansions-and-Regularization/5.2-Piecewise-Polynomials-and-Splines/index.html#_3">5.2.3 节</a>的音素识别的例子的效果。输入向量是口语元音的对数周期图，在 256 个均匀间隔的频率上取值。采用线性逻辑斯蒂回归模型来预测音素的类别，参数函数为 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span>，是 <span class="math notranslate nohighlight">\(M\)</span> 个样条基函数的展开。对于给定的 <span class="math notranslate nohighlight">\(M\)</span>，对 <span class="math notranslate nohighlight">\(h_m\)</span> 应用自然三次样条，在频率范围内均匀选取结点（因此 <span class="math notranslate nohighlight">\(d(\alpha)=d(M)=M\)</span>）。使用 AIC 来选择基函数的个数会近似最小化损失函数为熵损失和 0-1 损失时的 <span class="math notranslate nohighlight">\(\text{err}(M)\)</span>。</p>
 <p><img alt="" src="../_images/fig7.4.png" /></p>
 <div class="admonition-aic admonition">

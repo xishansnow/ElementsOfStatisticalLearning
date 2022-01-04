@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1150,6 +1150,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.4 光滑样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>这里我们讨论使用最大结点集合的 <strong>样条基方法</strong> 来彻底避免结点选择的问题。拟合的复杂度由正则化来控制。考虑下面的问题：在所有二阶连续微分的函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 中，找到一个使得下面的惩罚残差平方和最小的函数</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1167,7 +1168,7 @@ $<span class="math notranslate nohighlight">\(
 	  \kappa = \frac{\vert y''\vert}{(1+y'^2)^{3/2}}
 	  \)</span>$
 <!--这里为什么只用二阶导？--></p>
-<p>准则 \eqref{5.9} 定义在无限维函数空间上——实际上，是二阶导有定义的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E4%BC%AF%E5%88%97%E5%A4%AB%E7%A9%BA%E9%97%B4">Sobolev 函数空间</a>。值得注意的是，可以证明 \eqref{5.9} 存在一个显式的有限维的唯一一个最小值点，是一个结点在不重复的 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处的自然三次样条（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">练习 5.7</a>）。表面上看，这个函数族仍然是过参量化，因为有 <span class="math notranslate nohighlight">\(N\)</span> 个结点，这意味着 <span class="math notranslate nohighlight">\(N\)</span> 个自由度。然而，惩罚项转换为对样条系数的惩罚，使得以某种方式向着线性拟合收缩。</p>
+<p>准则 式（ 5.9 ） 定义在无限维函数空间上——实际上，是二阶导有定义的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E4%BC%AF%E5%88%97%E5%A4%AB%E7%A9%BA%E9%97%B4">Sobolev 函数空间</a>。值得注意的是，可以证明 式（ 5.9 ） 存在一个显式的有限维的唯一一个最小值点，是一个结点在不重复的 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处的自然三次样条（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">练习 5.7</a>）。表面上看，这个函数族仍然是过参量化，因为有 <span class="math notranslate nohighlight">\(N\)</span> 个结点，这意味着 <span class="math notranslate nohighlight">\(N\)</span> 个自由度。然而，惩罚项转换为对样条系数的惩罚，使得以某种方式向着线性拟合收缩。</p>
 <p>!!! info “weiya 注：Ex. 5.7”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">Issue 34: Ex. 5.7</a>.</p>
 <p>因为解为自然样条，所以我们可以写成</p>
@@ -1202,7 +1203,7 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 <div class="section" id="id2">
 <h2>自由度和光滑矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>我们还没有指出光滑样条的 <span class="math notranslate nohighlight">\(\lambda\)</span> 是怎么选取的。本章的后面我们描述使用自动化方法，比如交叉验证。在这部分中我们讨论预先确定光滑度的直观方式。</p>
-<p>预先选择了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑样条是 <strong>线性光滑 (linear smoother)</strong> 的一个例子（如在线性算子中一样）。这是因为 \eqref{5.12} 的估计参数是 <span class="math notranslate nohighlight">\(y_i\)</span> 的线性组合。记 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维向量，其中的元素为在训练预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 处的拟合值 <span class="math notranslate nohighlight">\(\hat f(x_i)\)</span>。则</p>
+<p>预先选择了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑样条是 <strong>线性光滑 (linear smoother)</strong> 的一个例子（如在线性算子中一样）。这是因为 式（ 5.12 ） 的估计参数是 <span class="math notranslate nohighlight">\(y_i\)</span> 的线性组合。记 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维向量，其中的元素为在训练预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 处的拟合值 <span class="math notranslate nohighlight">\(\hat f(x_i)\)</span>。则</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}

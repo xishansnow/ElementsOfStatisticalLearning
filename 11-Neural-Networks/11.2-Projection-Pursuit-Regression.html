@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>11.2 投影寻踪回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>在我们一般监督学习问题中，假设我们有 <span class="math notranslate nohighlight">\(p\)</span> 个组分的输入向量 <span class="math notranslate nohighlight">\(X\)</span>，以及目标变量 <span class="math notranslate nohighlight">\(Y\)</span>。令 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots, M\)</span> 为未知参数的 <span class="math notranslate nohighlight">\(p\)</span> 维单位向量。<strong>投影寻踪回归 (PPR)</strong> 模型有如下形式
 $<span class="math notranslate nohighlight">\(
 f(X)=\sum\limits_{m=1}^Mg_m(\omega_m^TX)\tag{11.1}
@@ -1147,7 +1148,7 @@ f(X)=\sum\limits_{m=1}^Mg_m(\omega_m^TX)\tag{11.1}
 <blockquote>
 <div><p>图 11.1. 2 个岭函数的透视图。（左图：）<span class="math notranslate nohighlight">\(g(V)=1/[1+\exp(-5(V-0.5))]\)</span> 其中 <span class="math notranslate nohighlight">\(V=(X_1+X_2)/\sqrt{2}\)</span>。（右图：）<span class="math notranslate nohighlight">\(g(V)=(V+0.1)\sin(1/(V/3+0.1))\)</span>，其中 <span class="math notranslate nohighlight">\(V=X_1\)</span>。</p>
 </div></blockquote>
-<p>式 \eqref{11.1} 的 PPR 模型是非常一般的，因为形成线性组合的非线性函数的操作得到相当多的模型类型。举个例子，乘积 <span class="math notranslate nohighlight">\(X_1\cdot X_2\)</span> 可以写成 <span class="math notranslate nohighlight">\([(X_1+X_2)^2-(X_1-X_2)^2]/4\)</span>，高阶的乘积也可以类似地表示。</p>
+<p>式 式（ 11.1 ） 的 PPR 模型是非常一般的，因为形成线性组合的非线性函数的操作得到相当多的模型类型。举个例子，乘积 <span class="math notranslate nohighlight">\(X_1\cdot X_2\)</span> 可以写成 <span class="math notranslate nohighlight">\([(X_1+X_2)^2-(X_1-X_2)^2]/4\)</span>，高阶的乘积也可以类似地表示。</p>
 <p>实际上，如果 <span class="math notranslate nohighlight">\(M\)</span> 任意大，选择合适的 <span class="math notranslate nohighlight">\(g_m\)</span>，PPR 模型可以很好地近似 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中任意的连续函数。这样的模型类别称为 <strong>通用近似 (universal approximator)</strong>。然而这种一般性需要付出代价。拟合模型的解释性通常很困难，因为每个输入变量都以复杂且多位面的方式进入模型中。结果使得 PPR 模型对于预测非常有用，但是对于产生一个可理解的模型不是很有用。<span class="math notranslate nohighlight">\(M=1\)</span> 模型是个例外，也是计量经济学中的 <strong>单指标模型 (single index model)</strong>。这比线性回归模型更加一般，也提供了一个类似（线性回归模型）的解释。</p>
 <p>给定训练点 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span> 怎么拟合 PPR 模型？我们在函数 <span class="math notranslate nohighlight">\(g_m\)</span> 和方向向量 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots,M\)</span> 上寻找误差函数的近似最小值
 $<span class="math notranslate nohighlight">\(
@@ -1155,7 +1156,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 正如在其他光滑问题中一样，我们需要在 \)</span>g_m$ 上加上显式或隐式的限制来避免过拟合解。</p>
 <p>仅仅考虑一项（<span class="math notranslate nohighlight">\(M=1\)</span>，并且去掉下标）。给定方向向量 <span class="math notranslate nohighlight">\(\omega\)</span>，我们得到导出变量 <span class="math notranslate nohighlight">\(v_i=\omega^Tx_i\)</span>。接着我们有一个一维光滑问题，而且我们可以应用任意散点图光滑器，比如光滑样条来得到 <span class="math notranslate nohighlight">\(g\)</span> 的一个估计。</p>
-<p>另一方面，给定 <span class="math notranslate nohighlight">\(g\)</span>，我们想要关于 <span class="math notranslate nohighlight">\(\omega\)</span> 最小化 \eqref{11.2}。高斯-牛顿搜索可以很方便地实现这个任务。这是一个拟牛顿法，丢掉了 Hessian 阵中关于 <span class="math notranslate nohighlight">\(g\)</span> 二阶微分的项。可以很简单地按照下面导出。令 <span class="math notranslate nohighlight">\(\omega_{old}\)</span> 为 <span class="math notranslate nohighlight">\(\omega\)</span> 的当前估计。我们写成
+<p>另一方面，给定 <span class="math notranslate nohighlight">\(g\)</span>，我们想要关于 <span class="math notranslate nohighlight">\(\omega\)</span> 最小化 式（ 11.2 ）。高斯-牛顿搜索可以很方便地实现这个任务。这是一个拟牛顿法，丢掉了 Hessian 阵中关于 <span class="math notranslate nohighlight">\(g\)</span> 二阶微分的项。可以很简单地按照下面导出。令 <span class="math notranslate nohighlight">\(\omega_{old}\)</span> 为 <span class="math notranslate nohighlight">\(\omega\)</span> 的当前估计。我们写成
 $<span class="math notranslate nohighlight">\(
 g(\omega^Tx_i)\approx g(\omega_{old}^Tx_i)+g'(\omega_{old}^Tx_i)(\omega-\omega_{old})^Tx_i\tag{11.3}
 \)</span><span class="math notranslate nohighlight">\(

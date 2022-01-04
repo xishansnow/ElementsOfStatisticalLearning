@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1161,8 +1161,10 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.2 偏差、方差和模型复杂度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <div class="section" id="id2">
 <h2>7.2.1 简单的回归任务分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>让我们从最简单的回归任务开始，考虑结果变量为“定量型”变量（又称“定距型”变量） 的情形。下图（图 7.1 ）展示了评估模型泛化能力时的一些重要问题。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1213,8 +1215,9 @@
 </div>
 <div class="section" id="id3">
 <h2>7.2.2 再观察下分类任务<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>对于结果变量为“定类型”变量 <span class="math notranslate nohighlight">\(G\)</span> 的分类任务，其实也存在类似情况。</p>
-<p><span class="math notranslate nohighlight">\(G\)</span> 在含有 <span class="math notranslate nohighlight">\(K\)</span> 个值的集合 <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> 中取值，为了方便记 <span class="math notranslate nohighlight">\(K\)</span> 个值编号为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>。一般地，我们对概率 <span class="math notranslate nohighlight">\(p_k(X)=\mathrm{Pr}(G=k\mid X)\)</span> （或者采用其他单调变换 <span class="math notranslate nohighlight">\(f_k(X)\)</span>） 进行建模，然后取概率最大的那个类别 <span class="math notranslate nohighlight">\(\hat G(X)=\mathrm{\text{argmax}}_k \hat p_k(X)\)</span>。当然，在某些情形下，我们也可以直接得到 <span class="math notranslate nohighlight">\(\hat G(X)\)</span>，例如 1-最近邻分类（见第 2 章和第 13 章）。典型的损失函数为：</p>
+<p><span class="math notranslate nohighlight">\(G\)</span> 在含有 <span class="math notranslate nohighlight">\(K\)</span> 个值的集合 <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 中取值，为了方便记 <span class="math notranslate nohighlight">\(K\)</span> 个值编号为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>。一般地，我们对概率 <span class="math notranslate nohighlight">\(p_k(X)=\mathrm{Pr}(G=k\mid X)\)</span> （或者采用其他单调变换 <span class="math notranslate nohighlight">\(f_k(X)\)</span>） 进行建模，然后取概率最大的那个类别 <span class="math notranslate nohighlight">\(\hat G(X)=\mathrm{\text{argmax}}_k \hat p_k(X)\)</span>。当然，在某些情形下，我们也可以直接得到 <span class="math notranslate nohighlight">\(\hat G(X)\)</span>，例如 1-最近邻分类（见第 2 章和第 13 章）。典型的损失函数为：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 L(G,\hat G(X))&amp;=I(G\neq \hat G(X))\quad (0-1\; \mathrm {loss})\qquad \tag{7.5}\\
@@ -1242,6 +1245,7 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
 </div>
 <div class="section" id="id4">
 <h2>7.2.3 统一的表达方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>为了表达的简洁性，在本章的剩余部分，我们将用 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(f(X)\)</span> 来表示上述定量和定类的所有情形，因此主要集中在定量型结果变量的（平方误差损失）设定上。对于其它的情形，显然可以进行合适的转换。</p>
 <p>这章中我们描述一系列估计模型的测试误差期望 (<span class="math notranslate nohighlight">\(\text{Err}\)</span>) 的方法。通常模型会有一个调整参数 (tunning parameter) 或者参数 <span class="math notranslate nohighlight">\(\alpha\)</span>（很多书籍用 <span class="math notranslate nohighlight">\(\theta\)</span> ），所以可以把预测值写成 <span class="math notranslate nohighlight">\(\hat f_\alpha(x)\)</span>。调整参数会随着模型的复杂度而改变，而且我们希望找到 <span class="math notranslate nohighlight">\(\alpha\)</span> 值来最小化误差，即得到图 7.1 的平均测试误差曲线的最小值。为了简洁，后面将默认 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 暗示了对 <span class="math notranslate nohighlight">\(\alpha\)</span> 的依赖性。</p>
 <p>重要的是要注意，事实上我们可能有两个单独的目标：</p>

@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1180,8 +1180,10 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.3 偏差-方差分解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <div class="section" id="id2">
 <h2>7.3.1 一般性讨论<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>和第 2 章一样，如果假设 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 是均值为 0 ，方差为 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> 的随机噪声，即 <span class="math notranslate nohighlight">\(\mathbb{E}(\varepsilon)=0\)</span>，并且 <span class="math notranslate nohighlight">\(\mathbb{Var}(\epsilon)=\sigma_\varepsilon^2\)</span> 。如果选择平方误差作为损失函数，则可以导出输入点 <span class="math notranslate nohighlight">\(X=x_0\)</span> 处的回归估计值 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的平均预测误差如下：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1235,6 +1237,7 @@
 </div>
 <div class="section" id="k">
 <h2>7.3.2 <span class="math notranslate nohighlight">\(k\)</span>-近邻方法的误差分解<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>对于 <span class="math notranslate nohighlight">\(k\)</span>-近邻拟合，上述表达式有更简单的形式：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1245,6 +1248,7 @@
 </div>
 <div class="section" id="id3">
 <h2>7.3.3 简单线性回归估计的误差分解<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>对于线性回归模型 <span class="math notranslate nohighlight">\(\hat f_p(x)=x^T\hat\beta\)</span>，其中 <span class="math notranslate nohighlight">\(p\)</span> 个输入变量对应的参数向量 <span class="math notranslate nohighlight">\(\beta\)</span> 是通过最小二乘拟合的，有：</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1275,7 +1279,8 @@
 </div>
 <div class="section" id="id4">
 <h2>7.3.4 岭回归估计的误差分解<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>对于岭回归估计 <span class="math notranslate nohighlight">\(\hat f_\alpha(x_0)\)</span> 的测试误差 <span class="math notranslate nohighlight">\(\mathbb{Err}(x_0)\)</span> 与 \eqref{7.11} 式相同，除了方差项的线性系数不一样：<span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf X(\mathbf {X^TX}+\alpha\mathbf I)^Tx_0\)</span>。偏差项也会不一样。</p>
+<style>p{text-indent:2em;2}</style>
+<p>对于岭回归估计 <span class="math notranslate nohighlight">\(\hat f_\alpha(x_0)\)</span> 的测试误差 <span class="math notranslate nohighlight">\(\mathbb{Err}(x_0)\)</span> 与 式（ 7.11 ） 式相同，除了方差项的线性系数不一样：<span class="math notranslate nohighlight">\(\mathbf h(x_0)=\mathbf X(\mathbf {X^TX}+\alpha\mathbf I)^Tx_0\)</span>。偏差项也会不一样。</p>
 <p>对于线性模型族比如岭回归，我们可以更精细地分解偏差。令 <span class="math notranslate nohighlight">\(\beta_*\)</span> 为 <span class="math notranslate nohighlight">\(f\)</span> 的最优线性估计的参数：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1293,6 +1298,7 @@
 </div>
 <div class="section" id="id5">
 <h2>7.4.5 可视化理解偏差与方差之间的权衡<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p>图 7.2 显示了偏差和方差之间的权衡的原理图。在线性模型的情形下，模型空间是根据 <span class="math notranslate nohighlight">\(p\)</span> 个输入变量进行线性预测的集合，标为 “closest fit” 的黑点是 <span class="math notranslate nohighlight">\(x^T\beta_*\)</span>。蓝色阴影部分区域表示训练样本与真实值（图中的 truth）之间的误差 <span class="math notranslate nohighlight">\(\sigma_\varepsilon\)</span>。</p>
 <p><img alt="" src="../_images/fig7.2.png" /></p>
 <div class="admonition- admonition">
@@ -1303,6 +1309,7 @@
 </div>
 <div class="section" id="id6">
 <h2>7.4.6 方差-偏差之间的权衡的案例<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<style>p{text-indent:2em;2}</style>
 <p><img alt="" src="../_images/fig7.3.png" /></p>
 <div class="admonition- admonition">
 <p class="admonition-title">图 7.3 某模拟例子的预测误差的期望（橘黄色），平方偏差（绿色）以及方差（蓝色）。</p>

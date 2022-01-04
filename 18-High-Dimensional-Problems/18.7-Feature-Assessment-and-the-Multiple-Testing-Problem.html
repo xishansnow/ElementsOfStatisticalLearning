@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,6 +1160,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.7 特征评估和多重检验问题<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>在本章的第一部分中我们讨论了 <span class="math notranslate nohighlight">\(p&gt;&gt;N\)</span> 情形下的预测模型。这里我们考虑在评估 <span class="math notranslate nohighlight">\(p\)</span> 个特征中每一个特征的显著性的这一基本问题。考虑 <span class="xref myst">18.4.1 节</span>中蛋白质质谱的例子。在这个问题中，对病人作预测时，研究者可能不关心他是否患有前列腺癌。感兴趣的而是识别出哪种蛋白质在正常群体和癌症群体中的含量有差异，由此加深对疾病的了解，这对药物的研制有指导意义。因此我们的目标是评估单个特征的显著性。这个评估通常不用在本章中第一部分使用多变量预测模型来实现。特征评估问题将我们的关注点从预测移到传统的统计学话题——多重假设检验。在本章接下来的章节中，我们将用 <span class="math notranslate nohighlight">\(M\)</span> 来表示特征的个数，而不是 <span class="math notranslate nohighlight">\(p\)</span>，因为我们将频繁用 <span class="math notranslate nohighlight">\(p\)</span> 表示 <span class="math notranslate nohighlight">\(p\)</span> 值。</p>
 <p><img alt="" src="../_images/table18.4.png" /></p>
 <p>举个例子，考虑表 18.4 的微阵列数据，数据取自一项癌症患者对电离辐射治疗的敏感性的研究 (Rieger et al.，2004<a class="footnote-reference brackets" href="#id14" id="id2">1</a>)。每一行包含 58 个病人样本的基因表达值：44 个样本取自有正常反应的病人，而 14 个样本取自对电离辐射有严重反应的病人。测量值是在 oligo-nucleotide 微阵列上得到的。试验的目的是在对电离辐射敏感的病人群体中找出基因表达值不同的基因。总共有 <span class="math notranslate nohighlight">\(M=12625\)</span> 个基因，为了说明，表中显示了部分基因和样本。</p>
@@ -1193,7 +1194,7 @@ p_j=\frac{1}{K}\sum\limits_{k=1}^KI(\vert t_j^k\vert &gt; \vert t_j\vert)\tag{18
 \[
 p_j=\frac{1}{MK}\sum\limits_{j'=1}^M\sum\limits_{k=1}^KI(\vert t_{j'}^k\vert&gt;\vert t_j\vert)\tag{18.41}
 \]</div>
-<p>这也给出了比 \eqref{18.40} 式更细致的 <span class="math notranslate nohighlight">\(p\)</span> 值，因为在混合零分布中比单一的零分布使用了更多的值。</p>
+<p>这也给出了比 式（ 18.40 ） 式更细致的 <span class="math notranslate nohighlight">\(p\)</span> 值，因为在混合零分布中比单一的零分布使用了更多的值。</p>
 <p>采用这个 <span class="math notranslate nohighlight">\(p\)</span> 值的集合，我们要检验下面的假设</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1250,7 +1251,7 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 \[
 \mathbb{E}(V/R)\approx\frac{E(V)}{E(R)}\tag{18.47}
 \]</div>
-<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)。注意到分子 <span class="math notranslate nohighlight">\(\widehat{\mathbb{E}(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\mathbb{E}(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设。因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式。最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）。等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 \eqref{18.45} 用来改善 BH 方法。</p>
+<p>而且一般地，<span class="math notranslate nohighlight">\(\widehat{\mathrm{FDR}}\)</span> 是 FDR 的一致估计(Storey, 2002<a class="footnote-reference brackets" href="#id17" id="id7">4</a>; Storey et al., 2004<a class="footnote-reference brackets" href="#id18" id="id8">5</a>)。注意到分子 <span class="math notranslate nohighlight">\(\widehat{\mathbb{E}(V)}\)</span> 实际上估计了 <span class="math notranslate nohighlight">\((M/M_0)\mathbb{E}(V)\)</span>，因为排列分布使用了 <span class="math notranslate nohighlight">\(M\)</span> 而非 <span class="math notranslate nohighlight">\(M_0\)</span> 个零假设。因此如果有了 <span class="math notranslate nohighlight">\(M_0\)</span> 的一个估计，FDR 的良好估计可以从 <span class="math notranslate nohighlight">\((\hat M_0/M)\cdot \widehat{\mathrm{FDR}}\)</span> 中得到。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">练习 18.19</a> 展示了估计 <span class="math notranslate nohighlight">\(M_0\)</span> 的一种方式。最保守的 FDR 估计方法是用 <span class="math notranslate nohighlight">\(M_0=M\)</span>（向上偏）。等价地，<span class="math notranslate nohighlight">\(M_0\)</span> 的估计可以通过关系 式（ 18.45 ） 用来改善 BH 方法。</p>
 <p>!!! info “weiya 注：Ex. 18.19”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/133">Issue 133: Ex. 18.19</a>。</p>
 <p>读者可能会惊讶我们选了一个较大的数 0.15 作为 FDR 的界 <span class="math notranslate nohighlight">\(\alpha\)</span>。我们必须记住 FDR 不同于第一类误差，后者经常选择 0.05。对于科学家，FDR 是假阳性在被统计学家称为显著的基因中比例的期望。微阵列实验表明 FDR 达到 0.15 仍然有用，特别是当我们探索自然时。</p>
@@ -1282,7 +1283,7 @@ Efron, B., &amp; Hastie, T. (2016). Computer Age Statistical Inference. Cambridg
 \[
 \mathrm{pFDR}=\mathbb{E} \left[\frac VR\mid R&gt;0\right]
 \]</div>
-<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 \eqref{18.43}）当 <span class="math notranslate nohighlight">\(\mathrm{Pr}(R=0)&gt;0\)</span> 时没有定义。</p>
+<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 式（ 18.43 ））当 <span class="math notranslate nohighlight">\(\mathrm{Pr}(R=0)&gt;0\)</span> 时没有定义。</p>
 <p>令 <span class="math notranslate nohighlight">\(\Gamma\)</span> 为单个测试的拒绝域；在上面的例子中我们采用 <span class="math notranslate nohighlight">\(\Gamma=(-\infty,-4.10)\cup (4.10,\infty)\)</span>。假设对独立同分布的统计量 <span class="math notranslate nohighlight">\(t_1,\ldots,t_M\)</span> 及拒绝域 <span class="math notranslate nohighlight">\(\Gamma\)</span> 进行了 <span class="math notranslate nohighlight">\(M\)</span> 个相同的简单假设检验。定义随机变量 <span class="math notranslate nohighlight">\(Z_j\)</span>，如果第 <span class="math notranslate nohighlight">\(j\)</span> 个假设是对的，则等于 0，否则等于 1。我们假设对于某分布 <span class="math notranslate nohighlight">\(F_0\)</span> 和 <span class="math notranslate nohighlight">\(F_1\)</span>，每对 <span class="math notranslate nohighlight">\((t_j,Z_j)\)</span> 是独立同分布的随机变量，满足</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1298,7 +1299,7 @@ t_j\sim\pi_0\cdot F_0+(1-\pi_0)\cdot F_1\tag{18.52}
 \[
 \mathrm{pFDR}(\Gamma)=\mathrm{Pr}(Z_j=0\mid t_j\in\Gamma)\tag{18.53}
 \]</div>
-<p>因此在混合模型 \eqref{18.51} 的假设下，如果测试统计量落在该测试的拒绝域中，也就是，如果我们拒绝原假设时，则 pFDR 是零假设为真的后验概率.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">练习 18.20</a>）。</p>
+<p>因此在混合模型 式（ 18.51 ） 的假设下，如果测试统计量落在该测试的拒绝域中，也就是，如果我们拒绝原假设时，则 pFDR 是零假设为真的后验概率.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">练习 18.20</a>）。</p>
 <p>!!! note “weiya 注：Ex. 18.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/135">Issue 135: Ex. 18.20</a>.</p>
 <p>误发现率提供了基于整个拒绝域（比如 <span class="math notranslate nohighlight">\(\vert t_j\vert \ge 2\)</span>）的检验的准确性的度量。但是如果这样一个检验的 FDR 为 <span class="math notranslate nohighlight">\(10\%\)</span>，则 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的基因会比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 的基因更显著。因此导出 FDR 的局部版本（比如特定基因）是我们感兴趣的。检验统计量 <span class="math notranslate nohighlight">\(t_j\)</span> 的 q-value 定义为在所有拒绝 <span class="math notranslate nohighlight">\(t_j\)</span> 的区域中最小的 FDR。也就是，对于对称的拒绝域，<span class="math notranslate nohighlight">\(t_j=2\)</span> 的 q-value 定义为拒绝域 <span class="math notranslate nohighlight">\(\Gamma=\\{-(\infty,-2)\cup(2,\infty)\\}\)</span>的 FDR。因此 <span class="math notranslate nohighlight">\(t_j=5\)</span> 的 FDR 要小于 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时的 FDR，这反映了 <span class="math notranslate nohighlight">\(t_j=5\)</span> 比 <span class="math notranslate nohighlight">\(t_j=2\)</span> 时更显著。<span class="math notranslate nohighlight">\(t=t_0\)</span> 时的局部误分类率定义为</p>

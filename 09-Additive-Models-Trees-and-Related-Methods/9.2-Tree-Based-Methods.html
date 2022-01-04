@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1217,6 +1217,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cart">
 <h1>9.2 基于树的方法(CART)<a class="headerlink" href="#cart" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <div class="section" id="id1">
 <h2>背景<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p><strong>基于树 (Tree-based)</strong> 的方法将特征空间划分成一系列的长方形，然后对每个长方形拟合简单的模型（比如常数）。想法很简单但是很有用。我们首先描述一个基于树的回归和分类的方法，称为 CART，然后将之与 C4.5 进行比较，这是它主要的一个对手。</p>
@@ -1284,7 +1285,7 @@ C_\alpha(T)=\sum\limits_{m=1}^{\vert T\vert}N_mQ_m(T)+\alpha\vert T\vert\tag{9.1
 </div>
 <div class="section" id="id5">
 <h2>分类树<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>如果目标是结果取值为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span> 的分类问题，则在树的算法中唯一需要改变的是关于分离结点以及剪枝的准则。对于回归我们用 \eqref{9.15} 式定义的平方误差结点纯度，但是这对于分类便不适合了。在结点 <span class="math notranslate nohighlight">\(m\)</span>，用 <span class="math notranslate nohighlight">\(N_m\)</span> 个观测值表示区域 <span class="math notranslate nohighlight">\(R_m\)</span>，令
+<p>如果目标是结果取值为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span> 的分类问题，则在树的算法中唯一需要改变的是关于分离结点以及剪枝的准则。对于回归我们用 式（ 9.15 ） 式定义的平方误差结点纯度，但是这对于分类便不适合了。在结点 <span class="math notranslate nohighlight">\(m\)</span>，用 <span class="math notranslate nohighlight">\(N_m\)</span> 个观测值表示区域 <span class="math notranslate nohighlight">\(R_m\)</span>，令
 $<span class="math notranslate nohighlight">\(
 \hat p_{mk} = \frac{1}{N_m}\sum\limits_{x_i\in R_m}I(y_i=k)
 \)</span><span class="math notranslate nohighlight">\(
@@ -1298,7 +1299,7 @@ $<span class="math notranslate nohighlight">\(
 \end{align*}\]</div>
 <p>\tag{9.17}
 $<span class="math notranslate nohighlight">\(
-对于两个类别，如果 \)</span>p<span class="math notranslate nohighlight">\( 是第二类的比例，则这三个衡量指标分别为 \)</span>1-\max(p,1-p), 2p(1-p)<span class="math notranslate nohighlight">\( 以及 \)</span>-p\mathrm{log}p-(1-p)\mathrm{log}(1-p)<span class="math notranslate nohighlight">\(. 图 9.3 画出了它们的函数曲线。这三者都类似，但是 **交叉熵 (cross-entropy)** 和 **基尼指数 (Gini index)** 是可微的，因此更加适合数值优化。比较 \eqref{9.13} 和 \eqref{9.15}，我们看到我们需要由分离结点\)</span>m<span class="math notranslate nohighlight">\( \)</span>N_{m_L}<span class="math notranslate nohighlight">\( 和 \)</span>N_{m_R}$ 来对结点纯度赋予权重。</p>
+对于两个类别，如果 \)</span>p<span class="math notranslate nohighlight">\( 是第二类的比例，则这三个衡量指标分别为 \)</span>1-\max(p,1-p), 2p(1-p)<span class="math notranslate nohighlight">\( 以及 \)</span>-p\mathrm{log}p-(1-p)\mathrm{log}(1-p)<span class="math notranslate nohighlight">\(. 图 9.3 画出了它们的函数曲线。这三者都类似，但是 **交叉熵 (cross-entropy)** 和 **基尼指数 (Gini index)** 是可微的，因此更加适合数值优化。比较 式（ 9.13 ） 和 式（ 9.15 ），我们看到我们需要由分离结点\)</span>m<span class="math notranslate nohighlight">\( \)</span>N_{m_L}<span class="math notranslate nohighlight">\( 和 \)</span>N_{m_R}$ 来对结点纯度赋予权重。</p>
 <p><img alt="" src="../_images/fig9.3.png" /></p>
 <blockquote>
 <div><p>图 9.3 两类别分类的结点纯度关于类别 2 比例 <span class="math notranslate nohighlight">\(p\)</span> 的函数。交叉熵已被缩放使能过点 <span class="math notranslate nohighlight">\((0.5,0.5)\)</span>.</p>

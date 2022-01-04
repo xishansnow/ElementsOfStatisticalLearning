@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1155,6 +1155,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="l-1">
 <h1>18.4 <span class="math notranslate nohighlight">\(L_1\)</span> 正则的线性分类器<a class="headerlink" href="#l-1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><span class="xref myst">18.3 节</span>的方法使用 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚来对参数进行正则化，正如在岭回归中一样。所有的估计参数都是非零的，因此没有进行特征选择。在这一节我们讨论采用 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚的正则，并因此进行自动的特征选择。</p>
 <p>!!! note “weiya 注”
 特征选择意味着选择变量（特征），在 <span class="math notranslate nohighlight">\(L_2\)</span> 正则化中，没有参数的系数为 <span class="math notranslate nohighlight">\(0\)</span>，也就是没有剔除任何参数，所以说没有用到特征选择；而在 <span class="math notranslate nohighlight">\(L_1\)</span> 正则中，存在参数的系数为 <span class="math notranslate nohighlight">\(0\)</span>，也就是会对特征进行选择。换句话说，特征选择的效果就是取部分的特征，于是那部分的特征所对应的系数为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
@@ -1167,11 +1168,11 @@
 $<span class="math notranslate nohighlight">\(
 	\hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}
 	\)</span>$</p>
-<p>我们写成了 \eqref{3.52} 的拉格朗日形式。正如这里讨论的，使用充分大的调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，使用 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚使得部分的解参数 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 恰恰为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
+<p>我们写成了 式（ 3.52 ） 的拉格朗日形式。正如这里讨论的，使用充分大的调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，使用 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚使得部分的解参数 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 恰恰为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
 <p>在 <span class="xref myst">3.8.1 节</span>我们已经讨论了 LARS 算法，这是个计算所有 <span class="math notranslate nohighlight">\(\lambda\)</span> 的 lasso 解的有效过程。当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时（和本章一样），随着 <span class="math notranslate nohighlight">\(\lambda\)</span> 趋于 <span class="math notranslate nohighlight">\(0\)</span>，lasso 精确地拟合了训练数据。事实上，通过凸对偶，可以证明当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，对于所有 <span class="math notranslate nohighlight">\(\lambda\)</span>，非零参数的个数至多为 <span class="math notranslate nohighlight">\(N\)</span>（举个例子，Rosset and Zhu, 2007<a class="footnote-reference brackets" href="#id12" id="id1">1</a>）。因此 lasso 提供了特征选择的形式。</p>
 <p>Lasso 回归可以通过对输出编码为 <span class="math notranslate nohighlight">\(\pm 1\)</span> 来应用到两类别分类问题中，并且对预测变量加上一个截距（通常为 <span class="math notranslate nohighlight">\(0\)</span>）。对于多余两个的类别，有多种可能的方式，包括在 <span class="xref myst">18.3.3 节</span>讨论的 OVA 和 OVO 方法。我们在 <span class="xref myst">18.3 节</span>中对癌症数据应用 OVA 方法。结果显示在表 18.1 的第 4 行中。它的效果是最好的。</p>
 <p>分类问题的更自然的方式是使用 lasso 惩罚来正则化逻辑斯蒂回归。文献中已经提出一些实现方法，包括类似 LARS（Park and Hastie，2007<a class="footnote-reference brackets" href="#id13" id="id2">2</a>）的路径算法。因为路径是分段光滑但是是非线性的，精确的算法比 LARS 算法更慢，并且当 <span class="math notranslate nohighlight">\(p\)</span> 很大时不是很适用。</p>
-<p>Friedman et al. (2010)<a class="footnote-reference brackets" href="#id14" id="id3">3</a> 提出了用于拟合 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚的逻辑斯蒂和多项式回归模型的非常快速的算法。他们应用 <span class="xref myst">18.3.2 节</span>中 \eqref{18.10} 中的对称多项式逻辑斯蒂回归模型，并且最大化带惩罚的对数似然</p>
+<p>Friedman et al. (2010)<a class="footnote-reference brackets" href="#id14" id="id3">3</a> 提出了用于拟合 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚的逻辑斯蒂和多项式回归模型的非常快速的算法。他们应用 <span class="xref myst">18.3.2 节</span>中 式（ 18.10 ） 中的对称多项式逻辑斯蒂回归模型，并且最大化带惩罚的对数似然</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
 	\mathrm{Pr}(G=k\mid X=x)=\frac{\exp(\beta_{k0}+x^T\beta_k)}{\sum_{\ell=1}^K\exp(\beta_{\ell0}+x^T\beta_\ell)}\tag{18.10}
@@ -1184,7 +1185,7 @@ $<span class="math notranslate nohighlight">\(
 $<span class="math notranslate nohighlight">\(
 	\underset{\{\beta_{0k},\beta_k\}_1^K}{\max}\left[\sum\limits_{i=1}^N\log\;\mathrm{Pr}(g_i\mid x_i)-\frac{\lambda}{2}\sum\limits_{k=1}^K\Vert\beta_k\Vert\right]_2^2\tag{18.11}
 	\)</span>$</p>
-<p>这与式子 \eqref{18.11} 相对应。这个算法通过 <strong>坐标轮换 (cyclical coordinate descent)</strong>（<span class="xref myst">3.8.6 节</span>）计算出了在预先选择的 <span class="math notranslate nohighlight">\(\lambda\)</span> 序列上的精确解，并且研究了 <span class="math notranslate nohighlight">\(p &gt; &gt; N\)</span> 时解是稀疏的事实，以及 <span class="math notranslate nohighlight">\(\lambda\)</span> 邻域的解趋向于非常相似的特点。这个方法用在表 18.1 的第 7 行中，通过交叉验证来选取全局调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。它的表现与最优方法很相似，除了这里自动特征选择一起选择了 <span class="math notranslate nohighlight">\(269\)</span> 个基因。类似的方法也用在了 Genkin et. al (2007)<a class="footnote-reference brackets" href="#id15" id="id4">5</a>；尽管他们从贝叶斯角度提出模型，但事实上他们计算 <strong>后验的众数 (posterior mode)</strong>，解决了惩罚的最大似然问题。</p>
+<p>这与式子 式（ 18.11 ） 相对应。这个算法通过 <strong>坐标轮换 (cyclical coordinate descent)</strong>（<span class="xref myst">3.8.6 节</span>）计算出了在预先选择的 <span class="math notranslate nohighlight">\(\lambda\)</span> 序列上的精确解，并且研究了 <span class="math notranslate nohighlight">\(p &gt; &gt; N\)</span> 时解是稀疏的事实，以及 <span class="math notranslate nohighlight">\(\lambda\)</span> 邻域的解趋向于非常相似的特点。这个方法用在表 18.1 的第 7 行中，通过交叉验证来选取全局调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。它的表现与最优方法很相似，除了这里自动特征选择一起选择了 <span class="math notranslate nohighlight">\(269\)</span> 个基因。类似的方法也用在了 Genkin et. al (2007)<a class="footnote-reference brackets" href="#id15" id="id4">5</a>；尽管他们从贝叶斯角度提出模型，但事实上他们计算 <strong>后验的众数 (posterior mode)</strong>，解决了惩罚的最大似然问题。</p>
 <p><img alt="" src="../_images/fig18.5.png" /></p>
 <blockquote>
 <div><p>白血病数据的正则化逻辑斯蒂回归路径。左图是 lasso 路径，右图是 <span class="math notranslate nohighlight">\(\alpha=0.8\)</span> 的弹性网路径。在路径的终端（最左端），lasso 有 19 个非零系数，弹性网有 39 个非零系数。弹性网的平均效应导致比 lasso 更多的非零系数，但是规模更小。</p>
@@ -1239,7 +1240,7 @@ $<span class="math notranslate nohighlight">\(
 \underset{\beta\in \mathbb{R}^p}{\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda_1\sum\limits_{j=1}^p\vert \beta_j\vert +\lambda_2\sum\limits_{j=1}^{p-1}\vert \beta_{j+1}-\beta_j\vert\Big\}\tag{18.22}
 \]</div>
 <p>这个准则关于 <span class="math notranslate nohighlight">\(\beta\)</span> 是严格凸的，所以存在唯一的解。第一项惩罚项鼓励更稀疏的解，而第二项鼓励解在第 <span class="math notranslate nohighlight">\(j\)</span> 处光滑。</p>
-<p>\eqref{18.22} 式的 <strong>差异惩罚 (difference penalty)</strong> 假设指标 <span class="math notranslate nohighlight">\(j\)</span> 是等距的。如果潜在指标变量 <span class="math notranslate nohighlight">\(t\)</span> 有非均匀的值 <span class="math notranslate nohighlight">\(t_j\)</span>，\eqref{18.22} 更自然的推广是基于 <strong>划分差异 (divided differences)</strong></p>
+<p>式（ 18.22 ） 式的 <strong>差异惩罚 (difference penalty)</strong> 假设指标 <span class="math notranslate nohighlight">\(j\)</span> 是等距的。如果潜在指标变量 <span class="math notranslate nohighlight">\(t\)</span> 有非均匀的值 <span class="math notranslate nohighlight">\(t_j\)</span>，式（ 18.22 ） 更自然的推广是基于 <strong>划分差异 (divided differences)</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_2\sum\limits_{j=1}^{p-1}\frac{\vert \beta_{j+1}-\beta_j\vert}{\vert t_{j+1}-t_j\vert}\tag{18.23}

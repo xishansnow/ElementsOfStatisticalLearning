@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1155,6 +1155,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.5 运用派生输入方向的方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>在很多情形下我们有很多输入，这些输入的相关性经常是非常强的。这一小节中的方法产生较少的原输入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的线性组合 <span class="math notranslate nohighlight">\(Z_m,m=1,2,\ldots,M\)</span>，然后 <span class="math notranslate nohighlight">\(Z_m\)</span> 用来代替 <span class="math notranslate nohighlight">\(X_j\)</span> 来作为回归的输入。这些方法区别于怎样构造线性组合。</p>
 <div class="section" id="id2">
 <h2>主成分回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -1164,7 +1165,7 @@
 \[
 \hat{\mathbf y}^{pcr}_{(M)}=\bar y\mathbf 1+\sum\limits_{m=1}^M\hat{\theta}_m\mathbf z_m\tag{3.61}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\hat\theta_m=\langle \mathbf z_m,\mathbf y\rangle/\langle\mathbf z_m,\mathbf z_m\rangle\)</span>。因为每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是原输入变量 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的线性组合，我们可以将解 \eqref{3.61} 表达成关于 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的系数（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">练习 3.13</a>）:</p>
+<p>其中，<span class="math notranslate nohighlight">\(\hat\theta_m=\langle \mathbf z_m,\mathbf y\rangle/\langle\mathbf z_m,\mathbf z_m\rangle\)</span>。因为每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是原输入变量 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的线性组合，我们可以将解 式（ 3.61 ） 表达成关于 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的系数（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">练习 3.13</a>）:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\beta^{pcr}(M)=\sum\limits_{m=1}^M\hat\theta_mv_m\tag{3.62}

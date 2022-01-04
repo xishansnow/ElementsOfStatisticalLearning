@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>16.4 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>如在导言中说到的那样，机器学习中的许多新方法都被称为“ensemble”方法。这其中包括 neural networks boosting, <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 和 随机森林； Dietterich (2000a)<a class="footnote-reference brackets" href="#id8" id="id2">1</a> 调查了基于树的<strong>集成 (ensemble)</strong> 方法。神经网络（<span class="xref myst">第 11 章</span>）或许更值得这个名字，因为他们同事学习隐藏单元（基函数）的参数，并且考虑怎样结合他们。Bishop (2006)<a class="footnote-reference brackets" href="#id9" id="id3">2</a> 在某些细节上讨论了神经网络，以及贝叶斯观点 (MacKay, 1992<a class="footnote-reference brackets" href="#id10" id="id4">3</a>; Neal, 1996<a class="footnote-reference brackets" href="#id11" id="id5">4</a>)。支持向量机（<span class="xref myst">第 12 章</span>）也可以看成是集成方法；它们在高维特征空间中拟合 <span class="math notranslate nohighlight">\(L_2\)</span> 正则化模型。Boosting 和 Lasso 通过 <span class="math notranslate nohighlight">\(L_1\)</span> 正则化利用稀疏性来解决高维问题，而 SVMs 依赖 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚的“核技巧”的性质。</p>
 <p>C5.0 (Quinlan, 2004<a class="footnote-reference brackets" href="#id12" id="id6">5</a>) 是一个 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 树和规则生成包，与 <code class="docutils literal notranslate"><span class="pre">Rulefit</span></code> 有相同的目标。</p>
 <p>有大量且不同的文献经常被称作“组合分类器”，它在用于混合不同类型的方法的 ad-hoc 模式中大量存在，能够达到更好的性能。有关原则的方法，参见 Kittler et al. (1998)<a class="footnote-reference brackets" href="#id13" id="id7">6</a>.</p>

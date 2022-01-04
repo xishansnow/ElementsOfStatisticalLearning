@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>16.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><strong>集成学习 (ensemble learning)</strong> 的思想是通过结合一系列简单基础模型的优点来建立一个预测模型。我们已经看到很多这类的例子。</p>
 <p><span class="xref myst">8.7 节</span>的 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 和<span class="xref myst">第 15 章</span>的随机森林都是用于分类的集成学习的方法，其中树的每个 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 对预测的类别都有一个投票。<span class="xref myst">第 10 章</span>中的 boosting 一开始也是以一种 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 的方法提出来的，尽管不同于随机森林，weak learners 的 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 随着时间不断进化，并且成员进行带有权重的投票。Stacking（<span class="xref myst">8.8 节</span>）是结合一系列拟合模型优点的新方式。事实上，可以将任何字典方法看成集成学习，其中基函数充当 <strong>弱学习器 (weak learners)</strong>，比如回归样条。</p>
 <p>非参回归的贝叶斯方法也可以看成是集成学习的方法：关于参数设定的后验分布，对一系列大量的候选模型进行平均（比如，Neal and Zhang，2006<a class="footnote-reference brackets" href="#id6" id="id2">1</a>）。</p>

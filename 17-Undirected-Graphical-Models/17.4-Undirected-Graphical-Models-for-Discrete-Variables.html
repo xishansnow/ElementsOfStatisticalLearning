@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,6 +1160,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>17.4 离散变量的无向图模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <blockquote>
 <div><p>写在前面</p>
 <p>这一节中我觉得最有应用价值的是 RBM，这跟深度学习很相关，在 LISA lab, University of Montreal 编的那本 Deep Learning Tutorial (Release 0.1) 中，有一节就是讲如何用 RBM 做手写数字识别。那段程序大概六个月前就已经接触了，但一直没搞清楚它在干嘛:disappointed:。其实，本节最后作者提到的用 RBM 做手写数字识别中的某一步其实就是那段程序干的事情。事实上，那段程序并没有真正地完成识别问题，仅仅是其中的一步——“采用对比发散训练包含 784 个可见单元和 500 个隐藏单元的RBM，来建立图像集的模型”，后续步骤还应该有“将这个 RBM 的隐藏状态作为训练第二个 RBM 的数据，第二个 RBM 含 500 个可见单元和 500 个隐藏单元。最后，第二个 RBM 的隐藏状态用作训练含 2000 个隐藏单元的RBM的输入特征，并且用上标签数据。” 或许，这导致当时没有理解程序所要完成的目标的原因吧:confounded:</p>
@@ -1185,7 +1186,7 @@ $<span class="math notranslate nohighlight">\(
 	\end{align*}
 	\tag{17.5}
 	\)</span>$</p>
-<p>分割函数保证在样本空间中概率相加起来为 1。<span class="math notranslate nohighlight">\(\theta_{jk}X_jX_k\)</span> 项表示（对数）势函数 \eqref{17.5} 的特定参量化，而且因为技术上的原因需要包含 <strong>常值结点 (constant node)</strong> <span class="math notranslate nohighlight">\(X_0\equiv 1\)</span>，即与其他结点都有边相连.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/139">练习 17.10</a>）。</p>
+<p>分割函数保证在样本空间中概率相加起来为 1。<span class="math notranslate nohighlight">\(\theta_{jk}X_jX_k\)</span> 项表示（对数）势函数 式（ 17.5 ） 的特定参量化，而且因为技术上的原因需要包含 <strong>常值结点 (constant node)</strong> <span class="math notranslate nohighlight">\(X_0\equiv 1\)</span>，即与其他结点都有边相连.（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/139">练习 17.10</a>）。</p>
 <p>!!! note “weiya 注：Ex. 17.10”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/139">Issue 139: Ex. 17.10</a>。</p>
 <p>在统计领域中，这个模型等价于 <strong>多路计数表 (multiway tables of counts)</strong> 的 <strong>一阶交叉泊松对数线性模型 (first-order-interaction Poisson log-linear model)</strong>（Bishop et al.，1975<a class="footnote-reference brackets" href="#id24" id="id2">1</a> ;McCullagh and Nelder,1989<a class="footnote-reference brackets" href="#id25" id="id3">2</a>; Agresti, 2002<a class="footnote-reference brackets" href="#id26" id="id4">3</a>）。</p>
@@ -1230,7 +1231,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 \hat \mathbb{E}(X_jX_k)=\frac{1}{N}\sum\limits_{i=1}^Nx_{ij}x_{ik},\tag{17.35}
 \)</span>$
-这是关于数据的经验分布取期望。注意 \eqref{17.34} 式，我们看到极大似然估计简单地把结点之间的内积估计和观测的内积匹配上了。这是指数族模型得分（梯度）等式的标准形式，其中令充分统计量等于模型下的期望。</p>
+这是关于数据的经验分布取期望。注意 式（ 17.34 ） 式，我们看到极大似然估计简单地把结点之间的内积估计和观测的内积匹配上了。这是指数族模型得分（梯度）等式的标准形式，其中令充分统计量等于模型下的期望。</p>
 <p>为了寻找极大似然估计，我们可以利用梯度搜索或者牛顿法。然而 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span> 的计算涉及 <span class="math notranslate nohighlight">\(p(X,\mathbf\Theta)\)</span> 在 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\vert{\mathcal X}\vert=2^p\)</span> 种可能值中的 <span class="math notranslate nohighlight">\(2^{p-2}\)</span> 种情形，</p>
 <p>!!! note “weiya 注：<span class="math notranslate nohighlight">\(2^{p-2}\)</span>”
 可以这样理解，因为 <span class="math notranslate nohighlight">\(X_jX_k\)</span> 的取值有四种情形，则对每一种 <span class="math notranslate nohighlight">\(X_jX_k\)</span>，总共有<span class="math notranslate nohighlight">\(2^p/4=2^{p-2}\)</span>种可能。</p>
@@ -1239,7 +1240,7 @@ $<span class="math notranslate nohighlight">\(
 <li><p><strong>泊松对数线性建模 (Poisson log-linear modeling)</strong>， 其中我们将问题看成是大规模回归问题（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/141">练习 17.12</a>）。响应变量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是数据的多路表的每个单元中的 <span class="math notranslate nohighlight">\(2^p\)</span> 维计数的向量。</p></li>
 </ul>
 <p>!!! note “原书脚注：”
-每个单元的计数看成是单个的独立泊松变量。在总数 <span class="math notranslate nohighlight">\(N\)</span> 的条件下能得到对应 \eqref{17.28} 的多项式模型（在这个框架下也是泊松分布）。</p>
+每个单元的计数看成是单个的独立泊松变量。在总数 <span class="math notranslate nohighlight">\(N\)</span> 的条件下能得到对应 式（ 17.28 ） 的多项式模型（在这个框架下也是泊松分布）。</p>
 <!--
 不矛盾！！其实就是 $N=2^p$.
 
@@ -1252,7 +1253,7 @@ $<span class="math notranslate nohighlight">\(
 <p>预测矩阵 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 有 <span class="math notranslate nohighlight">\(2^p\)</span> 个行，以及 <span class="math notranslate nohighlight">\(1+p+p^2\)</span> 个表征每个单元的列，尽管这个数字取决于图的稀疏程度。计算代价本质是该规模下回归问题的代价，即为 <span class="math notranslate nohighlight">\(O(p^42^p)\)</span> 并且对于 <span class="math notranslate nohighlight">\(p &lt; 20\)</span> 是可行的。**牛顿更新 (Newton updates)**一般通过 <strong>迭代重赋权最小二乘法 (iteratively reweighted least squares)</strong> 来计算，并且步数通常是在个位数之内。详见 Agresti (2002)<a class="footnote-reference brackets" href="#id26" id="id6">3</a> 和 McCullagh and Nelder(1989)<a class="footnote-reference brackets" href="#id25" id="id7">2</a>。标准软件（比如 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言的 <code class="docutils literal notranslate"><span class="pre">glm</span></code> 包）可以用来拟合这个模型。</p>
 <ul class="simple">
 <li><p><strong>梯度下降 (Gradient descent)</strong> 至多需要 <span class="math notranslate nohighlight">\(O(p^22^{p-2})\)</span> 的计算量来计算梯度，但是可能会比二阶牛顿法需要更多的梯度步数。然而，可以处理稍微大点的 <span class="math notranslate nohighlight">\(p\le 30\)</span> 的问题。计算量可以通过（采用 junction-tree 算法）找出稀疏图中特别的团结构来降低。这里没有给出细节。</p></li>
-<li><p><strong>迭代比例过滤 (Iterative proportional fitting, IPF)</strong> 在梯度式 \eqref{17.34} 中采用 <strong>循环坐标下降 (cyclical coordinate descent)</strong>。每一步更新一个参数使得梯度等式正好为 0。循环进行直到所有梯度为 0。一个完整的周期与梯度赋值花费同样的计算量，但是可能更有效。Jirouśek and Přeučil (1995)<a class="footnote-reference brackets" href="#id27" id="id8">4</a> 采用 junction trees 实现了 IPF 的一个有效版本。</p></li>
+<li><p><strong>迭代比例过滤 (Iterative proportional fitting, IPF)</strong> 在梯度式 式（ 17.34 ） 中采用 <strong>循环坐标下降 (cyclical coordinate descent)</strong>。每一步更新一个参数使得梯度等式正好为 0。循环进行直到所有梯度为 0。一个完整的周期与梯度赋值花费同样的计算量，但是可能更有效。Jirouśek and Přeučil (1995)<a class="footnote-reference brackets" href="#id27" id="id8">4</a> 采用 junction trees 实现了 IPF 的一个有效版本。</p></li>
 </ul>
 <p>当 <span class="math notranslate nohighlight">\(p\)</span> 变大 <span class="math notranslate nohighlight">\((&gt;30)\)</span> 可以采用其它的方法来近似梯度</p>
 <ul class="simple">
@@ -1286,7 +1287,7 @@ x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal
 \right.
 \tag{17.38}
 \)</span>$</p>
-<p>!!! note “weiya 注：推导 \eqref{17.38}”
+<p>!!! note “weiya 注：推导 式（ 17.38 ）”
 参见<a class="reference external" href="http://disq.us/p/22yh4r6">评论</a>.</p>
 <p>现在需要进行两个独立的吉布斯采样；第一个是从上面的模型中采样估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf \Theta}(X_jX_k)\)</span>，第二个是估计 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})\)</span>。对于后者，固定（“夹住”）可见单元为观测值，并且仅仅对隐藏变量进行采样。吉布斯采样必须对训练集中的每一个观测进行，在梯度搜索的每一阶段。结果是这个过程可以变得非常慢，甚至对于中等规模的模型也是如此。在 <span class="xref myst">17.4.4 节</span>我们考虑进一步的模型约束来使得计算可行。</p>
 </div>
@@ -1298,9 +1299,9 @@ x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal
 </div>
 <div class="section" id="id20">
 <h2>限制玻尔兹曼机<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
-<p>这节我们考虑受神经网络影响的一种特殊的图模型结构，该结构中，单元是按层进行组织的。<strong>限制玻尔兹曼机 (RBM)</strong> 包含一层可见单元和一层隐藏单元，单层之间没有联系。如果隐藏单元的连接被移除掉，计算条件期望变得很简单（如在式 \eqref{17.37} 和 \eqref{17.38}）。</p>
+<p>这节我们考虑受神经网络影响的一种特殊的图模型结构，该结构中，单元是按层进行组织的。<strong>限制玻尔兹曼机 (RBM)</strong> 包含一层可见单元和一层隐藏单元，单层之间没有联系。如果隐藏单元的连接被移除掉，计算条件期望变得很简单（如在式 式（ 17.37 ） 和 式（ 17.38 ））。</p>
 <p>!!! note “weiya 注：”
-这样 \eqref{17.38} 式变成，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，
+这样 式（ 17.38 ） 式变成，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，
 $<span class="math notranslate nohighlight">\(
 		\mathbb{E}_{\Theta}(X_jX_k\mid X_{\mathcal V}=x_{i\mathcal V})=
 		\left\{
@@ -1320,10 +1321,10 @@ $<span class="math notranslate nohighlight">\(
 <div><p>图 17.6. 同一层中的结点没有连接的 <strong>限制玻尔兹曼机 (RBM)</strong>。可见单元细分成了 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span>，允许 RBM 建立特征 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和标签 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 之间的联合密度。</p>
 </div></blockquote>
 <p>举个例子， <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 可以是手写字体图像的二值像素，<span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 可以有10个单元，每个单元是观测的类别标签 0-9 中的一个。</p>
-<p>这个模型的约束形式简化了估计 \eqref{17.37} 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 \eqref{17.30} 给出的条件概率一起采样。</p>
+<p>这个模型的约束形式简化了估计 式（ 17.37 ） 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 式（ 17.30 ） 给出的条件概率一起采样。</p>
 <p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替采样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 部分在交替采样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 的标签分布中采样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
 <p>正如所注意到的约束玻尔兹曼机有与单层隐藏层神经网络一样的一般形式（<span class="xref myst">11.3 节</span>）。神经网络中边是有向的，隐藏单元经常是实值的，并且拟合准则不一样。神经网络在输入特征的情况下，最小化目标与模型预测之间的误差（交叉熵）。相反地，约束玻尔兹曼机最大化所有可见单元（也就是，特征和目标）的联合分布的对数似然。可以从输入特征中提取对预测标签有用的信息，但是，与监督学习方法不同，可能也使用一些隐藏单元对特征向量中的结构进行建模，而这与预测标签不是直接相关的。然而，这些特征当与从隐藏层中导出的特征结合起来会变得有用。</p>
-<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 \eqref{17.37} 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 采样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 采样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 采样。思想是，当参数与解相差很多，迭代吉布斯采样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
+<p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 式（ 17.37 ） 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 采样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 采样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 采样。思想是，当参数与解相差很多，迭代吉布斯采样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
 <p>!!! note “weiya 注”
 <img alt="" src="../_images/hvGibbs.png" />
 截图自<a class="reference external" href="http://deeplearning.net/tutorial/">http://deeplearning.net/tutorial/</a></p>

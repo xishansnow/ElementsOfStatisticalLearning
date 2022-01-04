@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,9 +1137,8 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>2.5 高维问题的局部方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>至今为止我们已经仔细讨论了两个关于预测的学习方法：稳定但是有偏差的线性模型和不稳定但显然偏差较小的 <span class="math notranslate nohighlight">\(k\)</span>-最近邻估计。当有充分大的训练数据，我们似乎总会选择 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均来近似理论上的最优条件期望，因为我们能够找到一个相当大的离 <span class="math notranslate nohighlight">\(x\)</span> 近的观测构成的邻域并且平均里面的观测值。在高维情形下这种方法以及我们的直觉都没有用，而且这种现象通常被称作 <strong>维度的诅咒 (curse of dimensionality)</strong> (Bellman, 1961<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)。关于这个问题有很多的证明，我们将要仔细讨论一些。</p>
-<p>!!! note “weiya 注:”
-查阅<a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%BB%B4%E6%95%B0%E7%81%BE%E9%9A%BE">维基百科</a>，“curse of dimensionality” 可以翻译成 <strong>维数灾难</strong> 或 <strong>维度的诅咒</strong>。</p>
+<style>p{text-indent:2em;2}</style>
+<p>至今为止我们已经仔细讨论了两个关于预测的学习方法：稳定但是有偏差的线性模型和不稳定但显然偏差较小的 <span class="math notranslate nohighlight">\(k\)</span>-最近邻估计。当有充分大的训练数据，我们似乎总会选择 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均来近似理论上的最优条件期望，因为我们能够找到一个相当大的离 <span class="math notranslate nohighlight">\(x\)</span> 近的观测构成的邻域并且平均里面的观测值。在高维情形下这种方法以及我们的直觉都没有用，而且这种现象通常被称作 <strong>维度的灾难 (curse of dimensionality)</strong> (Bellman, 1961<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)。关于这个问题有很多的证明，我们将要仔细讨论一些。</p>
 <p>正如图 2.6 显示的那样，我们考虑输入在 <span class="math notranslate nohighlight">\(p\)</span> 维单位超立方体均匀分布的最近邻过程。假设我们在某个目标点构造超立方体的邻域来捕获观测值的一个小部分 <span class="math notranslate nohighlight">\(r\)</span>。因为这个邻域对应单位体积的比例 <span class="math notranslate nohighlight">\(r\)</span>，则边长的期望值为 <span class="math notranslate nohighlight">\(e_p(r)=r^{1/p}\)</span>。在 <span class="math notranslate nohighlight">\(10\)</span> 维空间下 <span class="math notranslate nohighlight">\(e_{10}(0.01)=0.63\)</span>,<span class="math notranslate nohighlight">\(e_{10}(0.1)=0.80\)</span>，而每个输入的全部范围为 <span class="math notranslate nohighlight">\(1.0\)</span>。所以选取 <span class="math notranslate nohighlight">\(1\%\)</span> 或 <span class="math notranslate nohighlight">\(10\%\)</span> 的数据去形成局部均值，我们必须在每个输入变量上覆盖到 <span class="math notranslate nohighlight">\(63\%\)</span> 或者 <span class="math notranslate nohighlight">\(80\%\)</span>。这样的邻域不再是局部的。显著地降低 <span class="math notranslate nohighlight">\(r\)</span> 并没有作用，因为我们选取去平均的观测值越少，我们拟合的方差也会越大。</p>
 <p><img alt="" src="../_images/fig2.6.png" /></p>
 <blockquote>
@@ -1150,17 +1149,18 @@
 \[
 d(p,N)=(1-(\frac{1}{2})^{1/N})^{1/p}\tag{2.24}
 \]</div>
-<p>!!! note “weiya 注”
-我们可以这样得到 \eqref{2.24} 式：
+<blockquote>
+<div><p>我们可以这样得到 式（ 2.24 ） 式：
 将数据点与原点的距离看成随机变量<span class="math notranslate nohighlight">\(X\)</span>，因为数据点均匀分布，则 <span class="math notranslate nohighlight">\(X\)</span> 的分布函数为
 $<span class="math notranslate nohighlight">\(
-    F(X &lt; x)=x^p, \; x\in [0,1]
-    \)</span><span class="math notranslate nohighlight">\(
-    则最近距离为次序统计量\)</span>X_{(1)}<span class="math notranslate nohighlight">\(，其分布函数为
-    \)</span><span class="math notranslate nohighlight">\(
-    F_1(x)=1-(1-F(x))^N
-    \)</span><span class="math notranslate nohighlight">\(
-    最近距离的中位数满足 \)</span>F_1(d(p,N))=\frac{1}{2}$，于是可以得到 \eqref{2.24} 式。</p>
+   F(X &lt; x)=x^p, \; x\in [0,1]
+   \)</span><span class="math notranslate nohighlight">\(
+   则最近距离为次序统计量\)</span>X_{(1)}<span class="math notranslate nohighlight">\(，其分布函数为
+\)</span><span class="math notranslate nohighlight">\(
+   F_1(x)=1-(1-F(x))^N
+   \)</span><span class="math notranslate nohighlight">\(
+   最近距离的中位数满足 \)</span>F_1(d(p,N))=\frac{1}{2}$，于是可以得到 式（ 2.24 ） 式。</p>
+</div></blockquote>
 <p>距离原点最近的数据点的距离的均值表达式更加复杂。当 <span class="math notranslate nohighlight">\(N=500,p=10,d(p,N)\approx 0.52\)</span>，比到边界的距离的一半还要大。因此大部分的数据点离样本空间的边界比其他任何的数据点更近。这里产生问题的原因是对于训练样本中靠近的边的预测更加困难。一定要从样本点的邻域外推而不是在中间插入。</p>
 <p>另外一个证明这个灾难是采样密度是跟 <span class="math notranslate nohighlight">\(N^{1/p}\)</span> 成比例，其中 <span class="math notranslate nohighlight">\(p\)</span> 为输入空间的维数，<span class="math notranslate nohighlight">\(N\)</span> 为样本的规模。因此，如果 <span class="math notranslate nohighlight">\(N_1=100\)</span> 表示对于单输入问题的大密度采样，然后 <span class="math notranslate nohighlight">\(N_{10}=100^{10}\)</span> 是 <span class="math notranslate nohighlight">\(10\)</span> 个输入时采样密度同上面相同时所需要的样本规模大小。因此在高维空间中所有可行的训练样本在输入空间中很稀少。</p>
 <p>让我们构造另一个均匀分布的例子。假设我们有从 <span class="math notranslate nohighlight">\([-1,1]^p\)</span> 中均匀产生的 <span class="math notranslate nohighlight">\(1000\)</span> 个训练样本 <span class="math notranslate nohighlight">\(x_i\)</span>。假设没有任何测量错误，<span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 之间真正的关系是</p>
@@ -1215,20 +1215,19 @@ Y = X^T\beta + \varepsilon\tag{2.26}
 &amp;=\sigma^2(p/N)+\sigma^2\qquad\qquad\tag{2.28}
 \end{align*}
 \end{split}\]</div>
-<p>我们可以看到 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 的期望作为 <span class="math notranslate nohighlight">\(p\)</span> 的函数线性增长，斜率 <span class="math notranslate nohighlight">\(\sigma^2/N\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 大且/或 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 小，方差的增长可以忽略（在确定情形下为 <span class="math notranslate nohighlight">\(0\)</span>）。通过在拟合的模型的类别上插入一些强的限制，我们避免了维数的灾难。式 \eqref{2.27} 和 \eqref{2.28} 中部分技巧细节的推导另见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">练习 2.5</a>。</p>
-<p>!!! info “Ex. 2.5”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">Issue 160: Ex. 2.5</a>.</p>
+<p>我们可以看到 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 的期望作为 <span class="math notranslate nohighlight">\(p\)</span> 的函数线性增长，斜率 <span class="math notranslate nohighlight">\(\sigma^2/N\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 大且/或 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 小，方差的增长可以忽略（在确定情形下为 <span class="math notranslate nohighlight">\(0\)</span>）。通过在拟合的模型的类别上插入一些强的限制，我们避免了维数的灾难。式 式（ 2.27 ） 和 式（ 2.28 ） 中部分技巧细节的推导另见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">练习 2.5</a>。</p>
 <p>图 2.9 在两种情形下比较 <span class="math notranslate nohighlight">\(1\)</span>-最近邻和最小二乘法，两种情形下形式均为 <span class="math notranslate nohighlight">\(Y=f(X)+\epsilon\)</span>，<span class="math notranslate nohighlight">\(X\)</span> 和前面一样都是均匀分布的，而且<span class="math notranslate nohighlight">\(\epsilon\sim N(0,1)\)</span>。样本规模为 <span class="math notranslate nohighlight">\(N=500\)</span>。对于橙色曲线，<span class="math notranslate nohighlight">\(f(X)\)</span> 关于第一个坐标是线性的，对于蓝色曲线，如图 2.8 中的三次函数。图中显示了相对于最小二乘而言，<span class="math notranslate nohighlight">\(1\)</span>-最近邻的相对 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 值，线性情况下大概是从 <span class="math notranslate nohighlight">\(2\)</span> 开始。在这种情况下最小二乘是无偏的，而且如上面所讨论的，<span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 略高于 <span class="math notranslate nohighlight">\(\sigma^2=1\)</span>。<span class="math notranslate nohighlight">\(1\)</span>-最近邻的 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 总是大于 <span class="math notranslate nohighlight">\(2\)</span>，因为这种情形下 <span class="math notranslate nohighlight">\(\hat{f}_0\)</span> 的方差至少是 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，而且随着维数增长比率增加，因为随着维数增加最近邻会远离目标点。</p>
-<p>!!! note “weiya 注:”
-对于 1NN，
+<blockquote>
+<div><p>对于 1NN，
 $<span class="math notranslate nohighlight">\(
-    \mathrm{EPE}(x_0) = \sigma^2 + \mathrm{Var}_{\mathcal T}(\hat{y}_0)+\mathrm{Bias}^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
-    \)</span><span class="math notranslate nohighlight">\(
-    而对于 OLS,
-    \)</span><span class="math notranslate nohighlight">\(
-    \mathbb{E}_{x_0}\mathrm{EPE}(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
-    \)</span><span class="math notranslate nohighlight">\(
-    则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 \)</span>p<span class="math notranslate nohighlight">\( 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 \)</span>p$ 增长。</p>
+   \mathrm{EPE}(x_0) = \sigma^2 + \mathrm{Var}_{\mathcal T}(\hat{y}_0)+\mathrm{Bias}^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
+   \)</span><span class="math notranslate nohighlight">\(
+   而对于 OLS,
+   \)</span><span class="math notranslate nohighlight">\(
+  \mathbb{E}_{x_0}\mathrm{EPE}(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
+  \)</span><span class="math notranslate nohighlight">\(
+  则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 \)</span>p<span class="math notranslate nohighlight">\( 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 \)</span>p$ 增长。</p>
+</div></blockquote>
 <p>对于三次函数，最小二乘是有偏的，这使得比率变得缓和。显然我们可以构造最小二乘的偏差主导方差的例子，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻就会变成胜利者。</p>
 <p><img alt="" src="../_images/fig2.9.png" /></p>
 <p>通过依赖严格的假设，线性模型没有偏差而且方差几乎可以忽略，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻的误差就会相当的大。然而，如果假设是错误的，所有的东西都不复存在，而 <span class="math notranslate nohighlight">\(1\)</span>-最近邻将占主导地位。我们将会看到介于严格的线性模型和非常灵活的 <span class="math notranslate nohighlight">\(1\)</span>-最近邻模型之间的模型谱，每个都有它们各自的假设和偏差，这些假设已经具体提到过，通过在很大程度上借鉴这些假设来避免高维下函数复杂度呈指数增长。</p>

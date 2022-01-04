@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1150,6 +1150,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>12.7 混合判别分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>线性判别分析可以看成是 <strong>原型 (prototype)</strong> 分类器。每个类别都由其形心表示，并且使用某种合适的度量，将其分到最近的形心处。在许多情形下，单个原型不足以表示不均匀的类别，而混合模型是更合适的。在这节中，我们回顾高斯混合模型，并且展示怎么从之前讨论的 FDA 和 PDA 中推广得到。第 <span class="math notranslate nohighlight">\(k\)</span> 类别的高斯混合模型密度为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1179,7 +1180,7 @@ W(c_{kr}\mid x_i, g_i)=\frac{\pi_{kr}\phi(x_i;\mu_{kr},\mathbf \Sigma)}{\sum\lim
 <p>我们对始终相等的组分协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf\Sigma\)</span> 的假设带来额外的简化；我们可以像 LDA 中一样在混合形式中结合秩的约束。为了理解这一点，回顾下 LDA 的一些事实（<span class="xref myst">4.3.3 节</span>）。rank-<span class="math notranslate nohighlight">\(L\)</span> 的 LDA 拟合等价于高斯模型的极大似然拟合，其中每个类别中不同的均值向量约束到 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 的 rank-<span class="math notranslate nohighlight">\(L\)</span> 子空间（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">练习 4.8</a>）。</p>
 <p>!!! info “weiya 注：Ex. 4.8”
 结合作者的原论文，目前看懂其中一种情形的证明，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">Issue 143: Ex. 4.8</a>。</p>
-<p>我们可以在混合模型中继承这条性质，并且在满足所有 <span class="math notranslate nohighlight">\(\sum_kR_k\)</span> 个形心上的秩约束的条件（<span class="math notranslate nohighlight">\(\mathrm{rank}\\{\mu_{k\ell}\\}=L\)</span>）下最大化对数似然 \eqref{12.61}。</p>
+<p>我们可以在混合模型中继承这条性质，并且在满足所有 <span class="math notranslate nohighlight">\(\sum_kR_k\)</span> 个形心上的秩约束的条件（<span class="math notranslate nohighlight">\(\mathrm{rank}\\{\mu_{k\ell}\\}=L\)</span>）下最大化对数似然 式（ 12.61 ）。</p>
 <p>又一次可以用 EM 算法，并且 M-step 事实上是加权版本的 LDA，其中有 <span class="math notranslate nohighlight">\(R=\sum_{k=1}^KR_k\)</span> 个“类别”。而且，我们可以采用之前一样的最优得分来解决加权 LDA 问题，使得我们在这一步可以使用 FDA 或者 PDA。可以预料，除了“类别”数可以增加，第 <span class="math notranslate nohighlight">\(k\)</span> 类中的观测数也会类似增加 <span class="math notranslate nohighlight">\(R_k\)</span> 倍。事实证明如果线性算子用于最优得分回归，则不是这种情形。增广的响应变量矩阵 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 变成 <strong>模糊的 (blurred)</strong> 响应矩阵 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，直觉上令人愉快。举个例子，假设有 <span class="math notranslate nohighlight">\(K=3\)</span> 个类别，并且每个类中有 <span class="math notranslate nohighlight">\(R_k=3\)</span> 个子类。则 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 可能是</p>
 <p><img alt="" src="../_images/eq12.63.PNG" /></p>
 <p>其中类别 <span class="math notranslate nohighlight">\(k\)</span> 行的元素对应 <span class="math notranslate nohighlight">\(W(c_{kr}\mid x,g_i)\)</span>。</p>

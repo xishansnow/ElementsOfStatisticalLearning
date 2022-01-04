@@ -201,7 +201,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1135,6 +1135,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>10.7 数据挖掘的现货方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><strong>预测学习 (predictive learning)</strong> 是数据挖掘中很重要的一部分。正如在这本书中看到的一样，已经提出了大量的方法对数据进行学习，然后预测。对于每个特定的方法，有些情形特别适用，但在其他情形表现得很差。我们已经试图在每个方法的讨论中明确合适的应用情形。然而，对于给定的问题，我们不会事先知道哪种方法表现得最好。表 10.1 总结了一些学习方法的特点。</p>
 <p><img alt="" src="../_images/tab10.1.png" /></p>
 <p>工业和商业数据挖掘应用在学习过程的要求往往特别具有挑战性。数据集中观测值的个数以及每个观测值上衡量的变量个数往往都非常大。因此，需要注意计算的复杂度。并且，数据经常是混乱的 (messy)：输入往往是定量，二值以及类别型变量的混合，而且类别型变量往往有很多层次。一般还会有许多缺失值，完整的观测值是很稀少的。预测变量和响应变量的分布经常是 <strong>长尾 (long-tailed)</strong> 并且 <strong>高偏的 (highly skewed)</strong>。垃圾邮件的数据就是这种情形(<span class="xref myst">9.1.2 节</span>)；当拟合一个广义可加模型，我们首先对每个预测变量进行对数变换以期得到合理的拟合。另外，它们通常会包含很大一部分的严重的误测量值（离群值）。预测变量通常在差异很大的尺度下进行测量。</p>

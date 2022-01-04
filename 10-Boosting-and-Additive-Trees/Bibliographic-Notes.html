@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>10.15 文献笔记<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>Schapire (1990)<a class="footnote-reference brackets" href="#id28" id="id2">1</a> 在 PAC 学习框架中 (Valiant, 1984<a class="footnote-reference brackets" href="#id29" id="id3">2</a>; Kearns and Vazirani, 1994<a class="footnote-reference brackets" href="#id30" id="id4">3</a>) 发展了第一个简单的boosting 过程。Schapire 证明了 <strong>弱学习器 (weak learner)</strong> 总是可以通过在输入数据流的过滤版本训练两个额外的分类器来提高效果。弱学习器是产生两类别分类器的算法，该分类器保证了效果要显著地比抛硬币的猜测好。当在前 <span class="math notranslate nohighlight">\(N\)</span> 个训练点上学习出初始的分类器 <span class="math notranslate nohighlight">\(G_1\)</span>，</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(G_2\)</span> 在 <span class="math notranslate nohighlight">\(N\)</span> 新样本点中学习，其中有一半是被 <span class="math notranslate nohighlight">\(G_1\)</span> 误分类的；</p></li>

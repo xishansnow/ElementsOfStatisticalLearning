@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.9 Boosting 树<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>回归和分类树在第 <span class="xref myst">9.2 节</span> 已经详细讨论了。它们将所有联合预测变量的空间划分为不相交的区域 <span class="math notranslate nohighlight">\(R_j,j=1,2,\ldots,J\)</span>，这些区域用树的终止结点表示。常数值 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 赋予到每个区域中，预测规则为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1154,7 +1155,7 @@ $<span class="math notranslate nohighlight">\(
 <p>这是个艰巨的组合优化问题，我们通常去寻求近似次优解。将该优化问题分成两个部分是很有用的：</p>
 <ol class="simple">
 <li><p><strong>给定 <span class="math notranslate nohighlight">\(R_j\)</span> 求 <span class="math notranslate nohighlight">\(\gamma_j\)</span>:</strong> 给定 <span class="math notranslate nohighlight">\(R_j\)</span>，估计 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是小菜一碟，而且通常有 <span class="math notranslate nohighlight">\(\hat\gamma_j=\bar y_j\)</span>，这是那些落在区域<span class="math notranslate nohighlight">\(R_j\)</span> 的 <span class="math notranslate nohighlight">\(y_i\)</span> 的均值。对于误分类损失，<span class="math notranslate nohighlight">\(\gamma_j\)</span> 是落在区域 <span class="math notranslate nohighlight">\(R_j\)</span> 的观测值的 <strong>众数 (modal class)</strong>。</p></li>
-<li><p><strong>求 <span class="math notranslate nohighlight">\(R_j\)</span>:</strong> 对于求近似解，这是很困难的一部分。注意到寻找 <span class="math notranslate nohighlight">\(R_j\)</span> 意味着也估计 <span class="math notranslate nohighlight">\(\gamma_j\)</span>。一个典型的策略是使用贪婪的，自上而下的递归划分算法来寻找<span class="math notranslate nohighlight">\(R_j\)</span>。另外，为了优化<span class="math notranslate nohighlight">\(R_j\)</span>，有时也需要通过一个更光滑以及更方便的准则来近似 \eqref{10.26}:
+<li><p><strong>求 <span class="math notranslate nohighlight">\(R_j\)</span>:</strong> 对于求近似解，这是很困难的一部分。注意到寻找 <span class="math notranslate nohighlight">\(R_j\)</span> 意味着也估计 <span class="math notranslate nohighlight">\(\gamma_j\)</span>。一个典型的策略是使用贪婪的，自上而下的递归划分算法来寻找<span class="math notranslate nohighlight">\(R_j\)</span>。另外，为了优化<span class="math notranslate nohighlight">\(R_j\)</span>，有时也需要通过一个更光滑以及更方便的准则来近似 式（ 10.26 ）:
 $<span class="math notranslate nohighlight">\(
 \hat\Theta = \text{arg }\underset{\Theta}{\text{min}}\sum\limits_{i=1}^N\tilde L(y_i,T(x_i,\Theta))\tag{10.27}
 \)</span><span class="math notranslate nohighlight">\(
@@ -1176,14 +1177,14 @@ $<span class="math notranslate nohighlight">\(
 \hat \gamma_{jm}=\text{arg }\underset{\gamma_{jm}}{\text{min}}\sum\limits_{x_i\in R_{jm}}L(y_i,f_{m-1}(x_i)+\gamma_{jm})\tag{10.30}
 \]</div>
 <p>寻找这些区域是很困难的，甚至比寻找单棵树的区域还要困难。对于一些特殊情形，这个问题可以进行简化。</p>
-<p>对于平方误差损失，\eqref{10.29} 的解不比单棵树复杂。此时解是当前残差 <span class="math notranslate nohighlight">\(y_i-f_{m-1}(x)\)</span> 的最好预测的回归树，并且 <span class="math notranslate nohighlight">\(\hat\gamma_{jm}\)</span> 是每个对应区域中的残差的均值。</p>
-<p>对于两类别分类和指数损失，这个逐步方法给出了 Boosting 分类树的 AdaBoost 方法（算法 10.1）。特别地，如果树 <span class="math notranslate nohighlight">\(T(x;\Theta_m)\)</span> 限制为 <strong>缩放分类树 (scaled classification tree)</strong>，则在 <span class="xref myst">10.4 节</span>我们已经证明 \eqref{10.29} 的解为最小化加权误差率 <span class="math notranslate nohighlight">\(\sum_{i=1}^Nw_i^{(m)}I(y_i\neq T(x_i;\Theta_m))\)</span> 的树，其中权重 <span class="math notranslate nohighlight">\(w_i^{(m)}=e^{-y_if_{m-1}(x_i)}\)</span>。<strong>缩放分类树</strong> 是指满足限制条件 <span class="math notranslate nohighlight">\(\gamma_{jm}\in\\{-1, 1\\}\)</span> 的 <span class="math notranslate nohighlight">\(\beta_mT(x;\Theta_m)\)</span>。</p>
-<p>没有限制条件的话，\eqref{10.29} 仍然将指数损失简化为新树的加权指数损失准则：</p>
+<p>对于平方误差损失，式（ 10.29 ） 的解不比单棵树复杂。此时解是当前残差 <span class="math notranslate nohighlight">\(y_i-f_{m-1}(x)\)</span> 的最好预测的回归树，并且 <span class="math notranslate nohighlight">\(\hat\gamma_{jm}\)</span> 是每个对应区域中的残差的均值。</p>
+<p>对于两类别分类和指数损失，这个逐步方法给出了 Boosting 分类树的 AdaBoost 方法（算法 10.1）。特别地，如果树 <span class="math notranslate nohighlight">\(T(x;\Theta_m)\)</span> 限制为 <strong>缩放分类树 (scaled classification tree)</strong>，则在 <span class="xref myst">10.4 节</span>我们已经证明 式（ 10.29 ） 的解为最小化加权误差率 <span class="math notranslate nohighlight">\(\sum_{i=1}^Nw_i^{(m)}I(y_i\neq T(x_i;\Theta_m))\)</span> 的树，其中权重 <span class="math notranslate nohighlight">\(w_i^{(m)}=e^{-y_if_{m-1}(x_i)}\)</span>。<strong>缩放分类树</strong> 是指满足限制条件 <span class="math notranslate nohighlight">\(\gamma_{jm}\in\\{-1, 1\\}\)</span> 的 <span class="math notranslate nohighlight">\(\beta_mT(x;\Theta_m)\)</span>。</p>
+<p>没有限制条件的话，式（ 10.29 ） 仍然将指数损失简化为新树的加权指数损失准则：</p>
 <div class="math notranslate nohighlight">
 \[
 \hat\Theta_m = \text{arg }\underset{\Theta_m}{\text{min}}\sum\limits_{i=1}^Nw_i^{(m)}\exp[-y_iT(x_i;\Theta_m)]\tag{10.31}
 \]</div>
-<p>采用加权指数损失的分割准则，应用 <strong>贪婪递归划分(greedy recursive-partitioning)</strong> 算法是很直接的。给定 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，可以证明 \eqref{10.30} 的解是每个对应区域中的加权对数 log-odds（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/75">练习 10.7</a>）</p>
+<p>采用加权指数损失的分割准则，应用 <strong>贪婪递归划分(greedy recursive-partitioning)</strong> 算法是很直接的。给定 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，可以证明 式（ 10.30 ） 的解是每个对应区域中的加权对数 log-odds（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/75">练习 10.7</a>）</p>
 <div class="math notranslate nohighlight">
 \[
 \hat \gamma_{jm}=\frac 12\log \frac{\sum_{x_i\in R_{jm}}w_i^{(m)}I(y_i=1)}{\sum_{x_i\in R_{jm}}w_i^{(m)}I(y_i=-1)}\tag{10.32}
@@ -1191,7 +1192,7 @@ $<span class="math notranslate nohighlight">\(
 <p>!!! info “Ex. 10.7”
 已证。详细证明过程见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/75">Issue 75: Ex. 10.7</a></p>
 <p>这需要特定化的生成树算法；实际中，我们更偏好将在下文展示的采用加权最小二乘回归树的近似。</p>
-<p>在回归中，用绝对值误差或者 Huber 损失 \eqref{10.23} 来代替平方损失，以及在分类中，用偏差 \eqref{10.22} 代替指数损失，都会得到鲁棒的 Boosting 树。</p>
+<p>在回归中，用绝对值误差或者 Huber 损失 式（ 10.23 ） 来代替平方损失，以及在分类中，用偏差 式（ 10.22 ） 代替指数损失，都会得到鲁棒的 Boosting 树。</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
@@ -1210,7 +1211,7 @@ $<span class="math notranslate nohighlight">\(
     \tag{10.23}
     \)</span>$</p>
 <p>不幸的是，不像相对应的欠鲁棒的 (nonrobust) 准则，这些鲁棒准则不会得到简单快速的 boosting 算法。</p>
-<p>给定 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，对于更一般的损失准则，\eqref{10.30} 的解是很直接的，因为只是一个简单的局部估计。对于绝对值损失，这就是每个单独区域的残差的中位数。对于其它的准则，求解 \eqref{10.30} 存在快速的迭代算法，而且通常它们快速的单步近似就已经够了。问题在于树的生成。对于这些一般的损失准则，求解 \eqref{10.29} 不存在简单的快速算法，此时类似 \eqref{10.27} 的近似变得很重要。</p>
+<p>给定 <span class="math notranslate nohighlight">\(R_{jm}\)</span>，对于更一般的损失准则，式（ 10.30 ） 的解是很直接的，因为只是一个简单的局部估计。对于绝对值损失，这就是每个单独区域的残差的中位数。对于其它的准则，求解 式（ 10.30 ） 存在快速的迭代算法，而且通常它们快速的单步近似就已经够了。问题在于树的生成。对于这些一般的损失准则，求解 式（ 10.29 ） 不存在简单的快速算法，此时类似 式（ 10.27 ） 的近似变得很重要。</p>
 </div>
 
     <script type="text/x-thebe-config">

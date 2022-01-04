@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mathcal-ir-p">
 <h1>6.3 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中的局部回归<a class="headerlink" href="#mathcal-ir-p" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>核光滑和局部回归可以非常自然地推广到二维或更高维空间中。Nadaraya–Watson 核光滑器局部拟合常值，其中权重由 <span class="math notranslate nohighlight">\(p\)</span> 维核得到。局部线性回归通过加权最小二乘来拟合 <span class="math notranslate nohighlight">\(X\)</span> 中局部的超平面，参数由 <span class="math notranslate nohighlight">\(p\)</span> 维核给出。这可以很简单地实现，并且一般偏爱边界处有更好的表现的局部常值拟合。</p>
 <p>令 <span class="math notranslate nohighlight">\(b(X)\)</span> 为 <span class="math notranslate nohighlight">\(X\)</span> 最大 degree 为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式的向量。例如，<span class="math notranslate nohighlight">\(d=1,p=2\)</span> 时有 <span class="math notranslate nohighlight">\(b(X)=(1,X_1,X_2)\)</span>；<span class="math notranslate nohighlight">\(d=2\)</span> 时我们得到 <span class="math notranslate nohighlight">\(b(X)=(1,X_1,X_2,X_1^2,X_2^2,X_1X_2)\)</span>；并且在 <span class="math notranslate nohighlight">\(d=0\)</span> 的平凡情形下我们得到 <span class="math notranslate nohighlight">\(b(X)=1\)</span>。在每个 <span class="math notranslate nohighlight">\(x_0\in \mathbb{R}^p\)</span> 处求解

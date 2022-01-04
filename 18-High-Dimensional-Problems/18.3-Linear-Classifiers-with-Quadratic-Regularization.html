@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1174,6 +1174,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.3 二次正则化的线性分类器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>Ramaswamy et al. (2001)<a class="footnote-reference brackets" href="#id18" id="id2">1</a>提出一个更加困难的微阵列分类问题，涉及 144 个病人的 14 种癌症类型的训练集，以及含有 54 个病人的测试集。已知 16063 个基因的表达值。</p>
 <p><img alt="" src="../_images/table18.1.png" /></p>
 <p>表 18.1 显示了通过 <span class="math notranslate nohighlight">\(8\)</span> 个不同的分类方法得到的预测结果。每个病人的数据首先经过标准化后使得均值为 <span class="math notranslate nohighlight">\(0\)</span>，方差为 <span class="math notranslate nohighlight">\(1\)</span>；这似乎提高了整个例子的预测正确性，表明每个基因表达谱的形状是很重要的，而不是表达的绝对水平。在每种情形中，选取正则参数使得交叉验证误差最小，并且展现了每个参数值的测试误差。当有多余一个的正则参数得到最小的交叉验证误差，报告该值对应的测试误差的平均值。</p>
@@ -1192,7 +1193,7 @@ $<span class="math notranslate nohighlight">\(
     \)</span><span class="math notranslate nohighlight">\(
     \hat\Sigma(\gamma)=\gamma\hat\Sigma+(1-\gamma)\hat\sigma^2I\tag{4.14}
     \)</span>$</p>
-<p>注意到 <span class="math notranslate nohighlight">\(\gamma = 0\)</span> 对应对角 LDA，也是最近收缩重心的“无收缩”版本。\eqref{18.9} 的收缩形式很像岭回归（<span class="xref myst">3.4.1 节</span>），将整个特征的协方差矩阵收缩到对角（标量值）矩阵。实际上，将线性判别分析看成是类别响应变量的最优得分的线性回归（见 <span class="xref myst">12.6 节</span>的 \eqref{12.57}），这个等价性变得更加精确。</p>
+<p>注意到 <span class="math notranslate nohighlight">\(\gamma = 0\)</span> 对应对角 LDA，也是最近收缩重心的“无收缩”版本。式（ 18.9 ） 的收缩形式很像岭回归（<span class="xref myst">3.4.1 节</span>），将整个特征的协方差矩阵收缩到对角（标量值）矩阵。实际上，将线性判别分析看成是类别响应变量的最优得分的线性回归（见 <span class="xref myst">12.6 节</span>的 式（ 12.57 ）），这个等价性变得更加精确。</p>
 <p>!!! note “Recall”
 $<span class="math notranslate nohighlight">\(
     ASR(\{\theta_\ell,\beta_\ell\}^L_{\ell=1})=\frac 1N\sum\limits_{\ell=1}^L\Big[\sum\limits_{i=1}^N\theta_\ell(g_i)-h^T(x_i)\beta_\ell)^2+\lambda\beta_\ell^T\mathbf \Omega\beta_\ell\Big].\tag{12.57}
@@ -1201,7 +1202,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="section" id="id5">
 <h2>二次正则的逻辑斯蒂回归<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>逻辑斯蒂回归（<span class="xref myst">4.4 节</span>）可以用相似的方式进行改进来处理 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 的情形。在 <span class="math notranslate nohighlight">\(K\)</span> 个类别的情形下，我们采用多类别逻辑斯蒂回归模型 \eqref{4.17}:</p>
+<p>逻辑斯蒂回归（<span class="xref myst">4.4 节</span>）可以用相似的方式进行改进来处理 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 的情形。在 <span class="math notranslate nohighlight">\(K\)</span> 个类别的情形下，我们采用多类别逻辑斯蒂回归模型 式（ 4.17 ）:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{Pr}(G=k\mid X=x)=\frac{\exp(\beta_{k0}+x^T\beta_k)}{\sum_{\ell=1}^K\exp(\beta_{\ell0}+x^T\beta_\ell)}\tag{18.10}
@@ -1229,14 +1230,14 @@ $<span class="math notranslate nohighlight">\(
 <div class="section" id="id9">
 <h2>支持向量分类器<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>两个类别情形的支持向量机在 <span class="xref myst">12.2 节</span>中讨论。当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，特别受欢迎，因为一般情形下类别是可以被超平面完全可分的，除非在不同类别中有相同的特征向量。没有任何正则化，支持向量分类器寻找具有最大空白的分离超平面；也就是，超平面得到训练数据之间最大的间距。有点吃惊的是，当 <span class="math notranslate nohighlight">\(p &gt; &gt; N\)</span> 时未正则化的支持向量机通常和最优正则版本表现得一样好。过拟合经常似乎不是一个问题，部分是因为误分类损失的不敏感性。</p>
-<p>有许多不同的方式将两个类别的支持向量分类器推广为 <span class="math notranslate nohighlight">\(K &gt; 2\)</span> 个类别的情形。在 <strong>一对一方法 (ovo)</strong> 中，我们计算所有的 <span class="math notranslate nohighlight">\(\binom{K}{2}\)</span> 成对分类器。对每个测试点，预测类别是在大多数成对比较中获胜的那个。在 <strong>一对多方法 (ova)</strong> 中，每个类别与所有的其他类别在 <span class="math notranslate nohighlight">\(K\)</span> 次两类别比较中进行比较。为了对某个测试点分类，我们计算 <span class="math notranslate nohighlight">\(K\)</span> 个分类器中的置信度（到超平面的符号距离）。胜利者是有最高置信度的类别。最后，Vapnik(1998)<a class="footnote-reference brackets" href="#id23" id="id10">6</a>，Weston and Watins(1999)<a class="footnote-reference brackets" href="#id24" id="id11">7</a> 提出推广两类别准则 \eqref{12.7} 的（有点复杂）多重类别准则。</p>
+<p>有许多不同的方式将两个类别的支持向量分类器推广为 <span class="math notranslate nohighlight">\(K &gt; 2\)</span> 个类别的情形。在 <strong>一对一方法 (ovo)</strong> 中，我们计算所有的 <span class="math notranslate nohighlight">\(\binom{K}{2}\)</span> 成对分类器。对每个测试点，预测类别是在大多数成对比较中获胜的那个。在 <strong>一对多方法 (ova)</strong> 中，每个类别与所有的其他类别在 <span class="math notranslate nohighlight">\(K\)</span> 次两类别比较中进行比较。为了对某个测试点分类，我们计算 <span class="math notranslate nohighlight">\(K\)</span> 个分类器中的置信度（到超平面的符号距离）。胜利者是有最高置信度的类别。最后，Vapnik(1998)<a class="footnote-reference brackets" href="#id23" id="id10">6</a>，Weston and Watins(1999)<a class="footnote-reference brackets" href="#id24" id="id11">7</a> 提出推广两类别准则 式（ 12.7 ） 的（有点复杂）多重类别准则。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     min\;\Vert\beta\Vert\qquad s.t.\;\left\{\begin{array}{ll}y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i\;\forall i,\\
     \xi_i\ge 0,\sum\xi_i\le constant.\end{array}\right.\tag{12.7}
     \)</span>$</p>
 <p>Tibshirani and Hastie (2007)<a class="footnote-reference brackets" href="#id25" id="id12">8</a>提出 <strong>边际树 (margin tree)</strong> 分类器，这是支持向量分类器用在二叉树中，很像在 CART（<span class="xref myst">第 9 章</span>）中一样。类别以分层形式进行组织，举个例子，对于将病人分类成不同的癌症类型是很有用的。</p>
-<p>表 18.1 的第三行显示了支持向量机采用 ova 方法的结果，Ramaswamy et al. (2001)<a class="footnote-reference brackets" href="#id18" id="id13">1</a>报告了（并且我们证实了）这个方法对于这个问题表现得很好。误差与第 6 行的误差很相似，正如我们在上一节的最后做出的评论那样。对于 <span class="math notranslate nohighlight">\(C &gt; 0.001\)</span>，误差率对 <span class="math notranslate nohighlight">\(C\)</span> 的选择不是很敏感【式 \eqref{12.8} 的正则化参数】。因为 <span class="math notranslate nohighlight">\(p &gt; N\)</span>，支持向量超平面可以通过设置 <span class="math notranslate nohighlight">\(C=\infty\)</span> 完美地分离训练数据。</p>
+<p>表 18.1 的第三行显示了支持向量机采用 ova 方法的结果，Ramaswamy et al. (2001)<a class="footnote-reference brackets" href="#id18" id="id13">1</a>报告了（并且我们证实了）这个方法对于这个问题表现得很好。误差与第 6 行的误差很相似，正如我们在上一节的最后做出的评论那样。对于 <span class="math notranslate nohighlight">\(C &gt; 0.001\)</span>，误差率对 <span class="math notranslate nohighlight">\(C\)</span> 的选择不是很敏感【式 式（ 12.8 ） 的正则化参数】。因为 <span class="math notranslate nohighlight">\(p &gt; N\)</span>，支持向量超平面可以通过设置 <span class="math notranslate nohighlight">\(C=\infty\)</span> 完美地分离训练数据。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{array}{ll}
@@ -1279,7 +1280,7 @@ $<span class="math notranslate nohighlight">\(
 <p>因此 <span class="math notranslate nohighlight">\(\hat\beta = \mathbf V\hat\theta\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\theta\)</span> 是采用 <span class="math notranslate nohighlight">\(N\)</span> 个观测 <span class="math notranslate nohighlight">\((r_i,y_i),i=1,2,\ldots,N\)</span> 的岭回归估计。换句话说，我们可以简单地将数据矩阵从 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 降维成 <span class="math notranslate nohighlight">\(\mathbf R\)</span>，并且对 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的行进行操作。这个技巧将 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时的计算花费从 <span class="math notranslate nohighlight">\(O(p^3)\)</span> 降为 <span class="math notranslate nohighlight">\(O(pN^2)\)</span>。</p>
 <p>这些结果可以推广到所有参数为线性并且有二次惩罚的模型。考虑任意的监督学习问题，我们采用线性函数 <span class="math notranslate nohighlight">\(f(X)=\beta_0+X^T\beta\)</span> 来建立条件分布 <span class="math notranslate nohighlight">\(Y\mid X\)</span> 的参数模型。我们通过在数据上最小化损失函数 <span class="math notranslate nohighlight">\(\sum_{i=1}^NL(y_i,f(x_i))\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span> 上的二次惩罚来拟合参数 <span class="math notranslate nohighlight">\(\beta\)</span>。逻辑斯蒂回归是个很有用的例子。接着我们有下面简单的定理：</p>
 <blockquote>
-<div><p>令 <span class="math notranslate nohighlight">\(f^*(r_i)=\theta_0+r_i^T\theta\)</span>， <span class="math notranslate nohighlight">\(r_i\)</span> 如 \eqref{18.13} 定义，并且考虑成对优化问题：</p>
+<div><p>令 <span class="math notranslate nohighlight">\(f^*(r_i)=\theta_0+r_i^T\theta\)</span>， <span class="math notranslate nohighlight">\(r_i\)</span> 如 式（ 18.13 ） 定义，并且考虑成对优化问题：</p>
 <p>$$</p>
 </div></blockquote>
 <div class="amsmath math notranslate nohighlight">
@@ -1300,7 +1301,7 @@ $<span class="math notranslate nohighlight">\(
 <p>一般地，我们采用交叉验证去选择参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。可以看到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/121">练习 18.12</a>）我们仅需要对原始数据构造一次 <span class="math notranslate nohighlight">\(\mathbf R\)</span>，并且用这个作为每个 CV 折的数据。</p>
 <p>!!! info “Ex. 18.12”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/121">Issue 121: Ex. 18.12</a>.</p>
-<p><span class="xref myst">12.3.7 节</span>中的支持向量机的“核技巧”在不同的情形下利用了这节中的降维。假设我们有 <span class="math notranslate nohighlight">\(N\times N\)</span> 的（内积）矩阵 <span class="math notranslate nohighlight">\(\mathbf{K=XX^T}\)</span>。由 \eqref{18.12} 我们有 <span class="math notranslate nohighlight">\(\mathbf{K=UD^2U^T}\)</span>，所以 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 捕捉了与 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 一样的信息。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">练习 18.13</a> 显示了我们怎样利用这节的想法从 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 和它的 SVD 分解来拟合岭逻辑斯蒂回归。</p>
+<p><span class="xref myst">12.3.7 节</span>中的支持向量机的“核技巧”在不同的情形下利用了这节中的降维。假设我们有 <span class="math notranslate nohighlight">\(N\times N\)</span> 的（内积）矩阵 <span class="math notranslate nohighlight">\(\mathbf{K=XX^T}\)</span>。由 式（ 18.12 ） 我们有 <span class="math notranslate nohighlight">\(\mathbf{K=UD^2U^T}\)</span>，所以 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 捕捉了与 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 一样的信息。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">练习 18.13</a> 显示了我们怎样利用这节的想法从 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 和它的 SVD 分解来拟合岭逻辑斯蒂回归。</p>
 <p>!!! info “Ex. 18.13”
 部分解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">Issue 122: Ex. 18.13</a>，不知道应该怎么说明对任意合适的 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 都适用，欢迎交流讨论。</p>
 <hr class="footnotes docutils" />

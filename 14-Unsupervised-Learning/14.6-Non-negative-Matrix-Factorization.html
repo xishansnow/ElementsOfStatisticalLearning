@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1150,6 +1150,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.6 非负矩阵分解<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p><strong>非负矩阵分解</strong> (Lee and Seung, 1999)<a class="footnote-reference brackets" href="#id9" id="id2">1</a>是最近提出来的一个用来替代主成分分析的方法，在这个方法中数据以及成分假定为非负的。这对于建立非负数据的模型很有用，比如图象数据。</p>
 <p><span class="math notranslate nohighlight">\(N\times p\)</span> 数据矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 由下式近似</p>
 <div class="math notranslate nohighlight">
@@ -1199,7 +1200,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="section" id="id6">
 <h2>原型分析<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>归功于 Cutler and Breiman (1994)<a class="footnote-reference brackets" href="#id12" id="id7">4</a>，这个方法通过原型（数据点的线性组合）来近似数据点。在这个意义上，与 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类有相似的地方。然而，不是用单个附近的原型来近似每个数据点，原型分析通过一系列原型的凸组合来近似每个数据点。凸组合的使用强制原型位于数据云的 <strong>凸包 (convex hull)</strong> 上。在这个意义下，原型是纯的 (pure)，或典型的 (archetypal)。</p>
-<p>如 \eqref{14.72} 一样，<span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 建模为</p>
+<p>如 式（ 14.72 ） 一样，<span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 建模为</p>
 <div class="math notranslate nohighlight">
 \[
 X\approx W\H\tag{14.75}
@@ -1209,7 +1210,7 @@ X\approx W\H\tag{14.75}
 \[
 \H=\BX\tag{14.76}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\B\)</span> 阶为 <span class="math notranslate nohighlight">\(r\times N\)</span>，其中 <span class="math notranslate nohighlight">\(b_{ki}\ge 0\)</span>，且 <span class="math notranslate nohighlight">\(\sum_{i=1}^Nb_{ki}=1\forall k\)</span>。因此原型本身是数据点的凸组合。使用 \eqref{14.75} 和 \eqref{14.76}，我们对下式关于权重 <span class="math notranslate nohighlight">\(W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 最小化</p>
+<p>其中 <span class="math notranslate nohighlight">\(\B\)</span> 阶为 <span class="math notranslate nohighlight">\(r\times N\)</span>，其中 <span class="math notranslate nohighlight">\(b_{ki}\ge 0\)</span>，且 <span class="math notranslate nohighlight">\(\sum_{i=1}^Nb_{ki}=1\forall k\)</span>。因此原型本身是数据点的凸组合。使用 式（ 14.75 ） 和 式（ 14.76 ），我们对下式关于权重 <span class="math notranslate nohighlight">\(W\)</span> 和 <span class="math notranslate nohighlight">\(\B\)</span> 最小化</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1221,7 +1222,7 @@ J(W, \B) &amp; = \Vert X-W\H\Vert^2\\
 <p><img alt="" src="../_images/fig14.35.png" /></p>
 <p>图 14.35 展示了二维中模拟数据的例子。上面板展示了 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类的结果。为了从原型的凸组合中重构出数据，需要在数据的凸包上定位原型。可以在图 14.35 的上图中看到，并且一般地是这种情形，如 Cutler and Breiman (1994)<a class="footnote-reference brackets" href="#id12" id="id8">4</a> 所证明的那样。如图中下面板所示，<span class="math notranslate nohighlight">\(K\)</span> 均值聚类在数据云的中间选择原型。</p>
 <p>我们可以把 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类看成原型模型的特殊情形，其中 <span class="math notranslate nohighlight">\(W\)</span> 的每一行有一个元素取 1，其余取 0。</p>
-<p>注意到原型模型 \eqref{14.75} 与非负矩阵分解模型 \eqref{14.72} 有相同的一般形式。然而，这两个模型应用在不同的条件中，并且目标也不太相同。非负矩阵分解目的是近似数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 的列，并且主要感兴趣的是 <span class="math notranslate nohighlight">\(W\)</span> 的列，它表示了数据中主要的非负组分。原型分析而是关注用 <span class="math notranslate nohighlight">\(\H\)</span> 的行（表示了原型数据点）来近似 <span class="math notranslate nohighlight">\(X\)</span> 的行。非负矩阵分解还假设 <span class="math notranslate nohighlight">\(r\le p\)</span>。当 <span class="math notranslate nohighlight">\(r=p\)</span>，简单将 <span class="math notranslate nohighlight">\(W\)</span> 选为列经过缩放（所以加起来和为1）的 <span class="math notranslate nohighlight">\(X\)</span>，可以得到精确的重构。相反，原型分析要求 <span class="math notranslate nohighlight">\(r\le N\)</span>，但允许 <span class="math notranslate nohighlight">\(r&gt;p\)</span>。举个例子，在图 14.35 中，<span class="math notranslate nohighlight">\(p=2,N=50\)</span>，而 <span class="math notranslate nohighlight">\(r=2,4,8\)</span>。额外的约束 \eqref{14.76} 表明典型分析不是完美的，即使 <span class="math notranslate nohighlight">\(r&gt;p\)</span>。</p>
+<p>注意到原型模型 式（ 14.75 ） 与非负矩阵分解模型 式（ 14.72 ） 有相同的一般形式。然而，这两个模型应用在不同的条件中，并且目标也不太相同。非负矩阵分解目的是近似数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 的列，并且主要感兴趣的是 <span class="math notranslate nohighlight">\(W\)</span> 的列，它表示了数据中主要的非负组分。原型分析而是关注用 <span class="math notranslate nohighlight">\(\H\)</span> 的行（表示了原型数据点）来近似 <span class="math notranslate nohighlight">\(X\)</span> 的行。非负矩阵分解还假设 <span class="math notranslate nohighlight">\(r\le p\)</span>。当 <span class="math notranslate nohighlight">\(r=p\)</span>，简单将 <span class="math notranslate nohighlight">\(W\)</span> 选为列经过缩放（所以加起来和为1）的 <span class="math notranslate nohighlight">\(X\)</span>，可以得到精确的重构。相反，原型分析要求 <span class="math notranslate nohighlight">\(r\le N\)</span>，但允许 <span class="math notranslate nohighlight">\(r&gt;p\)</span>。举个例子，在图 14.35 中，<span class="math notranslate nohighlight">\(p=2,N=50\)</span>，而 <span class="math notranslate nohighlight">\(r=2,4,8\)</span>。额外的约束 式（ 14.76 ） 表明典型分析不是完美的，即使 <span class="math notranslate nohighlight">\(r&gt;p\)</span>。</p>
 <p><img alt="" src="../_images/fig14.36.png" /></p>
 <p>图 14.36 展示了将典型分析应用于图 14.22 中的 3 的数据集的结果。 图 14.36 中的三行是取自三次原型分析的结果，分别是 2 个原型、3 个原型和 4 个原型。和预想一样，该算法得到了大小和形状上都极端的 3。</p>
 <hr class="footnotes docutils" />

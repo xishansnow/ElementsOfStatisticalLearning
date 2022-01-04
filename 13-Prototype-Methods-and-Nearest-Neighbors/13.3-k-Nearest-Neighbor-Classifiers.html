@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,6 +1160,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="k">
 <h1>13.3 k最近邻分类器<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>这些分类器是 <strong>基于存储的 (memory-based)</strong>，并且不需要拟合模型。给定查询点 <span class="math notranslate nohighlight">\(x_0\)</span>，找到 <span class="math notranslate nohighlight">\(k\)</span> 个距离 <span class="math notranslate nohighlight">\(x_0\)</span> 最近的训练点 <span class="math notranslate nohighlight">\(x_{(r)}, r=1,\ldots,k\)</span>，接着在这 <span class="math notranslate nohighlight">\(k\)</span> 个最近邻中采用少数服从多数的方法进行分类。对于重复点，随机地将它们分开。为了简便起见，假设所有的特征是实值的，我们在特征空间中采用欧氏距离</p>
 <div class="math notranslate nohighlight">
 \[

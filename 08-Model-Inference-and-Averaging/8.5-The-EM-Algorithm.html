@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1161,6 +1161,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="em">
 <h1>8.5 EM 算法<a class="headerlink" href="#em" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <p>EM 算法是简化复杂极大似然问题的一种很受欢迎的工具。我们首先在一个简单的混合模型中讨论它。</p>
 <div class="section" id="id1">
 <h2>两个组分的混合模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -1207,7 +1208,7 @@ g_Y(y)=(1-\pi)\phi_{\theta_1}(y)+\pi\phi_{\theta_2}(y)\tag{8.37}
 \[
 \ell(\theta;\mathbf Z)=\sum\limits_{i=1}^N\log[(1-\pi)\phi_{\theta_1}(y_i)+\pi\phi_{\theta_2}(y_i)]\tag{8.39}
 \]</div>
-<p>直接对 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 进行最大化在数值上是很困难的，因为求和项在 <span class="math notranslate nohighlight">\(\log\)</span> 函数里面。然而，这里有一个更简单的方式。我们考虑一个类似 \eqref{8.36} 中取 0 或 1 的潜变量 <span class="math notranslate nohighlight">\(\Delta_i\)</span>：若 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 则 <span class="math notranslate nohighlight">\(Y_i\)</span> 来自模型 2，否则来自模型 1。假设我们已经知道了 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值。则对数概率为</p>
+<p>直接对 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 进行最大化在数值上是很困难的，因为求和项在 <span class="math notranslate nohighlight">\(\log\)</span> 函数里面。然而，这里有一个更简单的方式。我们考虑一个类似 式（ 8.36 ） 中取 0 或 1 的潜变量 <span class="math notranslate nohighlight">\(\Delta_i\)</span>：若 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 则 <span class="math notranslate nohighlight">\(Y_i\)</span> 来自模型 2，否则来自模型 1。假设我们已经知道了 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值。则对数概率为</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \ell_0(\theta;\bf Z,\bf{\Delta})&amp;=\sum\limits_{i=1}^N[(1-\Delta_i)\log\phi_{\theta_1}(y_i)+\Delta_i\log\phi_{\theta_2}(y_i)]\\
@@ -1226,7 +1227,7 @@ $$
 上式 $i\in \mathcal I$ 部分，乘以 $(1-\Delta_i)$ 也就相当于乘以 1，同理对于 $i\in \mathcal J$。这样取对数似然便有 (8.40) 式。 -->
 </div>
 <p>而且 <span class="math notranslate nohighlight">\(\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\sigma_1^2\)</span> 的极大似然估计为 <span class="math notranslate nohighlight">\(\Delta_i=0\)</span> 时样本均值和方差，类似地对于 <span class="math notranslate nohighlight">\(\mu_2\)</span> 和 <span class="math notranslate nohighlight">\(\sigma_2^2\)</span> 的极大似然估计为 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 时的样本均值和方差。<span class="math notranslate nohighlight">\(\pi\)</span> 的估计为 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 的比例。</p>
-<p>因为 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值实际上是不知道的，我们用一种迭代方式，替换 \eqref{8.40} 中的每个 <span class="math notranslate nohighlight">\(\Delta_i\)</span>，它的期望值</p>
+<p>因为 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值实际上是不知道的，我们用一种迭代方式，替换 式（ 8.40 ） 中的每个 <span class="math notranslate nohighlight">\(\Delta_i\)</span>，它的期望值</p>
 <div class="math notranslate nohighlight">
 \[
 \gamma_i(\theta)=\mathbb{E}(\Delta_i\mid\theta,\mathbf Z)=\mathrm{Pr}(\Delta_i=1\mid \theta,\mathbf Z)\tag{8.41}
@@ -1255,9 +1256,9 @@ $$
 <div class="section" id="id2">
 <h2>广义 EM 算法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>上面的过程是对于特定问题的类别下最大化概率的 EM（或者 Baum-Welch）算法。这些问题的概率最大化是困难的，但是通过运用潜在数据（未观测）增大样本会变得简单。这也称作数据增广。这里潜在数据是模型成员 <span class="math notranslate nohighlight">\(\Delta_i\)</span>。在其它问题中，潜在数据是理应被观测到的实际数据但是缺失了。</p>
-<p>算法 8.2 给出了 EM 算法的一般形式。我们的观测数据是 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，其对数概率 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 取决于参数 <span class="math notranslate nohighlight">\(\theta\)</span>。潜在数据或者缺失数据为 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span>，因此完整数据为 <span class="math notranslate nohighlight">\(\mathbf {T=(Z,Z^m)}\)</span>，对数似然函数为 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span>，<span class="math notranslate nohighlight">\(\ell_0\)</span> 基于完整的密度函数。在混合问题中，<span class="math notranslate nohighlight">\((\mathbf{Z,Z^m)=(y,}\Delta)\)</span>，且 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span> 由 \eqref{8.40} 式给出。</p>
+<p>算法 8.2 给出了 EM 算法的一般形式。我们的观测数据是 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，其对数概率 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 取决于参数 <span class="math notranslate nohighlight">\(\theta\)</span>。潜在数据或者缺失数据为 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span>，因此完整数据为 <span class="math notranslate nohighlight">\(\mathbf {T=(Z,Z^m)}\)</span>，对数似然函数为 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span>，<span class="math notranslate nohighlight">\(\ell_0\)</span> 基于完整的密度函数。在混合问题中，<span class="math notranslate nohighlight">\((\mathbf{Z,Z^m)=(y,}\Delta)\)</span>，且 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span> 由 式（ 8.40 ） 式给出。</p>
 <p><img alt="" src="../_images/alg8.2.png" /></p>
-<p>在我们的混合例子中，<span class="math notranslate nohighlight">\(\mathbb{E}(\ell_0(\theta';\mathbf T)\mid \mathbf Z,\hat \theta^{(j)})\)</span> 是将式 \eqref{8.40} 中的 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 替换成了解释度 <span class="math notranslate nohighlight">\(\hat\gamma_i(\hat \theta)\)</span>。第三步的最大化仅仅是加权均值和方差。</p>
+<p>在我们的混合例子中，<span class="math notranslate nohighlight">\(\mathbb{E}(\ell_0(\theta';\mathbf T)\mid \mathbf Z,\hat \theta^{(j)})\)</span> 是将式 式（ 8.40 ） 中的 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 替换成了解释度 <span class="math notranslate nohighlight">\(\hat\gamma_i(\hat \theta)\)</span>。第三步的最大化仅仅是加权均值和方差。</p>
 <p>我们现在给出一个为什么一般情况下 EM 算法有用的解释。</p>
 <p>因为</p>
 <div class="math notranslate nohighlight">
@@ -1292,7 +1293,7 @@ $$
 \[
 F(\theta',\tilde P) = \mathbb{E}_{\tilde P}[\ell_0(\theta';\mathbf T)] - \mathbb{E}_{\tilde P}[\log\tilde P(\mathbf Z^m)]\tag{8.48}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 是潜在数据 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span> 的任意分布。在混合例子中，<span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 构成了概率 <span class="math notranslate nohighlight">\(\gamma_i=\mathrm{Pr}(\Delta_i=1\mid \theta,\mathbf Z)\)</span> 的集合。注意到从 \eqref{8.46} 式看，<span class="math notranslate nohighlight">\(F\)</span> 是观测数据的对数似然函数（在 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 上取值）。函数 <span class="math notranslate nohighlight">\(F\)</span> 扩大了对数似然的定义域来，使得能够进行最大化。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 是潜在数据 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span> 的任意分布。在混合例子中，<span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 构成了概率 <span class="math notranslate nohighlight">\(\gamma_i=\mathrm{Pr}(\Delta_i=1\mid \theta,\mathbf Z)\)</span> 的集合。注意到从 式（ 8.46 ） 式看，<span class="math notranslate nohighlight">\(F\)</span> 是观测数据的对数似然函数（在 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)=\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')\)</span> 上取值）。函数 <span class="math notranslate nohighlight">\(F\)</span> 扩大了对数似然的定义域来，使得能够进行最大化。</p>
 <p>EM 算法可以看成 <span class="math notranslate nohighlight">\(F\)</span> 关于 <span class="math notranslate nohighlight">\(\theta'\)</span> 和 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 的联合最大化，通过固定一个变量来最大化另外一个变量。固定 <span class="math notranslate nohighlight">\(\theta'\)</span> 来对 <span class="math notranslate nohighlight">\(\tilde P(\mathbf Z^m)\)</span> 最大化可以证明是</p>
 <div class="math notranslate nohighlight">
 \[

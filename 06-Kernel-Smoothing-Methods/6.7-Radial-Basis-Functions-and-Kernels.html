@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1138,6 +1138,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.7 径向基函数和核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <p>在第五章中，函数表示成基函数展开的形式：<span class="math notranslate nohighlight">\(f(x)=\sum_{j=1}^M\beta_jh_j(x)\)</span>。使用基函数展开进行灵活建模的技术有两部分构成，首先需要选取合适的基函数族，然后通过选择、正则化、或者两者都有的方法来控制表达式的复杂度。有些基函数族的元素是局部定义的，比如，B 样条在 <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 中局部定义。如果在特定区域中需要更多的灵活性，这个区域则需要用更多的基函数来表示（对于 B 样条，也就是需要更多结点）。<span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 局部基函数的张量积构成了 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的局部基函数。不是所有的基函数都是局部的——举个例子，对于样条的截断幂基，或者在神经网络中使用的 S 型基函数 <span class="math notranslate nohighlight">\(\sigma(\alpha_0+\alpha x)\)</span>（见 <span class="xref myst">第 11 章</span>）。虽然如此，复合函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 也可以显示出局部行为，因为参数的特定符号和值造成全局影响的抵消。举个例子，对于同样的函数空间截断幂基有等价的 B 样条基；这种情况下恰恰就是因为抵消。</p>
 <p>核方法通过在目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 局部的区域中拟合简单的模型来实现灵活性。局部化通过加权核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 来实现，并且单个观测权重为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>。</p>
 <p><strong>径向基函数 (Radial basis functions)</strong> 将核函数 <span class="math notranslate nohighlight">\(K_\lambda(\xi,x)\)</span> 看成基函数。</p>
@@ -1172,7 +1173,7 @@ $$</p>
 h_j(x)=\frac{D(\Vert x-\xi_j\Vert/\lambda)}{\sum_{k=1}^MD(\Vert x-\xi_k\Vert/\lambda)}\,,\tag{6.30}
 \]</div>
 <p>可以避免这个问题（图 6.16（下））。</p>
-<p><span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的 Nadaraya-Watson 核回归估计量 \eqref{6.2} 可以看成是重标准化后径向基函数的展开，</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的 Nadaraya-Watson 核回归估计量 式（ 6.2 ） 可以看成是重标准化后径向基函数的展开，</p>
 <p>!!! note “weiya 注: Recall”
 $<span class="math notranslate nohighlight">\(
     \hat f(x_0)=\frac{\sum_{i=1}^NK_{\lambda}(x_0,x_i)y_i}{\sum_{i=1}^NK_{\lambda}(x_0,x_i)}\tag{6.2}
@@ -1185,7 +1186,7 @@ $<span class="math notranslate nohighlight">\(
 \end{align*}
 \end{split}\]</div>
 <p>其中基函数 <span class="math notranslate nohighlight">\(h_i\)</span> 确定了每个观测的位置以及系数；也就是说，<span class="math notranslate nohighlight">\(\xi_i=x_i,\hat\beta_i=y_i,i=1,\ldots,N\)</span>.</p>
-<p>注意到展开式 \eqref{6.31} 与由 <span class="math notranslate nohighlight">\(K\)</span> 导出的正则化问题的解 \eqref{5.50} 间的相似性。径向基函数搭建了现代“核方法”与局部拟合技巧间的桥梁。</p>
+<p>注意到展开式 式（ 6.31 ） 与由 <span class="math notranslate nohighlight">\(K\)</span> 导出的正则化问题的解 式（ 5.50 ） 间的相似性。径向基函数搭建了现代“核方法”与局部拟合技巧间的桥梁。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     f(x)=\sum\limits_{i=1}^N\alpha_i K(x, x_i)\tag{5.50}

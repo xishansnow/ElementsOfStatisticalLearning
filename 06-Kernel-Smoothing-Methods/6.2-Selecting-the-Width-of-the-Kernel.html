@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1138,6 +1138,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.2 选择核的宽度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <p>在每个核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 中，<span class="math notranslate nohighlight">\(\lambda\)</span> 为控制宽度的参数：</p>
 <ul class="simple">
 <li><p>对于有度量宽度的 Epanechnikov 或三次立方核，<span class="math notranslate nohighlight">\(\lambda\)</span> 为支撑域的半径。</p></li>
@@ -1157,7 +1158,7 @@ $<span class="math notranslate nohighlight">\(
     &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
     \end{align*}
     \)</span>$</p>
-<p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正规化参数的讨论。局部回归光滑器是线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵由等价核 \eqref{6.8} 构成，并且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S\_\lambda\}\_{ij}=l\_{i}(x\_{j})\)</span>。舍一法交叉验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交叉验证，<span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>），以及 <span class="math notranslate nohighlight">\(k\)</span> 折交叉验证也很简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)\)</span>，并且可以用来校准光滑的程度。</p>
+<p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正规化参数的讨论。局部回归光滑器是线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵由等价核 式（ 6.8 ） 构成，并且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S\_\lambda\}\_{ij}=l\_{i}(x\_{j})\)</span>。舍一法交叉验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交叉验证，<span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>），以及 <span class="math notranslate nohighlight">\(k\)</span> 折交叉验证也很简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)\)</span>，并且可以用来校准光滑的程度。</p>
 <p>!!! info “weiya 注：Ex. 6.7”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">Issue 150: Ex. 6.7</a>.</p>
 <p>!!! info “weiya 注：Ex. 6.10”

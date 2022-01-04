@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>9.6 缺失数据<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>一个或多个输入特征的观测含有缺失值是很常见的。通常的方式是以某种方式来插补（填补）缺失值。</p>
 <p>然而，处理这个问题的第一步是确定缺失数据的机制是否使观测数据失真。大致地说，如果导致其缺失的机制与其（未观测到的）值无关，则是随机丢失数据。更精确的定义由 Little and Rubin (2002)<a class="footnote-reference brackets" href="#id3" id="id2">1</a> 给出。假设 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应向量，<span class="math notranslate nohighlight">\(\mathbf X\)</span> 为 <span class="math notranslate nohighlight">\(N\times p\)</span> 的输入矩阵（某些值缺失）。用 <span class="math notranslate nohighlight">\(\mathbf X_{obs}\)</span> 记 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中的观测值，并令 <span class="math notranslate nohighlight">\(\mathbf{Z=(y,X),Z_{obs}=(y,X_{obs})}\)</span>。最后令 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 为指示矩阵，如果 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 缺失，则第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素为 1，否则为 0，则如果 <span class="math notranslate nohighlight">\(\mathbf R\)</span> 的分布仅仅通过 <span class="math notranslate nohighlight">\(\mathbf Z_{obs}\)</span> 来依赖 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，数据称为 <strong>随机缺失 (MAR)</strong>：</p>
 <div class="math notranslate nohighlight">

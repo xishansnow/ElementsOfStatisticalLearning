@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>我们已经对回归和分类运用了关于输入特征为线性的模型。线性回归，线性判别分析，逻辑斯蒂回归和分离超平面都依赖于线性模型。关于 <span class="math notranslate nohighlight">\(X\)</span> 的真实的函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 不太可能恰好为线性的。在回归问题中，<span class="math notranslate nohighlight">\(f(X)=\mathbb{E}(Y\mid X)\)</span> 关于 <span class="math notranslate nohighlight">\(X\)</span> 一般不是线性的也不是可加的，但用线性模型来表示 <span class="math notranslate nohighlight">\(f(X)\)</span> 通常是很方便的，而且有时候是必要的近似。方便是因为线性模型是可以很容易地解释，而且是 <span class="math notranslate nohighlight">\(f(X)\)</span> 的一阶泰勒近似。有时候是必要的是因为当 <span class="math notranslate nohighlight">\(N\)</span> 很小 <span class="math notranslate nohighlight">\(p\)</span> 很大时，线性模型可能不需要过拟合就可以达到拟合数据的目的。在分类中也是类似的，一个线性、贝叶斯最优的判别边界表明关于 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的一些单调变换是线性的。这必然是一个近似。</p>
 <p>这章中和接下来的章节中我们将要讨论对于 <strong>超线性 (moving beyond linearity)</strong> 的一些流行的方法。这章中核心思想是利用额外的变量来增加或者替换输入 <span class="math notranslate nohighlight">\(X\)</span> 的向量，然后在新得到的输入特征的空间中运用线性模型。</p>
 <p>用 <span class="math notranslate nohighlight">\(h_m(X):\mathbb{R}^p\longmapsto \mathbb{R}\)</span> 来记 <span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 个变换，<span class="math notranslate nohighlight">\(m=1,\ldots, M.\)</span> 然后我们建立模型

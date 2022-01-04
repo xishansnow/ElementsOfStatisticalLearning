@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.8 多维缩放<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>自组织图和主曲线以及主曲面都是将 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的数据点映射到低维流形中。<strong>多维缩放 (MDS, Multidimensional scaling)</strong> 的目标也是类似的，但是是以一种不同的方式来解决这个问题。</p>
 <p>我们以观测值 <span class="math notranslate nohighlight">\(x_1, x_2,\ldots, x_N\in \mathbb{R}^p\)</span> 开始，令 <span class="math notranslate nohighlight">\(d_{ij}\)</span> 为观测 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 之间的距离。通常我们选择欧式距离 <span class="math notranslate nohighlight">\(d_{ij}=\Vert x_i-x_j\Vert\)</span>，但是也可能采用其它的距离。</p>
 <p>!!! note “weiya 注：”
@@ -1161,7 +1162,7 @@ S_{Sm}(z_1,z_2,\ldots,z_N)=\sum\limits_{i\neq i'}\frac{(d_{ii'}-\Vert z_i-z_i'\V
 \[
 S_C(z_1,z_2,\ldots, z_N)=\sum\limits_{i,i'}(s_{ii'}-\langle z_i-\bar z, z_{i'}-\bar z\rangle)^2\tag{14.100)}
 \]</div>
-<p>这是很吸引人的，因为有个用特征向量表示的显式解：见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/203">练习 14.11</a>。如果我们有距离数据，而不是内积数据，并且是欧式距离，则可以将它们转换为中心化的内积，参见<span class="xref myst">第 18 章</span>中的式 \eqref{18.31}。</p>
+<p>这是很吸引人的，因为有个用特征向量表示的显式解：见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/203">练习 14.11</a>。如果我们有距离数据，而不是内积数据，并且是欧式距离，则可以将它们转换为中心化的内积，参见<span class="xref myst">第 18 章</span>中的式 式（ 18.31 ）。</p>
 <p>!!! note “weiya 注：”
 $<span class="math notranslate nohighlight">\(
     \tildeK = (\I-\M)\B(\I-\M)\,;\tag{18.31}

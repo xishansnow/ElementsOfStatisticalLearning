@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1151,11 +1151,12 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.1 一维核光滑器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
+<style>p{text-indent:2em;2}</style>
 <p>第二章中，我们将 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均
 $<span class="math notranslate nohighlight">\(
 \hat f(x)=\mathrm{Ave}(y_i\mid x_i\in N_k(x))\tag{6.1}
 \)</span><span class="math notranslate nohighlight">\(
-作为回归函数 \)</span>\mathbb{E}(Y\mid X=x)<span class="math notranslate nohighlight">\( 的估计。这里 \)</span>N_k(x)<span class="math notranslate nohighlight">\( 为在平方距离下，离 \)</span>x<span class="math notranslate nohighlight">\( 最近的 \)</span>k<span class="math notranslate nohighlight">\( 个点的集合，并且 \)</span>\mathrm{Ave}<span class="math notranslate nohighlight">\( 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— \)</span>x_0<span class="math notranslate nohighlight">\( 处的拟合值为离 \)</span>x_0<span class="math notranslate nohighlight">\( 最近的 30 个点的平均。在不同的 \)</span>x_0<span class="math notranslate nohighlight">\( 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 \)</span>\hat f(x)<span class="math notranslate nohighlight">\( 在 \)</span>x<span class="math notranslate nohighlight">\( 处不连续。当我们将 \)</span>x_0<span class="math notranslate nohighlight">\( 从左移到右，\)</span>k<span class="math notranslate nohighlight">\( 最近邻保持一致，直到 \)</span>x_0<span class="math notranslate nohighlight">\( 右侧的点 \)</span>x_i<span class="math notranslate nohighlight">\( 变得比 \)</span>x_0<span class="math notranslate nohighlight">\( 左侧的邻域的最远点 \)</span>x_i’<span class="math notranslate nohighlight">\( 更近，这时 \)</span>x_i<span class="math notranslate nohighlight">\( 换成 \)</span>x_i’<span class="math notranslate nohighlight">\(。\eqref{6.1} 的平均以离散的方式变换，得到离散的 \)</span>\hat f(x)$。</p>
+作为回归函数 \)</span>\mathbb{E}(Y\mid X=x)<span class="math notranslate nohighlight">\( 的估计。这里 \)</span>N_k(x)<span class="math notranslate nohighlight">\( 为在平方距离下，离 \)</span>x<span class="math notranslate nohighlight">\( 最近的 \)</span>k<span class="math notranslate nohighlight">\( 个点的集合，并且 \)</span>\mathrm{Ave}<span class="math notranslate nohighlight">\( 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— \)</span>x_0<span class="math notranslate nohighlight">\( 处的拟合值为离 \)</span>x_0<span class="math notranslate nohighlight">\( 最近的 30 个点的平均。在不同的 \)</span>x_0<span class="math notranslate nohighlight">\( 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 \)</span>\hat f(x)<span class="math notranslate nohighlight">\( 在 \)</span>x<span class="math notranslate nohighlight">\( 处不连续。当我们将 \)</span>x_0<span class="math notranslate nohighlight">\( 从左移到右，\)</span>k<span class="math notranslate nohighlight">\( 最近邻保持一致，直到 \)</span>x_0<span class="math notranslate nohighlight">\( 右侧的点 \)</span>x_i<span class="math notranslate nohighlight">\( 变得比 \)</span>x_0<span class="math notranslate nohighlight">\( 左侧的邻域的最远点 \)</span>x_i’<span class="math notranslate nohighlight">\( 更近，这时 \)</span>x_i<span class="math notranslate nohighlight">\( 换成 \)</span>x_i’<span class="math notranslate nohighlight">\(。式（ 6.1 ） 的平均以离散的方式变换，得到离散的 \)</span>\hat f(x)$。</p>
 <p><img alt="" src="../_images/fig6.1.png" /></p>
 <blockquote>
 <div><p>图6.1. 每张图中从蓝色曲线加上高斯误差中随机产生100个数据对 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>：<span class="math notranslate nohighlight">\(Y=\sin(4X)+\varepsilon,X\sim U[0,1],\varepsilon\sim N(0,1/3)\)</span>。左图的绿色曲线是 30-最近邻滑动均值光滑器的结果。红色点是拟合的常数值 <span class="math notranslate nohighlight">\(\hat f(x_0)\)</span>，红色圆圈表明对 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合有贡献的观测。实心黄色区域为赋予给观测的权重。右图中，绿色曲线是核权重平均，采用（半）窗宽度 <span class="math notranslate nohighlight">\(\lambda=0.2\)</span> 的 Epanechnikov 核。</p>
@@ -1184,7 +1185,7 @@ D(t)=
 $<span class="math notranslate nohighlight">\(
 K_\lambda(x_0,x)=D\left(\frac{\vert x-x_0\vert}{h_\lambda(x_0)}\right)\tag{6.5}
 \)</span><span class="math notranslate nohighlight">\(
-\eqref{6.3} 中，\)</span>h_\lambda(x_0)=\lambda<span class="math notranslate nohighlight">\( 为常值。对于 \)</span>k<span class="math notranslate nohighlight">\( 最近邻域，用邻域大小 \)</span>k<span class="math notranslate nohighlight">\( 代替 \)</span>\lambda<span class="math notranslate nohighlight">\(，并且我们有 \)</span>h_k(x_0)=\vert x_0-x_{[k]}\vert<span class="math notranslate nohighlight">\(，其中 \)</span>x_{[k]}<span class="math notranslate nohighlight">\( 是离 \)</span>x_0<span class="math notranslate nohighlight">\( 的第 \)</span>k$ 个最近的点。</p>
+式（ 6.3 ） 中，\)</span>h_\lambda(x_0)=\lambda<span class="math notranslate nohighlight">\( 为常值。对于 \)</span>k<span class="math notranslate nohighlight">\( 最近邻域，用邻域大小 \)</span>k<span class="math notranslate nohighlight">\( 代替 \)</span>\lambda<span class="math notranslate nohighlight">\(，并且我们有 \)</span>h_k(x_0)=\vert x_0-x_{[k]}\vert<span class="math notranslate nohighlight">\(，其中 \)</span>x_{[k]}<span class="math notranslate nohighlight">\( 是离 \)</span>x_0<span class="math notranslate nohighlight">\( 的第 \)</span>k$ 个最近的点。</p>
 <p>在实际中有许多细节需要注意：</p>
 <ul class="simple">
 <li><p>需要确定光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，它决定了局部邻域的宽度。大 <span class="math notranslate nohighlight">\(\lambda\)</span> 表明低方差（在更多的观测上平均）但高偏差（实质上假设在窗口中真实函数为常值的）。</p></li>
@@ -1253,7 +1254,7 @@ $<span class="math notranslate nohighlight">\(
     \mathrm{Cov}(e)=\mathrm{diag}(\sigma_1^2,\cdots,\sigma^2_n)
     \)</span>$
 有<strong>加权最小二乘估计 (WLSE)</strong></p>
-<p>等式 \eqref{6.8} 给出了局部线性回归估计的显式表达，式 \eqref{6.9} 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
+<p>等式 式（ 6.8 ） 给出了局部线性回归估计的显式表达，式 式（ 6.9 ） 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
 <p>!!! info “weiya 注：automatic kernel carpentry”
 更多细节可以参考 <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.ss/1177011002">T. Hastie and C. Loader (1993). Local Regression: Automatic Kernel Carpentry</a></p>
 <p>考虑下面 <span class="math notranslate nohighlight">\(\mathbb{E} \hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，
@@ -1271,7 +1272,7 @@ $$</p>
 \end{aligned}\end{align} \]</div>
 <p>\underset{\alpha(x_0),\beta_j(x_0),j=1,\ldots,d}{\min}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\Big[y_i-\alpha(x_0)-\sum\limits_{j=1}^d\beta_j(x_0)x_i^j\Big]^2\tag{6.11}
 $<span class="math notranslate nohighlight">\(
-解为 \)</span>\hat f(x_0)=\hat \alpha(x_0)+\sum_{j=1}^d\hat\beta_j(x_0)x_0^j<span class="math notranslate nohighlight">\(。实际上，类似 \eqref{6.10} 的表达式将告诉我们偏差仅仅有 \)</span>d+1$ 阶和更高阶的组分（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">练习 6.2</a>）。图 6.5 说明了局部二次回归。局部线性拟合趋向于在真实函数的区域中有偏差，这个现象被称作 <strong>截断山坡 (trimming the hills)</strong> 和 <strong>填充山谷 (filling the valleys)</strong>。局部二次回归一般可以纠正这个偏差。</p>
+解为 \)</span>\hat f(x_0)=\hat \alpha(x_0)+\sum_{j=1}^d\hat\beta_j(x_0)x_0^j<span class="math notranslate nohighlight">\(。实际上，类似 式（ 6.10 ） 的表达式将告诉我们偏差仅仅有 \)</span>d+1$ 阶和更高阶的组分（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">练习 6.2</a>）。图 6.5 说明了局部二次回归。局部线性拟合趋向于在真实函数的区域中有偏差，这个现象被称作 <strong>截断山坡 (trimming the hills)</strong> 和 <strong>填充山谷 (filling the valleys)</strong>。局部二次回归一般可以纠正这个偏差。</p>
 <p><img alt="" src="../_images/fig6.5.png" /></p>
 <blockquote>
 <div><p>图 6.5. 局部线性拟合在真实函数曲线区域中的偏差。局部二次拟合趋向于消除这个偏差。</p>

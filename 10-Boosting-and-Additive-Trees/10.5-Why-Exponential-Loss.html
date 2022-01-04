@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1137,6 +1137,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>10.5 为什么是指数损失？<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>AdaBoost.M1 算法最初是从一个非常不一样的角度出发得到的，而不是上一节中提出的。它与基于指数损失的向前逐步加性建模的等价性仅在其提出后五年后就被发现。通过研究指数损失函数准则的性质，可以深入了解这个过程并且找出可能改善的方式。</p>
 <p>在加性模型中指数损失的主要吸引点在于计算上的方便；它导出简单的模块化重加权的 AdaBoost 算法。然而，研究它的统计性质也是我们关注的。它估计什么，估计有多么好？第一个问题可以通过寻找总体最小化来回答。</p>
 <p>可以很简单地证明 (Friedman et al., 2000)<a class="footnote-reference brackets" href="#id3" id="id2">1</a>
@@ -1147,7 +1148,7 @@ f^*(x)=\mathrm{arg}\;\underset{f(x)}{\min}\mathrm{E}_{Y\mid x}(e^{-Yf(x)})=\frac
 \)</span><span class="math notranslate nohighlight">\(
 \mathrm{Pr}(Y=1\mid x)=\frac{1}{1+e^{-2f^*(x)}}
 \)</span><span class="math notranslate nohighlight">\(
-因此，由 AdaBoost 得到的加性展开是在估计 \)</span>P(Y=1\mid x)$ <strong>对数比率值 (log-odds)</strong> 的二分之一。这证明使用它的符号作为 \eqref{10.1} 的分类规则是合理的。</p>
+因此，由 AdaBoost 得到的加性展开是在估计 \)</span>P(Y=1\mid x)$ <strong>对数比率值 (log-odds)</strong> 的二分之一。这证明使用它的符号作为 式（ 10.1 ） 的分类规则是合理的。</p>
 <p>!!! info “Recall”
 $<span class="math notranslate nohighlight">\(
     G(x)=\mathrm {sign}\left(\sum\limits_{m=1}^M\alpha_mG_m(x)\right)\tag{10.1}
@@ -1190,7 +1191,7 @@ l(Y,p(x))=Y'\mathrm{log}p(x)+(1-Y')\mathrm{log}(1-p(x))
 $<span class="math notranslate nohighlight">\(
 -l(Y,f(x))=\mathrm{log}(1+e^{-2Yf(x)})\tag{10.18}
 \)</span>$</p>
-<p>!!! note “weiya 注：推导 \eqref{10.18}”
+<p>!!! note “weiya 注：推导 式（ 10.18 ）”
 直接按照 <span class="math notranslate nohighlight">\(Y=-1, 1\)</span> 进行讨论，
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
@@ -1210,7 +1211,7 @@ $<span class="math notranslate nohighlight">\(
     Y=1
     $$
 -->
-<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\mathrm{Pr}(Y=1\mid x)\)</span> 处，我们从 \eqref{10.17} 看到偏差 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
+<p>因为对数概率的总体最大在真实概率 <span class="math notranslate nohighlight">\(p(x)=\mathrm{Pr}(Y=1\mid x)\)</span> 处，我们从 式（ 10.17 ） 看到偏差 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[-l(Y,f(x))]\)</span> 和 <span class="math notranslate nohighlight">\(\mathbb{E}_{Y\mid x}[e^{-Yf(x)}]\)</span> 的总体最小点是一样的。因此，使用任意一个准则在总体的水平下得到相同的解。注意到 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 本身不是一个合适的对数似然函数，因为它不是二项随机变量 <span class="math notranslate nohighlight">\(Y\in \\{-1,1\\}\)</span> 的概率密度函数的对数。</p>
 <p>!!! note “weiya 注”
 也就是说，不存在一个二项随机变量的密度函数，使得 <span class="math notranslate nohighlight">\(e^{-Yf}\)</span> 成为其对数似然函数。</p>
 <hr class="footnotes docutils" />

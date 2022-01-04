@@ -203,7 +203,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.7-Multiple-Outcome-Shrinkage-and-Selection.html">
-     3.7 多重输出的收缩和选择
+     3.7 多输出的收缩和选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,6 +1160,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>18.5 当特征不可用时的分类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<style>p{text-indent:2em;2}</style>
 <p>!!! note “proximity matrix”
 关系矩阵，近似性矩阵，样品间的相似性矩阵。</p>
 <p>现实中很多研究对象都很抽象，定义一个特征向量不是很显然的。但是只要我们能够得到 <span class="math notranslate nohighlight">\(N\times N\)</span> 的 <strong>相似性矩阵 (proximity matrix)</strong>，我们就可以将相似性解释为内积，这样许多分类器都可以用上去了。蛋白质结构属于这一类问题，我们将在下面第一节讨论。</p>
@@ -1181,7 +1182,7 @@
 K_m(x_1,x_2)=\langle \Phi_m(x_1),\Phi_m(x_2) \rangle\tag{18.26}
 \]</div>
 <p>它衡量了两个字符串 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span> 的相似性。举个例子，这个可以用到支持向量机中，将字符串划分到不同的蛋白质类。</p>
-<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\mathcal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配。事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> \eqref{18.26}，而不用实际计算单个向量。这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>。</p>
+<p>所有可能序列 <span class="math notranslate nohighlight">\(a\)</span> 的个数为 <span class="math notranslate nohighlight">\({\mathcal A}_m=20^m\)</span>，对于中等大小的 <span class="math notranslate nohighlight">\(m\)</span>，这个值可以非常大，并且大部分子序列与我们训练集中的子序列并不匹配。事实证明，我们可以高效地运用树结构来计算 <span class="math notranslate nohighlight">\(N\times N\)</span> 的内积矩阵或者字符串核 <span class="math notranslate nohighlight">\(\mathbf K_m\)</span> 式（ 18.26 ），而不用实际计算单个向量。这个方法，以及接下来的数据，来自 Leslie et. al (2004)<a class="footnote-reference brackets" href="#id8" id="id3">1</a>。</p>
 <p>数据中包含两个类别的 1708 个蛋白质——阴性 (1663) 和阳性 (45)。上面这两个该数据集中的例子，称为 <span class="math notranslate nohighlight">\(x_1\)</span> 和 <span class="math notranslate nohighlight">\(x_2\)</span>，这两条字符串中已经标出 LQE 的子序列。可能存在 <span class="math notranslate nohighlight">\(20^3\)</span> 种子序列，所以 <span class="math notranslate nohighlight">\(\Phi_3(x)\)</span> 是一个长度为 <span class="math notranslate nohighlight">\(8000\)</span> 的向量。对于这个例子，<span class="math notranslate nohighlight">\(\phi_{LQE}(x_1)=1,\phi_{LQE}(x_2)=2\)</span>。</p>
 <p>!!! note “weiya 注：ROC curve”
 ROC 是 receiver operating characteristics 的首字母缩写，用来同时展现分类器的 specificity 和 sensitivity，横轴一般为 specificity (或 false positive rate， 其中 specificity = 1 - false positive rate)，纵轴一般为sensitivity (或 true positive rate，其中 sensitivity = true positive rate)，通过在不同的阈值下计算这两个值，就可以得到 ROC 曲线。分类器的整体表现可以由 ROC 曲线下的面积 AUC (area under the curve) 给出。</p>
@@ -1207,7 +1208,7 @@ ROC 是 receiver operating characteristics 的首字母缩写，用来同时展�
 <p>带平方正则项的逻辑斯蒂回归和多项式回归也可以用内积核来实现；见 <span class="xref myst">12.3.3 节</span>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">练习 18.13</a>。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/201">练习 12.10</a>　推导了使用内积核的线性判别分析。</p>
 <p>!!! info “weiya 注：Ex. 18.13”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/122">Issue 122: Ex. 18.13</a>.</p>
-<p>主成分也可以用内积核来计算；因为这通常很有用，所以这里给出细节。首先假设我们有中心化的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span>，并令 <span class="math notranslate nohighlight">\(X=\U\D\V^T\)</span> 为其 SVD 分解 \eqref{18.12}。</p>
+<p>主成分也可以用内积核来计算；因为这通常很有用，所以这里给出细节。首先假设我们有中心化的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span>，并令 <span class="math notranslate nohighlight">\(X=\U\D\V^T\)</span> 为其 SVD 分解 式（ 18.12 ）。</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
@@ -1234,7 +1235,7 @@ $<span class="math notranslate nohighlight">\(
 \tildeK = (\I-\M)\B(\I-\M)\,;\tag{18.31}
 \]</div>
 <p>可以很简单地检验 <span class="math notranslate nohighlight">\(\tilde K_{ii'}=\langle x_i-\bar x, x_{i'}-\bar x\rangle\)</span>，即中心化的内积矩阵。</p>
-<p>!!! note “weiya 注：\eqref{18.31}”
+<p>!!! note “weiya 注：式（ 18.31 ）”
 $<span class="math notranslate nohighlight">\(
     \begin{align*}
     K_{ii'} &amp;= \left(B_{ii'}-\frac 1N\sum_iB_{ii'}\right) - \frac 1N\sum_{i'}\left(B_{ii'}-\frac 1N\sum_iB_{ii'}\right)\\
@@ -1259,7 +1260,7 @@ $<span class="math notranslate nohighlight">\(
 <p><img alt="" src="../_images/fig18.10.png" /></p>
 <p>有些单词确实有意义：比如 “frequentist” 和 “Bayesian” 反映 Efron 关注统计推断。然而，许多单词意想不到，并且反映了个人的写作风格：比如，Friedman 用 “presented” 而 HT 用 “propose”.</p>
 <p>我们接着用线性核且无正则化的支持向量机，采用 “all pairs” (ovo) 的方法来处理这三个类（SVM 的正则化没有改善表现）。结果展示在表 18.3 中。这比 nearest shrunken centroid 分类器要差。</p>
-<p>刚刚提到的，表 18.3 第一行代表 nearest shrunken centroid（无正则化）。用 <span class="math notranslate nohighlight">\(s_j\)</span> 表示特征 <span class="math notranslate nohighlight">\(j\)</span> 的 <strong>合并类内标准差 (pooled within-class standard deviation)</strong>，<span class="math notranslate nohighlight">\(s_0\)</span> 为 <span class="math notranslate nohighlight">\(s_j\)</span> 的中值。则第一行也表示对每个特征用 <span class="math notranslate nohighlight">\(s_j+s_0\)</span> 标准化后的 nearest centroid 分离器。（回忆 \eqref{18.4}）</p>
+<p>刚刚提到的，表 18.3 第一行代表 nearest shrunken centroid（无正则化）。用 <span class="math notranslate nohighlight">\(s_j\)</span> 表示特征 <span class="math notranslate nohighlight">\(j\)</span> 的 <strong>合并类内标准差 (pooled within-class standard deviation)</strong>，<span class="math notranslate nohighlight">\(s_0\)</span> 为 <span class="math notranslate nohighlight">\(s_j\)</span> 的中值。则第一行也表示对每个特征用 <span class="math notranslate nohighlight">\(s_j+s_0\)</span> 标准化后的 nearest centroid 分离器。（回忆 式（ 18.4 ））</p>
 <p>!!! note “weiya 注：Recall”
 $<span class="math notranslate nohighlight">\(
     d_{kj}=\frac{\bar x_{kj}-\bar x_j}{m_k(s_j+s_0)}\tag{18.4}
