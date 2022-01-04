@@ -1,5 +1,7 @@
 # 16.4 文献笔记
 
+<style>p{text-indent:2em;2}</style>
+
 如在导言中说到的那样，机器学习中的许多新方法都被称为“ensemble”方法。这其中包括 neural networks boosting, `bagging` 和 随机森林； Dietterich (2000a)[^1] 调查了基于树的**集成 (ensemble)** 方法。神经网络（[第 11 章](../11-Neural-Networks/11.1-Introduction/index.html)）或许更值得这个名字，因为他们同事学习隐藏单元（基函数）的参数，并且考虑怎样结合他们。Bishop (2006)[^2] 在某些细节上讨论了神经网络，以及贝叶斯观点 (MacKay, 1992[^3]; Neal, 1996[^4])。支持向量机（[第 12 章](../12-Support-Vector-Machines-and-Flexible-Discriminants/12.1-Introduction/index.html)）也可以看成是集成方法；它们在高维特征空间中拟合 $L_2$ 正则化模型。Boosting 和 Lasso 通过 $L_1$ 正则化利用稀疏性来解决高维问题，而 SVMs 依赖 $L_2$ 惩罚的“核技巧”的性质。
 
 C5.0 (Quinlan, 2004[^5]) 是一个 `committee` 树和规则生成包，与 `Rulefit` 有相同的目标。

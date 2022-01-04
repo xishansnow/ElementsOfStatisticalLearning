@@ -2,6 +2,8 @@
 
 <style>p{text-indent:2em;2}</style>
 
+<style>p{text-indent:2em;2}</style>
+
 关于经典的统计推断有很多书：Cox and Hinkley (1974)[^1] 和 Silvey (1975)[^2] 给出了通俗的解释。
 
 自助法归功于 Efron (1979)[^3]，并且在 Efron and Tibshirani (1993)[^4] 和 Hall (1992)[^5] 中作了完整的描述。
