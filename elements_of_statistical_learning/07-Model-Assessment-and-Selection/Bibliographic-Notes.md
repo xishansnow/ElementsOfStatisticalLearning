@@ -35,13 +35,13 @@ Cherkassky and Ma(2003)[^23]发表了回归中SRM用于模型选择的表现的�
 [^10]: Golub, G., Heath, M. and Wahba, G. (1979). Generalized cross-validation as a method for choosing a good ridge parameter, Technometrics 21: 215–224.
 [^11]: Wahba, G. (1980). Spline bases, regularization, and generalized cross-validation for solving approximation problems with large quantities of noisy data, Proceedings of the International Conference on Approximation theory in Honour of George Lorenz, Academic Press, Austin, Texas, pp. 905–912.
 [^12]: Hastie, T. and Tibshirani, R. (1990). Generalized Additive Models, Chapman and Hall, London.
-[^13]: Efron, B. (1979). Bootstrap methods: another look at the jackknife, Annals of Statistics 7: 1–26.
-[^14]: Efron, B. and Tibshirani, R. (1993). An Introduction to the Bootstrap, Chapman and Hall, London.
+[^13]: Efron, B. (1979). `Bootstrap` methods: another look at the jackknife, Annals of Statistics 7: 1–26.
+[^14]: Efron, B. and Tibshirani, R. (1993). An Introduction to the `Bootstrap`, Chapman and Hall, London.
 [^15]: Efron, B. (1983). Estimating the error rate of a prediction rule: some improvements on cross-validation, Journal of the American Statistical Association 78: 316–331.
 [^16]: Efron, B. (1986). How biased is the apparent error rate of a prediction rule?, Journal of the American Statistical Association 81: 461–70.
 [^17]: Breiman, L. and Spector, P. (1992). Submodel selection and evaluation in regression: the X-random case, International Statistical Review 60: 291–319.
 [^18]: Breiman, L. (1992). The little bootstrap and other methods for dimensionality selection in regression: X-fixed prediction error, Journal of the American Statistical Association 87: 738–754.
-[^19]: Shao, J. (1996). Bootstrap model selection, Journal of the American Statistical Association 91: 655–665.
+[^19]: Shao, J. (1996). `Bootstrap` model selection, Journal of the American Statistical Association 91: 655–665.
 [^20]: Zhang, P. (1993). Model selection via multifold cross-validation, Annals of Statistics 21: 299–311.
 [^21]: Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection, International Joint Conference
 on Artificial Intelligence (IJCAI), Morgan Kaufmann, pp. 1137–1143.

@@ -70,15 +70,15 @@ chapters:
   - file: 07-Model-Assessment-and-Selection/7.8-Minimum-Description-Length
   - file: 07-Model-Assessment-and-Selection/7.9-Vapnik-Chervonenkis-Dimension
   - file: 07-Model-Assessment-and-Selection/7.10-Cross-Validation
-  - file: 07-Model-Assessment-and-Selection/7.11-Bootstrap-Methods
+  - file: 07-Model-Assessment-and-Selection/7.11-`Bootstrap`-Methods
   - file: 07-Model-Assessment-and-Selection/7.12-Conditional-or-Expected-Test-Error
   - file: 07-Model-Assessment-and-Selection/Bibliographic-Notes
 - file: 08-Model-Inference-and-Averaging/8.0-Overview
   sections:
   - file: 08-Model-Inference-and-Averaging/8.1-Introduction
-  - file: 08-Model-Inference-and-Averaging/8.2-The-Bootstrap-and-Maximum-Likelihood-Methods
+  - file: 08-Model-Inference-and-Averaging/8.2-The-`Bootstrap`-and-Maximum-Likelihood-Methods
   - file: 08-Model-Inference-and-Averaging/8.3-Bayesian-Methods
-  - file: 08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-Bootstrap-and-Bayesian-Inference
+  - file: 08-Model-Inference-and-Averaging/8.4-Relationship-Between-the-`Bootstrap`-and-Bayesian-Inference
   - file: 08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm
   - file: 08-Model-Inference-and-Averaging/8.6-MCMC-for-Sampling-from-the-Posterior
   - file: 08-Model-Inference-and-Averaging/8.7-Bagging
