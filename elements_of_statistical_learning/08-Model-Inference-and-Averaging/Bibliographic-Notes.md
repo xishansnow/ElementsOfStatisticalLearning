@@ -1,7 +1,4 @@
 # 8.10 文献笔记
-
-<style>p{text-indent:2em;2}</style>
-
 <style>p{text-indent:2em;2}</style>
 
 关于经典的统计推断有很多书：Cox and Hinkley (1974)[^1] 和 Silvey (1975)[^2] 给出了通俗的解释。
