@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,22 +1142,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   集外样本
+   （）集外样本
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   变量重要性
+   （）变量重要性
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   邻近图
+   （）邻近图
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   随机森林和过拟合
+   （）随机森林和过拟合
   </a>
  </li>
 </ul>
@@ -1160,81 +1168,145 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>15.3 随机森林的细节</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）集外样本
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）变量重要性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）邻近图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   （）随机森林和过拟合
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.3 随机森林的细节<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>我们忽略了随机森林用于分类和回归的区别。当用于分类，随机森林从每棵树中得到类别投票，接着采用多数投票来分类（见 <span class="xref myst">8.7 节</span> <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 类似的讨论）。当用于回归时，如式 式（ 15.2 ），在目标点 <span class="math notranslate nohighlight">\(x\)</span> 处每棵树的预测被简单地平均。</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    \hat f_{rf}^B(x) = \frac{1}{B}\sum\limits_{b=1}^BT(x;\Theta_b)\tag{15.2}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \hat f_{rf}^B(x) = \frac{1}{B}\sum\limits_{b=1}^BT(x;\Theta_b)\tag{15.2}
+    
+\]</div>
 <p>另外，发明者给出下面两条推荐：</p>
 <ul class="simple">
 <li><p>对于分类，<span class="math notranslate nohighlight">\(m\)</span> 的默认值为 <span class="math notranslate nohighlight">\(\lfloor \sqrt p \rfloor\)</span>，且最小的结点数为 1。</p></li>
 <li><p>对于回归，<span class="math notranslate nohighlight">\(m\)</span> 的默认值为 <span class="math notranslate nohighlight">\(\lfloor p/3\rfloor\)</span>，且最小的结点数为 5。</p></li>
 </ul>
 <p>实际中这些参数的最优值取决于具体问题，并且它们应当被视为 <strong>调整参数 (tunning parameters)</strong>。在图 15.3 中，<span class="math notranslate nohighlight">\(m=6\)</span> 比默认值 <span class="math notranslate nohighlight">\(\lfloor 8/3\rfloor =2\)</span> 更好。</p>
-<p>!!! note “Recall”
+<blockquote>
+<div><p>note “Recall”
 <img alt="" src="../_images/fig15.3.png" /></p>
+</div></blockquote>
 <div class="section" id="id2">
-<h2>集外样本<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）集外样本<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>随机森林一个重要的特征是它对 <strong>集外( out-of-bag, OOB)</strong> 样本的使用：</p>
 <blockquote>
 <div><p>对于每个观测 <span class="math notranslate nohighlight">\(z_i=(x_i, y_i)\)</span>，仅通过对部分树的平均来构造随机森林预测量，这部分的树是对应那些 <span class="math notranslate nohighlight">\(z_i\)</span> 不出现的自助样本。</p>
 </div></blockquote>
 <p>OOB 误差估计几乎等价于通过 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证得到的估计；见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/21">练习 15.2</a>。因此与许多其它的非线性估计量不同，随机森林可以逐步拟合，同时交叉验证也将沿着拟合进度逐步进行。一旦OOB误差稳定，训练可以终止。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 这里我的理解是，<span class="math notranslate nohighlight">\(B\)</span> 可以逐步增大，每次都可以计算 OOB 误差，而 OOB 误差近似为 CV 误差，就相当于逐步计算 CV 误差了。而有些非线性方法需要拟合完成后才能回过头来计算 CV 误差，从这点看这是随机森林的优势。</p>
+</div></blockquote>
 <p>图 15.4 展示了<code class="docutils literal notranslate"><span class="pre">spam</span></code>数据的 OOB 误分类误差，与测试误差进行比较。尽管这里平均了 2500 棵树，但从图中可以看出似乎 200 棵树就足够了。</p>
 <p><img alt="" src="../_images/fig15.4.png" /></p>
 </div>
 <div class="section" id="id3">
-<h2>变量重要性<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（）变量重要性<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>随机森林的变量重要性图象可以用 gradient-boosted 模型完全一样的方式来作出（<span class="xref myst">10.13 节</span>）。在每棵树的每个分割点，分割准则的改进是重要性度量，而重要性度量归功于分离变量，并且对于每个变量，这种改进在森林中的每棵树上都有积累。图 15.5 的左图展现了用这种方式计算的 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 数据的变量重要度；可以与 gradient boosting 对应的图 10.6 进行比较。</p>
 <p><img alt="" src="../_images/fig15.5.png" /></p>
-<p>!!! note “Recall”
+<blockquote>
+<div><p>note “Recall”
 <img alt="" src="../_images/fig10.6.png" /></p>
+</div></blockquote>
 <p>Boosting 完全忽略了一些变量，而随机森林不会。备选的分离变量选择增加了任意单个变量被包含进随机森林的概率，而 boosting 中没有这种选择。</p>
 <p>随机森林也采用 OOB 样本来构造不同的变量重要性度量，这显然是用来衡量每个变量的预测强度。当生成第 <span class="math notranslate nohighlight">\(b\)</span> 棵树时，得到 OOB 样本，记录预测的准确度。接下来随机打乱第 <span class="math notranslate nohighlight">\(j\)</span> 个变量在 OOB 样本中的顺序，并且再一次计算准确度。对所有的树应用这种随机打乱计算平均降低的准确度，然后用作对随机森林中第 <span class="math notranslate nohighlight">\(j\)</span> 个变量的重要性的度量。这些量被表示成图 15.5 右图的最大值的比例。</p>
-<p>!!! note “weiya 注：Permutation Importance”
+<blockquote>
+<div><p>note “weiya 注：Permutation Importance”
 这种方法计算得到的重要度也被称为 Permutation Importance，这个基于分割准则的改进得到的重要度不同，<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Permutation Importance vs Random Forest Feature Importance (MDI) — scikit-learn 0.22.1 documentation</a>比较了这两者的区别，并用实例说明了后者相对前者可能会放大变量的重要度。</p>
+</div></blockquote>
 <p>尽管这两种方法的排名类似，但右图中的重要性在变量间更加均匀。随机化有效取消了单个变量的影响，这很像在线性模型中设置对应变量的系数为 0（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/220">练习 15.7</a>）。如果这个变量不可用，这并不能度量该变量对预测的影响，因为如果模型去掉该变量重新拟合，其它的变量可以作为替代品使用。</p>
 </div>
 <div class="section" id="id4">
-<h2>邻近图<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）邻近图<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>随机森林宣扬的一个输出是 <strong>邻近图 (proximity plot)</strong>。图 15.6 展示了第 2 章中 2.3.3 节的混合数据的邻近图。</p>
 <p><img alt="" src="../_images/fig15.6.png" /></p>
 <p>在生成随机森林时，便会积累训练数据 <span class="math notranslate nohighlight">\(N\times N\)</span> 的邻近矩阵。对于每棵树，任意一对 OOB 观测值共享一个终止结点时其邻近值增加 1。这个邻近矩阵接着用多维缩放（<span class="xref myst">14.8 节</span>）表示成两维。这个想法是即使数据可能是高维的，其中涉及混合变量等等，但邻近图会给出随机森林分类器中彼此充分靠近的观测的标示。</p>
 <p>不管什么数据，随机森林的邻近图经常看起来非常类似，这也让人怀疑其效用。这些图趋向于星形，每个类别一个臂，当分类效果越好，图就会越清楚。</p>
 <p>因为混合数据是二维的，我们可以将邻近图中的点映射到原始坐标中，然后更好地理解它们所代表的。似乎在每个类的纯区域中的点映射到星状图的末端，而靠近判别边界的点映射到中心。当我们考虑到邻近矩阵的构造时便会知道这不奇怪。在纯区域中的相邻点经常最终会共享一个“桶(bucket)”，因为当终止结点是纯的，它不再被随机森林的生成树算法而分割。另一方面，属于不同类别的相互靠近的点有时会共享一个终止结点，但不是总是。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 结合图 15.6 理解。</p>
+</div></blockquote>
 </div>
 <div class="section" id="id5">
-<h2>随机森林和过拟合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>（）随机森林和过拟合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>当变量个数很大时，而相关变量很少，<span class="math notranslate nohighlight">\(m\)</span> 较小时的随机森林可能表现很差。在每个分割处，相关变量被选择的概率很小。图 15.7 展示了支持这个断言的模拟的结果。细节在图题和 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/221">练习 15.3</a> 中给出。</p>
-<p>!!! info “weiya 注：Ex. 15.3”
+<blockquote>
+<div><p>info “weiya 注：Ex. 15.3”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/221">Issue 221: Ex. 15.3</a>.</p>
+</div></blockquote>
 <p><img alt="" src="../_images/fig15.7.png" /></p>
 <p>在图中的顶部我们可以看到相关变量在随机森林任意分割时被选到的超几何概率（这个模拟中，相关变量个数相同）。当概率变小，boosting和随机森林的差别变大。当相关变量个数变多，随机森林的表现在噪声变量增加时出奇地鲁棒。举个例子，当有 6 个相关变量，100 个噪声变量，假设 <span class="math notranslate nohighlight">\(m=\sqrt{6+100}\approx 10\)</span> 相关变量在任意分割点被选择到的概率为 0.46。</p>
-<p>!!! note “weiya 注:”
-按图中一样固定相关变量的个数为2，则概率的具体计算公式如下
-$<span class="math notranslate nohighlight">\(
-    \frac{\binom{2}{1}\binom{n_{noise}}{m-1}+\binom{2}{2}\binom{n_{noise}}{m-2}}{\binom{2+n_{noise}}{m}}
-    \)</span><span class="math notranslate nohighlight">\(
-    其中\)</span>n_{noise}<span class="math notranslate nohighlight">\(为噪声变量的个数，\)</span>m<span class="math notranslate nohighlight">\(为随机森林的参数。
-    比如
-    \)</span><span class="math notranslate nohighlight">\(
-    \frac{\binom{2}{1}\binom{5}{1}+\binom{2}{2}}{\binom{7}{2}}=0.52
-    \)</span><span class="math notranslate nohighlight">\(
-    更一般地，设\)</span>n_1<span class="math notranslate nohighlight">\(为相关变量的个数，\)</span>n_2<span class="math notranslate nohighlight">\(为噪声变量的个数，\)</span>m=\lfloor \sqrt{n_1+n_2}\rfloor)<span class="math notranslate nohighlight">\(，则
-    \)</span><span class="math notranslate nohighlight">\(
-    \frac{\sum\limits_{i=1}^{min(n_1,m)}\binom{n_1}{i}\binom{n_2}{m-i}}{\binom{n_1+n_2}{m}}\,.
-    \)</span>$
-可以用下面的 Julia 代码计算</p>
+<blockquote>
+<div><p>note “weiya 注:”
+按图中一样固定相关变量的个数为2，则概率的具体计算公式如下</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \frac{\binom{2}{1}\binom{n_{noise}}{m-1}+\binom{2}{2}\binom{n_{noise}}{m-2}}{\binom{2+n_{noise}}{m}}
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中$n_{noise}$为噪声变量的个数，$m$为随机森林的参数。
+比如
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \frac{\binom{2}{1}\binom{5}{1}+\binom{2}{2}}{\binom{7}{2}}=0.52
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>更一般地，设$n_1$为相关变量的个数，$n_2$为噪声变量的个数，$m=\lfloor \sqrt{n_1+n_2}\rfloor)$，则
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \frac{\sum\limits_{i=1}^{min(n_1,m)}\binom{n_1}{i}\binom{n_2}{m-i}}{\binom{n_1+n_2}{m}}\,.
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>可以用下面的 Julia 代码计算
+</pre></div>
+</div>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">round</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span><span class="p">)))</span> <span class="o">=</span> <span class="n">sum</span><span class="p">([</span><span class="n">binomial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">binomial</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span><span class="n">m</span><span class="o">-</span><span class="n">i</span> <span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">min</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">m</span><span class="p">)])</span> <span class="o">/</span> <span class="n">binomial</span><span class="p">(</span><span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
 <span class="n">f</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c">#0.4565650244108061</span>
 </pre></div>
@@ -1279,8 +1351,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="15.2-Definition-of-Random-Forests.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1297,19 +1369,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

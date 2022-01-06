@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>11.4 拟合神经网络</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1148,29 +1166,29 @@
 \tag{11.8}
 \end{split}\]</div>
 <p>对于回归，我们采用误差平方和用于衡量拟合的效果（误差函数）</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 R(\theta)=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{11.9}
-\]</div>
+\)</span>$</p>
 <p>对于分类，我们可以采用平方误差或者交叉熵（偏差）：</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 R(\theta)=-\sum\limits_{i=1}^N\sum\limits_{k=1}^Ky_{ik}\mathrm{log}\;f_k(x_i)\tag{11.10}
-\]</div>
+\)</span>$</p>
 <p>以及对应的分类器 <span class="math notranslate nohighlight">\(G(x)=\mathrm{arg\; max}_kf_k(x)\)</span>。有了 softmax 激活函数和交叉熵误差函数，神经网络模型实际上是关于隐藏层的线性逻辑斯蒂回归模型，而且所有的参数通过极大似然来估计。</p>
 <p>一般地，我们不想要 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的全局最小值，因为这可能会是一个过拟合解。而是需要一些正则化：这个可以通过惩罚项来直接实现，或者提前终止来间接实现。下一节中将给出详细的细节。</p>
 <p>最小化 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的一般方法是通过梯度下降，在这种情形下称作 <strong>向后传播 (back-propagation)</strong>。因为模型的组成成分，运用微分的链式法则可以很简单地得到梯度。这个可以通过对网络向前或向后遍历计算得到，仅跟踪每个单元的局部量。</p>
-<p>!!! note “weiya 注：Recall 式（ 11.5 ）”
-$$
-\begin{align*}
-Z_m&amp;=\sigma(\alpha_{0m}+\alpha_m^TX),m=1,2,\ldots,M\
-T_k&amp;=\beta_{0k}+\beta_k^TZ,k=1,\ldots,K,\
-f_k(X)&amp;=g_k(T),k=1,\ldots,K
-\end{align*}
-\tag{11.5}</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-</pre></div>
-</div>
+<blockquote>
+<div><p>note “weiya 注：Recall 式（ 11.5 ）”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
+    Z_m&amp;=\sigma(\alpha_{0m}+\alpha_m^TX),m=1,2,\ldots,M\\
+    T_k&amp;=\beta_{0k}+\beta_k^TZ,k=1,\ldots,K,\\
+    f_k(X)&amp;=g_k(T),k=1,\ldots,K
+    \end{align*}
+    \tag{11.5}
+    
+    
+\end{split}\]</div>
 <p>下面是对于平方误差损失的向后传播的细节。由 式（ 11.5 ） 式令 <span class="math notranslate nohighlight">\(z_{mi}=\sigma(\alpha_{0m}+\alpha_m^Tx_i)\)</span>，并令 <span class="math notranslate nohighlight">\(z_i=(z_{1i},z_{2i},\ldots,z_{Mi})\)</span>，则我们有</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1196,31 +1214,33 @@ R(\theta)&amp;\equiv\sum\limits_{i=1}^NR_i\\
 \end{align*}
 \tag{11.13}\end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\gamma_r\)</span> 为 <strong>学习速度 (learning rate)</strong>，将在下面讨论。</p>
-<p>现在将 <span class="math notranslate nohighlight">\(式（ 11.12 ）\)</span> 式写成
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>现在将 <span class="math notranslate nohighlight">\(式（ 11.12 ）\)</span> 式写成</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \frac{\partial R_i}{\partial \beta_{km}}&amp;=\delta_{ki}z_{mi}\\
 \frac{\partial R_i}{\partial \alpha_{m\ell}}&amp;=s_{mi}x_{i\ell}
-\end{align*}\]</div>
-<p>\tag{11.14}</p>
+\end{align*}
+\tag{11.14}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\delta_{ki}\)</span> 和 <span class="math notranslate nohighlight">\(s_{mi}\)</span> 的值分别为当前模型在输出和隐藏层单元的误差。从它们的定义来看，它们满足</p>
+<p><span class="math notranslate nohighlight">\(
+s_{mi}=\sigma'(\alpha_m^Tx_i)\sum\limits_{k=1}^K\beta_{km}\delta_{ki}\tag{11.15}
+\)</span>$</p>
+<p>上式称为 <strong>向后传播等式 (back-propagation equations)</strong>。用这个等式，<span class="math notranslate nohighlight">\(式（ 11.13 ）\)</span> 的更新可以通过 two-pass 算法来实现。在 forward pass，固定当前权重，预测值 <span class="math notranslate nohighlight">\(\hat f_k(x_i)\)</span> 通过 (11.5) 式计算。在 backward pass，计算当前误差 <span class="math notranslate nohighlight">\(\delta_{ki}\)</span>，接着向后传播通过 <span class="math notranslate nohighlight">\(式（ 11.15 ）\)</span> 式给出误差 <span class="math notranslate nohighlight">\(s_{mi}\)</span>。则两个误差都用来计算 <span class="math notranslate nohighlight">\(式（ 11.13 ）\)</span>、<span class="math notranslate nohighlight">\(式（ 11.14 ）\)</span> 中更新的梯度。</p>
+<blockquote>
+<div><p>note “weiya 注：向后传播的算法形式”
+记</p>
+</div></blockquote>
 <div class="math notranslate nohighlight">
-\[
-$\delta_{ki}$ 和 $s_{mi}$ 的值分别为当前模型在输出和隐藏层单元的误差。从它们的定义来看，它们满足
-\]</div>
-<p>s_{mi}=\sigma’(\alpha_m^Tx_i)\sum\limits_{k=1}^K\beta_{km}\delta_{ki}\tag{11.15}
-$<span class="math notranslate nohighlight">\(
-上式称为 **向后传播等式 (back-propagation equations)**。用这个等式，\)</span>式（ 11.13 ）<span class="math notranslate nohighlight">\( 的更新可以通过 two-pass 算法来实现。在 forward pass，固定当前权重，预测值 \)</span>\hat f_k(x_i)<span class="math notranslate nohighlight">\( 通过 (11.5) 式计算。在 backward pass，计算当前误差 \)</span>\delta_{ki}<span class="math notranslate nohighlight">\(，接着向后传播通过 \)</span>式（ 11.15 ）<span class="math notranslate nohighlight">\( 式给出误差 \)</span>s_{mi}<span class="math notranslate nohighlight">\(。则两个误差都用来计算 \)</span>式（ 11.13 ）<span class="math notranslate nohighlight">\(、\)</span>式（ 11.14 ）$ 中更新的梯度。</p>
-<p>!!! note “weiya 注：向后传播的算法形式”
-记
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
+\[\begin{split}    \begin{align*}
     z^{(k)} &amp;= W^{(k-1)}a^{(k-1)}\\
     a^{(k)} &amp;= g^{(k)}(z^{(k)})\,,
     \end{align*}
-    \)</span><span class="math notranslate nohighlight">\(
-    其中 \)</span>W^{(k-1)}<span class="math notranslate nohighlight">\( 表示从 \)</span>L_{k-1}<span class="math notranslate nohighlight">\( 层到 \)</span>L_k<span class="math notranslate nohighlight">\(，\)</span>a^{(k)}<span class="math notranslate nohighlight">\( 是 \)</span>L_k<span class="math notranslate nohighlight">\( 层所有的激活向量，并假设激活函数 \)</span>g^{(k)}$ 逐个元素地作用在向量上，则可以整理出向后传播的算法形式：</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![](assets/bp_alg.png)
+    
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中 $W^{(k-1)}$ 表示从 $L_{k-1}$ 层到 $L_k$，$a^{(k)}$ 是 $L_k$ 层所有的激活向量，并假设激活函数 $g^{(k)}$ 逐个元素地作用在向量上，则可以整理出向后传播的算法形式：
+
+![](assets/bp_alg.png)
 
 注意图中的符号含义与 ESL 中稍有不同。
 </pre></div>
@@ -1263,8 +1283,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="11.3-Neural-Networks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1281,19 +1301,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

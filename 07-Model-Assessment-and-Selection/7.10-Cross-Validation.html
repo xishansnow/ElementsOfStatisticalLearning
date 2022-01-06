@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,17 +1142,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k">
-   K 折交叉验证
+   （）K 折交叉验证
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   做交叉验证的错误与正确方式
+   （）做交叉验证的错误与正确方式
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   交叉验证是否真的有用？
+   （）交叉验证是否真的有用？
   </a>
  </li>
 </ul>
@@ -1155,12 +1163,44 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.10 交叉验证</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k">
+   （）K 折交叉验证
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）做交叉验证的错误与正确方式
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （）交叉验证是否真的有用？
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.10 交叉验证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <div class="admonition- admonition">
 <p class="admonition-title">更新笔记</p>
@@ -1176,7 +1216,7 @@
 <p>在 7.2 节，详细讨论了我们实际上最需要当训练集 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 固定时的条件误差，而非预测误差的期望值。</p>
 </div>
 <div class="section" id="k">
-<h2>K 折交叉验证<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h2>
+<h2>（）K 折交叉验证<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h2>
 <p>理论上，如果我们有足够的数据，我们可以设置一个验证集并且用它去评估我们预测模型的好坏。因为数据经常是稀缺的，所以这种方式通常是不可能的。为了巧妙地解决这个问题，<span class="math notranslate nohighlight">\(K\)</span> 折交叉验证采用部分可用数据去拟合模型，然后用不同的部分数据去测试。我们将数据分成 <span class="math notranslate nohighlight">\(K\)</span> 个大致相等的部分；举个例子，当 <span class="math notranslate nohighlight">\(K=5\)</span>，情形就像这样：</p>
 <p><img alt="" src="../_images/pic1.png" /></p>
 <p>对于第 <span class="math notranslate nohighlight">\(k\)</span> 部分（上面的第三个），我们用剩下的 <span class="math notranslate nohighlight">\(K-1\)</span> 个部分数据来拟合模型，然后计算预测第 <span class="math notranslate nohighlight">\(k\)</span> 部分的数据时模型的预测误差。对 <span class="math notranslate nohighlight">\(k=1,2,\ldots,K\)</span> 做类似的工作并且将 <span class="math notranslate nohighlight">\(K\)</span> 个预测误差的估计值结合起来。</p>
@@ -1237,15 +1277,14 @@ GCV(\hat f)&amp;=\frac{1}{N}\sum\limits_{i=1}^N[\frac{y_i-\hat f(x_i)}{1-\text{t
 \end{align*}
 \end{split}\]</div>
 <p>而</p>
-<div class="math notranslate nohighlight">
-\[
-AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon
-\]</div>
+<p>$
+AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon</p>
+<p>$$</p>
 <p>显然，它们的区别在于 <span class="math notranslate nohighlight">\(\sigma^2_{\varepsilon}\)</span> 的估计方法不同。</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>做交叉验证的错误与正确方式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）做交叉验证的错误与正确方式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>考虑有许多预测变量的分类问题，举个例子，可能在基因与蛋白质的应用中。一般的分析技巧或许如下：</p>
 <ol class="simple">
 <li><p>筛选预测变量：选择与类别有着相当强（单变量）相关性的“好”预测变量的一个子集</p></li>
@@ -1275,7 +1314,7 @@ AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon
 <p>尽管这点对于读者来说是显然的，但是我们看到这个错误在顶级期刊中发表的文章中犯了很多次。因为大量预测变量在基因和其他领域是很常见的，这个错误潜在的后果也显著增加；见 Ambroise and McLachlan(2002)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 对这个问题的详细讨论。</p>
 </div>
 <div class="section" id="id6">
-<h2>交叉验证是否真的有用？<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>（）交叉验证是否真的有用？<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>我们再一次在高维分类问题中检验交叉验证的效果。考虑 <span class="math notranslate nohighlight">\(N=20\)</span> 个样本的情形，样本被均分为两个类别，而且有 <span class="math notranslate nohighlight">\(p=500\)</span> 个与类别独立的定量变量。同样，任一分类器的真实误差率为 <span class="math notranslate nohighlight">\(50\%\)</span>。考虑一个简单的单变量分类器：最小化误差率的单分割（“stump”）。Stumps 是一棵单分割的树，而且应用在增强方法中（ 第 10 章 ）。一个简单的论断称交叉验证在这种设定下不会很好地起作用</p>
 <blockquote>
 <div><p>对全数据集进行拟合，我们将会发现一个对数据集分离得很好的预测变量。如果我们做 5 折交叉验证，同样的预测变量应该对数据的 4/5 和 1/5 都分离得很好，因此交叉验证误差率会很小（远远小于 <span class="math notranslate nohighlight">\(50\%\)</span> ）。因此 CV 不能给出一个准确的误差估计。</p>
@@ -1328,8 +1367,8 @@ AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.9-Vapnik-Chervonenkis-Dimension.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1346,19 +1385,17 @@ AIC=\overline{err}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

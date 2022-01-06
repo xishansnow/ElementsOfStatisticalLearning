@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   例子：波形数据
+   （）例子：波形数据
   </a>
  </li>
 </ul>
@@ -1145,22 +1153,43 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>12.7 混合判别分析</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）例子：波形数据
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>12.7 混合判别分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>线性判别分析可以看成是 <strong>原型 (prototype)</strong> 分类器。每个类别都由其形心表示，并且使用某种合适的度量，将其分到最近的形心处。在许多情形下，单个原型不足以表示不均匀的类别，而混合模型是更合适的。在这节中，我们回顾高斯混合模型，并且展示怎么从之前讨论的 FDA 和 PDA 中推广得到。第 <span class="math notranslate nohighlight">\(k\)</span> 类别的高斯混合模型密度为</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 P(X\mid G=k)=\sum\limits_{r=1}^{R_k}\pi_{kr}\phi(X;\mu_{kr},\mathbf\Sigma),\tag{12.59}
-\]</div>
+\)</span>$</p>
 <p>其中 <strong>混合比例 (mixing proportions)</strong> <span class="math notranslate nohighlight">\(\pi_{kr}\)</span> 的和为 <span class="math notranslate nohighlight">\(1\)</span>。第 <span class="math notranslate nohighlight">\(k\)</span> 类有 <span class="math notranslate nohighlight">\(R_k\)</span> 个原型，并且在我们的情形中，始终采用相等的协方差作为度量。对每个类别给定这样一个模型，类别后验概率由下式给出</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 P(G=k\mid X=x)=\frac{\sum_{r=1}^{R_k}\pi_{kr}\phi(X;\mu_{kr},\mathbf \Sigma)\Pi_k}{\sum_{\ell=1}^K\sum_{r=1}^{R_\ell}\pi_{\ell r}\phi(X;\mu_{\ell r},\mathbf \Sigma)\Pi_\ell}\tag{12.60}
-\]</div>
+\)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(\Pi_k\)</span> 表示类别的先验概率。</p>
 <p>我们在<span class="xref myst">第 8 章</span>看到两个组分的特殊情形的计算。如 LDA 中一样，我们通过极大似然估计参数，采用如下基于 <span class="math notranslate nohighlight">\(P(G,X)\)</span> 的联合对数似然：</p>
 <div class="math notranslate nohighlight">
@@ -1169,17 +1198,21 @@ P(G=k\mid X=x)=\frac{\sum_{r=1}^{R_k}\pi_{kr}\phi(X;\mu_{kr},\mathbf \Sigma)\Pi_
 \]</div>
 <p>如果直接处理对数中的和，会变成很复杂的优化问题。计算混合分布的极大似然估计的经典的、自然的方法是 EM 算法 (Dempster et al., 1977<a class="footnote-reference brackets" href="#id7" id="id2">1</a>)，它具有良好的收敛性质。EM 在下面两步间轮换：</p>
 <ul class="simple">
-<li><p><strong>E-step</strong>：给定当前的参数，对类别 <span class="math notranslate nohighlight">\(k\)</span> 的每个观测 (<span class="math notranslate nohighlight">\(g_i=k\)</span>) 计算其子类 <span class="math notranslate nohighlight">\(c_{kr}\)</span> 的 responsibility：
-$<span class="math notranslate nohighlight">\(
+<li><p><strong>E-step</strong>：给定当前的参数，对类别 <span class="math notranslate nohighlight">\(k\)</span> 的每个观测 (<span class="math notranslate nohighlight">\(g_i=k\)</span>) 计算其子类 <span class="math notranslate nohighlight">\(c_{kr}\)</span> 的 responsibility：</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
 W(c_{kr}\mid x_i, g_i)=\frac{\pi_{kr}\phi(x_i;\mu_{kr},\mathbf \Sigma)}{\sum\limits_{\ell=1}^{R_k}\pi_{k\ell}\phi(x_i;\mu_{k\ell},\mathbf \Sigma)}.\tag{12.62}
-\)</span>$</p></li>
+\)</span>$</p>
+<ul class="simple">
 <li><p><strong>M-step</strong>: 采用 E-step 的权重，计算每个类别中每个高斯组分的参数的加权 MLE。</p></li>
 </ul>
 <p>在 E-step，算法将类别 <span class="math notranslate nohighlight">\(k\)</span> 中的观测的单位权重赋给属于该类的不同子类。如果观测点离某个子类的形心很近，且离其它形心很远，则它会收到该更近的子类更大的权重。另一方面，如果观测点在两个子类中间则它会得到两个子类近似相等的权重。</p>
 <p>在 M-step，类别 <span class="math notranslate nohighlight">\(k\)</span> 的观测使用 <span class="math notranslate nohighlight">\(R_k\)</span> 次，来估计 <span class="math notranslate nohighlight">\(R_k\)</span> 个组分密度中每一个的参数，对于每个组分有不同的权重。EM 算法在第 8 章中有详细介绍。算法要求初始化，这可能有影响，因为混合模型一般都是多种模型。我们的软件（后面<a class="reference internal" href="Computational-Considerations.html"><span class="doc std std-doc">计算上的考虑</span></a>一节中有提到）允许多种策略；这里我们描述默认的策略。用户提供每个类中子类的个数 <span class="math notranslate nohighlight">\(R_k\)</span>。在类别 <span class="math notranslate nohighlight">\(k\)</span> 中，用多重随机起始点的 <span class="math notranslate nohighlight">\(k\)</span> 均值聚类模型对数据进行拟合。根据元素为 <span class="math notranslate nohighlight">\(0\)</span> 和 <span class="math notranslate nohighlight">\(1\)</span> 的初始权重矩阵，将观测值划分到 <span class="math notranslate nohighlight">\(R_k\)</span> 个不相交的群中。</p>
 <p>我们对始终相等的组分协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf\Sigma\)</span> 的假设带来额外的简化；我们可以像 LDA 中一样在混合形式中结合秩的约束。为了理解这一点，回顾下 LDA 的一些事实（<span class="xref myst">4.3.3 节</span>）。rank-<span class="math notranslate nohighlight">\(L\)</span> 的 LDA 拟合等价于高斯模型的极大似然拟合，其中每个类别中不同的均值向量约束到 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 的 rank-<span class="math notranslate nohighlight">\(L\)</span> 子空间（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">练习 4.8</a>）。</p>
-<p>!!! info “weiya 注：Ex. 4.8”
+<blockquote>
+<div><p>info “weiya 注：Ex. 4.8”
 结合作者的原论文，目前看懂其中一种情形的证明，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/143">Issue 143: Ex. 4.8</a>。</p>
+</div></blockquote>
 <p>我们可以在混合模型中继承这条性质，并且在满足所有 <span class="math notranslate nohighlight">\(\sum_kR_k\)</span> 个形心上的秩约束的条件（<span class="math notranslate nohighlight">\(\mathrm{rank}\\{\mu_{k\ell}\\}=L\)</span>）下最大化对数似然 式（ 12.61 ）。</p>
 <p>又一次可以用 EM 算法，并且 M-step 事实上是加权版本的 LDA，其中有 <span class="math notranslate nohighlight">\(R=\sum_{k=1}^KR_k\)</span> 个“类别”。而且，我们可以采用之前一样的最优得分来解决加权 LDA 问题，使得我们在这一步可以使用 FDA 或者 PDA。可以预料，除了“类别”数可以增加，第 <span class="math notranslate nohighlight">\(k\)</span> 类中的观测数也会类似增加 <span class="math notranslate nohighlight">\(R_k\)</span> 倍。事实证明如果线性算子用于最优得分回归，则不是这种情形。增广的响应变量矩阵 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 变成 <strong>模糊的 (blurred)</strong> 响应矩阵 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，直觉上令人愉快。举个例子，假设有 <span class="math notranslate nohighlight">\(K=3\)</span> 个类别，并且每个类中有 <span class="math notranslate nohighlight">\(R_k=3\)</span> 个子类。则 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 可能是</p>
 <p><img alt="" src="../_images/eq12.63.PNG" /></p>
@@ -1194,7 +1227,7 @@ W(c_{kr}\mid x_i, g_i)=\frac{\pi_{kr}\phi(x_i;\mu_{kr},\mathbf \Sigma)}{\sum\lim
 <p>图 12.13 在混合例子中比较了 FDA 和 MDA。</p>
 <p><img alt="" src="../_images/fig12.13.png" /></p>
 <div class="section" id="id3">
-<h2>例子：波形数据<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（）例子：波形数据<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>现在我们在一个流行的模拟数据中说明这些想法，这个模拟数据取自 Breiman et al. (1984, pages 49–55)<a class="footnote-reference brackets" href="#id8" id="id4">2</a>，并且用在了 Hastie and Tibshirani (1996b)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 和其它地方。这是有着 21 个变量的三类别问题，并且被认为是复杂的模型识别问题。预测变量由下式定义</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1247,8 +1280,8 @@ X_j &amp;= Uh_2(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 3,}\\
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="12.6-Penalized-Discriminant-Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1265,19 +1298,17 @@ X_j &amp;= Uh_2(j) + (1-U)h_3(j)+\epsilon_j\qquad \text{Class 3,}\\
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

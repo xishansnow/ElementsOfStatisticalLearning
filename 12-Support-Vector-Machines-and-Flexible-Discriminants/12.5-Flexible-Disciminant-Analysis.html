@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   计算 FDA 估计
+   （）计算 FDA 估计
   </a>
  </li>
 </ul>
@@ -1145,23 +1153,45 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>12.5 FDA</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   （）计算 FDA 估计
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="fda">
 <h1>12.5 FDA<a class="headerlink" href="#fda" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\(\mathcal {G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \mathcal G\mapsto\mathbb{R}^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
+<p>在这一节我们描述一种在导出的响应变量上使用线性回归的 LDA 方法。这相应地导出非参的以及更灵活的替换 LDA 的方法。如<span class="xref myst">第 4 章</span>一样，我们假设我们有定量变量 <span class="math notranslate nohighlight">\(G\)</span>，它落入 <span class="math notranslate nohighlight">\(K\)</span> 个类别 <span class="math notranslate nohighlight">\(\mathcal {G} = \\{1,\ldots,K\\}\)</span> 中的其中一个类别，每个都有测量特征 <span class="math notranslate nohighlight">\(X\)</span>。假设 <span class="math notranslate nohighlight">\(\theta: \mathbb{G}\mapsto\mathbb{R}^1\)</span> 是对类别打分的函数，使得转换后的类别标签通过 <span class="math notranslate nohighlight">\(X\)</span> 上的线性回归来最优预测：如果我们的训练样本形式为 <span class="math notranslate nohighlight">\((g_i,x_i),i=1,2,\ldots,N\)</span>，则我们求解带关于 <span class="math notranslate nohighlight">\(\theta\)</span> 约束的下式来避免平凡解（在训练数据上均值为零单位方差）</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta,\theta}{\min}\sum\limits_{i=1}^N(\theta(g_i)-x_i^T\beta)^2\tag{12.52}
 \]</div>
 <p>这得到类别间的一维划分。</p>
 <p>更一般地，我们可以寻找至多 <span class="math notranslate nohighlight">\(L\le K-1\)</span> 个类别标签的独立得分， <span class="math notranslate nohighlight">\(\theta_1,\theta_2,\ldots,\theta_L\)</span>，以及 <span class="math notranslate nohighlight">\(L\)</span> 个对应的线性映射 <span class="math notranslate nohighlight">\(\eta_\ell(X)=X^T\beta_\ell,\ell=1,\ldots,L\)</span>，它们的选择使得 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的多重回归达到最优。得分 <span class="math notranslate nohighlight">\(\theta_\ell(g)\)</span> 以及映射 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> 的选择使得均方残差最小</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 ASR=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-x_i^T\beta_\ell)^2]\tag{12.53}
-\]</div>
+\)</span>$</p>
 <p>得分集假设为相互正交的并且关于合适的内积进行了标准化来避免平方的零解。</p>
 <p>为什么我们要采用这种方式？可以证明 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis/index.html#_2">4.3.3 节</a>导出的判别（典则）向量 <span class="math notranslate nohighlight">\(\nu_\ell\)</span> 的序列在忽略常数的意义下等于 <span class="math notranslate nohighlight">\(\beta_\ell\)</span> (Mardia et al., 1979; Hastie et al., 1995)。更多地，测试点 <span class="math notranslate nohighlight">\(x\)</span> 到第 <span class="math notranslate nohighlight">\(k\)</span> 个类别重心 <span class="math notranslate nohighlight">\(\hat\mu_k\)</span> 的 Mahalanobis 距离由下式给出</p>
 <div class="math notranslate nohighlight">
@@ -1169,19 +1199,17 @@ ASR=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-x_i^T\be
 \delta_J(x,\hat\mu_k)=\sum\limits_{\ell=1}^{K-1}w_\ell(\hat\eta_\ell(x)-\bar\eta_\ell^k)^2+D(x)\tag{12.54}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\bar \eta_\ell^k\)</span> 是第 <span class="math notranslate nohighlight">\(k\)</span> 类的 <span class="math notranslate nohighlight">\(\hat\eta_\ell(x_i)\)</span> 的均值，且 <span class="math notranslate nohighlight">\(D(x)\)</span> 不依赖 <span class="math notranslate nohighlight">\(k\)</span>。这里 <span class="math notranslate nohighlight">\(w_\ell\)</span> 是坐标权重，并且用第 <span class="math notranslate nohighlight">\(\ell\)</span> 个最优的得分的均方残差 <span class="math notranslate nohighlight">\(r_\ell^2\)</span> 来拟合</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 w_\ell = \frac{1}{r_\ell^2(1-r_\ell^2)}\tag{12.55}
-\]</div>
+\)</span>$</p>
 <p>在 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.3-Linear-Discriminant-Analysis/index.html#lda">4.3.2 节</a>中，我们看到典则距离是高斯情形下分类所需要的全部条件，并且每个类别间有相等的协方差。总结下，就是：</p>
 <blockquote>
 <div><p>LDA 可以通过一系列的线性回归来实现，将测试点划分到拟合空间中距离最近的那个类别重心的类中。这类似可以应用到降维后的版本，或者当 <span class="math notranslate nohighlight">\(L=K-1\)</span> 时的全秩版本。</p>
 </div></blockquote>
 <p>这个结果的真正力量在于它的推广。我们可以用更灵活、非参的拟合来替换线性回归拟合 <span class="math notranslate nohighlight">\(\eta_\ell(x)=x^T\beta_\ell\)</span>，并且类似地达到比 LDA 更灵活的分类器。我们考虑了广义可加拟合，样条函数，MARS 模型以及类似的。在这种更一般的形式下，回归问题通过下面准则来定义</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-\eta_\ell(x_i))^2+\lambda J(\eta_\ell)]\tag{12.56}
-\]</div>
+\)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(J\)</span> 是关于某种形式的非参回归的合适的正则器，比如光滑样条，可加样条以及低阶 ANOVA 样条模型。其中也包括由核生成的函数类和相关惩罚，如 <span class="xref myst">12.3.3 节</span>中一样。</p>
 <p>在我们描述泛化中的计算之前，让我们考虑一种非常简单的例子。假设我们对每个 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 采用 2 阶多项式回归。由 式（ 12.54 ） 定义的判别边界会变成二次曲面，因为每个拟合的函数是二次的，并且当比较距离时像 LDA 中一样，平方项会被抵消掉。我们会以更传统的方式达到相同的二次边界，通过用平方项及交叉项来增广我们的原始预测变量的空间。在增广空间中应用 LDA 时，增广空间中的线性边界会映射到原始空间的二次边界。一个经典的例子是中心在原点处的一对多元高斯分布，其中一个协方差阵为 <span class="math notranslate nohighlight">\(I\)</span>，另一个为 <span class="math notranslate nohighlight">\(cI\)</span>，其中 <span class="math notranslate nohighlight">\(c&gt;1\)</span>；图 12.9 图示了这个例子。贝叶斯判别边界是球 <span class="math notranslate nohighlight">\(\Vert x\Vert=\frac{pc\log c}{2(c-1)}\)</span>，这是在增广空间中的线性边界。</p>
 <p>许多非参回归过程通过生成衍生变量的基展开来进行，然后在增广空间中进行线性回归。MARS（<span class="xref myst">第 9 章</span>）过程正是这种形式。光滑样条和可加样条模型生成非常大的基的集合（对于可加样条有 <span class="math notranslate nohighlight">\(N\times p\)</span> 个基函数），但接着要在增广空间中进行带惩罚的回归拟合，SVM 也是如此；也可以参见 <a class="reference external" href="12.3-Support-Vector-Machines-and-Kernels/index.html#_3">12.3.7 节</a>基于核的回归的例子。在这种情形下 FDA 可以证明是在增广空间中进行带惩罚的线性判别分析。我们将在 <span class="xref myst">12.6 节</span>详细阐述。增广空间中的线性边界会映射到低维空间中的非线性边界。这正是支持向量机中采用的模式（<span class="xref myst">12.3 节</span>）。</p>
@@ -1192,10 +1220,12 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
 <p>FDA 模型采用自适应的可加样条回归函数来对 <span class="math notranslate nohighlight">\(\eta_\ell(x)\)</span> 建模，并且在右图中的点有坐标 <span class="math notranslate nohighlight">\(\hat\eta_1(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(\hat\eta_2(x_i)\)</span>。在 S-PLUS 用的程序叫做 <code class="docutils literal notranslate"><span class="pre">bruto</span></code>，因此有了图的标题以及表格中的名称。我们看到这种情形下灵活模型帮助分离类别。表 12.3 展示了一系列分类技巧的训练误差和测试误差。FDA/MARS 指的是 Friedman 的多元自适应回归样条；degree = 2 表明允许成对交叉项。注意到对于 FDA/MARS，最优的分类记过是在降维后的子空间中得到的。</p>
 <p><img alt="" src="../_images/tab12.3.png" /></p>
 <div class="section" id="id1">
-<h2>计算 FDA 估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>（）计算 FDA 估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>FDA 坐标的计算在许多重要的情形中可以简化，特别是当非参回归过程可以表示成线性算子。我们将这种算子用 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 表示，也就是 <span class="math notranslate nohighlight">\(\hat{\mathbf y}=\mathbf S_\lambda\mathbf y\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是响应变量向量，而 <span class="math notranslate nohighlight">\(\hat {\mathbf y}\)</span> 是拟合值的向量。如果固定光滑参数，可加样条有这样的性质，如果 MARS 一次性选出基函数，它也有这个性质。下标 <span class="math notranslate nohighlight">\(\lambda\)</span> 表示整个光滑参数集。在这种情形中，最优得分等价于典则相关系数问题，并且解可以通过单特征值分解进行求解。这在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/156">练习 12.6</a> 中有讨论，并且将得到的算法展现在这里。</p>
-<p>!!! note “weiya 注：Ex. 12.6”
+<blockquote>
+<div><p>note “weiya 注：Ex. 12.6”
 已解决，但存在疑问，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/156">Issue 156: Ex. 12.6</a>，欢迎讨论！</p>
+</div></blockquote>
 <p>我们从响应变量 <span class="math notranslate nohighlight">\(g_i\)</span> 构造一个 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>，使得若 <span class="math notranslate nohighlight">\(g_i=k\)</span> 则 <span class="math notranslate nohighlight">\(y_{ik}=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_{ik}=0\)</span>。对于五类别的问题 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 形式可能如下：</p>
 <p><img alt="" src="../_images/cl5example.png" /></p>
 <p>计算步骤如下：</p>
@@ -1207,8 +1237,10 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
 <p><span class="math notranslate nohighlight">\(\eta(x)\)</span> 中 <span class="math notranslate nohighlight">\(K\)</span> 个函数的第一个函数是常值函数——平凡解；剩下的 <span class="math notranslate nohighlight">\(K-1\)</span> 个函数是判别函数。常值函数以及标准化使得所有剩下的函数都进行了中心化。</p>
 <p>再一次，<span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 可以对应任意回归方法。当 <span class="math notranslate nohighlight">\(\mathbf S_\lambda=\mathbf H_X\)</span>，也就是等于线性回归投影算子，则 FDA 是线性判别分析。我们在本章后面的“计算上的考虑”一节中引用的软件充分利用了这个模块；<code class="docutils literal notranslate"><span class="pre">fda</span></code> 函数有个 <code class="docutils literal notranslate"><span class="pre">method=</span></code> 变量允许应用任意回归函数，只要函数满足一些很自然的条件。我们提供的回归函数允许多项式回归，自适应可加模型以及 MARS。它们都能有效地处理多重响应的情形，所以第 (1) 步是简单的调用回归程序。第 (2) 步中的特征值分解同时计算了所有的最优得分函数。</p>
 <p>在 <span class="xref myst">4.2 节</span>我们讨论了在指示响应变量矩阵上使用回归用作分类的方法的缺点。具体地，会出现三个或更多类别的 masking 问题。FDA 在第 (1) 步中也用了这样的回归的拟合，但是然后进一步转换得到有用的判别函数，因此它们没有这些缺点。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/154">练习 12.9</a> 从另外一个角度解释了这个现象。</p>
-<p>!!! info “weiya 注：Ex. 12.9”
+<blockquote>
+<div><p>info “weiya 注：Ex. 12.9”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/154">Issue 154: Ex. 12.9</a>，欢迎讨论交流～</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -1234,8 +1266,8 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="12.4-Generalizing-Linear-Discriminant-Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1252,19 +1284,17 @@ ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\li
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

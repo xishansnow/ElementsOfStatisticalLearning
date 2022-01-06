@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   自由度和光滑矩阵
+   5.4.1 自由度和光滑矩阵
   </a>
  </li>
 </ul>
@@ -1145,7 +1153,30 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>5.4 光滑样条</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.4.1 自由度和光滑矩阵
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1162,23 +1193,25 @@
 <li><p><span class="math notranslate nohighlight">\(\lambda=\infty\)</span>： 简单的最小二乘拟合，因为不容忍任何的二次微分。</p></li>
 </ul>
 <p>这从非常粗糙变到非常光滑，而且希望 <span class="math notranslate nohighlight">\(\lambda\in(0,\infty)\)</span> 在非常粗糙与非常光滑之间表示一个对我们感兴趣的函数类。</p>
-<p>!!! note “weiya 注”
-对于 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 曲线的曲率定义为
-$<span class="math notranslate nohighlight">\(
-	  \kappa = \frac{\vert y''\vert}{(1+y'^2)^{3/2}}
-	  \)</span>$
-<!--这里为什么只用二阶导？--></p>
+<blockquote>
+<div><p><strong>注解：</strong>
+对于 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 曲线的曲率定义为</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa = \frac{\vert y''\vert}{(1+y'^2)^{3/2}}	  
+&gt;\]</div>
+</div></blockquote>
 <p>准则 式（ 5.9 ） 定义在无限维函数空间上——实际上，是二阶导有定义的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E4%BC%AF%E5%88%97%E5%A4%AB%E7%A9%BA%E9%97%B4">Sobolev 函数空间</a>。值得注意的是，可以证明 式（ 5.9 ） 存在一个显式的有限维的唯一一个最小值点，是一个结点在不重复的 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处的自然三次样条（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">练习 5.7</a>）。表面上看，这个函数族仍然是过参量化，因为有 <span class="math notranslate nohighlight">\(N\)</span> 个结点，这意味着 <span class="math notranslate nohighlight">\(N\)</span> 个自由度。然而，惩罚项转换为对样条系数的惩罚，使得以某种方式向着线性拟合收缩。</p>
-<p>!!! info “weiya 注：Ex. 5.7”
+<blockquote>
+<div><p>info “weiya 注：Ex. 5.7”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">Issue 34: Ex. 5.7</a>.</p>
+</div></blockquote>
 <p>因为解为自然样条，所以我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
 f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(N_j(x)\)</span> 是表示自然样条族的 <span class="math notranslate nohighlight">\(N\)</span> 维基函数集（<a class="reference external" href="5.2-Piecewise-Polynomials-and-Splines/index.html#_2">5.2.1 节</a>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">练习 5.4</a>）。</p>
-<p>!!! info “weiya 注：Ex. 5.4”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/31">Issue 31: Ex. 5.4</a>.</p>
 <p>准则因此退化成</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1201,7 +1234,7 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 <div><p>图5.6. 响应变量是青少年中脊髓的骨矿物质密度的相对改变，将它看成是年龄的函数。对男性和女性分别进行光滑样条拟合，其中<span class="math notranslate nohighlight">\(\lambda\approx 0.00022\)</span>。这个选择对应12个自由度。</p>
 </div></blockquote>
 <div class="section" id="id2">
-<h2>自由度和光滑矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.1 自由度和光滑矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>我们还没有指出光滑样条的 <span class="math notranslate nohighlight">\(\lambda\)</span> 是怎么选取的。本章的后面我们描述使用自动化方法，比如交叉验证。在这部分中我们讨论预先确定光滑度的直观方式。</p>
 <p>预先选择了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑样条是 <strong>线性光滑 (linear smoother)</strong> 的一个例子（如在线性算子中一样）。这是因为 式（ 5.12 ） 的估计参数是 <span class="math notranslate nohighlight">\(y_i\)</span> 的线性组合。记 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维向量，其中的元素为在训练预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 处的拟合值 <span class="math notranslate nohighlight">\(\hat f(x_i)\)</span>。则</p>
 <div class="math notranslate nohighlight">
@@ -1238,8 +1271,6 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 \mathbf S_\lambda=(\mathbf I+\lambda \mathbf K)^{-1}\tag{5.17}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 不依赖于 <span class="math notranslate nohighlight">\(\lambda\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/35">练习 5.9</a>）。</p>
-<p>!!! info “weiya 注：Ex. 5.9”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/35">Issue 35: Ex. 5.9</a>.</p>
 <p>因为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}=\mathbf S_\lambda y\)</span> 是下式的解</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1267,11 +1298,14 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 <li><p>按 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 下降排列的 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 序列的复杂度似乎在增加。确实，它们有阶数递增的多项式的<strong>穿0 (zero-crossing)</strong> 行为。因为 <span class="math notranslate nohighlight">\(\mathbf S_\lambda \mathbf u_k=\rho_k(\lambda)\mathbf u_k\)</span>，我们看到每个特征向量本身是怎样通过光滑样条来收缩：复杂度越大，收缩也就越大。如果 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 定义域为周期的，则 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 在不同频率下是正弦和余弦的。</p></li>
 <li><p>前两个特征值总是 1，它们对应 <span class="math notranslate nohighlight">\(x\)</span> 的2维函数特征空间（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/36">练习 5.11</a>），它们从不收缩。</p></li>
 <li><p>特征值 <span class="math notranslate nohighlight">\(\rho_k(\lambda)=1/(1+\lambda d_k)\)</span> 是惩罚矩阵 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 的特征值 <span class="math notranslate nohighlight">\(d_k\)</span> 的反函数，通过 <span class="math notranslate nohighlight">\(\lambda\)</span> 来调节；<span class="math notranslate nohighlight">\(\lambda\)</span> 控制 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 下降为 0 的速率。<span class="math notranslate nohighlight">\(d_1=d_2=0\)</span> 又一次表明线性函数没有被惩罚。</p></li>
-<li><p>可以通过基向量 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>（Demmler-Reinsch基）来重参量化光滑样条。在这种情形下，光滑样条求解
-$<span class="math notranslate nohighlight">\(
+<li><p>可以通过基向量 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>（Demmler-Reinsch基）来重参量化光滑样条。在这种情形下，光滑样条求解</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 \underset{\mathbf\theta}{\mathrm{min}}\Vert \mathbf{y-U\theta}\Vert^2+\lambda \mathbf{\theta^TD\theta}\tag{5.21}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\mathbf U<span class="math notranslate nohighlight">\( 列向量为 \)</span>\mathbf u_k<span class="math notranslate nohighlight">\(，且 \)</span>\mathbf D<span class="math notranslate nohighlight">\( 为元素为 \)</span>d_k$ 的对角矩阵。</p></li>
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 列向量为 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>，且 <span class="math notranslate nohighlight">\(\mathbf D\)</span> 为元素为 <span class="math notranslate nohighlight">\(d_k\)</span> 的对角矩阵。</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathrm{df}_\lambda = \mathrm{trace}(\mathbf S_\lambda)=\sum_{k=1}^N\rho_k(\lambda)\)</span>。对于投影光滑器，所有的特征值为 1，每个特征值对应投影子空间的一个维度。</p></li>
 </ul>
 <p>图 5.8 描述了一个光滑样条矩阵，行按 <span class="math notranslate nohighlight">\(x\)</span> 排序。这种表示的带表明光滑样条是局部拟合方法，很像第 6 章的局部加权回归过程。右图详细显示了所选的 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的行，我们称为 <strong>等价核 (equivalent kernels)</strong>。当 <span class="math notranslate nohighlight">\(\lambda\rightarrow 0, \mathrm{df}_\lambda\rightarrow N\)</span>，且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf I\)</span>，<span class="math notranslate nohighlight">\(\mathbf I\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维单位矩阵。当<span class="math notranslate nohighlight">\(\lambda\rightarrow \infty,\mathrm{df}_\lambda\rightarrow 2\)</span>， 且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf H\)</span>， <span class="math notranslate nohighlight">\(\mathbf H\)</span> 为在 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 上线性回归的帽子矩阵。</p>
@@ -1304,8 +1338,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="5.3-Filtering-and-Feature-Extraction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1322,19 +1356,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

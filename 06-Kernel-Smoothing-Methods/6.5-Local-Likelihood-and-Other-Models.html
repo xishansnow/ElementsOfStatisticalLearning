@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,49 +1133,67 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6.5 局部似然和其他模型</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.5 局部似然和其他模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <p><strong>局部回归 (local regression)</strong> 和 <strong>可变参数模型 (varying coefficient models)</strong> 的概念非常广泛：如果拟合方法适合(accommodates)观测点的权重系数，则任意参数模型可以变得局部。</p>
-<p>!!! question
+<blockquote>
+<div><p>question
 怎么理解“accommodate”？</p>
+</div></blockquote>
 <p>这里有一些例子：</p>
 <ul class="simple">
 <li><p>每个观测 <span class="math notranslate nohighlight">\(y_i\)</span> 与协变量 <span class="math notranslate nohighlight">\(x_i\)</span> 成线性的参数 <span class="math notranslate nohighlight">\(\theta_i=\theta(x_i)=x_i^T\beta\)</span> 有关，并且基于对数似然 <span class="math notranslate nohighlight">\(l(\beta)=\sum_{i=1}^Nl(y_i,x_i^T\beta)\)</span> 对 <span class="math notranslate nohighlight">\(\beta\)</span> 进行推断。为了更灵活地对 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 建模，我们可以用 <span class="math notranslate nohighlight">\(x_0\)</span> 处局部的概率来推断 <span class="math notranslate nohighlight">\(\theta(x_0)=x_0^T\beta(x_0)\)</span>：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-l(\beta(x_0))=\sum\limits_{i=1}^NK_\lambda(x_0,x_i)l(y_i,x_i^T\beta(x_0))
+F(\beta(x_0))=\sum\limits_{i=1}^NK_\lambda(x_0,x_i)l(y_i,x_i^T\beta(x_0))
 \]</div>
 <p>许多似然模型，特别是包含 <strong>逻辑斯蒂回归 (logistic)</strong> 和 <strong>对数线性模型 (log-linear models)</strong> 的 <strong>广义线性模型 (generalized linear models)</strong>。局部似然允许对全局线性模型进行松弛得到局部线性。</p>
 <ul class="simple">
-<li><p>同上所述，区别是不同的变量与用于定义局部似然性的 <span class="math notranslate nohighlight">\(\theta\)</span> 相关联：
-$<span class="math notranslate nohighlight">\(
-l(\theta(z_0))=\sum\limits_{i=1}^NK_\lambda(z_0,z_i)l(y_i,\eta(x_i,\theta(z_0)))
-\)</span><span class="math notranslate nohighlight">\(
-举个例子，\)</span>\eta(x,\theta)=x^T\theta<span class="math notranslate nohighlight">\( 可以是关于 \)</span>x<span class="math notranslate nohighlight">\( 的线性模型。这通过最大化局部似然可以拟合可变参数模型\)</span>\theta(z)$。</p></li>
+<li><p>同上所述，区别是不同的变量与用于定义局部似然性的 <span class="math notranslate nohighlight">\(\theta\)</span> 相关联：</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F(\theta(z_0))=\sum\limits_{i=1}^NK_\lambda(z_0,z_i)l(y_i,\eta(x_i,\theta(z_0)))
+\]</div>
+<p>举个例子，<span class="math notranslate nohighlight">\(\eta(x,\theta)=x^T\theta\)</span> 可以是关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性模型。这通过最大化局部似然可以拟合可变参数模型<span class="math notranslate nohighlight">\(\theta(z)\)</span>。</p>
+<ul class="simple">
 <li><p>阶数为<span class="math notranslate nohighlight">\(k\)</span>的<strong>自回归(autoregressive)<strong>时间序列形式为<span class="math notranslate nohighlight">\(y_t=\beta_0+\beta_1y_{t-1}+\beta_2y_{t-2}+\cdots+\beta_ky_{t-k}+\varepsilon_t\)</span>。用<span class="math notranslate nohighlight">\(z_t=(y_{t-1},y_{t-2},\cdots,y_{t-k})\)</span>记</strong>滞后集(lag set)</strong>，模型则看起来是一个标准的线性模型<span class="math notranslate nohighlight">\(y_t=z_t^T\beta+\varepsilon_t\)</span>，而且一般使用最小二乘来拟合。采用核为<span class="math notranslate nohighlight">\(K(z_0,z_t)\)</span>的局部最小二乘拟合允许模型根据**序列的短期记忆(short-term history of the series)**来变化。这区别于更传统的因窗口时间变化的动态线性模型。</p></li>
 </ul>
 <p>为了解释局部似然，我们考虑<span class="xref myst">第 4 章</span>中<strong>多类别线性逻辑斯蒂回归模型</strong>(4.36)的局部形式。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    \mathrm{Pr}(G=k\mid X=x)=\dfrac{e^{\beta_{k0}+\beta_k^Tx}}{1+\sum_{\ell=1}^{K-1}e^{\beta_{\ell0}+\beta_\ell^Tx}}\tag{4.36}
-    \)</span>$</p>
-<p>数据包含特征<span class="math notranslate nohighlight">\(x_i\)</span>和相关的类别响应变量<span class="math notranslate nohighlight">\(g_i\in\\{1,2,\ldots,J\\}\)</span>，并且线性模型有如下形式
-$<span class="math notranslate nohighlight">\(
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \mathrm{Pr}(G=k\mid X=x)=\dfrac{e^{\beta_{k0}+\beta_k^Tx}}{1+\sum_{\ell=1}^{K-1}e^{\beta_{\ell0}+\beta_\ell^Tx}}\tag{4.36}
+    
+\]</div>
+<p>数据包含特征<span class="math notranslate nohighlight">\(x_i\)</span>和相关的类别响应变量<span class="math notranslate nohighlight">\(g_i\in\\{1,2,\ldots,J\\}\)</span>，并且线性模型有如下形式</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{Pr}(G=j\mid X=x)=\frac{e^{\beta_{j0}+\beta_j^Tx}}{1+\sum_{k=1}^{J-1}e^{\beta_{k0}+\beta_k^Tx}}\tag{6.18}
-\)</span>$</p>
+\]</div>
 <p>这<span class="math notranslate nohighlight">\(J\)</span>个类的局部对数似然模型可以写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1215,8 +1241,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6.4-Structured-Local-Regression-Models-in-Rp.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1233,19 +1259,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,37 +1142,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   市场篮子分析
+   （）市场篮子分析
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#apriori">
-   Apriori 算法
+   （）Apriori 算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   （）广义关联规则
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   例子：市场篮子分析
+   （）监督学习方法的选择
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   作为监督学习的非监督
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   广义关联规则
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   监督学习方法的选择
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   例子：市场篮子分析（继续）
+   （）例子：市场篮子分析（继续）
   </a>
  </li>
 </ul>
@@ -1175,7 +1173,50 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.2 关联规则</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）市场篮子分析
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apriori">
+   （）Apriori 算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   （）广义关联规则
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （）监督学习方法的选择
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   （）例子：市场篮子分析（继续）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1190,7 +1231,7 @@
 \]</div>
 <p>相对大。子集的交 <span class="math notranslate nohighlight">\(\cap_{j=1}^p(X_j\in s_j)\)</span> 称作 <strong>联合规则 (conjunctive rule)</strong>。对于定性变量，子集 <span class="math notranslate nohighlight">\(s_j\)</span> 为邻接区间；对于类别型变量，子集是明确界定的。注意到如果子集实际上是整个集合 <span class="math notranslate nohighlight">\(s_j=\mathcal S_j\)</span>，经常是这种情形，变量 <span class="math notranslate nohighlight">\(X_j\)</span> 被称为没有出现在规则 式（ 14.2 ） 中。</p>
 <div class="section" id="id2">
-<h2>市场篮子分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）市场篮子分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>求解 式（ 14.2 ） 的一般方法将在 <span class="xref myst">14.2.5 节</span>讨论。这在许多应用中是很有用的。然而，它们对于非常多 (<span class="math notranslate nohighlight">\(p\approx 10^4,N\approx 10^8\)</span>) 的交易数据是不可行的，但市场篮子分析经常要应用到这些数据上。所以需要对 式（ 14.2 ） 进一步简化。首先，只考虑两种类型的子集；<span class="math notranslate nohighlight">\(s_j\)</span> 要么只包含 <span class="math notranslate nohighlight">\(X_j\)</span> 的单个值 <span class="math notranslate nohighlight">\(s_j=v_{0j}\)</span>，要么包含 <span class="math notranslate nohighlight">\(X_j\)</span> 的所有值，<span class="math notranslate nohighlight">\(s_j=\mathcal S_j\)</span>。这将 式（ 14.2 ） 简化为寻找元素为整数的子集 <span class="math notranslate nohighlight">\(\mathcal J\subset\\{1,\ldots,p\\}\)</span>，以及对应的值 <span class="math notranslate nohighlight">\(v_{0j},j\in\mathcal J\)</span>，使得</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1204,12 +1245,13 @@
 <p>可以应用 <strong>虚拟变量 (dummy variables)</strong> 的技巧将 式（ 14.3 ） 转换为只涉及二值变量的问题。这里我们假设支撑集 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span> 对于每个变量 <span class="math notranslate nohighlight">\(X_j\)</span> 都是有限的。具体地，构造新的变量集 <span class="math notranslate nohighlight">\(Z_1,\ldots,Z_K\)</span>，对于可由每个原始变量 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 取得的每个值 <span class="math notranslate nohighlight">\(v_{lj}\)</span> ，创建一个这样的变量。虚拟变量的数目 <span class="math notranslate nohighlight">\(K\)</span> 为</p>
 <div class="math notranslate nohighlight">
 \[
-K=\sum\limits_{j=1}^p\vert \mathcal S_j\vert
-\]</div>
+K=\sum\limits_{j=1}^p\vert \mathcal S_j\vert\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\vert \mathcal S_j\vert\)</span> 为从 <span class="math notranslate nohighlight">\(X_j\)</span> 得到的唯一值的个数。</p>
 <p>如果与其相关联的变量取 <span class="math notranslate nohighlight">\(Z_k\)</span> 对应的值，则每个虚拟变量被赋值为 <span class="math notranslate nohighlight">\(Z_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Z_k=0\)</span>。</p>
-<p>!!! notes “weiya 注”
+<blockquote>
+<div><p>notes “weiya 注”
 每个 <span class="math notranslate nohighlight">\(v_{lj}\)</span>（可看成是 <span class="math notranslate nohighlight">\(p\)</span> 维列向量中的一个元素）都有一个虚拟变量 <span class="math notranslate nohighlight">\(Z_{\ell}\)</span>。</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![](../img/14/pho14.1.png)
 
 似乎采用虚拟变量后，不再限制变量要么取单个值要么取全部，比如图中对于 $X_1$，可以取 $3, 4$。即便这样，也还是进行了简化，仍不能返回图 14.1 中左图的模式，只能得到如下阴影部分的模式。
@@ -1235,35 +1277,37 @@ K=\sum\limits_{j=1}^p\vert \mathcal S_j\vert
 \]</div>
 </div>
 <div class="section" id="apriori">
-<h2>Apriori 算法<a class="headerlink" href="#apriori" title="Permalink to this headline">¶</a></h2>
-<p>如果调整阈值 <span class="math notranslate nohighlight">\(t\)</span> 使得式 式（ 14.6 ） 仅由所有 <span class="math notranslate nohighlight">\(2^K\)</span> 中可能的项集合中的一小部分构成，则对于非常大的数据集，可以通过可行的计算得到 式（ 14.6 ） 的解。“Apriori”算法（Argawal et al.，1995<a class="footnote-reference brackets" href="#id11" id="id3">1</a>）探究维数灾难的某些方面，采用小部分的数据传递求解 式（ 14.6 ）。具体地，对于给定的支撑阈值 <span class="math notranslate nohighlight">\(t\)</span>：</p>
+<h2>（）Apriori 算法<a class="headerlink" href="#apriori" title="Permalink to this headline">¶</a></h2>
+<p>如果调整阈值 <span class="math notranslate nohighlight">\(t\)</span> 使得式 式（ 14.6 ） 仅由所有 <span class="math notranslate nohighlight">\(2^K\)</span> 中可能的项集合中的一小部分构成，则对于非常大的数据集，可以通过可行的计算得到 式（ 14.6 ） 的解。“Apriori”算法（Argawal et al.，1995<a class="footnote-reference brackets" href="#id8" id="id3">1</a>）探究维数灾难的某些方面，采用小部分的数据传递求解 式（ 14.6 ）。具体地，对于给定的支撑阈值 <span class="math notranslate nohighlight">\(t\)</span>：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\\{{\mathcal K}\mid T(\mathcal K)&gt;t \\}\)</span> 的 <strong>基数(cardinality)</strong> 相对小。</p></li>
 <li><p>任意由项目集 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 中子集组成的集合 <span class="math notranslate nohighlight">\(\mathcal L\)</span> 必须有比 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 大或相等的支撑，即 <span class="math notranslate nohighlight">\({\mathcal L\subseteq K}\Rightarrow T({\mathcal L})\ge T({\mathcal K})\)</span></p></li>
 </ul>
 <p>第一次传递数据计算所有单项目集合的支撑。舍弃那些支撑小于阈值的项目集。第二次传递数据计算所有可以通过第一次传递中保留下来的单项目集合匹配成对的项目集（此时大小为 2）的支撑。换句话说，为了产生所有大小为 <span class="math notranslate nohighlight">\(\vert\mathcal K\vert=m\)</span> 的高频率项目集，我们仅仅需要考虑部分候选项目集，这些候选项目集的所有（即 <span class="math notranslate nohighlight">\(m\)</span> 个）大小为 <span class="math notranslate nohighlight">\(m-1\)</span> 的上一级项目集是高频率的。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 对于给定的大小为 <span class="math notranslate nohighlight">\(m\)</span> 的项目集 <span class="math notranslate nohighlight">\(\mathcal K\)</span>，它有 <span class="math notranslate nohighlight">\(m\)</span> 个大小为 <span class="math notranslate nohighlight">\(m-1\)</span> 的父项目集。</p>
+</div></blockquote>
 <p>舍弃那些支撑小于阈值的大小为 2 的项目集。每个后继的传递数据只考虑了那些可以通过结合上一次传递数据存留的项目集与第一次传递数据保留下的项目集得到的项目集。数据传递过程一直进行下去，直到来自上一次传递的所有候选规则的支撑都小于指定阈值。Apriori 算法仅要求对 <span class="math notranslate nohighlight">\(\vert\mathcal K\vert\)</span> 个值的每一个进行一次数据传递，这是很重要的，因为我们假设数据不能放在计算机的主存中。如果数据是充分稀疏（或者如果阈值 <span class="math notranslate nohighlight">\(t\)</span> 充分大），则会在合理次数之后终止过程，甚至对非常大的数据集也是如此。</p>
-<p>许多额外的技巧可以作为这个策略的一部分来提高速度和收敛（Agrawal et al., 1995<a class="footnote-reference brackets" href="#id11" id="id4">1</a>）。Apriori 算法标志数据挖掘技术的主要进步。</p>
+<p>许多额外的技巧可以作为这个策略的一部分来提高速度和收敛（Agrawal et al., 1995<a class="footnote-reference brackets" href="#id8" id="id4">1</a>）。Apriori 算法标志数据挖掘技术的主要进步。</p>
 <p>通过 Apriori 算法返回的每个高支撑的数据集 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 式（ 14.6 ） 被放到“关联规则”的集合中。项目 <span class="math notranslate nohighlight">\(Z_k,k\in\mathcal K\)</span> 被分成两个分离的子集，<span class="math notranslate nohighlight">\(A\cup B=\mathcal K\)</span>，并且写成</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 A\Rightarrow B\tag{14.7}
-\]</div>
+\)</span>$</p>
 <p>第一项子集 <span class="math notranslate nohighlight">\(A\)</span> 被称作“先因 (antecedent)”，第二个子集 <span class="math notranslate nohighlight">\(B\)</span> 被称为“后果 (consequent)”。关联规则基于在数据库中 antecedent 和 consequent 项目集的流行程度，来定义具有一些性质。规则 <span class="math notranslate nohighlight">\(T(A\Rightarrow B)\)</span> 的“支撑”是在先行项目集和后果项目集的并集中的观测的占比，这恰恰是导出它们的项目集 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 的支撑。可以看成在随机选择的市场篮子中同时观测项目集 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A\; and\; B)\)</span> 的概率的估计 式（ 14.5 ）。该规则的“<strong>置信度 (confidence)</strong>” 或“<strong>可预测性 (predictability)</strong>” <span class="math notranslate nohighlight">\(C(A\Rightarrow B)\)</span> 是它的支撑除以 antecedent 的支撑</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 C(A\Rightarrow B)=\frac{T(A\Rightarrow B)}{T(A)}\tag{14.8}
-\]</div>
+\)</span>$</p>
 <p>可以看成是 <span class="math notranslate nohighlight">\(\mathrm{Pr}(B\mid A)\)</span> 的估计。记号 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A)\)</span> 是在篮子中出现项目集 <span class="math notranslate nohighlight">\(A\)</span> 的概率，是 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\prod_{k\in A}Z_k=1)\)</span> 的缩写。“<strong>期望置信度</strong>”定义为 consequent 的支撑 <span class="math notranslate nohighlight">\(T(B)\)</span>，是无条件的概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(B)\)</span> 的估计。最后，规则的 “lift” 定义为置信度除以期望置信度</p>
 <div class="math notranslate nohighlight">
 \[
 L(A\mid B)=\frac{C(A\Rightarrow B)}{T(B)}
 \]</div>
 <p>这是关联衡量 <span class="math notranslate nohighlight">\(\mathrm{Pr}(A\; and\; B)/\mathrm{Pr}(A)\mathrm{Pr}(B)\)</span> 的估计。</p>
-<p>!!! note “weiya 注：lift vs. Lift Chart “
+<blockquote>
+<div><p>note “weiya 注：lift vs. Lift Chart “
 在评估预测模型时，有时会作出 Lift Chart，与这里的 lift 看起来很像。画 Lift Chart 时，</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. 首先对测试样本进行预测计算某一事件（比如有 $K$ 个类别，考虑其中的类 a）的类别概率，根据类别概率从大到小排序；
 2. 给定一个**概率阈值**，计算第 1 步中所有小于该概率的样本中该事件发生的比例（比如类别概率小于 0.8 的样本中类别 a 的比例）
 3. 计算**基准 (baseline) 事件率**，也就是全样本集中所考察的事件的比例（比如类别 a 的比例），第 2 步的比例除以基准事件率则得到该阈值下的 **lift**。
@@ -1276,84 +1320,46 @@ R 中作出 Lift Chart 的命令也很简单，直接调用 `caret` 包中的 `l
 </pre></div>
 </div>
 <p>举个例子，假设项目集为 <span class="math notranslate nohighlight">\({\mathcal K}=\)</span> {<code class="docutils literal notranslate"><span class="pre">peanut</span> <span class="pre">butter</span></code>, <code class="docutils literal notranslate"><span class="pre">jelly</span></code>, <code class="docutils literal notranslate"><span class="pre">bread</span></code>}，并且考虑规则 {<code class="docutils literal notranslate"><span class="pre">peanut</span> <span class="pre">butter</span></code>, <code class="docutils literal notranslate"><span class="pre">jelly</span></code>} <span class="math notranslate nohighlight">\(\Rightarrow\)</span> {<code class="docutils literal notranslate"><span class="pre">bread</span></code>}。<span class="math notranslate nohighlight">\(0.03\)</span> 的支撑值表示 <code class="docutils literal notranslate"><span class="pre">peanut</span> <span class="pre">butter</span></code>，<code class="docutils literal notranslate"><span class="pre">jelly</span></code> 和 <code class="docutils literal notranslate"><span class="pre">bread</span></code>同时出现在 <span class="math notranslate nohighlight">\(3\%\)</span> 的市场篮子中。这个规则的 0.82 置信度表示当购买了 <code class="docutils literal notranslate"><span class="pre">peanut</span> <span class="pre">butter</span></code> 和 <code class="docutils literal notranslate"><span class="pre">jelly</span></code>，<span class="math notranslate nohighlight">\(82\%\)</span> 的情形下也会购买 <code class="docutils literal notranslate"><span class="pre">bread</span></code>。如果<code class="docutils literal notranslate"><span class="pre">bread</span></code> 在 <span class="math notranslate nohighlight">\(43\%\)</span> 的市场篮子中，则规则 {<code class="docutils literal notranslate"><span class="pre">peanut</span> <span class="pre">butter</span></code>, <code class="docutils literal notranslate"><span class="pre">jelly</span></code>}<span class="math notranslate nohighlight">\(\Rightarrow\)</span> {<code class="docutils literal notranslate"><span class="pre">bread</span></code>} 的 lift 为 <span class="math notranslate nohighlight">\(1.95\)</span>。</p>
-<p>这个分析的目标是得到支撑和置信度 式（ 14.8 ） 都高的关联规则 式（ 14.7 ）。Apriori 算法返回由支撑阈值 <span class="math notranslate nohighlight">\(t\)</span> 式（ 14.6 ） 定义的所有高支撑的项目集。设定置信度阈值 <span class="math notranslate nohighlight">\(c\)</span>，报告所有可以从这些项目集 式（ 14.6 ） 中组成的置信度大于 <span class="math notranslate nohighlight">\(c\)</span> 的规则，也就是
-$<span class="math notranslate nohighlight">\(
+<p>这个分析的目标是得到支撑和置信度 式（ 14.8 ） 都高的关联规则 式（ 14.7 ）。Apriori 算法返回由支撑阈值 <span class="math notranslate nohighlight">\(t\)</span> 式（ 14.6 ） 定义的所有高支撑的项目集。设定置信度阈值 <span class="math notranslate nohighlight">\(c\)</span>，报告所有可以从这些项目集 式（ 14.6 ） 中组成的置信度大于 <span class="math notranslate nohighlight">\(c\)</span> 的规则，也就是</p>
+<div class="math notranslate nohighlight">
+\[
 \{A\Rightarrow B\mid C(A\Rightarrow B)&gt;c\}\tag{14.9}
-\)</span><span class="math notranslate nohighlight">\(
-对于大小为 \)</span>\vert\mathcal K\vert<span class="math notranslate nohighlight">\( 的项目集 \)</span>\mathcal K<span class="math notranslate nohighlight">\(，有 \)</span>2^{\vert{\mathcal K}\vert-1}-1<span class="math notranslate nohighlight">\( 条形式为 \)</span>A\Rightarrow ({\mathcal K}-A),A\subset \mathcal K$ 的规则。</p>
-<p>!!! note “weiya 注：”
-因为大小为 <span class="math notranslate nohighlight">\(\vert\mathcal K\vert\)</span> 的集合的子集个数为 <span class="math notranslate nohighlight">\(2^{\vert \mathcal K\vert}\)</span>，除去空集以及全集，则应该有 <span class="math notranslate nohighlight">\(2^{\vert \mathcal K\vert} - 2\)</span> 种分割，作者有可能是把 <span class="math notranslate nohighlight">\(A\rightarrow {\mathcal K}-A\)</span> 与 <span class="math notranslate nohighlight">\({\mathcal K}-A \rightarrow A\)</span> 视为同一种形式，则
-$<span class="math notranslate nohighlight">\(
-    \frac{1}{2}(2^{\vert\mathcal K\vert}-2)=2^{\vert{\mathcal K}\vert-1}-1
-    \)</span>$</p>
+\]</div>
+<p>对于大小为 <span class="math notranslate nohighlight">\(\vert\mathcal K\vert\)</span> 的项目集 <span class="math notranslate nohighlight">\(\mathcal K\)</span>，有 <span class="math notranslate nohighlight">\(2^{\vert{\mathcal K}\vert-1}-1\)</span> 条形式为 <span class="math notranslate nohighlight">\(A\Rightarrow ({\mathcal K}-A),A\subset \mathcal K\)</span> 的规则。</p>
+<blockquote>
+<div><p>note “weiya 注：”
+因为大小为 <span class="math notranslate nohighlight">\(\vert\mathcal K\vert\)</span> 的集合的子集个数为 <span class="math notranslate nohighlight">\(2^{\vert \mathcal K\vert}\)</span>，除去空集以及全集，则应该有 <span class="math notranslate nohighlight">\(2^{\vert \mathcal K\vert} - 2\)</span> 种分割，作者有可能是把 <span class="math notranslate nohighlight">\(A\rightarrow {\mathcal K}-A\)</span> 与 <span class="math notranslate nohighlight">\({\mathcal K}-A \rightarrow A\)</span> 视为同一种形式，则</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \frac{1}{2}(2^{\vert\mathcal K\vert}-2)=2^{\vert{\mathcal K}\vert-1}-1
+    
+\]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>如果不要求 $A$ 和 $B$ 的并集为整个项目集，[Pang-Ning Tan, Michael Steinbach, Anuj Karpatne, and Vipin Kumar. 2018. Introduction to Data Mining (2nd Edition) (2nd. ed.). Pearson.](https://www-users.cs.umn.edu/~kumar001/dmbook/ch6.pdf) 给出一个结论，对于大小为 $d$ 的项目集，总共有 $3^d - 2^{d+1} + 1$ 种可能的规则，
-
-$$
-\begin{align*}
-&amp;\sum_{k=1}^{d-1} \binom{d}{k}\sum_{i=1}^{d-k}\binom{d-k}{i} \\
-=&amp; \sum_{k=1}^{d-1}\binom{d}{k}(2^{d-k}-1) \\
-=&amp; \sum_{k=1}^{d-1}\binom{d}{k}2^{d-k}- \sum_{k=1}^{d-1}\binom{d}{k}\\
-=&amp; ((1 + 2)^d - 2^d - 1) - (2^{d} - 2)\\
-=&amp; 3^d - 2^{d+1} + 1\,.
-\end{align*}
-$$
 </pre></div>
 </div>
-<p>Agrawal et al. (1995)<a class="footnote-reference brackets" href="#id11" id="id5">1</a> 提出 Apriori 算法的一个变体，它可以从由项目集 式（ 14.6 ） 构造的所有可能的规则中快速确定哪些规则会在置信阈值 式（ 14.9 ） 下存留下来。</p>
-<p>整个分析的输出是满足下面约束的关联规则 式（ 14.7 ） 的集合。</p>
 <div class="math notranslate nohighlight">
-\[
-T(A\Rightarrow B)&gt;t\qquad and\qquad C(A\Rightarrow B)&gt;c
-\]</div>
-<p>这些一般保存在数据库中，可以被用户查询到。一般的查询请求可能是按照置信度，lift 或者支撑的大小顺序排列规则。更具体地，可能会要查询在 antecedent中 含特定的项目或在 consequent 中含特定的项目的条件下的列表。举个例子，一条查询请求可能如下：</p>
-<blockquote>
-<div><p>显示 ice skates 为 consequent，置信度大于 <span class="math notranslate nohighlight">\(80\%\)</span> 且支撑大于 <span class="math notranslate nohighlight">\(2\%\)</span> 的所有交易。</p>
-</div></blockquote>
-<p>这可以提供能够预测 ice skates 销量的项（antecedent）的信息。关注特定的结果（consequent）便将问题转换成了监督学习的框架。</p>
-<p>关联规则成为了在相关的市场篮子的设定下用于分析非常大的交易数据库的流行工具。这是当数据可以转换成多维邻接表的形式时。输出是以容易理解并且可解释的关联规则 式（ 14.4 ） 的形式展现的。Apriori 算法允许分析可以用到大的数据库中，更大的数据库适用于其他类型的分析。关联规则是数据挖掘最大的成功之一。</p>
-<p>除了对我们可以应用的数据有限制外，关联规则还有其它的限制。计算可行性的关键是支撑阈值 式（ 14.6 ）。项目集的解的个数，它们的大小，以及对数据需要传递的次数随着下界的下降指数型增长。因此，不会发现有高置信度或者高 lift，但是低支撑的规则。举个例子，比如由于后果（consequent）<code class="docutils literal notranslate"><span class="pre">caviar</span></code> 的低销售量，将不会找到 <code class="docutils literal notranslate"><span class="pre">vodka</span></code> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">caviar</span></code> 的高置信度规则。</p>
-</div>
-<div class="section" id="id6">
-<h2>例子：市场篮子分析<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>我们将在中等大小的人口统计数据库中解释 Apriori 算法的使用。数据集包含 <span class="math notranslate nohighlight">\(N=9409\)</span> 份问卷，由旧金山湾区 (San Francisco Bay Area) 的购物商场里的消费者填写的（Impact Resources, Inc., Columbus OH, 1987）。这里我们采用前 14 个与人口统计有关的问题的回答来说明。数据中包含顺序型和（无序）类别变量，后者中的许多具有多个值。并且有许多缺失数据。</p>
-<p>我们采用 Apriori 算法的免费软件实现，这归功于 Christian Borgelt。（见 <a class="reference external" href="http://www.borgelt.net/">http://fuzzy.cs.uni-magdeburg.de/~borgelt</a>）。除去缺失数据的观测，每个顺序型预测变量在中值处分开并且用两个虚拟变量来编码；每个含有 <span class="math notranslate nohighlight">\(k\)</span> 个类别的类别型预测变量用 <span class="math notranslate nohighlight">\(k\)</span> 个虚拟变量编码。得到 <span class="math notranslate nohighlight">\(6876\times 50\)</span> 阶矩阵，<span class="math notranslate nohighlight">\(6876\)</span> 为观测个数，<span class="math notranslate nohighlight">\(50\)</span> 为虚拟变量个数。</p>
-<p>这个算法总共找到 <span class="math notranslate nohighlight">\(6288\)</span> 条关联规则，涉及 <span class="math notranslate nohighlight">\(\le 5\)</span> 个预测变量，支撑至少为 <span class="math notranslate nohighlight">\(10\%\)</span>。理解这个大的规则集合本身是具有挑战的数据分析工作。我们这里将不会试图解决，但仅仅在图 14.2 中说明每个虚拟变量在数据中的相对频率（上）和在关联规则中的相对频率（下）。受欢迎的类别趋向于在规则中频繁出现，例如，排第一的类别是 language (English)。然而，其他的像职业 (occupation) 则表现出<strong>代表人数不足 (under-represented)</strong>，除了第一和第五个水平。</p>
-<p><img alt="" src="../_images/fig14.2.png" /></p>
-<blockquote>
-<div><p>图14.2. 市场篮子分析：每个虚拟变量（对输入类别编码）在数据中的相对频率（上），以及在由 Apriori 算法找到的关联规则中的相对频率（下）</p>
-</div></blockquote>
-<p>下面是通过 Apriori 算法找出的关联规则的三个例子：</p>
-<ul class="simple">
-<li><p>关联规则 1：25% 的支撑，99.7% 的置信度，1.03 的 lift</p></li>
-</ul>
-<p><img alt="" src="../_images/ar1.png" /></p>
-<ul class="simple">
-<li><p>关联规则 2：13.4% 的支撑，80.8% 的置信度，2.13 的 lift</p></li>
-</ul>
-<p><img alt="" src="../_images/ar2.png" /></p>
-<ul class="simple">
-<li><p>关联规则 3：26.5% 的支撑，82.8% 的置信度，2.15 的 lift</p></li>
-</ul>
-<p><img alt="" src="../_images/ar3.png" /></p>
-<p>根据高支撑，我们选择第一和第三条规则。第二条规则是有高收入的 consequent 的关联规则，并且可以用来试图挑出高收入的个体。</p>
-<p>正如上面叙述的，我们对每个输入预测变量构造虚拟变量，举个例子，根据收入低于和高于中位数得到 <span class="math notranslate nohighlight">\(Z_1=I(\text{income} &lt; \$40,000)\)</span> 和 <span class="math notranslate nohighlight">\(Z_2=I(\text{income}\ge \$40,000)\)</span>。如果我们仅仅对寻找与高收入类别的关联感兴趣，我们可能会包含 <span class="math notranslate nohighlight">\(Z_2\)</span>但不包含 <span class="math notranslate nohighlight">\(Z_1\)</span>。实际市场篮子问题中经常是这种情形，我们感兴趣的是找到与现存的相对罕见项的关联，而不是跟它缺失有关的关联。</p>
-</div>
-<div class="section" id="id7">
-<h2>作为监督学习的非监督<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>这里我们讨论将密度估计问题转化为一种监督函数近似的技巧。这是将在下一节描述的广义关联规则的基础。</p>
-<p>令 <span class="math notranslate nohighlight">\(g(x)\)</span> 为需要估计的未知数据概率密度，且 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 为用作参考的确定的概率密度函数。举个例子，<span class="math notranslate nohighlight">\(g_0(x)\)</span> 可能是在变量定义域上的均匀概率密度。其他的概率类型在下面讨论。假定数据集 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span> 是从 <span class="math notranslate nohighlight">\(g(x)\)</span> 中抽取的独立同分布的样本。大小为 <span class="math notranslate nohighlight">\(N_0\)</span> 的样本可以通过蒙特卡洛法从 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 中抽取。混合这两个数据集，并且对从 <span class="math notranslate nohighlight">\(g(x)\)</span> 抽取的样本赋权 <span class="math notranslate nohighlight">\(\omega=N_0/(N+N_0)\)</span>，对从 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 中抽取的样本赋权 <span class="math notranslate nohighlight">\(\omega_0=N/(N+N_0)\)</span>，得到从混合密度 <span class="math notranslate nohighlight">\((g(x)+g(x_0))/2\)</span> 中抽取的随机样本。如果对从 <span class="math notranslate nohighlight">\(g(x)\)</span> 中抽取的样本赋值为 <span class="math notranslate nohighlight">\(Y=1\)</span>，对从 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 中抽取的样本赋值为 <span class="math notranslate nohighlight">\(Y=0\)</span>，则</p>
+\[ \begin{align}\begin{aligned}\begin{split}    \begin{align*}
+    &amp;\sum_{k=1}^{d-1} \binom{d}{k}\sum_{i=1}^{d-k}\binom{d-k}{i} \\
+    =&amp; \sum_{k=1}^{d-1}\binom{d}{k}(2^{d-k}-1) \\
+    =&amp; \sum_{k=1}^{d-1}\binom{d}{k}2^{d-k}- \sum_{k=1}^{d-1}\binom{d}{k}\\
+    =&amp; ((1 + 2)^d - 2^d - 1) - (2^{d} - 2)\\
+    =&amp; 3^d - 2^{d+1} + 1\,.
+    \end{align*}
+    
+$
+Agrawal et al. (1995)[^1] 提出 Apriori 算法的一个变体，它可以从由项目集 式（ 14.6 ） 构造的所有可能的规则中快速确定哪些规则会在置信阈值 式（ 14.9 ） 下存留下来。\end{split}\\整个分析的输出是满足下面约束的关联规则 式（ 14.7 ） 的集合。\end{aligned}\end{align} \]</div>
+<p>T(A\Rightarrow B)&gt;t\qquad and\qquad C(A\Rightarrow B)&gt;c</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
+\[ \begin{align}\begin{aligned}这些一般保存在数据库中，可以被用户查询到。一般的查询请求可能是按照置信度，lift 或者支撑的大小顺序排列规则。更具体地，可能会要查询在 antecedent中 含特定的项目或在 consequent 中含特定的项目的条件下的列表。举个例子，一条查询请求可能如下：\\&gt; 显示 ice skates 为 consequent，置信度大于 $80\%$ 且支撑大于 $2\%$ 的所有交易。\\这可以提供能够预测 ice skates 销量的项（antecedent）的信息。关注特定的结果（consequent）便将问题转换成了监督学习的框架。\\关联规则成为了在相关的市场篮子的设定下用于分析非常大的交易数据库的流行工具。这是当数据可以转换成多维邻接表的形式时。输出是以容易理解并且可解释的关联规则 式（ 14.4 ） 的形式展现的。Apriori 算法允许分析可以用到大的数据库中，更大的数据库适用于其他类型的分析。关联规则是数据挖掘最大的成功之一。\\除了对我们可以应用的数据有限制外，关联规则还有其它的限制。计算可行性的关键是支撑阈值 式（ 14.6 ）。项目集的解的个数，它们的大小，以及对数据需要传递的次数随着下界的下降指数型增长。因此，不会发现有高置信度或者高 lift，但是低支撑的规则。举个例子，比如由于后果（consequent）`caviar` 的低销售量，将不会找到 `vodka` $\Rightarrow$ `caviar` 的高置信度规则。\\## （）例子：市场篮子分析\\我们将在中等大小的人口统计数据库中解释 Apriori 算法的使用。数据集包含 $N=9409$ 份问卷，由旧金山湾区 (San Francisco Bay Area) 的购物商场里的消费者填写的（Impact Resources, Inc., Columbus OH, 1987）。这里我们采用前 14 个与人口统计有关的问题的回答来说明。数据中包含顺序型和（无序）类别变量，后者中的许多具有多个值。并且有许多缺失数据。\\我们采用 Apriori 算法的免费软件实现，这归功于 Christian Borgelt。（见 [http://fuzzy.cs.uni-magdeburg.de/~borgelt](http://www.borgelt.net/)）。除去缺失数据的观测，每个顺序型预测变量在中值处分开并且用两个虚拟变量来编码；每个含有 $k$ 个类别的类别型预测变量用 $k$ 个虚拟变量编码。得到 $6876\times 50$ 阶矩阵，$6876$ 为观测个数，$50$ 为虚拟变量个数。\\这个算法总共找到 $6288$ 条关联规则，涉及 $\le 5$ 个预测变量，支撑至少为 $10\%$。理解这个大的规则集合本身是具有挑战的数据分析工作。我们这里将不会试图解决，但仅仅在图 14.2 中说明每个虚拟变量在数据中的相对频率（上）和在关联规则中的相对频率（下）。受欢迎的类别趋向于在规则中频繁出现，例如，排第一的类别是 language (English)。然而，其他的像职业 (occupation) 则表现出**代表人数不足 (under-represented)**，除了第一和第五个水平。\\![](../img/14/fig14.2.png)\\&gt; 图14.2. 市场篮子分析：每个虚拟变量（对输入类别编码）在数据中的相对频率（上），以及在由 Apriori 算法找到的关联规则中的相对频率（下）\\下面是通过 Apriori 算法找出的关联规则的三个例子：\\- 关联规则 1：25% 的支撑，99.7% 的置信度，1.03 的 lift\\![](../img/14/ar1.png)\\- 关联规则 2：13.4% 的支撑，80.8% 的置信度，2.13 的 lift\\![](../img/14/ar2.png)\\- 关联规则 3：26.5% 的支撑，82.8% 的置信度，2.15 的 lift\\![](../img/14/ar3.png)\\根据高支撑，我们选择第一和第三条规则。第二条规则是有高收入的 consequent 的关联规则，并且可以用来试图挑出高收入的个体。\\正如上面叙述的，我们对每个输入预测变量构造虚拟变量，举个例子，根据收入低于和高于中位数得到 $Z_1=I(\text{income} &lt; \$40,000)$ 和 $Z_2=I(\text{income}\ge \$40,000)$。如果我们仅仅对寻找与高收入类别的关联感兴趣，我们可能会包含 $Z_2$但不包含 $Z_1$。实际市场篮子问题中经常是这种情形，我们感兴趣的是找到与现存的相对罕见项的关联，而不是跟它缺失有关的关联。\\## （）作为监督学习的非监督\\这里我们讨论将密度估计问题转化为一种监督函数近似的技巧。这是将在下一节描述的广义关联规则的基础。\\令 $g(x)$ 为需要估计的未知数据概率密度，且 $g_0(x)$ 为用作参考的确定的概率密度函数。举个例子，$g_0(x)$ 可能是在变量定义域上的均匀概率密度。其他的概率类型在下面讨论。假定数据集 $x_1,x_2,\ldots,x_N$ 是从 $g(x)$ 中抽取的独立同分布的样本。大小为 $N_0$ 的样本可以通过蒙特卡洛法从 $g_0(x)$ 中抽取。混合这两个数据集，并且对从 $g(x)$ 抽取的样本赋权 $\omega=N_0/(N+N_0)$，对从 $g_0(x)$ 中抽取的样本赋权 $\omega_0=N/(N+N_0)$，得到从混合密度 $(g(x)+g(x_0))/2$ 中抽取的随机样本。如果对从 $g(x)$ 中抽取的样本赋值为 $Y=1$，对从 $g_0(x)$ 中抽取的样本赋值为 $Y=0$，则\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \mu(x)=\mathbb{E}(Y|x)&amp;=\frac{g(x)}{g(x)+g_0(x)}\\
 &amp;=\frac{g(x)/g_0(x)}{1+g(x)/g_0(x)}\tag{14.10}
-\end{align*}
-\end{split}\]</div>
-<p>可以通过将下面的混合样本作为训练数据，然后采用监督学习的方法来估计</p>
+\end{align*}\]</div>
 <div class="math notranslate nohighlight">
-\[
-(y_1,x_1),(y_2,x_2),\ldots,(y_{N+N_0},x_{N+N_0})\tag{14.11}
-\]</div>
+\[可以通过将下面的混合样本作为训练数据，然后采用监督学习的方法来估计\]</div>
+<p>(y_1,x_1),(y_2,x_2),\ldots,(y_{N+N_0},x_{N+N_0})\tag{14.11}
+$$</p>
 <p>估计的结果 <span class="math notranslate nohighlight">\(\hat \mu(x)\)</span> 可以反解得 <span class="math notranslate nohighlight">\(g(x)\)</span> 的估计</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1375,37 +1381,40 @@ f(x)=\log\frac{g(x)}{g_0(x)}\tag{14.13}
 <div><p>图14.3. 通过分类的密度估计。（左）200 个数据点的训练集。（右）加上在矩形区域内均匀产生 200 个参考数据点的训练集。训练样本标记为类别 1，参考数据点为类别 0，对数据用半参逻辑斯蒂回归模型进行拟合。图中显示了 <span class="math notranslate nohighlight">\(\hat g(x)\)</span> 的等高线。</p>
 </div></blockquote>
 <p>原则上任意参考密度都可以作为 式（ 14.14 ） 的 <span class="math notranslate nohighlight">\(g_0(x)\)</span>。实际中估计 <span class="math notranslate nohighlight">\(\hat g(x)\)</span> 的准确性非常依赖于特定的选择。好的选择会取决于数据密度 <span class="math notranslate nohighlight">\(g(x)\)</span> 和用来估计 式（ 14.10 ） 和 式（ 14.13 ） 的过程。如果目标是正确性，应该选择 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 使得最终函数 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 和<span class="math notranslate nohighlight">\(f(x)\)</span> 可以简单地被使用的方法来近似。然而，准确性不总是主要目标。<span class="math notranslate nohighlight">\(\mu(x)\)</span> 和 <span class="math notranslate nohighlight">\(f(x)\)</span> 是概率比率 <span class="math notranslate nohighlight">\(g(x)/g_0(x)\)</span> 的单调函数。它们可以看成是提供关于数据密度 <span class="math notranslate nohighlight">\(g(x)\)</span> 与 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 偏离的信息的“差异”统计量。因此，在数据分析设定中，<span class="math notranslate nohighlight">\(g_0(x)\)</span> 的选择是由偏离的类型决定的，实际中特定问题的情况下似乎是最有趣的。举个例子，如果我们感兴趣的是均匀的偏离，则 <span class="math notranslate nohighlight">\(g_0(x)\)</span> 可能是变量值域上的均匀密度函数。如果与联合正态的偏离是我们感兴趣的，<span class="math notranslate nohighlight">\(g_0(x)\)</span> 的一个好的选择是与原数据相同的均值向量和协方差均值。与独立性的偏离可以通过用下式表征：</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 g_0(x)=\prod\limits_{j=1}^pg_j(x_j)\tag{14.15}
-\]</div>
+\)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(g_j(x_j)\)</span> 为 <span class="math notranslate nohighlight">\(X_j\)</span>（<span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(j\)</span> 个坐标）的边缘密度。通过对每个变量的数据应用不同的随机排列，独立密度 式（ 14.15 ） 的样本可以很简单地从数据本身产生。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 <a class="reference internal" href="14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html"><span class="doc std std-doc">第 14.7 节</span></a> 介绍了互信息量，它是独立性的一个自然度量，是联合密度与其边缘密度乘积间的 Kullback-Leibler 距离。</p>
+</div></blockquote>
 <p>正如上面讨论的那样，非监督学习关心揭示数据密度 <span class="math notranslate nohighlight">\(g(x)\)</span> 的性质。每个技巧关注于特定的性质或者某些性质。尽管这种将问题转换为监督学习的方式 式（ 14.10 ）-式（ 14.14 ） 看起来在一段时间内成为<strong>统计民俗学 (statistics folklore)</strong> 的一部分，但它似乎没有太大的影响，尽管它有将已经研究透彻的监督学习方法应用到非监督学习的潜力。其中一个原因可能是这个问题必须要用蒙特卡洛技巧产生的模拟数据来扩大。因为数据集的大小至少和数据样本一样大 <span class="math notranslate nohighlight">\(N_0\ge N\)</span>，这个估计过程的计算和内存上的要求至少双倍。另外，产生蒙特卡洛样本本身可能需要大量的计算。尽管在过去这是一个限制，但是这增加的计算需求不再成为一个负担，因为增加的资源也变成了可能。我们将在下一节说明在非监督学习中监督学习方法的使用。</p>
 </div>
-<div class="section" id="id8">
-<h2>广义关联规则<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>（）广义关联规则<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>在数据空间中寻找高密度区域的更一般问题 式（ 14.2 ） 可以通过使用上面描述的监督学习的方法来解决。尽管不能应用对市场篮子分析可行的大数据库，但可以从适当大小的数据集中得到有用的信息。问题 式（ 14.2 ） 可以用公式叙述为，寻找整数子集 <span class="math notranslate nohighlight">\(\mathcal J\subset\\{1,2,\ldots,p\\}\)</span> 和与对应的变量 <span class="math notranslate nohighlight">\(X_j\)</span> 对应的子集 <span class="math notranslate nohighlight">\(s_j,j\in \mathcal J\)</span> 使得下式的值大。</p>
 <div class="math notranslate nohighlight">
 \[
 \widehat{\Pr}\Big(\bigcap_{j\in\mathcal J}(X_j\in s_j)\Big) = \frac{1}{N}\sum\limits_{i=1}^NI\Big(\bigcap_{j\in\mathcal J}(x_{ij}\in s_j)\Big)\tag{14.16}
 \]</div>
 <p>根据关联规则的数据，<span class="math notranslate nohighlight">\(\\{(X_j\in s_j)\\}_{i\in \mathcal J}\)</span> 将被称为“广义”项目集。对于定量变量的子集 <span class="math notranslate nohighlight">\(s_j\)</span> 取为在它们值域中的邻接区间，对于类别型变量的子集可以涉及不止一个单值。这种方法的这条“野心的 (ambitious)” 性质阻碍了对所有广义项目集的全面搜索，来寻找式 式（ 14.16 ） 大于特定最小值的支撑。必须用到启发式搜索算法，而且最希望有个寻找这样广义项目集的集合。</p>
-<p>市场篮子分析 式（ 14.5 ） 和广义公式 式（ 14.16 ） 都隐式地引用均匀概率分布。如果所有的联合数据值 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span> 都是均匀分布的，则寻找比期望更频繁的项目集。这有助于寻找单个边缘组分 <span class="math notranslate nohighlight">\((X_j\in s_j)\)</span> 是频繁的项目集，也就是，下式的值大。
-$<span class="math notranslate nohighlight">\(
-\frac{1}{N}\sum_{i=1}^NI(x_{ij}\in s_j)\tag{14.17}
-\)</span>$</p>
-<p>频繁子集 式（ 14.17 ） 的联合在高支撑的项目集 式（ 14.16 ） 中趋向于比不频繁子集的联合更经常出现。这也就是为什么尽管高关联（lift）的规则 <code class="docutils literal notranslate"><span class="pre">vodka</span></code><span class="math notranslate nohighlight">\(\Rightarrow\)</span><code class="docutils literal notranslate"><span class="pre">caviar</span></code> 不可能被发现；因为没有一项含有高的边缘支撑，所以它们的联合支撑特别地小。引用均匀分布可以得出高频率项目集，其组成部分之间具有低关联性，在最高支撑项目集的集合中占主导优势。</p>
-<p>高频率子集 <span class="math notranslate nohighlight">\(s_j\)</span> 由最频繁的 <span class="math notranslate nohighlight">\(X_j\)</span> 值的 <strong>并集 (disjunction)</strong> 构成。</p>
-<p>!!! note “weiya 注：disjunction”
-参考维基词条，<a class="reference external" href="https://en.wikipedia.org/wiki/Logical_disjunction">Logical disjunction</a> 为逻辑关系词“或”，此处直接翻译为并集。</p>
-<p>采用变量边缘数据密度的积 式（ 14.15 ） 作为参考分布，移除了对在已发现项目集中单个变量的高频值的偏好。这是因为不管单个变量值的频率分布，如果变量中没有关联（完全独立），密度比率 <span class="math notranslate nohighlight">\(g(x)/g_0(x)\)</span> 是均匀的。像 <code class="docutils literal notranslate"><span class="pre">vodka</span></code><span class="math notranslate nohighlight">\(\Rightarrow\)</span><code class="docutils literal notranslate"><span class="pre">caviar</span></code> 的规则会有机会进行合并。然而，怎样将参考分布而不是均匀分布纳入进 Apriori 算法中是不清晰的。正如在 <span class="xref myst">14.2.4 节</span>中解释的那样，给定原始数据集，从积密度 式（ 14.15 ） 中产生样本是直接的。</p>
-<p>选择完参考分布后，并且根据它抽采样本，如 式（ 14.11 ），则得到一个关于二值输出变量 <span class="math notranslate nohighlight">\(Y\in\\{0,1\\}\)</span> 的监督学习问题。目标是利用这些数据去寻找区域</p>
+<p>市场篮子分析 式（ 14.5 ） 和广义公式 式（ 14.16 ） 都隐式地引用均匀概率分布。如果所有的联合数据值 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span> 都是均匀分布的，则寻找比期望更频繁的项目集。这有助于寻找单个边缘组分 <span class="math notranslate nohighlight">\((X_j\in s_j)\)</span> 是频繁的项目集，也就是，下式的值大。</p>
 <div class="math notranslate nohighlight">
 \[
-R=\bigcup_{j\in \mathcal J}(X_j\in s_j)\tag{14.18}
+\frac{1}{N}\sum_{i=1}^NI(x_{ij}\in s_j)\tag{14.17}
 \]</div>
+<p>频繁子集 式（ 14.17 ） 的联合在高支撑的项目集 式（ 14.16 ） 中趋向于比不频繁子集的联合更经常出现。这也就是为什么尽管高关联（lift）的规则 <code class="docutils literal notranslate"><span class="pre">vodka</span></code><span class="math notranslate nohighlight">\(\Rightarrow\)</span><code class="docutils literal notranslate"><span class="pre">caviar</span></code> 不可能被发现；因为没有一项含有高的边缘支撑，所以它们的联合支撑特别地小。引用均匀分布可以得出高频率项目集，其组成部分之间具有低关联性，在最高支撑项目集的集合中占主导优势。</p>
+<p>高频率子集 <span class="math notranslate nohighlight">\(s_j\)</span> 由最频繁的 <span class="math notranslate nohighlight">\(X_j\)</span> 值的 <strong>并集 (disjunction)</strong> 构成。</p>
+<blockquote>
+<div><p>note “weiya 注：disjunction”
+参考维基词条，<a class="reference external" href="https://en.wikipedia.org/wiki/Logical_disjunction">Logical disjunction</a> 为逻辑关系词“或”，此处直接翻译为并集。</p>
+</div></blockquote>
+<p>采用变量边缘数据密度的积 式（ 14.15 ） 作为参考分布，移除了对在已发现项目集中单个变量的高频值的偏好。这是因为不管单个变量值的频率分布，如果变量中没有关联（完全独立），密度比率 <span class="math notranslate nohighlight">\(g(x)/g_0(x)\)</span> 是均匀的。像 <code class="docutils literal notranslate"><span class="pre">vodka</span></code><span class="math notranslate nohighlight">\(\Rightarrow\)</span><code class="docutils literal notranslate"><span class="pre">caviar</span></code> 的规则会有机会进行合并。然而，怎样将参考分布而不是均匀分布纳入进 Apriori 算法中是不清晰的。正如在 <span class="xref myst">14.2.4 节</span>中解释的那样，给定原始数据集，从积密度 式（ 14.15 ） 中产生样本是直接的。</p>
+<p>选择完参考分布后，并且根据它抽采样本，如 式（ 14.11 ），则得到一个关于二值输出变量 <span class="math notranslate nohighlight">\(Y\in\\{0,1\\}\)</span> 的监督学习问题。目标是利用这些数据去寻找区域</p>
+<p><span class="math notranslate nohighlight">\(
+R=\bigcup_{j\in \mathcal J}(X_j\in s_j)\tag{14.18}
+\)</span>$</p>
 <p>使得目标函数 <span class="math notranslate nohighlight">\(\mu(x)=\mathbb{E}(Y\mid x)\)</span> 相对地大。另外，可能希望要求这些区域的数据支撑</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1413,22 +1422,24 @@ T(R)=\int_{x\in R}g(x)dx\tag{14.19}
 \]</div>
 <p>不要太小。</p>
 </div>
-<div class="section" id="id9">
-<h2>监督学习方法的选择<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>区域 式（ 14.18 ） 由联合规则定义。因此在这种情形下学习这些规则的监督学习方法会是最合适的。CART 决策树的终止结点由形式为 式（ 14.18 ） 的规则精确定义。对混合数据 式（ 14.11 ） 应用 CART 会得到决策树，决策树试图在整个数据空间用不相交的区域集合对目标 式（ 14.10 ） 建模。每个区域由形式为式（ 14.18 ） 中的一条规则而定义。这些有较高 <span class="math notranslate nohighlight">\(y\)</span> 平均值
-$<span class="math notranslate nohighlight">\(
+<div class="section" id="id6">
+<h2>（）监督学习方法的选择<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>区域 式（ 14.18 ） 由联合规则定义。因此在这种情形下学习这些规则的监督学习方法会是最合适的。CART 决策树的终止结点由形式为 式（ 14.18 ） 的规则精确定义。对混合数据 式（ 14.11 ） 应用 CART 会得到决策树，决策树试图在整个数据空间用不相交的区域集合对目标 式（ 14.10 ） 建模。每个区域由形式为式（ 14.18 ） 中的一条规则而定义。这些有较高 <span class="math notranslate nohighlight">\(y\)</span> 平均值</p>
+<div class="math notranslate nohighlight">
+\[
 \bar y_t=\text{ave}(y_i\mid x_i\in t)
-\)</span><span class="math notranslate nohighlight">\(
-是高支撑广义项目集 式（ 14.16 ） 的候选者。实际的（数据）支撑由下式给出
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>是高支撑广义项目集 式（ 14.16 ） 的候选者。实际的（数据）支撑由下式给出</p>
+<div class="math notranslate nohighlight">
+\[
 T(R)=\bar y_t\cdot \frac{N_t}{N_t+N_0}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>N_t$ 是由终止结点表示的区域中（混合）观测的个数。通过检查得到的决策树，可能会发现相对高支撑的感兴趣的项目集。这些可以分化出在搜寻高置信度和/或 lift 的广义关联规则中的 antecedent 和 consequent。</p>
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(N_t\)</span> 是由终止结点表示的区域中（混合）观测的个数。通过检查得到的决策树，可能会发现相对高支撑的感兴趣的项目集。这些可以分化出在搜寻高置信度和/或 lift 的广义关联规则中的 antecedent 和 consequent。</p>
 <p>用于这个目的的另外一种自然学习的方法是在<span class="xref myst">第 9.3 节</span>描述的<strong>耐心规则诱导法 (PRIM)</strong>，它也产生了形为 式（ 14.18 ） 的精确规则，但是它是特别为寻找高支撑区域来在其中最大化目标 式（ 14.10 ） 的平均值而设计的，而不是试图用在整个数据空间中建立目标函数的模型。它也控制了在支撑/平均目标值之间权衡。</p>
 <p><a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/94">练习 14.3</a> 提出一个问题，问题产生于任何一种方法从边缘分布的积中生成随机数据的时候。</p>
 </div>
-<div class="section" id="id10">
-<h2>例子：市场篮子分析（继续）<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>（）例子：市场篮子分析（继续）<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>我们在表 14.1 的人口统计数据的基础上说明 PRIM 的用法。</p>
 <p><img alt="" src="../_images/tab14.1.png" /></p>
 <p>从PRIM分析中合并后的高支撑的广义项目集中的三个如下：</p>
@@ -1450,13 +1461,12 @@ T(R)=\bar y_t\cdot \frac{N_t}{N_t+N_0}
 <p>这些特殊的规则中没有太大的惊奇。其中的大部分符合直观。在其他缺少先验信息的情形下，期望之外的结果有更大的可能会进行合并。这些结果缺失说明了广义关联规则可以提供的信息种类，以及说明了规则导出方法的监督学习方法，比如 CART 或 PRIM，可以揭示在它们成分中保持高关联的项目集。</p>
 <p>这些广义关联规则与之前通过 Apriori 算法找出的规则相比怎么样呢？因为 Apriori 过程给出了成千上万条规则，很难去比较它们。然而，可以对一些一般的点进行比较。Apriori 算法是穷举的——它找出所有支撑大于特定值的所有规则。相反地，PRIM 是贪婪算法，并且不保证给出“最优”的规则集。另一方面，Apriori 算法仅仅可以处理虚拟变量，也因此不能找到上面的一些规则。举个例子，因为 <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">of</span> <span class="pre">home</span></code> 是类别型输入，对于每一层有一个虚拟变量，Apriori 不能找到涉及集合</p>
 <div class="math notranslate nohighlight">
-\[
- \text{type of home} \neq \text{apartment}
+\[ \text{type of home} \neq \text{apartment}
 \]</div>
 <p>的规则。为了找到这个集合，我们必须对 <code class="docutils literal notranslate"><span class="pre">apartment</span></code> 和其他 home 的类别变量用虚拟变量编码。一般地对所有潜在的感兴趣的比较进行预先编码是不可行的。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id11"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>)</span></dt>
+<dt class="label" id="id8"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
 <dd><p>Agrawal, R., Mannila, H., Srikant, R., Toivonen, H. and Verkamo, A. I. (1995). Fast discovery of association rules, Advances in Knowledge Discovery and Data Mining, AAAI/MIT Press, Cambridge, MA.</p>
 </dd>
 </dl>
@@ -1485,8 +1495,8 @@ T(R)=\bar y_t\cdot \frac{N_t}{N_t+N_0}
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1503,19 +1513,17 @@ T(R)=\bar y_t\cdot \frac{N_t}{N_t+N_0}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

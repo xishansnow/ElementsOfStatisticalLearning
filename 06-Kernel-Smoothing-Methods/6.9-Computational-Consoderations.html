@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,26 +1133,37 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6.9 计算上的考虑</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.9 计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <p>核和局部回归以及密度估计都是 <strong>基于内存的 (memory-based)</strong> 方法：模型是整个训练数据集，并且在赋值或者预测的时候完成拟合。对于许多实时的应用，这使得这类方法不可行。</p>
 <p>在单个观测点 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合的计算代价为 <span class="math notranslate nohighlight">\(O(N)\)</span> 次 flop，除了过于简单的情形（比如平方核）。通过比较，包含 <span class="math notranslate nohighlight">\(M\)</span> 个基函数的展开式一次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>，一般有 <span class="math notranslate nohighlight">\(M\sim O(\log N)\)</span>。基函数方法至少有 <span class="math notranslate nohighlight">\(O(NM^2+M^3)\)</span>的初始代价。</p>
 <p>核方法的光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 一般 <strong>线下 (off-line)</strong> 确定，举个例子，采用交叉验证，其代价为 <span class="math notranslate nohighlight">\(O(N^2)\)</span> 次 flop。</p>
 <p>局部回归的主流实现采用 <strong>三角化方案 (triangulation schemes)</strong> 来降低代价，如 S-PLUS 和 R 中的 <code class="docutils literal notranslate"><span class="pre">loess</span></code> 函数，以及 <code class="docutils literal notranslate"><span class="pre">locfit</span></code> 过程(Loader,  1999<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)。他们在认真选出的 <span class="math notranslate nohighlight">\(M\)</span> 个点处精确拟合，代价为 <span class="math notranslate nohighlight">\(O(N(M))\)</span>，然后采用 blending 技巧来插值拟合其它点（每次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>）。</p>
-<p>!!! note “weiya 注：triangulation schemes”
+<blockquote>
+<div><p>note “weiya 注：triangulation schemes”
 <a class="reference external" href="https://link.springer.com/book/10.1007/b98858">Loader (1999)</a>介绍道，在 <code class="docutils literal notranslate"><span class="pre">locfit</span></code> 中，参数 evaluation structure <code class="docutils literal notranslate"><span class="pre">ev</span> <span class="pre">=</span> <span class="pre">&quot;phull&quot;</span></code> 表示采取三角化方案，而在<a class="reference external" href="https://cran.r-project.org/web/packages/locfit/locfit.pdf">最新的 R package</a> 中，其 <code class="docutils literal notranslate"><span class="pre">ev</span></code> 可选参数不再包括 <code class="docutils literal notranslate"><span class="pre">phull</span></code>. 或许现在三角化方案不算主流实现？</p>
+</div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1175,8 +1194,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6.8-Mixture-Models-for-Density-Estimation-and-Classification.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1193,19 +1212,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

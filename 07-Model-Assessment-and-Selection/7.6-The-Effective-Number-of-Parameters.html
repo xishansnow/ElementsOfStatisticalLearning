@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,19 +1133,28 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.6 参数的有效个数</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.6 参数的有效个数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>“参数个数”的概念可以推广，特别是推广到在拟合中使用了正则的模型中。假设我们将输出 <span class="math notranslate nohighlight">\(y_1,y_2,\ldots,y_N\)</span> 放进向量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 中，类似地对预测值进行同样操作得到 <span class="math notranslate nohighlight">\(\hat{\mathbf y}\)</span>。于是我们可以将线性拟合模型写成：</p>
 <div class="math notranslate nohighlight">
@@ -1147,8 +1164,7 @@
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 为依赖于输入向量 <span class="math notranslate nohighlight">\(x_i\)</span> 但不依赖于输出 <span class="math notranslate nohighlight">\(y_i\)</span> 的 <span class="math notranslate nohighlight">\(N\times N\)</span> 阶矩阵。线性拟合方法包括在原始特征或在导出基的集合中运用的线性回归，以及采用平方收缩的光滑化方法，比如岭回归和三次光滑样条。则 <strong>有效参数个数 (effective number of parameters)</strong> 定义为：</p>
 <div class="math notranslate nohighlight">
 \[
-\text{df}(\mathbf{S})=\text{trace}(\mathbf{S})    \tag{7.32} 
-\]</div>
+\text{df}(\mathbf{S})=\text{trace}(\mathbf{S})    \tag{7.32} \]</div>
 <p>是 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 对角元之和（也被称作 <strong>有效自由度 (effective degrees-of-freedom)</strong>）。注意到如果 <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> 为投影到由 <span class="math notranslate nohighlight">\(M\)</span> 个特征张开的 <strong>基础集 (basis set)</strong> 上的正交投影矩阵，则 <span class="math notranslate nohighlight">\(\text{trace}(\mathbf{S})=M\)</span>。事实证明 <span class="math notranslate nohighlight">\(trace(\mathbf{S})\)</span> 恰巧是 <span class="math notranslate nohighlight">\(C_p\)</span> 统计量（式 7.26）替换掉 <span class="math notranslate nohighlight">\(d\)</span> 作为参数个数的那个值。</p>
 <p>如果 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是从加性误差模型 <span class="math notranslate nohighlight">\(Y=f(X)+\epsilon\)</span> 中产生的，<span class="math notranslate nohighlight">\(\text{Var}(\epsilon)=\sigma_\epsilon^2\)</span>，则可以证明 <span class="math notranslate nohighlight">\(\sum_{i=1}^N\text{Cov}(\hat y_i,y_i)=\text{trace}(\mathbf{S})\sigma_{\epsilon}^2\)</span>，导出了更一般的定义</p>
 <div class="math notranslate nohighlight">
@@ -1159,8 +1175,7 @@
 <p>对于像神经网络的模型，我们用系数衰减（正则化） <span class="math notranslate nohighlight">\(\alpha\sum_m w_m^2\)</span> 来最小化误差函数 <span class="math notranslate nohighlight">\(R(w)\)</span> ，有效参数个数有如下形式：</p>
 <div class="math notranslate nohighlight">
 \[
-\text{df}(\alpha)=\sum\limits_{i=1}^M\frac{\theta_m}{\theta_m+\alpha} \tag{7.34} 
-\]</div>
+\text{df}(\alpha)=\sum\limits_{i=1}^M\frac{\theta_m}{\theta_m+\alpha} \tag{7.34} \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\theta_m\)</span> 是 Hessian 矩阵 <span class="math notranslate nohighlight">\(\partial^2R(w)/\partial w\partial w^T\)</span> 的特征值。如果我们对解的误差函数做二次近似便可由式（7.32）导出式（7.34）（Bishop，1995<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1192,8 +1207,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.5-Estimates-of-In-Sample-Prediction-Error.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1210,19 +1225,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

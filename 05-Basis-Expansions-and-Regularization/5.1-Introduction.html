@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,48 +1133,69 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>5.1 导言</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>我们已经对回归和分类运用了关于输入特征为线性的模型。线性回归，线性判别分析，逻辑斯蒂回归和分离超平面都依赖于线性模型。关于 <span class="math notranslate nohighlight">\(X\)</span> 的真实的函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 不太可能恰好为线性的。在回归问题中，<span class="math notranslate nohighlight">\(f(X)=\mathbb{E}(Y\mid X)\)</span> 关于 <span class="math notranslate nohighlight">\(X\)</span> 一般不是线性的也不是可加的，但用线性模型来表示 <span class="math notranslate nohighlight">\(f(X)\)</span> 通常是很方便的，而且有时候是必要的近似。方便是因为线性模型是可以很容易地解释，而且是 <span class="math notranslate nohighlight">\(f(X)\)</span> 的一阶泰勒近似。有时候是必要的是因为当 <span class="math notranslate nohighlight">\(N\)</span> 很小 <span class="math notranslate nohighlight">\(p\)</span> 很大时，线性模型可能不需要过拟合就可以达到拟合数据的目的。在分类中也是类似的，一个线性、贝叶斯最优的判别边界表明关于 <span class="math notranslate nohighlight">\(X\)</span> 的 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的一些单调变换是线性的。这必然是一个近似。</p>
-<p>这章中和接下来的章节中我们将要讨论对于 <strong>超线性 (moving beyond linearity)</strong> 的一些流行的方法。这章中核心思想是利用额外的变量来增加或者替换输入 <span class="math notranslate nohighlight">\(X\)</span> 的向量，然后在新得到的输入特征的空间中运用线性模型。</p>
-<p>用 <span class="math notranslate nohighlight">\(h_m(X):\mathbb{R}^p\longmapsto \mathbb{R}\)</span> 来记 <span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 个变换，<span class="math notranslate nohighlight">\(m=1,\ldots, M.\)</span> 然后我们建立模型
-$<span class="math notranslate nohighlight">\(
+<p>我们已经对回归和分类运用了关于输入特征为线性的模型。线性回归，线性判别分析，逻辑斯蒂回归和分离超平面都依赖于线性模型。关于 <span class="math notranslate nohighlight">\(X\)</span> 的真实的函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 不太可能恰好为线性的。在回归问题中，<span class="math notranslate nohighlight">\(f(X)=\mathbb{E}(Y\mid X)\)</span> 关于 <span class="math notranslate nohighlight">\(X\)</span> 一般不是线性的，也不是可加的，但用线性模型来表示 <span class="math notranslate nohighlight">\(f(X)\)</span> 通常是方便的、有时候是必要的近似。方便是因为线性模型是可以很容易地解释，而且 <span class="math notranslate nohighlight">\(f(X)\)</span> 可被视为任意复杂函数的一阶泰勒近似。有时候必要是因为当 <span class="math notranslate nohighlight">\(N\)</span> 很小 <span class="math notranslate nohighlight">\(p\)</span> 很大时，线性模型由于参数少，因而可以不需要过拟合就达到拟合数据的目的。在分类任务中也类似，一个线性的、贝叶斯最优的判别边界表明 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的某些单调变换关于 <span class="math notranslate nohighlight">\(X\)</span> 也是线性的，无疑这也是一种近似。</p>
+<p>本章和接下来各章节中，我们将讨论一些不同于或超越线性模型的流行方法。本章核心是用额外的变量来增强（或替换）输入向量 <span class="math notranslate nohighlight">\(X\)</span> ，然后在新变量的输入特征空间中运用线性模型。</p>
+<p>用 <span class="math notranslate nohighlight">\(h_m(X):\mathbb{R}^p\longmapsto \mathbb{R}\)</span> 表示 <span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 个变换（ 基函数 ），<span class="math notranslate nohighlight">\(m=1,\ldots, M\)</span> 。然后可以将下式建模为 <span class="math notranslate nohighlight">\(X\)</span> 的一个<code class="docutils literal notranslate"><span class="pre">线性基展开（Linear</span> <span class="pre">Basis</span> <span class="pre">Expansion）</span></code>：</p>
+<div class="math notranslate nohighlight">
+\[
 f(X)=\sum\limits_{m=1}^M\beta_mh_m(X)\tag{5.1}
-\)</span><span class="math notranslate nohighlight">\(
-这是关于 \)</span>X<span class="math notranslate nohighlight">\( 的 **线性基展开式 (linear basis expansion)**。这种方式的优美在于一旦确定了基函数 \)</span>h_m$，模型关于这些新变量是线性的，然后就可以像之前一样进行拟合。</p>
-<p>一些简单、运用广泛的 <span class="math notranslate nohighlight">\(h_m\)</span> 例子如下所述：</p>
+\]</div>
+<p>线性基展开式的优雅之处在于：只要基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 被确定了，则模型关于这些基函数产生的新变量整体上是线性的，继而可以像前两章一样进行线性地拟合。</p>
+<p>下面给出了一些简单、常用的 <span class="math notranslate nohighlight">\(h_m\)</span> ：</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_m,m=1,\ldots,p\)</span> 回到了最初的线性模型</p></li>
-<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_j^2\)</span> 或者 <span class="math notranslate nohighlight">\(h_m(X)=X_jX_k\)</span> 允许增加输入中的多项式项来达到高阶的泰勒展开。然而，注意到变量的个数随着多项式的度指数增长。含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的二次模型要求 <span class="math notranslate nohighlight">\(O(p^2)\)</span> 的平方项和交叉项，或者更一般地，对于阶数为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式需要 <span class="math notranslate nohighlight">\(O(p^d)\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(h_m(x)=\log(X_j),\sqrt{X_j},\ldots \)</span> 允许单输入的其它非线性变换。更一般地，可以使用含有其他输入变量的类似的函数，比如说  <span class="math notranslate nohighlight">\(h_m(X)=\Vert X\Vert\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(h_m(X)=I(L_m\le X_k\le U_m)\)</span>，关于 <span class="math notranslate nohighlight">\(X_k\)</span> 区域的示性函数。通过将 <span class="math notranslate nohighlight">\(X_k\)</span> 的值域分成 <span class="math notranslate nohighlight">\(M_k\)</span> 个这样的非重叠的区域，结果得到一个关于 <span class="math notranslate nohighlight">\(X_k\)</span> 分段常值的分布模型。</p></li>
+<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_m,m=1,\ldots,p\)</span></p></li>
 </ul>
-<p>有时候手边的问题需要特殊的基函数 <span class="math notranslate nohighlight">\(h_m\)</span>，比如对数或者幂函数。然而，我们经常运用基展开来更加灵活地表示 <span class="math notranslate nohighlight">\(f(X)\)</span>。多项式是后者的一个例子，尽管它们会被全局的特性所限制——在某一区间内调整系数以达到某种函数形式会造成函数在远的区域内剧烈地振荡。在这章中，我们考虑更加实用的 <strong>分段多项式 (piecewise-polynimials)</strong> 族和 <strong>样条 (splines)</strong>，它们允许局部的多项式表示。我们也考虑小波基，这在信号和图像处理中特别有用。这些方法产生了一个包含数量为 <span class="math notranslate nohighlight">\(\vert\mathcal D\vert\)</span> 的基函数的字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span>，数量远远超出我们可以拟合的数据。除了字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span>，我们需要一种方式来控制我们模型（从字典中选择基函数）的复杂度。通常有三种方式：</p>
-<ul>
-<li><p>限制方法，事先 (before-hand) 确定限制函数的类别。可加性便是一个例子，假设我们的模型有如下形式
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>这其实就是原来的输入向量，只是换了一种表达形式。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_j^2\)</span> 或者 <span class="math notranslate nohighlight">\(h_m(X)=X_jX_k\)</span></p></li>
+</ul>
+<p>增加输入中的多项式项来达到高阶泰勒展开的目的。注意到变量的个数以多项式程度呈指数增长；含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的二次模型要求 <span class="math notranslate nohighlight">\(O(p^2)\)</span> 的平方项和交叉项；或者更一般地，对于阶数为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式需要 <span class="math notranslate nohighlight">\(O(p^d)\)</span> 个变量</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_m(x)=\log(X_j),\sqrt{X_j},\ldots\)</span></p></li>
+</ul>
+<p>允许单输入的其它非线性变换。更一般地，可以使用含有其他输入变量的类似函数，比如说  <span class="math notranslate nohighlight">\(h_m(X)=\Vert X\Vert\)</span> 。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_m(X)=I(L_m\le X_k\le U_m)\)</span></p></li>
+</ul>
+<p>关于 <span class="math notranslate nohighlight">\(X_k\)</span> 区域的指示性函数。将 <span class="math notranslate nohighlight">\(X_k\)</span> 的值域分成 <span class="math notranslate nohighlight">\(M_k\)</span> 个非重叠区域，结果得到一个关于 <span class="math notranslate nohighlight">\(X_k\)</span> 分段常数的分布模型。</p>
+<p>有时候，手边的问题要求我们采用特殊的基函数 <span class="math notranslate nohighlight">\(h_m\)</span>，比如对数或者幂函数；但更多情况下，我们希望通过基展开来增加 <span class="math notranslate nohighlight">\(f(X)\)</span> 的灵活性。多项式回归就是后者的一个典型例子，尽管受到全局性质的限制（ 多项式回归在调整系数以实现某区域函数形式时，可能会导致在其他区域的疯狂扰动 ）。</p>
+<p>本章中，我们会考虑可能比多项式回归更实用的 <strong>分段多项式 (piecewise-polynimials)</strong> 族和 <strong>样条 (splines)</strong> ，这两种方法允许局部多项式表示，从而规避的全局扰动。我们还会考虑小波基，这在信号和图像处理任务中特别有用。这几类方法都会产生包含 <span class="math notranslate nohighlight">\(\vert\mathcal D\vert\)</span> 个基函数的基函数字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> ，其数量有可能远远超出能够参与拟合的数据。</p>
+<p>除了字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> 外，我们还需要一种方式来控制模型的复杂度（ 如从基函数字典中合理地选择基函数 ）。通常有三种方式：</p>
+<p><strong>（ 1 ）限制方法</strong>，事先确定限制基函数的类别。例如，可加性就是一个例子，假设模型有如下形式：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
   f(X)&amp;=\sum\limits_{j=1}^pf_j(X_j)\\
   &amp;=\sum\limits_{j=1}^p\sum\limits_{m=1}^{M_j}\beta_{jm}h_{jm}(X_j)\tag{5.2}
-  \end{align*}\]</div>
-<p>$<span class="math notranslate nohighlight">\(
-该模型的大小通过每个分量 \)</span>f_j<span class="math notranslate nohighlight">\( 中的基函数的个数 \)</span>M_j$ 来决定。</p>
-</li>
-<li><p>选择方法，自适应地扫描该词典并且只将对模型的拟合有显著性作用的基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 包括进去。在第三章中讨论的变量选择技巧是很有用的。像 CART，MARS 和 boosting 这些逐步贪婪的方式也划为这一类。</p></li>
-<li><p>正则化方法，我们使用整个字典，但是对系数作限制。岭回归是正则化方式一个很简单的例子，而 lasso 既是正则化方法也是选择方法。这章我们将讨论这些内容以及更加复杂的正则化方法。</p></li>
-</ul>
+\end{align*}  
+\end{split}\]</div>
+<p>则该模型的大小（复杂度）由 <span class="math notranslate nohighlight">\(p\)</span> 个加性组份函数 <span class="math notranslate nohighlight">\(f_j\)</span> 中的基函数个数 <span class="math notranslate nohighlight">\(M_j\)</span> 决定。</p>
+<p><strong>（ 2 ）选择方法</strong>，自适应地扫描词典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> 并保留对模型拟合有显著性作用的基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 。第三章中讨论的变量选择技巧是很有用的。另外，类似 <code class="docutils literal notranslate"><span class="pre">CART</span></code>，<code class="docutils literal notranslate"><span class="pre">MARS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">boosting</span></code> 等逐步贪婪方法可以划为这一类。</p>
+<p><strong>（ 3 ）正则化方法</strong>，使用整个字典，但是对系数作出某种约束。<code class="docutils literal notranslate"><span class="pre">岭回归</span></code>是一种比较简单的正则化例子；<code class="docutils literal notranslate"><span class="pre">套索（</span> <span class="pre">Lasso</span> <span class="pre">）</span></code> 则既属于正则化方法，也属于选择方法。</p>
+<p>本章将讨论上述内容，以及更加复杂的正则化方法。</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1191,8 +1220,8 @@ $$</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="5.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1209,19 +1238,17 @@ $$</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

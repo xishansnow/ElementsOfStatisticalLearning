@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,23 +1133,34 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>4.1 导言</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>4.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>这章我们重新回到分类问题，并且集中讨论分类的线性方法。因为我们的预测变量 <span class="math notranslate nohighlight">\(G(x)\)</span> 是在离散集 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 中取值，所以我们总是可以根据类别把输入空间分成一些区域的集合。在<span class="xref myst">第 2 章</span>我们看到这些区域的边界会随着预测函数的不同而变得粗糙或者光滑。这个过程的一个很重要的类是 <strong>线性判别边界 (decision boundaries)</strong>；这也是我们说的分类的线性方法。</p>
-<p>可以通过许多不同的方式找到线性判别边界。在第二章中，我们根据类别指示变量拟合线性回归模型，并将观测点分到拟合值最大的类别。假设有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，为了方便记为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>，第 <span class="math notranslate nohighlight">\(k\)</span> 个响应的指示变量拟合的线性模型为 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat\beta_{k0}+\hat\beta_k^Tx\)</span>。第 <span class="math notranslate nohighlight">\(k\)</span> 类和第 <span class="math notranslate nohighlight">\(l\)</span> 类的判别边界是满足 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat f_\ell(x)\)</span> 的点的集合，也就是集合 <span class="math notranslate nohighlight">\(\\{x:(\hat\beta_{k0}-\hat\beta_{\ell 0})+(\hat\beta_k-\hat\beta_\ell)^Tx=0\\}\)</span>，这是一个仿射集或者超平面。</p>
-<p>!!! note “weiya 注：作者脚注”
-严格来说，超平面需要通过原点，而仿射集不需要。我们有时忽略它们之间的区别并且一般称超平面。</p>
+<p>这章我们重新回到分类问题，并且集中讨论分类的线性方法。因为我们的预测变量 <span class="math notranslate nohighlight">\(G(x)\)</span> 是在离散集 <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 中取值，所以我们总是可以根据类别把输入空间分成一些区域的集合。在<span class="xref myst">第 2 章</span>中，我们看到这些区域之间的边界会随着预测函数不同而变得粗糙或者光滑。其中有一种很重要的边界形式为 <strong>线性判别边界 (decision boundaries)</strong> 。</p>
+<p>可以通过许多不同方式找到线性判别边界。在第二章中，我们根据类别指示变量拟合线性回归模型，并将观测点分到拟合值最大的类别。假设有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，为了方便分别标记为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>。则第 <span class="math notranslate nohighlight">\(k\)</span> 个响应对应的指示变量拟合的线性模型为 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat\beta_{k0}+\hat\beta_k^Tx\)</span>。第 <span class="math notranslate nohighlight">\(k\)</span> 类和第 <span class="math notranslate nohighlight">\(l\)</span> 类之间的判别边界应当满足 <span class="math notranslate nohighlight">\(\hat f_k(x)=\hat f_\ell(x)\)</span> ，或者说边界上所有的点均具备上述等值特性，形式化为集合 <span class="math notranslate nohighlight">\(\{x:(\hat\beta_{k0}-\hat\beta_{\ell 0})+(\hat\beta_k-\hat\beta_\ell)^Tx=0\}\)</span>，可以看出这是一个仿射集或者超平面。</p>
+<blockquote>
+<div><p><strong>注解：</strong>    严格来说，超平面需要通过原点，而仿射集不需要。我们有时忽略它们之间的区别并且统称为超平面。</p>
+</div></blockquote>
 <p>因为对于任意两个类别这也成立，输入空间被分块超平面判别边界分成了若干个类别区域。回归方法对每个类别建立 <strong>判别函数 (discriminant functions)</strong> <span class="math notranslate nohighlight">\(\delta_k(x)\)</span>，然后将 <span class="math notranslate nohighlight">\(x\)</span> 分到取最大值的判别函数所在类别中。建立后验概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span> 也是属于这种类别。说的更清楚点，只要 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 或者 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span> 关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的，则判别边界将也是线性的。</p>
 <p>实际上，我们仅要求 <span class="math notranslate nohighlight">\(\delta_k\)</span> 或者 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span> 的单调变换关于判别边界要是线性的。举个例子，如果这里有两个类，一个关于后验概率很流行的模型是</p>
 <div class="math notranslate nohighlight">
@@ -1160,8 +1179,10 @@
 <p>判别边界是 <strong>log-odds</strong> 等于 <span class="math notranslate nohighlight">\(0\)</span> 的点的集合，这是由 <span class="math notranslate nohighlight">\(\\{x\mid\beta_0+\beta^Tx=0\\}\)</span> 定义的超平面。我们讨论两种非常流行但是不同的方法，最后都得到线性的 log-odds 或者 logits：线性判别分析和线性 logistic 回归。尽管它们的推导不相同，但是他们关键的区别在于用线性函数拟合训练数据的方式。</p>
 <p>一种更直接的方式是在类别之间显性地建立线性边界。对于在 <span class="math notranslate nohighlight">\(p\)</span> 维输入空间的两个类别的问题，这意味着将判别边界建模为超平面——换句话说，一个 <strong>法向量 (normal vector)</strong> 和一个 <strong>分隔点 (cut-point)</strong>。我们将看到两种方法都是显式寻找“分隔超平面”。第一个是著名的 Rosenblatt (1958)<a class="footnote-reference brackets" href="#id4" id="id2">1</a> 的 <strong>感知器 (perceptron)</strong> 模型，以及一个从训练数据中寻找分离超平面的算法（如果存在超平面的话）。第二个方法要归功于 Vapnik(1996)<a class="footnote-reference brackets" href="#id5" id="id3">2</a>，如果超平面存在的话寻找一个<strong>最优分离超平面</strong>，不存在的话则寻找一个超平面使得训练数据中的重叠最小。我们这里处理可分的情形，不可分的情形将推到<span class="xref myst">第 12 章</span>讨论。</p>
 <p>尽管整个章节都在谈论线性判别边界，但对于一般情形还有相当大的讨论余地。</p>
-<p>!!! note “weiya 注：翻译”
+<blockquote>
+<div><p>note “weiya 注：翻译”
 此处原文为，“While this entire chapter is devoted to linear decision boundaries, there is considerable scope for generalization.”</p>
+</div></blockquote>
 <p>举个例子，我们可以对变量集 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 加上他们的交叉积 <span class="math notranslate nohighlight">\(X_1^2,X_2^2,\ldots,X_1X_2,\ldots,\)</span> （因此加入了 <span class="math notranslate nohighlight">\(p(p+1)/2\)</span> 个额外的变量）进行推广。当增广空间的线性函数投影到原空间的二次函数，则线性判别边界转换为二次判别边界。图 4.1 解释了这个想法。数据集是一样的，左边是在二维空间中用线性判别函数，而右图在增广的五维空间中用线性判别函数。这种方式可以跟任意基变换 <span class="math notranslate nohighlight">\(h(X)\)</span> 一起使用，其中 <span class="math notranslate nohighlight">\(h:\mathbb{R}^p\rightarrow \mathbb{R}^q,q &gt; p\)</span>，这将在后面章节中讨论。</p>
 <p><img alt="" src="../_images/fig4.1.png" /></p>
 <blockquote>
@@ -1200,8 +1221,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="4.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1218,19 +1239,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

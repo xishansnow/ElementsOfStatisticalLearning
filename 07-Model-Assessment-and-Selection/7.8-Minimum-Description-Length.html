@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,19 +1133,28 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.8 最小描述长度</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.8 最小描述长度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>**最小描述长度 (MDL) **方法给出与 BIC 形式上等价的选择准则，但是它是从最优编码角度出发的。我们首先回忆数据压缩的编码理论，接着将其应用到模型选择中。</p>
 <p>我们将数据 <span class="math notranslate nohighlight">\(z\)</span> 看成是想要编码并且发给其他人（接受者）的信息。我们将模型看成是对数据编码的一种方式，然后选择最简模型，也就是传输的最短编码。</p>
@@ -1160,8 +1177,7 @@
 <p>现在我们将这个问题的结果应用到模型选择。我们有参数为 <span class="math notranslate nohighlight">\(\theta\)</span> 的模型 <span class="math notranslate nohighlight">\(M\)</span>，以及包含输入和输出的数据 <span class="math notranslate nohighlight">\(\mathbf{Z=(X,y)}\)</span>。令在模型条件下的输出的（条件）概率为 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mathbf y\mid\theta,M,\mathbf X)\)</span>，假设接受者知道所有的输入，而且我们希望传送输出值。传送输出要求的信息长度为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{length} = -\log \mathrm{Pr}(\mathbf y\mid \theta,M,\mathbf X)-\log \mathrm{Pr}(\theta\mid M)\tag{7.44} 
-\]</div>
+\mathrm{length} = -\log \mathrm{Pr}(\mathbf y\mid \theta,M,\mathbf X)-\log \mathrm{Pr}(\theta\mid M)\tag{7.44} \]</div>
 <p>这是在给定输入的情况下目标值的对数似然。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1172,11 +1188,12 @@
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(y\)</span> 和 <span class="math notranslate nohighlight">\(\theta\)</span> 是目标值，而 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 都是输入。</p>
 </div>
-<p>第二项是传递模型参数 <span class="math notranslate nohighlight">\(\theta\)</span> 的平均编码长度，而第一项是传递模型与真实目标值之间差异的平均编码长度。举个例子假设我们有单目标 <span class="math notranslate nohighlight">\(y\sim N(\theta,\sigma^2)\)</span>，参数为 <span class="math notranslate nohighlight">\(\theta\sim N(0,1)\)</span>，并且没有输入（为了简单）。则模型长度为
-$<span class="math notranslate nohighlight">\(
+<p>第二项是传递模型参数 <span class="math notranslate nohighlight">\(\theta\)</span> 的平均编码长度，而第一项是传递模型与真实目标值之间差异的平均编码长度。举个例子假设我们有单目标 <span class="math notranslate nohighlight">\(y\sim N(\theta,\sigma^2)\)</span>，参数为 <span class="math notranslate nohighlight">\(\theta\sim N(0,1)\)</span>，并且没有输入（为了简单）。则模型长度为</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{length} = constant + \log\sigma + \frac{(y-\theta)^2}{2\sigma^2} + \frac{\theta^2}{2}\tag{7.45}
-\)</span><span class="math notranslate nohighlight">\(
-注意到 \)</span>\sigma<span class="math notranslate nohighlight">\( 越小，平均信息长度越短，因为 \)</span>y<span class="math notranslate nohighlight">\( 更集中在 \)</span>\theta$ 附近。</p>
+\]</div>
+<p>注意到 <span class="math notranslate nohighlight">\(\sigma\)</span> 越小，平均信息长度越短，因为 <span class="math notranslate nohighlight">\(y\)</span> 更集中在 <span class="math notranslate nohighlight">\(\theta\)</span> 附近。</p>
 <p>MDL 准则说我们应该选择最小化公式（7.44） 的模型。我们将公式（7.44）看成（负）对数后验分布，因此最小化描述长度等价于最大化后验概率。因此，作为近似对数后验概率导出的 BIC 准则，也可以看成是通过最小描述长度来（近似）模型选择的工具。</p>
 <p>注意到我们忽略随机变量 <span class="math notranslate nohighlight">\(z\)</span> 编码的精确性。我们不可能使用有限的编码长度对连续变量进行精确地编码。然而，如果我们对编码 <span class="math notranslate nohighlight">\(z\)</span> 有容忍度 <span class="math notranslate nohighlight">\(\delta z\)</span>，需要的信息长度是在区间 <span class="math notranslate nohighlight">\([z,z+\delta z]\)</span> 中概率的对数，如果 <span class="math notranslate nohighlight">\(\delta z\)</span> 很小，可以用 <span class="math notranslate nohighlight">\(\delta z\mathrm{Pr}(z)\)</span> 来近似。因为 <span class="math notranslate nohighlight">\(\log\delta z\mathrm{Pr}(z)=\mathrm{log}\delta z + \mathrm{log}\;\mathrm{Pr}(z)\)</span>，这意味着我们可以仅仅忽略掉常数 <span class="math notranslate nohighlight">\(\mathrm{log}\;\delta z\)</span>，并且使用 <span class="math notranslate nohighlight">\(\mathrm{log\; \Pr}(z)\)</span> 来作为我们信息长度的衡量，就像我们上面做的那样。</p>
 <p>用于模型选择的 MDL 的上述观点表明我们应该选择后验概率达到最大的模型。然而，许多贝叶斯学家倾向于通过从后验分布中采样来做推断。</p>
@@ -1204,8 +1221,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.7-The-Bayesian-Approach-and-BIC.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1222,19 +1239,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lasso">
-   应用 lasso 的方法到蛋白质质谱
+   （）应用 lasso 的方法到蛋白质质谱
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fused-lasso">
-   对于函数型数据的 Fused Lasso
+   （）对于函数型数据的 Fused Lasso
   </a>
  </li>
 </ul>
@@ -1150,41 +1158,80 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>18.4 L_1 正则的线性分类器</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lasso">
+   （）应用 lasso 的方法到蛋白质质谱
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fused-lasso">
+   （）对于函数型数据的 Fused Lasso
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="l-1">
 <h1>18.4 <span class="math notranslate nohighlight">\(L_1\)</span> 正则的线性分类器<a class="headerlink" href="#l-1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p><span class="xref myst">18.3 节</span>的方法使用 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚来对参数进行正则化，正如在岭回归中一样。所有的估计参数都是非零的，因此没有进行特征选择。在这一节我们讨论采用 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚的正则，并因此进行自动的特征选择。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 特征选择意味着选择变量（特征），在 <span class="math notranslate nohighlight">\(L_2\)</span> 正则化中，没有参数的系数为 <span class="math notranslate nohighlight">\(0\)</span>，也就是没有剔除任何参数，所以说没有用到特征选择；而在 <span class="math notranslate nohighlight">\(L_1\)</span> 正则中，存在参数的系数为 <span class="math notranslate nohighlight">\(0\)</span>，也就是会对特征进行选择。换句话说，特征选择的效果就是取部分的特征，于是那部分的特征所对应的系数为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
+</div></blockquote>
 <p>回忆 <span class="xref myst">3.4.2 节</span>的 lasso，</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta}{\min}\frac{1}{2}\sum\limits_{i=1}^N\left(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j\right)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\tag{18.18}
 \]</div>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-	\hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}
-	\)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\hat{\beta}^{lasso}=\underset{\beta}{\arg\min}\Big\{\sum\limits_{i=1}^N(y_i-\beta_0-\sum\limits_{j=1}^px_{ij}\beta_j)^2+\lambda\sum\limits_{j=1}^p\vert\beta_j\vert\Big\}\tag{3.52}
+	
+\]</div>
 <p>我们写成了 式（ 3.52 ） 的拉格朗日形式。正如这里讨论的，使用充分大的调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，使用 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚使得部分的解参数 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 恰恰为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
 <p>在 <span class="xref myst">3.8.1 节</span>我们已经讨论了 LARS 算法，这是个计算所有 <span class="math notranslate nohighlight">\(\lambda\)</span> 的 lasso 解的有效过程。当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时（和本章一样），随着 <span class="math notranslate nohighlight">\(\lambda\)</span> 趋于 <span class="math notranslate nohighlight">\(0\)</span>，lasso 精确地拟合了训练数据。事实上，通过凸对偶，可以证明当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，对于所有 <span class="math notranslate nohighlight">\(\lambda\)</span>，非零参数的个数至多为 <span class="math notranslate nohighlight">\(N\)</span>（举个例子，Rosset and Zhu, 2007<a class="footnote-reference brackets" href="#id12" id="id1">1</a>）。因此 lasso 提供了特征选择的形式。</p>
 <p>Lasso 回归可以通过对输出编码为 <span class="math notranslate nohighlight">\(\pm 1\)</span> 来应用到两类别分类问题中，并且对预测变量加上一个截距（通常为 <span class="math notranslate nohighlight">\(0\)</span>）。对于多余两个的类别，有多种可能的方式，包括在 <span class="xref myst">18.3.3 节</span>讨论的 OVA 和 OVO 方法。我们在 <span class="xref myst">18.3 节</span>中对癌症数据应用 OVA 方法。结果显示在表 18.1 的第 4 行中。它的效果是最好的。</p>
 <p>分类问题的更自然的方式是使用 lasso 惩罚来正则化逻辑斯蒂回归。文献中已经提出一些实现方法，包括类似 LARS（Park and Hastie，2007<a class="footnote-reference brackets" href="#id13" id="id2">2</a>）的路径算法。因为路径是分段光滑但是是非线性的，精确的算法比 LARS 算法更慢，并且当 <span class="math notranslate nohighlight">\(p\)</span> 很大时不是很适用。</p>
 <p>Friedman et al. (2010)<a class="footnote-reference brackets" href="#id14" id="id3">3</a> 提出了用于拟合 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚的逻辑斯蒂和多项式回归模型的非常快速的算法。他们应用 <span class="xref myst">18.3.2 节</span>中 式（ 18.10 ） 中的对称多项式逻辑斯蒂回归模型，并且最大化带惩罚的对数似然</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-	\mathrm{Pr}(G=k\mid X=x)=\frac{\exp(\beta_{k0}+x^T\beta_k)}{\sum_{\ell=1}^K\exp(\beta_{\ell0}+x^T\beta_\ell)}\tag{18.10}
-	\)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\mathrm{Pr}(G=k\mid X=x)=\frac{\exp(\beta_{k0}+x^T\beta_k)}{\sum_{\ell=1}^K\exp(\beta_{\ell0}+x^T\beta_\ell)}\tag{18.10}
+	
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 \underset{\{\beta_{0k},\beta_k\in R^p\}_1^K}{\max}\Big[\sum\limits_{i=1}^N\log\;\mathrm{Pr}(g_i\mid x_i)-\lambda\sum\limits_{k=1}^K\sum\limits_{j=1}^p\vert\beta_{kj}\vert\Big]\tag{18.19}
 \]</div>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-	\underset{\{\beta_{0k},\beta_k\}_1^K}{\max}\left[\sum\limits_{i=1}^N\log\;\mathrm{Pr}(g_i\mid x_i)-\frac{\lambda}{2}\sum\limits_{k=1}^K\Vert\beta_k\Vert\right]_2^2\tag{18.11}
-	\)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\underset{\{\beta_{0k},\beta_k\}_1^K}{\max}\left[\sum\limits_{i=1}^N\log\;\mathrm{Pr}(g_i\mid x_i)-\frac{\lambda}{2}\sum\limits_{k=1}^K\Vert\beta_k\Vert\right]_2^2\tag{18.11}
+	
+\]</div>
 <p>这与式子 式（ 18.11 ） 相对应。这个算法通过 <strong>坐标轮换 (cyclical coordinate descent)</strong>（<span class="xref myst">3.8.6 节</span>）计算出了在预先选择的 <span class="math notranslate nohighlight">\(\lambda\)</span> 序列上的精确解，并且研究了 <span class="math notranslate nohighlight">\(p &gt; &gt; N\)</span> 时解是稀疏的事实，以及 <span class="math notranslate nohighlight">\(\lambda\)</span> 邻域的解趋向于非常相似的特点。这个方法用在表 18.1 的第 7 行中，通过交叉验证来选取全局调整参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。它的表现与最优方法很相似，除了这里自动特征选择一起选择了 <span class="math notranslate nohighlight">\(269\)</span> 个基因。类似的方法也用在了 Genkin et. al (2007)<a class="footnote-reference brackets" href="#id15" id="id4">5</a>；尽管他们从贝叶斯角度提出模型，但事实上他们计算 <strong>后验的众数 (posterior mode)</strong>，解决了惩罚的最大似然问题。</p>
 <p><img alt="" src="../_images/fig18.5.png" /></p>
 <blockquote>
@@ -1206,7 +1253,7 @@ $<span class="math notranslate nohighlight">\(
 <p>图 18.5 展示了在两类别白血病数据上 (Golub et al., 1999<a class="footnote-reference brackets" href="#id17" id="id6">9</a>) lasso 和弹性网的系数路径。在 38 个样本上有 7129 个基因表达测量值，其中 27 个在类 ALL (急性淋巴细胞白血病) 中，11 个在类 AML (急性髓性白血病) 中。还有一个有 34 个样本的测试集 <span class="math notranslate nohighlight">\((20, 14)\)</span>。因为数据是线性可分的，则在 <span class="math notranslate nohighlight">\(\lambda=0\)</span> 处解没有定义（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/159">练习 18.11</a>），并且在很小的 <span class="math notranslate nohighlight">\(\lambda\)</span> 处有退化。左图中有 19 个非零系数，而右图有 39 个。图 18.6（左图）显示了在训练和测试数据上 lasso 逻辑斯蒂回归的误分类误差，以及在训练数据上 <span class="math notranslate nohighlight">\(10\)</span> 折交叉验证。右图采用二项偏差来衡量误差，并且更加光滑。即使单个曲线相对光滑（如，图 7.1），越小的样本大小会导致曲线中采样方差相对较大。这些图都表明 <span class="math notranslate nohighlight">\(\lambda\downarrow 0\)</span> 的极限解是足够的，在测试集上得到 <span class="math notranslate nohighlight">\(3/34\)</span> 的误分类误差。弹性网的对应图像定性上很像，但没有显示出来。</p>
 <p>对于 <span class="math notranslate nohighlight">\(p &gt; &gt; N\)</span>，系数的极限对于所有的正则化逻辑斯蒂回归模型都是发散的，所以在实际的软件实现中，会显式地或隐式地设定最小的 <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span>。然而，<strong>重标准化 (renormalized)</strong> 的系数会收敛，并且这些极限解可以看成是线性最优分离超平面 (SVM) 一个有趣的替代解。当 <span class="math notranslate nohighlight">\(\alpha=0\)</span> 时，解的极限与 SVM 重合（见<span class="xref myst">18.3.2 节</span>的最后），但是会选择所有的 7129 个基因。当 <span class="math notranslate nohighlight">\(\alpha=1\)</span> 时，解的极限与 <span class="math notranslate nohighlight">\(L_1\)</span> 分类超平面重合（Rosset et al., 2004a），并且至多包含 38 个基因。当 <span class="math notranslate nohighlight">\(\alpha\)</span> 从 <span class="math notranslate nohighlight">\(1\)</span> 递减，弹性网的解或包含更多分离超平面中的基因。</p>
 <div class="section" id="lasso">
-<h2>应用 lasso 的方法到蛋白质质谱<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
+<h2>（）应用 lasso 的方法到蛋白质质谱<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
 <p>蛋白质质谱已经成为分析血液中蛋白质的流行手段，并且可以用来诊断疾病或者理解潜在的过程。</p>
 <p>对于每个血清样本 <span class="math notranslate nohighlight">\(i\)</span>，我们观察许多个 <strong>时间长度 (time of flight)</strong> 为 <span class="math notranslate nohighlight">\(t_j\)</span> 时的强度 <span class="math notranslate nohighlight">\(x_{ij}\)</span>。这个强度与在机器的一次循环操作中从发射器到检测器所经历的大概时间 <span class="math notranslate nohighlight">\(t_j\)</span> 内观察到的粒子个数有关。时间长度与血液中的组分蛋白的 mass over charge 比例 (<span class="math notranslate nohighlight">\(m/z\)</span>) 有已知的关系。因此质谱中在特定时间 <span class="math notranslate nohighlight">\(t_j\)</span> 的波峰的识别告诉我们存在对应 mass 和 charge 的某个蛋白质。蛋白质的识别可以接着通过其他方式确定。</p>
 <p>图 18.7 显示了取自 Adam et al. (2003)<a class="footnote-reference brackets" href="#id18" id="id7">10</a> 的一个例子。它显示了正常人和前列腺癌患者的平均光谱。</p>
@@ -1220,10 +1267,12 @@ $<span class="math notranslate nohighlight">\(
 <p>对波峰应用 lasso 的预测结果展示在表 18.2 的最后一行中：它确实表现很好，但是没有原始波峰上的 lasso 一样好。然而，这个拟合模型对生物学家更合适，因为得到了 35 个波峰的位置，这可以用于后续研究。另一方面，结果表明在质谱的波峰间可能有有用的判别信息，并且表中第 (2) 行的 lasso 方法得到的位置也值得进一步检验。</p>
 </div>
 <div class="section" id="fused-lasso">
-<h2>对于函数型数据的 Fused Lasso<a class="headerlink" href="#fused-lasso" title="Permalink to this headline">¶</a></h2>
+<h2>（）对于函数型数据的 Fused Lasso<a class="headerlink" href="#fused-lasso" title="Permalink to this headline">¶</a></h2>
 <p>在上一个例子中，特征有一个自然的顺序，这个顺序是由 mass-to-charge 比率 <span class="math notranslate nohighlight">\(m/z\)</span> 决定的。更一般地，我们可能有函数形特征 <span class="math notranslate nohighlight">\(x_i(t)\)</span>，它们根据某些指标变量 <span class="math notranslate nohighlight">\(t\)</span> 进行排序。我们已经讨论了探索这个结构的一些方法。</p>
-<p>!!! note “weiya 注: 函数型数据 (functional data)”
+<blockquote>
+<div><p>note “weiya 注: 函数型数据 (functional data)”
 函数型数据最明显的特征：</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 定量
 - 频率
 - 相似性
@@ -1315,8 +1364,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="18.3-Linear-Classifiers-with-Quadratic-Regularization.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1333,19 +1382,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

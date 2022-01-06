@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2.5 高维问题的局部方法</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1153,13 +1171,17 @@ d(p,N)=(1-(\frac{1}{2})^{1/N})^{1/p}\tag{2.24}
 <div><p>我们可以这样得到 式（ 2.24 ） 式：
 将数据点与原点的距离看成随机变量<span class="math notranslate nohighlight">\(X\)</span>，因为数据点均匀分布，则 <span class="math notranslate nohighlight">\(X\)</span> 的分布函数为
 $<span class="math notranslate nohighlight">\(
-   F(X &lt; x)=x^p, \; x\in [0,1]
-   \)</span><span class="math notranslate nohighlight">\(
-   则最近距离为次序统计量\)</span>X_{(1)}<span class="math notranslate nohighlight">\(，其分布函数为
-\)</span><span class="math notranslate nohighlight">\(
-   F_1(x)=1-(1-F(x))^N
-   \)</span><span class="math notranslate nohighlight">\(
-   最近距离的中位数满足 \)</span>F_1(d(p,N))=\frac{1}{2}$，于是可以得到 式（ 2.24 ） 式。</p>
+F(X &lt; x)=x^p, \; x\in [0,1]
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>则最近距离为次序统计量<span class="math notranslate nohighlight">\(X_{(1)}\)</span>，其分布函数为
+$<span class="math notranslate nohighlight">\(
+F_1(x)=1-(1-F(x))^N
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>最近距离的中位数满足 <span class="math notranslate nohighlight">\(F_1(d(p,N))=\frac{1}{2}\)</span>，于是可以得到 式（ 2.24 ） 式。</p>
 </div></blockquote>
 <p>距离原点最近的数据点的距离的均值表达式更加复杂。当 <span class="math notranslate nohighlight">\(N=500,p=10,d(p,N)\approx 0.52\)</span>，比到边界的距离的一半还要大。因此大部分的数据点离样本空间的边界比其他任何的数据点更近。这里产生问题的原因是对于训练样本中靠近的边的预测更加困难。一定要从样本点的邻域外推而不是在中间插入。</p>
 <p>另外一个证明这个灾难是采样密度是跟 <span class="math notranslate nohighlight">\(N^{1/p}\)</span> 成比例，其中 <span class="math notranslate nohighlight">\(p\)</span> 为输入空间的维数，<span class="math notranslate nohighlight">\(N\)</span> 为样本的规模。因此，如果 <span class="math notranslate nohighlight">\(N_1=100\)</span> 表示对于单输入问题的大密度采样，然后 <span class="math notranslate nohighlight">\(N_{10}=100^{10}\)</span> 是 <span class="math notranslate nohighlight">\(10\)</span> 个输入时采样密度同上面相同时所需要的样本规模大小。因此在高维空间中所有可行的训练样本在输入空间中很稀少。</p>
@@ -1220,13 +1242,17 @@ Y = X^T\beta + \varepsilon\tag{2.26}
 <blockquote>
 <div><p>对于 1NN，
 $<span class="math notranslate nohighlight">\(
-   \mathrm{EPE}(x_0) = \sigma^2 + \mathrm{Var}_{\mathcal T}(\hat{y}_0)+\mathrm{Bias}^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
-   \)</span><span class="math notranslate nohighlight">\(
-   而对于 OLS,
-   \)</span><span class="math notranslate nohighlight">\(
-  \mathbb{E}_{x_0}\mathrm{EPE}(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
-  \)</span><span class="math notranslate nohighlight">\(
-  则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 \)</span>p<span class="math notranslate nohighlight">\( 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 \)</span>p$ 增长。</p>
+\mathrm{EPE}(x_0) = \sigma^2 + \mathrm{Var}_{\mathcal T}(\hat{y}_0)+\mathrm{Bias}^2(\hat{y}_0) \gtrsim \sigma^2 + \sigma^2 + c \ge 2\sigma^2
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>而对于 OLS,
+$<span class="math notranslate nohighlight">\(
+\mathbb{E}_{x_0}\mathrm{EPE}(x_0) = \sigma^2(p/N) + \sigma^2 \approx \sigma^2
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>则 EPE 比率大致为 2，又因为 1NN 中的方差项（第二项）随 <span class="math notranslate nohighlight">\(p\)</span> 增大的速率大于 OLS 中方差项（第一项），则 EPE 比率也会缓慢随 <span class="math notranslate nohighlight">\(p\)</span> 增长。</p>
 </div></blockquote>
 <p>对于三次函数，最小二乘是有偏的，这使得比率变得缓和。显然我们可以构造最小二乘的偏差主导方差的例子，然后 <span class="math notranslate nohighlight">\(1\)</span>-最近邻就会变成胜利者。</p>
 <p><img alt="" src="../_images/fig2.9.png" /></p>
@@ -1262,8 +1288,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="2.4-Statistical-Decision-Theory.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1280,19 +1306,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

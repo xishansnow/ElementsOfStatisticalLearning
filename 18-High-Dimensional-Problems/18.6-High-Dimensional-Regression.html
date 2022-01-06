@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,17 +1142,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   与潜变量模型的联系
+   （）与潜变量模型的联系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   与偏最小二乘的联系
+   （）与偏最小二乘的联系
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   特征选择的预处理
+   （）特征选择的预处理
   </a>
  </li>
 </ul>
@@ -1155,7 +1163,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>18.6 高维回归: 有监督的主成分</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   （）与潜变量模型的联系
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   （）与偏最小二乘的联系
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id14">
+   （）特征选择的预处理
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1164,7 +1205,7 @@
 <p>这一节中我们将要描述一种在 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 情形下特别有用的回归和广义回归的简单方法。我们用另外一个微阵列数据的例子来解释这一方法。 数据取自 Rosenwald et al. (2002)<a class="footnote-reference brackets" href="#id17" id="id2">1</a>，其中包含 240 个患有 DLBCL 的病人，有 7399 个基因表达水平的测量值。输出变量为生存时间，取值为 “observed” 或者 “right censored”。我们将样本随机分成大小为 160 的训练集和大小为 80 的测试集。</p>
 <p>尽管有监督的主成分对线性回归很有用，但是它最有趣的应用也许是在生存分析中，这也是这个例子所要关注的地方。</p>
 <!--
-!!! note "censored survival data"
+> note "censored survival data"
     个人理解是, 数据中无对应的记录值, 也就是只有部分个体有*生存时间*的记录值, 而其他个体没有记录值.[NEED VERIFIED!!]
 
 -->
@@ -1172,8 +1213,10 @@
 <p><img alt="" src="../_images/fig18.11.png" /></p>
 <p><img alt="" src="../_images/fig18.12.png" /></p>
 <p>在这个例子中我们的目标是寻找可以预测一组独立病人个体的生存时间的特征（基因）集合。这个可以作为一个<strong>预后</strong>指示变量来帮助选择治疗方案, 或者帮助理解这个疾病的生理基础。</p>
-<p>!!! note “预后(prognostic)”
+<blockquote>
+<div><p>note “预后(prognostic)”
 预后是指预测疾病的可能病程和结局。它既包括判断疾病的特定后果（如康复，某种症状、体征和并发症等其它异常的出现或消失及死亡）；也包括提供时间线索，如预测某段时间内发生某种结局的可能性。由于预后是一种可能性，主要指病人群体而不是个人。从疾病演进过程的角度划分，预后的量度有缓解率、复发率、病残率等；从疾病终极状态的角度划分，预后的量度有治愈率、生存率、病死率等。 (refer to <a class="reference external" href="http://www.bing.com">www.bing.com</a>)</p>
+</div></blockquote>
 <p>有监督的主成分的潜在概念模型如图 18.13 所示。</p>
 <p><img alt="" src="../_images/fig18.13.png" /></p>
 <p>我们想象存在两种类型的细胞，拥有好细胞的病人平均会活得久一些。然而，两者之间存在相当大部分的重叠。我们可能将存活时间作为细胞类型的有噪声的代理变量 (“noisy surrogate”)。全监督方法会赋予那些与生存越有关的基因更多的权重。这些基因与细胞类型部分相关（但不是完全）。换种方式，如果我们能够发现病人潜在的细胞类型，它经常受到通路中相当多的基因一起作用的影响，或许在预测病人的生存方面会取得更好的结果。</p>
@@ -1183,15 +1226,19 @@
 <p><img alt="" src="../_images/fig18.14.png" /></p>
 <p><img alt="" src="../_images/alg18.1.png" /></p>
 <p>算法中第 (1) 和第 (2b) 步的细节取决于输出变量的类型。对于标准的回归问题，我们在步骤 (1) 中采用单变量的线性最小二乘系数，在第 (2b) 步采用线性的最小二乘模型。对于生存分析问题, 广泛使用 <strong>Cox 的比例风险回归 (Cox’s proportional hazards regression)</strong>；因此这里在第 (1) 步，我们采用得分检验，在第 (2b) 步中采用多变量 Cox 模型。具体细节对于理解这一基本方法不重要；它们可以在 Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id4">5</a> 中找到。</p>
-<p>!!! note “Cox Regression (proportional hazards regression)”
+<blockquote>
+<div><p>note “Cox Regression (proportional hazards regression)”
 可以参见本人的英文博客，其中有对cox回归的介绍以及在R语言中利用cox回归研究实际中的survival analysis。</p>
-<p>!!! note “R package”
+</div></blockquote>
+<blockquote>
+<div><p>note “R package”
 R 包 <code class="docutils literal notranslate"><span class="pre">superpc</span></code> 实现了监督主成分的算法。</p>
+</div></blockquote>
 <p>图 18.14 展示了这个例子中有监督的主成分的结果。我们采用 3.53 作为 Cox 得分的分割点，得到了 27 个基因，其中 3.53 是通过 10 折交叉验证得到的。接着我们仅利用这 27 个基因的训练集以及其所对应的测试集中的观测值来计算第一主成分 <span class="math notranslate nohighlight">\((m=1)\)</span>。我们将这些作为 Cox 回归模型的定量变量，其似然比的显著程度为 <span class="math notranslate nohighlight">\(p=0.005\)</span>。当进行二值化（采用训练数据集的均值作为阈值），它能够清晰地将测试集中的病人划分成了低风险和高风险的群体 (图 18.14 中右边中间的图, <span class="math notranslate nohighlight">\(p=0.006\)</span>)。</p>
 <p>图 18.14 中右边最上面的图仅仅采用最高得分的基因作为生存的预测变量。在测试集上不显著。同样地，右边最下面的图显示了采用所有训练数据的主成分的二值化，这也是不显著的。</p>
 <p>我们的过程允许在第 (2a) 步中采用 <span class="math notranslate nohighlight">\(m &gt; 1\)</span> 个主成分。然而，步骤 (1) 中的有监督使得主成分与输出变量一致，也因此在大部分情形下，只有第一或者前几个主成分对预测有用。在下面的数学部分，我们仅仅考虑第一主成分，但是推广到多余一个主成分可以按照类似的方式进行。</p>
 <div class="section" id="id5">
-<h2>与潜变量模型的联系<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>（）与潜变量模型的联系<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>监督主成分和潜在细胞类型之间的联系可以通过数据的潜变量来体现。假设我们有响应变量 <span class="math notranslate nohighlight">\(Y\)</span>。它通过线性模型与潜变量 <span class="math notranslate nohighlight">\(U\)</span> 关联起来</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1215,7 +1262,7 @@ X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \mathcal P\tag{18.33}
 <p>最后，假设在监督主成分过程中的第 (1) 步使用的阈值产生大量的特征用于计算主成分。则为了解释性，也同样为了实际应用，我们会寻找降维后的子集特征来近似模型。预处理 (Pre-conditioning) 是其中的一种方式。</p>
 </div>
 <div class="section" id="id8">
-<h2>与偏最小二乘的联系<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>（）与偏最小二乘的联系<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>有监督的主成分与偏最小二乘紧密相关（第 <a class="reference external" href="../03-Linear-Methods-for-Regression/3.5-Methods-Using-Derived-Input-Directions/index.html#_2">3.5.2 节</a>）Bair et al. (2006)<a class="footnote-reference brackets" href="#id19" id="id9">5</a> 发现有监督的主成分效果的关键点在于过滤掉第 2(a) 步中的噪声特征。偏最小二乘减小噪声特征的权重，但不会丢掉它们；结果导致大量的噪声特征会污染预测变量。然而，已经提出的修改版本的偏最小二乘与有监督的主成分有类似的优点（如，Brown et al. (1991)<a class="footnote-reference brackets" href="#id17" id="id10">1</a>, Nadler and Coifman (2005)<a class="footnote-reference brackets" href="#id18" id="id11">2</a>）。我们在监督主成分的第 (1) 步和 (2a) 步选择特征，接着对这些特征应用 PLS （而不是主成分）。对于我们现在的讨论，我们将之称为 “thresholded PLS”。</p>
 <p>Thresholded PLS 可以看成是监督主成分的噪声版本，因此我们不会期待它在实际中效果会很好。假设我们的变量全部标准化了，第一 PLS 变量有如下的形式</p>
 <div class="math notranslate nohighlight">
@@ -1237,12 +1284,17 @@ X_j=\alpha_{0j}+\alpha_{1j}U+\epsilon_j\;j\in \mathcal P\tag{18.33}
 \tag{18.36}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\u\)</span> 是模型 (18.32) 中真实的（未观测的）潜变量。</p>
-<p>!!! note “weiya 注：Big O in Probability”
-设 <span class="math notranslate nohighlight">\(X_n\)</span> 为随机变量序列，<span class="math notranslate nohighlight">\(a_n\)</span> 为常值序列，若 <span class="math notranslate nohighlight">\(\forall \varepsilon&gt;0\)</span>，存在 <span class="math notranslate nohighlight">\(M(\varepsilon)\)</span> 和 <span class="math notranslate nohighlight">\(N(\varepsilon)\)</span>，使得当 <span class="math notranslate nohighlight">\(n&gt;N(\varepsilon)\)</span> 时
-$<span class="math notranslate nohighlight">\(
-    P\{\vert X_n/a_n\vert &gt; M(\varepsilon)\}&lt;\varepsilon
-    \)</span><span class="math notranslate nohighlight">\(
-    则称 \)</span>X_n=O_p(a_n)$。</p>
+<blockquote>
+<div><p>note “weiya 注：Big O in Probability”
+设 <span class="math notranslate nohighlight">\(X_n\)</span> 为随机变量序列，<span class="math notranslate nohighlight">\(a_n\)</span> 为常值序列，若 <span class="math notranslate nohighlight">\(\forall \varepsilon&gt;0\)</span>，存在 <span class="math notranslate nohighlight">\(M(\varepsilon)\)</span> 和 <span class="math notranslate nohighlight">\(N(\varepsilon)\)</span>，使得当 <span class="math notranslate nohighlight">\(n&gt;N(\varepsilon)\)</span> 时</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    P\{\vert X_n/a_n\vert &gt; M(\varepsilon)\}&lt;\varepsilon
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>则称 $X_n=O_p(a_n)$。
+</pre></div>
+</div>
 <p>用一个模拟例子来数值比较这些方法。例子中有 <span class="math notranslate nohighlight">\(N=100\)</span> 个样本，<span class="math notranslate nohighlight">\(p=5000\)</span> 个基因。按如下方式生成数据：</p>
 <p><img alt="" src="../_images/eq18.37.png" /></p>
 <p>其中 <span class="math notranslate nohighlight">\(\epsilon_{ij}\)</span> 和 <span class="math notranslate nohighlight">\(\varepsilon_i\)</span> 是均值为 0 标准差分别为 1 和 1.5 的独立正态随机变量。因此在前 50 个基因中，1-50 号样本与 51-100 号样本有 1 个单位的差异，这个差异与输出 <span class="math notranslate nohighlight">\(y\)</span> 有关。接下来 200 个在样本 (1-25, 51-75) 和样本 (26-50, 76-100) 之间有 4 个单位的平均差异，但是这种差异与输出变量无关。剩下的基因是噪声。图 18.15 展示了经典的热图，其中输出变量在左边，前 500 个基因在右边。</p>
@@ -1250,7 +1302,7 @@ $<span class="math notranslate nohighlight">\(
 <p>尽管这个例子看上去特意为监督主成分设计的，但是它似乎也能在其它模拟和真实数据集中保持良好的表现 (Bair et al., 2006)<a class="footnote-reference brackets" href="#id19" id="id13">5</a>。</p>
 </div>
 <div class="section" id="id14">
-<h2>特征选择的预处理<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2>（）特征选择的预处理<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>正如图 18.16 展示的，监督主成分可以得到比其它方法更低的测试误差。</p>
 <p><img alt="" src="../_images/fig18.16.png" /></p>
 <p>然而，并不总是得到只涉及一小部分特征（基因）的稀疏模型。即使算法中的步骤 (1) 的阈值得到相对较少的特征，但可能部分被忽略的特征与监督主成分直接有不可忽略的内积（并且可以看成是较好的代表 (surrogate)）。另外，高相关的特征会趋向于一起选，则在已经选择的特征中会造成较大程度的冗余。</p>
@@ -1302,8 +1354,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="18.5-Classification-When-Features-are-Unavailable.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1320,19 +1372,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

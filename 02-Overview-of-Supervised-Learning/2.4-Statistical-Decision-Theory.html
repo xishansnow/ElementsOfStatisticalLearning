@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2.4 统计判别理论</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1183,10 +1201,11 @@ f(x) = \mathbb{E}(Y\mid X=x)\tag{2.13}\,,
 \[
 f(x)\approx x^T\beta\tag{2.15}
 \]</div>
-<p>这是个基于模型的方式——我们明确用于回归函数的模型。将 <span class="math notranslate nohighlight">\(f(x)\)</span> 的线性模型插入 <span class="math notranslate nohighlight">\(\mathrm{EPE} (2.9)\)</span> 然后微分，可以理论上解出 <span class="math notranslate nohighlight">\(\beta\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>这是个基于模型的方式——我们明确用于回归函数的模型。将 <span class="math notranslate nohighlight">\(f(x)\)</span> 的线性模型插入 <span class="math notranslate nohighlight">\(\mathrm{EPE} (2.9)\)</span> 然后微分，可以理论上解出 <span class="math notranslate nohighlight">\(\beta\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \beta = [\mathbb{E}(XX^T)]^{-1}\mathbb{E}(XY)\tag{2.16}
-\)</span>$</p>
+\]</div>
 <p>注意到我们在 <span class="math notranslate nohighlight">\(X\)</span> 上没有条件；而是已经用了我们对函数关系的理解 <strong>整合 <span class="math notranslate nohighlight">\(X\)</span> 的值 (pool over values of <span class="math notranslate nohighlight">\(X\)</span>)</strong>。最小二乘的解 <span class="math notranslate nohighlight">\((2.6)\)</span> 相当于用训练数据的平均值替换掉 <span class="math notranslate nohighlight">\((2.16)\)</span> 中的期望。</p>
 <p>所以 <span class="math notranslate nohighlight">\(k\)</span>-最邻近和最小二乘最终都是根据平均来近似条件期望。但是它们在模型上显著不同。</p>
 <ul class="simple">
@@ -1200,12 +1219,13 @@ $<span class="math notranslate nohighlight">\(
 f(X) = \sum\limits_{j=1}^{p} f_j(X_j) \tag{2.17}
 \]</div>
 <p>这保留着线性模型的可加性，但是每个并列的函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是任意的。结果表明可加模型的最优估计是对于每个并列的函数 <strong>同时 (simultaneously)</strong> 用 <span class="math notranslate nohighlight">\(k\)</span>-最邻近去近似 <strong>单变量 (univariate)</strong> 的条件期望。因此在可加性的情况下，通过加上某些（通常不现实）的模型假设在高维中估计条件期望的问题被扫除了。</p>
-<p>是否为 <span class="math notranslate nohighlight">\((2.11)\)</span> 的标准而高兴？如果我们用 <span class="math notranslate nohighlight">\(L_1\)</span> 损失函数 <span class="math notranslate nohighlight">\(\mathbb{E} \mid Y-f(X)\mid \)</span> 来替换 <span class="math notranslate nohighlight">\(L_2\)</span> 损失函数会怎么样。这种情况下解是条件中位数，
-$<span class="math notranslate nohighlight">\(
+<p>是否为 <span class="math notranslate nohighlight">\((2.11)\)</span> 的标准而高兴？如果我们用 <span class="math notranslate nohighlight">\(L_1\)</span> 损失函数 <span class="math notranslate nohighlight">\(\mathbb{E} \mid Y-f(X)\mid \)</span> 来替换 <span class="math notranslate nohighlight">\(L_2\)</span> 损失函数会怎么样。这种情况下解是条件中位数，</p>
+<div class="math notranslate nohighlight">
+\[
 \hat{f}(x) = \mathrm{median}(Y \mid X = x)\tag{2.18}
-\)</span>$</p>
+\]</div>
 <p>条件中位数是另一种定位的方式，而且它的估计比条件均值更加鲁棒。 <span class="math notranslate nohighlight">\(L_1\)</span> 准则的导数不连续，阻碍了它们的广泛应用。其它更多耐抵抗 (resistant) 的损失函数会在后面章节中介绍，但是平方误差是分析方便而且是最受欢迎的。</p>
-<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误。预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 中取值， <span class="math notranslate nohighlight">\(\mathcal G\)</span> 是可能的类别的集合。我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\mathrm{card}(\mathcal {G})\)</span>。矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\mathcal G_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\mathcal G_\ell\)</span> 的代价。大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚。预测错误的期望为</p>
+<p>当输出为类变量 <span class="math notranslate nohighlight">\(G\)</span> 时，我们应该怎样处理？同样的范例在这里也是可行的，除了我们需要一个不同的损失函数来惩罚预测错误。预测值 <span class="math notranslate nohighlight">\(\hat{G}\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 中取值， <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 是可能类别的集合。我们的损失函数可以用 <span class="math notranslate nohighlight">\(K\times K\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 来表示，其中 <span class="math notranslate nohighlight">\(K=\mathrm{card}(\mathcal {G})\)</span>。矩阵 <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> 对角元为 <span class="math notranslate nohighlight">\(0\)</span> 且其它地方值非负，其中 <span class="math notranslate nohighlight">\(L(k,\ell)\)</span> 为把属于 <span class="math notranslate nohighlight">\(\mathbb{G}_k\)</span> 的类分到 <span class="math notranslate nohighlight">\(\mathbb{G}_\ell\)</span> 的代价。大多数情况下我们用 <span class="math notranslate nohighlight">\(0\)</span>-<span class="math notranslate nohighlight">\(1\)</span> <strong>(zero-one)</strong> 损失函数，其中所有的错误分类都被要求一个单位的惩罚。预测错误的期望为</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{EPE} = \mathbb{E}[L(G,\hat{G}(X))]\tag{2.19}
@@ -1223,23 +1243,24 @@ $<span class="math notranslate nohighlight">\(
 <p>结合 0-1 损失函数上式简化为</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{G}(x) = \argmin_{g\in \mathbb{G}}[1 − \mathrm{Pr}(g\mid X = x)]\tag{2.22}\,.
+\hat{G}(x) = \argmin_{g\in \mathbb{G}}[1 − \mathrm{Pr}(g\mid X = x)]\tag{2.22}\,
 \]</div>
-<p>!!! note “weiya 注：推导 式（ 2.22 ）”
-注意到，对于 0-1 损失，
-$<span class="math notranslate nohighlight">\(
-    L(G_k, g) = \begin{cases}
-        0 &amp; \text{if } g=G_k\\
-        1 &amp; \text{if } g\neq G_k
-    \end{cases}\,,
-    \)</span>$</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>则我们有
-
-$$
-\sum_{k=1}^KL({\mathbb{G}}_k,g)\mathrm{Pr}(G=\mathcal {G}_k\mid X = x) = \sum_{G_k\neq g}\mathrm{Pr}(G=G_k \mid X=x)=1-\mathrm{Pr}(G=g \mid X=x)\,.
-$$
-</pre></div>
-</div>
+<blockquote>
+<div><p>note “weiya 注：推导 式（ 2.22 ）”
+注意到，对于 0-1 损失，</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+L(G_k, g) = \begin{cases} 0 
+        &amp; \text{if } \ g=G_k\\
+        1 &amp; \text{if} \ g\neq G_k
+        \end{cases}    
+\end{split}\]</div>
+<p>则我们有</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{k=1}^KL({\mathbb{G}}_k,g) \ \mathrm{Pr}(G=\mathcal {G}_k\mid X = x) = \sum_{G_k\neq g}\mathrm{Pr}(G=G_k \mid X=x)=1-\mathrm{Pr}(G=g \mid X=x)
+\]</div>
 <p>或者简单地</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1276,8 +1297,8 @@ $$
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="2.3-Two-Simple-Approaches-to-Prediction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1294,19 +1315,17 @@ $$
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

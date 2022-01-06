@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,37 +1133,43 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.4 训练误差率的乐观估计</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.4 训练误差率的乐观估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <p>讨论误差率估计的问题可能令人困惑，因为必须弄清楚哪些量是固定的、哪些量是随机的。在我们继续之前，需要做一些定义，详细阐述第 7.2 节的内容。</p>
 <p>给出训练集 <span class="math notranslate nohighlight">\(\mathcal{T} =\{(x_1,y_1),(x_2,y_2),\ldots,(x_N,y_N)\}\)</span>，模型 <span class="math notranslate nohighlight">\(\hat f\)</span> 的泛化误差为：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{Err}_{\mathcal{T} } = \mathrm E_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\mathcal{T} }]\tag{7.15} 
-\]</div>
+\mathbb{Err}_{\mathcal{T} } = \mathrm E_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\mathcal{T} }]\tag{7.15} \]</div>
 <p>注意：在式（ 7.15 ） 中训练集 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> 是固定的。点 <span class="math notranslate nohighlight">\((X^0,Y^0)\)</span> 是新的测试点，从数据的联合分布 <span class="math notranslate nohighlight">\(F\)</span> 中取的。对数据集平均可以得到误差的期望 (expected error)：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Err} = \mathrm E_{\mathcal{T} }\mathrm E_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\mathcal{T} }]\tag{7.16} 
-\]</div>
+\mathrm{Err} = \mathrm E_{\mathcal{T} }\mathrm E_{X^0,Y^0}[L(Y^0,\hat f(X^0))\mid {\mathcal{T} }]\tag{7.16} \]</div>
 <p>它更适合于统计分析。正如之前提到的，事实证明大部分方法能够有效估计误差的期望，而非 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T} }\)</span>；这一点详见 7.12 节。</p>
 <p>现在一般地，训练误差 (training error) 为：</p>
 <div class="math notranslate nohighlight">
 \[
-\overline{\mathbb{err}} = \frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f(x_i))\tag{7.17} 
-\]</div>
+\overline{\mathbb{err}} = \frac{1}{N}\sum\limits_{i=1}^NL(y_i,\hat f(x_i))\tag{7.17} \]</div>
 <p>训练误差通常会比泛化误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\_{\mathcal{T} }\)</span> 小，因为数据被同时用于拟合学习方法并且评估误差（见 练习 2.9）。拟合方法一般适应于训练数据，因此表面误差 (apparent error)或训练误差 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 是对泛化误差 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T}}\)</span> 过度乐观的估计。</p>
 <p>这种差异部分是因为取值点的选取造成的。值 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T} }\)</span> 可以看成是样本外误差 (extra-sample error)，因为测试的输入向量不需要与训练的输入向量一致。当我们观察样本内误差 (in-sample error)时，就可以很简单地理解 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 做出乐观估计的本质。</p>
 <div class="math notranslate nohighlight">
@@ -1165,19 +1179,16 @@
 <p><span class="math notranslate nohighlight">\(Y^0\)</span> 表示我们在每个训练点 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处观测 <span class="math notranslate nohighlight">\(N\)</span> 个新响应变量的值。我们定义 <span class="math notranslate nohighlight">\(\mathbb{Err}_{in}\)</span> 与训练误差 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 的差为乐观值 (optimism)：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm {op}\equiv \mathrm{Err}_{in}-\overline{\mathbb{err}}\tag{7.19} 
-\]</div>
+\mathrm {op}\equiv \mathrm{Err}_{in}-\overline{\mathbb{err}}\tag{7.19} \]</div>
 <p>一般情形下这是正的，因为 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 经常是预测误差的向下有偏估计。最终，平均乐观是乐观值在训练集上的期望：</p>
 <div class="math notranslate nohighlight">
 \[
-\omega \equiv E_{\mathbf y}(\mathrm{op})\tag{7.20} 
-\]</div>
+\omega \equiv E_{\mathbf y}(\mathrm{op})\tag{7.20} \]</div>
 <p>这里训练集中的预测变量是固定的，期望是对训练集的输出值而言的；因此我们已经用记号 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf{y}}\)</span> 而不是 <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T} }\)</span>。我们通常仅仅估计期望误差 <span class="math notranslate nohighlight">\(\omega\)</span> 而不是 op，就像我们可以估计期望误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 而不是条件误差 <span class="math notranslate nohighlight">\(\mathbb{Err}_{\mathcal{T} }\)</span>。</p>
 <p>对于<code class="docutils literal notranslate"><span class="pre">平方误差损失</span></code>、<code class="docutils literal notranslate"><span class="pre">0-1</span> <span class="pre">损失</span></code>以及其他损失函数，可以证明一般性的结论：</p>
 <div class="math notranslate nohighlight">
 \[
-\omega=\frac{2}{N}\sum\limits_{i=1}^N\mathbb{Cov}(\hat y_i,y_i)\tag{7.21} 
-\]</div>
+\omega=\frac{2}{N}\sum\limits_{i=1}^N\mathbb{Cov}(\hat y_i,y_i)\tag{7.21} \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbb{Cov}\)</span> 表示协方差。因此 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 低估真实误差的程度取决于 <span class="math notranslate nohighlight">\(y_i\)</span> 影响它本身估计的程度。数据越难拟合，<span class="math notranslate nohighlight">\(\mathbb{Cov}(\hat y_i,y_i)\)</span> 将越大，因此增大了乐观。练习 7.4 证明了平方损失函数时的结果，其中 <span class="math notranslate nohighlight">\(\hat y_i\)</span> 为根据回归拟合好的值。对于 0-1 损失，<span class="math notranslate nohighlight">\(\hat y_i\in\\{0,1\\}\)</span> 是在 <span class="math notranslate nohighlight">\(x_i\)</span> 处的分类，另外对于熵损失，<span class="math notranslate nohighlight">\(\hat y_i\in[0,1]\)</span> 是在 <span class="math notranslate nohighlight">\(x_i\)</span> 处类别 1 的拟合概率。</p>
 <p>总结一下，我们有重要的关系式：</p>
 <div class="math notranslate nohighlight">
@@ -1192,8 +1203,7 @@
 <p>因此</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{E}_{\mathbf y}(\mathbb{Err}_{in})=\mathbb{E}_{\mathbf y}(\overline{\mathbb{err}})+2\cdot\frac{d}{N}\sigma_\varepsilon^2\tag{7.24} 
-\]</div>
+\mathbb{E}_{\mathbf y}(\mathbb{Err}_{in})=\mathbb{E}_{\mathbf y}(\overline{\mathbb{err}})+2\cdot\frac{d}{N}\sigma_\varepsilon^2\tag{7.24} \]</div>
 <p>表达式（ 7.23 ） 是定义 <code class="docutils literal notranslate"><span class="pre">有效参数个数</span> <span class="pre">(effective</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">parameters)</span></code> （将在 7.6 节讨论）的基础。乐观值随着我们使用的输入或基函数的个数 <span class="math notranslate nohighlight">\(d\)</span> 线性增长，但是当训练样本大小增大时会降低。式（7.24）的其它版本对其它误差模型也近似成立，比如二值数据和熵损失。</p>
 <p>估计预测误差的一种明显方法是先估计乐观值，然后加到训练误差 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 上。下一节将要描述的方法（关于参数的线性估计类），如： <span class="math notranslate nohighlight">\(C_p\)</span>，<code class="docutils literal notranslate"><span class="pre">AIC</span></code>，<code class="docutils literal notranslate"><span class="pre">BIC</span></code> 以及其它方法，都是通过该方式实现的。</p>
 <p>相反地，本章后面描述的交叉验证以及自助法是对样本外（ extra-sample ）误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 直接估计的方法。此类工具可以用于任意损失函数以及非线性拟合。</p>
@@ -1222,8 +1232,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.3-The-Bias-Variance-Decomposition.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1240,19 +1250,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,17 +1142,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   7.2.1 简单的回归任务分析
+   （）7.2.1 简单的回归任务分析
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   7.2.2 再观察下分类任务
+   （）7.2.2 再观察下分类任务
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   7.2.3 统一的表达方法
+   （）7.2.3 统一的表达方法
   </a>
  </li>
 </ul>
@@ -1155,15 +1163,47 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.2 偏差、方差和模型复杂度</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）7.2.1 简单的回归任务分析
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）7.2.2 再观察下分类任务
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）7.2.3 统一的表达方法
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.2 偏差、方差和模型复杂度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <div class="section" id="id2">
-<h2>7.2.1 简单的回归任务分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）7.2.1 简单的回归任务分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <style>p{text-indent:2em;2}</style>
 <p>让我们从最简单的回归任务开始，考虑结果变量为“定量型”变量（又称“定距型”变量） 的情形。下图（图 7.1 ）展示了评估模型泛化能力时的一些重要问题。</p>
 <div class="admonition note">
@@ -1214,7 +1254,7 @@
 <p>如图 7.1 中所示，训练误差并非对测试误差的良好估计。训练误差会随着模型复杂度增大不断减少，如果模型复杂性增加到足够大，训练误差将降为零，模型将可以捕获训练样本中的所有信息（包括噪声）。然而，零训练误差的模型通常意味着过拟合，并且泛化能力很差。</p>
 </div>
 <div class="section" id="id3">
-<h2>7.2.2 再观察下分类任务<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（）7.2.2 再观察下分类任务<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <style>p{text-indent:2em;2}</style>
 <p>对于结果变量为“定类型”变量 <span class="math notranslate nohighlight">\(G\)</span> 的分类任务，其实也存在类似情况。</p>
 <p><span class="math notranslate nohighlight">\(G\)</span> 在含有 <span class="math notranslate nohighlight">\(K\)</span> 个值的集合 <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 中取值，为了方便记 <span class="math notranslate nohighlight">\(K\)</span> 个值编号为 <span class="math notranslate nohighlight">\(1,2,\ldots,K\)</span>。一般地，我们对概率 <span class="math notranslate nohighlight">\(p_k(X)=\mathrm{Pr}(G=k\mid X)\)</span> （或者采用其他单调变换 <span class="math notranslate nohighlight">\(f_k(X)\)</span>） 进行建模，然后取概率最大的那个类别 <span class="math notranslate nohighlight">\(\hat G(X)=\mathrm{\text{argmax}}_k \hat p_k(X)\)</span>。当然，在某些情形下，我们也可以直接得到 <span class="math notranslate nohighlight">\(\hat G(X)\)</span>，例如 1-最近邻分类（见第 2 章和第 13 章）。典型的损失函数为：</p>
@@ -1244,7 +1284,7 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
 <p>公式中的 “-2” 使得高斯分布的对数似然损失与平方误差损失匹配。</p>
 </div>
 <div class="section" id="id4">
-<h2>7.2.3 统一的表达方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）7.2.3 统一的表达方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <style>p{text-indent:2em;2}</style>
 <p>为了表达的简洁性，在本章的剩余部分，我们将用 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(f(X)\)</span> 来表示上述定量和定类的所有情形，因此主要集中在定量型结果变量的（平方误差损失）设定上。对于其它的情形，显然可以进行合适的转换。</p>
 <p>这章中我们描述一系列估计模型的测试误差期望 (<span class="math notranslate nohighlight">\(\text{Err}\)</span>) 的方法。通常模型会有一个调整参数 (tunning parameter) 或者参数 <span class="math notranslate nohighlight">\(\alpha\)</span>（很多书籍用 <span class="math notranslate nohighlight">\(\theta\)</span> ），所以可以把预测值写成 <span class="math notranslate nohighlight">\(\hat f_\alpha(x)\)</span>。调整参数会随着模型的复杂度而改变，而且我们希望找到 <span class="math notranslate nohighlight">\(\alpha\)</span> 值来最小化误差，即得到图 7.1 的平均测试误差曲线的最小值。为了简洁，后面将默认 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 暗示了对 <span class="math notranslate nohighlight">\(\alpha\)</span> 的依赖性。</p>
@@ -1302,8 +1342,8 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1320,19 +1360,17 @@ L(Y,\theta(X))=-2\cdot \mathrm{log\; \Pr}_{\theta(X)}(Y)\tag{7.8}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

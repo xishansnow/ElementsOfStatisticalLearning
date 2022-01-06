@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,71 +1133,92 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.4 指数损失和AdaBoost</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="adaboost">
 <h1>10.4 指数损失和AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <!--
-!!! note "weiya注：Recall"
+> note "weiya注：Recall"
     ![](../img/10/alg10.1.png)
 
 ![](../img/10/alg10.2.png)
 -->
-<p>AdaBoost 基函数是单个分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>。采用指数损失函数，需要在每一步求解下面优化问题，从而得到需要加入到模型的分类器 <span class="math notranslate nohighlight">\(G_m\)</span> 和对应的系数 <span class="math notranslate nohighlight">\(\beta_m\)</span>
-$<span class="math notranslate nohighlight">\(
-(\beta_m,G_m)=\mathrm{arg}\;\underset{\beta,G}{\mathrm {min}}\sum\limits_{i=1}^N\exp[-y_i(f_{m-1}(x_i)+\beta G(x_i))]
-\)</span><span class="math notranslate nohighlight">\(
-上式可以写成
-\)</span><span class="math notranslate nohighlight">\(
+<p>AdaBoost 基函数是单个分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>。采用指数损失函数，需要在每一步求解下面优化问题，从而得到需要加入到模型的分类器 <span class="math notranslate nohighlight">\(G_m\)</span> 和对应的系数 <span class="math notranslate nohighlight">\(\beta_m\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+(\beta_m,G_m)=\mathrm{arg}\;\underset{\beta,G}{\mathrm {min}}\sum\limits_{i=1}^N\exp[-y_i(f_{m-1}(x_i)+\beta G(x_i))]\]</div>
+<p>上式可以写成</p>
+<div class="math notranslate nohighlight">
+\[
 (\beta_m,G_m)=\mathrm{arg}\;\underset{\beta, G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}\exp(-\beta y_iG(x_i))\tag{10.9}
-\)</span><span class="math notranslate nohighlight">\(
-其中，\)</span>w^{(m)}_i=\exp(-y_if_{m-1}(x))<span class="math notranslate nohighlight">\(。因为每个 \)</span>w^{(m)}_i<span class="math notranslate nohighlight">\( 既不依赖 \)</span>\beta<span class="math notranslate nohighlight">\( 也不依赖 \)</span>G(x)<span class="math notranslate nohighlight">\(，可以看成是应用到每个观测上的权重。权重取决于 \)</span>f_{m-1}(x_i)<span class="math notranslate nohighlight">\(，因此个体的权重值随着迭代次数 \)</span>m$ 而变化。</p>
-<p>式（ 10.9 ） 式的解可以通过两步得到。首先，对于任意 <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>，式（ 10.9 ） 式 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解为
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(w^{(m)}\_i=\exp(-y\_if_{m-1}(x))\)</span>。因为每个 <span class="math notranslate nohighlight">\(w^{(m)}\_i\)</span> 既不依赖 <span class="math notranslate nohighlight">\(\beta\)</span> 也不依赖 <span class="math notranslate nohighlight">\(G(x)\)</span>，可以看成是应用到每个观测上的权重。权重取决于 <span class="math notranslate nohighlight">\(f_{m-1}(x_i)\)</span>，因此个体的权重值随着迭代次数 <span class="math notranslate nohighlight">\(m\)</span> 而变化。</p>
+<p>式（ 10.9 ） 式的解可以通过两步得到。首先，对于任意 <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>，式（ 10.9 ） 式 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解为</p>
+<p><span class="math notranslate nohighlight">\(
 G_m=\mathrm{arg}\;\underset{G}{\mathrm{min}}\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i))\tag{10.10}
-\)</span><span class="math notranslate nohighlight">\(
-这是使得在预测 \)</span>y<span class="math notranslate nohighlight">\( 时加权误差率最小化的分类器。这个可以通过将 式（ 10.9 ） 的准则表达成下式看出来
-\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>这是使得在预测 <span class="math notranslate nohighlight">\(y\)</span> 时加权误差率最小化的分类器。这个可以通过将 式（ 10.9 ） 的准则表达成下式看出来</p>
+<p><span class="math notranslate nohighlight">\(
 e^{-\beta}\sum\limits_{y_i=G(x_i)}\omega_i^{(m)}+e^\beta\sum\limits_{y_i\neq G(x_i)}\omega_i^{(m)}
 \)</span>$</p>
-<p>进一步，这个也可以写成
-$<span class="math notranslate nohighlight">\(
+<p>进一步，这个也可以写成</p>
+<div class="math notranslate nohighlight">
+\[
 (e^{\beta}-e^{-\beta})\sum\limits_{i=1}^N\omega_i^{(m)}I(y_i\neq G(x_i)) + e^{-\beta}\sum\limits_{i=1}^N\omega_i^{(m)}\tag{10.11}
-\)</span>$</p>
-<p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(G_m\)</span>”
+\]</div>
+<blockquote>
+<div><p>note “weiya 注：求解 <span class="math notranslate nohighlight">\(G_m\)</span>”
 因为此处 <span class="math notranslate nohighlight">\(G_m(x)\in\\{-1,1\\}\)</span>，则当 <span class="math notranslate nohighlight">\(y_i=G_i(x)\)</span> 时，<span class="math notranslate nohighlight">\(y_iG_i(x)=1\)</span>，否则 <span class="math notranslate nohighlight">\(y_iG_i(x)=-1\)</span>。从式 式（ 10.11 ） 显然可以看出式（ 10.10 ） 是 <span class="math notranslate nohighlight">\(G_m(x)\)</span> 的解。</p>
-<p>将 <span class="math notranslate nohighlight">\(G_m\)</span> 代入到 式（ 10.9 ），可以求解 <span class="math notranslate nohighlight">\(\beta\)</span>
-$<span class="math notranslate nohighlight">\(
+</div></blockquote>
+<p>将 <span class="math notranslate nohighlight">\(G_m\)</span> 代入到 式（ 10.9 ），可以求解 <span class="math notranslate nohighlight">\(\beta\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \beta_m=\frac{1}{2}\log\frac{1-\mathbb{err}_m}{\mathbb{err}_m}\qquad \tag{10.12}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\mathbb{err}_m<span class="math notranslate nohighlight">\( 为最小化的加权误差率
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbb{err}_m\)</span> 为最小化的加权误差率</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbb{err}_m=\frac{\sum_{i=1}^N \omega_i^{(m)}I(y_i\neq G_m(x_i))}{\sum_{i=1}^N\omega_i^{(m)}}\tag{10.13}
-\)</span>$</p>
-<p>!!! note “weiya 注：求解 <span class="math notranslate nohighlight">\(\beta_m\)</span>”
+\]</div>
+<blockquote>
+<div><p>note “weiya 注：求解 <span class="math notranslate nohighlight">\(\beta_m\)</span>”
 求解关于 <span class="math notranslate nohighlight">\(\beta\)</span> 的函数的最小值，于是只要对 式（ 10.11 ） 关于 <span class="math notranslate nohighlight">\(\beta\)</span> 求导并令导数等于 0。</p>
-<p>由近似过程更新
-$<span class="math notranslate nohighlight">\(
+</div></blockquote>
+<p>由近似过程更新</p>
+<div class="math notranslate nohighlight">
+\[
 f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
-\)</span><span class="math notranslate nohighlight">\(
-导出下一次迭代的权重为
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>导出下一次迭代的权重为</p>
+<div class="math notranslate nohighlight">
+\[
 \omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{-\beta_my_iG_m(x_i)}\tag{10.14}
-\)</span><span class="math notranslate nohighlight">\(
-使用 \)</span>-y_iG_m(x_i)=2\cdot I(y_i\neq G_m(x_i))-1<span class="math notranslate nohighlight">\( 的事实，式（ 10.14 ） 式变成
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>使用 <span class="math notranslate nohighlight">\(-y_iG_m(x_i)=2\cdot I(y_i\neq G_m(x_i))-1\)</span> 的事实，式（ 10.14 ） 式变成</p>
+<div class="math notranslate nohighlight">
+\[
 \omega_i^{(m+1)}=\omega_i^{(m)}\cdot e^{\alpha_mI(y_i\neq G_m(x_i))}\cdot e^{-\beta_m}\tag{10.15}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\alpha_m=2\beta_m<span class="math notranslate nohighlight">\( 是 AdaBoost.M1 算法（算法 10.1）中第 2(c) 行定义的常数。式（ 10.15 ） 式的因子 \)</span>e^{-\beta_m}$ 对所有的权重都乘以同样的值，所以没有影响。因此 式（ 10.15 ） 等价于算法 10.1 中的第 2(d) 行。</p>
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\alpha_m=2\beta_m\)</span> 是 AdaBoost.M1 算法（算法 10.1）中第 2(c) 行定义的常数。式（ 10.15 ） 式的因子 <span class="math notranslate nohighlight">\(e^{-\beta_m}\)</span> 对所有的权重都乘以同样的值，所以没有影响。因此 式（ 10.15 ） 等价于算法 10.1 中的第 2(d) 行。</p>
 <p>我们可以把 AdaBoost.M1 算法的第 2(a) 行看成近似求解 式（ 10.11 ） 最小化问题的方法，从而得到 式（ 10.10 ） 式。因此我们将 AdaBoost.M1 总结为通过向前逐步加法建模方式来最小化指数损失函数。</p>
 <p><img alt="" src="../_images/fig10.3.png" /></p>
 <blockquote>
@@ -1225,8 +1254,8 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.3-Forward-Stagewise-Additive-Modeling.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1243,19 +1272,17 @@ f_m(x)=f_{m-1}(x)+\beta_mG_m(x)
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

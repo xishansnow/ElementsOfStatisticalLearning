@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,19 +1133,28 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.5 样本内误差的估计</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>7.5 样本内误差的估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>样本内误差估计的一般形式为：</p>
 <div class="math notranslate nohighlight">
@@ -1148,13 +1165,12 @@
 <p>当在平方误差损失下拟合 <span class="math notranslate nohighlight">\(d\)</span> 个参数后，是可以应用式 式（ 7.24 ） 的；利用表达式 式（ 7.24 ） 可以导出被称作 <span class="math notranslate nohighlight">\(C_p\)</span> 的统计量：</p>
 <div class="math notranslate nohighlight">
 \[
-C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
+F_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\hat\sigma_\varepsilon^2\)</span> 是噪声方差的估计，由低偏差模型的均方误差得到。使用这个准则，我们用一个与使用的基函数个数成比例的因子来调节训练误差。</p>
 <p>当采用对数似然损失函数时，<strong>Akaike 信息准则 (Akaike information criterion)</strong> 是类似的但使用更普遍的 <span class="math notranslate nohighlight">\(\text{err}_{in}\)</span> 的估计。它依赖于与 式（ 7.24 ） 类似的关系式，在 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 渐近地有下式成立：</p>
 <div class="math notranslate nohighlight">
-\[
--2\cdot \mathbf{E}[\mathrm{log}\Pr\nolimits_{\hat \theta}(Y)]\approx -\frac{2}{N}\cdot \mathbf{E}[\mathrm{loglik}]+2\cdot\frac{d}{N}\tag{7.27}
+\[-2\cdot \mathbf{E}[\mathrm{log}\Pr\nolimits_{\hat \theta}(Y)]\approx -\frac{2}{N}\cdot \mathbf{E}[\mathrm{loglik}]+2\cdot\frac{d}{N}\tag{7.27}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\Pr_{\theta}(Y)\)</span> 是 <span class="math notranslate nohighlight">\(Y\)</span> 密度函数族（包含“真正的”密度），<span class="math notranslate nohighlight">\(\hat\theta\)</span> 是 <span class="math notranslate nohighlight">\(\theta\)</span> 的极大似然估计，并且“loglik”是最大化的对数似然：</p>
 <div class="math notranslate nohighlight">
@@ -1172,8 +1188,7 @@ C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 <p>注意此处假设 <span class="math notranslate nohighlight">\(\sigma_\varepsilon^2\)</span> 已知，如果也将其看成是未知的，并通过 MLE 求解，则 AIC 准则（忽略常数）为:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{AIC} = N\log\mathrm{RSS} + 2d
-\]</div>
+\mathrm{AIC} = N\log\mathrm{RSS} + 2d\]</div>
 <p>详见 <a class="reference external" href="https://en.wikipedia.org/wiki/Akaike_information_criterion#Comparison_with_least_squares">Wiki: AIC</a></p>
 </div>
 <p>采用 AIC 来进行模型选择时，我们在考虑的模型中选择具有最小 AIC 的模型。对于非线性或者其他复杂模型，我们需要将 <span class="math notranslate nohighlight">\(d\)</span> 换成其它衡量模型复杂度的量。我们将在 7.6 节讨论这点。</p>
@@ -1190,10 +1205,9 @@ C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 <p>逻辑斯蒂回归参数函数 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span> 建模成 <span class="math notranslate nohighlight">\(M\)</span> 个样条基函数的展开。在左图中我们看到采用对数似然损失时用来估计 <span class="math notranslate nohighlight">\(\text{err}_{in}\)</span> 的 AIC 统计量。也画出了基于独立的测试样本的 <span class="math notranslate nohighlight">\(\text{err}\)</span> 估计。除了极端过参数化的情形（ <span class="math notranslate nohighlight">\(N=1000\)</span> 个观测时含有 <span class="math notranslate nohighlight">\(M=256\)</span> 个参数）都估计得很好。右图是在 0-1 损失下重复左图的工作。尽管这里 AIC 准则严格上不能应用，但是在这种情形下估计也是合理的。</p>
 </div>
 <p>下式这一简单的法则</p>
-<div class="math notranslate nohighlight">
-\[
-2/N\sum\limits_{i=1}^N\mathrm{Cov}(\hat y_i,y_i)=(2d/N)\sigma_\varepsilon^2
-\]</div>
+<p>$<span class="math notranslate nohighlight">\(
+F/N\sum\limits_{i=1}^N\mathrm{Cov}(\hat y_i,y_i)=(2d/N)\sigma_\varepsilon^2
+\)</span></p>
 <p>对于含有加性误差的线性模型在平方误差损失下是精确成立的，在对数似然损失下是近似成立的。特别地，这个法则一般地对于 0-1 损失是不成立的（Efron，1986<a class="footnote-reference brackets" href="#id3" id="id2">1</a>），尽管许多作者仍然在这种情形下使用它（图 7.4 的右图）.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1225,8 +1239,8 @@ C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.4-Optimism-of-the-Training-Error-Rate.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1243,19 +1257,17 @@ C_p=\overline{\text{err}}+2\cdot\frac{d}{N}\hat \sigma^2_\varepsilon\tag{7.26}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

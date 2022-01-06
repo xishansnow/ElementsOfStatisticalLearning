@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1145,7 +1153,30 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2.7 结构化的回归模型</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   问题的困难度
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1163,8 +1194,10 @@
 \end{equation}
 \]</div>
 <p>有许多最小化式 式（ 2.37 ） 的方法：任何过所有训练点 <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> 的函数 <span class="math notranslate nohighlight">\(\hat{f}\)</span> 是一个解。任意选定的解都可能在与训练点不同的测试点上是一个糟糕的预测。如果在每个 <span class="math notranslate nohighlight">\(x_i\)</span> 值处有多个观测对 <span class="math notranslate nohighlight">\(x_i,y_{i\ell},\ell =1,\ldots,N_i\)</span>，风险会被限制。在这种情形下，解会过每个 <span class="math notranslate nohighlight">\(x_i\)</span> 对应的所有 <span class="math notranslate nohighlight">\(y_{i\ell}\)</span> 的平均值，见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/161">练习 2.6</a>。这种情形类似我们已经在统计判别理论章节中的已经讨论的；当然，式（ 2.37 ） 是式 (2.11) 的有限样本的版本。如果样本规模 <span class="math notranslate nohighlight">\(N\)</span> 充分大使得重复是保证和密集排列的，这些解可能都倾向于条件期望的极限。</p>
-<p>!!! info “weiya 注：Ex. 2.6”
+<blockquote>
+<div><p>info “weiya 注：Ex. 2.6”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/161">Ex. 2.6</a>。问题结论是，若存在重复数据，则普通最小二乘可以看成是 <strong>（样本量）减少的加权最小二乘 (reduced weighted least squares)</strong>。</p>
+</div></blockquote>
 <p>为了得到有限 <span class="math notranslate nohighlight">\(N\)</span> 的有用结果，我们必须限制满足条件的式 式（ 2.37 ） 的解到一个小的集合。怎样决定限制条件的本质是基于数据之外的一些考虑。这些限制条件有时通过 <span class="math notranslate nohighlight">\(f_0\)</span> 的参数表示，或者在学习方法本身里面构建，有隐式、也有显式。这些带限制的解的类别是本书讨论的重点。一件事需要说清楚。任何加到 <span class="math notranslate nohighlight">\(f\)</span> 上的限制条件会导致式 式（ 2.37 ） 的唯一解并不能消除解的多样性带来的不确定性。因为有无数种能导出唯一解的可能的限制条件，所以不确定性简单地被转换为限制条件的选择。</p>
 <p>一般地，大多数学习方法施加的约束条件都可以描述为这样或那样对复杂度的限制。这通常也意味着在输入空间的小邻域的一些规则的行为。这就是，对于在某种度量下充分互相接近的所有输入点 <span class="math notranslate nohighlight">\(x\)</span>，<span class="math notranslate nohighlight">\(\hat{f}\)</span> 展现了一些特殊的结构比如说接近常值，线性或者低次的多项式。然后通过在邻域中平均或者进行多项式拟合得到估计量。</p>
 <p>限制的强度由邻域的大小所确定。邻域的规模越大，限制条件则越强，而且解对特定限制条件的选择也很敏感。举个例子，在无穷小邻域内局部常值拟合根本不是限制；在一个比较大的邻域内进行局部线性拟合几乎是全局线性模型，而且限制性是非常强的。</p>
@@ -1195,8 +1228,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="2.5-Local-Methods-in-High-Dimensions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1213,19 +1246,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

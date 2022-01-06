@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,100 +1133,113 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>3.7 多输出的收缩和选择</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.7 多输出的收缩和选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>如 <a class="reference external" href="3.2-Linear-Regression-Models-and-Least-Squares/index.html#_3">3.2.4 节</a>所述，多重输出线性模型的最小二乘估计可以简单地看成是关于每个输出的最小二乘估计。</p>
-<p>!!! note “weiya 注：”
-$<span class="math notranslate nohighlight">\(
-    \hat{\beta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：”</p>
+<div class="math notranslate nohighlight">
+\[
+&gt;\hat{\mathbf \eta}^{ridge}=(\mathbf{X^TX}+\lambda \mathbf{I})^{-1}\mathbf{X}^T\mathbf{y}\tag{3.44}    
+&gt;\]</div>
+</div></blockquote>
 <p>为了在多重输出情形中应用选择和收缩的方法，可以对每个输出变量单独地应用单变量的技巧，或对全部的输出变量同时进行。举个例子，对于岭回归，我们可以对输出矩阵 <span class="math notranslate nohighlight">\(Y\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 列中的每一列应用 式（ 3.44 ），其中参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 可能不同，或者采用相同的 <span class="math notranslate nohighlight">\(\lambda\)</span>。第一种策略允许对不同的输出应用不同程度的正则化，但是需要估计 <span class="math notranslate nohighlight">\(k\)</span> 个独立的正则化参数 <span class="math notranslate nohighlight">\(\lambda_1,\ldots,\lambda_k\)</span>，而第二种策略可以在估计单独的正则化参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 时应用全部的 <span class="math notranslate nohighlight">\(k\)</span> 个输出。</p>
 <p>其它更复杂的收缩和选择的策略利用了多重输出情形中不同响应变量间的相关性，这可能会有帮助。举个例子，假设在这些输出变量中，我们有</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Y_k &amp; = f(X) + \varepsilon_k\tag{3.65}\\
-Y_\ell &amp;= f(X) + \varepsilon_\ell\,;\tag{3.66}
-\end{align*}
-\end{split}\]</div>
+\[
+Y_k  = f(X) + \varepsilon_k\tag{3.65}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_\ell = f(X) + \varepsilon_\ell\,;\tag{3.66}
+\]</div>
 <p>也就是说，<span class="math notranslate nohighlight">\(式（ 3.65 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 3.66 ）\)</span> 在它们的模型中共享相同的结构 <span class="math notranslate nohighlight">\(f(X)\)</span>。这种情形下很明显我们应该合并 <span class="math notranslate nohighlight">\(Y_k\)</span> 和 <span class="math notranslate nohighlight">\(Y_\ell\)</span> 来估计共同的 <span class="math notranslate nohighlight">\(f\)</span>。</p>
 <p>合并响应变量是 <strong>典则相关分析 (canonical correlation analysis, CCA)</strong> 的核心，这是一种为多元输出情形提出的数据降维的技巧。类似 PCA，CCA 寻找 <span class="math notranslate nohighlight">\(x_j\)</span> 的一列不相关的线性组合 <span class="math notranslate nohighlight">\(X v_m, m=1,\ldots,M\)</span>，以及对应的响应变量 <span class="math notranslate nohighlight">\(y_k\)</span> 的不相关的线性组合 <span class="math notranslate nohighlight">\(Y u_m\)</span>，使得相关系数</p>
 <div class="math notranslate nohighlight">
 \[
-\Corr^2(Y u_m,X v_m)\tag{3.67}
+\mathrm{Corr}^2(Y u_m,X v_m)\tag{3.67}
 \]</div>
 <p>相继最大化。注意到最多可以找到 <span class="math notranslate nohighlight">\(M=\min(k,p)\)</span> 个方向。第一典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 最优预测的线性组合（导出的响应变量）；相反地，最后的典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 估计最差的，并且可以考虑舍弃。CCA 的解通过对样本交叉协方差矩阵 <span class="math notranslate nohighlight">\(Y^TX/N\)</span> 进行广义的 SVD 分解得到（假设 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 均被中心化；<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">练习 3.20</a>）</p>
-<p>!!! info “weiya 注：Ex. 3.20”
+<blockquote>
+<div><p>info “weiya 注：Ex. 3.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">Issue 172: Ex. 3.20</a>，欢迎讨论交流！</p>
-<p><strong>降秩回归 (reduced-rank regression)</strong> (Izenman, 1975<a class="footnote-reference brackets" href="#id7" id="id2">1</a>; van der Merwe and Zidek, 1980<a class="footnote-reference brackets" href="#id8" id="id3">2</a>) 采用显式地合并信息的回归模型来 <em>正式化 (formalize)</em> 这个方法。给定误差协方差 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\varepsilon)=\bSigma\)</span>，求解下列带约束的多元回归问题：</p>
+</div></blockquote>
+<p><strong>降秩回归 (reduced-rank regression)</strong> (Izenman, 1975<a class="footnote-reference brackets" href="#id7" id="id2">1</a>; van der Merwe and Zidek, 1980<a class="footnote-reference brackets" href="#id8" id="id3">2</a>) 采用显式地合并信息的回归模型来 <em>正式化 (formalize)</em> 这个方法。给定误差协方差 <span class="math notranslate nohighlight">\(\mathrm{Cov}(\varepsilon)=\mathbf{\Sigma}\)</span> ，求解下列带约束的多元回归问题：</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(m) = \underset{\rank(\B)=m}{\argmin}\sum_{i=1}^N(y_i-\B^Tx_i)^T\bSigma^{-1}(y_i-\B^Tx_i)\,.\tag{3.68}
+\hat{\mathbf{B}}^{rr}(m) = \underset{\mathrm{rank}(\mathbf{B})=m}{\argmin}\sum_{i=1}^N(y_i-\mathbf{B}^Tx_i)^T\mathbf{\Sigma}^{-1}(y_i-\mathbf{B}^Tx_i)\, \tag{3.68}
 \]</div>
-<p>将 <span class="math notranslate nohighlight">\(\bSigma\)</span> 用估计值 <span class="math notranslate nohighlight">\(Y^TY/N\)</span> 替换，可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/174">练习 3.21</a>）解由 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 的 CCA 给出：</p>
+<p>将 <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> 用估计值 <span class="math notranslate nohighlight">\(Y^TY/N\)</span> 替换，可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/174">练习 3.21</a>）解由 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 的 CCA 给出：</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(m)=\hat\B\U_m\U_m^-\,,\tag{3.69}
+\hat{\mathbf{B}}^{rr}(m)=\hat{\mathbf{B}} \mathbf{U}_m \mathbf{U}_m^-  \tag{3.69}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\U_m\)</span> 是 <span class="math notranslate nohighlight">\(\U\)</span> 中由前 <span class="math notranslate nohighlight">\(m\)</span> 列构成的 <span class="math notranslate nohighlight">\(K\times m\)</span> 的子矩阵，<span class="math notranslate nohighlight">\(\U\)</span> 是 <span class="math notranslate nohighlight">\(K\times M\)</span> 的左典则向量 <span class="math notranslate nohighlight">\(u_1,u_2,\ldots,u_M\)</span> 构成的矩阵。<span class="math notranslate nohighlight">\(\U_m^-\)</span> 是其广义逆。</p>
-<p>!!! info “weiya 注：Ex. 3.21”
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{U}_m\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 中由前 <span class="math notranslate nohighlight">\(m\)</span> 列构成的 <span class="math notranslate nohighlight">\(K \times m\)</span> 的子矩阵，<span class="math notranslate nohighlight">\(\mathbf{U}\)</span> 是 <span class="math notranslate nohighlight">\(K \times M\)</span> 的左典则向量 <span class="math notranslate nohighlight">\(u_1,u_2,\ldots,u_M\)</span> 构成的矩阵。<span class="math notranslate nohighlight">\(\mathbf{U}_m^-\)</span> 是其广义逆。</p>
+<blockquote>
+<div><p>info “weiya 注：Ex. 3.21”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/174">Issue 174: Ex. 3.21</a>，欢迎讨论交流！</p>
+</div></blockquote>
 <p>将解改写成</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{rr}(M) = (X^TX)^{-1}X^T(Y\U_m)\U_m^-\,, \tag{3.70}
+\hat{\mathbf{B}}^{rr}(M) = (X^TX)^{-1}X^T(Y\mathbf{U}_m)\mathbf{U}_m^- \tag{3.70}
 \]</div>
-<p>我们看到降秩回归在合并的响应矩阵 <span class="math notranslate nohighlight">\(Y\U_m\)</span> 上进行线性回归，然后将系数映射回原来的响应变量空间中（因此能拟合得很好）。降秩拟合由下式给出：</p>
+<p>我们看到降秩回归在合并的响应矩阵 <span class="math notranslate nohighlight">\(Y{\mathbf{U}}_m\)</span> 上进行线性回归，然后将系数映射回原来的响应变量空间中（因此能拟合得很好）。降秩拟合由下式给出：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\hatY^{rr}(m) &amp;= X(X^TX)^{-1}X^TY\U_m\U_m^-\\
-&amp;=\HY\P_m\,,\tag{3.71}
+\hat{Y}^{rr}(m) &amp;= X(X^TX)^{-1}X^TY\mathbf{U}_m \mathbf{U}_m^-\\
+&amp;=HYP_m \tag{3.71}
 \end{align*}
 \end{split}\]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\H\)</span> 是一般的线性回归映射算子，而 <span class="math notranslate nohighlight">\(\P_m\)</span> 是秩为 <span class="math notranslate nohighlight">\(m\)</span> 的 CCA 响应变量投影算子。尽管 <span class="math notranslate nohighlight">\(\bSigma\)</span> 更好的估计为 <span class="math notranslate nohighlight">\((Y-X\hat\B)^T(Y-X\hat\B)/(N-pK)\)</span>，但是可以证明解是一样的（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">练习 3.22</a>）。</p>
-<p>!!! info “weiya 注：Ex. 3.22”
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> 是一般的线性回归映射算子，而 <span class="math notranslate nohighlight">\(\mathbf{P}_m\)</span> 是秩为 <span class="math notranslate nohighlight">\(m\)</span> 的 CCA 响应变量投影算子。尽管 <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> 更好的估计为 <span class="math notranslate nohighlight">\((Y-X\hat{\mathbf{B}})^T(Y-X\hat{\mathbf{B}})/(N-pK)\)</span>，但是可以证明解是一样的（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">练习 3.22</a>）。</p>
+<blockquote>
+<div><p>info “weiya 注：Ex. 3.22”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/175">Issue 175: Ex. 3.22</a>，欢迎交流讨论！</p>
+</div></blockquote>
 <p>降秩回归通过截断 CCA 从响应变量中借来了优势变量。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id4">3</a> 探索了 <span class="math notranslate nohighlight">\(X\)</span> 和 <span class="math notranslate nohighlight">\(Y\)</span> 间典则变量的逐步收缩，这是光滑版本的降秩回归。他们的方法有如下形式（与 式（ 3.69 ） 对应）</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\B^{c+w} = \hat\B\U\bLambda\U^{-1}\,,\tag{3.72}
+\hat{\mathbf{B}}^{c+w} = \hat{\mathbf{B}}{\mathbf{U}}\mathbf \Lambda{\mathbf{U}}^{-1}\,,\tag{3.72}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\bLambda\)</span> 是对角收缩矩阵（“c+w” 表示 “Curds and Whey”，这是作者取的名字）。基于总体设定中的最优预测，他们证明了 <span class="math notranslate nohighlight">\(\bLambda\)</span> 的对角元为</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf \Lambda\)</span> 是对角收缩矩阵（“c+w” 表示 “Curds and Whey”，这是作者取的名字）。基于总体设定中的最优预测，他们证明了 <span class="math notranslate nohighlight">\(\mathbf \Lambda\)</span> 的对角元为</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda_m = \frac{c_m^2}{c_m^2+\frac pN(1-c_m^2)}\,,\; m = 1,\ldots,M\,,\tag{3.73}
+\lambda_m = \frac{c_m^2}{c_m^2+\frac pN(1-c_m^2)}\,,\; m = 1,\ldots,M \tag{3.73}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(c_m\)</span> 是第 <span class="math notranslate nohighlight">\(m\)</span> 个典则相关系数。注意到随着输入变量个数与样本大小的比率 <span class="math notranslate nohighlight">\(p/N\)</span> 变小，收缩因子趋向于 1。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 基于训练数据和交叉验证提出了修改版本的 <span class="math notranslate nohighlight">\(\bLambda\)</span>，但是一般形式是相同的。这里拟合响应形式为</p>
+<p>其中 <span class="math notranslate nohighlight">\(c_m\)</span> 是第 <span class="math notranslate nohighlight">\(m\)</span> 个典则相关系数。注意到随着输入变量个数与样本大小的比率 <span class="math notranslate nohighlight">\(p/N\)</span> 变小，收缩因子趋向于 1。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 基于训练数据和交叉验证提出了修改版本的 <span class="math notranslate nohighlight">\(\mathbf \Lambda\)</span>，但是一般形式是相同的。这里拟合响应形式为</p>
 <div class="math notranslate nohighlight">
 \[
-\hatY^{c+w} = \HY\S^{c+w}\,,\tag{3.74}
+\hat{Y}^{c+w} = HYS^{c+w} \tag{3.74}
 \]</div>
-<p>这里 <span class="math notranslate nohighlight">\(\S^{c+w} = \U\bLambda\U^{-1}\)</span> 是响应变量收缩算子。</p>
+<p>这里 <span class="math notranslate nohighlight">\(\S^{c+w} = {\mathbf{U}}\mathbf \Lambda{\mathbf{U}}^{-1}\)</span> 是响应变量收缩算子。</p>
 <p>Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id6">3</a> 还建议同时在 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 的空间中进行收缩。这导出混合收缩模型：</p>
 <div class="math notranslate nohighlight">
 \[
-\hatY^{\mathrm{ridge},c+w}=\A_\lambdaY\S^{c+w}\,,\tag{3.75}
+\hat{Y}^{\mathrm{ridge},c+w}=A_\lambda YS^{c+w} \tag{3.75}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\A_\lambda = X(X^TX+\lambda\I)^{-1}X^T\)</span> 是岭回归收缩算子，和 式（ 3.46 ） 一样。他们的文章及其讨论有更多细节。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
-    \mathbf{X}\hat{\beta}^{ls}&amp;=\mathbf{X(X^TX)^{-1}X^Ty}\\
-    &amp;=\mathbf{UU^Ty}\tag{3.46}
-    \end{align*}
-    \)</span>$</p>
+<p>其中 <span class="math notranslate nohighlight">\(A_\lambda = X(X^TX+\lambda I)^{-1}X^T\)</span> 是岭回归收缩算子，和 式（ 3.46 ） 一样。他们的文章及其讨论有更多细节。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1255,8 +1276,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="3.6-A-Comparison-of-the-Selection-and-Shrinkage-Methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1273,19 +1294,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

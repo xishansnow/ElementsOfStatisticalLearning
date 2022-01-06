@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   例子（继续）
+   （）例子（继续）
   </a>
  </li>
 </ul>
@@ -1145,12 +1153,34 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.9 VC维</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）例子（继续）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="vc">
 <h1>7.9 VC维<a class="headerlink" href="#vc" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <div class="admonition- admonition">
 <p class="admonition-title">更新笔记</p>
@@ -1185,33 +1215,32 @@
 <p>这些界对 <span class="math notranslate nohighlight">\(\\{f(x,\alpha)\\}\)</span> 的所有成员都同时成立，这归功于 Cherkassky and Mulier (2007)<a class="footnote-reference brackets" href="#id3" id="id1">1</a>。他们建议 <span class="math notranslate nohighlight">\(c=1\)</span>。对于回归他们建议 <span class="math notranslate nohighlight">\(a_1=a_2=1\)</span>，对于分类他们没有给出推荐，因为 <span class="math notranslate nohighlight">\(a_1=4,a_2=2\)</span> 对应最坏的情形。它们也给出了回归的另一个实用 (practical) 的界</p>
 <div class="math notranslate nohighlight">
 \[
-\text{Err}_{\mathcal T}\le \overline{\text{Err}}\left(1-\sqrt{\rho-\rho \mathrm{log}\rho}+\frac{\mathrm{log}N}{2N}\right)^{-1}_+\tag{7.47} 
-\]</div>
+\text{Err}_{\mathcal T}\le \overline{\text{Err}}\left(1-\sqrt{\rho-\rho \mathrm{log}\rho}+\frac{\mathrm{log}N}{2N}\right)^{-1}_+\tag{7.47} \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\rho=\frac{h}{N}\)</span>，不含调整常数。这个界表明随着 <span class="math notranslate nohighlight">\(h\)</span> 增大 <span class="math notranslate nohighlight">\(N\)</span> 减小，optimism 会增大，这与式（7.24）给出的 AIC 调整值 <span class="math notranslate nohighlight">\(d/N\)</span> 数值上是一致的。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{E}_{\mathbf y}(\text{Err}_{in})=\mathbb{E}_{\mathbf y}(\overline{\text{Err}})+2\cdot\frac{d}{N}\sigma_\varepsilon^2\tag{7.24} 
-\]</div>
+\mathbb{E}_{\mathbf y}(\text{Err}_{in})=\mathbb{E}_{\mathbf y}(\overline{\text{Err}})+2\cdot\frac{d}{N}\sigma_\varepsilon^2\tag{7.24} \]</div>
 </div>
 <p>然而，式（7.46 ） 结果更强：不是给出每个固定函数 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span> 的 optimism 的期望值，而是给出对于所有函数 <span class="math notranslate nohighlight">\(f(x,\alpha)\)</span> 的概率上限，也因此可以对函数类进行搜索。</p>
 <p>Vapnik 的 <strong>结构风险最小化 (SRM, structural risk minimization)</strong> 方法拟合嵌套的 VC 维递增 <span class="math notranslate nohighlight">\(h_1 &lt; h_2 &lt; \cdots\)</span> 的模型序列，接着选择有最小上界的模型。</p>
 <p>我们注意到类似 式（7.46 ）中的上界通常是非常不精确的，但是这并不会妨碍它们成为模型选择的良好准则，其中相对（不是绝对）的测试误差的大小是重要的。这种方法的主要不足是计算类函数的 VC 维的困难。通常只能得到粗糙的 VC 维上界，这可能不是充分的。结构风险最小化程序可以成功运行的例子是支持向量分类器，将在 <span class="xref myst">12.2 节</span>讨论。</p>
 <div class="section" id="id2">
-<h2>例子（继续）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）例子（继续）<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig7.7.png" /></p>
 <blockquote>
 <div><p>图 7.7. 在图 7.3 的四种情形下，用箱线图显示相对误差 <span class="math notranslate nohighlight">\(100\times [\text{Err}_{\mathcal T}(\hat\alpha)-min_\alpha \text{Err}_{\mathcal T}(\alpha)]/[max_\alpha \text{Err}_{\mathcal T}(\alpha)-min_\alpha \text{Err}_{\mathcal T}(\alpha)]\)</span> 的分布。这是选择的模型相对于最优模型的误差。每个箱线图表示大小为 80 的 100 个训练集，误差是在大小为 10000 的测试集上计算的。</p>
 </div></blockquote>
 <p>图 7.7 显示了当采用 AIC，BIC 和 SRM 来对图 7.3 的例子来选择模型大小的结果。对于标着 KNN 的例子，模型指标<span class="math notranslate nohighlight">\(\alpha\)</span> 指的是邻居的个数，而对于标着 REG 的来说 <span class="math notranslate nohighlight">\(\alpha\)</span> 为子集大小。采用每个选择方法（例如，AIC），我们估计最优模型 <span class="math notranslate nohighlight">\(\hat \alpha\)</span> 并且在测试集上找到真实的预测误差 <span class="math notranslate nohighlight">\(\text{Err}_{\mathcal T}(\hat\alpha)\)</span>。对于同样的训练集，我们计算最优和最坏可能的模型选择的预测误差：<span class="math notranslate nohighlight">\(\min_\alpha \text{Err}_{\mathcal T}(\alpha)\)</span> 和 <span class="math notranslate nohighlight">\(max_\alpha \text{Err}_{\mathcal T}(\alpha)\)</span>。箱线图显示了下面值的分布</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 100\times \frac{\text{Err}_{\mathcal T}(\hat \alpha)-\min_\alpha \text{Err}_{\mathcal T}(\alpha)}{\max_\alpha \text{Err}_{\mathcal T}(\alpha)-\min_\alpha \text{Err}_{\mathcal T}(\alpha)}
-\]</div>
+\)</span>$</p>
 <p>它表示选定的模型相对于最优模型的误差。对于线性回归，模型复杂度由特征的个数度量；正如在 <span class="xref myst">7.5 节</span>提到的那样，它低估了 <span class="math notranslate nohighlight">\(\df​\)</span>，因为它没有考虑该大小下对最优模型的搜索。这对线性分类器的 VC 维也同样适用。对于 <span class="math notranslate nohighlight">\(k​\)</span> 最近邻，模型复杂度取 <span class="math notranslate nohighlight">\(N/k​\)</span>。在加性误差模型回归模型下，这个可以证明为真正的有效自由度个数（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/131">练习 7.6</a>）；但我们不知道它是否对应 VC 维。</p>
-<p>!!! info “weiya 注：Ex. 7.6”
+<blockquote>
+<div><p>info “weiya 注：Ex. 7.6”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/131">Issue 131: Ex. 7.6</a>.</p>
+</div></blockquote>
 <p>我们取 式（7.46） 中常数为 <span class="math notranslate nohighlight">\(a_1=a_2=1​\)</span>；SRM 的结果随着不同的常数值而变化，而且这个选择给出了最有利的结果。我们运用另一个实用的界 式（7.47） 来重复 SRM 的选择过程，并且得到几乎一样的结果。对于误分类误差，我们在最少限制的模型上（对于 KNN 取 <span class="math notranslate nohighlight">\(k=5​\)</span>，因为 <span class="math notranslate nohighlight">\(k=1​\)</span> 会导致 0 训练误差）采用 <span class="math notranslate nohighlight">\(\hat\sigma_\varepsilon^2=[N/(N-d)]\cdot \overline{err}(\alpha)​\)</span>。AIC 准则对于四种情形都适用，尽管在 0-1 损失时缺少理论支撑。BIC 表现也近似一样，但 SRM 的表现有好有坏。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1244,8 +1273,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="7.8-Minimum-Description-Length.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1262,19 +1291,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   例子：文件组织与检索
+   （）例子：文件组织与检索
   </a>
  </li>
 </ul>
@@ -1145,7 +1153,30 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.4 自组织图</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）例子：文件组织与检索
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1154,28 +1185,30 @@
 <p>这个方法可以看成是 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类的带约束的版本，其中原型落在特征空间的一维或二维流形中。因为原始的高维观测可以映射到二维的坐标系统中, 所以得到的流形也被称作 <strong>约束拓扑图 (constrained topological map)</strong>。原始的 <strong>自组织图 (self-organizing maps, SOM)</strong> 算法是 online 进行的——每次处理一个观测——后来提出了批量处理的版本。这个技巧也与 <strong>主曲线和主曲面 (principal curves and surfaces)</strong> 有着密切的联系，这将在下一节中进行讨论。</p>
 <p>我们考虑 <span class="math notranslate nohighlight">\(K\)</span> 个原型 <span class="math notranslate nohighlight">\(m_j\in \mathbb{R}^p\)</span> 的二维长方形网格的 SOM（也有其它的选择，如六边形网格）。这 <span class="math notranslate nohighlight">\(K\)</span> 个原型用整数坐标对 <span class="math notranslate nohighlight">\(\ell_j\in\mathcal Q_1\times \mathcal Q_2\)</span> 进行参量化。这里 <span class="math notranslate nohighlight">\(\mathcal Q_1=\\{1,2,\ldots,q_1\\}\)</span>，<span class="math notranslate nohighlight">\(\mathcal Q_2\)</span> 也类似，并且 <span class="math notranslate nohighlight">\(K=q_1\cdot q_2\)</span>。举个例子， <span class="math notranslate nohighlight">\(m_j\)</span> 初始化后落在数据的二维主平面上（下一节进行讨论）。我们可以将这些原型看成是“纽扣 (button)”，以正常的方式“缝 (sewn)”在主成分平面上。SOM 过程试图弯曲平面使得这些纽扣尽可能近似数据点。一旦模型拟合好，这些观测可以映射到二维网格中。</p>
 <p>每次处理一个观测 <span class="math notranslate nohighlight">\(x_i\)</span>。我们在 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中寻找离 <span class="math notranslate nohighlight">\(x_i\)</span> 的欧式距离最近的原型 <span class="math notranslate nohighlight">\(m_j\)</span>，接着对于 <span class="math notranslate nohighlight">\(m_j\)</span> 所有的邻居 <span class="math notranslate nohighlight">\(m_k\)</span>，通过下式将 <span class="math notranslate nohighlight">\(m_k\)</span> 向 <span class="math notranslate nohighlight">\(x_i\)</span> 移动</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 m_k\leftarrow m_k+\alpha (x_i-m_k)\tag{14.46}
-\]</div>
+\)</span>$</p>
 <p><span class="math notranslate nohighlight">\(m_j\)</span> 的邻居定义为使得 <span class="math notranslate nohighlight">\(\ell_j\)</span> 和 <span class="math notranslate nohighlight">\(\ell_k\)</span> 间的距离小的所有 <span class="math notranslate nohighlight">\(m_k\)</span>。最简单的方式是采用欧式距离，通过阈值 <span class="math notranslate nohighlight">\(r\)</span> 来决定“小”。邻域经常包含最近的原型 <span class="math notranslate nohighlight">\(m_j\)</span> 本身。</p>
 <p>注意到这里的距离是定义在原型的整数拓扑坐标 <span class="math notranslate nohighlight">\(\mathcal Q_1\times \mathcal Q_2\)</span> 的空间中。式 式（ 14.46 ） 的更新是将原型往数据点移动，但也是用来维持原型间的光滑的二维空间的关系。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 比如在“瑞士卷”流形上，三维中距离近的点并不意味着流形上距离近。因为最终是要得到低维表示，所以最近邻是定义在低维空间，而不是原始的高维空间，但是对点进行移动操作还是会回到高维空间本身。
 <img alt="" src="../_images/swiss_roll.png" /></p>
+</div></blockquote>
 <p>SOM 算法的效果取决于学习速率 <span class="math notranslate nohighlight">\(\alpha\)</span> 和距离阈值 <span class="math notranslate nohighlight">\(r\)</span>。一般地，<span class="math notranslate nohighlight">\(\alpha\)</span> 随着迭代的进行 <span class="math notranslate nohighlight">\(\alpha\)</span> 从 1.0 下降至 0.0。类似地，随着迭代的进行，<span class="math notranslate nohighlight">\(r\)</span> 从初始值 <span class="math notranslate nohighlight">\(R\)</span> 线性降至 1。我们将在下面的例子中阐释一种用来选择 <span class="math notranslate nohighlight">\(R\)</span> 的方法。</p>
 <p>我们已经描述了 SOM 的最简单的版本。更加复杂的版本会根据距离来更新：</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 m_k\leftarrow m_k + \alpha h(\Vert \ell_j-\ell_k\Vert)(x_i-m_k)\tag{14.47}
-\]</div>
+\)</span>$</p>
 <p>其中 <strong>邻居函数 (neighborhood function)</strong> <span class="math notranslate nohighlight">\(h\)</span> 会给距离 <span class="math notranslate nohighlight">\(\ell_j\)</span> 更近的 <span class="math notranslate nohighlight">\(\ell_k\)</span> 更多的权重。</p>
 <p>如果我们取足够小的距离 <span class="math notranslate nohighlight">\(r\)</span> 使得每个邻域只包含一个点，则丢失了原型之间的空间联系。在这种情形下，可以证明 SOM 算法是 K 均值聚类的 online 版本，并且最后稳定在通过 K 均值找到的某个局部最小值上。因为 SOM 是 K 均值聚类的约束版本，而在任意给定的问题中检查约束是否合理是很重要的。可以计算这两种方法的重构误差 <span class="math notranslate nohighlight">\(\Vert x-m_j\Vert^2\)</span>，这需要对所有观测进行求和，于是就可以判断合理性。</p>
 <p>举个例子来说明，我们在三维空间中半径为 1 的半球体的表面附近生成 90 个数据点。数据点在各自的类中——红、绿和蓝——落在 <span class="math notranslate nohighlight">\((0,1,0),(0,0,1)\)</span> 以及 <span class="math notranslate nohighlight">\((1,0,0)\)</span> 附近。数据点显示在图 14.15 中了。</p>
 <p><img alt="" src="../_images/fig14.15.png" /></p>
 <p>根据我们的设定，红色的簇比绿色和蓝色的簇更加紧凑（生成数据的细节将在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/44">练习 14.5</a>中给出。）使用了 <span class="math notranslate nohighlight">\(5\times 5\)</span> 的原型网格，初始邻域大小为 <span class="math notranslate nohighlight">\(R=2\)</span>；这意味着接近 1/3 的原型初始化时落在各自的邻域内。</p>
-<p>!!! note “weiya 注：<span class="math notranslate nohighlight">\(R = 2\)</span>”
+<blockquote>
+<div><p>note “weiya 注：<span class="math notranslate nohighlight">\(R = 2\)</span>”
 可以简单地数一数邻域里面原型的个数：</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 四个顶点，$(1, 1), (1, 5), (5, 1), (5,5)$: 6 个
 - 中心点，$(3, 3)$: 13 个
 - $(2, 3)$: 12 个
@@ -1189,25 +1222,28 @@ m_k\leftarrow m_k + \alpha h(\Vert \ell_j-\ell_k\Vert)(x_i-m_k)\tag{14.47}
 <p><img alt="" src="../_images/fig14.16.png" /></p>
 <p>在图 14.16 中原型用圆圈来表示，映射到每个原型的数据点随机画在对应的圆圈中。左图显示了初始的配置，而右图显示了最终的结果。这个算法能够成功地将类别分开，然而，红色类别的分离表明流形在自身有折叠（图 14.17)。因为没有使用二维的距离，没有迹象能表明 SOM 投射中关于红色簇比其它的簇更紧。</p>
 <p><img alt="" src="../_images/fig14.17.png" /></p>
-<p>!!! info “weiya 注：Ex. 14.5”
+<blockquote>
+<div><p>info “weiya 注：Ex. 14.5”
 重现了图 14.16 和图 14.18，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/44">Issue 44: Ex. 14.5</a>.</p>
+</div></blockquote>
 <p>图 14.18 显示了重构误差，重构误差等于每个数据点距其原型的距离的平方的和。为了比较，我们也应用了有 25 个重心的 K 均值聚类，并且在图中用水平线表面其重构误差。我们可以看到 SOM 显著降低了误差，接近了 K 均值解的水平。这表明 SOM 使用的二维约束对于特定的数据集是合理的。</p>
 <p><img alt="" src="../_images/fig14.18.png" /></p>
 <p>在 SOM 的批量处理版本中，通过下式来更新 <span class="math notranslate nohighlight">\(m_j\)</span></p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 m_j=\frac{\sum w_kx_k}{\sum w_k}\tag{14.48}
-\]</div>
+\)</span>$</p>
 <p>上式是对映射到 <span class="math notranslate nohighlight">\(m_j\)</span> 的邻居 <span class="math notranslate nohighlight">\(m_k\)</span> 上的点 <span class="math notranslate nohighlight">\(x_k\)</span> 进行求和。权重函数可能是长方形的，也就是，<span class="math notranslate nohighlight">\(m_k\)</span> 的权重都等于1，或者像之前一样随着距离 <span class="math notranslate nohighlight">\(\Vert \ell_k-\ell_j\Vert\)</span> 光滑下降。如果邻域选得足够小，使得它仅仅包含 <span class="math notranslate nohighlight">\(m_k\)</span>，在长方形权重下，这退化为前面描述的 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类。可以看成是主曲线和主曲面（将在 <span class="xref myst">14.5 节</span>中讨论）的离散版本。</p>
 <div class="section" id="id2">
-<h2>例子：文件组织与检索<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）例子：文件组织与检索<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>文件检索随着互联网以及 Web 的快速发展变得越来越重要，SOMs 被证明是组织和索引大型的语料库的有用方法。这个例子取自 WEBSOM 的主页 <a class="reference external" href="http://websom.hut.fi/">http://websom.hut.fi/</a> (Kohonen et al., 2000<a class="footnote-reference brackets" href="#id5" id="id3">1</a>)。图 14.19 展现了对 12088 篇新闻组 <code class="docutils literal notranslate"><span class="pre">comp.ai.neural-nets</span></code> 的文章进行 SOM 拟合的结果。标签是通过 WEBSOM 软件自动产生的，并且提供了结点的主要内容的说明。</p>
 <p><img alt="" src="../_images/fig14.19.png" /></p>
 <p>在像这样的应用中，文件需要预处理得到特征向量。构造了 term-document 矩阵，其中每一行表示单篇的文章。每一行的值为预先定义的项的相对频率。这些项可以是一大套字典条目（50,000 个单词），或者是更大的双字母组(单词对)的集合，或者是这些的子集。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 term-document 矩阵示意图如下
 <img alt="" src="../_images/dtm1.png" />
 图中第一个每一行的值是每个单词的相对频率，而第二个每一行的值是双字母组的相对频率。</p>
+</div></blockquote>
 <p>这些矩阵往往非常稀疏，因此经常预处理来降低特征（列）的个数。有时使用 SVD 来对矩阵降维； Kohonen et al. (2000)<a class="footnote-reference brackets" href="#id5" id="id4">1</a> 采用 SVD 的随机版本。这些降维后的向量作为 SOM 的输入。</p>
 <p>在这个应用中，作者发展出了“zoom”功能，它允许与图进行交互操作以得到更多的细节。zooming 的最后一层检索到实际的新闻文章，接着便可以进行阅读。</p>
 <hr class="footnotes docutils" />
@@ -1241,8 +1277,8 @@ term-document 矩阵示意图如下
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.3-Cluster-Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1259,19 +1295,17 @@ term-document 矩阵示意图如下
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

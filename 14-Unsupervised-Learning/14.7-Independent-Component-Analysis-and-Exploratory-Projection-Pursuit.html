@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,39 +1142,39 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   潜变量和因子分析
+   （）潜变量和因子分析
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   独立成分分析
+   （）独立成分分析
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     例子: 手写数字
+     （）例子: 手写数字
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     例子: 时序脑电图数据
+     （）例子: 时序脑电图数据
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id12">
-   探索投影寻踪
+   （）探索投影寻踪
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id18">
-   独立分量分析的一种直接方法
+   （）独立分量分析的一种直接方法
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     例子：模拟
+     （）例子：模拟
     </a>
    </li>
   </ul>
@@ -1179,7 +1187,64 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.7 独立成分分析和探索投影寻踪</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）潜变量和因子分析
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）独立成分分析
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     （）例子: 手写数字
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     （）例子: 时序脑电图数据
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   （）探索投影寻踪
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id18">
+   （）独立分量分析的一种直接方法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     （）例子：模拟
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1193,26 +1258,40 @@
 </ul>
 <p><strong>因子分析(Factor Analysis)</strong> 是统计学领域为了识别潜在因素的一个经典方法。因子分析模型通常是用在高斯分布中，所以某种程度上阻碍了它的适用性。最近，<strong>独立成分分析(Independent Component Analysis)</strong> 成为了因子分析强劲的对手，我们将会看到，它的成功归功于潜在源信号的非高斯特征。</p>
 <div class="section" id="id2">
-<h2>潜变量和因子分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-	\mathbf{X=UDV^T}\tag{14.54}
-	\)</span>$</p>
+<h2>（）潜变量和因子分析<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\mathbf{X=UDV^T}\tag{14.54}
+	
+\]</div>
 <p>奇异值分解 式（ 14.54 ） <span class="math notranslate nohighlight">\(\mathbf X=\mathbf{UDV}^T\)</span> 可以表示成潜变量的形式。记 <span class="math notranslate nohighlight">\(\mathbf S=\sqrt{N}\mathbf U\)</span>，以及 <span class="math notranslate nohighlight">\(\mathbf A^T=\mathbf{DV}^T/\sqrt{N}\)</span>，我们有 <span class="math notranslate nohighlight">\(\mathbf{X=SA}^T\)</span>，因此 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的每一列是 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的列的线性组合。现在因为 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 是正交的，并且和之前一样假设 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列均值为 0（因此 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 也是），这意味着 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 列均值为 0，而且不相关，有单位方差。</p>
-<p>!!! note “weiya 注：”
-对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行列中心化相当于左乘 <span class="math notranslate nohighlight">\(\mathbf{I - M}\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf M = 11^T/N\)</span>，进行 SVD 分解
-$<span class="math notranslate nohighlight">\(
-	\mathbf{(I-M)X=UDV}^T\,,
-	\)</span><span class="math notranslate nohighlight">\(
-	再左乘 \)</span>\mathbf{I-M}<span class="math notranslate nohighlight">\(，
-	\)</span><span class="math notranslate nohighlight">\(
-	\mathbf{(I-M)^2X=(I-M)UDV}^T\,,
-	\)</span><span class="math notranslate nohighlight">\(
-	注意到 \)</span>\mathbf{I-M}<span class="math notranslate nohighlight">\( 为幂等矩阵，即 \)</span>\mathbf{(I-M)^2 = (I-M)}<span class="math notranslate nohighlight">\(，则
-	\)</span><span class="math notranslate nohighlight">\(
-	\mathbf{(I-M)X=UDV}^T = \mathbf{(I-M)UDV}^T
-	\)</span><span class="math notranslate nohighlight">\(
-	右乘 \)</span>\mathbf{VD}^{-1}<span class="math notranslate nohighlight">\( 可以得到 \)</span>\mathbf{U = (I-M)U}<span class="math notranslate nohighlight">\(，即 \)</span>\mathbf U$ 列均值为 0.</p>
+<blockquote>
+<div><p>note “weiya 注：”
+对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行列中心化相当于左乘 <span class="math notranslate nohighlight">\(\mathbf{I - M}\)</span>，其中 <span class="math notranslate nohighlight">\(\mathbf M = 11^T/N\)</span>，进行 SVD 分解</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\mathbf{(I-M)X=UDV}^T\,,
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>再左乘 $\mathbf{I-M}$，
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\mathbf{(I-M)^2X=(I-M)UDV}^T\,,
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>注意到 $\mathbf{I-M}$ 为幂等矩阵，即 $\mathbf{(I-M)^2 = (I-M)}$，则
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\mathbf{(I-M)X=UDV}^T = \mathbf{(I-M)UDV}^T
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>右乘 $\mathbf{VD}^{-1}$ 可以得到 $\mathbf{U = (I-M)U}$，即 $\mathbf U$ 列均值为 0.
+</pre></div>
+</div>
 <p>用随机变量表示，我们可以把 SVD 或者对应的主成分分析看成是下列潜变量模型的一个估计</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1251,58 +1330,76 @@ X_p&amp;=a_{p1}S_1+a_{p2}S_2+\cdots+a_{pq}S_q+\varepsilon_p
 <p>其中 <span class="math notranslate nohighlight">\(\D_\varepsilon = \mathrm{diag}[\mathrm{Var}(\varepsilon_1),\ldots, \mathrm{Var}(\varepsilon_p)]\)</span>。<span class="math notranslate nohighlight">\(S_\ell\)</span> 为高斯并且不相关，这使得它们在统计上是独立随机变量。因此一系列的教育考试成绩可以认为是有潜在独立的因子，比如 <em>智力 (intelligence)</em>，<em>动机 (drive)</em> 等等所决定的。 <span class="math notranslate nohighlight">\(\A\)</span> 的列被称为<strong>因子载荷(factor loadings)</strong>，而且用来命名因子和解释因子。</p>
 <p>不幸的是, 唯一性问题 <span class="math notranslate nohighlight">\(式（ 14.79 ）\)</span> 仍然存在, 因为在式 <span class="math notranslate nohighlight">\(式（ 14.81 ）\)</span> 中, 对于任意 <span class="math notranslate nohighlight">\(q\times q\)</span> 的正交矩阵 <span class="math notranslate nohighlight">\(\R\)</span>, <span class="math notranslate nohighlight">\(\A\)</span> 和 <span class="math notranslate nohighlight">\(\A\R^T\)</span> 是等价的。这导致了因子分析中的主观性, 因为用户可以寻找因子更易解释的旋转版本. 这点使得许多分析学家对因子分析表示怀疑, 而且这可能是它在当代统计中不受欢迎的原因。尽管我们这里不继续讨论细节，但是 SVD 分解在 式（ 14.81 ） 的估计上发挥重要作用。举个例子，假设 <span class="math notranslate nohighlight">\(\mathrm{Var}(\varepsilon_j)\)</span> 相等，SVD 的前 <span class="math notranslate nohighlight">\(q\)</span> 个成分确定了由 <span class="math notranslate nohighlight">\(\A\)</span> 张成的子空间。</p>
 <p>因为每个 <span class="math notranslate nohighlight">\(X_j\)</span> 独立的扰动 <span class="math notranslate nohighlight">\(\varepsilon_j\)</span>，因子分析可以看成是对 <span class="math notranslate nohighlight">\(X_j\)</span> 的相关性结构进行建模，而非对协方差结构建模。这个可以通过对 <span class="math notranslate nohighlight">\(式（ 14.81 ）\)</span> 的协方差结构进行标准化后得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/51">练习 14.14</a>）。</p>
-<p>!!! note “weiya 注: Ex. 14.14”
+<blockquote>
+<div><p>note “weiya 注: Ex. 14.14”
 练习 14.14 表明，因子分析实质上是对相关矩阵进行分解。详见解答见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/51">Issue 51: Ex. 14.14</a></p>
+</div></blockquote>
 <p>这是因子分析与 PCA 的重要区别，尽管这不是我们讨论的重点。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/50">练习 14.15</a> 讨论了一个简单的例子，因为这个差异，因子分析和主成分的解完全不同。</p>
-<p>!!! note “weiya 注: Ex. 14.15”
+<blockquote>
+<div><p>note “weiya 注: Ex. 14.15”
 练习 14.15 用一个实际例子说明了，因子分析和主成分得到的第一因子和第一主成分完全不同。详细解答见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/50">Issue 50: Ex. 14.15</a></p>
+</div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2>独立成分分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）独立成分分析<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>**独立成分分析 (ICA)**模型与 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 有相同的形式, 除了假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是统计上独立而非不相关。</p>
-<p>!!! note “weiya 注: 独立与不相关”
-统计上, 连续型随机变量 <span class="math notranslate nohighlight">\(X\)</span> 与 <span class="math notranslate nohighlight">\(Y\)</span> 独立的定义为
-$<span class="math notranslate nohighlight">\(
-    p(x, y)=p_X(x)p_Y(y)\;\forall x,y
-    \)</span><span class="math notranslate nohighlight">\(
-    而不相关的定义为
-    \)</span><span class="math notranslate nohighlight">\(
-	\mathrm{Cov}(X, Y)=0
-    \)</span>$
-独立意味着不相关，但反之不对。对于二元正态随机变量，两者等价。</p>
+<blockquote>
+<div><p>note “weiya 注: 独立与不相关”
+统计上, 连续型随机变量 <span class="math notranslate nohighlight">\(X\)</span> 与 <span class="math notranslate nohighlight">\(Y\)</span> 独立的定义为</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    p(x, y)=p_X(x)p_Y(y)\;\forall x,y
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>而不相关的定义为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\mathrm{Cov}(X, Y)=0
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>独立意味着不相关，但反之不对。对于二元正态随机变量，两者等价。
+</pre></div>
+</div>
 <p>直观上, 不相关确定了多元变量分布的二阶交叉矩（协方差）, 而一般地, 统计独立确定了所有的交叉矩。 这些额外的矩条件能让我们找到唯一的 <span class="math notranslate nohighlight">\(\A\)</span>。 因为多元正态分布只要二阶矩就可以确定, 所以这是一个特例, 在忽略一个旋转的情况下任意高斯独立成分可以像之前被确定。 因此如果假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立且非高斯的, 则可以避免 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的唯一性问题.</p>
 <p>这里我们将要讨论 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 中全 <span class="math notranslate nohighlight">\(p\)</span> 个成分的模型, 其中 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立的且有单位方差; 因子分析模型 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的 ICA 版本也同样存在。 我们的处理是基于 Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id5">2</a> 的综述文章.</p>
 <p>我们希望恢复 <span class="math notranslate nohighlight">\(X=\A S\)</span> 中的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>。 不失一般性, 我们假设 <span class="math notranslate nohighlight">\(X\)</span> 已经 <strong>白化 (whitened)</strong> 使得 <span class="math notranslate nohighlight">\(\mathrm{Cov}(X)=\I\)</span>; 这一般可以通过前面描述的 SVD 实现。</p>
-<p>!!! note “weiya 注：白化 (whitened)”
+<blockquote>
+<div><p>note “weiya 注：白化 (whitened)”
 根据<a class="reference external" href="https://en.wikipedia.org/wiki/Whitening_transformation">维基百科</a>，因为白噪声的协方差矩阵为单位阵，所以称这一过程为白化。白化矩阵 <span class="math notranslate nohighlight">\(W\)</span> 使得 <span class="math notranslate nohighlight">\(WX\)</span> 协方差为单位阵（此处 <span class="math notranslate nohighlight">\(X\)</span> 表示为随机向量，若作用在矩阵上，则右乘），则 <span class="math notranslate nohighlight">\(W^TW = \Sigma^{-1}\)</span>. 根据求解 <span class="math notranslate nohighlight">\(W\)</span> 的算法，可以分类为</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Mahalanobis or ZCA whitening: $W = \Sigma^{-1/2}$
 - Cholesky whitening: 取 Cholesky 分解 $\Sigma^{-1} = LL^T$ 中的 $L^T$，则 $\Sigma = (L^{T})^{-1}L^{-1}$，因而 $W\Sigma W^T=L^T (L^{T})^{-1}L^{-1} L = \I$.
 - PCA whitening: 特征分解 
 
 而这里提到 SVD，大概是通过 
-$$
-\Sigma = V^TD^2V\,,
-$$
-得到
-$$
-\Sigma^{-1} = V^TD^{-2}V\,,
-$$
-然后取 $W = D^{-1}V$.
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\Sigma = V^TD^2V\,,
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>得到
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\Sigma^{-1} = V^TD^{-2}V\,,
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>然后取 $W = D^{-1}V$.
 </pre></div>
 </div>
 <p>反过来, 因为 <span class="math notranslate nohighlight">\(S\)</span> 的协方差也为 <span class="math notranslate nohighlight">\(\I\)</span>, 这意味着 <span class="math notranslate nohighlight">\(\A\)</span> 是正交的。 所以求解 ICA 问题等价于寻找正交的 <span class="math notranslate nohighlight">\(\A\)</span> 使得随机变量向量 <span class="math notranslate nohighlight">\(S=\A^T X\)</span> 的组分是独立(且是非高斯的)。</p>
 <p><img alt="" src="../_images/fig14.37.png" /></p>
 <p>图 14.37 显示了在分离两个混合信号例子中 ICA 的能力。这也是经典的 cocktail party problem 的一个例子，不同的麦克风 <span class="math notranslate nohighlight">\(X_j\)</span> 接受来自不同独立源 <span class="math notranslate nohighlight">\(S_\ell\)</span>（音乐、不同人说的话等等）的混合信号。 ICA 通过利用原始信号源的独立性和非高斯性，能够进行 <strong>盲信号分离 (blind source separation)</strong>。</p>
 <p>许多流行的 ICA 方法是基于熵。 密度为 <span class="math notranslate nohighlight">\(g(y)\)</span> 的随机变量 <span class="math notranslate nohighlight">\(Y\)</span> 的 <strong>微分熵 (differential entropy)</strong> <span class="math notranslate nohighlight">\(H\)</span> 由下式给出</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 H(Y)=-\int g(y)\log g(y)dy\tag{14.82}
-\]</div>
+\)</span>$</p>
 <p>信息理论中一个著名的结论是在所有同方差的随机变量中，高斯随机变量有最大的熵。最后，随机向量 <span class="math notranslate nohighlight">\(Y\)</span> 的组分之间的 <strong>互信息量(mutual information)</strong> <span class="math notranslate nohighlight">\(I(Y)\)</span> 是独立性的一个自然度量:</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 I(Y)=\sum\limits_{j=1}^pH(Y_j)-H(Y)\tag{14.83}
-\]</div>
+\)</span>$</p>
 <p>值 <span class="math notranslate nohighlight">\(I(Y)\)</span> 称为 <span class="math notranslate nohighlight">\(Y\)</span> 的密度 <span class="math notranslate nohighlight">\(g(y)\)</span> 与其独立版本 <span class="math notranslate nohighlight">\(\prod\limits_{j=1}^pg_j(y_j)\)</span> 之间的 Kullback-Leibler 距离, 其中 <span class="math notranslate nohighlight">\(g_j(y_j)\)</span> 是 <span class="math notranslate nohighlight">\(Y_j\)</span> 的边缘密度. 如果 <span class="math notranslate nohighlight">\(X\)</span> 有协方差 <span class="math notranslate nohighlight">\(\I\)</span>, 且 <span class="math notranslate nohighlight">\(Y=\A^TX\)</span>, 其中 <span class="math notranslate nohighlight">\(\A\)</span> 是正交, 则易证</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1311,65 +1408,88 @@ I(Y)&amp;= \sum\limits_{j=1}^pH(Y_j)-H(X)-\log\vert \det\A\vert\tag{14.84}\\
 &amp;=\sum\limits_{j=1}^pH(Y_j)-H(X)\tag{14.85}
 \end{align*}
 \end{split}\]</div>
-<p>!!! note “weiya 注: (14.85) 的证明”
-只要证
-$<span class="math notranslate nohighlight">\(
-	H(Y)=H(X)+\log \vert \det \A \vert
-	\)</span><span class="math notranslate nohighlight">\(
-	对 式（ 14.82 ） 进行变量替换有
-	\)</span><span class="math notranslate nohighlight">\(
-	H(Y)=-\int g(\A'x)\log g(\A'x)\cdot \vert \det \J\vert dx\qquad (*)
-	\)</span><span class="math notranslate nohighlight">\(
-	其中\)</span>\J_{ij}=\frac{\partial y_i}{\partial x_j}<span class="math notranslate nohighlight">\(.
-	又
-	\)</span><span class="math notranslate nohighlight">\(
-	y_i = \sum\limits_{j=1}^p (\A')_{ij}x_j
-	\)</span><span class="math notranslate nohighlight">\(
-	故
-	\)</span><span class="math notranslate nohighlight">\(
-	\J_{ij}=(\A')_{ij}
-	\)</span><span class="math notranslate nohighlight">\(
-	所以 \)</span>\det\J = \det \A’=\det \A<span class="math notranslate nohighlight">\(.
-	另外, \)</span>X<span class="math notranslate nohighlight">\( 的密度函数为
-	\)</span><span class="math notranslate nohighlight">\(
-	f(x)=g(\A'x)\cdot\vert \det\J\vert 
-	\)</span><span class="math notranslate nohighlight">\(
-	于是 \)</span>(*)<span class="math notranslate nohighlight">\( 式可以写成
-	\)</span><span class="math notranslate nohighlight">\(
-	\begin{align*}
+<blockquote>
+<div><p>note “weiya 注: (14.85) 的证明”
+只要证</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	H(Y)=H(X)+\log \vert \det \A \vert
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>对 式（ 14.82 ） 进行变量替换有
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	H(Y)=-\int g(\A'x)\log g(\A'x)\cdot \vert \det \J\vert dx\qquad (*)
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中$\J_{ij}=\frac{\partial y_i}{\partial x_j}$.
+又
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	y_i = \sum\limits_{j=1}^p (\A')_{ij}x_j
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>故
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\J_{ij}=(\A')_{ij}
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>所以 $\det\J = \det \A&#39;=\det \A$.
+另外, $X$ 的密度函数为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	f(x)=g(\A'x)\cdot\vert \det\J\vert 
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>于是 $(*)$ 式可以写成
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}	\begin{align*}
 	H(Y) &amp;= -\int \frac{f(x)}{\vert\det\A\vert} \log\frac{f(x)}{\vert\det\A\vert}\cdot\vert\det\A\vert dx\\
 	&amp;=-\int f(x)[\log f(x)-\log\vert\det\A\vert]dx\\
 	&amp;=H(X)+\log\vert\det\A\vert
 	\end{align*}
-	\)</span>$
-证毕。</p>
+	
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>证毕。
+</pre></div>
+</div>
 <p>寻找 <span class="math notranslate nohighlight">\(\A\)</span> 最小化 <span class="math notranslate nohighlight">\(I(Y)=I(\A^TX)\)</span> 也就是寻找使得组分间的独立性最强的正交变换。考虑到式 <span class="math notranslate nohighlight">\(式（ 14.84 ）\)</span>, 这等价于最小化 <span class="math notranslate nohighlight">\(Y\)</span> 的各组分的熵的和, 反过来意味着最大化它们与高斯分布的距离。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 因为高斯随机变量的熵最大, 则让各组分熵之和最小, 意味着各组分远离高斯分布。</p>
+</div></blockquote>
 <p>为了简便, 与其采用熵 <span class="math notranslate nohighlight">\(H(Y_j)\)</span>, Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id6">2</a> 采用 <strong>负熵 (negentropy)</strong> <span class="math notranslate nohighlight">\(J(Y_j)\)</span></p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 J(Y_j) = H(Z_j)-H(Y_j)\tag{14.86}
-\]</div>
+\)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(Z_j\)</span> 是与 <span class="math notranslate nohighlight">\(Y_j\)</span> 同方差的高斯随机变量。负熵是非负的, 它度量了 <span class="math notranslate nohighlight">\(Y_j\)</span> 与高斯随机变量之间的距离。他们提出负熵的一个简单近似, 这个近似可以用来计算和优化数据. 图 14.37 至图 14.39 中的 ICA 都采用下面的近似</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 J(Y_j)\approx [\E G(Y_j) - \E G(Z_j)]^2\tag{14.87}
-\]</div>
+\)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(G(u)=\frac 1a\log\cosh(au), 1\le a\le 2\)</span>。当应用到实际数据时, 期望用数据的平均值代替。这是这些作者们提供的<code class="docutils literal notranslate"><span class="pre">FastICA</span></code>软件中的一个选项. 更经典（但不太鲁棒）的度量是基于四阶矩, 也因此可以通过 <strong>峰度 (kurtosis)</strong> 来衡量与高斯分布的距离。更多细节参见 Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id7">2</a>. 在 <span class="xref myst">14.7.4 节</span>我们讨论他们寻找最优方向的近似牛顿算法.</p>
-<p>!!! note “weiya 注:”
-峰度是四阶标准矩
-$<span class="math notranslate nohighlight">\(
-	Kurt(X)=\mathbb{E} \Big[
+<blockquote>
+<div><p>note “weiya 注:”
+峰度是四阶标准矩</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	Kurt(X)=\mathbb{E} \Big[
 	\Big(
 	\frac{X-\mu}{\sigma}
 	\Big)^4
 	\Big]
-	\)</span>$</p>
+	
+\]</div>
 <p>总结一下，ICA 应用到多元数据中，来寻找一系列的正交投影，使得投影数据尽可能远离高斯分布。采用白化后的数据（协方差为 <span class="math notranslate nohighlight">\(\I\)</span>），这意味着寻找尽可能独立的组分。</p>
 <p>ICA 本质上从因子分析的一个解出发，并且寻找一个旋转得到独立组分。从这点看, ICA 与在心理测量学中采用的传统方法 “varimax” 和 “quartimax” 一样, 仅仅是因子旋转的一种方式.</p>
 <div class="section" id="id8">
-<h3>例子: 手写数字<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>（）例子: 手写数字<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>我们再次讨论 <span class="xref myst">14.5.1 节</span>用 PCA 分析的手写数字“3”。</p>
 <p><img alt="" src="../_images/fig14.39.png" /></p>
 <p>图 14.39 比较了前五个主成分（标准化）和前五个 ICA 成分，都显示在标准化后的同一单位尺度下。注意到每张图都是 256 维空间的二维投影。所有 PCA 组分看上去都服从联合高斯分布，而 ICA 组分都服从长尾分布。这并不是很奇怪，因为 PCA 主要考虑方差，而 ICA 特地寻找非高斯的分布。所有的组分都已经标准化，所以我们看不出主成分的方差降低。</p>
@@ -1377,15 +1497,17 @@ $<span class="math notranslate nohighlight">\(
 <p>图 14.40 展示了每个 ICA 成分的两个极端的数据点，以及均值的两个极端点。这解释了每个组分的实际意义。举个例子，第五个 ICA 成分捕捉具有长扫尾 (long sweeping tailed) 的“3”。</p>
 </div>
 <div class="section" id="id9">
-<h3>例子: 时序脑电图数据<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>（）例子: 时序脑电图数据<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>ICA 已经成为 <strong>脑动力学 (brain dynamics)</strong> 中的重要工具， 这里介绍的例子采用 ICA 来理清多频脑电图 (EEG) 数据中信号的组分 (Onton and Makeig, 2006<a class="footnote-reference brackets" href="#id28" id="id10">12</a>)。</p>
 <p>被试者戴上装有 100 个 EEG 电极的帽子， 这些用来记录头皮上不同部位的脑活动。</p>
 <p><img alt="" src="../_images/fig14.41.png" /></p>
 <p>图 14.41(上图)显示了被试者在 30 分钟的周期内进行标准的”two-back”学习过程时，这些电极中的 9 个电极在 15 秒内的输出结果。 大约间隔 1500ms 依次给被试者呈现一个字母 (B, H, J, C, F 或者 K), 然后被试者通过按“是”或“否”的按钮来判断当前的字母与前两步出现的字母是否一致。</p>
-<p>!!! note “weiya 注: n-back”
+<blockquote>
+<div><p>note “weiya 注: n-back”
 参考<a class="reference external" href="https://en.wikipedia.org/wiki/N-back">wiki: <span class="math notranslate nohighlight">\(n\)</span>-back</a>, <span class="math notranslate nohighlight">\(n\)</span>-back是指给被试者连续的刺激, 要求其判断当前刺激与前<span class="math notranslate nohighlight">\(n\)</span>步的刺激是否一致. 举个例子, 在3-back测试中, 若给被试者如下刺激
 <img alt="" src="../_images/nback.png" />
 则当前刺激为高亮部分时, 被试者应当判断”是”, 因为在前3步出现了高亮部分相同的刺激.</p>
+</div></blockquote>
 <p>根据被试者的回答，他们得分或者失分，并且偶尔赚取 bonus 或者额外惩罚。脑电图信号中这个时序的数据表现出空间上的相关性———邻近的信号感受器看起来非常相似。</p>
 <p>这里重要假设是每个头皮电极上记录的信号是从不同表皮活动以及非表皮区域的人工活动（如下文中提到的眨眼）中产生的独立的电势的混合。 更多ICA在这个领域的细节参见参考文献。</p>
 <p>图 14.41 的下半部分展示了 ICA 组分的选择. 彩色图象用（画在头皮上的）热图表示未混合的系数向量的估计值 <span class="math notranslate nohighlight">\(\hat a_j\)</span>, 它表明了活性的位置. 对应的时序数据展示了 ICA 组分的活动.</p>
@@ -1393,11 +1515,11 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="section" id="id12">
-<h2>探索投影寻踪<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>（）探索投影寻踪<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>Friedman and Tukey (1974)<a class="footnote-reference brackets" href="#id29" id="id13">3</a> 提出了 <strong>探索投影寻踪 (exploratory projection pursuit)</strong>，这是可视化高维数据的图象探索技巧。他们的观点是高维数据的大多数低维（一维或二维）投影看起来是高斯分布的。 他们提出一系列 projection indices 的方法用于优化, 每个集中在与高斯分布的不同距离。自从他们最先提出该方法, 陆续有各种改进的建议 (Huber, 1985<a class="footnote-reference brackets" href="#id30" id="id14">4</a>; Friedman, 1987<a class="footnote-reference brackets" href="#id31" id="id15">5</a>)，以及交互式图形软件包 Xgobi（Swayne et al., 1991<a class="footnote-reference brackets" href="#id32" id="id16">6</a>, 现在叫做 GGobi）中实现的各种指标，包括熵。 这些投影指标与上文介绍的 <span class="math notranslate nohighlight">\(J(Y_j)\)</span> 形式一样， 其中 <span class="math notranslate nohighlight">\(Y_j=a_j^TX\)</span> 是 <span class="math notranslate nohighlight">\(X\)</span> 组分的标准化的线性组合。实际上，交叉熵的一些近似和替代与投影寻踪中提出的指标重合。一般在投影寻踪中, 方向 <span class="math notranslate nohighlight">\(a_j\)</span> 不需要限制为正交。Friedman (1987)<a class="footnote-reference brackets" href="#id31" id="id17">5</a>将数据在选定的投影上转换使之看起来像高斯分布，然后搜索接下来的方向。尽管他们的出发点不一样，但是 ICA 和探索投影寻踪非常相似，至少对于这里描述的表示形式。</p>
 </div>
 <div class="section" id="id18">
-<h2>独立分量分析的一种直接方法<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<h2>（）独立分量分析的一种直接方法<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>由定义知独立组分有如下联合乘积密度</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1414,8 +1536,10 @@ f_j(s_j)=\phi(s_j)e^{g_j(s_j)}\tag{14.89}
 \[
 \ell(\A, \{g_j\}_1^p;X)=\sum\limits_{i=1}^N\sum\limits_{j=1}^p[\log \phi(a_j^Tx_i)+g_j(a_j^Tx_i)]\tag{14.90}
 \]</div>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 式（ 14.90 ）原书中 <span class="math notranslate nohighlight">\(\phi\)</span> 有下标 <span class="math notranslate nohighlight">\(j\)</span>， 但是因为 <span class="math notranslate nohighlight">\(\phi\)</span> 为标准正态， 所以应该直接忽略下标， 原书中后面的 式（ 14.91 ） 也确实没有下标。</p>
+</div></blockquote>
 <p>我们希望在 <span class="math notranslate nohighlight">\(\A\)</span> 为正交且 <span class="math notranslate nohighlight">\(式（ 14.89 ）\)</span> 定义的 <span class="math notranslate nohighlight">\(g_j\)</span> 的条件下, 最大化上式。对 <span class="math notranslate nohighlight">\(g_j\)</span> 不添加额外的约束, 模型 式（ 14.90 ） 是过参数化的, 所以我们最大化下面的正则化版本</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1430,32 +1554,49 @@ f_j(s_j)=\phi(s_j)e^{g_j(s_j)}\tag{14.89}
 <li><p>第一个在任意解 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 上强制要求密度约束 <span class="math notranslate nohighlight">\(\int \phi(t)e^{\hat g_j(t)}dt=1\)</span></p></li>
 <li><p>第二个是鲁棒性惩罚, 保证了解 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 是结点在观测值 <span class="math notranslate nohighlight">\(s_{ij}=a_j^Tx_i\)</span> 的四次样条.</p></li>
 </ul>
-<p>!!! note “weiya 注：”
-下面说明为什么第一个惩罚项能够对 <span class="math notranslate nohighlight">\(\phi(t)e^{\hat g_j(t)}\)</span> 的密度进行约束。假设随机变量 <span class="math notranslate nohighlight">\(X\)</span> 的密度函数为 <span class="math notranslate nohighlight">\(f(x)\)</span>，其对数似然函数为 <span class="math notranslate nohighlight">\(g(x)\propto \log f(x)\)</span>，这个问题归结为说明
-$<span class="math notranslate nohighlight">\(
-	A_0(g)=\frac 1n\sum g(x_i)
-	\)</span><span class="math notranslate nohighlight">\(
-	在 \)</span>\int e^g=1<span class="math notranslate nohighlight">\( 的约束下的 \)</span>\arg\max<span class="math notranslate nohighlight">\( 等于
-	\)</span><span class="math notranslate nohighlight">\(
-	A(g)=\frac 1n\sum g(x_i)-\int \exp(g(x))dx
-	\)</span><span class="math notranslate nohighlight">\(
-	的 \)</span>\arg\max<span class="math notranslate nohighlight">\(。
-	考虑\)</span>g^<em>=g-\log \int e^g<span class="math notranslate nohighlight">\(
-	则
-	\)</span><span class="math notranslate nohighlight">\(
-	\int e^{g^*}=\int e^{g(x)}\cdot \frac{1}{\int e^{g(t)}dt}dx=1
-	\)</span><span class="math notranslate nohighlight">\(
-	于是
-	\)</span><span class="math notranslate nohighlight">\(
-	A(g^*)=A(g)+\int e^{g(x)}dx-\log(\int e^{g(x)}dx)-1
-	\)</span><span class="math notranslate nohighlight">\(
-	因 \)</span>t-\log t\ge 1, \forall t&gt;0<span class="math notranslate nohighlight">\(，当且仅当 \)</span>t=1<span class="math notranslate nohighlight">\( 取等号，
-	则 \)</span>A(g^</em>)\ge A(g)<span class="math notranslate nohighlight">\(，也就是当且仅当 \)</span>\int e^g = 1<span class="math notranslate nohighlight">\( 时，\)</span>A(g)<span class="math notranslate nohighlight">\(会取得最大值，而这时候\)</span>A(g)=A_0(g)-1<span class="math notranslate nohighlight">\(，所以\)</span>A_0(g)<span class="math notranslate nohighlight">\(也会取得最大值。由此看出，\)</span>A_0(g)<span class="math notranslate nohighlight">\(在\)</span>\int e^g=1<span class="math notranslate nohighlight">\(的约束下的\)</span>\arg\max<span class="math notranslate nohighlight">\(等于（无约束的）\)</span>A(g)<span class="math notranslate nohighlight">\(的\)</span>\arg\max<span class="math notranslate nohighlight">\(。
-	关于第二个点说得到四次样条，我想可以这样类比理解（但不严谨），我们知道四次样条有三阶连续的导函数，且对于[光滑样条（三次）](../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines/index.html)有如下形式
-	\)</span><span class="math notranslate nohighlight">\(
-	RSS(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
-	\)</span>$
-可以类比看出第二个惩罚正是针对四次样条。</p>
+<blockquote>
+<div><p>note “weiya 注：”
+下面说明为什么第一个惩罚项能够对 <span class="math notranslate nohighlight">\(\phi(t)e^{\hat g_j(t)}\)</span> 的密度进行约束。假设随机变量 <span class="math notranslate nohighlight">\(X\)</span> 的密度函数为 <span class="math notranslate nohighlight">\(f(x)\)</span>，其对数似然函数为 <span class="math notranslate nohighlight">\(g(x)\propto \log f(x)\)</span>，这个问题归结为说明</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	A_0(g)=\frac 1n\sum g(x_i)
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>在 $\int e^g=1$ 的约束下的 $\arg\max$ 等于
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	A(g)=\frac 1n\sum g(x_i)-\int \exp(g(x))dx
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>的 $\arg\max$。
+考虑$g^*=g-\log \int e^g$
+则
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\int e^{g^*}=\int e^{g(x)}\cdot \frac{1}{\int e^{g(t)}dt}dx=1
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>于是
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	A(g^*)=A(g)+\int e^{g(x)}dx-\log(\int e^{g(x)}dx)-1
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>因 $t-\log t\ge 1, \forall t&gt;0$，当且仅当 $t=1$ 取等号，
+则 $A(g^*)\ge A(g)$，也就是当且仅当 $\int e^g = 1$ 时，$A(g)$会取得最大值，而这时候$A(g)=A_0(g)-1$，所以$A_0(g)$也会取得最大值。由此看出，$A_0(g)$在$\int e^g=1$的约束下的$\arg\max$等于（无约束的）$A(g)$的$\arg\max$。
+关于第二个点说得到四次样条，我想可以这样类比理解（但不严谨），我们知道四次样条有三阶连续的导函数，且对于[光滑样条（三次）](../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines/index.html)有如下形式
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	RSS(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>可以类比看出第二个惩罚正是针对四次样条。
+</pre></div>
+</div>
 <p>可以进一步证明每个解密度 <span class="math notranslate nohighlight">\(\hat{f_j}=\phi e^{\hat g_j}\)</span> 的均值为 0, 方差为 1（练习 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/53">14.18</a>）。当我们增大 <span class="math notranslate nohighlight">\(\lambda_j\)</span>，这些解近似标准高斯密度 <span class="math notranslate nohighlight">\(\phi\)</span>。</p>
 <p><img alt="" src="../_images/alg14.3.png" /></p>
 <p>如在算法 14.3 中描述, 以一种轮换的方式优化 <span class="math notranslate nohighlight">\(式（ 14.91 ）\)</span> 来拟合函数 <span class="math notranslate nohighlight">\(g_i\)</span> 和方向 <span class="math notranslate nohighlight">\(a_j\)</span>。</p>
@@ -1469,7 +1610,7 @@ $<span class="math notranslate nohighlight">\(
 <p>尽管 <span class="math notranslate nohighlight">\(式（ 14.92 ）\)</span> 的第二个积分导出光滑样条， 但第一个积分比较困难，需要近似。我们构造一个 <span class="math notranslate nohighlight">\(L\)</span> 个值为 <span class="math notranslate nohighlight">\(s_\ell^*\)</span> 的细网格，这些值间距为 <span class="math notranslate nohighlight">\(\Delta\)</span>、覆盖观测值 <span class="math notranslate nohighlight">\(s_i\)</span> 的取值范围， 并且统计得到的小块中 <span class="math notranslate nohighlight">\(s_i\)</span> 的个数：</p>
 <div class="math notranslate nohighlight">
 \[
-y_\ell^*=\frac{\#s_i\in (s_\ell^*-\Delta/2, s_\ell^*+\Delta/2)}{N}\tag{14.93}
+Y_\ell^*=\frac{\#s_i\in (s_\ell^*-\Delta/2, s_\ell^*+\Delta/2)}{N}\tag{14.93}
 \]</div>
 <p>一般我们取 <span class="math notranslate nohighlight">\(L\)</span> 为 1000 就已经足够了。 则 <span class="math notranslate nohighlight">\(式（ 14.92 ）\)</span> 可以近似为</p>
 <div class="math notranslate nohighlight">
@@ -1478,15 +1619,21 @@ y_\ell^*=\frac{\#s_i\in (s_\ell^*-\Delta/2, s_\ell^*+\Delta/2)}{N}\tag{14.93}
 y_\ell^*[\log(\phi(s_\ell^*)) + g(s_\ell^*)]-\Delta\phi(s_\ell^*)e^{g(s_\ell^*)}-\lambda\int {g^{(3)}}^2(s)ds\tag{14.94}
 \Big\}
 \]</div>
-<p>!!! note “weiya 注：翻译相关”
+<blockquote>
+<div><p>note “weiya 注：翻译相关”
 原文 <span class="math notranslate nohighlight">\(y\)</span> 的脚标是 <span class="math notranslate nohighlight">\(i\)</span>，但应该是个 typo，应为 <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
+</div></blockquote>
 <p>这个表达是可以看成是与惩罚的 Poisson 对数似然成比例，其中响应变量为 <span class="math notranslate nohighlight">\(y_\ell^*/\Delta\)</span>，惩罚参数为 <span class="math notranslate nohighlight">\(\lambda/\Delta\)</span>，均值为 <span class="math notranslate nohighlight">\(\mu(s)=\phi(s)e^{g(s)}\)</span>。</p>
-<p>!!! note “weiya 注：Poisson 对数似然”
+<blockquote>
+<div><p>note “weiya 注：Poisson 对数似然”
 有关讨论详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/54">Issue 54</a></p>
+</div></blockquote>
 <p>这是一个 <strong>广义可加样条模型 (generalized additive spline model)</strong>(Hastie and Tibshirani, 1990<a class="footnote-reference brackets" href="#id35" id="id21">9</a>; Efron and Tibshirani, 1996<a class="footnote-reference brackets" href="#id36" id="id22">10</a>)，其中的 offset 项为 <span class="math notranslate nohighlight">\(\log \phi(s)\)</span>， 并且可以以 <span class="math notranslate nohighlight">\(O(L)\)</span> 的复杂度用牛顿算法进行拟合。尽管要求四次样条，但是实际中我们发现三次样条就足够了。我们有 <span class="math notranslate nohighlight">\(p\)</span> 个调整参数 <span class="math notranslate nohighlight">\(\lambda_j\)</span> 需要设定，在实际中我们使得它们相等，然后通过有效自由度 <span class="math notranslate nohighlight">\(\mathrm{df}(\lambda)\)</span> 来确定光滑的程度。我们的软件采用 <span class="math notranslate nohighlight">\(5\df\)</span> 作为默认值。</p>
 <p>算法 14.3 的 2(b) 要求在给定 <span class="math notranslate nohighlight">\(\hat g_j\)</span>，对 <span class="math notranslate nohighlight">\(\A\)</span> 进行优化。和式中仅仅第一项有涉及 <span class="math notranslate nohighlight">\(\A\)</span>，并且因为 <span class="math notranslate nohighlight">\(\A\)</span> 是正交的，则涉及 <span class="math notranslate nohighlight">\(\phi\)</span> 的所有项的集合不依赖 <span class="math notranslate nohighlight">\(\A\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/55">练习 14.19</a>）。</p>
-<p>!!! note “weiya 注：Ex. 14.19”
+<blockquote>
+<div><p>note “weiya 注：Ex. 14.19”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/55">Issue 55: 练习 14.19</a>.</p>
+</div></blockquote>
 <p>因此我们只需要最大化</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1497,40 +1644,56 @@ C(\A) &amp;= \frac 1N\sum\limits_{j=1}^p\sum\limits_{i=1}^N\hat g_j(a_j^Tx_i)\ta
 \end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(C(\A)\)</span> 是拟合的密度与高斯密度间的对数似然比，而且可以看成是负熵 式（ 14.86 ） 的一个估计， 其中每个 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 就像 式（ 14.87 ） 中的差异函数。第 2(b) 步中的固定点更新是修改后的牛顿法（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/56">练习 14.20</a>）：</p>
 <ol class="simple">
-<li><p>对于每个 <span class="math notranslate nohighlight">\(j\)</span>，更新
-$<span class="math notranslate nohighlight">\(
-a_j\leftarrow \mathbb{E} \{X\hat g_j'(a_j^TX)-\mathbb{E}[\hat g_j^{(2)}(a_j^TX)]a_j\}\tag{14.96}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\E<span class="math notranslate nohighlight">\( 表示关于 \)</span>x_i<span class="math notranslate nohighlight">\( 的期望。因为 \)</span>\hat g_j$ 是拟合的四次（或者三次）样条，则式中第一项和第二项已经计算好了。</p></li>
-<li><p>采用对称平方根变换将 <span class="math notranslate nohighlight">\(\A\)</span> 化为正交矩阵：<span class="math notranslate nohighlight">\((\A\A^T)^{-\frac 12}\A\)</span>。如果 <span class="math notranslate nohighlight">\(\A=\U\D\V^T\)</span> 是 <span class="math notranslate nohighlight">\(\A\)</span> 的 SVD 分解，则易证 <span class="math notranslate nohighlight">\(\A\leftarrow \U\V^T\)</span>。</p></li>
+<li><p>对于每个 <span class="math notranslate nohighlight">\(j\)</span>，更新</p></li>
 </ol>
-<p>!!! note “weiya 注：Ex. 14.20”
+<p><span class="math notranslate nohighlight">\(
+a_j\leftarrow \mathbb{E} \{X\hat g_j'(a_j^TX)-\mathbb{E}[\hat g_j^{(2)}(a_j^TX)]a_j\}\tag{14.96}
+\)</span>$</p>
+<p>其中 <span class="math notranslate nohighlight">\(\E\)</span> 表示关于 <span class="math notranslate nohighlight">\(x_i\)</span> 的期望。因为 <span class="math notranslate nohighlight">\(\hat g_j\)</span> 是拟合的四次（或者三次）样条，则式中第一项和第二项已经计算好了。
+2. 采用对称平方根变换将 <span class="math notranslate nohighlight">\(\A\)</span> 化为正交矩阵：<span class="math notranslate nohighlight">\((\A\A^T)^{-\frac 12}\A\)</span>。如果 <span class="math notranslate nohighlight">\(\A=\U\D\V^T\)</span> 是 <span class="math notranslate nohighlight">\(\A\)</span> 的 SVD 分解，则易证 <span class="math notranslate nohighlight">\(\A\leftarrow \U\V^T\)</span>。</p>
+<blockquote>
+<div><p>note “weiya 注：Ex. 14.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/56">Issue 56: Ex. 14.20</a>.</p>
+</div></blockquote>
 <p>我们的 <code class="docutils literal notranslate"><span class="pre">ProDenICA</span></code> 算法和 <code class="docutils literal notranslate"><span class="pre">FastICA</span></code> 算法在图 14.37 中的模拟时间序列数据、图 14.38 的均匀分布数据的混合以及图 14.39 中的数字数据都表现得一样好。</p>
 <div class="section" id="id23">
-<h3>例子：模拟<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3>（）例子：模拟<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="../_images/fig14.42.png" /></p>
 <p>图 14.42 展示了比较 <code class="docutils literal notranslate"><span class="pre">ProDenICA</span></code> 与 <code class="docutils literal notranslate"><span class="pre">FastICA</span></code> 以及另外一个半参方法 <code class="docutils literal notranslate"><span class="pre">KernelICA</span></code>(Bach and Jordan, 2002<a class="footnote-reference brackets" href="#id37" id="id24">11</a>)的模拟的结果。左图展示了作为比较的基础的 18 个分布。对于每个分布，我们产生成对的独立组分(<span class="math notranslate nohighlight">\(N=1024\)</span>)，以及随机的混合矩阵 <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>，条件数为 1 到 2 之间。</p>
-<p>!!! note “weiya 注：条件数”
-矩阵<span class="math notranslate nohighlight">\(A\)</span>的条件数为
-$<span class="math notranslate nohighlight">\(
-	\kappa(A) = \Vert A^{-1}\Vert\cdot \Vert A\Vert\ge \Vert A^{-1}\cdot A\Vert=1
-	\)</span><span class="math notranslate nohighlight">\(
-	若\)</span>\Vert\cdot \Vert<span class="math notranslate nohighlight">\(为二范数
-	\)</span><span class="math notranslate nohighlight">\(
-	\kappa(A) = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}
-	\)</span><span class="math notranslate nohighlight">\(
-	其中\)</span>\sigma_\max(A)<span class="math notranslate nohighlight">\(和\)</span>\sigma_\min(A)<span class="math notranslate nohighlight">\(分别为\)</span>A<span class="math notranslate nohighlight">\(的最大和最小的奇异值。
-	对于正规矩阵，即满足
-	\)</span><span class="math notranslate nohighlight">\(
-	A^TA=AA^T
-	\)</span><span class="math notranslate nohighlight">\(
-	有
-	\)</span><span class="math notranslate nohighlight">\(
-	\kappa(A)=\frac{\vert\lambda_\max(A)\vert}{\vert \lambda_\min(A)\vert}
-	\)</span><span class="math notranslate nohighlight">\(
-	其中\)</span>\lambda<span class="math notranslate nohighlight">\(为特征值。
-	当\)</span>A<span class="math notranslate nohighlight">\(为单位阵时，\)</span>\kappa(A)=1$。</p>
+<blockquote>
+<div><p>note “weiya 注：条件数”
+矩阵<span class="math notranslate nohighlight">\(A\)</span>的条件数为</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[	\kappa(A) = \Vert A^{-1}\Vert\cdot \Vert A\Vert\ge \Vert A^{-1}\cdot A\Vert=1
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>若$\Vert\cdot \Vert$为二范数
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\kappa(A) = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中$\sigma_\max(A)$和$\sigma_\min(A)$分别为$A$的最大和最小的奇异值。
+对于正规矩阵，即满足
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	A^TA=AA^T
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>有
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[	\kappa(A)=\frac{\vert\lambda_\max(A)\vert}{\vert \lambda_\min(A)\vert}
+	
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中$\lambda$为特征值。
+当$A$为单位阵时，$\kappa(A)=1$。
+</pre></div>
+</div>
 <p>我们采用<code class="docutils literal notranslate"><span class="pre">FastICA</span></code>的 R 语言实现，采用 <span class="math notranslate nohighlight">\(式（ 14.87 ）\)</span> 的负熵准则，<code class="docutils literal notranslate"><span class="pre">ProDenICA</span></code>也是这样。对于<code class="docutils literal notranslate"><span class="pre">KernelICA</span></code>，我们采用作者的MATLAB代码。因为搜索准则是非凸的，我们对每种方法采用 5 个随机初始值。每个算法都传入正交的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>（数据已经进行了白化），这可以用来比较产生的正交混合矩阵 <span class="math notranslate nohighlight">\(\A_0\)</span>。我们采用 Amari 距离(Bach and Jordan, 2002<a class="footnote-reference brackets" href="#id37" id="id25">11</a>)来度量两个矩阵接近程度：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1603,8 +1766,8 @@ d(\A_0, \A)=\frac{1}{2p}\sum_{i=1}^p\Big(\frac{\sum_{j=1}^p\vert r_{ij}\vert}{\m
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.6-Non-negative-Matrix-Factorization.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1621,19 +1784,17 @@ d(\A_0, \A)=\frac{1}{2p}\sum_{i=1}^p\Big(\frac{\sum_{j=1}^p\vert r_{ij}\vert}{\m
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,24 +1133,35 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>11.2 投影寻踪回归</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>11.2 投影寻踪回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>在我们一般监督学习问题中，假设我们有 <span class="math notranslate nohighlight">\(p\)</span> 个组分的输入向量 <span class="math notranslate nohighlight">\(X\)</span>，以及目标变量 <span class="math notranslate nohighlight">\(Y\)</span>。令 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots, M\)</span> 为未知参数的 <span class="math notranslate nohighlight">\(p\)</span> 维单位向量。<strong>投影寻踪回归 (PPR)</strong> 模型有如下形式
-$<span class="math notranslate nohighlight">\(
+<p>在我们一般监督学习问题中，假设我们有 <span class="math notranslate nohighlight">\(p\)</span> 个组分的输入向量 <span class="math notranslate nohighlight">\(X\)</span>，以及目标变量 <span class="math notranslate nohighlight">\(Y\)</span>。令 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots, M\)</span> 为未知参数的 <span class="math notranslate nohighlight">\(p\)</span> 维单位向量。<strong>投影寻踪回归 (PPR)</strong> 模型有如下形式</p>
+<div class="math notranslate nohighlight">
+\[
 f(X)=\sum\limits_{m=1}^Mg_m(\omega_m^TX)\tag{11.1}
-\)</span><span class="math notranslate nohighlight">\(
-这是一个可加模型，但是是关于导出特征 \)</span>V_m=\omega_m^TX<span class="math notranslate nohighlight">\(，而不是关于输入变量本身。函数 \)</span>g_m<span class="math notranslate nohighlight">\( 未定，而是用一些灵活的光滑化方法来估计及 \)</span>\omega_m$ 的方向（见下）。</p>
+\]</div>
+<p>这是一个可加模型，但是是关于导出特征 <span class="math notranslate nohighlight">\(V_m=\omega_m^TX\)</span>，而不是关于输入变量本身。函数 <span class="math notranslate nohighlight">\(g_m\)</span> 未定，而是用一些灵活的光滑化方法来估计及 <span class="math notranslate nohighlight">\(\omega_m\)</span> 的方向（见下）。</p>
 <p>函数 <span class="math notranslate nohighlight">\(g_m(\omega_m^TX)\)</span> 称为 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的<strong>岭函数 (ridge function)</strong>。仅仅在由向量 <span class="math notranslate nohighlight">\(\omega_m\)</span> 定义的方向上变化。标量变量 <span class="math notranslate nohighlight">\(V_m=\omega_m^TX\)</span> 是 <span class="math notranslate nohighlight">\(X\)</span> 在单位向量 <span class="math notranslate nohighlight">\(\omega_m\)</span> 上的投影，寻找使得模型拟合好的 <span class="math notranslate nohighlight">\(\omega_m\)</span>，因此称为“投影寻踪”。图 11.1 显示了岭函数的一些例子。左边的例子 <span class="math notranslate nohighlight">\(w=(1/\sqrt{2})(1,1)^T\)</span>，使得函数仅仅在 <span class="math notranslate nohighlight">\(X_1+X_2\)</span> 方向上变化。在右边的例子中，<span class="math notranslate nohighlight">\(\omega=(1,0)\)</span>。</p>
 <p><img alt="" src="../_images/fig11.1.png" /></p>
 <blockquote>
@@ -1150,21 +1169,23 @@ f(X)=\sum\limits_{m=1}^Mg_m(\omega_m^TX)\tag{11.1}
 </div></blockquote>
 <p>式 式（ 11.1 ） 的 PPR 模型是非常一般的，因为形成线性组合的非线性函数的操作得到相当多的模型类型。举个例子，乘积 <span class="math notranslate nohighlight">\(X_1\cdot X_2\)</span> 可以写成 <span class="math notranslate nohighlight">\([(X_1+X_2)^2-(X_1-X_2)^2]/4\)</span>，高阶的乘积也可以类似地表示。</p>
 <p>实际上，如果 <span class="math notranslate nohighlight">\(M\)</span> 任意大，选择合适的 <span class="math notranslate nohighlight">\(g_m\)</span>，PPR 模型可以很好地近似 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中任意的连续函数。这样的模型类别称为 <strong>通用近似 (universal approximator)</strong>。然而这种一般性需要付出代价。拟合模型的解释性通常很困难，因为每个输入变量都以复杂且多位面的方式进入模型中。结果使得 PPR 模型对于预测非常有用，但是对于产生一个可理解的模型不是很有用。<span class="math notranslate nohighlight">\(M=1\)</span> 模型是个例外，也是计量经济学中的 <strong>单指标模型 (single index model)</strong>。这比线性回归模型更加一般，也提供了一个类似（线性回归模型）的解释。</p>
-<p>给定训练点 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span> 怎么拟合 PPR 模型？我们在函数 <span class="math notranslate nohighlight">\(g_m\)</span> 和方向向量 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots,M\)</span> 上寻找误差函数的近似最小值
-$<span class="math notranslate nohighlight">\(
+<p>给定训练点 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span> 怎么拟合 PPR 模型？我们在函数 <span class="math notranslate nohighlight">\(g_m\)</span> 和方向向量 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots,M\)</span> 上寻找误差函数的近似最小值</p>
+<div class="math notranslate nohighlight">
+\[
 \sum\limits_{i=1}^N\left[y_i-\sum\limits_{m=1}^Mg_m(\omega_m^Tx_i)\right]^2\tag{11.2}
-\)</span><span class="math notranslate nohighlight">\(
-正如在其他光滑问题中一样，我们需要在 \)</span>g_m$ 上加上显式或隐式的限制来避免过拟合解。</p>
+\]</div>
+<p>正如在其他光滑问题中一样，我们需要在 <span class="math notranslate nohighlight">\(g_m\)</span> 上加上显式或隐式的限制来避免过拟合解。</p>
 <p>仅仅考虑一项（<span class="math notranslate nohighlight">\(M=1\)</span>，并且去掉下标）。给定方向向量 <span class="math notranslate nohighlight">\(\omega\)</span>，我们得到导出变量 <span class="math notranslate nohighlight">\(v_i=\omega^Tx_i\)</span>。接着我们有一个一维光滑问题，而且我们可以应用任意散点图光滑器，比如光滑样条来得到 <span class="math notranslate nohighlight">\(g\)</span> 的一个估计。</p>
-<p>另一方面，给定 <span class="math notranslate nohighlight">\(g\)</span>，我们想要关于 <span class="math notranslate nohighlight">\(\omega\)</span> 最小化 式（ 11.2 ）。高斯-牛顿搜索可以很方便地实现这个任务。这是一个拟牛顿法，丢掉了 Hessian 阵中关于 <span class="math notranslate nohighlight">\(g\)</span> 二阶微分的项。可以很简单地按照下面导出。令 <span class="math notranslate nohighlight">\(\omega_{old}\)</span> 为 <span class="math notranslate nohighlight">\(\omega\)</span> 的当前估计。我们写成
-$<span class="math notranslate nohighlight">\(
+<p>另一方面，给定 <span class="math notranslate nohighlight">\(g\)</span>，我们想要关于 <span class="math notranslate nohighlight">\(\omega\)</span> 最小化 式（ 11.2 ）。高斯-牛顿搜索可以很方便地实现这个任务。这是一个拟牛顿法，丢掉了 Hessian 阵中关于 <span class="math notranslate nohighlight">\(g\)</span> 二阶微分的项。可以很简单地按照下面导出。令 <span class="math notranslate nohighlight">\(\omega_{old}\)</span> 为 <span class="math notranslate nohighlight">\(\omega\)</span> 的当前估计。我们写成</p>
+<p><span class="math notranslate nohighlight">\(
 g(\omega^Tx_i)\approx g(\omega_{old}^Tx_i)+g'(\omega_{old}^Tx_i)(\omega-\omega_{old})^Tx_i\tag{11.3}
-\)</span><span class="math notranslate nohighlight">\(
-得到
-\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>得到</p>
+<div class="math notranslate nohighlight">
+\[
 \sum\limits_{i=1}^N[y_i-g(w^Tx_i)]^2\approx \sum\limits_{i=1}^Ng'(\omega_{old}^Tx_i)^2\left[\left(\omega_{old}^	Tx_i+\frac{y_i-g(\omega_{old}^Tx_i)}{g'(w^T_{old}x_i)}\right)-w^Tx_i\right]^2\tag{11.4}
-\)</span><span class="math notranslate nohighlight">\(
-为了最小化右边的项，我们在输入 \)</span>x_i<span class="math notranslate nohighlight">\( 上对目标 \)</span>\omega_{old}^Tx_i+(y_i-g(\omega_{old}^Tx_i))/g’(\omega_{old}^Tx_i)<span class="math notranslate nohighlight">\( 进行最小二乘回归，其中权重为 \)</span>g’(\omega_{old}^Tx_i)^2<span class="math notranslate nohighlight">\( 并且没有截距（偏差）项。这样得到更新后的系数向量 \)</span>\omega_{new}$。</p>
+\]</div>
+<p>为了最小化右边的项，我们在输入 <span class="math notranslate nohighlight">\(x_i\)</span> 上对目标 <span class="math notranslate nohighlight">\(\omega_{old}^Tx_i+(y_i-g(\omega_{old}^Tx_i))/g'(\omega_{old}^Tx_i)\)</span> 进行最小二乘回归，其中权重为 <span class="math notranslate nohighlight">\(g'(\omega_{old}^Tx_i)^2\)</span> 并且没有截距（偏差）项。这样得到更新后的系数向量 <span class="math notranslate nohighlight">\(\omega_{new}\)</span>。</p>
 <p>对 <span class="math notranslate nohighlight">\(g\)</span> 和 <span class="math notranslate nohighlight">\(w\)</span> 的估计的这两步一直迭代直到收敛。在 PPR 模型中不止一项时，以一种向前逐步的方式来建立模型，在每一步加入 <span class="math notranslate nohighlight">\((\omega_m,g_m)\)</span>。</p>
 <p>下面是一系列实现的细节。</p>
 <ul class="simple">
@@ -1207,8 +1228,8 @@ g(\omega^Tx_i)\approx g(\omega_{old}^Tx_i)+g'(\omega_{old}^Tx_i)(\omega-\omega_{
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="11.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1225,19 +1246,17 @@ g(\omega^Tx_i)\approx g(\omega_{old}^Tx_i)+g'(\omega_{old}^Tx_i)(\omega-\omega_{
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

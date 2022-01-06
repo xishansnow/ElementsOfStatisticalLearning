@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>9.5 专家的分层混合</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1147,35 +1165,37 @@
 </div></blockquote>
 <p>考虑回归或者分类问题，正如本章中前面描述的一样。数据 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span>，<span class="math notranslate nohighlight">\(y_i\)</span> 要么是连续响应变量，要么是二值响应变量，并且 <span class="math notranslate nohighlight">\(x_i\)</span> 是向量值输入。为了记号的简便，我们假设 <span class="math notranslate nohighlight">\(x_i\)</span> 的第一个元素是1，这个元素代表截距。</p>
 <p>这里描述 HME 是如何定义的。顶层的门控网络有输出</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 g_j(x,\gamma_j)=\frac{e^{\gamma_j^Tx}}{\sum_{k=1}^Ke^{\gamma_k^Tx}}\; j=1,2,\ldots,K\tag{9.25}
-\]</div>
+\)</span>$</p>
 <p>其中每个 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是未知参数向量。这表示软的 <span class="math notranslate nohighlight">\(K\)</span> 重分割（图 9.13 中 <span class="math notranslate nohighlight">\(K=2\)</span>）每个 <span class="math notranslate nohighlight">\(g_j(x,\gamma_j)\)</span> 是将特征向量为<span class="math notranslate nohighlight">\(x\)</span> 的观测赋给第 <span class="math notranslate nohighlight">\(j\)</span> 个分支。注意到 <span class="math notranslate nohighlight">\(K=2\)</span> 时，如果我们将 <span class="math notranslate nohighlight">\(x\)</span> 的某一个元素的系数取为 <span class="math notranslate nohighlight">\(+\infty\)</span>，接着我们得到无穷大的斜率的逻辑斯蒂曲线。在这种情形下，门的概率取 0 或 1，对应在该输入下的硬分割。</p>
-<p>在第二层，门控网络有类似的形式：
-$<span class="math notranslate nohighlight">\(
+<p>在第二层，门控网络有类似的形式：</p>
+<p><span class="math notranslate nohighlight">\(
 g_{\ell\mid j}(x,\gamma_{j\ell})=\frac{e^{\gamma_{j\ell}^Tx}}{\sum_{k=1}^Ke^{\gamma_{jk}^Tx}},\ell=1,2,\ldots,K\tag{9.26}
-\)</span><span class="math notranslate nohighlight">\(
-这是在给定上一层第 \)</span>j<span class="math notranslate nohighlight">\( 个分支的情况下，赋予第\)</span>\ell$分支的概率。</p>
+\)</span>$</p>
+<p>这是在给定上一层第 <span class="math notranslate nohighlight">\(j\)</span> 个分支的情况下，赋予第<span class="math notranslate nohighlight">\(\ell\)</span>分支的概率。</p>
 <p>在每个专家（终止结点），我们有如下形式的响应变量的模型</p>
 <div class="math notranslate nohighlight">
 \[
 Y\sim  \mathrm{Pr}(y\mid x,\theta_{jl})\tag{9.27}
 \]</div>
 <p>这根据问题而有不同。</p>
-<p><strong>回归：</strong> 使用高斯线性回归模型，其中<span class="math notranslate nohighlight">\(\theta_{j\ell}=(\beta_{i\ell},\sigma^2_{j\ell})\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p><strong>回归：</strong> 使用高斯线性回归模型，其中<span class="math notranslate nohighlight">\(\theta_{j\ell}=(\beta_{i\ell},\sigma^2_{j\ell})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2)\tag{9.28}
-\)</span><span class="math notranslate nohighlight">\(
-**分类：** 使用线性逻辑斯蒂回归模型：
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>分类：</strong> 使用线性逻辑斯蒂回归模型：</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{Pr}(Y=1\mid x,\theta_{j\ell})=\frac{1}{1+e^{-\theta_{j\ell}^Tx}}\tag{9.29}
-\)</span><span class="math notranslate nohighlight">\(
-用\)</span>\Psi=\{\gamma_j,\gamma_{j\ell},\theta_{j\ell}\}<span class="math notranslate nohighlight">\(表示参数的集合，\)</span>Y=y<span class="math notranslate nohighlight">\( 整体概率为
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>用<span class="math notranslate nohighlight">\(\Psi=\\{\gamma_j,\gamma_{j\ell},\theta_{j\ell}\\}\)</span>表示参数的集合，<span class="math notranslate nohighlight">\(Y=y\)</span> 整体概率为</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{Pr}(y\mid x,\Psi)=\sum\limits_{j=1}^Kg_j(x,\gamma_j)\sum\limits_{\ell=1}^Kg_{\ell\mid j}(x,\gamma_{j\ell})Pr(y\mid x,\theta_{j\ell})\tag{9.30}
-\)</span>$
-这是个混合模型，其中混合概率由门控网络模型确定。</p>
+\]</div>
+<p>这是个混合模型，其中混合概率由门控网络模型确定。</p>
 <p>为了估计这些参数，我们在 <span class="math notranslate nohighlight">\(\Psi\)</span> 的参数上最大化数据的对数似然，<span class="math notranslate nohighlight">\(\sum_i \log \mathrm{Pr}(y_i\mid x_i,\Psi)\)</span>。处理这个的最方便是 EM 算法，我们已经在<span class="xref myst">8.5节</span>中描述了。我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_j\)</span>， 除了一个元素为 1，所有的都是 0。我们把这个解释为由顶层门控网络作出的分支判断。类似地，我们定义潜在变量 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 来描述第二层的门控判断。</p>
 <p>在 E 步，EM 算法在给定当前参数值的情况下计算 <span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望。这些期望接着作为 M 步的观测权重，来估计专家网络的参数。中间结点的参数由多重逻辑斯蒂回归来估计。<span class="math notranslate nohighlight">\(\Delta_j\)</span> 和 <span class="math notranslate nohighlight">\(\Delta_{\ell\mid j}\)</span> 的期望是概率，并且这些用作逻辑斯蒂回归的响应向量。</p>
 <p>专家的分层混合方式是 CART 树的一个有潜力的对手。采用<strong>软分割 (soft splits)</strong>，而不是硬分割，它可以捕捉到从低到高响应变量的转变是渐增的情形。对数似然是未知系数的光滑函数，因此更适合数值优化。和 CART 类似，都是线性组合的分割，但是后者更难优化。另一方面，基于我们的了解，寻找 HME 模型的一个好的树拓扑结构是没有方法的，正如 CART 中一样。一般地，可以采用一些深度固定的树，很可能得到 CART 过程的输出。HMEs 上的研究强调预测而不是最终模型的解释。与 HME 很相近的模型是<strong>潜类别模型(latent class model)</strong> (Lin et. al, 2000<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)，一般只有一层；且结点或者潜在类别解释成表现出相似响应变量行为的个体的群体。</p>
@@ -1209,8 +1229,8 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="9.4-MARS.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1227,19 +1247,17 @@ Y=\beta_{k\ell}^Tx+\varepsilon\text{  and  }\varepsilon\sim N(0,\sigma_{j\ell}^2
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

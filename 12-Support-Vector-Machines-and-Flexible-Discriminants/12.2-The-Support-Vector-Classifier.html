@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   计算支持向量分类器
+   （）计算支持向量分类器
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   混合例子（继续）
+   （）混合例子（继续）
   </a>
  </li>
 </ul>
@@ -1150,14 +1158,44 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>12.2 支持向量分类器</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）计算支持向量分类器
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）混合例子（继续）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>12.2 支持向量分类器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>!!! note “更新笔记”
+<blockquote>
+<div><p>note “更新笔记”
 &#64;2017.10.15 关于SVM的具体应用，我写了一篇博客展示了使用R来实现SVM分类，以及通过ROC、AUC来评估分类的好坏。博客链接为<a class="reference external" href="https://stats.hohoweiya.xyz//2017/05/18/Support-Vector-Classifier/">Illustrations of Support Vector Machines</a></p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>@2018.02.12 将博客[Illustrations of Support Vector Machines](https://stats.hohoweiya.xyz//2017/05/18/Support-Vector-Classifier/)整理到[SVM处理线性和非线性类别边界](https://esl.hohoweiya.xyz/notes/SVM/e1071/index.html)。
 </pre></div>
 </div>
@@ -1168,10 +1206,9 @@
 \{x:f(x)=x^T\beta+\beta_0=0\}\tag{12.1}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\beta\)</span> 是单位向量 <span class="math notranslate nohighlight">\(\Vert \beta\Vert=1\)</span>。由 <span class="math notranslate nohighlight">\(f(x)\)</span> 导出的分类准则为</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 G(x)=\mathrm{sign}[x^T\beta+\beta_0]\tag{12.2}
-\]</div>
+\)</span>$</p>
 <p>超平面的结构在 <span class="xref myst">4.5 节</span>有讨论，我们证明了 式（ 12.1 ） 中的 <span class="math notranslate nohighlight">\(f(x)\)</span> 给出了点 <span class="math notranslate nohighlight">\(x\)</span> 到超平面 <span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0=0\)</span> 的符号距离。因为类别是可分的，则我们可以找到一个函数<span class="math notranslate nohighlight">\(f(x)=x^T\beta+\beta_0\)</span>，满足<span class="math notranslate nohighlight">\(y_if(x_i)&gt;0,\forall i\)</span>。因此我们可以找到超平面在类别 1 和 -1 的训练点之间创造最大的 margin（图12.1）。</p>
 <p><img alt="" src="../_images/fig12.1.png" /></p>
 <blockquote>
@@ -1200,24 +1237,27 @@ s.t.&amp;\; y_i(x_i^T\beta+\beta_0)\ge 1,\; i=1,\ldots,N
 <p>假设在特征空间中类别有重叠。一种处理重叠的方式仍然是最大化 <span class="math notranslate nohighlight">\(M\)</span>，但是只允许一些点在边缘空白的错误一侧。定义松弛变量 <span class="math notranslate nohighlight">\(\xi=(\xi_1,\xi_2,\ldots,\xi_N)\)</span>。有两种自然的方式去修改 式（ 12.3 ） 中的约束：</p>
 <div class="math notranslate nohighlight">
 \[
-y_i(x_i^T\beta+\beta_0)\ge M-\xi_i\tag{12.5}
+Y_i(x_i^T\beta+\beta_0)\ge M-\xi_i\tag{12.5}
 \]</div>
 <p>或者</p>
 <div class="math notranslate nohighlight">
 \[
-y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}
+Y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}
 \]</div>
 <p><span class="math notranslate nohighlight">\(\forall i,\xi_i\ge 0,\sum_{i=1}^N\xi_i\le constant\)</span>。这两个选择会导出不同的解。第一个选择似乎更加自然，因为它衡量了到 margin 的实际距离；第二个选择衡量了相对距离，它会随着 margin 的宽度 <span class="math notranslate nohighlight">\(M\)</span> 的改变而改变。然而，第一个选择是一个非凸的优化问题，而第二个是凸的；因此 式（ 12.6 ） 导出标准的支持向量分类器，我们从这里开始使用它。</p>
 <p>下面介绍该想法的形成过程。约束条件 <span class="math notranslate nohighlight">\(y_i(x_i^T\beta+\beta_0)\ge M(1-\xi_i)\)</span> 中的 <span class="math notranslate nohighlight">\(\xi_i\)</span> 与通过 <span class="math notranslate nohighlight">\(f(x_i)=x_i^T\beta+\beta_0\)</span> 预测得到的错误分类总数成比例。因此通过约束 <span class="math notranslate nohighlight">\(\sum\xi_i\)</span>，我们约束了错误预测总数的比例。当 <span class="math notranslate nohighlight">\(\xi_i&gt;1\)</span> 则为错误分类，所以在 <span class="math notranslate nohighlight">\(K\)</span> 的水平下约束 <span class="math notranslate nohighlight">\(\sum\xi_i\)</span> 表示为限制训练集中错分类个数小于 <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p>类似 <span class="xref myst">4.5.2 节</span>中的 式（ 4.48 ），我们可以去掉在 <span class="math notranslate nohighlight">\(\beta\)</span> 上的约束，定义 <span class="math notranslate nohighlight">\(M=1/\Vert\beta\Vert\)</span>，然后将 式（ 12.4 ） 写成下面的等价形式</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
     \underset{\beta,\beta_0}{\min}&amp;\frac{1}{2}\Vert\beta\Vert^2\\
-    \mathrm{st}&amp; y_i(x_i^T\beta+\beta_0)\ge 1 \; i=1,\ldots,N 
+    \mathrm{\text{subject to}}&amp; y_i(x_i^T\beta+\beta_0)\ge 1 \; i=1,\ldots,N 
     \end{align*}
     \tag{4.48}
-    \)</span>$</p>
+    
+\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \min\;\Vert\beta\Vert\qquad s.t.\;\left\{\begin{array}{ll}y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i\;\forall i,\\
@@ -1226,7 +1266,7 @@ $<span class="math notranslate nohighlight">\(
 <p>这是非分离情形下支持向量分类器定义的通常方式。然而我们会对约束 <span class="math notranslate nohighlight">\(y_i(x_i^T\beta+\beta_0)\ge 1-\xi_i\)</span> 中的固定常数 1 感到困惑，更喜欢使用 式（ 12.6 ） 式。图12.1的右图说明了重叠的情形。</p>
 <p>从准则 式（ 12.7 ） 可以看出，在类别里面的点不会对边界的形成有太大的影响。这似乎是个很吸引人的性质，这与线性判别边界（<span class="xref myst">4.3 节</span>）不同。LDA 中，判别边界是由类别的分布的协方差和重心来决定。我们将在 <span class="xref myst">12.3.3 节</span> 看到逻辑斯蒂回归在这点上很像。</p>
 <div class="section" id="id2">
-<h2>计算支持向量分类器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）计算支持向量分类器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>问题 式（ 12.7 ） 是带有线性不等值约束的二次问题，因此这是一个凸优化问题。我们描述一种采用 Lagrange 乘子的二次规划解法。将式 式（ 12.7 ） 重新表达成下面的等价形式是很方便的</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1256,78 +1296,105 @@ L_P=\frac{1}{2}\Vert\beta\Vert^2+C\sum\limits_{i=1}^N\xi_i-\sum\limits_{i=1}^N\a
 \[
 L_D = \sum\limits_{i=1}^N\alpha_i-\frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^N\alpha_i\alpha_{i'}y_iy_{i'}x_i^Tx_{i'}\tag{12.13}
 \]</div>
-<p>!!! note “weiya注：对偶问题”
+<blockquote>
+<div><p>note “weiya注：对偶问题”
 对于无等值约束的优化问题</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-\underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{st}c_i(x)\ge 0,\; i=1,2,\ldots,m
-$$
-
-记
-$$
-c(x)\def(c_1(x), c_2(x),\ldots, c_m(x))^T
-$$
-则原问题写为
-$$
-\underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{st}c(x)\ge 0
-$$
-Lagrangian函数为
-$$
-{\mathcal L}(x,\lambda)=f(x)-\lambda^Tc(x)
-$$
-定义对偶目标函数$q:\mathbb{R}^n\rightarrow \mathbb{R}$：
-$$
-q(\lambda)\def\underset{x}{\inf}\mathcal L(x,\lambda)
-$$
-其定义域为
-$$
-\mathcal D\def\{\lambda\mid q(\lambda)&gt;-\infty\}
-$$
-**若$f$和$-c_i$均为凸函数**，则$\mathcal L(\cdot, \lambda)$也为凸函数，则可以很容易计算$q(\lambda)$。
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{\text{subject to}}c_i(x)\ge 0,\; i=1,2,\ldots,m
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>记
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    c(x)\def(c_1(x), c_2(x),\ldots, c_m(x))^T
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>则原问题写为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \underset{x\in\mathbb{R}^n}{\min}f(x)\; \mathrm{\text{subject to}}c(x)\ge 0
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Lagrangian函数为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    {\mathcal L}(x,\lambda)=f(x)-\lambda^Tc(x)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>定义对偶目标函数$q:\mathbb{R}^n\rightarrow \mathbb{R}$：
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    q(\lambda)\def\underset{x}{\inf}\mathcal L(x,\lambda)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其定义域为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \mathcal D\def\{\lambda\mid q(\lambda)&gt;-\infty\}
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**若$f$和$-c_i$均为凸函数**，则$\mathcal L(\cdot, \lambda)$也为凸函数，则可以很容易计算$q(\lambda)$。
 
 参考资料: [Wright S, Nocedal J. Numerical optimization (Second Edition). Springer Science.](../references/opbook2.pdf)
 </pre></div>
 </div>
-<p>它给出了目标函数 式（ 12.8 ） 对于任意可行解的一个下界。我们在满足 <span class="math notranslate nohighlight">\(0\le \alpha_i\le C\)</span> 和 <span class="math notranslate nohighlight">\(\sum_{i=1}^N\alpha_iy_i=0\)</span> 的条件下最大化<span class="math notranslate nohighlight">\(L_D\)</span>。再加上 式（ 12.10 ）-式（ 12.12 ） 条件，Karush-Kuhn-Tucker 条件包含下列约束：对于 <span class="math notranslate nohighlight">\(i=1,\ldots,N\)</span>，
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<p>它给出了目标函数 式（ 12.8 ） 对于任意可行解的一个下界。我们在满足 <span class="math notranslate nohighlight">\(0\le \alpha_i\le C\)</span> 和 <span class="math notranslate nohighlight">\(\sum_{i=1}^N\alpha_iy_i=0\)</span> 的条件下最大化<span class="math notranslate nohighlight">\(L_D\)</span>。再加上 式（ 12.10 ）-式（ 12.12 ） 条件，Karush-Kuhn-Tucker 条件包含下列约束：对于 <span class="math notranslate nohighlight">\(i=1,\ldots,N\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \alpha_i[y_i(x_i^T\beta+\beta_0)-(1-\xi_i)]&amp;=0&amp; \tag{12.14}\\
 \mu_i\xi_i&amp;=0&amp; \tag{12.15}\\
 y_i(x_i^T\beta+\beta_0)-(1-\xi_i)&amp;\ge 0&amp; \tag{12.16}
-\end{align*}\]</div>
+\end{align*}
+\end{split}\]</div>
+<blockquote>
+<div><p>note “weiya 注：KKT 条件”
+对于带约束的优化问题
+<img alt="" src="../_images/def12.1.png" />
+一阶必要条件为
+<img alt="" src="../_images/KKT.png" />
+图片来源：<span class="xref myst">Wright S, Nocedal J. Numerical optimization (Second Edition). Springer Science.</span></p>
+</div></blockquote>
+<p>结合 式（ 12.10 ）-式（ 12.16 ） 我们得到原问题和对偶问题的唯一解</p>
+<p>从 式（ 12.10 ） 我们看到 <span class="math notranslate nohighlight">\(\beta\)</span> 的解有如下形式</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}!!! note &quot;weiya 注：KKT 条件&quot;
-    对于带约束的优化问题
-    ![](../img/12/def12.1.png)
-    一阶必要条件为
-    ![](../img/12/KKT.png)
-    图片来源：[Wright S, Nocedal J. Numerical optimization (Second Edition). Springer Science.](../references/opbook2.pdf)\\
-结合 式（ 12.10 ）-式（ 12.16 ） 我们得到原问题和对偶问题的唯一解\\从 式（ 12.10 ） 我们看到 $\beta$ 的解有如下形式\end{aligned}\end{align} \]</div>
-<p>\hat\beta=\sum\limits_{i=1}^N\hat\alpha_iy_ix_i\tag{12.17}
-$$</p>
+\[
+\hat\beta=\sum\limits_{i=1}^N\hat\alpha_iy_ix_i\tag{12.17}
+\]</div>
 <p>非负系数 <span class="math notranslate nohighlight">\(\hat\alpha_i\)</span> 只针对约束 式（ 12.16 ） 等号成立的观测（由于 式（ 12.14 ））。因为 <span class="math notranslate nohighlight">\(\hat\beta\)</span> 用这些观测单独表示，所以把它们称之为 <strong>支持向量</strong>。在这些支持点中，有些会在margin的边缘处(<span class="math notranslate nohighlight">\(\hat\xi_i=0\)</span>)，因此根据式(12.15)，式(12.12)可以用<span class="math notranslate nohighlight">\(0 &lt; \hat\alpha_i &lt; C\)</span>来表示；剩余部分(<span class="math notranslate nohighlight">\(\hat \xi_i &gt; 0\)</span>)有 <span class="math notranslate nohighlight">\(\hat\alpha_i=C\)</span>（由 式（ 12.15 ） 式得到）。从 式（ 12.14 ） 我们可以看到每个边缘点 (<span class="math notranslate nohighlight">\(0 &lt; \hat\alpha_i,\;\hat \xi_i = 0\)</span>) 都可以用来求解 <span class="math notranslate nohighlight">\(\beta_0\)</span>，一般地，为了数值稳定性，我们取所有解的均值。</p>
 <p>最大化对偶问题 式（ 12.13 ） 是比原问题 式（ 12.9 ） 更简单的凸优化问题，而且可以用标准的方法进行求解（举个例子，Murray et al., 1981<a class="footnote-reference brackets" href="#id5" id="id3">1</a>）</p>
-<p>给定解 <span class="math notranslate nohighlight">\(\hat\beta_0\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span>，判别函数可以写成
-$<span class="math notranslate nohighlight">\(
+<p>给定解 <span class="math notranslate nohighlight">\(\hat\beta_0\)</span> 和 <span class="math notranslate nohighlight">\(\beta\)</span>，判别函数可以写成</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{array}{ll}
 \hat G(x)&amp;=\mathrm{sign}[\hat f(x)]\\
 &amp;=\mathrm{sign}[x^T\hat\beta+\hat\beta_0]\tag{12.18}
 \end{array}
-\)</span><span class="math notranslate nohighlight">\(
-这个过程的调整参数是代价参数 \)</span>C$。</p>
+\end{split}\]</div>
+<p>这个过程的调整参数是代价参数 <span class="math notranslate nohighlight">\(C\)</span>。</p>
 </div>
 <div class="section" id="id4">
-<h2>混合例子（继续）<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）混合例子（继续）<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig12.2.png" /></p>
 <blockquote>
 <div><p>图12.2 对于两个不同<span class="math notranslate nohighlight">\(C\)</span>值，有两个重叠类别的混合数据例子的线性支持向量边界。虚线表示margin，其中<span class="math notranslate nohighlight">\(f(x)=\pm 1\)</span>。支持点（<span class="math notranslate nohighlight">\(\alpha_i&gt;0\)</span>）是在它们margin的错误一侧的点。黑色实心点是恰巧落在margin边界上（<span class="math notranslate nohighlight">\(\xi_i=0,\alpha_i&gt;0\)</span>）的点。在上面板中，<span class="math notranslate nohighlight">\(62\%\)</span>的观测点都是支持点，而下面的图<span class="math notranslate nohighlight">\(85\%\)</span>的点都是。紫色虚线是贝叶斯判别边界。</p>
 </div></blockquote>
 <p>图12.2显示了图 2.5 混合例子对于两个不同代价参数 <span class="math notranslate nohighlight">\(C\)</span> 的支持向量边界，这里有两个重叠的类别。这些分类器的表现很相似。在边界的错误一侧是支持向量。另外，在判别边界附近正确一侧的点也是支持向量。<span class="math notranslate nohighlight">\(C=0.01\)</span> 时的 margin 比 <span class="math notranslate nohighlight">\(C=10,000\)</span> 时的大。因此大的 <span class="math notranslate nohighlight">\(C\)</span> 值更加注意（正确分类）靠近判别边界的点，而较小的 <span class="math notranslate nohighlight">\(C\)</span> 涉及离判别边界更远的点。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 <span class="math notranslate nohighlight">\(C\)</span> 越大，margin 越窄；<span class="math notranslate nohighlight">\(C\)</span> 越小，margin 越宽。这对应 R 的<code class="docutils literal notranslate"><span class="pre">e1071</span></code>包<code class="docutils literal notranslate"><span class="pre">svm()</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">cost</span></code>参数。</p>
+</div></blockquote>
 <p>任意一种方式，错分类的点都被赋予了权重，不管离多远。由于判别边界的刚性(rigidity)，在这个例子中这个过程对 <span class="math notranslate nohighlight">\(C\)</span> 的取值不敏感。</p>
-<p>!!! question
+<blockquote>
+<div><p>question
 怎么理解判别边界的刚性(the rigidity of a linear boundary)</p>
+</div></blockquote>
 <p>最优的 <span class="math notranslate nohighlight">\(C\)</span> 可以通过交叉验证来确定，如第 7 章中讨论的那样。有趣的是，舍一交叉验证误差可以通过数据中支持向量的点的比例来控制。原因是当舍去的不是支持向量的时候不会改变解。因此这些观测点在原始边界中正确分类的点在交叉验证中也能正确分类。然而，这个界趋向于偏高，而且一般不适用于选择 <span class="math notranslate nohighlight">\(C\)</span>(在我们的例子中分别是 62% 和 85%)。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1360,8 +1427,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="12.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1378,19 +1445,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

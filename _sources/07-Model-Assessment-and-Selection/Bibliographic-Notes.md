@@ -1,7 +1,4 @@
 # 7.13 文献笔记
-
-<style>p{text-indent:2em;2}</style>
-
 <style>p{text-indent:2em;2}</style>
 
 交叉验证的主要参考文献为Stone(1974)[^1]，Stone(1977)[^2]和Allen(1974)[^3]。

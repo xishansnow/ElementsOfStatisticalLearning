@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,19 +1133,28 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6.8 混合模型的密度估计和分类</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.8 混合模型的密度估计和分类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>混合模型是用于密度估计的有力工具，而且可以看成一种核方法。高斯混合模型有如下形式</p>
 <div class="math notranslate nohighlight">
@@ -1150,10 +1167,13 @@ f(x)=\sum\limits_{m=1}^M\alpha_m\phi(x;\mu_m,\Sigma_m)\tag{6.32}
 <li><p>如果协方差阵约束为标量：<span class="math notranslate nohighlight">\(\bSigma_m=\sigma_m\I\)</span>，则式 式（ 6.32 ） 有径向基展开的形式。</p></li>
 <li><p>如果另外固定 <span class="math notranslate nohighlight">\(\sigma_m=\sigma&gt;0\)</span>，并且 <span class="math notranslate nohighlight">\(M\uparrow N\)</span>，则 式（ 6.32 ） 的极大似然估计会近似 <span class="math notranslate nohighlight">\(\hat\alpha_m=1/N,\hat\mu_m=x_m\)</span> 时的核密度估计 式（ 6.22 ）。</p></li>
 </ul>
-<p>!!! note “weiya 注: Recall”
-$<span class="math notranslate nohighlight">\(
-    \hat f(x_0)=\frac{1}{N\lambda}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\tag{6.22}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注: Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \hat f(x_0)=\frac{1}{N\lambda}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\tag{6.22}
+    
+\]</div>
 <p>利用贝叶斯定理，将每个类别的混合密度分离开，则得到 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G\mid X)\)</span> 的灵活模型；这将在 <span class="xref myst">第 12 章</span> 详细讨论。</p>
 <p><img alt="" src="../_images/fig6.17.png" /></p>
 <p>图 6.17 展示了混合模型应用到心脏病风险因子研究中。最上面一行是 <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">CHD</span></code>、<code class="docutils literal notranslate"><span class="pre">CHD</span></code> 关于 <code class="docutils literal notranslate"><span class="pre">Age</span></code> 的直方图，然后结合起来得到最右边的直方图。采用结合后的数据，我们拟合形如 式（ 6.32 ） 的两组分混合模型，其中（标量）协方差阵 <span class="math notranslate nohighlight">\(\bSigma_1\)</span> 和 <span class="math notranslate nohighlight">\(\bSigma_2\)</span> 不要求相等。通过 EM 算法来拟合：注意到过程中没用到 <code class="docutils literal notranslate"><span class="pre">CHD</span></code> 标签的信息。估计的结果为</p>
@@ -1197,8 +1217,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6.7-Radial-Basis-Functions-and-Kernels.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1215,19 +1235,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

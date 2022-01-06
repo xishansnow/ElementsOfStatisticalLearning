@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.8 例子: 垃圾邮件</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1140,8 +1158,10 @@
 <style>p{text-indent:2em;2}</style>
 <p>在我们讨论 gradient boosting 的细节之前，首先用一个二分类的问题来说明它的能力。垃圾邮件数据在第一章以及有过介绍，并且<span class="xref myst">第 9 章</span>的很多方法都将其作为例子（第 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models/index.html#_3">9.1.2</a>，<a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.2-Tree-Based-Methods/index.html#_14">9.2.5</a>，<a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.3-PRIM/index.html#_1">9.3.1</a>，以及 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.4-MARS/index.html#_1">9.4.1</a>）。</p>
 <p>对和 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models/index.html#_3">9.1.2 节</a>一样的测试集应用 gradient boosting 会得到 4.5% 的测试误差。比较来看，可加逻辑斯蒂回归达到 5.5%，全生长并通过交叉验证剪枝 (fully grown and pruned by cross-validation) 的 CRAT 达到 8.7%，而 MARS 5.5%. 这些估计的标准差大概在 0.6%，通过 McNemar 检验，gradient boosting 显著地要比其它的好（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/214">练习 10.6</a>）。</p>
-<p>!!! info “weiya 注：Ex. 10.6”
+<blockquote>
+<div><p>info “weiya 注：Ex. 10.6”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/214">Issue 214: Ex. 10.6</a>.</p>
+</div></blockquote>
 <p>在后面的 <span class="xref myst">10.13 节</span>，我们对每个预测变量构造出相对重要性度量，以及描述变量对拟合模型的贡献的 <strong>偏相依图 (partial dependence plot)</strong>。我们现在对垃圾邮件数据说明这一点。</p>
 <p><img alt="" src="../_images/fig10.6.png" /></p>
 <p>图 10.6 展示了对所有 57 个预测变量的相关重要性谱图。很明显，有些变量在将 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 从 <code class="docutils literal notranslate"><span class="pre">email</span></code> 分离方面会更重要。字符串 <code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">$</span></code>, <code class="docutils literal notranslate"><span class="pre">hp</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">remove</span></code> 是四个最相关的预测变量。而在频谱的末端，字符串 <code class="docutils literal notranslate"><span class="pre">857</span></code>, <code class="docutils literal notranslate"><span class="pre">415</span></code>, <code class="docutils literal notranslate"><span class="pre">table</span></code> 和 <code class="docutils literal notranslate"><span class="pre">3d</span></code> 差不多没什么关系。</p>
@@ -1153,9 +1173,11 @@ f(x) = \log \frac{\mathrm{Pr}(\text{spam}\mid x)}{\mathrm{Pr}(\text{email}\mid x
 <p>（见后面的 <span class="xref myst">10.13 节</span>）。</p>
 <p><img alt="" src="../_images/fig10.7.png" /></p>
 <p>图 10.7 展示了对数比率在已选的重要预测变量上的偏相依性，<code class="docutils literal notranslate"><span class="pre">!</span></code> 和 <code class="docutils literal notranslate"><span class="pre">remove</span></code> 这两个跟 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 正相关，以及两个负相关，<code class="docutils literal notranslate"><span class="pre">edu</span></code> 和 <code class="docutils literal notranslate"><span class="pre">hp</span></code>。这些特定的依赖性似乎本质上是单调的。这与通过可加逻辑斯蒂回归模型找到的对应的函数大体一致。见图 9.1.</p>
-<p>!!! note “weiya 注：图 9.1”
+<blockquote>
+<div><p>note “weiya 注：图 9.1”
 图 9.1 展示了关于 16 个预测变量的拟合函数，有三个共同预测变量，<code class="docutils literal notranslate"><span class="pre">remove</span></code>, <code class="docutils literal notranslate"><span class="pre">edu</span></code> 和 <code class="docutils literal notranslate"><span class="pre">hp</span></code>。从趋势上看，图 9.1 中这三个变量的拟合函数确实跟图 10.7 中对应的曲线趋势相同。
 <img alt="" src="../_images/fig9.1.png" /></p>
+</div></blockquote>
 <p>在这些数据上运行 <span class="math notranslate nohighlight">\(J=2\)</span> 个终止结点的 gradient boosted 模型得到一个关于对数比率的完全可加模型（<strong>主要影响 (main effects)</strong>），对应的误差率为 4.7%，跟全 gradient boosted 模型（终止结点个数为 <span class="math notranslate nohighlight">\(J=5\)</span>）的 4.5% 相比。尽管不是显著差异，但是这略高的误差率表明在某些重要的预测变量间存在 <strong>交叉影响 (interactions)</strong>。这可以通过双变量偏相依性图来诊断。图 10.8 展示了其中一张表现出强交叉影响的图。</p>
 <p><img alt="" src="../_images/fig10.8.png" /></p>
 <p>可以看到，对于频率非常低的 <code class="docutils literal notranslate"><span class="pre">hp</span></code>，<code class="docutils literal notranslate"><span class="pre">spam</span></code> 的对数比率大幅提高。对于高频率时的 <code class="docutils literal notranslate"><span class="pre">hp</span></code>，<code class="docutils literal notranslate"><span class="pre">spam</span></code> 的对数比率趋向于非常低，而且近似是 <code class="docutils literal notranslate"><span class="pre">!</span></code> 的常数函数。当 <code class="docutils literal notranslate"><span class="pre">hp</span></code> 的频率降低时，其跟 <code class="docutils literal notranslate"><span class="pre">!</span></code> 的函数关系在增强。</p>
@@ -1183,8 +1205,8 @@ f(x) = \log \frac{\mathrm{Pr}(\text{spam}\mid x)}{\mathrm{Pr}(\text{email}\mid x
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.7-Off-the-Shelf-Procedures-for-Data-Mining.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1201,19 +1223,17 @@ f(x) = \log \frac{\mathrm{Pr}(\text{spam}\mid x)}{\mathrm{Pr}(\text{email}\mid x
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,29 +1133,40 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.2 Boosting 拟合可加模型</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.2 Boosting 拟合可加模型<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>Boosting 的成功真的不是很神秘。关键在于 (10.1) 式。</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    G(x)=\mathrm {sign}(\sum\limits_{m=1}^M\alpha_mG_m(x))\tag{10.1}
-    \)</span>$</p>
-<p>Boosting 是在一组基本的“基”函数集合中拟合 <strong>加性展开 (additive expansions)</strong> 的方法。这里基函数是单个的分类器 <span class="math notranslate nohighlight">\(G_m(x)\in \\{-1,1\\}\)</span>。更一般地，基函数展开式采用下列形式</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
 <div class="math notranslate nohighlight">
-\[
-f(x)=\sum\limits_{m=1}^M\beta_mb(x;\gamma_m)\tag{10.3}
-\]</div>
+\[\begin{split}    G(x)=\mathrm {sign}(\sum\limits_{m=1}^M\alpha_mG_m(x))\tag{10.1}
+    
+$
+Boosting 是在一组基本的“基”函数集合中拟合 **加性展开 (additive expansions)** 的方法。这里基函数是单个的分类器 $G_m(x)\in \\{-1,1\\}$。更一般地，基函数展开式采用下列形式\end{split}\]</div>
+<p>f(x)=\sum\limits_{m=1}^M\beta_mb(x;\gamma_m)\tag{10.3}
+$$</p>
 <p>其中 <span class="math notranslate nohighlight">\(\beta_m,m=1,2,\ldots,M\)</span> 是展开的系数，<span class="math notranslate nohighlight">\(b(x;\gamma)\in \mathbb{R}\)</span> 是普通的关于多元变量 <span class="math notranslate nohighlight">\(x\)</span> 的简单函数，<span class="math notranslate nohighlight">\(\gamma\)</span> 是其参数。我们在 <span class="xref myst">第 5 章</span> 中详细讨论了基的展开。</p>
 <p>类似的加性展开是本书介绍的许多学习方法的核心：</p>
 <ul class="simple">
@@ -1155,18 +1174,22 @@ f(x)=\sum\limits_{m=1}^M\beta_mb(x;\gamma_m)\tag{10.3}
 <li><p>在信号处理中，小波（<span class="xref myst">5.9.1 节</span>）用 <span class="math notranslate nohighlight">\(\gamma\)</span> 参量化“母”微波的位置和偏移量是很流行的选择。多元自适应回归样条（<span class="xref myst">9.4 节</span>）采用截断幂样条基函数，其中 <span class="math notranslate nohighlight">\(\gamma\)</span> 对变量和结点的值进行参量化。</p></li>
 <li><p>对于树，<span class="math notranslate nohighlight">\(\gamma\)</span> 对中间结点的分离变量和分离点以及终止结点的预测值进行参量化。</p></li>
 </ul>
-<p>一般地，通过使训练数据上的平均损失函数最小化来拟合这些模型，比如平方误差或者基于概率的损失函数，
-$<span class="math notranslate nohighlight">\(
+<p>一般地，通过使训练数据上的平均损失函数最小化来拟合这些模型，比如平方误差或者基于概率的损失函数，</p>
+<div class="math notranslate nohighlight">
+\[
 \underset{\{\beta_m,\gamma_m\}_1^M}{\mathrm {min}}\;\sum\limits_{i=1}^NL(y_i,\sum\limits_{m=1}^M\beta_mb(x_i;\gamma_m))\tag{10.4}
-\)</span><span class="math notranslate nohighlight">\(
-对于许多损失函数 \)</span>L(y,f(x))<span class="math notranslate nohighlight">\( 和/或基函数 \)</span>b(x;\gamma)$，这需要 <strong>计算密集型的 (computationally intensive)</strong> 数值优化技术。</p>
-<p>!!! note “weiya 注：computationally intensive”
+\]</div>
+<p>对于许多损失函数 <span class="math notranslate nohighlight">\(L(y,f(x))\)</span> 和/或基函数 <span class="math notranslate nohighlight">\(b(x;\gamma)\)</span>，这需要 <strong>计算密集型的 (computationally intensive)</strong> 数值优化技术。</p>
+<blockquote>
+<div><p>note “weiya 注：computationally intensive”
 引用<a class="reference external" href="https://www.zhihu.com/question/23243435">什么是计算密集型（computationally intensive）？ - 知乎</a>的回答
-&gt; 程序系统大部分在做计算、逻辑判断、循环导致 cpu 占用率很高的情况，称之为计算密集型；频繁网络传输、读取硬盘及其他 io 设备称之为 io 密集型</p>
-<p>然而，当可以快速求解只有一个单一的基函数的子问题时，经常可以找到简单的替代方案，单一的基函数为
-$<span class="math notranslate nohighlight">\(
+程序系统大部分在做计算、逻辑判断、循环导致 cpu 占用率很高的情况，称之为计算密集型；频繁网络传输、读取硬盘及其他 io 设备称之为 io 密集型</p>
+</div></blockquote>
+<p>然而，当可以快速求解只有一个单一的基函数的子问题时，经常可以找到简单的替代方案，单一的基函数为</p>
+<div class="math notranslate nohighlight">
+\[
 \underset{\beta,\gamma}{\mathrm{min}}\sum\limits_{i=1}^NL(y_i,\beta b(x_i;\gamma))\tag{10.5}
-\)</span>$</p>
+\]</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1191,8 +1214,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.1-Boosting-Methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1209,19 +1232,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

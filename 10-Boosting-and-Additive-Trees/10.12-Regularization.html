@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   收缩
+   （）收缩
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   子采样
+   （）子采样
   </a>
  </li>
 </ul>
@@ -1150,7 +1158,35 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.12 正则化</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）收缩
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）子采样
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1159,7 +1195,7 @@
 <p>除了候选树的大小 <span class="math notranslate nohighlight">\(J\)</span>，梯度 boosting 的另一个元参数 (meta-parameter) 是 boosting 的迭代次数 <span class="math notranslate nohighlight">\(M\)</span>。每一次迭代通常会降低训练风险 <span class="math notranslate nohighlight">\(L(f_M)\)</span>，所以对于充分大的 <span class="math notranslate nohighlight">\(M\)</span>，误差可以达到任意小。然而，对训练数据拟合得太好会导致过拟合，它会降低预测未来数据的效果。因此，存在一个最小
 化未来预测风险的最优大小 <span class="math notranslate nohighlight">\(M^*\)</span>，它依赖于具体应用。估计 <span class="math notranslate nohighlight">\(M^*\)</span>的一种方便方式是在验证样本上将预测风险看成是关于 <span class="math notranslate nohighlight">\(M\)</span> 的函数。最小化风险的 <span class="math notranslate nohighlight">\(M\)</span> 值则作为 <span class="math notranslate nohighlight">\(M^*\)</span> 的一个估计。这类似于经常用在神经网络中的 <strong>早停 (early stopping)</strong> 策略（<span class="xref myst">11.4 节</span>）。</p>
 <div class="section" id="id2">
-<h2>收缩<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）收缩<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>控制 <span class="math notranslate nohighlight">\(M\)</span> 的值并不是唯一正则化的策略。与岭回归和神经网络一样，也可以应用收缩策略（见 <span class="xref myst">3.4.1 节</span>和 <span class="xref myst">11.5 节</span>）。Boosting 中收缩最简单的实现方式是使用因子 <span class="math notranslate nohighlight">\(0 &lt; \nu &lt; 1\)</span> 来收缩每棵树的贡献。也就是，算法 10.3 的第 2(d) 行用下式代替</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1167,39 +1203,48 @@ f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.4
 \]</div>
 <p>参数 <span class="math notranslate nohighlight">\(\nu\)</span> 可以看成是控制 boosting 过程的学习速率。较小的 <span class="math notranslate nohighlight">\(\nu\)</span>（更多的收缩）会导致同样大小的迭代次数 <span class="math notranslate nohighlight">\(M\)</span> 下更大的训练风险。因此，<span class="math notranslate nohighlight">\(\nu\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 都控制了训练数据的预测风险。然而，这些参数并不单独作用。对于同样的训练风险较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 会导致较大的 <span class="math notranslate nohighlight">\(M\)</span>，所以它们之间存在权衡。</p>
 <p>经验上，(Friedman, 2001<a class="footnote-reference brackets" href="#id6" id="id3">1</a>) 已经发现较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 会得到更好的测试误差，并且需要更大的 <span class="math notranslate nohighlight">\(M\)</span> 与之对应。事实上，最好的策略是将 <span class="math notranslate nohighlight">\(\nu\)</span> 设得很小(<span class="math notranslate nohighlight">\(\nu &lt; 0.1\)</span>)，然后通过 <strong>早停 (early stopping)</strong> 来选择 <span class="math notranslate nohighlight">\(M\)</span>。这会给回归和概率估计带来重大的改善（与没有收缩时相比，<span class="math notranslate nohighlight">\(\nu = 1\)</span>）。通过 式（ 10.20 ） 式改善对应的误分类风险虽然很小，但是仍然显著。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    G(x)={\mathcal G_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    G(x)={\mathbb{G}_k}\;\text{where }k=\mathrm{arg}\;\underset{\ell}{\mathrm{max}}p_\ell(x)\tag{10.20}
+    
+\]</div>
 <p>这个改善需要以计算量为代价：较小的 <span class="math notranslate nohighlight">\(\nu\)</span> 得到较大的 <span class="math notranslate nohighlight">\(M\)</span>，并且计算量与后者成比例。然而，将在下面看到，许多迭代的计算即使是在非常大的数据集上也是可行的。部分原因是每一步生成的树是没有剪枝的。</p>
 <p><img alt="" src="../_images/fig10.11.png" /></p>
 <p>图 10.11 显示了图 10.2 的模拟例子 式（ 10.2 ） 的测试误差曲线。</p>
-<p>!!! note “Recall: 式（ 10.2 ）”
-$<span class="math notranslate nohighlight">\(
-    Y=
-    \left\{
-    \begin{array}{ll}
-    1&amp;\text{if } \sum_{j=1}^{10}X_j^2&gt;\chi_{10}^2(0.5)\\
-    -1 &amp; \text{otherwise}
-    \end{array}
-    \right.
-    \tag{10.2}
-    \)</span>$</p>
-<p>Gradient boosted 模型(MART)通过采用二项偏差来训练，分 stump 和 6 个终止结点树的情况讨论，以及分有无收缩进行讨论。收缩的好处是很显然的，特别是当跟踪二项偏差时。有了收缩，每个测试误差曲线达到较低的值，并且在许多迭代中保持不变。</p>
+<blockquote>
+<div><p>note “Recall: 式（ 10.2 ）”</p>
+</div></blockquote>
+<p>$$</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Y=
+\left\{
+\begin{array}{ll}
+1&amp;\text{if } \sum_{j=1}^{10}X_j^2&gt;\chi_{10}^2(0.5)\\
+-1 &amp; \text{otherwise}
+\end{array}
+\right.
+\tag{10.2}
+</pre></div>
+</div>
+<p>$
+Gradient boosted 模型(MART)通过采用二项偏差来训练，分 stump 和 6 个终止结点树的情况讨论，以及分有无收缩进行讨论。收缩的好处是很显然的，特别是当跟踪二项偏差时。有了收缩，每个测试误差曲线达到较低的值，并且在许多迭代中保持不变。</p>
 <p><span class="xref myst">16.2.1 节</span>将 boosting 的向前逐步收缩和为了正则化模型参数使用的 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚(lasso)联系起来。我们认为 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚可能会比用在一些方法（比如支持向量机）中的 <span class="math notranslate nohighlight">\(L_2\)</span> 惩罚要更好。</p>
 </div>
 <div class="section" id="id4">
-<h2>子采样<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）子采样<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>我们在 <span class="xref myst">8.7 节</span>看到bootstrap averaging (<code class="docutils literal notranslate"><span class="pre">bagging</span></code>) 通过 averaging 提高了噪声分类器的表现效果。<span class="xref myst">第 15 章</span>详细讨论了通过平均实现的降低方差的机制。我们也可以在gradient boosting 中采用这一方法，同时提高了效果和计算效率。</p>
 <p>采用 stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id7" id="id5">2</a>)，在每一步我们采样 <span class="math notranslate nohighlight">\(\eta\)</span> 倍的训练观测值（无放回），并且采用这种子采样来生成下一棵树。剩下的算法同样。一般可以取 <span class="math notranslate nohighlight">\(\eta\)</span> 为 <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>，尽管对于大的 <span class="math notranslate nohighlight">\(N\)</span>，<span class="math notranslate nohighlight">\(\eta\)</span> 可以比 <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> 小很多。</p>
 <p>这种采样不仅仅降低了 <span class="math notranslate nohighlight">\(\eta\)</span> 倍的计算时间，在很多情况下也实际上得到了更精确的模型。</p>
 <p><img alt="" src="../_images/fig10.12.png" /></p>
 <p>图 10.12 说明了采用模拟例子 式（ 10.2 ） 的子采样的效果，既可以看成是分类的例子，也可以看成是回归的例子。我们看到这两种情形下，采用收缩的的子采样比剩下的表现要好。似乎没有收缩的子采样会表现得很差。</p>
 <p>缺点是我们现在需要设置四个参数：<span class="math notranslate nohighlight">\(J,M,\nu\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span>。一般地，通过前期的尝试确定合适的 <span class="math notranslate nohighlight">\(J,\nu\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span>，将 <span class="math notranslate nohighlight">\(M\)</span> 留作主要的参数。</p>
-<p>!!! info “weiya 注：”
+<blockquote>
+<div><p>info “weiya 注：”
 <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regularization.html">Gradient Boosting regularization – scikit-learn</a> 比较了不同学习速率 <span class="math notranslate nohighlight">\(\nu\)</span> 和子采样 <span class="math notranslate nohighlight">\(\eta\)</span> 在例 式（ 10.2 ） 上的表现，
 <img alt="" src="../_images/hastie-10-2.svg" />
 链接中有具体实现代码。</p>
+</div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
@@ -1234,8 +1279,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.11-Right-Sized-Trees-for-Boosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1252,19 +1297,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

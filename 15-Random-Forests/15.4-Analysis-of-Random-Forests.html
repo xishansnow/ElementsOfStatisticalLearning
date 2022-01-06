@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,17 +1142,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   方差和去相关性的影响
+   （）方差和去相关性的影响
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   偏差
+   （）偏差
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   自适应最近邻
+   （）自适应最近邻
   </a>
  </li>
 </ul>
@@ -1155,7 +1163,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>15.4 随机森林的分析</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）方差和去相关性的影响
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）偏差
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （）自适应最近邻
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1163,7 +1204,7 @@
 <style>p{text-indent:2em;2}</style>
 <p>这一节我们分析随机森林应用的额外随机化的机制。为了讨论，我们集中在回归和平方误差损失，因为这会得到主要结论，而0-1损失下的偏差和方差都会更复杂（见7.3.1节）。另外，甚至在分类问题的情形中，我们可以将随机森林的平均看成是类别后验概率的估计，因为偏差和方差都是合适的描述器。</p>
 <div class="section" id="id2">
-<h2>方差和去相关性的影响<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）方差和去相关性的影响<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>随机森林回归估计量的极限形式<span class="math notranslate nohighlight">\(B\rightarrow \infty\)</span>是</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1174,61 +1215,87 @@
 \[
 \mathrm{Var}\hat f_{rf}(x)=\rho(x)\sigma^2(x)\tag{15.5}
 \]</div>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    \rho\sigma^2+\frac{1-\rho}{B}\sigma^2 \tag{15.1}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \rho\sigma^2+\frac{1-\rho}{B}\sigma^2 \tag{15.1}
+    
+\]</div>
 <p>这里</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\rho(x)\)</span>是任意一对参与平均的树的的采样相关性:
-$<span class="math notranslate nohighlight">\(
-\rho(x)=\mathrm{corr}[T(x;\Theta_1(Z)),T(x;\Theta_2(Z))]\tag{15.6}
-\)</span><span class="math notranslate nohighlight">\(
-其中\)</span>\Theta_1(Z)<span class="math notranslate nohighlight">\(和\)</span>\Theta_2(Z)<span class="math notranslate nohighlight">\(是随机抽取的一对随机森林树，这些树是根据\)</span>Z^<em><span class="math notranslate nohighlight">\(（\)</span>Z^</em><span class="math notranslate nohighlight">\(是随机抽取\)</span>Z$得到的自助样本）生成的。</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sigma^2(x)\)</span>是任意随机抽出的单棵树的采样方差
-$<span class="math notranslate nohighlight">\(
-\sigma^2(x)=Var T(x;\Theta(Z))\tag{15.7}
-\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho(x)\)</span>是任意一对参与平均的树的的采样相关性:</p></li>
 </ul>
-<p>!!! note “weiya注”
+<div class="math notranslate nohighlight">
+\[
+\rho(x)=\mathrm{corr}[T(x;\Theta_1(Z)),T(x;\Theta_2(Z))]\tag{15.6}
+\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\Theta_1(Z)\)</span>和<span class="math notranslate nohighlight">\(\Theta_2(Z)\)</span>是随机抽取的一对随机森林树，这些树是根据<span class="math notranslate nohighlight">\(Z^*\)</span>（<span class="math notranslate nohighlight">\(Z^*\)</span>是随机抽取<span class="math notranslate nohighlight">\(Z\)</span>得到的自助样本）生成的。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma^2(x)\)</span>是任意随机抽出的单棵树的采样方差</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2(x)=Var T(x;\Theta(Z))\tag{15.7}
+\]</div>
+<blockquote>
+<div><p>note “weiya注”
 这里给我的直观感觉是给定<span class="math notranslate nohighlight">\(x\)</span>，随机变量<span class="math notranslate nohighlight">\(\Theta_1,\Theta_2\sim f(\Theta)\)</span>，<span class="math notranslate nohighlight">\(f(\Theta)\)</span>为采样分布，考虑<span class="math notranslate nohighlight">\(\Theta\)</span>的方差<span class="math notranslate nohighlight">\(\sigma^2(x)\)</span>和<span class="math notranslate nohighlight">\(\Theta_1\)</span>与<span class="math notranslate nohighlight">\(\Theta_2\)</span>的相关系数<span class="math notranslate nohighlight">\(\rho(x)\)</span>。</p>
+</div></blockquote>
 <p>很容易将<span class="math notranslate nohighlight">\(\rho(x)\)</span>与在给定随机森林树集中的拟合树的平均相关系数混淆；后者是，将拟合树看成<span class="math notranslate nohighlight">\(N\)</span>维向量，然后在训练样本数据的条件下，计算这些向量的平均成对相关系数。但<span class="math notranslate nohighlight">\(\rho(x)\)</span>不是这样，它不直接与平均过程有关，并且<span class="math notranslate nohighlight">\(\rho(x)\)</span>中依赖的<span class="math notranslate nohighlight">\(x\)</span>提醒我们这个区别。更准确地说，<span class="math notranslate nohighlight">\(\rho(x)\)</span>是在<span class="math notranslate nohighlight">\(x\)</span>处取值的成对随机森林树的理论相关系数，首先从总体中重复抽取训练样本<span class="math notranslate nohighlight">\(Z\)</span>，然后抽取一对随机森林树计算得到<span class="math notranslate nohighlight">\(\rho(x)\)</span>。用统计的术语说，这是由<span class="math notranslate nohighlight">\(\mathbf Z\)</span>和<span class="math notranslate nohighlight">\(\Theta\)</span>的采样分布导出的。</p>
-<p>!!! note “weiya注”
+<blockquote>
+<div><p>note “weiya注”
 这里说“重复抽取训练样本<span class="math notranslate nohighlight">\(Z\)</span>”，相当于也将训练样本看成是随机变量，而随机森林是在<span class="math notranslate nohighlight">\(\mathbf Z\)</span>的条件下得到的。</p>
+</div></blockquote>
 <p>更准确地，式(15.6)和(15.7)中计算的平均波动的都是</p>
 <ul class="simple">
 <li><p>在<span class="math notranslate nohighlight">\(\mathbf Z\)</span>的条件下：因为自助采样和在每个分割点的特征采样，以及</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf Z\)</span>自身的采样波动的结果</p></li>
 </ul>
 <p>实际上，在<span class="math notranslate nohighlight">\(x\)</span>处拟合的成对树的条件协方差为0，因为自助采样和特征采样都是独立同分布的，见练习15.5。</p>
-<p>!!! note “weiya注： Ex. 15.5”
-证明成对随机森林树在点<span class="math notranslate nohighlight">\(x\)</span>的采样相关性由下式给出
-$<span class="math notranslate nohighlight">\(
-    \rho(x)=\frac{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]}{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]+E_{\mathbf Z}Var_{\Theta\mid \mathbf Z}[T(x;\Theta(\mathbf Z))]}\tag{15.12}
-    \)</span><span class="math notranslate nohighlight">\(
-    证明过程如下：
-    \)</span><span class="math notranslate nohighlight">\(
-    \begin{align*}
+<blockquote>
+<div><p>note “weiya注： Ex. 15.5”
+证明成对随机森林树在点<span class="math notranslate nohighlight">\(x\)</span>的采样相关性由下式给出</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \rho(x)=\frac{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]}{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]+E_{\mathbf Z}Var_{\Theta\mid \mathbf Z}[T(x;\Theta(\mathbf Z))]}\tag{15.12}
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>证明过程如下：
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
     \rho &amp;=\mathrm{corr}[T(x;\Theta_1(\mathbf Z)),T(x;\Theta_2(\mathbf Z))]\\
     &amp;=\frac{Cov(T(x;\Theta_1(\mathbf Z)), T(x;\Theta_2(\mathbf Z)) )}{\sqrt{Var(T(x;\Theta_1(\mathbf Z)))Var(T(x;\Theta_2(\mathbf Z)))}}\\
     &amp;=\frac{E_{\mathbf Z}[Cov_{\Theta_i\mid \mathbf Z}(T(x;\Theta_1(\mathbf Z)), T(x;\Theta_2(\mathbf Z)))]+Cov_{\mathbf Z}[E_{\Theta_1\mid \mathbf Z}T(x;\Theta_1(\mathbf Z)), E_{\Theta_2\mid \mathbf Z}T(x;\Theta_2(\mathbf Z))]}{\sqrt{E_{\mathbf Z}[Var_{\Theta_1\mid \mathbf Z}T(x;\Theta_1(\mathbf Z))]+Var_{\mathbf Z}[E_{\Theta_1\mid \mathbf Z}T(x;\Theta_1(\mathbf Z))]}\sqrt{E_{\mathbf Z}[Var_{\Theta_2\mid \mathbf Z}T(x;\Theta_2(\mathbf Z))]+Var_{\mathbf Z}[E_{\Theta_2\mid \mathbf Z}T(x;\Theta_2(\mathbf Z))]}}
     \end{align*}
-    \)</span><span class="math notranslate nohighlight">\(
-    因为\)</span>T(x;\Theta_i(Z))<span class="math notranslate nohighlight">\(的自助采样和特征采样分别是独立同分布的，则\)</span>Cov_{\Theta_i\mid \mathbf Z}[T(x;\Theta_1(\mathbf Z)),T(x;\Theta_2(\mathbf Z))]=0<span class="math notranslate nohighlight">\(且
-    \)</span><span class="math notranslate nohighlight">\(
-    \begin{align*}
+    
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>因为$T(x;\Theta_i(Z))$的自助采样和特征采样分别是独立同分布的，则$Cov_{\Theta_i\mid \mathbf Z}[T(x;\Theta_1(\mathbf Z)),T(x;\Theta_2(\mathbf Z))]=0$且
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
     E_{\Theta_1\mid \mathbf Z}T(x;\Theta_1(\mathbf Z)&amp;=E_{\Theta_2\mid \mathbf Z}T(x;\Theta_2(\mathbf Z))\\
     Var_{\Theta_1\mid \mathbf Z}T(x;\Theta_1(\mathbf Z))&amp;=Var_{\Theta_2\mid \mathbf Z}T(x;\Theta_2(\mathbf Z))
     \end{align*}
-    \)</span><span class="math notranslate nohighlight">\(
-    则分子只剩下第二项，分母的两个因子实际上相等，于是
-    \)</span><span class="math notranslate nohighlight">\(
-    \begin{align*}
+    
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>则分子只剩下第二项，分母的两个因子实际上相等，于是
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \begin{align*}
     \rho &amp;=\frac{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]}{Var_{\mathbf Z}[E_{\Theta\mid\mathbf Z}T(x;\Theta(\mathbf Z))]+E_{\mathbf Z}Var_{\Theta\mid \mathbf Z}[T(x;\Theta(\mathbf Z))]}
     \end{align*}
-    \)</span>$
-证毕。</p>
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>证毕。
+</pre></div>
+</div>
 <!--
+
 $$
 \begin{align*}
 \rho &=\mathrm{corr}[T(x;\Theta_1(Z)),T(x;\Theta_2(Z))]\\
@@ -1236,8 +1303,10 @@ $$
 &=\frac{E[Cov(T(x;\Theta_1(Z)), T(x;\Theta_2(Z))\mid Z)]+Cov[E(T(x;\Theta_1(Z))\mid Z), E(T(x;\Theta_2(Z))\mid Z)]}{\sqrt{E[Var(T(x;\Theta_1(Z))\mid Z)]+Var[E(T(x;\Theta_1(Z)))]}\sqrt{E[Var(T(x;\Theta_2(Z))\mid Z)]+Var[E(T(x;\Theta_2(Z)))]}}
 \end{align*}
 $$
+
 ~~暂时不能给出严谨的证明:disappointed:~~
 但有个类比的想法。记得在线性回归中，对于(复)相关系数$R$，我们有
+
 $$
 \begin{align*}
 R^2&=\frac{ESS}{TSS}\\
@@ -1246,6 +1315,7 @@ R^2&=\frac{ESS}{TSS}\\
 &=\frac{Var(E(Y\mid X))}{Var(Y)}
 \end{align*}
 $$
+
 上式中$\hat Y$其实是$E(Y\mid X)$的一个估计。这与我们所要证的会不会有所关联呢？其实对应起来看，我有点怀疑(15.2)的左边应该为$\rho^2(x)$，而非$\rho(x)$。
 -->
 <p>接下来的论证基于下面的模拟模型</p>
@@ -1267,25 +1337,33 @@ Total\; Variance&amp;=&amp;Var_{\mathbf Z}\hat f_{rf}(x)&amp;+\text{within-}\mat
 \end{align*}
 \tag{15.9}
 \end{split}\]</div>
-<p>!!! note “weiya注： 条件方差公式”
-概率论中，全方差率(law of total variance)或条件方差公式(conditional variance formulas)表明，若<span class="math notranslate nohighlight">\(X\)</span>与<span class="math notranslate nohighlight">\(Y\)</span>为同一个概率空间的随机变量，且<span class="math notranslate nohighlight">\(Y\)</span>的方差有限，则
-$<span class="math notranslate nohighlight">\(
-    Var(Y)=E(Var(Y\mid X))+Var(E(Y\mid X))
-    \)</span><span class="math notranslate nohighlight">\(
-    证明如下：
-    \)</span><span class="math notranslate nohighlight">\(
-    \begin{align*}
+<blockquote>
+<div><p>note “weiya注： 条件方差公式”
+概率论中，全方差率(law of total variance)或条件方差公式(conditional variance formulas)表明，若<span class="math notranslate nohighlight">\(X\)</span>与<span class="math notranslate nohighlight">\(Y\)</span>为同一个概率空间的随机变量，且<span class="math notranslate nohighlight">\(Y\)</span>的方差有限，则</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    Var(Y)=E(Var(Y\mid X))+Var(E(Y\mid X))
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>证明如下：
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
     Var(Y)&amp;=E(Y^2)-(EY)^2\\
     &amp;=E(E(Y^2\mid X))-[E(E(Y\mid X))]^2\\
     &amp;=E(Var(Y\mid X)+(E(Y\mid X))^2) - [E(E(Y\mid X))]^2\\
     &amp; = E(Var(Y\mid X)) + Var(E(Y\mid X))
     \end{align*}
-    \)</span>$
-参考<a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_total_variance">Law_of_total_variance</a></p>
+    
+\end{split}\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>参考[Law_of_total_variance](https://en.wikipedia.org/wiki/Law_of_total_variance)
+</pre></div>
+</div>
 <p>第二项是<span class="math notranslate nohighlight">\(\mathbf Z\)</span>间方差——随机化的结果，会随着<span class="math notranslate nohighlight">\(m\)</span>降低而增大。第一项实际上是随机森林集（显示在图15.19的右边）中的采样方差，会随着<span class="math notranslate nohighlight">\(m\)</span>降低而降低。单棵树的方差在<span class="math notranslate nohighlight">\(m\)</span>的大部分取值范围内不会有明显的改变，因此根据式(15.5)，随机森林集的方差显著比树的方差要低。</p>
 </div>
 <div class="section" id="id3">
-<h2>偏差<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（）偏差<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>和<code class="docutils literal notranslate"><span class="pre">bagging</span></code>中一样，随机森林的偏差与任意单棵采样后的树<span class="math notranslate nohighlight">\(T(x;\Theta(\mathbf Z))\)</span>一样：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1299,7 +1377,7 @@ Bias(x) &amp;= \mu(x)-E_{\mathbf Z}\hat f_{rf}(x)\\
 <p>这些模式表现出与岭回归的相似性(3.4.1节)。当大量的变量有着相似大小的系数，岭回归会非常有用，岭回归将它们的系数收缩到0，并且将那些强相关的变量收缩到一起。尽管训练样本的大小可能不允许所有的变量都出现在模型中，但是通过岭回归正则化能使模型稳定并且允许所有的变量都有它们的影响（尽管被削弱了）。<span class="math notranslate nohighlight">\(m\)</span>较小的随机森林表现出相似的平均。每个相关的变量都会成为主分割变量，并且随机森林树集的平均降低了任一单个变量的贡献。因为模拟例子(15.8)是基于关于所有变量的线性模型，岭回归达到了更低的均方误差（大约为0.45，当<span class="math notranslate nohighlight">\(df(\lambda_{opt})\approx 29\)</span>）。</p>
 </div>
 <div class="section" id="id4">
-<h2>自适应最近邻<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（）自适应最近邻<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>随机森林分类器与<span class="math notranslate nohighlight">\(k\)</span>最近邻分类器（13.3节）有许多相同的地方；实际上前者是后者的加权版本。因为每棵树生长到最大时，对于特定的<span class="math notranslate nohighlight">\(\Theta^*\)</span>，<span class="math notranslate nohighlight">\(T(x;\Theta^*(\mathbf Z))\)</span>是其中一个训练样本的响应变量的值。生成树算法任意从中选择最有信息量的预测量，寻找到该观测的最优路径。平均的过程是对训练响应变量赋予权重，这最终对预测值进行投票。因此通过随机森林的投票机制，那些靠近目标点的观测赋予了权重——一个等价核——这些结合在一起形成了分类边界。</p>
 <p>图15.11展示了3-最近邻和随机森林在混合数据中的判别边界的相似性。</p>
 <p><img alt="" src="../_images/fig15.11.png" /></p>
@@ -1328,8 +1406,8 @@ Bias(x) &amp;= \mu(x)-E_{\mathbf Z}\hat f_{rf}(x)\\
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="15.3-Details-of-Random-Forests.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1346,19 +1424,17 @@ Bias(x) &amp;= \mu(x)-E_{\mathbf Z}\hat f_{rf}(x)\\
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,21 +1133,33 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>18.1 当p远大于N</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="pn">
 <h1>18.1 当p远大于N<a class="headerlink" href="#pn" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>!!! note “更新笔记”
+<blockquote>
+<div><p>note “更新笔记”
 &#64;2017-12-28 使用 R Notwbook 记录了模拟本节中的例子的具体过程，详见<span class="xref myst"><strong>这里</strong></span>。</p>
+</div></blockquote>
 <p>这章中我们讨论特征的个数 <span class="math notranslate nohighlight">\(p\)</span> 远大于观测的个数 <span class="math notranslate nohighlight">\(N\)</span> 的预测问题，通常写成 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span>。这样的问题变得越来越重要，特别是在基因和其他计算生物的领域中。我们将会看到这种情形下，<strong>高方差 (high variance)</strong> 和 <strong>过拟合 (overfitting)</strong> 是主要的考虑对象。结果表明，经常选择简单、高正则化的方式。本章的第一部分关注分类和回归中的预测问题，而第二部分讨论特征选择和特征评估这些更基本的问题。</p>
 <p>首先，图 18.1 总结了一个小型的仿真结果，展示了 <span class="math notranslate nohighlight">\(p &gt;&gt; N\)</span> 时，“<strong>欠拟合更好 (less fitting is better)</strong>”的原则。对 <span class="math notranslate nohighlight">\(N=100\)</span> 个样本中的每一个，我们生成 <span class="math notranslate nohighlight">\(p\)</span> 个成对相关系数为 <span class="math notranslate nohighlight">\(0.2\)</span> 的标准高斯特征 <span class="math notranslate nohighlight">\(X\)</span>。响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 根据下面线性模型产生，</p>
 <div class="math notranslate nohighlight">
@@ -1147,21 +1167,26 @@
 Y=\sum\limits_{j=1}^pX_j\beta_j+\sigma\varepsilon\tag{18.1}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 产生于标准高斯分布。对于每个数据集，系数 <span class="math notranslate nohighlight">\(\beta_j\)</span> 也从标准高斯分布中产生。我们研究三种情形：<span class="math notranslate nohighlight">\(p=20,100,1000\)</span>。在每种情形下标准误差的选取 <span class="math notranslate nohighlight">\(\sigma\)</span> 都使得信噪比 <span class="math notranslate nohighlight">\(\mathrm{Var}[\mathbb{E}(Y\mid X)]/\sigma^2\)</span> 等于<span class="math notranslate nohighlight">\(2\)</span>。结果表明，单变量回归系数显著的个数分别为 9，33 和 331，这是在 100 次模拟中平均得到的。<span class="math notranslate nohighlight">\(p=1000\)</span> 的情形是用来模拟高维数据，这些数据可能是基因数据或者蛋白质数据。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 注意 <span class="math notranslate nohighlight">\(z_{0.975} = 1.96 \approx 2\)</span>，则如果 <span class="math notranslate nohighlight">\(\vert\hat\beta_j/\widehat{se}_j\vert\ge 2\)</span>，则称回归系数显著，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 为估计的（单变量）系数，<span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是它的标准误差估计。</p>
+</div></blockquote>
 <p><img alt="" src="../_images/fig18.1.png" /></p>
 <blockquote>
 <div><p>图 18.1. 模拟实验的测试误差结果。显示了 3 个不同 <span class="math notranslate nohighlight">\(p\)</span> 值（特征的数目）下，100 次模拟的相对测试误差的箱线图。相对误差是测试误差除以贝叶斯误差 <span class="math notranslate nohighlight">\(\sigma^2\)</span>。从左到右，显示了三个不同的正则化参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span> 的岭回归的结果。拟合中的（平均）有效自由度在每张图的下面标出来了。</p>
 </div></blockquote>
 <p>我们对数据进行岭回归拟合，其中采用了三个不同的正则参数 <span class="math notranslate nohighlight">\(\lambda:0.001,100,1000\)</span>。当 <span class="math notranslate nohighlight">\(\lambda=0.001\)</span>，这近似与最小二乘一样，仅仅有一点正则来保证当 <span class="math notranslate nohighlight">\(p &gt; N\)</span> 时，问题不是奇异的。图 18.1 显示了在每个情形下不同的估计达到的相对测试误差的箱线图。在每个岭回归拟合中使用的对应的平均自由度（式（ 3.50 ））也标出来了。</p>
-<p>!!! note “Recall: 式（ 3.50 ）”
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
+<blockquote>
+<div><p>note “Recall: 式（ 3.50 ）”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}    \begin{align*}
     \mathrm{df}(\lambda)&amp;=\mathrm{tr}[\mathbf{X}(\mathbf{X^TX}+\lambda\mathbf{I})^{-1}\mathbf{X}^T]\\
     &amp;=\mathrm{tr}(\mathbf{H}_{\lambda})\\
     &amp;=\sum\limits_{j=1}^p\dfrac{d_j^2}{d_j^2+\lambda}\tag{3.50}
     \end{align*}
-    \)</span>$</p>
+    
+\end{split}\]</div>
 <p>自由度是一个比 <span class="math notranslate nohighlight">\(\lambda\)</span> 更有解释性的参数。从图中我们看到，在 <span class="math notranslate nohighlight">\(p=20\)</span> 时，<span class="math notranslate nohighlight">\(\lambda=0.001\)</span>(20df) 的岭回归最优；当 <span class="math notranslate nohighlight">\(p=100\)</span> 时 <span class="math notranslate nohighlight">\(\lambda=100\)</span>(35df) 最优，并且当 <span class="math notranslate nohighlight">\(p=1000\)</span>时 <span class="math notranslate nohighlight">\(\lambda=1000\)</span>(43df) 最优。</p>
 <p>这些结果可以解释如下。当 <span class="math notranslate nohighlight">\(p=20\)</span> 时，我们拟合所有的情形，并且可以以低偏差尽可能地识别更多的显著系数。当 <span class="math notranslate nohighlight">\(p=100\)</span> 时，我们可以采用中等程度的收缩识别一些非零的系数。最后，当 <span class="math notranslate nohighlight">\(p=1000\)</span> 时，即使有许多非零系数，我们并不希望找到它们，并且我们需要收缩它们。为了说明这个结论，令 <span class="math notranslate nohighlight">\(t_j=\hat\beta_j/\widehat{se}_j\)</span>，其中 <span class="math notranslate nohighlight">\(\hat\beta_j\)</span> 是岭回归估计，而 <span class="math notranslate nohighlight">\(\widehat{se}_j\)</span> 是标准误差的估计。接着在这三种情形中取最优的岭回归参数，<span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 为 2.0,0.6 和 0.2，并且超过 2 的 <span class="math notranslate nohighlight">\(\vert t_j\vert\)</span> 的平均个数等于 9.8,1.2 和 0.0。</p>
 <p><span class="math notranslate nohighlight">\(\lambda=0.001\)</span> 的岭回归成功利用了当 <span class="math notranslate nohighlight">\( p &lt; N\)</span> 时的特征的相关性，但是当 <span class="math notranslate nohighlight">\( p &gt; &gt; N\)</span> 时不能这样处理。在后者的情形下，在相对较少的样本中没有足够的信息来有效估计高维协方差阵。这种情形下，更大的正则化会有更好的预测表现。</p>
@@ -1190,8 +1215,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="18.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1208,19 +1233,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

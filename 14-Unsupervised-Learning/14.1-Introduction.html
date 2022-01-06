@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.1 导言</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1153,8 +1171,10 @@
 <p>这章中我们讨论<strong>非监督学习 (unsupervised learning)</strong> 或者“无老师指导的学习”。这种情形下我们只有联合密度为 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span>的 <span class="math notranslate nohighlight">\(p\)</span> 维随机向量的 <span class="math notranslate nohighlight">\(N\)</span> 个观测的集合 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span>。我们的目标是在没有监督，或者老师不提供正确答案，又或者不提供每个观测的错误程度的情况下，直接推断该密度分布的性质。<span class="math notranslate nohighlight">\(X\)</span> 的维度有时比监督学习中的高很多，而且我们关心的性质经常比简单的位置估计复杂得多。这些因素在某种程度上被以下事实所缓解：<span class="math notranslate nohighlight">\(X\)</span> 表示要考虑的所有变量。我们不需要在其它变量的值改变的情况下推断 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 的性质怎么改变。</p>
 <p>在低维问题中 (<span class="math notranslate nohighlight">\(p\le 3\)</span>)，有各种有效的非参方法来在所有 <span class="math notranslate nohighlight">\(X\)</span> 值处直接估计密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 本身，并且进行可视化表示（比如，Silverman, 1986<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）。由于维度灾难，这些方法在高维中会失效。必须寻求估计比较粗糙的全局模型，例如高斯混合或者表征 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 的各种简单描述性统计。</p>
 <p>一般地，这些描述性统计量试图表征<span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 相对较大时的 <span class="math notranslate nohighlight">\(X\)</span>值，或者这些值的集合。例如，主成分、多维缩放、自组织图，以及主曲线都尝试识别具有高数据密度的 <span class="math notranslate nohighlight">\(X\)</span> 空间中的低维<strong>流形 (manifold)</strong>。这提供了这些变量之间的关联信息，以及它们是否可以看成更小的包含“潜 (latent)”变量的集合的函数的信息。聚类分析试图寻找 <span class="math notranslate nohighlight">\(X\)</span> 空间中包含 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 模型的多重凸区域。这可以判断 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X)\)</span> 是否可以表示成简单密度的混合，这些简单密度表示唯一的观测类型或者类别。混合模型有类似的目标。关联规则试图构造简单的描述（联合规则）来描述在非常高维的二值数据特殊情形中的高密度区域。</p>
-<p>!!! note “weiya 注：流形”
+<blockquote>
+<div><p>note “weiya 注：流形”
 流形（manifold）：数学上，流形是一个拓扑空间，在每一点附近局部地近似欧式空间。更精确地，<span class="math notranslate nohighlight">\(n\)</span> 维流形的每个点与维度为 <span class="math notranslate nohighlight">\(n\)</span> 的欧式空间同态的邻域。</p>
+</div></blockquote>
 <p>监督学习中，有一个明确的成功或不成功的量度，因此可用于判断特定情况下的<strong>充分性 (adequacy)</strong>，并比较不同方法在各种情况下的<strong>有效性 (effectiveness)</strong>。成功的损失直接用在联合分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(X,Y)\)</span> 上的期望损失来衡量。这个可以用各种方式来衡量，包括交叉验证。在非监督学习中，没有这些直接衡量成功的量度。从大部分非监督学习的算法的输出中评估推断的有效性是很难确定的。必须诉诸于<strong>启发式变量 (heuristic arguments)</strong>，在监督学习也经常使用，这不仅可以激励 (motivating) 算法，而且为了评价结果的质量。因为有效性是主观问题，不能直接加以证实，这种不舒服 (unconfortable) 的情形导致提出的方法激增，</p>
 <p>在这章中，我们提出在实际中广泛使用的非监督学习技巧，以及另外一些作者认同的方法。</p>
 <hr class="footnotes docutils" />
@@ -1187,8 +1207,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1205,19 +1225,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

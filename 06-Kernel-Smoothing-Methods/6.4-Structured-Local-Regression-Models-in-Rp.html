@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   结构核
+   （）结构核
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     结构回归函数
+     （）结构回归函数
     </a>
    </li>
   </ul>
@@ -1152,20 +1160,52 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6.4 \mathcal{IR}^p中结构化局部回归</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   （）结构核
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     （）结构回归函数
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mathcal-ir-p">
 <h1>6.4 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中结构化局部回归<a class="headerlink" href="#mathcal-ir-p" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <p>当维度与样本大小的比率不是很好，则局部回归对我们没有太大帮助，除非我们想要对模型做出一些结构化的假设。这本书的很多部分是关于结构化回归和分类模型的。这里我们关注一些与核方法直接相关的方法。</p>
 <div class="section" id="id1">
-<h2>结构核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    K_\lambda(x_0,x)=D\left(\frac{\Vert x-x_0\Vert}{\lambda}\right)\tag{6.13}
-    \)</span>$</p>
+<h2>（）结构核<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    K_\lambda(x_0,x)=D\left(\frac{\Vert x-x_0\Vert}{\lambda}\right)\tag{6.13}
+    
+\]</div>
 <p>一种方式是修改核。默认的球面核 式（ 6.13 ） 对每个坐标给出了相等的权重，所以一种自然的默认策略是对每个变量标准化得到单位标准误差。更一般的方式是使用半正定矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 来对不同的坐标进行赋予权重：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1173,7 +1213,7 @@ K_{\lambda, A}(x_0,x)=D\left(\frac{(x-x_0)^T\mathbf A(x-x_0))}{\lambda}\right)\t
 \]</div>
 <p>整个坐标或者方向的影响可以通过在 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 上加入合适的限制来降低或者忽略。举个例子，如果 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 为对角矩阵，则我们可以通过增加或者减小 <span class="math notranslate nohighlight">\(A_{jj}\)</span> 来增大或者减小单个预测变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的影响。预测变量很多通常都是高度相关的，比如从相似的数字信号或者图像中得到。预测变量的协方差函数可以用来修改矩阵 <span class="math notranslate nohighlight">\(\mathbf A\)</span>，使得在高频对比中关注更少（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/196">练习 6.4</a>）。研究者们已经提出了多维核参数训练的方法。举个例子，第 11 章中讨论的投影寻踪回归模型是合适的，其中 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的低阶形式表示 <span class="math notranslate nohighlight">\(\hat f(X)\)</span> 的岭回归。关于 <span class="math notranslate nohighlight">\(\mathbf A\)</span> 的更一般的模型是很复杂的，相反地，我们倾向于接下来讨论的结构形式的回归函数。</p>
 <div class="section" id="id2">
-<h3>结构回归函数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>（）结构回归函数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>我们试着在 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中拟合回归函数 <span class="math notranslate nohighlight">\(\mathbb{E}(Y\mid X)=f(X_1,X_2,\ldots,X_p)\)</span>，其中每一阶的交叉项都可能存在。很自然地可以考虑下列形式的方差分析 (ANOVA) 分解：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1225,8 +1265,8 @@ f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6.3-Local-Regression-in-Rp.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1243,19 +1283,17 @@ f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

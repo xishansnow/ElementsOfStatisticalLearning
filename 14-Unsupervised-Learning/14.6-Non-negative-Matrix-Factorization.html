@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   原型分析
+   （）原型分析
   </a>
  </li>
 </ul>
@@ -1145,7 +1153,30 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.6 非负矩阵分解</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （）原型分析
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1166,12 +1197,14 @@ L(\mathbf W, \mathbf H)=\sum\limits_{i=1}^N\sum\limits_{j=1}^p[x_{ij}\log(\mathb
 <p>这是模型的对数似然，模型中 <span class="math notranslate nohighlight">\(x_{ij}\)</span> 服从均值为 <span class="math notranslate nohighlight">\((\mathbf{WH})_{ij}\)</span> 的 Poisson 分布——这对于正值数据是很合理的。</p>
 <p>下面的轮换 (alternating) 算法 (Lee and Seung, 2001)<a class="footnote-reference brackets" href="#id10" id="id3">2</a> 收敛到 <span class="math notranslate nohighlight">\(L(\mathbf W, \mathbf H)\)</span> 的局部最大值：</p>
 <!-- 
+
 $$
 \begin{array}{ll}
 w_{ik}&\leftarrow w_{ik}\frac{\sum_{j=1}^ph_{kj}x_{ij}/(\mathbf{WH}_{ij})}{\sum_{j=1}^ph_{kj}}\\
 h_{kj}&\leftarrow h_{kj}\frac{\sum_{j=1}^pw_{ik}x_{ij}/(\mathbf{WH}_{ij})}{\sum_{j=1}^pw_{ik}}
 \end{array}\tag{14.74}
 $$
+
 -->
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1181,24 +1214,33 @@ h_{kj}&amp;\leftarrow h_{kj}\frac{\sum_{i=1}^Nw_{ik}x_{ij}/(\mathbf{WH})_{ij}}{\
 \end{align*}\tag{14.74}
 \end{split}\]</div>
 <p>这个算法可以由最大化 <span class="math notranslate nohighlight">\(L(\mathbf W, \mathbf H)\)</span> 的 <strong>minorization</strong> 过程来导出（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/86">练习14.23</a>）</p>
-<p>!!! info “weiya 注：Ex. 14.23”
+<blockquote>
+<div><p>info “weiya 注：Ex. 14.23”
 练习 14.23 已解答，详细过程参见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/86">Issue 86: Ex. 14.23</a></p>
-<p>!!! note “weiya 注：minorization”
-<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/86">练习 14.23</a>中介绍了 minorization 的概念。对于函数<span class="math notranslate nohighlight">\(g(x, y)\)</span>和<span class="math notranslate nohighlight">\(f(x)\)</span>，若对于定义域中所有的 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span>，若满足
-$<span class="math notranslate nohighlight">\(
-    g(x,y)\le f(x),\qquad g(x,x)=f(x)
-    \)</span><span class="math notranslate nohighlight">\(
-    则称\)</span>g(x,y)<span class="math notranslate nohighlight">\( minorize \)</span>f(x)$。</p>
+</div></blockquote>
+<blockquote>
+<div><p>note “weiya 注：minorization”
+<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/86">练习 14.23</a>中介绍了 minorization 的概念。对于函数<span class="math notranslate nohighlight">\(g(x, y)\)</span>和<span class="math notranslate nohighlight">\(f(x)\)</span>，若对于定义域中所有的 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(y\)</span>，若满足</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    g(x,y)\le f(x),\qquad g(x,x)=f(x)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>则称$g(x,y)$ minorize $f(x)$。
+</pre></div>
+</div>
 <p>并且与对数线性模型的 <strong>迭代比例缩放算法 (iterative-proportional-scaling algorithm)</strong> 相关（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/87">练习 14.24</a>）。</p>
-<p>!!! info “weiya 注：Ex. 14.24”
+<blockquote>
+<div><p>info “weiya 注：Ex. 14.24”
 练习 14.24 已解答，详细过程参见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/87">Issue 87: Ex. 14.24</a></p>
+</div></blockquote>
 <p><img alt="" src="../_images/fig14.33.png" /></p>
 <p>图 14.33 展示了从 Lee and Seung (1999)<a class="footnote-reference brackets" href="#id9" id="id4">1</a> 中选取的例子，其中比较了非负矩阵分解 (NMF)，向量量化（VQ，等价于 <span class="math notranslate nohighlight">\(k\)</span> 均值聚类）以及主成分分析 (PCA)。将这三种学习方法应用到大小为 <span class="math notranslate nohighlight">\(N=2429\)</span> 的人脸数据库中，每个包含 <span class="math notranslate nohighlight">\(19\times 19\)</span>的像素点，得到一个 <span class="math notranslate nohighlight">\(2429\times 381\)</span> 的矩阵 <span class="math notranslate nohighlight">\(X\)</span>。如 <span class="math notranslate nohighlight">\(7\times 7\)</span> 个蒙太奇画（每个都是 <span class="math notranslate nohighlight">\(19\times 19\)</span> 的图象）所示，每种方法学习 <span class="math notranslate nohighlight">\(r=49\)</span> 张基图象集。正值用黑色像素表示，而负值用红色像素点表示。对于一张特定的脸，如右上角所示，用基图象的线性叠加来近似。线性叠加的系数在 <span class="math notranslate nohighlight">\(7\times 7\)</span> 数组中的每个蒙太奇画的右边，最终得到的叠加图像显示在等式右边。作者指出，与 VQ 和 PCA 不同，NMF 是用表示脸的不同部位的基图象来学习去表征脸。</p>
 <p>Donoho and Stodden (2004)<a class="footnote-reference brackets" href="#id11" id="id5">3</a> 指出非负矩阵分解的一个潜在的严重问题。即使在 <span class="math notranslate nohighlight">\(X=W\H\)</span>严格成立的情形下，分解可能不是唯一的。图 14.34 说明了这个问题。</p>
 <p><img alt="" src="../_images/fig14.34.png" /></p>
 <p>数据点落在 <span class="math notranslate nohighlight">\(p=2\)</span> 维空间中，并且数据与坐标轴之间存在开放的区域 (open space)。我们可以在这个开放区域中选择基向量 <span class="math notranslate nohighlight">\(h_1\)</span> 和 <span class="math notranslate nohighlight">\(h_2\)</span>，并且用这些向量的非负线性组合来精确表示每个数据点。这个不唯一性表明上述的算法得到的解会依赖初始值，并且似乎阻碍了因子分解的解释性。尽管这个解释性方面的不足，非负矩阵分解及其应用吸引力许多研究者的兴趣。</p>
 <div class="section" id="id6">
-<h2>原型分析<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>（）原型分析<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>归功于 Cutler and Breiman (1994)<a class="footnote-reference brackets" href="#id12" id="id7">4</a>，这个方法通过原型（数据点的线性组合）来近似数据点。在这个意义上，与 <span class="math notranslate nohighlight">\(K\)</span> 均值聚类有相似的地方。然而，不是用单个附近的原型来近似每个数据点，原型分析通过一系列原型的凸组合来近似每个数据点。凸组合的使用强制原型位于数据云的 <strong>凸包 (convex hull)</strong> 上。在这个意义下，原型是纯的 (pure)，或典型的 (archetypal)。</p>
 <p>如 式（ 14.72 ） 一样，<span class="math notranslate nohighlight">\(N\times p\)</span> 的数据矩阵 <span class="math notranslate nohighlight">\(X\)</span> 建模为</p>
 <div class="math notranslate nohighlight">
@@ -1265,8 +1307,8 @@ J(W, \B) &amp; = \Vert X-W\H\Vert^2\\
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.5-Principal-Components-Curves-and-Surfaces.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1283,19 +1325,17 @@ J(W, \B) &amp; = \Vert X-W\H\Vert^2\\
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

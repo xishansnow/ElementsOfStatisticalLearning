@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,96 +1142,96 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proximity-matrices">
-   接近矩阵(proximity matrices)
+   （）接近矩阵(proximity matrices)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   基于属性的不相似性
+   （）基于属性的不相似性
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     定量变量
+     （）定量变量
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     有序变量
+     （）有序变量
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     类别变量
+     （）类别变量
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#object-dissimilarity">
-   样品的不相似性 (object dissimilarity)
+   （）样品的不相似性 (object dissimilarity)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   聚类算法
+   （）聚类算法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   组合算法
+   （）组合算法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-means">
-   K-means
+   （）K-means
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#soft-k-means">
-   高斯混合作为 Soft K-means 聚类
+   （）高斯混合作为 Soft K-means 聚类
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   向量量化
+   （）向量量化
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-medoids">
-   K-medoids
+   （）K-medoids
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     例子：国家不相似性
+     （）例子：国家不相似性
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   实际问题
+   （）实际问题
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id19">
-   系统聚类
+   （）系统聚类
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     合并聚类
+     （）合并聚类
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     例子：人类癌症微阵列数据（继续）
+     （）例子：人类癌症微阵列数据（继续）
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     分裂聚类
+     （）分裂聚类
     </a>
    </li>
   </ul>
@@ -1236,27 +1244,149 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.3 聚类分析</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proximity-matrices">
+   （）接近矩阵(proximity matrices)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）基于属性的不相似性
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     （）定量变量
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     （）有序变量
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     （）类别变量
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-dissimilarity">
+   （）样品的不相似性 (object dissimilarity)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   （）聚类算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   （）组合算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means">
+   （）K-means
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#soft-k-means">
+   （）高斯混合作为 Soft K-means 聚类
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   （）向量量化
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-medoids">
+   （）K-medoids
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     （）例子：国家不相似性
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   （）实际问题
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id19">
+   （）系统聚类
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     （）合并聚类
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     （）例子：人类癌症微阵列数据（继续）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     （）分裂聚类
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>14.3 聚类分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <!--
-!!! note "更新笔记"
+> note "更新笔记"
     @2017-12-31 大三上学期学过多元统计分析，其中有一次实验是聚类分析。实验报告参见[**这里**](http://rmd.hohoweiya.xyz/3140105707hw5.pdf)（下载[**数据**](http://rmd.hohoweiya.xyz/avenormal.xls)）
 -->
-<p>!!! note “更新笔记”
+<blockquote>
+<div><p>note “更新笔记”
 &#64;2018-01-17 解决两个练习题。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">Ex. 14.1</a>和<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">Ex. 14.2</a></p>
+</div></blockquote>
 <p><strong>聚类分析 (cluster analysis)</strong>，也称作 <strong>数据分离 (data segmentation)</strong>，有多种不同的目标。所有的目标都与将 <strong>点集 (a collection of objects)</strong> 分成子集或者簇有关，使得同一个簇中的点比不在同一个簇的点彼此更接近。一个点可以用一系列度量来描述，或者通过与其它点的关系。另外，目标有时是将簇排列成自然分层的形式。这涉及到依次将簇本身进行分类使得在每一层次，同一类中的簇比不在同类的簇彼此更相似。</p>
-<p>!!! note “weiya 注：翻译”
+<blockquote>
+<div><p>note “weiya 注：翻译”
 为了更好地表述，将上文中的 object 翻译成“点”。</p>
+</div></blockquote>
 <p>聚类分析也用来构造描述型统计量来确定数据点是否包含不同的子群，每个群表示有着显著不同特点的点集。这一目标需要评估被分到各自簇中的点集间的差异程度。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 这里谈到了两个目标：第一个提到了 hierarchy，这与系统聚类相似；第二个提到用统计量衡量簇间的差异，如各种距离和相似系数。</p>
+</div></blockquote>
 <p>聚类分析的所有目标的核心是度量要聚类的单个点间相似（或不相似）的程度。聚类方法试图基于点间相似性的定义来将其分类。相似性的定义只能从关注的主题得到。某种程度上，这个情形与确定预测问题（监督学习）中的损失或花费函数相似。在预测问题中，损失函数与错误的预测有关，而错误的预测取决于数据之外的考虑。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 简而言之，聚类方法中相似性的定义就如同监督学习问题中损失函数一样重要。</p>
+</div></blockquote>
 <p>图 14.4 显示了通过流行的 K-means 算法将一些模拟数据聚成三簇。这种情况下其中的两个簇不是很好地分离开，所以“分割（segmentation）”比“聚类（clustering）”能将这部分过程描述得更精确。K-means 聚类以猜三个聚类中心为开始。然后交替进行下面的步骤直到收敛：</p>
 <ul class="simple">
 <li><p>对于每个数据点，确定（欧式空间）中最近的聚类中心。</p></li>
@@ -1268,24 +1398,26 @@
 </div></blockquote>
 <p>我们将在后面更详细地描述 K-means，包括怎样选取类别数目的问题（例子中是三个）。K-means 聚类是从上到下（top-down）的过程，而其他我们描述的分类方式是从下往上（bottom-up）的过程。所有聚类技巧的根本是两个点之间距离或者相似性的度量。我们在描述各种不同的聚类算法之前首先讨论距离的度量。</p>
 <div class="section" id="proximity-matrices">
-<h2>接近矩阵(proximity matrices)<a class="headerlink" href="#proximity-matrices" title="Permalink to this headline">¶</a></h2>
+<h2>（）接近矩阵(proximity matrices)<a class="headerlink" href="#proximity-matrices" title="Permalink to this headline">¶</a></h2>
 <p>有时数据是直接用点对之间的接近（相似或亲近）来表示。这些可以是 <strong>相似性 (similarities)</strong> 或者 <strong>不相似性 (dissimilarities)</strong>（不同或者不够近似）。举个例子，在社会科学实验中，参与者被要求去判断特定的物品与另一个之间的差异程度。不相似性进一步可以对这些判断进行平均来计算。这种类型的数据可以表示成 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf D\)</span>，其中 <span class="math notranslate nohighlight">\(N\)</span> 为物品数目的个数，并且每个元素 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 记录了第 <span class="math notranslate nohighlight">\(i\)</span> 个和第 <span class="math notranslate nohighlight">\(i'\)</span> 个物品之间的接近程度。这个矩阵接着作为聚类算法的输入。</p>
 <p>大部分算法假定一个非负的不相似性矩阵，对角元素为 0：<span class="math notranslate nohighlight">\(d_{ii}=0,i=1,2,\ldots,N\)</span>。如果原始数据以相似性表示的，则某合适的非负单调下降函数可以用来将它们转换为不相似性。另外，大部分算法假定不相似性矩阵是对称的，所以如果原始矩阵 <span class="math notranslate nohighlight">\(\mathbf D\)</span> 不是对称的，则必须用 <span class="math notranslate nohighlight">\((\mathbf{D+D^T})/2\)</span> 来替换。在严格意义下主观判断的差异并不是距离（distances），因为三角不等式 <span class="math notranslate nohighlight">\(d_{ii'}\le d_{ik}+d_{i'k}\)</span> 对于所有的 <span class="math notranslate nohighlight">\(k\in\{1,\ldots,N\}\)</span> 不满足。因此，一些采用距离的算法不能用这些数据。</p>
 </div>
 <div class="section" id="id2">
-<h2>基于属性的不相似性<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>大部分情形下我们对变量 <span class="math notranslate nohighlight">\(j=1,\ldots,p\)</span>（也称为属性）在 <span class="math notranslate nohighlight">\(i=1,2,\ldots,N\)</span> 上有测量值 <span class="math notranslate nohighlight">\(x_{ij}\)</span>。因为大多数流行的聚类算法将不相似性矩阵作为输入，我们首先必须构造两个观测之间的成对不相似性。在大部分一般情形下，我们定义第 <span class="math notranslate nohighlight">\(j\)</span> 个属性上不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j})\)</span>，进一步定义
-$<span class="math notranslate nohighlight">\(
-D(x_i,x_{i'})=\sum\limits_{j=1}^pd_j(x_{ij},x_{i'j})\tag{14.20}
-\)</span><span class="math notranslate nohighlight">\(
-作为第 \)</span>i<span class="math notranslate nohighlight">\( 和 \)</span>i’<span class="math notranslate nohighlight">\( 点的不相似性。至今为止最普遍的选择是平方距离
-\)</span><span class="math notranslate nohighlight">\(
+<h2>（）基于属性的不相似性<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>大部分情形下我们对变量 <span class="math notranslate nohighlight">\(j=1,\ldots,p\)</span>（也称为属性）在 <span class="math notranslate nohighlight">\(i=1,2,\ldots,N\)</span> 上有测量值 <span class="math notranslate nohighlight">\(x_{ij}\)</span>。因为大多数流行的聚类算法将不相似性矩阵作为输入，我们首先必须构造两个观测之间的成对不相似性。在大部分一般情形下，我们定义第 <span class="math notranslate nohighlight">\(j\)</span> 个属性上不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j})\)</span>，进一步定义</p>
+<div class="math notranslate nohighlight">
+\[
+d(x_i,x_{i'})=\sum\limits_{j=1}^pd_j(x_{ij},x_{i'j})\tag{14.20}
+\]</div>
+<p>作为第 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(i'\)</span> 点的不相似性。至今为止最普遍的选择是平方距离</p>
+<div class="math notranslate nohighlight">
+\[
 d_j(x_{ij},d_{i'j})=(x_{ij}-x_{i'j})^2\tag{14.21}
-\)</span>$
-然而，其它的情形也是可能的，而且可以导出潜在的不同的结果。对于非定量的属性（如类别型数据），平方距离可能不合适。另外的，有时候需要对属性赋予不同的权重，而不是像在 式（ 14.20 ） 中赋予相等的权重。</p>
+\]</div>
+<p>然而，其它的情形也是可能的，而且可以导出潜在的不同的结果。对于非定量的属性（如类别型数据），平方距离可能不合适。另外的，有时候需要对属性赋予不同的权重，而不是像在 式（ 14.20 ） 中赋予相等的权重。</p>
 <p>我们首先讨论关于属性类别的几种情况。</p>
 <div class="section" id="id3">
-<h3>定量变量<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>（）定量变量<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>这种类型的变量（或属性）的度量用连续实值来表示。将它们间的“误差”定义为关于它们绝对差异的单调增加的函数是很自然的</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1299,42 +1431,47 @@ d(x_i,x_{i'})=l(\vert x_i-x_{i'}\vert)
 <p>其中 <span class="math notranslate nohighlight">\(\bar x_i=\sum_jx_{ij}/p\)</span>。注意到这是在 <strong>变量</strong> 上平均，不是在观测上。如果输入已经标准化了，则 <span class="math notranslate nohighlight">\(\sum_j(x_{ij}-x_{i'j})^2\propto 2(1-\rho(x_i,x_{i'}))\)</span>。因此基于协方差（相似性）的分类与基于平方距离（不相似性）是等价的。</p>
 </div>
 <div class="section" id="id4">
-<h3>有序变量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>这种类型的变量经常表示成邻接整数，而且实现值也看成有序集。举些例子，如学业成绩 (A,B,C,D,F)，偏好程度 (can’t stand, dislike, OK, like, terrific)。排名数据是一类特别的有序数据。有序变量的误差度量一般通过将它们 <span class="math notranslate nohighlight">\(M\)</span> 个原始值（按照原始值规定的顺序）替换为下式来定义
-$<span class="math notranslate nohighlight">\(
+<h3>（）有序变量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>这种类型的变量经常表示成邻接整数，而且实现值也看成有序集。举些例子，如学业成绩 (A,B,C,D,F)，偏好程度 (can’t stand, dislike, OK, like, terrific)。排名数据是一类特别的有序数据。有序变量的误差度量一般通过将它们 <span class="math notranslate nohighlight">\(M\)</span> 个原始值（按照原始值规定的顺序）替换为下式来定义</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{i-1/2}{M},i=1,\ldots,M\tag{14.23}
-\)</span>$</p>
+\]</div>
 <p>于是它们接着可以看成这个尺度下的定量变量。</p>
 </div>
 <div class="section" id="id5">
-<h3>类别变量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>（）类别变量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>对于无序的类别（也称作名义(nomial)）变量，成对数据的差异程度必须明确地表示出来。如果假设变量有 <span class="math notranslate nohighlight">\(M\)</span> 个不同的值，可以排列成对称的 <span class="math notranslate nohighlight">\(M\times M\)</span> 矩阵，元素 <span class="math notranslate nohighlight">\(L_{rr'}=L_{r'r},L_{rr}=0,L_{rr'}\ge 0\)</span>。最普遍的选择对于所有 <span class="math notranslate nohighlight">\(r\neq r'\)</span> 取 <span class="math notranslate nohighlight">\(L_{rr'}=1\)</span>，而不相等的损失可以用来突出某些错误。</p>
 </div>
 </div>
 <div class="section" id="object-dissimilarity">
-<h2>样品的不相似性 (object dissimilarity)<a class="headerlink" href="#object-dissimilarity" title="Permalink to this headline">¶</a></h2>
-<p>接着我们定义将 <span class="math notranslate nohighlight">\(p\)</span> 个单属性不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j}),j=1,2,\ldots,p\)</span> 结合成一个单独的衡量整个不相似性的 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>，<span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span> 是两个有着各自属性值的点或观测 <span class="math notranslate nohighlight">\((x_i,x_{i'})\)</span> 之间的不相似性。这几乎总是通过加权平均（凸组合）的方式实现
-$<span class="math notranslate nohighlight">\(
-D(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot d_j(x_{ij},x_{i'j});\; \sum\limits_{j=1}^pw_j=1\tag{14.24}
-\)</span><span class="math notranslate nohighlight">\(
-这里 \)</span>w_j<span class="math notranslate nohighlight">\( 是为了确定点间的整个不相似性对第 \)</span>j$ 个属性赋值的权重，权重表示了这个变量的相对影响。权重的选择取决于具体的问题。</p>
-<p>重要的是意识到，对每个变量的设定相同的权重 <span class="math notranslate nohighlight">\(w_j\)</span>（如，<span class="math notranslate nohighlight">\(w_j=1\;\forall j\)</span>）不一定对所有变量有相同的影响。第 <span class="math notranslate nohighlight">\(j\)</span> 个属性 <span class="math notranslate nohighlight">\(X_j\)</span> 在点的不相似性 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>式（ 14.24 ） 上的影响取决于它的相对贡献，这个相对贡献是对数据集中所有的数据对的平均样品不相似性 <span class="math notranslate nohighlight">\(\bar D\)</span> 而言
-$<span class="math notranslate nohighlight">\(
-\bar D=\frac{1}{N^2}\sum_{i=1}^N\sum\limits_{i'=1}^ND(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot \bar d_j
-\)</span><span class="math notranslate nohighlight">\(
-其中，
-\)</span><span class="math notranslate nohighlight">\(
+<h2>（）样品的不相似性 (object dissimilarity)<a class="headerlink" href="#object-dissimilarity" title="Permalink to this headline">¶</a></h2>
+<p>接着我们定义将 <span class="math notranslate nohighlight">\(p\)</span> 个单属性不相似性 <span class="math notranslate nohighlight">\(d_j(x_{ij},x_{i'j}),j=1,2,\ldots,p\)</span> 结合成一个单独的衡量整个不相似性的 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>，<span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span> 是两个有着各自属性值的点或观测 <span class="math notranslate nohighlight">\((x_i,x_{i'})\)</span> 之间的不相似性。这几乎总是通过加权平均（凸组合）的方式实现</p>
+<div class="math notranslate nohighlight">
+\[
+d(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot d_j(x_{ij},x_{i'j});\; \sum\limits_{j=1}^pw_j=1\tag{14.24}
+\]</div>
+<p>这里 <span class="math notranslate nohighlight">\(w_j\)</span> 是为了确定点间的整个不相似性对第 <span class="math notranslate nohighlight">\(j\)</span> 个属性赋值的权重，权重表示了这个变量的相对影响。权重的选择取决于具体的问题。</p>
+<p>重要的是意识到，对每个变量的设定相同的权重 <span class="math notranslate nohighlight">\(w_j\)</span>（如，<span class="math notranslate nohighlight">\(w_j=1\;\forall j\)</span>）不一定对所有变量有相同的影响。第 <span class="math notranslate nohighlight">\(j\)</span> 个属性 <span class="math notranslate nohighlight">\(X_j\)</span> 在点的不相似性 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span>式（ 14.24 ） 上的影响取决于它的相对贡献，这个相对贡献是对数据集中所有的数据对的平均样品不相似性 <span class="math notranslate nohighlight">\(\bar D\)</span> 而言</p>
+<div class="math notranslate nohighlight">
+\[
+\bar D=\frac{1}{N^2}\sum_{i=1}^N\sum\limits_{i'=1}^ND(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot \bar d_j\]</div>
+<p>其中，</p>
+<div class="math notranslate nohighlight">
+\[
 \bar d_j=\frac{1}{N^2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nd_j(x_{ij},x_{i'j})\tag{14.25}
-\)</span><span class="math notranslate nohighlight">\(
-是第 \)</span>j<span class="math notranslate nohighlight">\( 个属性的平均不相似性。因此，第 \)</span>j<span class="math notranslate nohighlight">\( 个变量的相对影响为 \)</span>w_j\cdot \bar d_j<span class="math notranslate nohighlight">\(，并且令 \)</span>w_j\sim 1/\bar d_j<span class="math notranslate nohighlight">\( 会让所有的属性在表征样品间整个不相似性中有相等的影响。举个例子，\)</span>p<span class="math notranslate nohighlight">\( 个定量变量以及对每个坐标使用平方误差距离，则 式（ 14.24 ） 成为以定量变量为坐标轴的 \)</span>\mathbb{R}^p<span class="math notranslate nohighlight">\( 空间中成对点的（加权）欧氏距离
-\)</span><span class="math notranslate nohighlight">\(
-D_I(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot (x_{ij}-x_{i'j})^2\tag{14.26}
-\)</span>$</p>
-<p>这种情形下 式（ 14.25 ） 变成
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>是第 <span class="math notranslate nohighlight">\(j\)</span> 个属性的平均不相似性。因此，第 <span class="math notranslate nohighlight">\(j\)</span> 个变量的相对影响为 <span class="math notranslate nohighlight">\(w_j\cdot \bar d_j\)</span>，并且令 <span class="math notranslate nohighlight">\(w_j\sim 1/\bar d_j\)</span> 会让所有的属性在表征样品间整个不相似性中有相等的影响。举个例子，<span class="math notranslate nohighlight">\(p\)</span> 个定量变量以及对每个坐标使用平方误差距离，则 式（ 14.24 ） 成为以定量变量为坐标轴的 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 空间中成对点的（加权）欧氏距离</p>
+<div class="math notranslate nohighlight">
+\[
+d_I(x_i,x_{i'})=\sum\limits_{j=1}^pw_j\cdot (x_{ij}-x_{i'j})^2\tag{14.26}
+\]</div>
+<p>这种情形下 式（ 14.25 ） 变成</p>
+<div class="math notranslate nohighlight">
+\[
 \bar d_j=\frac{1}{N^2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^N(x_{ij}-x_{x'j})^2=2\cdot var_j\tag{14.27}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\var_j<span class="math notranslate nohighlight">\( 为 \)</span>\mathrm{Var}(X_j)<span class="math notranslate nohighlight">\( 的样本估计。因此，每个这样变量的相对重要性与其在数据集上的方差成比例。一般地，对所有属性令 \)</span>w_j=1/\bar d_j<span class="math notranslate nohighlight">\( 会导致它们中的每一个在成对物体 \)</span>(x_i,x_{i’})$ 上的整体不相似性上有相等的影响。尽管这看起来或许合理，并且通常推荐这样做，但是会产生严重的不良后果。如果目标是将数据分割成相似样品的类，所有属性或许不会对样品之间的不相似性的（取决于问题）概念贡献相等。一些属性值的差异可能会在某问题领域反映更大的实际的样品不相似性。</p>
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\var_j\)</span> 为 <span class="math notranslate nohighlight">\(\mathrm{Var}(X_j)\)</span> 的样本估计。因此，每个这样变量的相对重要性与其在数据集上的方差成比例。一般地，对所有属性令 <span class="math notranslate nohighlight">\(w_j=1/\bar d_j\)</span> 会导致它们中的每一个在成对物体 <span class="math notranslate nohighlight">\((x_i,x_{i'})\)</span> 上的整体不相似性上有相等的影响。尽管这看起来或许合理，并且通常推荐这样做，但是会产生严重的不良后果。如果目标是将数据分割成相似样品的类，所有属性或许不会对样品之间的不相似性的（取决于问题）概念贡献相等。一些属性值的差异可能会在某问题领域反映更大的实际的样品不相似性。</p>
 <p>如果目标是发现数据的自然分类，一些属性或许比其他属性表现出更多的分类趋势。在分离类别时，越相关的变量越应该赋予更高的影响来定义 object dissimilarity。这种情况下给所有属性相等的影响会趋于隐藏掉这个类别，使得分类算法不能发现它们。图 14.5 展示了一个例子。</p>
 <p><img alt="" src="../_images/fig14.5.png" /></p>
 <blockquote>
@@ -1344,92 +1481,91 @@ $<span class="math notranslate nohighlight">\(
 <p>最后，观测值经常在一个或多个属性中有 <strong>缺失值 (missing values)</strong>。将缺失值合并到不相似性的计算 式（ 14.24 ） 中的最普遍方法是在计算观测 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(x_{i'}\)</span> 之间的不相似性时，省略掉至少有一个缺失值的观测对 <span class="math notranslate nohighlight">\(x_{ij},x_{i'j}\)</span>。这个方法在两个观测都没有共同测量值的情况中是不适用的。这种情况下，两个观测都会从分析中删掉。或者，可以使用每个属性未缺失值的平均值或中位数来插补缺失值。对于类别型变量，如果两个物体在相同变量上具有缺失值的情况下将两个对象视为相似是合理的，则可以将缺失值仅仅考虑成另一个类别值。</p>
 </div>
 <div class="section" id="id6">
-<h2>聚类算法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2>（）聚类算法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>聚类分析的目标是将观测进行分类使得分到同一类中的成对非相似性趋向于比在不同类中小。聚类算法可以分成三种不同的类别：<strong>组合算法 (combinatorial algorithms)</strong>，<strong>混合模型 (mixture modeling)</strong>，以及 <strong>模式寻找 (mode seeking)</strong>。</p>
 <p>组合算法直接对观测数据进行处理，而不直接引用潜在的概率模型。混合模型假设数据是从某概率密度函数对应的总体中抽取的独立同分布的样本。密度函数用参数化模型表征，该参数化模型为各组分密度函数的混合；每个组分密度表示其中的一类。这个模型接着利用极大似然或者对应的贝叶斯方式来拟合。模式寻找 (bump hunters) 采用非参数观点，试图直接估计不同的概率密度函数的模式。与每个单独的模式最接近的观测定义为单个簇。</p>
 <p>混合模型在 <span class="xref myst">6.8 节</span>中有讨论。在 <span class="xref myst">9.3</span> 和 <a class="reference external" href="../14-Unsupervised-Learning/14.2-Association-Rules/index.html#_4">14.2.5 节</a>中讨论的 PRIM 算法是模式寻找（或“bump hunters”）的例子。我们接下来讨论组合算法。</p>
 </div>
 <div class="section" id="id7">
-<h2>组合算法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>（）组合算法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>最受欢迎的聚类算法不考虑描述数据的概率模型而直接将每个观测划分为一类或一簇。每个观测用整数 <span class="math notranslate nohighlight">\(i\in\\{1,\cdots,N\\}\)</span> 来唯一标号。假定预先确定的类别个数 <span class="math notranslate nohighlight">\(K &lt; N\)</span>，并且每个编号为 <span class="math notranslate nohighlight">\(k\in\\{1,\ldots,K\\}\)</span>。每个观测仅仅分配到一个类中。这些分配可以表示为多对一映射，或者编码器 <span class="math notranslate nohighlight">\(k = C(i)\)</span>，将第 <span class="math notranslate nohighlight">\(i\)</span> 个观测分配到第 <span class="math notranslate nohighlight">\(k\)</span> 个类。基于每个观测对的不相似性 <span class="math notranslate nohighlight">\(d(x_i,x_{i'})\)</span> 来寻找特定的编码器 <span class="math notranslate nohighlight">\(\{C^*(i)\}\)</span> 来实现要求的目标（细节在下面）。一般地，编码器 <span class="math notranslate nohighlight">\(C(i)\)</span> 通过给出每个观测 <span class="math notranslate nohighlight">\(i\)</span> 的值（类别分配）来显示描述。因此，过程的“参数”是 <span class="math notranslate nohighlight">\(N\)</span> 个观测中每个的类别分配。调整这些来最小化表征聚类目标没有达到的程度的“损失”函数。</p>
-<p>一种方式是直接确定数学上的损失函数并且试图通过一些组合优化算法来最小化。因为目标是将离得近的点分到同一类，一个自然的损失（或“能量”）函数会是
-$<span class="math notranslate nohighlight">\(
+<p>一种方式是直接确定数学上的损失函数并且试图通过一些组合优化算法来最小化。因为目标是将离得近的点分到同一类，一个自然的损失（或“能量”）函数会是</p>
+<p><span class="math notranslate nohighlight">\(
 W(C)=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}d(x_i,x_{i'})\tag{14.28}
-\)</span><span class="math notranslate nohighlight">\(
-这个准则表征了分配到同一类的观测与另一个接近的程度。有时也被称作 **“类内”点散 (point scatter)**，因为
-\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>这个准则表征了分配到同一类的观测与另一个接近的程度。有时也被称作 <strong>“类内”点散 (point scatter)</strong>，因为</p>
+<div class="math notranslate nohighlight">
+\[
 T=\frac{1}{2}\sum\limits_{i=1}^N\sum\limits_{i'=1}^Nd_{ii'}=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\Big(\sum\limits_{C(i')=k}d_{ii'}+\sum\limits_{C(i')\neq k}d_{ii'}\Big)
-\)</span><span class="math notranslate nohighlight">\(
-或者
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>或者</p>
+<div class="math notranslate nohighlight">
+\[
 T=W(C)+B(C)
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>d_{ii’}=d(x_i,x_{i’})<span class="math notranslate nohighlight">\(。\)</span>T<span class="math notranslate nohighlight">\( 是总点散，给定数据后为常数，与类别分配是独立的。下面的 \)</span>B(C)<span class="math notranslate nohighlight">\( 值是类间点散。
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(d_{ii'}=d(x_i,x_{i'})\)</span>。<span class="math notranslate nohighlight">\(T\)</span> 是总点散，给定数据后为常数，与类别分配是独立的。下面的 <span class="math notranslate nohighlight">\(B(C)\)</span> 值是类间点散。</p>
+<p><span class="math notranslate nohighlight">\(
 B(C)=\frac{1}{2}\sum\limits_{k=1}\sum\limits_{C(i)=k}\sum\limits_{C(i')\neq k}d_{ii'}\tag{14.29}
-\)</span><span class="math notranslate nohighlight">\(
-当观测分到远离的不同类中时这个值趋向于大。因此有
-\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>当观测分到远离的不同类中时这个值趋向于大。因此有</p>
+<p><span class="math notranslate nohighlight">\(
 W(C)=T-B(C)
-\)</span><span class="math notranslate nohighlight">\(
-并且最小化 \)</span>W(C)<span class="math notranslate nohighlight">\( 等价于最大化 \)</span>B(C)$.</p>
-<p>通过组合优化的聚类分析原则上是直接的。简单地在 <span class="math notranslate nohighlight">\(N\)</span> 个点分到 <span class="math notranslate nohighlight">\(K\)</span> 个类中的所有可能分配上最小化 <span class="math notranslate nohighlight">\(W\)</span> 或等价地最大化 <span class="math notranslate nohighlight">\(B\)</span>。不幸的是，这种穷举法的优化仅仅在非常小的数据集中才适用。不同的分配个数为（Jain and Dubes，1988<a class="footnote-reference brackets" href="#id27" id="id8">1</a>）
-$<span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>并且最小化 <span class="math notranslate nohighlight">\(W(C)\)</span> 等价于最大化 <span class="math notranslate nohighlight">\(B(C)\)</span>.</p>
+<p>通过组合优化的聚类分析原则上是直接的。简单地在 <span class="math notranslate nohighlight">\(N\)</span> 个点分到 <span class="math notranslate nohighlight">\(K\)</span> 个类中的所有可能分配上最小化 <span class="math notranslate nohighlight">\(W\)</span> 或等价地最大化 <span class="math notranslate nohighlight">\(B\)</span>。不幸的是，这种穷举法的优化仅仅在非常小的数据集中才适用。不同的分配个数为（Jain and Dubes，1988<a class="footnote-reference brackets" href="#id27" id="id8">1</a>）</p>
+<p><span class="math notranslate nohighlight">\(
 S(N,K)=\frac{1}{K!}\sum\limits_{k=1}^K(-1)^{K-k}\binom{K}{k}k^N\tag{14.30}
-\)</span><span class="math notranslate nohighlight">\(
-举个例子，\)</span>S(10,4)=34,105<span class="math notranslate nohighlight">\( 是可行的。但是 \)</span>S(N,K)<span class="math notranslate nohighlight">\( 随着变量值的增大迅速增大。\)</span>S(19,4)\simeq 10^{10}<span class="math notranslate nohighlight">\(，并且大多数聚类问题涉及比 \)</span>N=19<span class="math notranslate nohighlight">\( 更大的数据集。基于这个原因，实用的聚类算法只能验证所有可能编码 \)</span>k=C(i)$ 情形的非常小的一部分。目标是识别出可能包含最优解的小的子集，或者至少一个次优的划分。</p>
+\)</span>$</p>
+<p>举个例子，<span class="math notranslate nohighlight">\(S(10,4)=34,105\)</span> 是可行的。但是 <span class="math notranslate nohighlight">\(S(N,K)\)</span> 随着变量值的增大迅速增大。<span class="math notranslate nohighlight">\(S(19,4)\simeq 10^{10}\)</span>，并且大多数聚类问题涉及比 <span class="math notranslate nohighlight">\(N=19\)</span> 更大的数据集。基于这个原因，实用的聚类算法只能验证所有可能编码 <span class="math notranslate nohighlight">\(k=C(i)\)</span> 情形的非常小的一部分。目标是识别出可能包含最优解的小的子集，或者至少一个次优的划分。</p>
 <p>这些可行的策略是基于迭代贪婪下降。给定初始划分。每一步迭代，以某种方式来改变类别划分，这种方式使得某准则的值比上一步的值有所改善的。这个类别的聚类算法区别于在每一步迭代修改类别分配的方式。当这种方式不能再改善，算法以当前的分配为其解而终止。因为在任一步的迭代中的类别分配是对上一步类别分配的扰动，只有所有可能分配 式（ 14.30 ） 的非常小的一部分被检查。然而，这些算法收敛到局部最优，与全局最优相比可能是高度次优的。</p>
 </div>
 <div class="section" id="k-means">
-<h2>K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
-<p>K-means 算法是最流行的迭代下降聚类方法之一。适用于所有变量都为定量的情形，且选择下式的平方欧式距离作为其不相似性的度量
-$<span class="math notranslate nohighlight">\(
+<h2>（）K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<p>K-means 算法是最流行的迭代下降聚类方法之一。适用于所有变量都为定量的情形，且选择下式的平方欧式距离作为其不相似性的度量</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
 d(x_i,x_{i'})=\sum\limits_{j=1}^p(x_{ij}-x_{i'j})^2=\Vert x_i-x_{i'}\Vert^2
-\)</span><span class="math notranslate nohighlight">\(
-注意到加权欧式距离可以通过重新定义 \)</span>x_{ij}$ 来实现（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">练习 14.1</a>）</p>
-<p>!!! note “weiya 注: Ex. 14.1 “
-这个可以很容易计算。原问题及解答参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/42">Issues 42: Ex. 14.1</a></p>
-<p>类间点散 式（ 14.28 ） 可以写成
-$$</p>
+$\\注意到加权欧式距离可以通过重新定义 $x_{ij}$ 来实现（[练习 14.1](https://github.com/szcf-weiya/ESL-CN/issues/42)）\\&gt; note &quot;weiya 注: Ex. 14.1 &quot;
+    这个可以很容易计算。原问题及解答参见[Issues 42: Ex. 14.1](https://github.com/szcf-weiya/ESL-CN/issues/42)\\类间点散 式（ 14.28 ） 可以写成\end{aligned}\end{align} \]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 W(C)&amp;=\frac{1}{2}\sum\limits_{k=1}^K\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}\Vert x_i-x_{i'}\Vert^2\\
 &amp;=\sum\limits_{k=1}^KN_k\sum\limits_{C(i)=k}\Vert x_i-\bar x_k\Vert^2\qquad \tag{14.31}
 \end{align*}\]</div>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-其中$\bar x_k=(\bar x_{1k},\ldots,\bar x_{pk})$是与第 $k$ 个类的均值向量，并且 $N_k=\sum_{i=1}^NI(C(i)=k)$。\\!!! note &quot;weiya 注：式（ 14.31 ） 的推导&quot;
-    \end{aligned}\end{align} \]</div>
+\[ \begin{align}\begin{aligned}其中$\bar x_k=(\bar x_{1k},\ldots,\bar x_{pk})$是与第 $k$ 个类的均值向量，并且 $N_k=\sum_{i=1}^NI(C(i)=k)$。\\&gt; note &quot;weiya 注：式（ 14.31 ） 的推导&quot;
+    
+\end{aligned}\end{align} \]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{align*}
 &amp;\frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}\Vert x_i-x_{i&#39;}\Vert^2\\
 =&amp;\frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}\Vert x_i-\bar x_k+\bar x_k- x_{i&#39;}\Vert^2\\
 =&amp;\sum_{k=1}^K N_k \sum_{C(i)=k}\Vert x_i-\bar x_k\Vert^2 + \frac{1}{2}\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}(x_i-\bar x_k)(\bar x_k-x_{i&#39;})\,,
 \end{align*}
-$$
-而
-$$
-\begin{align*}
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    而
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{align*}
 &amp;\sum_{k=1}^K\sum_{C(i)=k}\sum_{C(i&#39;)=k}(x_i-\bar x_k)(\bar x_k-x_{i&#39;})\\
 =&amp;\sum_{k=1}^K\sum_{C(i)=k}(x_i-\bar x_k)\sum_{C(i&#39;)=k}(\bar x_k-x_{i&#39;})\\
 =&amp;0\,.
 \end{align*}
-$$
 </pre></div>
 </div>
-<p>因此，通过以某种方式将 <span class="math notranslate nohighlight">\(N\)</span> 个观测分配到 <span class="math notranslate nohighlight">\(K\)</span> 个类中来最小化该准则，该方式为最小化每个类中观测点与类别中心（用该类中的点定义）的不相似性的平均值。</p>
-<p>求解下列问题的迭代下降算法
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}因此，通过以某种方式将 $N$ 个观测分配到 $K$ 个类中来最小化该准则，该方式为最小化每个类中观测点与类别中心（用该类中的点定义）的不相似性的平均值。\\求解下列问题的迭代下降算法\\$
 C^*=\underset{C}{\min}\sum_{k=1}^KN_k\sum_{C(i)=k}\Vert x_i-\bar x_k\Vert^2
-\)</span><span class="math notranslate nohighlight">\(
-可以通过注意到任意观测集 \)</span>S<span class="math notranslate nohighlight">\( 有下式而得到。
-\)</span><span class="math notranslate nohighlight">\(
-\bar x_S=\underset{m}{\text{argmin}}\;\sum\limits_{i\in S}\Vert x_i-m\Vert^2\tag{14.32}
-\)</span><span class="math notranslate nohighlight">\(
-因此我们可以通过求解扩大的优化问题而得到 \)</span>C^*<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+$\\可以通过注意到任意观测集 $S$ 有下式而得到。\end{aligned}\end{align} \]</div>
+<p>\bar x_S=\underset{m}{\text{argmin}};\sum\limits_{i\in S}\Vert x_i-m\Vert^2\tag{14.32}
+$$</p>
+<p>因此我们可以通过求解扩大的优化问题而得到 <span class="math notranslate nohighlight">\(C^*\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \underset{C,\{m_k\}_1^K}{\min}\;\sum\limits_{k=1}^KN_k\sum\limits_{C(i)=k}\Vert x_i-m_k\Vert^2\tag{14.33}
-\)</span>$
-这个可以通过算法 14.1 给出的交替优化过程得以最小化。</p>
+\]</div>
+<p>这个可以通过算法 14.1 给出的交替优化过程得以最小化。</p>
 <p><img alt="" src="../_images/alg14.1.png" /></p>
 <p>每个步骤 1 和步骤 2 都降低准则 式（ 14.33 ） 的值，所以收敛性是保证的。然而，结果可能会表现出次优局部最小值。Hartigan and Wong (1979)<a class="footnote-reference brackets" href="#id28" id="id9">3</a>的算法进一步研究，并且保证了单个的一个观测从一个类转换到另一个类不会降低目标值。另外，应该用许多初始值的许多随机选择来开始算法，然后选择有最小目标函数的解。</p>
 <p>图 14.6 显示了图 14.4 的模拟数据的一些 K-means 迭代过，其中圆圈 O 表示重心。直线显示了点的划分，每个部分都是离重心最近的点的集合。这个划分也称为 Voronoi 曲面细分。20 次迭代之后收敛。</p>
@@ -1439,10 +1575,12 @@ C^*=\underset{C}{\min}\sum_{k=1}^KN_k\sum_{C(i)=k}\Vert x_i-\bar x_k\Vert^2
 </div></blockquote>
 </div>
 <div class="section" id="soft-k-means">
-<h2>高斯混合作为 Soft K-means 聚类<a class="headerlink" href="#soft-k-means" title="Permalink to this headline">¶</a></h2>
+<h2>（）高斯混合作为 Soft K-means 聚类<a class="headerlink" href="#soft-k-means" title="Permalink to this headline">¶</a></h2>
 <p>K-means 聚类算法与估计特定的高斯混合模型的 EM 算法有关（<span class="xref myst">6.8 节</span>和 <span class="xref myst">8.5.1 节</span>）。EM 算法的步骤 E 对每个数据点基于在每个混合部分中的相对密度来赋予“responsibilities”，而步骤 M 基于当前的 responsibilities 重新计算各组分的密度参数。假设明确了我们有 <span class="math notranslate nohighlight">\(K\)</span> 个混合组分，每个是有着标量协方差矩阵 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span> 的高斯密度。则在每个混合组分的相对密度是关于数据点到混合中心欧氏距离的单调函数。因此在这一步中 EM 是 soft 版本的 K-means 聚类，使得点以概率（而不是确定性地）分配到聚类中心。因为方差 <span class="math notranslate nohighlight">\(\sigma\rightarrow 0\)</span>，这些概率变成 0 和 1，两种方法也就一致。细节在 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">练习 14.2</a> 中给出。</p>
-<p>!!! note “weiya 注: Ex. 14.2”
+<blockquote>
+<div><p>note “weiya 注: Ex. 14.2”
 Ex. 14.2 讨论了 <span class="math notranslate nohighlight">\(k\)</span> 个高斯组分的混合模型，而算法 8.1 针对的是两组分的高斯混合模型，但主要思想是一致的。具体解题过程参见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/43">Issues 43: Ex. 14.2</a></p>
+</div></blockquote>
 <p>图 14.7 说明了实线上两个聚类的结果。</p>
 <p><img alt="" src="../_images/fig14.7.png" /></p>
 <blockquote>
@@ -1462,7 +1600,7 @@ Ex. 14.2 讨论了 <span class="math notranslate nohighlight">\(k\)</span> 个�
 <p>我们看到这个过程在聚集同样类型的癌症是很成功的。事实上，在第 2 类中的两个乳腺癌后来发现是误诊的，而是转移的<strong>黑素瘤 (melanomas)</strong>。然而，K-means 聚类在这个应用中有缺点。其中一个是，它没有给出簇中物体的线性顺序：我们仅仅以字母顺序列出来。第二，当聚类的数目 <span class="math notranslate nohighlight">\(K\)</span> 改变，簇中的成员以任意方式变化。也就是，如 4 个类，这些类不要求嵌套在上面的三个类中。基于这个原因，系统聚类可能在这个应用中更好。</p>
 </div>
 <div class="section" id="id10">
-<h2>向量量化<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h2>（）向量量化<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>K-means 聚类算法是在图像和信号压缩的明显无关的区域中的关键工具，特别在 <strong>向量量化 (vector quantization)</strong> 或者 VQ（Gersho and Gray，1992<a class="footnote-reference brackets" href="#id29" id="id11">2</a>）中。图 14.9（本例由 Maya Gupta 准备）的左图像是著名的统计学家 Sir Ronald Fisher 的电子相片。它包含 <span class="math notranslate nohighlight">\(1024\times 1024\)</span> 个像素，每个像素是从 0 到 255 的灰度值，因此每个像素需要 8 位存储。整张图像占据 1M 的存储空间。中间图像是左边图像的 VQ 压缩版本，需要 0.239 的存储（质量上有一些损失）。右图压缩得更厉害，仅需要 0.0625 的存储空间（质量上有较大的损失）。</p>
 <p><img alt="" src="../_images/fig14.9.png" /></p>
 <blockquote>
@@ -1475,15 +1613,14 @@ Ex. 14.2 讨论了 <span class="math notranslate nohighlight">\(k\)</span> 个�
 <p>我们在上面断言，码本中确定 <span class="math notranslate nohighlight">\(K\)</span> 个码字中的每一个需要 <span class="math notranslate nohighlight">\(\log_2(K)\)</span>位空间。这采用了固定长度编码，如果一些码字在图像中比其他的出现更频繁，这是无效的。采用 Shannon 编码理论，我们知道一般地可变长度的编码会更好，并且比率会变成 <span class="math notranslate nohighlight">\(-\sum_{k=1}^Kp_\ell \log_2(p_\ell)/4\)</span>。分子中的项是图像中 codeword 的分布 <span class="math notranslate nohighlight">\(p_\ell\)</span> 的熵。采用可变长度编码我们的比例会分别降至 1.42 和 0.39。最后，已经发展出很多 VQ 的推广：举个例子，树结构的 VQ 以自上而下、2-均值算法来寻找重心，如第 14.3.12 节所述。这允许压缩的逐步加细。更多细节或许可以在 Gersho and Gray(1992)<a class="footnote-reference brackets" href="#id29" id="id12">2</a> 的工作中找到。</p>
 </div>
 <div class="section" id="k-medoids">
-<h2>K-medoids<a class="headerlink" href="#k-medoids" title="Permalink to this headline">¶</a></h2>
+<h2>（）K-medoids<a class="headerlink" href="#k-medoids" title="Permalink to this headline">¶</a></h2>
 <p>如上所述，当相似性度量为欧氏距离的平方 <span class="math notranslate nohighlight">\(D(x_i,x_{i'})\)</span> 时，K-means 是合适的。这要求所有的变量都为定量的。另外，平方的欧式距离会赋予离得更远的点更大的影响。这导致这个过程对于（距离非常大的）离群点缺乏鲁棒性。这些限制可以通过以计算为代价而消除。</p>
 <p>K-means 中唯一假设平方欧式距离的地方是最小化那一步 式（ 14.32 ）；式（ 14.33 ） 中的簇取为当前划到该簇的点的均值 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span>。这个算法可以推广为任意定义的不相似性，并且用关于 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span> 的显式优化来替换最小化。在大多数情形中，每个簇的中心限制为当前该簇中的其中一点，如算法 14.2 所示。这个算法假设带属性的数据，但是也可以应用到仅通过接近矩阵描述的数据。K-medoids 不需要显式地计算簇中心，仅需要跟踪它的指标 <span class="math notranslate nohighlight">\(i_k^*\)</span>。</p>
 <p><img alt="" src="../_images/alg14.2.png" /></p>
 <p>对于每个暂定的簇 <span class="math notranslate nohighlight">\(k\)</span> 求解 式（ 14.32 ） 需要与划分到该簇的观测的个数成比例的计算量，而求解 <span class="math notranslate nohighlight">\((14.35)\)</span> 计算量增长到 <span class="math notranslate nohighlight">\(O(N_k^2)\)</span>. 给定簇中心，<span class="math notranslate nohighlight">\(\\{i_1,\ldots,i_k\\}\)</span>，得到新的类别划分</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}
-\]</div>
+\)</span>$</p>
 <p>和之前一样需要与 <span class="math notranslate nohighlight">\(K\cdot N\)</span> 成比例的计算量。因此，K-medoid 计算量比 K-means 更大。</p>
 <p>在 <span class="math notranslate nohighlight">\((14.35)\)</span> 和 式（ 14.37 ） 间轮换是试图求解</p>
 <div class="math notranslate nohighlight">
@@ -1492,7 +1629,7 @@ C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}
 \]</div>
 <p>的一种特定的启发式策略。Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id13">4</a> 提出另一种直接求解 式（ 14.38 ） 的方式，它可以暂时交换每个簇中心 <span class="math notranslate nohighlight">\(i_k\)</span> 和当前不是簇中心的观测，所选的交换要使得准则 式（ 14.38 ） 有最大的降低。重复这个步骤直至找不到有利的交换。Massart et al. (1983)<a class="footnote-reference brackets" href="#id31" id="id14">5</a> 导出了寻找 式（ 14.38 ） 的全局最小值的 <strong>分枝定界组合算法 (branch-and-bound combinatorial method)</strong>，但实际中只适合非常小型的数据集。</p>
 <div class="section" id="id15">
-<h3>例子：国家不相似性<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3>（）例子：国家不相似性<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>这个例子取自 Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id16">4</a>，在某项研究中，政治学的学生要求给出 12 个国家的成对不相似性度量：Belgium, Brazil, Chile, Cuba, Egypt,　France, India, Israel, United States, Union of Soviet Socialist Republics,　Yugoslavia and Zaire。平均不相似得分由表 14.3 给出。</p>
 <p><img alt="" src="../_images/tab14.3.png" /></p>
 <p>我们对这些不相似性应用 3-medoid 聚类算法。注意到 <span class="math notranslate nohighlight">\(K\)</span>-means 聚类无法应用，因为我们只有距离数据，而非原始观测值。图 14.10 的左图展示了根据 3-medoid 聚类重排列且方块化的不相似图。右图是 2 维多维缩放图，其中 3-medoid 簇的划分由颜色表示（多维缩放将在 14.8 节讨论）。两幅图都表现出了良好分割的簇，但是 MDS 表明 Egypt 落在两个簇的中间。</p>
@@ -1500,7 +1637,7 @@ C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}
 </div>
 </div>
 <div class="section" id="id17">
-<h2>实际问题<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2>（）实际问题<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <p>为了应用 K-means 或者 K-medoids，需要选择簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 以及初始化。后者可以通过确定初始的簇中心的集合 <span class="math notranslate nohighlight">\(\\{m_1,\ldots,m_K\\}\)</span> 或者 <span class="math notranslate nohighlight">\(\\{i_1,\ldots,i_K\\}\)</span>. 通常确定簇重心是很方便的，可以采用随机选择或者基于向前逐步划分的特定策略。在每一步，给定上一步选择好的簇中心 <span class="math notranslate nohighlight">\(i_1,\ldots,i_{k-1}\)</span> 选择中心 <span class="math notranslate nohighlight">\(i_k\)</span>　来最小化 式（ 14.33 ） 或者 式（ 14.38 ）. 重复 <span class="math notranslate nohighlight">\(K\)</span> 步，因此得到 <span class="math notranslate nohighlight">\(K\)</span> 个初始化中心，可以用它们开始优化算法。</p>
 <p>簇的个数 <span class="math notranslate nohighlight">\(K\)</span> 取决于目标。对于数据分割，<span class="math notranslate nohighlight">\(K\)</span> 通常在问题中有定义。举个例子，某公司可能需要招 <span class="math notranslate nohighlight">\(K\)</span> 个销售员，且目标是将用户数据库划分 <span class="math notranslate nohighlight">\(K\)</span> 份，每个销售员负责一份，划分要使得每一份的销售员尽可能相似。然而，聚类分析通常用来给出某个描述性统计量来确定构成数据库的观测值落到不同簇的程度。这里这样的簇的个数 <span class="math notranslate nohighlight">\(K^*\)</span> 是未知的，并且需要像划分本身一样从数据中估计得到。</p>
 <p>用来估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的基于数据的方法一般需要研究类内不相似性 <span class="math notranslate nohighlight">\(W_K\)</span> 作为簇个数 <span class="math notranslate nohighlight">\(K\)</span> 的函数。对于 <span class="math notranslate nohighlight">\(K\in \\{1,2,\ldots,K_{\max}\\}\)</span> 有单独的解。对应的值 <span class="math notranslate nohighlight">\(\\{W_1,\ldots,W_\max\\}\)</span> 通常随着 <span class="math notranslate nohighlight">\(K\)</span> 的增长而降低。当在独立的测试集上测试时，结果也是这种情形，因为更多的簇中心会趋向于将特征空间填得很密，因此对于所有的数据点会比较近。因此交叉验证技巧，在非监督学习的模型选择很有用，但是无法用到这里。</p>
@@ -1511,12 +1648,12 @@ C(i) = \argmin_{1\le k\le K}d_{ii_k^*}\tag{14.37}
 <p>图 14.11 展示了 Gap Statistic 应用于图 14.4 的模拟数据时的结果。左图展示了 <span class="math notranslate nohighlight">\(K=1,\ldots,8\)</span> 时 <span class="math notranslate nohighlight">\(\log W_K\)</span> 以及基于 20 次从均匀分布中模拟的数据得到的 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的期望值。右图展示了差值曲线，也就是期望的曲线减去观测的曲线。图中也展示了长度为 <span class="math notranslate nohighlight">\(s_k'=s_k\sqrt{1+1/20}\)</span> 的一半的误差区间，其中 <span class="math notranslate nohighlight">\(s_K\)</span> 是 20 次重复实验 <span class="math notranslate nohighlight">\(\log W_K\)</span> 的标准差。差值曲线在 <span class="math notranslate nohighlight">\(K=2\)</span> 处达到最大。如果 <span class="math notranslate nohighlight">\(G(K)\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 个簇时的差值，则估计 <span class="math notranslate nohighlight">\(K^*\)</span> 的正式规则为</p>
 <div class="math notranslate nohighlight">
 \[
-K^* = \argmin_K\{K\mid G(K)\ge G(K+1)-s_{K+1}'\}\tag{14.39}\,.
+K^* = \argmin_K\{K\mid G(K)\ge G(K+1)-s_{K+1}'\}\tag{14.39}\,
 \]</div>
 <p>这得到 <span class="math notranslate nohighlight">\(K^*=2\)</span>, 从图 14.4 中看挺合理的。</p>
 </div>
 <div class="section" id="id19">
-<h2>系统聚类<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<h2>（）系统聚类<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <p>K-means 或 K-medoids 的应用取决于簇的个数以及初始划分。相反地，系统聚类方法不需要这些指定。但他们需要基于两个簇间成对观测的不相似性，确定不同簇间的不相似性度量。如名字所表示的那样，这个算法得到簇的系统表示，在系统的每一层簇通过合并下一层的簇得到。在最低的那一层，每个簇包含单个观测值。在最高的那一层，只有一个包含所有观测的簇。</p>
 <p>系统聚类的策略可以分成两种基本范式：自下而上的合并法，自上而下的分裂法。合并策略从最底层开始，然后在每一层递归地将两个选定的簇合并成一个簇。这样在更高一层上得到少一个簇的聚类结果。需要合并的两个簇要选为簇间不相似性最小的一对。分裂法从最顶端开始，然后在每一层递归地将某个簇拆成两个新的簇。这个拆分要使得得到的两个新簇之间有最大的组间不相似性。两种范式都会得到 <span class="math notranslate nohighlight">\(N-1\)</span> 层。</p>
 <p>系统的每一层表示某个特定的将数据划分成不相交的簇的聚类。整个系统表示一个有序的聚类序列。用户需要在相同簇内的观测比不同簇内的观测足够地更相似的意义下，决定哪个层次实际上代表着真实的聚类。之前描述的 Gap 统计量也可以用到这里。</p>
@@ -1528,13 +1665,12 @@ K^* = \argmin_K\{K\mid G(K)\ge G(K+1)-s_{K+1}'\}\tag{14.39}\,.
 <p>这样一个谱系图经常看成是数据本身的图示，而不是算法的结果描述。然而，这样的解释需要小心对待。首先，不同的层次方法，以及数据中的微小变化，都会导致非常不同的谱系图。另外，这样一个图示也只有在成对观测的不相似性满足由算法产生的层次结构才有用。系统聚类在数据上强加了某层次结构，不管这样的结构在数据中存不存在。</p>
 <p>通过谱系图生成的层次结构表示数据的程度可以用 <strong>共表型相关系数 (cophenetic correlation coefficient)</strong> 来刻画。这是 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 个成对观测的不相似性 <span class="math notranslate nohighlight">\(d_{ii'}\)</span>，即算法的输入值，与对应的从谱系图中导出的共表型不相似性 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 间的相关系数。两个观测 <span class="math notranslate nohighlight">\((i,i')\)</span> 间的共表型不相似性 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 是这两个观测 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(i'\)</span> 第一次在相同的簇中相连的簇间不相似性。</p>
 <p>共表型相似度是个非常局限的不相似性的度量。首先，观测上的 <span class="math notranslate nohighlight">\(C_{ii'}\)</span> 必须包含许多结，因为 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 种可能取值只有 <span class="math notranslate nohighlight">\(N-1\)</span> 种可以是不同的。同样这些不相似度需要遵循 <strong>超度量不等式 (ultrametric inequality)</strong>:　对于任意三个观测值 <span class="math notranslate nohighlight">\((i,i',k)\)</span>，</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 C_{ii'} \le \max\{C_{ik},C_{i'k}\}\tag{14.40}
-\]</div>
+\)</span>$</p>
 <p>举个例子，假设数据表示为欧几里得坐标系统中的点。为了使数据中点之间的距离满足 式（ 14.40 ），所有三点形成的三角形必须是等腰三角形，且底边长度不能超过腰长 (Jain and　Dubes, 1988<a class="footnote-reference brackets" href="#id30" id="id20">4</a>)。因此，期待对于任意数据一般的不相似性度量能近似地表示根据谱系图计算得到的共表型不相似性是不现实的。因此，特别是如果没有很多重复值。因此谱系图应该主要看成数据在应用特定算法后强加上的聚类结构的描述。</p>
 <div class="section" id="id21">
-<h3>合并聚类<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3>（）合并聚类<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>合并聚类算法以每个表示单观测簇的簇开始。在 <span class="math notranslate nohighlight">\(N-1\)</span> 步中的每一步，最近（最相似）的两个簇合并成一个簇，使得在更高一层上少了一个簇。因此，必须定义两个簇间的不相似性度量。</p>
 <p>令 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 代表两个这样的簇。<span class="math notranslate nohighlight">\(G\)</span> 与 <span class="math notranslate nohighlight">\(H\)</span> 间的不相似性 <span class="math notranslate nohighlight">\(d(G,H)\)</span> 根据成对不相似性 <span class="math notranslate nohighlight">\(d_{ii'}\)</span> 的集合来计算，其中 <span class="math notranslate nohighlight">\(i\)</span> 来自 <span class="math notranslate nohighlight">\(G\)</span>，<span class="math notranslate nohighlight">\(i'\)</span> 来自 <span class="math notranslate nohighlight">\(H\)</span>。**单链接 (Single linkage, SL)**合并聚类取组间不相似性为最近的一对</p>
 <div class="math notranslate nohighlight">
@@ -1556,7 +1692,7 @@ d_{GA}(G,H)=\frac{1}{N_GN_H}\sum_{i\in G}\sum_{i'\in H}d_{ii'}\tag{14.42}
 <p>如果 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 被认为很近，则单链接 式（ 14.41 ） 仅要求单个不相似性 <span class="math notranslate nohighlight">\(d_{ii'}, i\in G, i'\in H\)</span> 很小。因此趋向于在较低的阈值处将相近的观测连起来。这个现象，叫做 chaining，通常被认为是这个方法的缺点。基于不相似性 <span class="math notranslate nohighlight">\(\{d_{ii'}\}\)</span>，通过单链接得到的聚类可以违反簇“紧”的性质—-每个簇内的观测趋向于彼此相似。如果我们定义簇内的直径 <span class="math notranslate nohighlight">\(D_G\)</span> 为成员间最大的不相似性</p>
 <div class="math notranslate nohighlight">
 \[
-D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
+d_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
 \]</div>
 <p>则单链接可以得到直径非常大的簇。</p>
 <p>全链接 式（ 14.42 ） 表现相反。仅当两个簇间的所有观测对距离都很小时，这两个簇 <span class="math notranslate nohighlight">\(G\)</span> 和 <span class="math notranslate nohighlight">\(H\)</span> 才认为很近。然而，可以构造出违反相近性的簇。也就是，某个簇的观测可以与其他簇成员间的距离可以比它到自己簇内成员的距离更近。</p>
@@ -1569,7 +1705,7 @@ D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
 <p>其中 <span class="math notranslate nohighlight">\(d(x,x')\)</span> 是点 <span class="math notranslate nohighlight">\(x\)</span> 和 <span class="math notranslate nohighlight">\(x'\)</span> 在属性值空间中的不相似性。当样本大小 <span class="math notranslate nohighlight">\(N\)</span> 趋于无穷时，<span class="math notranslate nohighlight">\(d_{GA}(G,H)\)</span> 式（ 14.43 ） 趋于 式（ 14.45 ），这也是两个密度 <span class="math notranslate nohighlight">\(p_G(x)\)</span> 和 <span class="math notranslate nohighlight">\(p_H(x)\)</span> 间的某个特征。对于单链接，当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时，<span class="math notranslate nohighlight">\(d_{SL}(G,H)\)</span> 式（ 14.41 ） 趋于 0，且独立于 <span class="math notranslate nohighlight">\(p_G(x)\)</span> 和 <span class="math notranslate nohighlight">\(p_H(x)\)</span>。对于全链接，当 <span class="math notranslate nohighlight">\(N\rightarrow \infty\)</span> 时，<span class="math notranslate nohighlight">\(d_{CL}(G, H)\)</span> 式（ 14.42 ） 趋于无穷，同样独立于这两个密度函数。因此，不清楚 <span class="math notranslate nohighlight">\(d_{SL}(G,H)\)</span> 和 <span class="math notranslate nohighlight">\(d_{CL}(G,H)\)</span> 在估计总体的哪个量。</p>
 </div>
 <div class="section" id="id22">
-<h3>例子：人类癌症微阵列数据（继续）<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3>（）例子：人类癌症微阵列数据（继续）<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="../_images/fig14.13.png" /></p>
 <p>图 14.13 展示了对微阵列数据的样本（列）应用平均链接的合并聚类得到的谱系图。中间和右边的图象分别显示了采用全链接和单链接的结果。平均链接和全链接给出了类似的结果，然而单链接得到不够平衡的簇，其中有很细的簇。我们考虑平均链接聚类。</p>
 <p>和 K-means 聚类一样，系统聚类能够将癌症聚类在一起。但它有更好的特点。通过在不同高度横切谱系图，会得到不同的簇，且簇是一个包含在另一个。另外，它给出了某些关于样本的偏序信息。在图 14.14 中，我们已经对基因表达矩阵按照系统聚类的顺序对基因（行）和样本（列）进行了重排列。</p>
@@ -1578,13 +1714,13 @@ D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
 <p>图 14.14 的两次重排列得到了关于基因和样本的富有信息量的图象。这张图比第一章的图 1.3 中随机排列的行和列更有信息量。而且，谱系图本身很有用，举个例子，生物学家可以将基因簇解释成生物过程。</p>
 </div>
 <div class="section" id="id23">
-<h3>分裂聚类<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3>（）分裂聚类<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <p>分裂聚类算法以将全部数据集看成单个簇为开始，然后在每次迭代时，以自上而下的方式递归地将当前其中一个簇分裂成两个子簇。在聚类领域中，这种方法还没有像合并方法研究得那么透彻。在压缩方面，从工程领域进行了一些探索 (Gersho and Gray, 1992<a class="footnote-reference brackets" href="#id29" id="id24">2</a>)。在聚类设定中，分裂法优于合并法的一个潜在优点是－－当我们关注将数据划分成相对少的簇。</p>
 <p>分裂范式可以通过递归地应用组合方法，比如用 <span class="math notranslate nohighlight">\(K=2\)</span> 时的 K-means (14.3.6 节) 或者 K-medoids 在每步迭代进行分割。然而，这样的方法会取决于每一步的初始化。并且，不一定能够得到保持谱系图所需要的单调性的分割序列。</p>
 <p>可以避免这些问题的分裂算法由 Macnaughton Smith et al. (1965)<a class="footnote-reference brackets" href="#id33" id="id25">10</a> 提出。以将所有观测放入单个簇 <span class="math notranslate nohighlight">\(G\)</span> 中为开始。然后选择到其它所有观测的平均不相似性为最大的观测。这个观测构成了第二个簇 <span class="math notranslate nohighlight">\(H\)</span> 的第一个成员。接下来，<span class="math notranslate nohighlight">\(G\)</span> 中某观测到 <span class="math notranslate nohighlight">\(H\)</span> 中观测的平均距离，减去该观测到 <span class="math notranslate nohighlight">\(G\)</span> 中其它观测的平均距离，如果差值达到最大，则该观测转移到 <span class="math notranslate nohighlight">\(H\)</span> 中去。重复这个步骤，知道差值为负。也就是，不再有 <span class="math notranslate nohighlight">\(G\)</span> 中的观测平均意义下离 <span class="math notranslate nohighlight">\(H\)</span> 更近。这样使得最初的簇一分为二，一部分转移到 <span class="math notranslate nohighlight">\(H\)</span>，一部分留在 <span class="math notranslate nohighlight">\(G\)</span>。这两个簇代表着第二层。接下来的每一层通过对当前层次的其中一个簇应用分裂过程得到。Kaufman and Rousseeuw (1990)<a class="footnote-reference brackets" href="#id30" id="id26">4</a> 建议选择每一层中直径最大的簇进行分裂。另外一种策略可以是选择簇内平均不相似性最大的簇</p>
 <div class="math notranslate nohighlight">
 \[
-\bar d_G=\frac{1}{N_G^2}\sum_{i\in G}\sum_{i'\in G}d_{ii'}\,.
+\bar d_G=\frac{1}{N_G^2}\sum_{i\in G}\sum_{i'\in G}d_{ii'}\,
 \]</div>
 <p>迭代分裂过程一直进行到所有的簇要么只有一个观测，要么所有的成员之间不相似性都为 0.</p>
 <hr class="footnotes docutils" />
@@ -1637,8 +1773,8 @@ D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.2-Association-Rules.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1655,19 +1791,17 @@ D_G=\max_{i\in G,i'\in G}d_{ii'}\,,\tag{14.44}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

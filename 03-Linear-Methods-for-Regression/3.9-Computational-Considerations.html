@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,32 +1133,42 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>3.9 计算上的考虑</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>3.9 计算上的考虑<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>最小二乘拟合一般通过对矩阵 <span class="math notranslate nohighlight">\(\mathbf X^T\mathbf X\)</span> 进行 Cholesky 分解或者对 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 进行 QR 分解实现。在有 <span class="math notranslate nohighlight">\(N\)</span> 个观测和 <span class="math notranslate nohighlight">\(p\)</span> 个特征时，Cholesky 分解需要 <span class="math notranslate nohighlight">\(p^3+Np^2/2\)</span> 次操作，而 QR 分解需要 <span class="math notranslate nohighlight">\(Np^2\)</span> 次操作。依赖于 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 的相对大小，Cholesky 分解有时会更快，但是另一方面，数值不太稳定（Lawson and Hansen, 1974<a class="footnote-reference brackets" href="#id3" id="id2">1</a>）。通过 LAR 算法实现的 lasso 的计算量与最小二乘拟合有相同的阶数。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>“weiya 注：Cholesky and QR decomposition for Least Squares”
-对于 Cholesky 分解，考虑线性方程 <span class="math notranslate nohighlight">\(X^TX\beta=X^TY\)</span>，若 <span class="math notranslate nohighlight">\(X^TX=\L\L^T\)</span>, 则转换为求解 <span class="math notranslate nohighlight">\(\L w=X^TY\)</span> and <span class="math notranslate nohighlight">\(\L^T\beta=w\)</span>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>对于 QR 分解，考虑线性方程 $X\beta = Y$，若 $X = \Q\R$，则 $\Q\R\beta = Y=\Q\Q^TY$，所以转换为求解 $\R\beta=\Q^TY$。
-
-更多细节详见[这里](http://www.math.iit.edu/~fass/477577_Chapter_5.pdf).
-</pre></div>
-</div>
-</div>
-<p>!!! note “weiya 注：Complexity”
+<blockquote>
+<div><p>“weiya 注：Cholesky and QR decomposition for Least Squares”</p>
+<p>对于 Cholesky 分解，考虑线性方程 <span class="math notranslate nohighlight">\(X^TX\beta=X^TY\)</span>，若 <span class="math notranslate nohighlight">\(X^TX=LL^T\)</span>, 则转换为求解 <span class="math notranslate nohighlight">\(L w=X^TY\)</span> and <span class="math notranslate nohighlight">\(L^T\beta=w\)</span>.</p>
+<p>对于 QR 分解，考虑线性方程 <span class="math notranslate nohighlight">\(X \beta = Y\)</span>，若 <span class="math notranslate nohighlight">\(X = QR\)</span>，则 <span class="math notranslate nohighlight">\(QR \beta = Y=QQ^TY\)</span>，所以转换为求解 <span class="math notranslate nohighlight">\(R \beta=Q^TY\)</span>。</p>
+</div></blockquote>
+<blockquote>
+<div><p>更多细节详见<a class="reference external" href="http://www.math.iit.edu/~fass/477577_Chapter_5.pdf">这里</a>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>note “weiya 注：Complexity”
 正如<a class="reference external" href="https://en.wikipedia.org/wiki/Cholesky_decomposition">维基</a>中指出的那样，不同计算方法会有不同的复杂度，一般情形下 Cholesky 分解复杂度为 <span class="math notranslate nohighlight">\(O(p^3)\)</span>，但也存在 <span class="math notranslate nohighlight">\(O(p^3/3)\)</span>，<a class="reference external" href="http://www.math.iit.edu/~fass/477577_Chapter_5.pdf">这里</a>更是指出其复杂度为 <span class="math notranslate nohighlight">\(O(Np^2+p^3/3)\)</span>. 对于 QR 分解，情况类似，<a class="reference external" href="http://www.math.iit.edu/~fass/477577_Chapter_5.pdf">这里</a> 指出其复杂度为 <span class="math notranslate nohighlight">\(O(Np^2-2p^3/3)\)</span>.</p>
+</div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1181,8 +1199,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="3.8-More-on-the-Lasso-and-Related-Path-Algorithms.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1199,19 +1217,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

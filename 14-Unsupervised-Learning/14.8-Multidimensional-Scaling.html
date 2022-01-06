@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.8 多维缩放</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1140,45 +1158,52 @@
 <style>p{text-indent:2em;2}</style>
 <p>自组织图和主曲线以及主曲面都是将 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中的数据点映射到低维流形中。<strong>多维缩放 (MDS, Multidimensional scaling)</strong> 的目标也是类似的，但是是以一种不同的方式来解决这个问题。</p>
 <p>我们以观测值 <span class="math notranslate nohighlight">\(x_1, x_2,\ldots, x_N\in \mathbb{R}^p\)</span> 开始，令 <span class="math notranslate nohighlight">\(d_{ij}\)</span> 为观测 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 之间的距离。通常我们选择欧式距离 <span class="math notranslate nohighlight">\(d_{ij}=\Vert x_i-x_j\Vert\)</span>，但是也可能采用其它的距离。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 在有关 Phylogeny tree 的问题中，比如 Microbiome Data，经常用 UniFrac 距离，由此得到的多维缩放也被叫做 UniFrac PCoA，因为 MDS 也被称作 <a class="reference external" href="https://en.wikipedia.org/wiki/Multidimensional_scaling">PCoA (Principal Coordinate Analysis)</a>.</p>
+</div></blockquote>
 <p>另外，在有些应用中，我们可能甚至没有数据点 <span class="math notranslate nohighlight">\(x_i\)</span>，仅仅有 <strong>不相似性 (dissimilarity)</strong> 的测量 <span class="math notranslate nohighlight">\(d_{ij}\)</span>（见 <span class="xref myst">14.3.10节</span>）。举个例子，在一项酒的口感的试验中，<span class="math notranslate nohighlight">\(d_{ij}\)</span> 可能是某个体对酒 <span class="math notranslate nohighlight">\(i\)</span>和 <span class="math notranslate nohighlight">\(j\)</span> 口感不同的一个度量，并且该个体对所有酒 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 都采用这样的度量。MDS 仅仅需要不相似性 <span class="math notranslate nohighlight">\(d_{ij}\)</span>，这与需要数据点 <span class="math notranslate nohighlight">\(x_i\)</span> 的 SOM 和主曲线、主曲面不同。</p>
 <p>多维缩放寻找值 <span class="math notranslate nohighlight">\(z_1,z_2,\ldots,z_N\in \mathbb{R}^k\)</span> 来最小化 <strong>压力函数(stress function)</strong></p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 S_M(z_1,z_2,\ldots,z_N)=\sum\limits_{i\neq i'}(d_{ii'}-\Vert z_i-z_i'\Vert)^2\tag{14.98}
-\]</div>
-<p>!!! note “weiya 注：原书脚注”
+\)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：原书脚注”
 有些作者将压力定义为 <span class="math notranslate nohighlight">\(S_M\)</span> 的平方根；因为这个不影响优化，所以我们保留平方，以便跟其它准则进行比较。</p>
+</div></blockquote>
 <p>这被称为 <strong>最小二乘缩放 (least squares scaling)</strong> 或者 <strong>Kruskal-Shephard 缩放</strong>。思想是寻找尽可能数据的保距（成对距离）低维近似。注意到近似是对距离而言，而不是平方距离（这会导致计算有点复杂）。可以采用梯度下降法来进行最小化 <span class="math notranslate nohighlight">\(S_M\)</span>。</p>
 <p>最小二乘缩放的一个变种被称为 Sammon mapping，它是对下式进行最小化</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 S_{Sm}(z_1,z_2,\ldots,z_N)=\sum\limits_{i\neq i'}\frac{(d_{ii'}-\Vert z_i-z_i'\Vert)^2}{d_{ii'}}\tag{14.99}
-\]</div>
+\)</span>$</p>
 <p>这里更重视保留越小的成对距离。</p>
 <p>在 <strong>经典缩放 (classical scaling)</strong> 中，我们从相似性　<span class="math notranslate nohighlight">\(s_{ii'}\)</span>　开始：经常使用中心化后的内积　<span class="math notranslate nohighlight">\(s_{ii'}=\langle x_i-\bar x,x_{i'}-\bar x\rangle\)</span>。问题则变成了在　<span class="math notranslate nohighlight">\(z_1,z_2,\ldots,z_N\in \mathbb{R}^k\)</span> 上最小化下式</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 S_C(z_1,z_2,\ldots, z_N)=\sum\limits_{i,i'}(s_{ii'}-\langle z_i-\bar z, z_{i'}-\bar z\rangle)^2\tag{14.100)}
-\]</div>
+\)</span>$</p>
 <p>这是很吸引人的，因为有个用特征向量表示的显式解：见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/203">练习 14.11</a>。如果我们有距离数据，而不是内积数据，并且是欧式距离，则可以将它们转换为中心化的内积，参见<span class="xref myst">第 18 章</span>中的式 式（ 18.31 ）。</p>
-<p>!!! note “weiya 注：”
-$<span class="math notranslate nohighlight">\(
-    \tildeK = (\I-\M)\B(\I-\M)\,;\tag{18.31}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \tildeK = (\I-\M)\B(\I-\M)\,;\tag{18.31}
+    
+\]</div>
 <p>如果事实上相似性为中心化的内积，则经典缩放正好与主成分等价，主成分本质上是线性降维技术。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 等价性的论证详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/215">Issue 215: Classical MDS versus PCA</a>.</p>
+</div></blockquote>
 <p>经典缩放不等价于最小二乘缩放；它们的损失函数不同，并且映射可以是非线性的。</p>
 <p>最小二乘缩放和经典缩放都被称作 <strong>度量 (metric)</strong> 缩放方法，在某种意义下，实际的非相似性或者相似性是近似的。Shephard-Kruskal 非度量缩放有效地只使用了秩（排名）。非度量缩放在 <span class="math notranslate nohighlight">\(z_i\)</span> 和任意的递增函数 <span class="math notranslate nohighlight">\(\theta\)</span> 上最小化压力函数</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 S_{NM}(z_1,z_2,\ldots, z_N)=\frac{\sum_{i\neq i'}[\Vert z_i-z_{i'}\Vert - \theta(d_{ii'})]^2}{\sum_{i\neq i'}\Vert z_i-z_{i'}\Vert^2}\qquad (14.101)
-\]</div>
+\)</span>$</p>
 <p>当 <span class="math notranslate nohighlight">\(\theta\)</span> 固定，我们通过梯度下降在 <span class="math notranslate nohighlight">\(z_i\)</span>上最小化。当 <span class="math notranslate nohighlight">\(z_i\)</span> 固定，采用 <strong>保序回归 (isotonic regression)</strong> 来寻找对 <span class="math notranslate nohighlight">\(\Vert z_i-z_{i'}\Vert\)</span> 最好的单调近似 <span class="math notranslate nohighlight">\(\theta(d_{ii'})\)</span>。一直迭代这些步骤直到解达到稳定。</p>
-<p>!!! info “weiya 注: Isotonic Regression”
+<blockquote>
+<div><p>info “weiya 注: Isotonic Regression”
 <a class="reference external" href="https://stats.hohoweiya.xyz/2020/02/20/multiple-isotonic-regression/">这篇博客</a>简单讨论了 Isotonic Regression，并记录了 ICSA-2019 会议上讲 Multiple Isotonic Regression 的 talk.</p>
+</div></blockquote>
 <p>和自组织图和主曲面一样，多维缩放也是在低维坐标系统中表示高维数据。主曲面和 SOM 则更进一步，采用低维流形来近似原来的数据，在低维的坐标系统中进行参量化。在主曲面和 SOM 中，原特征空间中相离比较近的点在流形上也映射在一起，但是特征空间中距离远的点也可能映射到一起。这在多维缩放中不太可能发生，因为它明确地试图保持所有的成对距离。</p>
 <p>图 14.43 显示了对半球例子的经典缩放的前两个 MDS 坐标。簇之间的分类是很明显的，并且红色簇紧的特性也是显然的。</p>
 <p><img alt="" src="../_images/fig14.43.png" /></p>
@@ -1206,8 +1231,8 @@ S_{NM}(z_1,z_2,\ldots, z_N)=\frac{\sum_{i\neq i'}[\Vert z_i-z_{i'}\Vert - \theta
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1224,19 +1249,17 @@ S_{NM}(z_1,z_2,\ldots, z_N)=\frac{\sum_{i\neq i'}[\Vert z_i-z_{i'}\Vert - \theta
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

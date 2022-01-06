@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#b">
-   B样条
+   （ 1 ）B 样条
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   光滑样条的计算
+   （ 2 ）光滑样条的计算
   </a>
  </li>
 </ul>
@@ -1150,14 +1158,42 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>附录</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b">
+   （ 1 ）B 样条
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （ 2 ）光滑样条的计算
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>附录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>在附录里面，我们将要讨论表示多项式样条的 <span class="math notranslate nohighlight">\(B\)</span> 样条基。我们也讨论它们在光滑样条中计算的应用。</p>
 <div class="section" id="b">
-<h2>B样条<a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h2>
+<h2>（ 1 ）B 样条<a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h2>
 <p>在我们开始之前，我们需要对 <span class="xref myst">5.2 节</span>定义的结点序列进行增广。令 <span class="math notranslate nohighlight">\(\xi_0&lt;\xi_1\)</span>，和 <span class="math notranslate nohighlight">\(\xi_K&lt;\xi_{K+1}\)</span> 为两个边界结点，一般地它们定义了样条取值的定义域。我们现在定义增广的结点序列 <span class="math notranslate nohighlight">\(\tau\)</span> 使得</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\tau_1\le \tau_2\le \cdots\le \tau_M\le \xi_0\)</span></p></li>
@@ -1165,31 +1201,38 @@
 <li><p><span class="math notranslate nohighlight">\(\xi_{K+1}\le \tau_{K+M+1}\le \tau_{K+M+2}\le \cdots\le \tau_{K+2M}\)</span></p></li>
 </ul>
 <p>边界结点之外的这些额外结点的实际值是任意的，而且一般地令它们分别等于 <span class="math notranslate nohighlight">\(\xi_0\)</span> 和 <span class="math notranslate nohighlight">\(\xi_{K+1}\)</span>。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 <strong>差商 (divided differences)</strong>: from <a class="reference external" href="https://en.wikipedia.org/wiki/Divided_differences">wiki</a>
 给定 <span class="math notranslate nohighlight">\(k+1\)</span> 个数据点 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,k\)</span>
 向前差商定义为</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-\begin{align*}
-[y_\nu]&amp;:=y_\nu,\;\nu\in\{0,\ldots, k\}\\
-[y_\nu,\ldots,y_{\nu+j}]&amp;:=\frac{[y_{\nu+1},\ldots,y_{\nu+j}]-[y_{\nu},\ldots,y_{\nu+j-1}]}{x_{\nu+j}-x_{\nu}},\;\nu\in\{0,\ldots,k-j\},j\in\{1,\ldots,k\}
-\end{align*}
-$$
-
-向后差商定义为
-
-$$
-\begin{align*}
-[y_\nu]&amp;:=y_\nu,\;\nu\in\{0,\ldots, k\}\\
-[y_\nu,\ldots,y_{\nu-j}]&amp;:=\frac{[y_{\nu},\ldots,y_{\nu-j+1}]-[y_{\nu-1},\ldots,y_{\nu-j}]}{x_{\nu}-x_{\nu-j}},\;\nu\in\{0,\ldots,k-j\},j\in\{1,\ldots,k\}
-\end{align*}
-$$
-</pre></div>
-</div>
+<p>$$</p>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    [y_\nu]&amp;:=y_\nu,\;\nu\in\{0,\ldots, k\}\\
+    [y_\nu,\ldots,y_{\nu+j}]&amp;:=\frac{[y_{\nu+1},\ldots,y_{\nu+j}]-[y_{\nu},\ldots,y_{\nu+j-1}]}{x_{\nu+j}-x_{\nu}},\;\nu\in\{0,\ldots,k-j\},j\in\{1,\ldots,k\}
+\end{align*}\]</div>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[
+&gt;
+&gt;   向后差商定义为
+&gt;   
+&gt;\]</div>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    [y_\nu]&amp;:=y_\nu,\;\nu\in\{0,\ldots, k\}\\
+    [y_\nu,\ldots,y_{\nu-j}]&amp;:=\frac{[y_{\nu},\ldots,y_{\nu-j+1}]-[y_{\nu-1},\ldots,y_{\nu-j}]}{x_{\nu}-x_{\nu-j}},\;\nu\in\{0,\ldots,k-j\},j\in\{1,\ldots,k\}
+\end{align*}\]</div>
+<blockquote>
+<div><p>$$</p>
+</div></blockquote>
 <p>记 <span class="math notranslate nohighlight">\(B_{i,m}(x)\)</span> 为结点序列 <span class="math notranslate nohighlight">\(\tau\)</span> 的 order 为 <span class="math notranslate nohighlight">\(m\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 个 <span class="math notranslate nohighlight">\(B\)</span> 样条基函数，<span class="math notranslate nohighlight">\(m\le M\)</span>。通过差商递归定义有:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-B_{i,1}(x)=\left\{
+F_{i,1}(x)=\left\{
   \begin{array}{ll}
   1&amp;\text{if }\tau_i\le x&lt; \tau_{i+1}\\
   0&amp;\text{otherwise}
@@ -1199,18 +1242,25 @@ B_{i,1}(x)=\left\{
   i=1,\ldots, K+2M-1
   \tag{5.77}
 \end{split}\]</div>
-<p>这些也被称为 Haar 基函数。
-$<span class="math notranslate nohighlight">\(
-B_{i,m}(x)= \frac{x-\tau_i}{\tau_{i+m-1}-\tau_i}B_{i,m-1}(x)+\frac{\tau_{i+m}-x}{\tau_{i+m}-\tau_{i+1}}B_{i+1,m-1}(x), \; i=1, \ldots,K+2M-m\tag{5.78}
-\)</span>$</p>
+<p>这些也被称为 Haar 基函数。</p>
+<div class="math notranslate nohighlight">
+\[
+F_{i,m}(x)= \frac{x-\tau_i}{\tau_{i+m-1}-\tau_i}B_{i,m-1}(x)+\frac{\tau_{i+m}-x}{\tau_{i+m}-\tau_{i+1}}B_{i+1,m-1}(x), \; i=1, \ldots,K+2M-m\tag{5.78}
+\]</div>
 <p>因此当<span class="math notranslate nohighlight">\(M=4,B_{i,4},i=1,\cdots,K+4\)</span>是结点序列<span class="math notranslate nohighlight">\(\xi\)</span>的<span class="math notranslate nohighlight">\(K+4\)</span>个三次B样条基函数。</p>
-<!-- !!! note "weiya 注：Alternative Definition"
+<!-- > note "weiya 注：Alternative Definition"
     在 [GSL: GNU Scientific Library](https://www.gnu.org/software/gsl/doc/html/index.html) 中的帮助文档中，$B$ 样条定义稍微有点区别：给定结点向量
-    $$
+    
+$$
+
     t=\{t_0,t_1,\ldots,t_{n+k-1}\}\,,
-    $$
+    
+$$
+
     order 为 $k$ 的 $n$ 个基函数定义为
-    $$
+    
+$$
+
     \begin{align*}
     B_{i,1}(x) &= \begin{cases}
     1 & t_i\le x < t_{i+1}\\
@@ -1218,7 +1268,9 @@ B_{i,m}(x)= \frac{x-\tau_i}{\tau_{i+m-1}-\tau_i}B_{i,m-1}(x)+\frac{\tau_{i+m}-x}
     \end{cases}\\
     B_{i,k}(x) &= \frac{x-t_i}{t_{i+k-1}-t_i}B_{i+1,k-1}(x)+\frac{t_{i+k}-x}{t_{i+k}-t_{i+1}}B_{i+1,k-1}(x)
     \end{align*}
-    $$
+    
+$$
+
     for $i=0,\ldots,n-1$，在这种定义下，order 为 $k$ 的 $B$ 样条基函数个数为 $n = nbreak-k$，其中 $nbreak$ 是内结点个数，而 $nbreak=n+2$ 为所有结点个数，则样条基函数个数也可以表示为 $nbreak+k-2$，这也是 `gsl` 中
     ```c
     gsl_bspline_workspace* gsl_bspline_alloc (const size_t k , const size_t nbreak )
@@ -1226,70 +1278,73 @@ B_{i,m}(x)= \frac{x-\tau_i}{\tau_{i+m-1}-\tau_i}B_{i,m-1}(x)+\frac{\tau_{i+m}-x}
     函数中参数的形式。 -->
 <p>这个递归可以继续，并且将会产生任意 order 样条的 <span class="math notranslate nohighlight">\(B\)</span> 样条基。</p>
 <p><img alt="" src="../_images/fig5.20.png" /></p>
-<p>!!! tip
+<blockquote>
+<div><p>tip
 结合<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/66#issue-296103785">Ex. 5.2</a>来看 Fig. 5.20，更能加深对 B 样条基函数的理解。</p>
+</div></blockquote>
 <p>图 5.20 显示了 order 至多为 4 的 <span class="math notranslate nohighlight">\(B\)</span> 样条序列，其中结点在 <span class="math notranslate nohighlight">\(0.0,0.1,\ldots, 1.0\)</span>。因为我们构造了一些重复结点，所以需要注意避免分母为 0。如果我们约定当 <span class="math notranslate nohighlight">\(\tau_i=\tau_{i+1}\)</span>，有 <span class="math notranslate nohighlight">\(B_{i,1}=0\)</span>，于是可以归纳得到当 <span class="math notranslate nohighlight">\(\tau_i=\tau_{i+1}=\ldots=\tau_{i+m}\)</span>，有 <span class="math notranslate nohighlight">\(B_{i,m}=0\)</span>。注意到在上面的构造中，只要求子集 <span class="math notranslate nohighlight">\(B_{i,m},i=M-m+1,\ldots, M+K\)</span> 用作结点为 <span class="math notranslate nohighlight">\(\xi\)</span>的order为 <span class="math notranslate nohighlight">\(m &lt; M\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 样条基。</p>
-<!-- !!! note "weiya 注："
+<!-- > note "weiya 注："
     注意到 $B_{i,m},i=M-m+1,\ldots, M+K$ 中基函数个数刚好是 $K+m$，这与上文 Note 中提到的 GSL 中 $n+k$ 一致。 -->
 <p>为了全面理解这些函数的性质，并且为了证明它们确实张成了结点序列的三次样条空间，需要额外的数学知识，包括差商的性质。<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/66">练习5.2</a>探索了这些问题。</p>
-<p>!!! note “weiya注：Ex. 5.2”
+<blockquote>
+<div><p>note “weiya注：Ex. 5.2”
 目前完成了练习 5.2 的前三问的证明，还要两小问的证明待完成，具体证明过程见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/66">Issue: Ex. 5.2</a>。练习 5.2 的结论如下：</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 当 $x\not\in [\tau_i, \tau_{i+M}], B_{i,M}(x)=0$;
-- 当 $x\in (\tau_i,\tau_{i+M}), B_{i,M}(x) &gt; 0$;
-- $\forall x\in [\xi_0,\xi_{K+1}], \sum_1^{K+M}B_{i,M}(x)=1$;
-- $B_{i,M}$ 是 $[\xi_0,\xi_{K+1}]$ 上 order 为 $M$ 的分段多项式，断点仅为 $\xi_1,\ldots, \xi_K$;
-- order 为 $M$ 的 B 样条基函数是 $M$ 个均匀随机变量的卷积(convolution)的密度函数
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>当 <span class="math notranslate nohighlight">\(x\not\in [\tau_i, \tau_{i+M}], B_{i,M}(x)=0\)</span>;</p></li>
+<li><p>当 <span class="math notranslate nohighlight">\(x\in (\tau_i,\tau_{i+M}), B_{i,M}(x) &gt; 0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x\in [\xi_0,\xi_{K+1}], \sum_1^{K+M}B_{i,M}(x)=1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(B_{i,M}\)</span> 是 <span class="math notranslate nohighlight">\([\xi_0,\xi_{K+1}]\)</span> 上 order 为 <span class="math notranslate nohighlight">\(M\)</span> 的分段多项式，断点仅为 <span class="math notranslate nohighlight">\(\xi_1,\ldots, \xi_K\)</span>;</p></li>
+<li><p>order 为 <span class="math notranslate nohighlight">\(M\)</span> 的 B 样条基函数是 <span class="math notranslate nohighlight">\(M\)</span> 个均匀随机变量的卷积(convolution)的密度函数</p></li>
+</ul>
+</div></blockquote>
 <p><span class="math notranslate nohighlight">\(B\)</span> 样条实际上不仅限于这里讨论的内容，而且与结点复制(knot duplication)有关。如果我们在上面的 <span class="math notranslate nohighlight">\(\tau\)</span> 序列的构造中复制一个内结点，像之前一样生成 <span class="math notranslate nohighlight">\(B\)</span> 样条序列，则得到的基会在复制的结点处张成低一阶的连续可导分段多项式。一般地，除了复制边界点，我们可以将内结点 <span class="math notranslate nohighlight">\(\xi_j\)</span> 复制 <span class="math notranslate nohighlight">\(1\le r_j\le M\)</span> 次，则点 <span class="math notranslate nohighlight">\(x=\xi_j\)</span> 处不连续可导的最低阶为 <span class="math notranslate nohighlight">\(M-r_j\)</span>。因此，对于无复制的三次样条，<span class="math notranslate nohighlight">\(r_j=1,j=1,\ldots,K\)</span>，并且在每个内结点处的三阶微分(<span class="math notranslate nohighlight">\(4-1\)</span>)都是不连续的。复制第 <span class="math notranslate nohighlight">\(j\)</span> 个结点三次，则一阶微分不连续；复制结点四次则零阶微分不连续，也就是，在 <span class="math notranslate nohighlight">\(x=\xi_j\)</span> 处不连续。当我们复制结点 <span class="math notranslate nohighlight">\(M\)</span> 次，则样条在边界点处不连续（比如，在边界点外无定义），这正是在边界点处发生的。</p>
 <p><span class="math notranslate nohighlight">\(B\)</span> 样条局部支撑有重要的计算应用，特别当结点数 <span class="math notranslate nohighlight">\(K\)</span> 很大时。<span class="math notranslate nohighlight">\(K+M\)</span> 个变量的 <span class="math notranslate nohighlight">\(N\)</span> 个观测的最小二乘计算量为 <span class="math notranslate nohighlight">\(O(N(K+M)^2+(K+M)^3)\)</span> 次浮点运算(flops)。</p>
-<p>!!! note “weiya注：flops”
-floating point operations 的简称，浮点运算。</p>
 <p>如果 <span class="math notranslate nohighlight">\(K\)</span> 是 <span class="math notranslate nohighlight">\(N\)</span> 的若干分之一(some appreciable fraction)，则得到 <span class="math notranslate nohighlight">\(O(N^3)\)</span> 的算法，这对于较大的 <span class="math notranslate nohighlight">\(N\)</span> 是不能接受的。如果 <span class="math notranslate nohighlight">\(N\)</span> 个观测已经排好序，则 <span class="math notranslate nohighlight">\(K+M\)</span> 个基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个点上取值的 <span class="math notranslate nohighlight">\(N\times (K+M)\)</span> 的回归矩阵有许多 0，可以利用这一点将计算复杂性降至 <span class="math notranslate nohighlight">\(O(N)\)</span>。我们在下一节详细讨论这一点。</p>
-<p>!!! note “weiya注：复杂度”
-首先贴出<a class="reference external" href="https://en.wikipedia.org/wiki/Computational_complexity_of_mathematical_operations">wiki: Computational complexity of mathematical operations</a>中给出的各种矩阵运算的复杂度：</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![](../img/05/matrix_operations_complexity.png)
-
-对于$N\times p$的设计矩阵$X$及$N\times 1$的响应变量向量$Y$，其最小二乘估计为$(X&#39;X)^{-1}X&#39;Y$，采用一般的Gauss-Jordan elimination的矩阵逆运算，则总复杂度为$O(Np^2+p^3)$，故$K+M$个变量的$N$个观测的最小二乘复杂度为$O(N(K+M)^2+(K+M)^3)$。
-</pre></div>
-</div>
-<p>!!! note “weiya 注：B 样条在 R, C++, Python 中的实现”
-<span class="xref myst">这篇笔记</span>比较了 B 样条在 R，C++ 以及 Python 中的实现。</p>
 </div>
 <div class="section" id="id2">
-<h2>光滑样条的计算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（ 2 ）光滑样条的计算<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>尽管自然样条（<span class="xref myst">5.2.1节</span>）给出了光滑样条的基，但无约束的 <span class="math notranslate nohighlight">\(B\)</span> 样条在较大空间中操作计算上更方便。</p>
-<p>!!! note “Recall”
-含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的自然三次样条可以用 <span class="math notranslate nohighlight">\(K\)</span> 个基函数表示：
-$<span class="math notranslate nohighlight">\(
-    N_1(X)=1,\;N_2(X)=X,\; N_{k+2}(X)=d_k(X)-d_{K-1}(X),\tag{5.4}
-    \)</span><span class="math notranslate nohighlight">\(
-    其中，
-    \)</span><span class="math notranslate nohighlight">\(
-    d_k(X)=\frac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_K-\xi_k}\tag{5.5}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “Recall”
+含 <span class="math notranslate nohighlight">\(K\)</span> 个结点的自然三次样条可以用 <span class="math notranslate nohighlight">\(K\)</span> 个基函数表示：</p>
+<div class="math notranslate nohighlight">
+\[
+N_1(X)=1,\;N_2(X)=X,\; N_{k+2}(X)=d_k(X)-d_{K-1}(X),\tag{5.4}    
+&gt;\]</div>
+<p>其中，</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+d_k(X)=\frac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_K-\xi_k}\tag{5.5}   
+&gt;\]</div>
 <p>我们写成 <span class="math notranslate nohighlight">\(f(x)=\sum_1^{N+4}\gamma_jB_j(x)\)</span>，其中 <span class="math notranslate nohighlight">\(\gamma_j\)</span> 是系数，<span class="math notranslate nohighlight">\(B_j\)</span> 是三次 <span class="math notranslate nohighlight">\(B\)</span> 样条基函数。这个解与之前看起来很像，</p>
 <div class="math notranslate nohighlight">
 \[
-\hat\gamma = (\B^T\B+\lambda\oomega_B)^{-1}\B^Ty\tag{5.79}
+\hat\gamma = (\mathbf{B}^T\mathbf{B}+\lambda\omega_B)^{-1}\mathbf{B}^Ty\tag{5.79}
 \]</div>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    \hat\theta = (\mathbf N^T\mathbf N+\lambda\Omega_N)^{-1}\mathbf N^T\mathbf y\tag{5.12}
-    \)</span>$</p>
-<p>只不过现在 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\N\)</span> 用 <span class="math notranslate nohighlight">\(N\times(N+4)\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\B\)</span> 来替换，类似地，<span class="math notranslate nohighlight">\((N+4)\times (N+4)\)</span> 的惩罚矩阵 <span class="math notranslate nohighlight">\(\oomega_B\)</span> 替换 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\oomega_N\)</span>。看上去似乎没有边界微分的约束，事实上惩罚项通过对边界外的点的任意非零微分加上了充分大的权重自动加上了这些约束。实际中，<span class="math notranslate nohighlight">\(\hat\gamma\)</span> 限制在惩罚总是有限的线性子空间中。</p>
-<p>!!! note “weiya 注：”
-实际中，自然样条基函数矩阵 <span class="math notranslate nohighlight">\(\N\)</span> 可以由 <span class="math notranslate nohighlight">\(B\)</span> 样条基函数矩阵 <span class="math notranslate nohighlight">\(\B\)</span> 导出，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/235">Issue 235</a></p>
-<p>因为 <span class="math notranslate nohighlight">\(\B\)</span> 的列是从左到右在已经排序的 <span class="math notranslate nohighlight">\(X\)</span> 的值上进行赋值的 <span class="math notranslate nohighlight">\(B\)</span> 样条，并且三次 <span class="math notranslate nohighlight">\(B\)</span> 样条有局部支撑，<span class="math notranslate nohighlight">\(\B\)</span> 是 lower 4-banded。</p>
-<p>!!! note “weiya 注：band matrix”
+<blockquote>
+<div><p>note “Recall”</p>
+<div class="math notranslate nohighlight">
+\[
+\hat\theta = (\mathbf N^T\mathbf N+\lambda\Omega_N)^{-1}\mathbf N^T\mathbf y\tag{5.12}   
+&gt;\]</div>
+</div></blockquote>
+<p>只不过现在 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\N\)</span> 用 <span class="math notranslate nohighlight">\(N\times(N+4)\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 来替换，类似地，<span class="math notranslate nohighlight">\((N+4)\times (N+4)\)</span> 的惩罚矩阵 <span class="math notranslate nohighlight">\(\omega_B\)</span> 替换 <span class="math notranslate nohighlight">\(N\times N\)</span> 的矩阵 <span class="math notranslate nohighlight">\(\omega_N\)</span>。看上去似乎没有边界微分的约束，事实上惩罚项通过对边界外的点的任意非零微分加上了充分大的权重自动加上了这些约束。实际中，<span class="math notranslate nohighlight">\(\hat\gamma\)</span> 限制在惩罚总是有限的线性子空间中。</p>
+<blockquote>
+<div><p>note “weiya 注：”
+实际中，自然样条基函数矩阵 <span class="math notranslate nohighlight">\(\N\)</span> 可以由 <span class="math notranslate nohighlight">\(B\)</span> 样条基函数矩阵 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 导出，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/235">Issue 235</a></p>
+</div></blockquote>
+<p>因为 <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 的列是从左到右在已经排序的 <span class="math notranslate nohighlight">\(X\)</span> 的值上进行赋值的 <span class="math notranslate nohighlight">\(B\)</span> 样条，并且三次 <span class="math notranslate nohighlight">\(B\)</span> 样条有局部支撑，<span class="math notranslate nohighlight">\(\mathbf{B}\)</span> 是 lower 4-banded。</p>
+<blockquote>
+<div><p>note “weiya 注：band matrix”
 对于矩阵<span class="math notranslate nohighlight">\(A=(a_{i,j})\)</span>，若</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-a_{i,j}=0\;if\;j &lt; i-k_1\; or\; j &gt; i + k_2;\; k_1,k_2\ge 0
-$$
-则 $k_1$ 和 $k_2$ 分布被称为 lower bandwidth 和 upper bandwidth。
-</pre></div>
-</div>
-<p>因此，矩阵 <span class="math notranslate nohighlight">\(\M=(\B^T\B)+\lambda\oomega\)</span> 是 4-banded，则可以很简单地计算它的 cholesky 分解 <span class="math notranslate nohighlight">\(\M=\L\L^T\)</span>。接着，通过向后替换(back-substitution)求解 <span class="math notranslate nohighlight">\(\L\L^T\gamma=\B^Ty\)</span> 得到 <span class="math notranslate nohighlight">\(\gamma\)</span>，则解 <span class="math notranslate nohighlight">\(\hat f\)</span> 是 <span class="math notranslate nohighlight">\(O(N)\)</span> 次运算量。</p>
+<div class="math notranslate nohighlight">
+\[
+a_{i,j}=0\;if\;j &lt; i-k_1\; or\; j &gt; i + k_2;\; k_1,k_2\ge 0    
+&gt;\]</div>
+<p>则 <span class="math notranslate nohighlight">\(k_1\)</span> 和 <span class="math notranslate nohighlight">\(k_2\)</span> 分布被称为 lower bandwidth 和 upper bandwidth。</p>
+</div></blockquote>
+<p>因此，矩阵 <span class="math notranslate nohighlight">\(\mathbf{M}=(\mathbf{B}^T\mathbf{B})+\lambda\omega\)</span> 是 4-banded，则可以很简单地计算它的 cholesky 分解 <span class="math notranslate nohighlight">\(\mathbf{M}=\mathbf{L}\mathbf{L}^T\)</span>。接着，通过向后替换(back-substitution)求解 <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{L}^T\gamma=\mathbf{B}^Ty\)</span> 得到 <span class="math notranslate nohighlight">\(\gamma\)</span>，则解 <span class="math notranslate nohighlight">\(\hat f\)</span> 是 <span class="math notranslate nohighlight">\(O(N)\)</span> 次运算量。</p>
 <p>实际中，当 <span class="math notranslate nohighlight">\(N\)</span> 很大，没必要使用所有的 <span class="math notranslate nohighlight">\(N\)</span> 个内结点，并且任何合理的 thinning 策略都会在计算量有改善，并且在拟合值的影响可以忽略。举个例子，S-PLUS中的 <code class="docutils literal notranslate"><span class="pre">smooth.spline</span></code> 函数采用近似的对数策略：如果 <span class="math notranslate nohighlight">\(N &lt; 50\)</span>，采用所有结点，但是在 <span class="math notranslate nohighlight">\(N=5000\)</span> 时，只采用 204 个结点。</p>
 </div>
 </div>
@@ -1316,8 +1371,8 @@ $$
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="Bibliographic-Notes.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1334,19 +1389,17 @@ $$
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

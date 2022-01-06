@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,21 +1142,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   拟合逻辑斯蒂回归模型
+   （ 1 ）拟合逻辑斯蒂回归模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   例子：南非心脏病
+   （ 2 ）例子：南非心脏病
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   二次拟合和推断
+   （ 3 ）二次拟合和推断
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#l-1">
+   （ 4 ）
    <span class="math notranslate nohighlight">
     \(L_1\)
    </span>
@@ -1157,7 +1166,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lda">
-   逻辑斯蒂回归或者 LDA？
+   （ 5 ）逻辑斯蒂回归或者 LDA？
   </a>
  </li>
 </ul>
@@ -1168,7 +1177,54 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>4.4 逻辑斯蒂回归</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （ 1 ）拟合逻辑斯蒂回归模型
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （ 2 ）例子：南非心脏病
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   （ 3 ）二次拟合和推断
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#l-1">
+   （ 4 ）
+   <span class="math notranslate nohighlight">
+    \(L_1\)
+   </span>
+   正则化逻辑斯蒂回归
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   （ 5 ）逻辑斯蒂回归或者 LDA？
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1195,21 +1251,24 @@
 \tag{4.18}
 \end{split}\]</div>
 <p>显然它们相加等于 1。为了强调对参数集 <span class="math notranslate nohighlight">\(\theta=\\{\beta_{10},\beta_1^T,\ldots,\beta_{(K-1)0},\beta_{K-1}^T\\}\)</span> 的依赖，我们将概率记为 <span class="math notranslate nohighlight">\(p_k(x,\theta)\)</span>。</p>
-<p>!!! note “weiya 注:”
-与从 式（ 4.17 ） 中的两两比较出发得到 式（ 4.18 ） 式不同的是，PRML 中 4.3.4 节直接定义 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span>，
-$<span class="math notranslate nohighlight">\(
-    \mathrm{Pr}(G=k\mid X=x) = \frac{\exp(\beta_k^Tx)}{\sum_\ell \exp(\beta_\ell^Tx)}\,,
-    \)</span><span class="math notranslate nohighlight">\(
-    这样会得到 \)</span>K$ 个系数向量，比 式（ 4.18 ） 多一个。</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>对于多类别 `multi_class = &#39;multinomial&#39;`，[`sklearn.linear_model.LogisticRegression`](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression) 采用这种形式，因而其系数矩阵维度为 $K\times p$. 另外也可以采用 `One-vs-Rest` 的思路 `multi_class = &#39;ovr&#39;`，即 $K$ 个二分类问题，依次将所考虑的类视为类别 1，而其余类为类别 0。
-</pre></div>
-</div>
+<blockquote>
+<div><p>note “weiya 注:”
+与从 式（ 4.17 ） 中的两两比较出发得到 式（ 4.18 ） 式不同的是，PRML 中 4.3.4 节直接定义 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Pr}(G=k\mid X=x) = \frac{\exp(\beta_k^Tx)}{\sum_\ell \exp(\beta_\ell^Tx)}\,,    
+&gt;\]</div>
+<p>这样会得到 <span class="math notranslate nohighlight">\(K\)</span> 个系数向量，比 式（ 4.18 ） 多一个。</p>
+<p>对于多类别 <code class="docutils literal notranslate"><span class="pre">multi_class</span> <span class="pre">=</span> <span class="pre">'multinomial'</span></code>，<a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"><code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LogisticRegression</span></code></a> 采用这种形式，因而其系数矩阵维度为 <span class="math notranslate nohighlight">\(K\times p\)</span>. 另外也可以采用 <code class="docutils literal notranslate"><span class="pre">One-vs-Rest</span></code> 的思路 <code class="docutils literal notranslate"><span class="pre">multi_class</span> <span class="pre">=</span> <span class="pre">'ovr'</span></code>，即 <span class="math notranslate nohighlight">\(K\)</span> 个二分类问题，依次将所考虑的类视为类别 1，而其余类为类别 0。</p>
+</div></blockquote>
 <p>当 <span class="math notranslate nohighlight">\(K=2\)</span> 时，模型非常简单，因为只有一个单线性函数。在生物统计应用中应用很广，因为经常会有二进制（两个类别）的响应变量。举个例子，病人获救或死亡，患心脏病和不患心脏病，或者某个条件存在与否。</p>
 <div class="section" id="id2">
-<h2>拟合逻辑斯蒂回归模型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（ 1 ）拟合逻辑斯蒂回归模型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>逻辑斯蒂回归经常通过极大似然法求解，采用在给定 <span class="math notranslate nohighlight">\(X\)</span> 时 <span class="math notranslate nohighlight">\(G\)</span> 的条件概率。因为 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G\mid X)\)</span> 完全明确了条件分布，选择 <strong>多项式分布 (multinomial)</strong> 是合适的。</p>
-<p>!!! note “weiya 注：多项式分布的合理性”
+<blockquote>
+<div><p>note “weiya 注：多项式分布的合理性”
 因为条件概率之和等于 1，而各个条件概率可以看成是互斥事件的概率，满足多项式分布的条件。</p>
+</div></blockquote>
 <p><span class="math notranslate nohighlight">\(N\)</span> 个观测的对数似然为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1237,53 +1296,55 @@ $<span class="math notranslate nohighlight">\(
 \[
 \dfrac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T}=-\sum\limits_{i=1}^Nx_ix_i^Tp(x_i;\beta)(1-p(x_i;\beta))\tag{4.22}
 \]</div>
-<p>!!! note “weiya 注”
-Newton-Raphson 也就是我们熟知的牛顿迭代法
-$<span class="math notranslate nohighlight">\(
-    x_{i+1}=x_i-\dfrac{f(x_i)}{f'(x_i)}
-    \)</span>$</p>
-<p>以 <span class="math notranslate nohighlight">\(\beta^{old}\)</span> 开始，新的 Newton 更新为
-$<span class="math notranslate nohighlight">\(
+<p>以 <span class="math notranslate nohighlight">\(\beta^{old}\)</span> 开始，新的 Newton 更新为</p>
+<div class="math notranslate nohighlight">
+\[
 \beta^{new}=\beta^{old}-(\dfrac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T})^{-1}\dfrac{\partial \ell(\beta)}{\partial(\beta)}\tag{4.23}
-\)</span><span class="math notranslate nohighlight">\(
-其中微分值由 \)</span>\beta^{old}$ 处的值得到。</p>
+\]</div>
+<p>其中微分值由 <span class="math notranslate nohighlight">\(\beta^{old}\)</span> 处的值得到。</p>
 <p>把得分和 Hessian 写成矩阵形式是很方便的。记 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 为 <span class="math notranslate nohighlight">\(y_i\)</span> 的值，<span class="math notranslate nohighlight">\(\mathbf X\)</span> 是 <span class="math notranslate nohighlight">\(x_i\)</span> 的 <span class="math notranslate nohighlight">\(N\times (p+1)\)</span> 矩阵，<span class="math notranslate nohighlight">\(\mathbf p\)</span> 是拟合概率的向量且第 <span class="math notranslate nohighlight">\(i\)</span> 个元素为 <span class="math notranslate nohighlight">\(p(x_i;\beta^{old})\)</span>，<span class="math notranslate nohighlight">\(\mathbf W\)</span> 是第 <span class="math notranslate nohighlight">\(i\)</span> 个对角元为 <span class="math notranslate nohighlight">\(p(x_i;\beta^{old})(1-p(x_i;\beta^{old}))\)</span> 的 <span class="math notranslate nohighlight">\(N\times N\)</span> 的对角矩阵。则我们有</p>
-<p>!!! note “weiya 注”
-<span class="math notranslate nohighlight">\(\mathbf X=[x'_1,x'_2,\ldots,x'_N]'\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\dfrac{\partial \ell(\beta)}{\partial \beta}=\mathbf{X^T(y-p)}\tag{4.24}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\dfrac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T}=-\mathbf{X^TWX}\tag{4.25}
+\]</div>
+<p>牛顿迭代为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
-\dfrac{\partial \ell(\beta)}{\partial \beta}&amp;=\mathbf{X^T(y-p)}\tag{4.24}\\
-\dfrac{\partial^2\ell(\beta)}{\partial\beta\partial\beta^T}&amp;=-\mathbf{X^TWX}\tag{4.25}
-\end{align*}
-\end{split}\]</div>
-<p>牛顿迭代为
-$<span class="math notranslate nohighlight">\(
 \begin{array}{ll}
 \beta^{new}&amp;=\beta^{old}+\mathbf{(X^TWX)^{-1}X^T(y-p)}\\
 &amp;=\mathbf {(X^TWX)^{-1}X^TW(X\beta^{old}+W^{-1}(y-p))}\\
 &amp;=\mathbf{(X^TWX)^{-1}X^TWz}\tag{4.26}
 \end{array}
-\)</span>$</p>
-<p>在第二和第三行我们已经重新把牛顿迭代表达成最小二乘迭代，响应变量为
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>在第二和第三行我们已经重新把牛顿迭代表达成最小二乘迭代，响应变量为</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf z=\mathbf X\beta^{old}+\mathbf{W^{-1}(y-p)}\tag{4.27}
-\)</span><span class="math notranslate nohighlight">\(
-有时也被称作 **调整后的响应变量 (adjusted response)**。重复地进行求解这些方程，每一次迭代时，\)</span>\mathbf p<span class="math notranslate nohighlight">\( 改变，因此 \)</span>\mathbf W<span class="math notranslate nohighlight">\( 和 \)</span>\mathbf z<span class="math notranslate nohighlight">\( 也改变。这个算法被称作 **加权迭代最小二乘 (iteratively reweighted least squares)** 或者 IRLS，因为每次迭代求解加权最小二乘问题：
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>有时也被称作 <strong>调整后的响应变量 (adjusted response)</strong>。重复地进行求解这些方程，每一次迭代时，<span class="math notranslate nohighlight">\(\mathbf p\)</span> 改变，因此 <span class="math notranslate nohighlight">\(\mathbf W\)</span> 和 <span class="math notranslate nohighlight">\(\mathbf z\)</span> 也改变。这个算法被称作 <strong>加权迭代最小二乘 (iteratively reweighted least squares)</strong> 或者 IRLS，因为每次迭代求解加权最小二乘问题：</p>
+<div class="math notranslate nohighlight">
+\[
 \beta^{new}\leftarrow \arg\,\underset{\beta}{\min}(\mathbf z-\mathbf X\beta)^T\mathbf W(\mathbf z-\mathbf X\beta)\tag{4.28}
-\)</span>$</p>
-<p>!!! note “weiya注：IRLS”
+\]</div>
+<blockquote>
+<div><p>note “weiya注：IRLS”
 <a class="reference external" href="https://github.com/xqwen/IRLS">Github: xqwen/IRLS</a>用C++实现IRLS。</p>
+</div></blockquote>
 <p>似乎<span class="math notranslate nohighlight">\(\beta=0\)</span>是迭代过程一个很好的初始值，尽管不会保证收敛性。一般地，算法确实是收敛的，因为对数似然是 <strong>凹的 (concave)</strong>，但是可能出现过收敛的情况。如果在罕见的情形下对数似然值下降，对步长进行折半会保证收敛性。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 首先对于凸函数 (convex function)，其局部最优点即为全局最优点，所以总是 (?) 可以收敛到最优点的，除非数值不稳定，比如矩阵的条件数过大。而凹函数取负号就变成了凸函数。
 <strong>步长折半 (step size halving):</strong></p>
+</div></blockquote>
 <p>对于多类别的情况 <span class="math notranslate nohighlight">\(K\ge 3\)</span>，牛顿算法也可以表达成加权迭代最小二乘，只是对于每一个观测用一个 <span class="math notranslate nohighlight">\(K-1\)</span> 的响应向量和非对角系数矩阵。后者阻碍了算法的简化，在这种情况下直接使用展开向量 <span class="math notranslate nohighlight">\(\theta\)</span> 数值上会更加方便（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/211">练习 4.4</a>）。另一种是坐标下降方法（<a class="reference external" href="/03-Linear-Methods-for-Regression/3.8-More-on-the-Lasso-and-Related-Path-Algorithms/index.html#pathwise-coordinate-optimization">3.8.6 节</a>）也可以有效地最大化对数似然。<code class="docutils literal notranslate"><span class="pre">R</span></code>语言的 <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> 包 (Friedman et al., 2010<a class="footnote-reference brackets" href="#id12" id="id3">1</a>) 可以有效地拟合 <span class="math notranslate nohighlight">\(N\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 都非常大时的逻辑斯蒂回归。尽管是为了拟合正则化模型设计的，但是也适用于非正则化的拟合。</p>
 <p>逻辑斯蒂回归经常被用作一种数据分析和推断的工具，目标就是理解在解释输出时输入变量的角色。一般地，拟合时要寻找变量的**最简洁 (parsimonious)**的模型，很可能还有一些交叉项。下面的例子说明了涉及到的一些问题。</p>
 </div>
 <div class="section" id="id4">
-<h2>例子：南非心脏病<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>（ 2 ）例子：南非心脏病<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>这里我们展示一个用二值数据分析去说明逻辑斯蒂回归的传统统计学应用。图4.12中的数据取自CORIS调查的部分数据，这个调查在南非Western Cape的三个乡村进行(Rousseauw et al., 1983<a class="footnote-reference brackets" href="#id13" id="id5">2</a>)。调查的目标是建立在高发生率的地区中缺血性心脏病影响因子的强度模型。数据中有15到64岁的白人男性，响应变量是MI的存在或者缺失（该地区整个 MI 流行程度为5.1%）。在我们数据集中有160个案例，以及302个控制个体。数据在Hastie and Tibshirani(1987)<a class="footnote-reference brackets" href="#id14" id="id6">3</a>中有详细描述。</p>
 <p><img alt="" src="../_images/fig4.12.png" /></p>
 <blockquote>
@@ -1305,7 +1366,7 @@ $<span class="math notranslate nohighlight">\(
 <p>我们将在第 5 章再次用到这些数据，我们将会看到一些变量会有非线性影响，当进行合适的建模后不会被剔除模型。</p>
 </div>
 <div class="section" id="id7">
-<h2>二次拟合和推断<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>（ 3 ）二次拟合和推断<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>极大似然法的参数估计 <span class="math notranslate nohighlight">\(\hat\beta\)</span> 满足 <strong>自一致性 (self-consistency)</strong> 关系：它们是加权最小二乘拟合的系数，其中响应变量为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1313,11 +1374,14 @@ z_i=x_i^T\hat\beta+\dfrac{y_i-\hat p_i}{\hat p_i(1-\hat p_i)}\tag{4.29}
 \]</div>
 <p>系数为 <span class="math notranslate nohighlight">\(w_i=\hat p_i(1-\hat p_i)\)</span>，都依赖 <span class="math notranslate nohighlight">\(\hat\beta\)</span> 自身。除了提供了一个方便的算法，这与最小二乘的联系还有其它用处：</p>
 <ul class="simple">
-<li><p>加权的残差平方和是熟悉的 Pearson 卡方统计量
-$<span class="math notranslate nohighlight">\(
+<li><p>加权的残差平方和是熟悉的 Pearson 卡方统计量</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 \sum\limits_{i=1}^N\dfrac{(y_i-\hat p_i)^2}{\hat p_i(1-\hat p_i)}\tag{4.30}
-\)</span>$
-这是对偏差的二次近似。</p></li>
+\]</div>
+<p>这是对偏差的二次近似。</p>
+<ul class="simple">
 <li><p>极限概率理论表明如果模型是正确的，则 <span class="math notranslate nohighlight">\(\hat\beta\)</span> 为常数（即收缩到真实的 <span class="math notranslate nohighlight">\(\beta\)</span>）</p></li>
 <li><p>中心极限定理证明 <span class="math notranslate nohighlight">\(\hat \beta\)</span> 的分布收敛到 <span class="math notranslate nohighlight">\(N(\beta,\mathbf{(X^TWX)^{-1}})\)</span>。这个可以模仿正态理论推断直接从加权最小二乘得到。</p></li>
 <li><p>对于逻辑斯蒂回归建立模型计算量比较大，因为每个模型拟合需要迭代。受欢迎的方法是 Rao score 检验来检验是否包含某一项，以及 Wald 检验来检验是否剔除某一项。这些都不需要迭代拟合，而且都是基于当前模型的极大似然拟合。结果是两者都代表在加权最小二乘拟合中运用相同的系数加上或剔除某一项。这些计算可以高效地进行，不需要重新计算整个加权最小二乘拟合。</p></li>
@@ -1325,7 +1389,7 @@ $<span class="math notranslate nohighlight">\(
 <p>软件实现可以利用这些联系。举个例子，R 中的广义线性模型（包括作为二项式模型族中的逻辑斯蒂回归）充分运用了他们。**GLM（广义线性模型）**对象可以当作线性模型对象来处理，而且所有对于线性模型可用的工具都可以自动应用起来。</p>
 </div>
 <div class="section" id="l-1">
-<h2><span class="math notranslate nohighlight">\(L_1\)</span>正则化逻辑斯蒂回归<a class="headerlink" href="#l-1" title="Permalink to this headline">¶</a></h2>
+<h2>（ 4 ）<span class="math notranslate nohighlight">\(L_1\)</span>正则化逻辑斯蒂回归<a class="headerlink" href="#l-1" title="Permalink to this headline">¶</a></h2>
 <p>Lasso 中使用的 <span class="math notranslate nohighlight">\(L_1\)</span> 惩罚（<span class="xref myst">3.4.2节</span>）可以应用到任意线性回归模型的变量选择和收缩上面。对于逻辑斯蒂回归，我们最大化 式（ 4.20 ） 带惩罚项的版本：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1337,10 +1401,13 @@ $<span class="math notranslate nohighlight">\(
 \mathbf {x_j^T(y-p)} = \lambda\cdot \mathrm{sign}(\beta_j)\tag{4.32}
 \]</div>
 <p>这一般化了 <a class="reference external" href="/03-Linear-Methods-for-Regression/3.4-Shrinkage-Methods/index.html#mjx-eqn-3.58">3.4.4 节</a> 中的 式（ 3.58 ）；活跃变量再与残差的一般化相关性结合在一起。</p>
-<p>!!! note “weiya 注: Recall”
-$<span class="math notranslate nohighlight">\(
-    \mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \mathrm{sign}(\beta_j),\forall j\in {\mathcal B}\tag{3.58}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注: Recall”</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf x_j^T(\mathbf y-\mathbf X\beta)=\lambda\cdot \mathrm{sign}(\beta_j),\forall j\in {\mathcal B}\tag{3.58}    
+&gt;\]</div>
+</div></blockquote>
 <p>路径算法（比如 lasso 的 LAR 算法）变得更加困难，因为系数曲线是逐段光滑而不是线性的。然而，可以通过二次逼近来实现。</p>
 <p>图 4.13 显示了 <a class="reference external" href="4.4-Logistic-Regression/index.html#_2">4.4.2 节</a>南非心脏病数据的 <span class="math notranslate nohighlight">\(L_1\)</span> 正则化路径。这是通过 R 语言<code class="docutils literal notranslate"><span class="pre">glmpath</span></code>包 (Park and Hastie, 2007<a class="footnote-reference brackets" href="#id15" id="id9">4</a>) 实现的，运用了凸优化的 predictor-corrector 方法确定了 <span class="math notranslate nohighlight">\(\lambda\)</span> 在哪个非零活跃集值发生改变（图中的垂直线）。这里直线看似线性的，但在其它的例子中曲率将会更加明显。</p>
 <p><img alt="" src="../_images/fig4.13.png" /></p>
@@ -1350,17 +1417,24 @@ $<span class="math notranslate nohighlight">\(
 <p>坐标下降方法（<span class="xref myst">3.8.6 节</span>）对于计算 <span class="math notranslate nohighlight">\(\lambda\)</span> 网格上的值的系数曲线是很有效的。<code class="docutils literal notranslate"><span class="pre">R</span></code> 语言 <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> 包 (Friedman et al., 2010<a class="footnote-reference brackets" href="#id12" id="id10">1</a>) 对于非常大的逻辑斯蒂回归问题拟合系数路径是非常有效的（<span class="math notranslate nohighlight">\(N\)</span> 或 <span class="math notranslate nohighlight">\(p\)</span> 很大时）。他们的算法可以利用预测变量矩阵 <span class="math notranslate nohighlight">\(X\)</span> 的稀疏性，以至于对于大规模问题也适用。<span class="xref myst">18.4 节</span>有更详细的解释，而且将会讨论 <span class="math notranslate nohighlight">\(L_1\)</span> 正则多项分布模型。</p>
 </div>
 <div class="section" id="lda">
-<h2>逻辑斯蒂回归或者 LDA？<a class="headerlink" href="#lda" title="Permalink to this headline">¶</a></h2>
-<p>!!! info
+<h2>（ 5 ）逻辑斯蒂回归或者 LDA？<a class="headerlink" href="#lda" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>info
 基于本小节内容，回答了<a class="reference external" href="https://www.zhihu.com/question/61101057/answer/324078106">Logistic回归模型和判别分析之间的关系？ - 知乎</a>。</p>
+</div></blockquote>
 <p>在 <span class="xref myst">4.3 节</span>我们发现类别 <span class="math notranslate nohighlight">\(k\)</span> 和 <span class="math notranslate nohighlight">\(K\)</span> 类关于 <span class="math notranslate nohighlight">\(x\)</span> 线性函数的后验概率 odds 的对数 式（ 4.9 ）：</p>
-<p>!!! note “weiya 注: Recall”
-$<span class="math notranslate nohighlight">\(
-    \begin{align*}
+<blockquote>
+<div><p>note “weiya 注: Recall”</p>
+<p>$$</p>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
     &amp;\log\frac{\mathrm{Pr}(G=k\mid X=x)}{\mathrm{Pr}(G=\ell\mid X=x)}\\=&amp;\log\frac{f_k(x)}{f_\ell(x)}+\log\frac{\pi_k}{\pi_\ell}\\
     =&amp;\log\frac{\pi_k}{\pi_\ell}-\frac{1}{2}(\mu_k+\mu_\ell)^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)+x^T\boldsymbol\Sigma^{-1}(\mu_k-\mu_\ell)
-    \end{align*}\tag{4.9}
-    \)</span>$</p>
+    \end{align*}\]</div>
+<blockquote>
+<div><p>$$</p>
+</div></blockquote>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
@@ -1444,8 +1518,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="4.3-Linear-Discriminant-Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1462,19 +1536,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

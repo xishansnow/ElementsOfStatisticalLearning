@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,17 +1142,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   加利福利亚住宅
+   （）加利福利亚住宅
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   新西兰鱼
+   （）新西兰鱼
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id11">
-   人口数据
+   （）人口数据
   </a>
  </li>
 </ul>
@@ -1155,7 +1163,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.14 例子</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）加利福利亚住宅
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   （）新西兰鱼
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   （）人口数据
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1163,13 +1204,17 @@
 <style>p{text-indent:2em;2}</style>
 <p>这一节我们在几个大型数据集上采用合适的损失函数应用 Gradient Boosting 方法。</p>
 <div class="section" id="id2">
-<h2>加利福利亚住宅<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）加利福利亚住宅<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>数据集 (Pace and Barry, 1997)<a class="footnote-reference brackets" href="#id12" id="id3">1</a> 可以在 CMU StatLib 仓库中找到。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 原书作者脚注给出的链接是 <a class="reference external" href="http://lib.stat.cmu.edu">http://lib.stat.cmu.edu</a>，但无法访问，应该是 <a class="reference external" href="http://lib.stat.cmu.edu/datasets/">http://lib.stat.cmu.edu/datasets/ </a>。</p>
+</div></blockquote>
 <p>数据中包含加利福利亚 20460 个小区（1990 年人口普查块群）的 <strong>聚合数据 (aggregated data)</strong>。响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 是每个小区的房子价值的中位数（单位为 $100,000）。预测变量是 <strong>人口统计数据 (demographics)</strong>，比如收入的中位数 <code class="docutils literal notranslate"><span class="pre">MedInc</span></code>，用房子个数 <code class="docutils literal notranslate"><span class="pre">House</span></code> 表征的房屋密度，以及每个房子平均占用面积 <code class="docutils literal notranslate"><span class="pre">AveOccup</span></code>。另外还有的预测变量是每个校区的位置（经度 <code class="docutils literal notranslate"><span class="pre">longitude</span></code> 和纬度 <code class="docutils literal notranslate"><span class="pre">latitude</span></code>），以及一些反映小区中房子特点的量：房间个数的平均值 <code class="docutils literal notranslate"><span class="pre">AveRooms</span></code> 以及卧室个数的平均值 <code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>。因此总共有 8 个预测变量，都是数值型的。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 这里书中列出的其实只有 7 个，查阅原数据集，发现漏掉的一个是 <code class="docutils literal notranslate"><span class="pre">housing</span> <span class="pre">median</span> <span class="pre">age</span></code>。当然，其实原数据集本来是有 9 个预测变量，另外一个是 <code class="docutils literal notranslate"><span class="pre">population</span></code>，而且给出了 <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">rooms</span></code>, <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">bedrooms</span></code>，但没有 <code class="docutils literal notranslate"><span class="pre">AveRooms</span></code> 和 <code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>，所以这里作者大概是直接取平均数省掉了一个变量 <code class="docutils literal notranslate"><span class="pre">population</span></code>。</p>
+</div></blockquote>
 <p>我们采用 MART 过程来拟合 Gradient Boosting 模型，其中有 <span class="math notranslate nohighlight">\(J=6\)</span> 个终止结点，学习速率 (10.41) 取 <span class="math notranslate nohighlight">\(\nu=0.1\)</span>，并且采用 Huber 损失来预测数值型响应变量。我们随机将数据集分成训练集 (80%) 和测试集 (20%)。</p>
 <p><img alt="" src="../_images/fig10.13.png" /></p>
 <p>图 10.13 展示了作为在训练数据和测试数据上迭代次数 <span class="math notranslate nohighlight">\(M\)</span> 的函数的平均绝对误差</p>
@@ -1192,10 +1237,12 @@
 <p>图 10.17 用带阴影的等高图展示了拟合模型在经度和纬度上的联合偏相依性。很显然在加利福利亚，房屋价值中位数对小区的位置有很强的相依性。注意到图 10.17 不是房屋价值在忽略其他预测变量影响后对位置的影响 (10.49)。和所有偏相依性图一样，它表示了在考虑完其他小区和房屋特征后位置的影响 (10.47)。这可以看成需要对位置支付额外的费用。这个额外的费用在 <strong>太平洋沿岸 (Pacific coast)</strong> 会相对更大，特别是在 <strong>海湾地区 (Bay Area)</strong> 以及 <strong>洛杉矶 - 圣地亚哥 (Los Angeles–San Diego)</strong> 。在加利福利亚的北方，中央山谷，以及东南沙漠地区，位置费用相当地少。</p>
 </div>
 <div class="section" id="id5">
-<h2>新西兰鱼<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>（）新西兰鱼<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>植物和动物生态学家采用关于环境变量的回归模型来预测物种是否存在，以及 <strong>多度 (abundance)</strong> 和 <strong>丰度 (richness)</strong>。</p>
-<p>!!! note “weiya 注：abundance 和 richness”
+<blockquote>
+<div><p>note “weiya 注：abundance 和 richness”
 参考 <a class="reference external" href="http://blog.sciencenet.cn/home.php?mod=space&amp;uid=502444&amp;do=blog&amp;id=675964">赵斌：森林土壤碳封存：枯枝落叶同根与真菌的较量</a>，文章将 abundance 翻译成“多度”，并且在评论中指出</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; abundance 是某一物种在群落内个体数目多少的，理应翻译成多度，而不是丰度。species richness 是指群落中的物种数目，物种数目越多，越丰富多彩，用丰度来翻译很到位，如果翻译成富集，就不知道什么含义了。我相信英语单词采用这两个词本身是没有用错的，只是以前我们在理解这两个词的时候没有足够注意而已。
 </pre></div>
 </div>
@@ -1203,21 +1250,27 @@
 <p><img alt="" src="../_images/fig10.18.png" /></p>
 <p>图 10.18 展示了 17000 个拖网渔船（深水网捕鱼，最大深度为 2km）的位置，并且其中红色点表示其中 2353 个拖网渔船发现了 Black Oreo，通常记录了 100 个物种中的其中一个。对于每个拖网渔船，记录的捕捞量的单位为千克 (kg)。除了捕捉的物种，还测量了每个拖网渔船一系列的环境因素。这些因素包括平均捕捞深度 <code class="docutils literal notranslate"><span class="pre">AvgDepth</span></code>，水温和 <strong>盐度 (salinity)</strong>。因为后两者与深度强相关，Leathwick et al. (2006)<a class="footnote-reference brackets" href="#id14" id="id8">3</a> 导出根据深度调整（通过单独的非参回归）这两个测量值后得到的残差 <code class="docutils literal notranslate"><span class="pre">TempResid</span></code> 和 <code class="docutils literal notranslate"><span class="pre">SalResid</span></code>。<code class="docutils literal notranslate"><span class="pre">SSTGrad</span></code> 是海表面温度的梯度，而 <code class="docutils literal notranslate"><span class="pre">Chla</span></code> 是通过卫星图象测量的生态产量的一个广泛指标。<code class="docutils literal notranslate"><span class="pre">SusPartMatter</span></code> 提供了悬浮颗粒的度量，特别是对于沿海水域，这个量也是基于卫星测量的。</p>
 <p>这个分析的目标是估计在一个拖网渔船中发现 Black Oreo 的概率，以及预期的捕捞量，通过考虑拖网渔船的速度以及距离进行标准化，以及渔网的网格大小。作者们采用 logistic 回归来估计这些概率。对于捕捞量，很自然地假设服从 Poisson 分布，并且对平均量的对数进行建模，但是这通常不是很合适，因为有很多 0。尽管有许多特殊的方法，比如 zero-inflated Poisson (Lambert, 1992<a class="footnote-reference brackets" href="#id15" id="id9">4</a>)，他们选择更简单的方式。</p>
-<p>!!! note “weiya 注：Zero-inflated Models”
+<blockquote>
+<div><p>note “weiya 注：Zero-inflated Models”
 常见的有两种。</p>
+</div></blockquote>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Zero-inflated Poisson (ZIP): 
-
-$$
-y\sim \pi I(y=0) + (1-\pi)\mathrm{Poisson}(y; \lambda)
-$$
-其中 $\pi$ 是产生额外 0 的概率。
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    y\sim \pi I(y=0) + (1-\pi)\mathrm{Poisson}(y; \lambda)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中 $\pi$ 是产生额外 0 的概率。
 
 Zero-inflated negative binomial (ZINB):
-
-$$
-y\sim \pi I(y=0) + (1-\pi)\mathrm{NB}(y; r, p)
-$$
-其中 $r, p$ 是标准负二项分布的参数。
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    y\sim \pi I(y=0) + (1-\pi)\mathrm{NB}(y; r, p)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>其中 $r, p$ 是标准负二项分布的参数。
 </pre></div>
 </div>
 <p>如果 <span class="math notranslate nohighlight">\(Y\)</span> 是（非负）捕捞量，</p>
@@ -1237,7 +1290,7 @@ $$
 <p>因为 GBM 模型对交叉影响建模、以及自动选择变量的能力，以及对离群值和确实数据的鲁棒性，所以 GBM 模型在这个数据丰富且充满热情的社区中迅速普及。</p>
 </div>
 <div class="section" id="id11">
-<h2>人口数据<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>（）人口数据<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>这一节我们用 MART 举例说明 Gradient Boosting 在多类别分类问题中的应用。数据来自由  San Francisco Bay Area 的超市顾客填写的 9243 份问卷 (Impact Resources, Inc., Columbus, OH)。这些问题涉及 14 个人口统计量。在这个例子中，目标是将其他 13 个变量看成预测变量来预测职业，并且因此找出区分不同职业类的人口统计量。我们随机将数据分成训练集 (80%) 和测试集 (20%)，并且采用 <span class="math notranslate nohighlight">\(J=6\)</span> 个结点的树，且学习速率为 <span class="math notranslate nohighlight">\(\nu = 0.1\)</span>。</p>
 <p><img alt="" src="../_images/fig10.22.png" /></p>
 <p>图 10.22 展示了 <span class="math notranslate nohighlight">\(K=9\)</span> 个职业类以及它们对应的误差率。总体误差率为 42.5%，这可以与 69% 的 <strong>零分布误差率 (null rate)</strong> （预测最多的类 <code class="docutils literal notranslate"><span class="pre">Prof/Man</span></code> (Professional/Managerial)）。预测效果最好的四个类别似乎是  <code class="docutils literal notranslate"><span class="pre">Retired</span></code>，<code class="docutils literal notranslate"><span class="pre">Student</span></code>，<code class="docutils literal notranslate"><span class="pre">Prof/Man</span></code>，和 <code class="docutils literal notranslate"><span class="pre">Homemaker</span></code>。</p>
@@ -1287,8 +1340,8 @@ $$
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.13-Interpretation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1305,19 +1358,17 @@ $$
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

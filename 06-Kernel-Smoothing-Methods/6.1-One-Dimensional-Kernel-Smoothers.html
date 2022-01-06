@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   局部线性回归
+   （）局部线性回归
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）局部多项式回归
   </a>
  </li>
 </ul>
@@ -1145,33 +1158,64 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>6.1 一维核光滑器</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （）局部线性回归
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）局部多项式回归
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.1 一维核光滑器<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
-<p>第二章中，我们将 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均
-$<span class="math notranslate nohighlight">\(
+<p>第二章中，我们将 <span class="math notranslate nohighlight">\(k\)</span>-最近邻平均</p>
+<div class="math notranslate nohighlight">
+\[
 \hat f(x)=\mathrm{Ave}(y_i\mid x_i\in N_k(x))\tag{6.1}
-\)</span><span class="math notranslate nohighlight">\(
-作为回归函数 \)</span>\mathbb{E}(Y\mid X=x)<span class="math notranslate nohighlight">\( 的估计。这里 \)</span>N_k(x)<span class="math notranslate nohighlight">\( 为在平方距离下，离 \)</span>x<span class="math notranslate nohighlight">\( 最近的 \)</span>k<span class="math notranslate nohighlight">\( 个点的集合，并且 \)</span>\mathrm{Ave}<span class="math notranslate nohighlight">\( 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— \)</span>x_0<span class="math notranslate nohighlight">\( 处的拟合值为离 \)</span>x_0<span class="math notranslate nohighlight">\( 最近的 30 个点的平均。在不同的 \)</span>x_0<span class="math notranslate nohighlight">\( 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 \)</span>\hat f(x)<span class="math notranslate nohighlight">\( 在 \)</span>x<span class="math notranslate nohighlight">\( 处不连续。当我们将 \)</span>x_0<span class="math notranslate nohighlight">\( 从左移到右，\)</span>k<span class="math notranslate nohighlight">\( 最近邻保持一致，直到 \)</span>x_0<span class="math notranslate nohighlight">\( 右侧的点 \)</span>x_i<span class="math notranslate nohighlight">\( 变得比 \)</span>x_0<span class="math notranslate nohighlight">\( 左侧的邻域的最远点 \)</span>x_i’<span class="math notranslate nohighlight">\( 更近，这时 \)</span>x_i<span class="math notranslate nohighlight">\( 换成 \)</span>x_i’<span class="math notranslate nohighlight">\(。式（ 6.1 ） 的平均以离散的方式变换，得到离散的 \)</span>\hat f(x)$。</p>
+\]</div>
+<p>作为回归函数 <span class="math notranslate nohighlight">\(\mathbb{E}(Y\mid X=x)\)</span> 的估计。这里 <span class="math notranslate nohighlight">\(N_k(x)\)</span> 为在平方距离下，离 <span class="math notranslate nohighlight">\(x\)</span> 最近的 <span class="math notranslate nohighlight">\(k\)</span> 个点的集合，并且 <span class="math notranslate nohighlight">\(\mathrm{Ave}\)</span> 记为平均（均值）。这个想法是松弛条件期望的定义，正如图 6.1 的左图所示一样，并且计算目标点邻域的平均。这种情形下我们采用 30-最近邻—— <span class="math notranslate nohighlight">\(x_0\)</span> 处的拟合值为离 <span class="math notranslate nohighlight">\(x_0\)</span> 最近的 30 个点的平均。在不同的 <span class="math notranslate nohighlight">\(x_0\)</span> 处应用这个定义则得到绿色曲线。绿色曲线是颠簸不平的，因为 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x\)</span> 处不连续。当我们将 <span class="math notranslate nohighlight">\(x_0\)</span> 从左移到右，<span class="math notranslate nohighlight">\(k\)</span> 最近邻保持一致，直到 <span class="math notranslate nohighlight">\(x_0\)</span> 右侧的点 <span class="math notranslate nohighlight">\(x_i\)</span> 变得比 <span class="math notranslate nohighlight">\(x_0\)</span> 左侧的邻域的最远点 <span class="math notranslate nohighlight">\(x_i'\)</span> 更近，这时 <span class="math notranslate nohighlight">\(x_i\)</span> 换成 <span class="math notranslate nohighlight">\(x_i'\)</span>。式（ 6.1 ） 的平均以离散的方式变换，得到离散的 <span class="math notranslate nohighlight">\(\hat f(x)\)</span>。</p>
 <p><img alt="" src="../_images/fig6.1.png" /></p>
 <blockquote>
 <div><p>图6.1. 每张图中从蓝色曲线加上高斯误差中随机产生100个数据对 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>：<span class="math notranslate nohighlight">\(Y=\sin(4X)+\varepsilon,X\sim U[0,1],\varepsilon\sim N(0,1/3)\)</span>。左图的绿色曲线是 30-最近邻滑动均值光滑器的结果。红色点是拟合的常数值 <span class="math notranslate nohighlight">\(\hat f(x_0)\)</span>，红色圆圈表明对 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合有贡献的观测。实心黄色区域为赋予给观测的权重。右图中，绿色曲线是核权重平均，采用（半）窗宽度 <span class="math notranslate nohighlight">\(\lambda=0.2\)</span> 的 Epanechnikov 核。</p>
 </div></blockquote>
-<p>不连续是不好看并且不必要的。与其对邻域中的点赋予相等的权重，我们可以分配权重，使其随着与目标点的距离平滑降低。右图显示了这样的一个例子，使用被称作 Nadaraya–Watson 的核权重平均
-$<span class="math notranslate nohighlight">\(
+<p>不连续是不好看并且不必要的。与其对邻域中的点赋予相等的权重，我们可以分配权重，使其随着与目标点的距离平滑降低。右图显示了这样的一个例子，使用被称作 Nadaraya–Watson 的核权重平均</p>
+<div class="math notranslate nohighlight">
+\[
 \hat f(x_0)=\frac{\sum_{i=1}^NK_{\lambda}(x_0,x_i)y_i}{\sum_{i=1}^NK_{\lambda}(x_0,x_i)}\tag{6.2}
-\)</span><span class="math notranslate nohighlight">\(
-其中 Epanechnikov 平方核为
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>其中 Epanechnikov 平方核为</p>
+<div class="math notranslate nohighlight">
+\[
 K_\lambda(x_0,x) = D\left(\frac{\vert x-x_0\vert}{\lambda}\right)\tag{6.3}
-\)</span><span class="math notranslate nohighlight">\(
-其中
-\)</span><span class="math notranslate nohighlight">\(
-D(t)=
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+d(t)=
 \left\{
   \begin{array}{ll}
   \frac{3}{4}(1-t^2)&amp;\text{if }\vert t\vert\le 1\\
@@ -1179,52 +1223,60 @@ D(t)=
   \end{array}
 \right.
 \tag{6.4}
-\)</span><span class="math notranslate nohighlight">\(
-现在拟合函数为连续的，并且图 6.1 中的右图非常光滑。当我们将目标点从左移到右，进入邻域中的点初始化权重为 \)</span>0$，然后它们的贡献缓慢地增长（见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/147">练习 6.1</a>）。</p>
-<p>在右图中我们核拟合采用的度量窗口大小为 <span class="math notranslate nohighlight">\(\lambda=0.2\)</span>，当我们移动目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 时窗口大小不变，而 30 最近邻光滑窗口大小适应 <span class="math notranslate nohighlight">\(x_i\)</span> 的局部密度。然而，核拟合也可以使用这种自适应的邻域，但是我们需要用更一般的记号。令 <span class="math notranslate nohighlight">\(h_\lambda(x_0)\)</span> 为宽度函数（由 <span class="math notranslate nohighlight">\(\lambda\)</span> 编号），它确定着 <span class="math notranslate nohighlight">\(x_0\)</span> 处的邻域的宽度。于是更一般地我们有
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>现在拟合函数为连续的，并且图 6.1 中的右图非常光滑。当我们将目标点从左移到右，进入邻域中的点初始化权重为 <span class="math notranslate nohighlight">\(0\)</span>，然后它们的贡献缓慢地增长（见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/147">练习 6.1</a>）。</p>
+<p>在右图中我们核拟合采用的度量窗口大小为 <span class="math notranslate nohighlight">\(\lambda=0.2\)</span>，当我们移动目标点 <span class="math notranslate nohighlight">\(x_0\)</span> 时窗口大小不变，而 30 最近邻光滑窗口大小适应 <span class="math notranslate nohighlight">\(x_i\)</span> 的局部密度。然而，核拟合也可以使用这种自适应的邻域，但是我们需要用更一般的记号。令 <span class="math notranslate nohighlight">\(h_\lambda(x_0)\)</span> 为宽度函数（由 <span class="math notranslate nohighlight">\(\lambda\)</span> 编号），它确定着 <span class="math notranslate nohighlight">\(x_0\)</span> 处的邻域的宽度。于是更一般地我们有</p>
+<div class="math notranslate nohighlight">
+\[
 K_\lambda(x_0,x)=D\left(\frac{\vert x-x_0\vert}{h_\lambda(x_0)}\right)\tag{6.5}
-\)</span><span class="math notranslate nohighlight">\(
-式（ 6.3 ） 中，\)</span>h_\lambda(x_0)=\lambda<span class="math notranslate nohighlight">\( 为常值。对于 \)</span>k<span class="math notranslate nohighlight">\( 最近邻域，用邻域大小 \)</span>k<span class="math notranslate nohighlight">\( 代替 \)</span>\lambda<span class="math notranslate nohighlight">\(，并且我们有 \)</span>h_k(x_0)=\vert x_0-x_{[k]}\vert<span class="math notranslate nohighlight">\(，其中 \)</span>x_{[k]}<span class="math notranslate nohighlight">\( 是离 \)</span>x_0<span class="math notranslate nohighlight">\( 的第 \)</span>k$ 个最近的点。</p>
+\]</div>
+<p>式（ 6.3 ） 中，<span class="math notranslate nohighlight">\(h_\lambda(x_0)=\lambda\)</span> 为常值。对于 <span class="math notranslate nohighlight">\(k\)</span> 最近邻域，用邻域大小 <span class="math notranslate nohighlight">\(k\)</span> 代替 <span class="math notranslate nohighlight">\(\lambda\)</span>，并且我们有 <span class="math notranslate nohighlight">\(h_k(x_0)=\vert x_0-x_{[k]}\vert\)</span>，其中 <span class="math notranslate nohighlight">\(x_{[k]}\)</span> 是离 <span class="math notranslate nohighlight">\(x_0\)</span> 的第 <span class="math notranslate nohighlight">\(k\)</span> 个最近的点。</p>
 <p>在实际中有许多细节需要注意：</p>
 <ul class="simple">
 <li><p>需要确定光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，它决定了局部邻域的宽度。大 <span class="math notranslate nohighlight">\(\lambda\)</span> 表明低方差（在更多的观测上平均）但高偏差（实质上假设在窗口中真实函数为常值的）。</p></li>
 <li><p>度量窗口宽度（常值 <span class="math notranslate nohighlight">\(h_\lambda(x)\)</span>）趋向于保持估计的偏差为常值，但是方差与局部密度成反比。最近邻窗口宽度表现出相反地行为；方差为常值并且绝对偏差随局部密度反比例变化。</p></li>
 <li><p>当在 <span class="math notranslate nohighlight">\(x_i\)</span> 处出现 <strong>结 (tie)</strong>，最近邻出现了问题。大部分的光滑技巧，可以简单地通过在打结的 <span class="math notranslate nohighlight">\(X\)</span> 值处对 <span class="math notranslate nohighlight">\(y_i\)</span> 平均来减少数据集，并且对 <span class="math notranslate nohighlight">\(x_i\)</span> 处新的唯一观测赋予额外的权重 <span class="math notranslate nohighlight">\(w_i\)</span>（这个乘以核权重）。</p></li>
 </ul>
-<p>!!! note “weiya 注：tied data”
+<blockquote>
+<div><p>note “weiya 注：tied data”
 简单理解为重复数据，参考 <a class="reference external" href="https://stats.stackexchange.com/questions/7941/what-is-tied-data-in-the-context-of-a-rank-correlation-coefficient">ranking - What is tied data in the context of a rank correlation coefficient? - Cross Validated</a>。</p>
+</div></blockquote>
 <ul class="simple">
 <li><p>有个更一般的问题需要处理：观测的权重 <span class="math notranslate nohighlight">\(w_i\)</span>。实际操作中我们在计算加权平均时简单地将它们乘上核权重。在最近邻中，保持邻域的总权重 <span class="math notranslate nohighlight">\(k\)</span>（与 <span class="math notranslate nohighlight">\(\sum w_i\)</span> 相对）是自然的。在 <strong>超出 (overflow)</strong> 的情形中（邻域中最后一个需要的观测的权重 <span class="math notranslate nohighlight">\(w_j\)</span> 会导致权重中和超出 <span class="math notranslate nohighlight">\(k\)</span>）,于是可以采用其中的一部分（也就相当于去掉超出的量）。</p></li>
 <li><p>产生边界问题。度量邻域趋向于在边界处包含更少的点，而最近邻趋向于变得更宽。</p></li>
-<li><p>Epanechnikov 核有紧的支撑集（当与最近邻窗口宽度同时使用会需要）。另外一个受欢迎的紧核 (compact kernel) 基于三次立方函数
-$<span class="math notranslate nohighlight">\(
-D(t)=
-\left\{
-  \begin{array}{ll}
-  (1-\vert t\vert^3)^3&amp;\text{if }\vert t\vert\le 1\\
-  0&amp;\text{otherwise}
-  \end{array}
-\right.
-\tag{6.6}
-\)</span><span class="math notranslate nohighlight">\(
-这在上面是平的（与最近邻盒子类似）并且在支撑集的边界是可导的。高斯密度函数 \)</span>D(t)=\phi(t)$ 是受欢迎的非紧核，其中标准误差扮演了窗口大小的角色。图 6.2 比较了这三个。</p></li>
+<li><p>Epanechnikov 核有紧的支撑集（当与最近邻窗口宽度同时使用会需要）。另外一个受欢迎的紧核 (compact kernel) 基于三次立方函数</p></li>
 </ul>
-<p>!!! note “weiya 注：”
+<div class="math notranslate nohighlight">
+\[\begin{split}  D(t)=
+  \left\{
+    \begin{array}{ll}
+    (1-\vert t\vert^3)^3&amp;\text{if }\vert t\vert\le 1\\
+    0&amp;\text{otherwise}
+    \end{array}
+  \right.
+  \tag{6.6}
+  
+\end{split}\]</div>
+<p>这在上面是平的（与最近邻盒子类似）并且在支撑集的边界是可导的。高斯密度函数 <span class="math notranslate nohighlight">\(D(t)=\phi(t)\)</span> 是受欢迎的非紧核，其中标准误差扮演了窗口大小的角色。图 6.2 比较了这三个。</p>
+<blockquote>
+<div><p>note “weiya 注：”
 <strong>紧核 (compact kernel)</strong> 应该是指支撑集为紧集的核。紧集或者紧致性的直观解释可以参见 <a class="reference external" href="https://www.zhihu.com/question/31734712/answer/72390708">如何直观地解释「紧致性」？ - 包遵信的回答 - 知乎</a>.</p>
+</div></blockquote>
 <p><img alt="" src="../_images/fig6.2.png" /></p>
 <blockquote>
 <div><p>图 6.2 局部光滑的三个流行的核的比较。每个都已经经过校准使得积分为 <span class="math notranslate nohighlight">\(1\)</span>。三次立方核是紧的并且在支撑集的边界有二阶连续微分，而 Epanechnikov 没有。高斯核是连续可微的，但是有无限的支撑集。</p>
 </div></blockquote>
 <div class="section" id="id2">
-<h2>局部线性回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（）局部线性回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>我们已经从原始的滑动平均进步到通过使用核权重实现的光滑变化局部加权平均。然而，光滑核拟合仍然有问题，正如图 6.3（左）显示的那样。局部加权平均会在定义域边界处有严重的偏差，因为这个区域内核的不对称性。通过拟合直线而不是局部的常值，我们可以将偏差降至一阶；见图 6.3（右）。实际上，如果 <span class="math notranslate nohighlight">\(X\)</span> 值不是相等的间隔（基于同样的原因，但是通常没有那么严重），偏差也可以表现在定义域的中间。再一次局部加权线性回归会纠正为一阶误差。</p>
 <p><img alt="" src="../_images/fig6.3.png" /></p>
 <blockquote>
 <div><p>图 6.3. 局部加权平均在定义域边界处或附近有着偏差问题。真实的函数在这里近似线性，但是邻域中大部分观测比目标点有更高的均值，所以尽管进行了加权，但是它们的均值将会向上偏。通过拟合局部的加权线性回归（右），这个偏差会降到一阶。</p>
 </div></blockquote>
-<p>!!! note “weiya 注：不对称性”
+<blockquote>
+<div><p>note “weiya 注：不对称性”
 注意图中黄色阴影区域只有图 6.1 中右图的一半，对应的高度表示赋予给观测的权重。</p>
+</div></blockquote>
 <p>局部加权回归解决了在每个目标点处独立的加权最小二乘问题：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1233,53 +1285,78 @@ D(t)=
 <p>于是估计为 <span class="math notranslate nohighlight">\(\hat f(x_0)=\hat\alpha(x_0)+\hat\beta(x_0)x_0\)</span>。注意到尽管我们对区域内的数据拟合整个线性模型，但是我们只用它来确定单点 <span class="math notranslate nohighlight">\(x_0\)</span> 处的函数值。</p>
 <p>定义向量值函数为 <span class="math notranslate nohighlight">\(b(x)^T=(1,x)\)</span>。令 <span class="math notranslate nohighlight">\(\mathbf B\)</span> 为 <span class="math notranslate nohighlight">\(N\times 2\)</span> 的回归矩阵，第 <span class="math notranslate nohighlight">\(i\)</span> 行为 <span class="math notranslate nohighlight">\(b(x_i)^T\)</span>，并且 <span class="math notranslate nohighlight">\(\mathbf W(x_0)\)</span> 为 <span class="math notranslate nohighlight">\(N\times N\)</span> 的对角矩阵，其中第 <span class="math notranslate nohighlight">\(i\)</span> 个对角元为 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x_i)\)</span>。于是</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-  \begin{align*}
+\[\begin{split}  \begin{align*}
   \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\\
   &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
   \end{align*}
 \end{split}\]</div>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 <strong>广义最小二乘估计 (GLSE)</strong>
-线性模型为
-$<span class="math notranslate nohighlight">\(
-    \mathbf{Y=X}\beta+e,\; \mathbb{E}(e)=0,\; \mathrm{Cov}(e)=\sigma^2\mathbf\Sigma
-    \)</span><span class="math notranslate nohighlight">\(
-    \)</span>\beta<span class="math notranslate nohighlight">\( 估计为
-    \)</span><span class="math notranslate nohighlight">\(
-    \mathbf{\beta^*=(X'\Sigma^{-1}X)^{-1}X'\Sigma^{-1}Y}
-    \)</span><span class="math notranslate nohighlight">\(
-    当
-    \)</span><span class="math notranslate nohighlight">\(
-    \mathrm{Cov}(e)=\mathrm{diag}(\sigma_1^2,\cdots,\sigma^2_n)
-    \)</span>$
-有<strong>加权最小二乘估计 (WLSE)</strong></p>
+线性模型为</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \mathbf{Y=X}\beta+e,\; \mathbb{E}(e)=0,\; \mathrm{Cov}(e)=\sigma^2\mathbf\Sigma
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$\beta$ 估计为
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \mathbf{\beta^*=(X'\Sigma^{-1}X)^{-1}X'\Sigma^{-1}Y}
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>当
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[    \mathrm{Cov}(e)=\mathrm{diag}(\sigma_1^2,\cdots,\sigma^2_n)
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>有**加权最小二乘估计 (WLSE)**
+</pre></div>
+</div>
 <p>等式 式（ 6.8 ） 给出了局部线性回归估计的显式表达，式 式（ 6.9 ） 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
-<p>!!! info “weiya 注：automatic kernel carpentry”
+<blockquote>
+<div><p>info “weiya 注：automatic kernel carpentry”
 更多细节可以参考 <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.ss/1177011002">T. Hastie and C. Loader (1993). Local Regression: Automatic Kernel Carpentry</a></p>
-<p>考虑下面 <span class="math notranslate nohighlight">\(\mathbb{E} \hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+</div></blockquote>
+<p>考虑下面 <span class="math notranslate nohighlight">\(\mathbb{E} \hat f(x_0)\)</span> 的展开，利用局部回归的线性和真实函数 <span class="math notranslate nohighlight">\(f\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处的展开，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \mathbb{E} \hat f(x_0)&amp;=\sum\limits_{i=1}^Nl_i(x_0)f(x_i)\\
 &amp;=f(x_0)\sum\limits_{i=1}^Nl_i(x_0)+f'(x_0)\sum\limits_{i=1}^N(x_i-x_0)l_i(x_0)\\
 &amp;+\frac{f''(x_0)}{2}\sum\limits_{i=1}^N(x_i-x_0)^2l_i(x_0)+R\tag{6.10}
-\end{align*}\]</div>
+\end{align*}
+\end{split}\]</div>
+<p>其中余项 <span class="math notranslate nohighlight">\(R\)</span> 涉及 <span class="math notranslate nohighlight">\(f\)</span> 的三阶微分和更高阶的微分，并且在合适的光滑性假设下一般是很小的。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">练习 6.2</a>）对于局部线性回归，<span class="math notranslate nohighlight">\(\sum_{i=1}^Nl_i(x_0)=1\)</span> 并且 <span class="math notranslate nohighlight">\(\sum_{i=1}^N(x_i-x_0)l_i(x_0)=0\)</span>。因此中间项为 <span class="math notranslate nohighlight">\(f(x_0)\)</span>，并且因为偏差为 <span class="math notranslate nohighlight">\(\mathbb{E} \hat f(x_0)-f(x_0)\)</span>，我们看到它仅仅取决于 <span class="math notranslate nohighlight">\(f\)</span> 的平方项或更高阶的项。</p>
+<blockquote>
+<div><p>info “weiya 注：”
+已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">Issue 148: Ex. 6.2</a>。</p>
+</div></blockquote>
+<p><img alt="" src="../_images/fig6.4.png" /></p>
+<blockquote>
+<div><p>图 6.4. 绿色点显示了局部回归的等价核。这是 <span class="math notranslate nohighlight">\(\hat f(x_0)=\sum_{i=1}^Nl_i(x_0)y_i\)</span> 中的系数，是关于对应 <span class="math notranslate nohighlight">\(x_i\)</span> 的图像。为了展示的目的，这些已经进行了缩放，因为实际上它们相加等于 1。因为黄色阴影区域是 Nadaraya–Watson 局部平均的（缩放的）等价核，所以我们看到局部回归是怎样自动修改权重核来纠正由于光滑窗口的不对称窗口的偏差。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>（）局部多项式回归<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>为什么止步于局部线性拟合处？其实我们可以拟合任意阶 <span class="math notranslate nohighlight">\(d\)</span> 的局部多项式拟合，</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-其中余项 $R$ 涉及 $f$ 的三阶微分和更高阶的微分，并且在合适的光滑性假设下一般是很小的。可以证明（[练习 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)）对于局部线性回归，$\sum_{i=1}^Nl_i(x_0)=1$ 并且 $\sum_{i=1}^N(x_i-x_0)l_i(x_0)=0$。因此中间项为 $f(x_0)$，并且因为偏差为 $\mathbb{E} \hat f(x_0)-f(x_0)$，我们看到它仅仅取决于 $f$ 的平方项或更高阶的项。\\!!! info &quot;weiya 注：&quot;
-    已解决，详见 [Issue 148: Ex. 6.2](https://github.com/szcf-weiya/ESL-CN/issues/148)。\\![](../img/06/fig6.4.png)\\&gt; 图 6.4. 绿色点显示了局部回归的等价核。这是 $\hat f(x_0)=\sum_{i=1}^Nl_i(x_0)y_i$ 中的系数，是关于对应 $x_i$ 的图像。为了展示的目的，这些已经进行了缩放，因为实际上它们相加等于 1。因为黄色阴影区域是 Nadaraya–Watson 局部平均的（缩放的）等价核，所以我们看到局部回归是怎样自动修改权重核来纠正由于光滑窗口的不对称窗口的偏差。\\## 局部多项式回归\\为什么止步于局部线性拟合处？其实我们可以拟合任意阶 $d$ 的局部多项式拟合，
-\end{aligned}\end{align} \]</div>
-<p>\underset{\alpha(x_0),\beta_j(x_0),j=1,\ldots,d}{\min}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\Big[y_i-\alpha(x_0)-\sum\limits_{j=1}^d\beta_j(x_0)x_i^j\Big]^2\tag{6.11}
-$<span class="math notranslate nohighlight">\(
-解为 \)</span>\hat f(x_0)=\hat \alpha(x_0)+\sum_{j=1}^d\hat\beta_j(x_0)x_0^j<span class="math notranslate nohighlight">\(。实际上，类似 式（ 6.10 ） 的表达式将告诉我们偏差仅仅有 \)</span>d+1$ 阶和更高阶的组分（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">练习 6.2</a>）。图 6.5 说明了局部二次回归。局部线性拟合趋向于在真实函数的区域中有偏差，这个现象被称作 <strong>截断山坡 (trimming the hills)</strong> 和 <strong>填充山谷 (filling the valleys)</strong>。局部二次回归一般可以纠正这个偏差。</p>
+\[
+\underset{\alpha(x_0),\beta_j(x_0),j=1,\ldots,d}{\min}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\Big[y_i-\alpha(x_0)-\sum\limits_{j=1}^d\beta_j(x_0)x_i^j\Big]^2\tag{6.11}
+\]</div>
+<p>解为 <span class="math notranslate nohighlight">\(\hat f(x_0)=\hat \alpha(x_0)+\sum_{j=1}^d\hat\beta_j(x_0)x_0^j\)</span>。实际上，类似 式（ 6.10 ） 的表达式将告诉我们偏差仅仅有 <span class="math notranslate nohighlight">\(d+1\)</span> 阶和更高阶的组分（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/148">练习 6.2</a>）。图 6.5 说明了局部二次回归。局部线性拟合趋向于在真实函数的区域中有偏差，这个现象被称作 <strong>截断山坡 (trimming the hills)</strong> 和 <strong>填充山谷 (filling the valleys)</strong>。局部二次回归一般可以纠正这个偏差。</p>
 <p><img alt="" src="../_images/fig6.5.png" /></p>
 <blockquote>
 <div><p>图 6.5. 局部线性拟合在真实函数曲线区域中的偏差。局部二次拟合趋向于消除这个偏差。</p>
 </div></blockquote>
 <p>当然为了减小这个偏差需要付出代价，也就是增加方差。图 6.5 的右图更摇摆，特别在尾巴处。假设模型 <span class="math notranslate nohighlight">\(y_i=f(x_i)+\varepsilon_i\)</span>，并且 <span class="math notranslate nohighlight">\(\varepsilon_i\)</span> 独立，并且是均值为 <span class="math notranslate nohighlight">\(0\)</span> 方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的同分布，<span class="math notranslate nohighlight">\(\mathrm{Var}(\hat f(x_0))=\sigma^2\Vert l(x_0)\Vert^2\)</span>，其中 <span class="math notranslate nohighlight">\(l(x_0)\)</span> 是在 <span class="math notranslate nohighlight">\(x_0\)</span> 处等价核权重的向量。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/149">练习 6.3</a>）<span class="math notranslate nohighlight">\(\Vert l(x_0)\Vert\)</span> 随着 <span class="math notranslate nohighlight">\(d\)</span> 增加而增加，所以在选择多项式次数时存在偏差和方差之间的权衡。</p>
-<p>!!! info “weiya 注：Ex. 6.3”
+<blockquote>
+<div><p>info “weiya 注：Ex. 6.3”
 证明了 <span class="math notranslate nohighlight">\(W=I\)</span> 的情形，但是对于一般的权重系数矩阵，卡住了。欢迎交流讨论，<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/149">Issue 149: Ex. 6.3</a>.</p>
+</div></blockquote>
 <p>图 6.6 说明了次数为 0,1 和 2 的局部多项式的方差曲线。总结一下这个问题上一些正确的做法：</p>
 <ul class="simple">
 <li><p>局部线性拟合在边界处以适合的方差代价对偏差有显著的帮助。但局部二次拟合在边界处对偏差的贡献很少，而且大幅增加了方差。</p></li>
@@ -1316,8 +1393,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="6.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1334,19 +1411,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

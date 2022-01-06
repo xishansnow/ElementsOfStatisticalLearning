@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8.8 模型平均和堆栈 &#8212; 统计学习精要(中文)</title>
+    <title>8.8 模型平均和堆叠 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,27 +1133,41 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>8.8 模型平均和堆叠</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>8.8 模型平均和堆栈<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
+<h1>8.8 模型平均和堆叠<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>在 <span class="xref myst">8.4 节</span>我们根据一种非参贝叶斯分析，将估计器的 bootstrap 值看成对应参数近似的后验值。从这个角度看，bagged 估计 式（ 8.51 ） 是后验贝叶斯均值的近似。相反，训练样本估计量 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 对应后验的<strong>最大值 (mode)</strong>。因为后验均值（不是最大值）最小化平方误差损失，所以 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 可以经常降低均方误差也不奇怪。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    \hat f_{bag}(x)=\frac{1}{B}\sum\limits_{b=1}^B\hat f^{* b}(x) \tag{8.51}
-    \)</span>$</p>
-<p>!!! note “weiya 注：posterior mode”
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \hat f_{bag}(x)=\frac{1}{B}\sum\limits_{b=1}^B\hat f^{* b}(x) \tag{8.51}
+    
+\]</div>
+<blockquote>
+<div><p>note “weiya 注：posterior mode”
 根据 <a class="reference external" href="https://stats.stackexchange.com/questions/137190/why-is-it-called-mode-in-map-estimation">Why is it called “mode” in MAP estimation?</a>，posterior mode 其实就是 posterior distribution 的最大值。mode 通常是对于 <a class="reference external" href="https://www.statisticshowto.datasciencecentral.com/unimodal-distribution-2/">unimodal distribution</a> 而言，它不是传统意义上的众数，而是该 unimodal distribution 的最大值（或者说峰值）。</p>
+</div></blockquote>
 <p>这里我们更一般地讨论贝叶斯模型平均。对于我们的训练集 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，我们有一系列备选模型 <span class="math notranslate nohighlight">\(\mathcal{M}_m,m=1,\ldots,M\)</span>。这些模型可以是不同参数的同类模型（比如线性回归的子集），或者对于同样任务的不同模型（比如，神经网络和回归树）。</p>
 <p>假设 <span class="math notranslate nohighlight">\(\zeta\)</span> 是我们关心的某个值，举个例子，在某个固定的特征值 <span class="math notranslate nohighlight">\(x\)</span> 处的预测值 <span class="math notranslate nohighlight">\(f(x)\)</span>。<span class="math notranslate nohighlight">\(\zeta\)</span> 的后验分布为</p>
 <div class="math notranslate nohighlight">
@@ -1155,14 +1177,16 @@ $<span class="math notranslate nohighlight">\(
 <p>其中后验均值为</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{E}(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\mathbb{E}(\zeta\mid \mathcal{M}_m,\mathbf Z)\mathrm{Pr}(\mathcal{M}_m\mid \mathbf Z)\tag{8.54} 
-\]</div>
+\mathbb{E}(\zeta\mid \mathbf Z)=\sum\limits_{m=1}^M\mathbb{E}(\zeta\mid \mathcal{M}_m,\mathbf Z)\mathrm{Pr}(\mathcal{M}_m\mid \mathbf Z)\tag{8.54} \]</div>
 <p>这个贝叶斯预测是每个预测的加权，其中权重与每个模型的后验概率成比例。</p>
 <p>这种形式导出了一系列模型平均的策略。<strong>委员会方法 (Committee methods)</strong> 从每个模型的预测中取简单的无加权平均，本质上就是对每个模型赋予相等的概率。更雄心勃勃地 (More ambitiously)，<span class="xref myst">第 7.7 节</span>展现了 BIC 准则可以用来估计模型的后验概率。</p>
-<p>!!! note “weiya 注：Recall”
-$<span class="math notranslate nohighlight">\(
-    \frac{e^{-\frac{1}{2}\cdot \mathrm{BIC}_m}}{\sum_{\ell=1}^Me^{-\frac{1}{2}\cdot \mathrm{BIC}_\ell}}\tag{7.41}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “weiya 注：Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \frac{e^{-\frac{1}{2}\cdot \mathrm{BIC}_m}}{\sum_{\ell=1}^Me^{-\frac{1}{2}\cdot \mathrm{BIC}_\ell}}\tag{7.41}
+    
+\]</div>
 <p>这可以应用到从同一个参数模型由不同参数值产生的不同模型的情形中。BIC 根据模型拟合的程度以及参数的个数来对每个模型赋予权重。也可以采用全贝叶斯方法。如果每个模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 有参数 <span class="math notranslate nohighlight">\(\theta_m\)</span>，我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1197,13 +1221,18 @@ $<span class="math notranslate nohighlight">\(
 <p>最终的预测为 <span class="math notranslate nohighlight">\(\sum_m\hat w_m^{st}\hat f_{\\!m}(x)\)</span>。通过采用交叉验证的预测值 <span class="math notranslate nohighlight">\(\hat f_{\\!m}^{-i}(x)\)</span>，堆栈避免了对高复杂度的模型赋予不公平的过高权重。更好的结果可以通过约束权重为非负值并且和为 1 得到。如果我们将权重理解为式 式（ 8.54 ） 中的后验模型概率，这似乎是个合理的约束，这导出了易处理的二次规划问题。</p>
 <p>堆栈法和模型选择通过舍一法交叉验证紧密联系起来（<span class="xref myst">7.10 节</span>）。如果我们将 式（ 8.59 ） 的最小化限制到只有一个单元有权重而其它为 0 的权重向量 <span class="math notranslate nohighlight">\(w\)</span> 上，这导出了有最小舍一法交叉验证误差的模型 <span class="math notranslate nohighlight">\(\hat m\)</span>。与其选择单模型，堆栈法将之与估计的最优权重结合起来。这通常会有更好的预测，但是解释性会比从 <span class="math notranslate nohighlight">\(M\)</span> 个模型中选择一个的更差。</p>
 <p>堆栈的思想实际上比上面所描述的更一般。不仅仅是线性回归，可以采用任意学习的方法来结合 式（ 8.59 ） 中的模型；这些权重也可以依赖输入变量的位置 <span class="math notranslate nohighlight">\(x\)</span>。用这种方式，学习方法被堆栈到其它方法的上面来改善预测的效果。</p>
-<p>!!! note “weiya 注：Stacked Generalization”
-首先这种泛化可以表达成（感谢<a class="reference external" href="https://disqus.com/by/disqus_K99eOJYIKr/">&#64;Jerry</a>提到的 Notes）
-$<span class="math notranslate nohighlight">\(
-    \tilde f(x) = \hat f(\hat f_{\!1}(x),\hat f_{\!2}(x),\ldots,\hat f_{\!M}(x), x)\,.
-    \)</span><span class="math notranslate nohighlight">\(
-    另外，更多细节可以阅读 the seminal paper [Wolpert, D. H. (1992). Stacked generalization. Neural Networks, 5(2), 241–259.](https://doi.org/10.1016/S0893-6080(05)80023-1)，下面摘录了其 abstract:
-    &gt; This paper introduces **stacked generalization**, a scheme for minimizing the generalization error rate of one or more generalizers. Stacked generalization works by deducing the biases of the generalizer(s) with respect to a provided learning set. This deduction proceeds by generalizing in a second space whose inputs are (for example) **the guesses of the original generalizers when taught with part of the learning set**（这里的 \)</span>\hat f_m^{-i}(x_i)<span class="math notranslate nohighlight">\(） and **trying to guess the rest of it**（这里的 \)</span>y_i$）, and whose output is (for example) the correct guess. When used with multiple generalizers, stacked generalization can be seen as <strong>a more sophisticated version of cross-validation</strong>, exploiting a strategy more sophisticated than <strong>cross-validation’s crude winner-takes-all for combining the individual generalizers</strong> (交叉验证中选择最低误差的模型，而这里对模型进行加权，但是损失了解释性). When used with a single generalizer, stacked generalization is a scheme for estimating (and then correcting for) the error of a generalizer which has been trained on a particular learning set and then asked a particular question. After introducing stacked generalization and justifying its use, this paper presents two numerical experiments. The first demonstrates how stacked generalization improves upon a set of separate generalizers for the NETtalk task of translating text to phonemes. The second demonstrates how stacked generalization improves the performance of a single surface-fitter. With the other experimental evidence in the literature, the usual arguments supporting cross-validation, and the abstract justifications presented in this paper, the conclusion is that for almost any real-world generalization problem one should use some version of stacked generalization to minimize the generalization error rate. This paper ends by discussing some of the variations of stacked generalization, and how it touches on other fields like chaos theory.</p>
+<blockquote>
+<div><p>note “weiya 注：Stacked Generalization”
+首先这种泛化可以表达成（感谢<a class="reference external" href="https://disqus.com/by/disqus_K99eOJYIKr/">&#64;Jerry</a>提到的 Notes）</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \tilde f(x) = \hat f(\hat f_{\!1}(x),\hat f_{\!2}(x),\ldots,\hat f_{\!M}(x), x)\,.
+    
+\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>另外，更多细节可以阅读 the seminal paper [Wolpert, D. H. (1992). Stacked generalization. Neural Networks, 5(2), 241–259.](https://doi.org/10.1016/S0893-6080(05)80023-1)，下面摘录了其 abstract:
+&gt; This paper introduces **stacked generalization**, a scheme for minimizing the generalization error rate of one or more generalizers. Stacked generalization works by deducing the biases of the generalizer(s) with respect to a provided learning set. This deduction proceeds by generalizing in a second space whose inputs are (for example) **the guesses of the original generalizers when taught with part of the learning set**（这里的 $\hat f_m^{-i}(x_i)$） and **trying to guess the rest of it**（这里的 $y_i$）, and whose output is (for example) the correct guess. When used with multiple generalizers, stacked generalization can be seen as **a more sophisticated version of cross-validation**, exploiting a strategy more sophisticated than **cross-validation&#39;s crude winner-takes-all for combining the individual generalizers** (交叉验证中选择最低误差的模型，而这里对模型进行加权，但是损失了解释性). When used with a single generalizer, stacked generalization is a scheme for estimating (and then correcting for) the error of a generalizer which has been trained on a particular learning set and then asked a particular question. After introducing stacked generalization and justifying its use, this paper presents two numerical experiments. The first demonstrates how stacked generalization improves upon a set of separate generalizers for the NETtalk task of translating text to phonemes. The second demonstrates how stacked generalization improves the performance of a single surface-fitter. With the other experimental evidence in the literature, the usual arguments supporting cross-validation, and the abstract justifications presented in this paper, the conclusion is that for almost any real-world generalization problem one should use some version of stacked generalization to minimize the generalization error rate. This paper ends by discussing some of the variations of stacked generalization, and how it touches on other fields like chaos theory.
+</pre></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1228,8 +1257,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="8.7-Bagging.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1246,19 +1275,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

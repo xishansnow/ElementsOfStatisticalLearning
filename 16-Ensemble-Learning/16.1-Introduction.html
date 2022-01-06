@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,14 +1133,24 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>16.1 导言</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1153,16 +1171,22 @@
 <li><p>在每一个测试点 <span class="math notranslate nohighlight">\(x\)</span> 上，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 是第 <span class="math notranslate nohighlight">\(\ell\)</span> 个响应变量的预测概率。</p></li>
 <li><p>定义 <span class="math notranslate nohighlight">\(\delta_k(x)=\sum_{\ell=1}^L\vert C_{k\ell}-\hat p_\ell(x)\vert\)</span>，是第 <span class="math notranslate nohighlight">\(k\)</span> 个类别的判别函数，其中 <span class="math notranslate nohighlight">\(C_{k\ell}\)</span> 是表 16.1 第 <span class="math notranslate nohighlight">\(k\)</span> 行和第 <span class="math notranslate nohighlight">\(\ell\)</span> 列的值。</p></li>
 </ol>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 关于 <span class="math notranslate nohighlight">\(\delta_k(x)\)</span> 的定义，可以这样理解。首先，<span class="math notranslate nohighlight">\(\hat p_\ell (x)\)</span> 值越大，表示越倾向于类别 <span class="math notranslate nohighlight">\(1\)</span>，越小则越倾向于类别 <span class="math notranslate nohighlight">\(0\)</span>，于是 <span class="math notranslate nohighlight">\(\vert C_{k\ell}-\hat p_\ell(x) \vert\)</span> 表示预测正确时的程度，值越小表示得到的预测会越正确。因此，最后类别为使得 <span class="math notranslate nohighlight">\(\delta_k(x), k=1,2,\ldots, 10\)</span> 中最小的<span class="math notranslate nohighlight">\(k\)</span>。</p>
+</div></blockquote>
 <p><span class="math notranslate nohighlight">\(\mathbf C\)</span> 的每一行是表示该类的二进制编码。每一行的位数比必要的二进制位数更多，而且冗余的“error-correcting”位数在一些不精确的情形下是允许的，而且可以提高模型的效果。事实上，上面的全编码矩阵 <span class="math notranslate nohighlight">\(\mathbf C\)</span> 在任意两列中最小的 Hamming 距离为 7。注意到即使响应指示变量编码（<span class="xref myst">4.2 节</span>）是多余的，因为 <span class="math notranslate nohighlight">\(10\)</span> 个类别仅仅需要 <span class="math notranslate nohighlight">\([\log_210=4]\)</span> 位来实现唯一表示。Dietterich and Bakiri (1995)<a class="footnote-reference brackets" href="#id7" id="id4">2</a> 证明了将分类树作为基分类器会使得不同的多类别问题有显著性提高。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 查看 Dietterich and Bakiri (1995)，其中提到无多余编码列的方法被称作 distributed output code，比如图中用了 6 列（虽然不是更少的 4 列），
 <img alt="" src="../_images/note-16-1.png" />
 而 ECOC 的区别在于采用了 error-correcting codes，这种编码能够 correct error。举个简单的例子，比如需要发送信号 <span class="math notranslate nohighlight">\(0\)</span>，如果重复 3 次发送，即使出了一次错误，接收时变成了 <span class="math notranslate nohighlight">\(001\)</span>，或 <span class="math notranslate nohighlight">\(010\)</span> 等，但采用多数原则，仍认为原信号为 <span class="math notranslate nohighlight">\(0\)</span>，这样就达到了 correct error 的效果。原文称，如果 ECOC 矩阵中最小的 Hamming 距离为 <span class="math notranslate nohighlight">\(d\)</span>，则至少可以 correct <span class="math notranslate nohighlight">\(\lfloor \frac{d-1}{2}\rfloor\)</span> 位错误。关于 error-correcting codes，推荐 MARK WILDON 的 Lecture Notes——<a class="reference external" href="http://www.ma.rhul.ac.uk/~uvah099/Maths/Codes11/MT3612011Notes.pdf">ERROR CORRECTING CODES MT361/MT461/MT5461</a>。</p>
+</div></blockquote>
 <p>James and Hastie (1998)<a class="footnote-reference brackets" href="#id8" id="id5">4</a> 分析 ECOC 方法，而且证明了随机编码分配和最优结构化 error-correcting 编码。他们也提出这种编码的好处在于降低方差（和 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 和随机森林一样），因为不同的编码问题会引出不同的树，另外上面解码步骤 (3) 跟平均(averaging)有相似的影响。</p>
-<p>!!! note “weiya 注”
+<blockquote>
+<div><p><strong>注解：</strong>
 Hamming 距离为两个向量不匹配的值的个数。</p>
+</div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
@@ -1199,8 +1223,8 @@ Hamming 距离为两个向量不匹配的值的个数。</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="16.0-Overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1217,19 +1241,17 @@ Hamming 距离为两个向量不匹配的值的个数。</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

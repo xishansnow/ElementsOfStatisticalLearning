@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,24 +1133,38 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>10.11 大小合适的boosting树</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="boosting">
 <h1>10.11 大小合适的boosting树<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>曾经，boosting 被认为是一种将模型结合起来(combing models)的技巧，在这里模型是树。同样地，生成树的算法可看成是产生用于 boosting 进行结合的模型的 <strong>原型(primitive)</strong>。这种情形下，在生成树的时候以通常的方式分别估计每棵树的最优大小（<span class="xref myst">9.2 节</span>）。首先诱导出非常大（过大的）的一棵树，接着应用自下而上的过程剪枝得到估计的最优终止结点个数的树。这种方式隐含地假设了每棵树是式 式（ 10.28 ） 中的最后一棵。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}
-    \)</span>$, 详见 <span class="xref myst">10.9 节</span>。</p>
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    f_M(x)=\sum\limits_{m=1}^MT(x;\Theta_m)\tag{10.28}
+    
+\]</div>
+<p>, 详见 <span class="xref myst">10.9 节</span>。</p>
 <p>除了真正的最后一棵树，这显然是个很差的假设。结果导致树都趋向于很大，特别是前几步迭代中。这显著降低了模型的效果，并且增大了计算量。</p>
 <p>避免这个问题最简单的策略是将所有树限制为相同的大小， <span class="math notranslate nohighlight">\(J_m=J\;\forall m\)</span>。在每次迭代中，得到 <span class="math notranslate nohighlight">\(J\)</span> 个终止结点的回归树。因此 <span class="math notranslate nohighlight">\(J\)</span> 成为了整个 boosting 过程的 <strong>元参数(meta-parameter)</strong>，根据手头上的数据来调整该参数以期最大化估计的效果。</p>
 <p>可以考虑下式的 <strong>目标函数(target function)</strong> 的性质来得到 <span class="math notranslate nohighlight">\(J\)</span> 的有用值</p>
@@ -1160,9 +1182,11 @@ $<span class="math notranslate nohighlight">\(
 <p>基于树的近似的交叉性阶数被树的大小 <span class="math notranslate nohighlight">\(J\)</span> 所限制。也就是，不存在大于 <span class="math notranslate nohighlight">\(J-1\)</span> 阶数的交叉项。因为 式（ 10.28 ） 的 boosted 模型关于树是可加的，这个限制对于它也适用。<span class="math notranslate nohighlight">\(J=2\)</span> 时（单个分割点的“decision stump”），则只能得到仅主影响的 boosted 模型，其中不允许有交叉项。当 <span class="math notranslate nohighlight">\(J=3\)</span> 时，可以允许有含两个变量的交叉项，以此类推。这表明选择的 <span class="math notranslate nohighlight">\(J\)</span> 值应该反映 <span class="math notranslate nohighlight">\(\eta(x)\)</span> 占优势的交叉项的阶数。当然这在一般情形下是未知的，但是在大部分情况下往往很低。</p>
 <p><img alt="" src="../_images/fig10.9.png" /></p>
 <p>图 10.9 说明了交叉项阶数（<span class="math notranslate nohighlight">\(J\)</span> 的选择）在仿真例子 式（ 10.2 ） 上的影响。</p>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    Y=
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[\begin{split}    Y=
     \left\{
     \begin{array}{ll}
     1&amp;\text{if } \sum_{j=1}^{10}X_j^2&gt;\chi_{10}^2(0.5)\\
@@ -1170,7 +1194,8 @@ $<span class="math notranslate nohighlight">\(
     \end{array}
     \right.
     \tag{10.2}
-    \)</span>$</p>
+    
+\end{split}\]</div>
 <p>生成函数是可加的（二次单项式的和），所以 <span class="math notranslate nohighlight">\(J&gt;2\)</span> 的 boosting 模型产生多余的方差，也因此更高的测试误差。图 10.10 比较了用真实函数构造的 boosted stump 的坐标函数。</p>
 <p><img alt="" src="../_images/fig10.10.png" /></p>
 <p>尽管在很多应用中，<span class="math notranslate nohighlight">\(J=2\)</span> 是不够的，但也不太可能要求 <span class="math notranslate nohighlight">\(J&gt;10\)</span>。经验表明 <span class="math notranslate nohighlight">\(4\le J\le 8\)</span> 在 boosting 的情况下会取得很好的效果，这个范围内的具体取值对结果的影响并不敏感。我们可以通过尝试不同的值，然后选择一个在验证样本上低风险的 <span class="math notranslate nohighlight">\(J\)</span> 值。然而，使用大于 <span class="math notranslate nohighlight">\(J\simeq 6\)</span> 并不能得到显著的改善。</p>
@@ -1198,8 +1223,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="10.10-Numerical-Optimization-via-Gradient-Boosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1216,19 +1241,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

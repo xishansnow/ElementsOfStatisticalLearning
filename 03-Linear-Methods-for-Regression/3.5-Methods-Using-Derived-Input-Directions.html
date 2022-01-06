@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   主成分回归
+   （ 1 ）主成分回归
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   偏最小二乘
+   （ 2 ）偏最小二乘
   </a>
  </li>
 </ul>
@@ -1150,7 +1158,35 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>3.5 运用派生输入方向的方法</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （ 1 ）主成分回归
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （ 2 ）偏最小二乘
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1158,7 +1194,7 @@
 <style>p{text-indent:2em;2}</style>
 <p>在很多情形下我们有很多输入，这些输入的相关性经常是非常强的。这一小节中的方法产生较少的原输入变量 <span class="math notranslate nohighlight">\(X_j\)</span> 的线性组合 <span class="math notranslate nohighlight">\(Z_m,m=1,2,\ldots,M\)</span>，然后 <span class="math notranslate nohighlight">\(Z_m\)</span> 用来代替 <span class="math notranslate nohighlight">\(X_j\)</span> 来作为回归的输入。这些方法区别于怎样构造线性组合。</p>
 <div class="section" id="id2">
-<h2>主成分回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>（ 1 ）主成分回归<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>在这种方法下，使用的线性组合 <span class="math notranslate nohighlight">\(Z_m\)</span> 是在前面 <span class="xref myst">3.4.1 节</span>中定义的主成分。</p>
 <p>主成分回归构造派生的输入列 <span class="math notranslate nohighlight">\(\mathbf z_m=\mathbf Xv_m\)</span>，然后在 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots,\mathbf z_M,\; M\le p\)</span> 上回归 <span class="math notranslate nohighlight">\(\mathbf y\)</span>。因为 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 是正交的，则这个回归只是单变量回归的和</p>
 <div class="math notranslate nohighlight">
@@ -1170,8 +1206,10 @@
 \[
 \hat\beta^{pcr}(M)=\sum\limits_{m=1}^M\hat\theta_mv_m\tag{3.62}
 \]</div>
-<p>!!! info “weiya 注：Ex. 3.13”
+<blockquote>
+<div><p>info “weiya 注：Ex. 3.13”
 已解决。详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/102">Issue 102: Ex. 3.13</a>。</p>
+</div></blockquote>
 <p>岭回归下，主成分依赖输入 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 的放缩尺度，所以一般地我们首先对它们进行标准化。注意到如果 <span class="math notranslate nohighlight">\(M=p\)</span>，我们就会回到通常的最小二乘估计，因为列 <span class="math notranslate nohighlight">\(\mathbf Z=\mathbf U\mathbf D\)</span> 张成了 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 的列空间。对于 <span class="math notranslate nohighlight">\(M &lt; p\)</span> 我们得到一个降维的回归问题。我们看到主成分回归与岭回归非常相似：都是通过输入矩阵的主成分来操作的。岭回归对主成分系数进行了收缩，收缩更多地依赖对应特征值的大小；主成分回归丢掉 <span class="math notranslate nohighlight">\(p-M\)</span> 个最小的特征值分量。图 3.17 说明了这一点</p>
 <p><img alt="" src="../_images/fig3.17.png" /></p>
 <blockquote>
@@ -1180,18 +1218,23 @@
 <p>在图 3.7 中我们看到交叉验证表明有 7 项；最终模型在表 3.3 中有最低的测试误差。</p>
 </div>
 <div class="section" id="id3">
-<h2>偏最小二乘<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（ 2 ）偏最小二乘<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>这个技巧也构造了一系列用于回归的输入变量的线性组合，但是与主成分回归不同的是它采用 <span class="math notranslate nohighlight">\(\mathbf y\)</span>（除了 <span class="math notranslate nohighlight">\(\mathbf X\)</span>）来构造。和主成分回归相同的是，偏最小二乘 (PLS) 也不是<strong>尺度不变 (scale invariant)</strong> 的，所以我们假设每个 <span class="math notranslate nohighlight">\(\mathbf x_j\)</span> 标准化使得均值为 0 、方差为 1。一开始，PLS 对每个 <span class="math notranslate nohighlight">\(j\)</span> 计算 <span class="math notranslate nohighlight">\(\hat \varphi_{1j}=\langle \mathbf x_j, \mathbf y\rangle\)</span>。从这里我们构造新的派生输入变量 <span class="math notranslate nohighlight">\(\mathbf z_1=\sum_j\hat \varphi_{1j}\mathbf x_j\)</span>，这是第一偏最小二乘方向。因此在每个 <span class="math notranslate nohighlight">\(\mathbf z_m\)</span> 的构造中，输入变量通过判断其在 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 上的单变量影响强度来加权。</p>
-<p>!!! note “weiya 注：原书脚注”
+<blockquote>
+<div><p>note “weiya 注：原书脚注”
 因为 <span class="math notranslate nohighlight">\(x_j\)</span> 已经标准化，第一方向 <span class="math notranslate nohighlight">\(\hat\varphi_{1j}\)</span> 是单变量回归的系数（乘以某不相关的常数）；但对接下来的方向不是这样。</p>
+</div></blockquote>
 <p>输出变量 <strong><span class="math notranslate nohighlight">\(\mathbf y\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 上回归</strong>便得到系数 <span class="math notranslate nohighlight">\(\hat \theta_1\)</span>，然后我们对 <span class="math notranslate nohighlight">\(\mathbf x_1,\mathbf x_2,\ldots,\mathbf x_p\)</span> 进行关于 <span class="math notranslate nohighlight">\(\mathbf z_1\)</span> 的正交化。我们继续这个过程，直到得到 <span class="math notranslate nohighlight">\(M\le p\)</span> 个方向。在这种方式下，偏最小二乘得到一系列派生的、正交化的输入或者方向 <span class="math notranslate nohighlight">\(\mathbf z_1,\mathbf z_2,\ldots, \mathbf z_M\)</span>。和主成分回归一样，如果我们构造所有 <span class="math notranslate nohighlight">\(M=p\)</span> 个方向，我们会得到一个等价于普通最小二乘估计的解；如果使用 <span class="math notranslate nohighlight">\(M&lt; p\)</span> 个方向会得到一个低维的回归。这个过程将在算法 3.3 中详细描述。</p>
-<p>!!! note “weiya 注：”
+<blockquote>
+<div><p>note “weiya 注：”
 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上回归 <span class="math notranslate nohighlight">\(\mathbf b\)</span>（或者称作 <span class="math notranslate nohighlight">\(\mathbf b\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上回归）指的是
-<span class="math notranslate nohighlight">\(\mathbf b\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上的无截距的简单单变量回归，回归系数为
-$<span class="math notranslate nohighlight">\(
-    \hat \gamma = \dfrac{\langle \mathbf a,\mathbf b\rangle}{\langle \mathbf a,\mathbf a\rangle}
-    \)</span><span class="math notranslate nohighlight">\(
-    &lt;!--同时这一过程也称作 \)</span>\mathbf b<span class="math notranslate nohighlight">\( 关于 \)</span>\mathbf a$ 正交化–&gt;</p>
+<span class="math notranslate nohighlight">\(\mathbf b\)</span> 在 <span class="math notranslate nohighlight">\(\mathbf a\)</span> 上的无截距的简单单变量回归，回归系数为</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+\hat \gamma = \dfrac{\langle \mathbf a,\mathbf b\rangle}{\langle \mathbf a,\mathbf a\rangle}    
+\]</div>
+<!--同时这一过程也称作 $\mathbf b$ 关于 $\mathbf a$ 正交化-->
 <p><img alt="" src="../_images/Alg3.3.png" /></p>
 <!--
 ****
@@ -1213,7 +1256,7 @@ $<span class="math notranslate nohighlight">\(
 \[\begin{split}
 \begin{align*}
 \max_{\alpha} &amp;\mathrm{Var}(\mathbf X\alpha)\\
-\mathrm{st} &amp;\Vert \alpha\Vert=1,\alpha^T\mathbf Sv_\ell=0,\;\ell=1,\ldots,m-1
+\mathrm{\text{subject to}} &amp;\Vert \alpha\Vert=1,\alpha^T\mathbf Sv_\ell=0,\;\ell=1,\ldots,m-1
 \end{align*}
 \tag{3.63}
 \end{split}\]</div>
@@ -1222,14 +1265,16 @@ $<span class="math notranslate nohighlight">\(
 \[\begin{split}
 \begin{align*}
 \max_\alpha&amp; \mathrm{Corr}^2(\mathbf y,\mathbf X\alpha)\mathrm{Var}(\mathbf X\alpha)\\
-\mathrm{st}&amp; \Vert\alpha\Vert=1,\alpha^T\mathbf S\hat \varphi_\ell=0,\ell=1,\ldots,m-1
+\mathrm{\text{subject to}}&amp; \Vert\alpha\Vert=1,\alpha^T\mathbf S\hat \varphi_\ell=0,\ell=1,\ldots,m-1
 \end{align*}
 \tag{3.64}
 \end{split}\]</div>
 <p>进一步的分析揭示了，方差项趋向于占主导地位，而且因此偏最小二乘表现得很像岭回归和主成分回归。我们将在下一节讨论这些。</p>
 <p>如果输入矩阵 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 是正交的，则偏最小二乘会经过 <span class="math notranslate nohighlight">\(m=1\)</span> 步找到最小二乘估计。后续的步骤不起作用，因为 <span class="math notranslate nohighlight">\(m &gt;1\text{时}，\hat \varphi_{mj}=0\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">练习 3.14</a>）。</p>
-<p>!!! info “weiya 注：Ex. 3.14”
+<blockquote>
+<div><p>info “weiya 注：Ex. 3.14”
 已解决。详细证明过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/104">Issue 104: Ex. 3.14</a>。</p>
+</div></blockquote>
 <p>也可以证明 <span class="math notranslate nohighlight">\(m=1,2,\ldots,p\)</span> 时的 PLS 系数序列表示计算最小二乘解时的共轭梯度（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/105">练习 3.18</a>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
@@ -1265,8 +1310,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="3.4-Shrinkage-Methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1283,19 +1328,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

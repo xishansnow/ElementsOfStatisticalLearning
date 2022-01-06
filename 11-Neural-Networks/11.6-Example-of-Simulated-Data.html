@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,35 +1133,48 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>11.6 例子：模拟数据</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>11.6 例子：模拟数据<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>!!! note “更新笔记”
+<blockquote>
+<div><p>note “更新笔记”
 &#64;2017-12-28 挺惭愧的！直到今天才认真地从零开始写了个简单的神经网络代码，具体代码详见<a class="reference external" href="http://nbviewer.jupyter.org/github/szcf-weiya/TFnotes/blob/master/nn/nn.ipynb">Notebook for Simple Neural Network</a>。对于本节的例子，我也写了份代码试图重现书中的结果，代码详见<a class="reference external" href="http://nbviewer.jupyter.org/github/szcf-weiya/ESL-CN/blob/master/code/nn/Implementation-for-Section-6.ipynb">Notebook for this Section</a></p>
-<p>我们从两个可加误差模型 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span> 中产生数据：
-$$</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+</div></blockquote>
+<p>我们从两个可加误差模型 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span> 中产生数据：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \text{Sum of sigmoids: }&amp; Y=\sigma(a_1^TX)+\sigma(a_2^TX)+\varepsilon_1\\
 \text{Radial: }&amp;Y=\prod\limits_{m=1}^{10}\phi(X_m)+\varepsilon_2
-\end{align*}\]</div>
+\end{align*}
+\end{split}\]</div>
+<p>这里 <span class="math notranslate nohighlight">\(X^T=(X_1,X_2,\ldots,X_p)\)</span>，每个 <span class="math notranslate nohighlight">\(X_j\)</span> 是标准高斯变量，第一个模型中 <span class="math notranslate nohighlight">\(p=2\)</span>，第二个模型中 <span class="math notranslate nohighlight">\(p=10\)</span>.</p>
+<p>对于sigmoid模型，<span class="math notranslate nohighlight">\(a_1=(3,3),a_2=(3,-3)\)</span>；对于径向模型，<span class="math notranslate nohighlight">\(\phi(t)=(1/2\pi)^{1/2}exp(-t^2/2)\)</span>.<span class="math notranslate nohighlight">\(\varepsilon_1\)</span>和<span class="math notranslate nohighlight">\(\varepsilon_2\)</span>都是高斯误差，选择方差使得两个模型的信噪比都为4。</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-这里 $X^T=(X_1,X_2,\ldots,X_p)$，每个 $X_j$ 是标准高斯变量，第一个模型中 $p=2$，第二个模型中 $p=10$.\\对于sigmoid模型，$a_1=(3,3),a_2=(3,-3)$；对于径向模型，$\phi(t)=(1/2\pi)^{1/2}exp(-t^2/2)$.$\varepsilon_1$和$\varepsilon_2$都是高斯误差，选择方差使得两个模型的信噪比都为4.
-\end{aligned}\end{align} \]</div>
-<p>\frac{Var(E(Y\mid X))}{Var(Y-E(Y\mid X))}=\frac{Var(f(X))}{Var(\varepsilon)}\tag{11.18}
-$<span class="math notranslate nohighlight">\(
-我们取大小为100的训练集和大小为10000的测试集。我们采用权重系数衰减和不同的隐藏单元来拟合神经网络，然后记录10个随机初始权重系数值情形下的平均测试误差\)</span>E_{Test}(Y-\hat f(X))^2$。虽然只产生了一个训练集，但是结果是“平均”的训练集的典型。测试误差展示在图11.6中。注意到0个隐藏层单元指的是线性最小二乘回归。神经网络对于sigmoid函数之和的模型拟合效果很好，而且当有两个神经元时效果最好，非常接近贝叶斯误差率。（回忆一下，回归的平方误差的贝叶斯误差率是误差的方差；这张图中是测试误差相对于贝叶斯误差的比例）然而，注意到更多的隐藏层单元，很快便出现了过拟合，而且有些权重系数的初始值比线性模型（0个隐藏单元）拟合得还差。即便是2个隐藏单元的情形，10个权重系数的初始值中有两个的结果不好于线性模型，证实了多重初始值的重要性。</p>
+\[
+\frac{Var(E(Y\mid X))}{Var(Y-E(Y\mid X))}=\frac{Var(f(X))}{Var(\varepsilon)}\tag{11.18}
+\]</div>
+<p>我们取大小为100的训练集和大小为10000的测试集。我们采用权重系数衰减和不同的隐藏单元来拟合神经网络，然后记录10个随机初始权重系数值情形下的平均测试误差<span class="math notranslate nohighlight">\(E_{Test}(Y-\hat f(X))^2\)</span>。虽然只产生了一个训练集，但是结果是“平均”的训练集的典型。测试误差展示在图11.6中。注意到0个隐藏层单元指的是线性最小二乘回归。神经网络对于sigmoid函数之和的模型拟合效果很好，而且当有两个神经元时效果最好，非常接近贝叶斯误差率。（回忆一下，回归的平方误差的贝叶斯误差率是误差的方差；这张图中是测试误差相对于贝叶斯误差的比例）然而，注意到更多的隐藏层单元，很快便出现了过拟合，而且有些权重系数的初始值比线性模型（0个隐藏单元）拟合得还差。即便是2个隐藏单元的情形，10个权重系数的初始值中有两个的结果不好于线性模型，证实了多重初始值的重要性。</p>
 <p><img alt="" src="../_images/fig11.6.png" /></p>
 <blockquote>
 <div><p>图11.6 模拟数据例子的测试误差相对于贝叶斯误差（水平虚线）的箱线图。左图的真实函数是两个sigmoid函数之和，右图是径向函数。对于具有所指示单元数目的单个隐藏层神经网络，显示10个不同起始权重的测量误差。</p>
@@ -1194,8 +1215,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="11.5-Some-Issues-in-Training-Neural-Networks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1212,19 +1233,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

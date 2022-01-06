@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,20 +1133,30 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>4.2 指示矩阵的线性回归</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>4.2 指示矩阵的线性回归<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>这里每个类别型响应变量用一个指示变量来编码。因此如果 <span class="math notranslate nohighlight">\(\mathcal G\)</span> 有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，则会有 <span class="math notranslate nohighlight">\(K\)</span> 个指示变量 <span class="math notranslate nohighlight">\(Y_k,\;k=1,\ldots,K\)</span>，若 <span class="math notranslate nohighlight">\(G=k\)</span>，则 <span class="math notranslate nohighlight">\(Y_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y_k=0\)</span>。用向量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_K)\)</span> 来表示它们, 则这种形式的 <span class="math notranslate nohighlight">\(N\)</span> 个训练实例组成了 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>。<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 由 0 和 1 组成，每一行只含有一个 1。我们对 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的每一列同时用线性回归模型做拟合，拟合值由下式给出</p>
+<p>这里每个类别型响应变量用一个指示变量来编码。因此如果 <span class="math notranslate nohighlight">\(\mathbb{G}\)</span> 有 <span class="math notranslate nohighlight">\(K\)</span> 个类别，则会有 <span class="math notranslate nohighlight">\(K\)</span> 个指示变量 <span class="math notranslate nohighlight">\(Y_k,\;k=1,\ldots,K\)</span>，若 <span class="math notranslate nohighlight">\(G=k\)</span>，则 <span class="math notranslate nohighlight">\(Y_k=1\)</span>，否则 <span class="math notranslate nohighlight">\(Y_k=0\)</span>。用向量 <span class="math notranslate nohighlight">\(Y=(Y_1,\ldots,Y_K)\)</span> 来表示它们, 则这种形式的 <span class="math notranslate nohighlight">\(N\)</span> 个训练实例组成了 <span class="math notranslate nohighlight">\(N\times K\)</span> 的 <strong>指示变量响应矩阵 (indicator response matrix)</strong> <span class="math notranslate nohighlight">\(\mathbf Y\)</span>。<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 由 0 和 1 组成，每一行只含有一个 1。我们对 <span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的每一列同时用线性回归模型做拟合，拟合值由下式给出</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{ \hat Y = {X(X^TX)^{-1}X^TY}} \tag{4.3}
@@ -1151,26 +1169,24 @@
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\hat G(x)=\mathrm{argmax}_{k\in\mathcal G}\hat f_k(x)\tag{4.4}
-\label{eq:4.4}
+\hat G(x)=\mathrm{argmax}_{k\in\mathbb{G}}\hat f_k(x)\tag{4.4}
 \]</div>
 <p>这种方式的理论根据是什么？更加正式的理由是把回归看成条件期望的估计。对于随机变量 <span class="math notranslate nohighlight">\(Y_k\)</span>，<span class="math notranslate nohighlight">\(\mathbb{E}(Y_k\mid X=x)=\mathrm{Pr}(G=k\mid X=x)\)</span>，则每个随机变量 <span class="math notranslate nohighlight">\(Y_k\)</span> 的条件期望似乎是一个明智的选择。真正问题是，除了刚性的 (rigid) 线性回归模型，条件期望的近似还可以达到什么程度？或者说，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 是否是后验概率 <span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)\)</span> 的合理估计，以及更重要地，这是否有用？</p>
-<p>可以很直接地证明对于任意 <span class="math notranslate nohighlight">\(x\)</span>，只要模型中有截距（即 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中元素为 1 的列），则有 <span class="math notranslate nohighlight">\(\sum_{k\in\mathcal G}\hat f_k(x)=1\)</span>。然而，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以是负数或者比 1 大，而且事实上确实是这样。这是线性回归 <strong>刚性本质 (ridge nature)</strong> 的结果，特别是如果我们在训练数据之外做预测。这些违背常识的特点不能保证这个方法起作用，事实上在许多问题上它给出与标准的用于分类的线性方法类似的结果。如果我们允许在输入的基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上做线性回归，这个方法可以导出概率的一致估计。当训练集的规模 <span class="math notranslate nohighlight">\(N\)</span> 变大时，我们自适应地加入更多的基元素使得在这些基函数的线性回归达到条件期望。我们将在<span class="xref myst">第 5 章</span>中讨论。</p>
+<p>可以很直接地证明对于任意 <span class="math notranslate nohighlight">\(x\)</span>，只要模型中有截距（即 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中元素为 1 的列），则有 <span class="math notranslate nohighlight">\(\sum_{k\in\mathbb{G}}\hat f_k(x)=1\)</span>。然而，<span class="math notranslate nohighlight">\(\hat f_k(x)\)</span> 可以是负数或者比 1 大，而且事实上确实是这样。这是线性回归 <strong>刚性本质 (ridge nature)</strong> 的结果，特别是如果我们在训练数据之外做预测。这些违背常识的特点不能保证这个方法起作用，事实上在许多问题上它给出与标准的用于分类的线性方法类似的结果。如果我们允许在输入的基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上做线性回归，这个方法可以导出概率的一致估计。当训练集的规模 <span class="math notranslate nohighlight">\(N\)</span> 变大时，我们自适应地加入更多的基元素使得在这些基函数的线性回归达到条件期望。我们将在<span class="xref myst">第 5 章</span>中讨论。</p>
 <p>一个更简单的角度是对每个类别构造 <strong>目标值 (target)</strong> <span class="math notranslate nohighlight">\(t_k\)</span>，其中 <span class="math notranslate nohighlight">\(t_k\)</span> 是 <span class="math notranslate nohighlight">\(K\times K\)</span> 单位矩阵的第 <span class="math notranslate nohighlight">\(k\)</span> 列。我们的预测问题是对一个观测尝试并且再生出合适的目标值。和之前的编码一样，对于第 <span class="math notranslate nohighlight">\(i\)</span> 个观测的响应向量 <span class="math notranslate nohighlight">\(y_i\)</span>（<span class="math notranslate nohighlight">\(\mathbf Y\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 行），当 <span class="math notranslate nohighlight">\(g_i=k\)</span> 时，<span class="math notranslate nohighlight">\(y_i=t_k\)</span>。我们可以通过最小二乘法来拟合线性模型</p>
 <div class="math notranslate nohighlight">
 \[
-\underset{\B}{\min}\sum\limits_{i=1}^N\Vert y_i-[(1,x_i^T)\mathbf B]^T\Vert^2\tag{4.5}
+\underset{\mathbf{B}}{\min}\sum\limits_{i=1}^N\Vert y_i-[(1,x_i^T)\mathbf B]^T\Vert^2\tag{4.5}
 \]</div>
 <p>这个准则是目标值到拟合向量的欧几里得距离的平方和。对于新观测值，通过计算它的拟合向量 <span class="math notranslate nohighlight">\(\hat f(x)\)</span> 从而把它分到最近的目标：</p>
 <div class="math notranslate nohighlight">
 \[
 \hat G(x)=\underset{k}{\mathrm{argmin}}\Vert \hat f(x)-t_k\Vert^2\tag{4.6}
-\label{eq:4.6}
 \]</div>
 <p>这恰好与之前的方式相同：</p>
 <ul class="simple">
 <li><p>平方和准则恰巧是<strong>多重响应变量线性回归</strong>的准则，仅仅是理解的角度不同。因为二范数自身也是一个平方和，其组成成分可以分解然后重排列成关于每个元素的单独的线性模型。注意到这仅仅是可能的，因为在模型中没有办法将不同的响应变量结合在一起。</p></li>
-<li><p>可以很简单地发现最近目标分类准则 <span class="math notranslate nohighlight">\(\eqref{eq:4.6}\)</span> 与 <span class="math notranslate nohighlight">\(\eqref{eq:4.4}\)</span> 的最大拟合成分准则是一样的。</p></li>
+<li><p>可以很简单地发现最近目标分类准则 式 （4.6）与 式（ 4.4 ） 的最大拟合成分准则是一样的。</p></li>
 </ul>
 <!--
 ，但是需要要求拟合值的和为 1。
@@ -1186,26 +1202,31 @@
 <blockquote>
 <div><p>图 4.3. <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 中对于含三个类别的问题的线性回归发生掩盖的影响。在坐标轴上的 rug plot 指示了每个观测值的位置以及类别关系。在每个面板上的三条曲线是根据三个类别的指示变量回归的拟合；举个例子，对于蓝色的类别，对于蓝色的观测值 <span class="math notranslate nohighlight">\(y_{blue}=1\)</span>，对于绿色和黄色的观测值为 0。拟合分别是线性的和二次的。每张图象的上方都是训练误差率。对于此问题，Bayes 误差率为 0.025，这也是 LDA 的误差率。</p>
 </div></blockquote>
-<p>!!! note “weiya 注：rug plot”
+<blockquote>
+<div><p>note “weiya 注：rug plot”
 在 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言中 <code class="docutils literal notranslate"><span class="pre">rug</span></code> 是在坐标轴上标出元素出现的频数。出现一次，就会画一个小竖杠。从 <code class="docutils literal notranslate"><span class="pre">rug</span></code> 的疏密可以看出变量是什么地方出现的次数多，什么地方出现的次数少。</p>
-<p>!!! note “weiya 注: 模拟 Fig. 4.2 &amp; Fig. 4.3”
+</div></blockquote>
+<blockquote>
+<div><p>note “weiya 注: 模拟 Fig. 4.2 &amp; Fig. 4.3”
 已完成，参见<span class="xref myst">这篇笔记</span>。</p>
+</div></blockquote>
 <p>因此，类别 2 的观测值要么被分到类别 1 要么是类别 3。右图采用二次回归而不是线性回归。对于这个简单的例子二次拟合（至少对于中间的类别）会解决这个问题。然而，可以看到如果有四个像这样的类别（而不是三个）二次也不行了，便需要三次了。一个不严谨但是一般的规则是如果排列着 <span class="math notranslate nohighlight">\(K\ge 3\)</span> 个类别，则可能需要 <span class="math notranslate nohighlight">\(K-1\)</span> 阶多项式才能解决这个问题。同样注意到这些是通过形心派生的方向上的多项式，但是它们可以有任意的方向。所以在 <span class="math notranslate nohighlight">\(p\)</span> 维输入空间中，一般需要 <span class="math notranslate nohighlight">\(K-1\)</span> 阶、<span class="math notranslate nohighlight">\(O(p^{K-1})\)</span>项多项式和交叉积来解决这种极坏的情形。</p>
-<p>!!! note “weiya 注:”
+<blockquote>
+<div><p>note “weiya 注:”
 尝试简单数学化。假设 <span class="math notranslate nohighlight">\(K\)</span> 个类别中心排列在 <span class="math notranslate nohighlight">\(x\)</span> 轴上，被 <span class="math notranslate nohighlight">\(K-1\)</span> 个点分为 <span class="math notranslate nohighlight">\(K\)</span> 个区间（类），</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$
-(-\infty, x_1), (x_1,x_2),\ldots, (x_{K-1},+\infty)
-$$
-
-如果要将相邻两类分开，那么判别边界必须要从这些分隔点处 **穿过** $x$ 轴，则满足条件的最低阶多项式为
-
-$$
-(x-x_1)(x-x_2)\ldots (x-x_{K-1})\,,
-$$
-
-其阶数为 $K$. 当然任何更高奇次幂也会穿过 $x$ 轴，如 $(x-x_1)^3$.
-</pre></div>
-</div>
+<div class="math notranslate nohighlight">
+\[
+(-\infty, x_1), (x_1,x_2),\ldots, (x_{K-1},+\infty)   
+&gt;\]</div>
+</div></blockquote>
+<blockquote>
+<div><p>如果要将相邻两类分开，那么判别边界必须要从这些分隔点处 <strong>穿过</strong> <span class="math notranslate nohighlight">\(x\)</span> 轴，则满足条件的最低阶多项式为</p>
+<div class="math notranslate nohighlight">
+\[
+(x-x_1)(x-x_2)\ldots (x-x_{K-1})\,,    
+&gt;\]</div>
+<p>其阶数为 <span class="math notranslate nohighlight">\(K\)</span>. 当然任何更高奇次幂也会穿过 <span class="math notranslate nohighlight">\(x\)</span> 轴，如 <span class="math notranslate nohighlight">\((x-x_1)^3\)</span>.</p>
+</div></blockquote>
 <p>这个例子是很极端的，但是对于大 <span class="math notranslate nohighlight">\(K\)</span> 和小 <span class="math notranslate nohighlight">\(p\)</span>，这些掩盖会很自然地发生。作为一个更现实的图示，图 4.4 是元音识别问题中将训练数据投射到含有有用信息的二维子空间上。在 <span class="math notranslate nohighlight">\(p=10\)</span> 维空间中有 <span class="math notranslate nohighlight">\(K=11\)</span> 个类别。这是一个很复杂的分类问题，并且最好的方法在测试集上达到 40% 的误差。主要信息在表 4.1 中有总结；线性回归误差率为 67%，而与其很相关的线性判别分析误差率为 56%。在这种情形下掩盖现象进行了破坏。尽管本章中所有其他方法也都是基于关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性函数，但它们通过某种方式来避免掩盖问题。</p>
 <p><img alt="" src="../_images/fig4.4.png" /></p>
 <blockquote>
@@ -1239,8 +1260,8 @@ $$
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="4.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1257,19 +1278,17 @@ $$
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

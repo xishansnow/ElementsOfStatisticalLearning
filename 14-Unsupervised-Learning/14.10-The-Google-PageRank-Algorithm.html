@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,35 +1133,47 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>14.10 谷歌的PageRank算法</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="pagerank">
 <h1>14.10 谷歌的PageRank算法<a class="headerlink" href="#pagerank" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>!!! note “写在前面”
+<blockquote>
+<div><p>note “写在前面”
 翻译这一节时，已经从多个地方了解到了PageRank算法。最初是在Tan Sir的数学建模课上，后来便是数院短学期有一节讲到PageRank算法，并且布置了相关的课后作业。在那个作业中，是对一个网络利用PageRank进行分析与讨论。翻译完此节，特意去整理了一下那个作业，开了一个仓库来放它，有兴趣的可以看看:grinning:。<a class="reference external" href="https://github.com/szcf-weiya/miniPR">传送门</a></p>
+</div></blockquote>
 <p>这一节我们给出谷歌搜索引擎所采用的最原始的PageRank算法，这是非监督学习的一个有趣的应用。</p>
 <p>我们假设有<span class="math notranslate nohighlight">\(N\)</span>个网页，并且希望对它们进行重要性排序。举个例子，这<span class="math notranslate nohighlight">\(N\)</span>个页面可能都匹配到字符串“statistical learning”，我们希望对页面按照其可能对浏览者的相关程度进行排序。</p>
 <p>PageRank算法考虑如果有很多其他的页面指向一个页面，则该页面是重要的。然而指向一个给定页面的链接网页并不会平等对待：算法考虑链接页面的重要性（PageRank）以及它们向外链接的个数。有高PageRank值的网页被赋予更大的权重，而有更多的向外链接的页面则赋予较小的权重。这个想法得到了PageRank的递归定义，细节如下。</p>
 <p>如果页面<span class="math notranslate nohighlight">\(j\)</span>指向页面<span class="math notranslate nohighlight">\(i\)</span>，令<span class="math notranslate nohighlight">\(L_{ij}=1\)</span>，否则为0。令<span class="math notranslate nohighlight">\(c_j=\sum_{i=1}^NL_{ij}\)</span>等于页面<span class="math notranslate nohighlight">\(j\)</span>指向的页面个数（向外链接的个数）。则谷歌的PageRank值<span class="math notranslate nohighlight">\(p_i\)</span>由递归关系定义</p>
+<p><span class="math notranslate nohighlight">\(
+p_i=(1-d)+d\sum\limits_{j=1}^N(\frac{L_{ij}}{c_j})p_j\qquad (14.107)
+\)</span>$</p>
+<p>其中<span class="math notranslate nohighlight">\(d\)</span>为正的常数值（设定为0.85）。</p>
+<p>想法是页面<span class="math notranslate nohighlight">\(i\)</span>的重要性是指向该页面的重要性之和。它们的和赋予权重<span class="math notranslate nohighlight">\(1/c_j\)</span>，也就是，每个页面分配将总值为1的权重赋予其它页面。常数值<span class="math notranslate nohighlight">\(d\)</span>保证了每个页面至少得到<span class="math notranslate nohighlight">\(1-d\)</span>的PageRank值。采用矩阵表示为</p>
 <div class="math notranslate nohighlight">
 \[
-p_i=(1-d)+d\sum\limits_{j=1}^N(\frac{L_{ij}}{c_j})p_j\qquad (14.107)
-\]</div>
-<p>其中<span class="math notranslate nohighlight">\(d\)</span>为正的常数值（设定为0.85）。</p>
-<p>想法是页面<span class="math notranslate nohighlight">\(i\)</span>的重要性是指向该页面的重要性之和。它们的和赋予权重<span class="math notranslate nohighlight">\(1/c_j\)</span>，也就是，每个页面分配将总值为1的权重赋予其它页面。常数值<span class="math notranslate nohighlight">\(d\)</span>保证了每个页面至少得到<span class="math notranslate nohighlight">\(1-d\)</span>的PageRank值。采用矩阵表示为
-$<span class="math notranslate nohighlight">\(
 \mathbf p = (1-d)\mathbf e+d\cdot \mathbf {LD_c^{-1}p}\qquad (14.108)
-\)</span><span class="math notranslate nohighlight">\(
-其中\)</span>\mathbf e<span class="math notranslate nohighlight">\(是\)</span>N<span class="math notranslate nohighlight">\(个元素均为1的列向量，\)</span>\mathbf D_c = diag(\mathbf c)<span class="math notranslate nohighlight">\(是对角元素为\)</span>c_j<span class="math notranslate nohighlight">\(的对角矩阵。引入标准化\)</span>\mathbf{e^Tp}=N$，则(14.108)可以写成</p>
+\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\mathbf e\)</span>是<span class="math notranslate nohighlight">\(N\)</span>个元素均为1的列向量，<span class="math notranslate nohighlight">\(\mathbf D_c = diag(\mathbf c)\)</span>是对角元素为<span class="math notranslate nohighlight">\(c_j\)</span>的对角矩阵。引入标准化<span class="math notranslate nohighlight">\(\mathbf{e^Tp}=N\)</span>，则(14.108)可以写成</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
@@ -1220,8 +1240,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="14.9-Nonlinear-Dimension-Reduction-and-Local-Multidimensional-Scaling.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1238,19 +1258,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

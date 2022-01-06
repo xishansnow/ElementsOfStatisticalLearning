@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,19 +1133,28 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>8.3 贝叶斯方法</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>8.3 贝叶斯方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<style>p{text-indent:2em;2}</style>
 <style>p{text-indent:2em;2}</style>
 <p>贝叶斯推断中，需要确定一个在给定参数 <span class="math notranslate nohighlight">\(\theta\)</span> 时数据的采样模型 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mathbf Z | \theta)\)</span> ，以及在得到数据之前对于参数 <span class="math notranslate nohighlight">\(\theta\)</span> 认知的先验分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\theta)\)</span> 。然后计算后验分布：</p>
 <div class="math notranslate nohighlight">
@@ -1149,8 +1166,7 @@
 <p>后验分布提供了预测未来观测 <span class="math notranslate nohighlight">\(z^{new}\)</span> 的基础，可以通过计算预测分布 (predictive distribution) 来表达预测的不确定性，注意预测值是一个随机变量，存在概率分布：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Pr}(z^{new}\mid \mathbf  Z)=\int \mathrm{Pr}(z^{new}\mid \theta)\cdot \mathrm{Pr}(\theta\mid \mathbf Z)d\theta\tag{8.24} 
-\]</div>
+\mathrm{Pr}(z^{new}\mid \mathbf  Z)=\int \mathrm{Pr}(z^{new}\mid \theta)\cdot \mathrm{Pr}(\theta\mid \mathbf Z)d\theta\tag{8.24} \]</div>
 <p>在上述贝叶斯框架内，最大似然方法会使用上式分布中概率值最大那个点的密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(z^{new}\mid \hat\theta)\)</span> 来预测未来的数据。不同于式（ 8.24 ）的预测分布，它不能说明 <span class="math notranslate nohighlight">\(\theta\)</span> 估计的不确定性。</p>
 <p>让我们在光滑化的例子中使用贝叶斯方法。</p>
 <p>首先，从由式 8.5 给出的参数模型开始，假设 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 已知。</p>
@@ -1195,9 +1211,9 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="math notranslate nohighlight">
-\[
-\hat\mu^*(x)\sim N(\hat \mu(x), h(x)^T\mathbf{(H^TH)^{-1}}h(x)\hat\sigma^2)\tag{8.7}
+\[}
 \]</div>
+<p>$$</p>
 </div>
 <p>另一方面，对于<span class="math notranslate nohighlight">\(\tau=1\)</span>，图 8.4 左图的后验曲线 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 比自助法曲线更加光滑，因为在光滑性上面强加了更多先验权重。</p>
 <p><img alt="" src="../_images/fig8.4.png" /></p>
@@ -1239,8 +1255,8 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="8.1-Introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1252,24 +1268,22 @@ K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
     <a class='right-next' id="next-link" href="8.5-The-EM-Algorithm.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">8.5 EM 算法</p>
+        <p class="prev-next-title">8.5 <code class="docutils literal notranslate"><span class="pre">EM</span> <span class="pre">算法</span></code></p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

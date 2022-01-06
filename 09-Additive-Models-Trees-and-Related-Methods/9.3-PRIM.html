@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,7 +1142,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   垃圾邮件的例子（继续）
+   （）垃圾邮件的例子（继续）
   </a>
  </li>
 </ul>
@@ -1145,7 +1153,30 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>9.3 PRIM</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   （）垃圾邮件的例子（继续）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="prim">
@@ -1153,8 +1184,10 @@
 <style>p{text-indent:2em;2}</style>
 <p>基于树的方法（用于回归）将特征空间分成盒状的区域，来试图使每个盒子中的响应变量尽可能不同。通过二叉树定义了与每个盒子相关的分割规则，这有利于它们的解释性。</p>
 <p><strong>耐心规则归纳法 (PRIM)</strong> 也在特征空间中找盒子，但是它是寻找具有高平均响应的盒子。因此它是在寻找目标函数的最大值，称为<strong>bump hunting</strong>。（如果需要最小值而非最大值，可以简单地用负的响应变量值来转化。）</p>
-<p>!!! note “weiya 注：翻译相关”
+<blockquote>
+<div><p>note “weiya 注：翻译相关”
 PRIM 全称为 The patient rule induction method，这里按照字面意思翻译成了“耐心规则归纳法“，依据是下文提到了其优点<code class="docutils literal notranslate"><span class="pre">patience</span></code>，所以这里翻译为“耐心”，而非“病人”。</p>
+</div></blockquote>
 <p>PRIM 区别于基于树的分割方法也因为盒子的定义不是通过二叉树来描述的。这使得**规则集合 (collection of rules)**的解释更加困难；然而，通过移除二叉树的限制，单个规则经常会更加简单。</p>
 <p>PRIM 中构造盒子的主要方法是自上而下，以包含所有数据的盒子开始。这个盒子沿着一个面被逐渐压缩，接着观测落在盒子外的观测点被<strong>剔除(peeled)</strong> 掉。用于压缩的面要使得压缩过后盒子均值最大。接着重复这个过程，直到当前的盒子包含最小数目的数据点。</p>
 <p>这个过程在图 9.7 中进行了图示。200 个数据点在单位方格中均匀分布。用颜色编码的图象表明当 <span class="math notranslate nohighlight">\(0.5&lt;X_1&lt;0.8,0.4&lt;X_2&lt;0.6\)</span> 时，响应变量 <span class="math notranslate nohighlight">\(Y\)</span> 取值 1（红色），否则取值为 0（蓝色）。这个面板显示了通过自上而下的剔除过程而逐步找到的盒子，每一步剔除的剩余数据点的比例为 <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>。</p>
@@ -1167,29 +1200,35 @@ PRIM 全称为 The patient rule induction method，这里按照字面意思翻�
 <blockquote>
 <div><p>图9.8. 盒子中盒子的均值作为观测数目的函数。</p>
 </div></blockquote>
-<p>!!! info “weiya 注：模拟 Fig. 9.7 &amp; 9.8”
+<blockquote>
+<div><p>info “weiya 注：模拟 Fig. 9.7 &amp; 9.8”
 利用 R 语言重现了图 9.7 和图 9.8，具体过程参见<span class="xref myst">模拟：Fig. 9.7</span></p>
+</div></blockquote>
 <p>计算完自上而下的序列之后，沿着任意边进行展开，如果这样的展开能够增大盒子均值的话，PRIM 则回溯这个过程。这称为 <strong>pasting</strong>。因为自上而下的过程在每一步是贪婪的，所以这样的展开经常是可行的。</p>
 <p>这些步骤的结果是盒子的序列，每个盒子中含有不同数目的观测点。通过交叉验证，并结合数据分析家的判断，来选择最优的盒子大小。</p>
-<p>用 <span class="math notranslate nohighlight">\(B_1\)</span> 记在第一步中找到的盒子的观测的指标集。PRIM 过程接着从训练集中移除 <span class="math notranslate nohighlight">\(B_1\)</span> 的观测，并且这两步的过程——先自上而下剔除，后自下而上pasting——在剩下的数据集中重复。整个过程重复若干次，得到盒子序列 <span class="math notranslate nohighlight">\(B_1,B_2,\ldots,B_k\)</span>。每个盒子由关于预测变量的子集的规则集
-$<span class="math notranslate nohighlight">\(
+<p>用 <span class="math notranslate nohighlight">\(B_1\)</span> 记在第一步中找到的盒子的观测的指标集。PRIM 过程接着从训练集中移除 <span class="math notranslate nohighlight">\(B_1\)</span> 的观测，并且这两步的过程——先自上而下剔除，后自下而上pasting——在剩下的数据集中重复。整个过程重复若干次，得到盒子序列 <span class="math notranslate nohighlight">\(B_1,B_2,\ldots,B_k\)</span>。每个盒子由关于预测变量的子集的规则集</p>
+<div class="math notranslate nohighlight">
+\[
 (a_1\le X_1\le b_1)\text{ and } (b_1\le X_3\le b_2)
-\)</span>$
-来定义。PRIM 过程在算法9.3中进行了总结。</p>
+\]</div>
+<p>来定义。PRIM 过程在算法9.3中进行了总结。</p>
 <p><img alt="" src="../_images/alg9.3.png" /></p>
 <p>PRIM 可以通过考虑所有预测变量的划分来处理类别型变量，这正如 CART 中一样。缺失值也通常以一种类似 CART 的方式进行处理。PRIM 是为回归（定量响应变量）而设计的；两个类别的输出可以简单地编码成 0 和 1 来处理。没有简单的方式来同时处理 <span class="math notranslate nohighlight">\(k &gt; 2\)</span> 个的类别的情形：一种方式是分别对每个类别相对基准类别采用 PRIM。</p>
 <p>PRIM 与 CART 相比的优点是它的 <strong>耐心 (patience)</strong>。因为 CART 的二值分割快速地将数据分割开。假设等大小的分割，有 <span class="math notranslate nohighlight">\(N\)</span> 个观测情况下，在使用完数据之前，只能进行 <span class="math notranslate nohighlight">\(\log_2(N)-1\)</span> 次分割。如果 PRIM 在每一步剔除掉训练点的比例为 <span class="math notranslate nohighlight">\(\alpha\)</span>，则在用完数据之前大约需要 <span class="math notranslate nohighlight">\(-\log(N)/\log(1-\alpha)\)</span> 次剔除步骤。举个例子，如果 <span class="math notranslate nohighlight">\(N=128,\alpha=0.10\)</span>，则 <span class="math notranslate nohighlight">\(\log_2(N)-1=6\)</span>，而<span class="math notranslate nohighlight">\(-\log(N)/\log(1-\alpha)\approx 46\)</span>。考虑每一步需要整数个的观测，PRIM 实际上可以剔除 29 次。在任何情形下，PRIM 的能力更加耐心，这应该帮助自上而下的贪婪算法找到更好的解。</p>
 <div class="section" id="id1">
-<h2>垃圾邮件的例子（继续）<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>（）垃圾邮件的例子（继续）<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>我们对 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 数据应用 PRIM，对 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 编码为 1，对 <code class="docutils literal notranslate"><span class="pre">email</span></code> 编码为 0。</p>
 <p>通过 PRIM 最初找到的两个盒子如下：</p>
 <p><img alt="" src="../_images/pic11.png" /></p>
 <p>盒子的**支撑 (support) **为观测值落入盒子的比例。第一个盒子是纯 <code class="docutils literal notranslate"><span class="pre">spam</span></code>，并且大约包含 15% 的测试数据。第二个盒子包含 10.6% 的测试观测，其中 92.6% 为 <code class="docutils literal notranslate"><span class="pre">spam</span></code>。加起来两个盒子包含数据的 26%，以及大约 97% 的 <code class="docutils literal notranslate"><span class="pre">spam</span></code>。接下来一些盒子（没有显示出来）相当小，仅仅包含数据的 3%。</p>
-<p>!!! question “weiya 注：数据比例”
-注意 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 的比例是相对这两个盒子而言的，所以对于原文中的 <span class="math notranslate nohighlight">\(3\%\)</span> 有点疑惑
-$<span class="math notranslate nohighlight">\(
-    \frac{10.6\%\times 92.6\%+15\%\times100\%}{15\%+10.6\%}=96.9\%
-    \)</span>$</p>
+<blockquote>
+<div><p>question “weiya 注：数据比例”
+注意 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 的比例是相对这两个盒子而言的，所以对于原文中的 <span class="math notranslate nohighlight">\(3\%\)</span> 有点疑惑</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    \frac{10.6\%\times 92.6\%+15\%\times100\%}{15\%+10.6\%}=96.9\%
+    
+\]</div>
 <p>预测变量按照重要性列出来。有趣的是在 CART 树（图 9.5）中最上面的分割变量没有出现在 PRIM 的第一个盒子中。</p>
 </div>
 </div>
@@ -1216,8 +1255,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="9.2-Tree-Based-Methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1234,19 +1273,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

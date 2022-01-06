@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,38 +1133,48 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>8.6 从后验分布采样的 MCMC</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mcmc">
 <h1>8.6 从后验分布采样的 MCMC<a class="headerlink" href="#mcmc" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<style>p{text-indent:2em;2}</style>
 <p>在定义了一个贝叶斯模型后，有人便想要从得到的后验分布中采样来对参数进行推断。除了简单的模型，这通常是一个很困难的计算问题。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>在贝叶斯分析中，计算后验分布时经常涉及复杂的积分运算，比如
-$<span class="math notranslate nohighlight">\(
+<blockquote>
+<div><p>在贝叶斯分析中，计算后验分布时经常涉及复杂的积分运算，比如</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{Pr}(\theta\mid x)=\frac{\mathrm{Pr}(x\mid \theta)\mathrm{Pr}(\theta)}{\mathrm{Pr}(x)}
-\)</span><span class="math notranslate nohighlight">\(
-而参数推断的目标是计算后验分布 \)</span>\mathrm{Pr}(\theta\mid x)<span class="math notranslate nohighlight">\(，困难在于 \)</span>\mathrm{Pr}(x)<span class="math notranslate nohighlight">\(, 因为
-\)</span><span class="math notranslate nohighlight">\(
-\mathrm{Pr}(x) = \int \mathrm{Pr}(x, \theta)d\theta
-\)</span><span class="math notranslate nohighlight">\(
-有人会想到用 Monte Carlo 来近似上述的积分值（关于应用 Monte Carlo 进行积分近似，可以参见 [The Applications of Monte Carlo](https://stats.hohoweiya.xyz//montecarlo/2017/09/07/The-Need-of-Monte-Carlo/)），进而采用下式进行近似
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>而参数推断的目标是计算后验分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\theta\mid x)\)</span>，困难在于 <span class="math notranslate nohighlight">\(\mathrm{Pr}(x)\)</span>, 因为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Pr}(x) = \int \mathrm{Pr}(x, \theta)d\theta\]</div>
+<p>有人会想到用 Monte Carlo 来近似上述的积分值（关于应用 Monte Carlo 进行积分近似，可以参见 <a class="reference external" href="https://stats.hohoweiya.xyz//montecarlo/2017/09/07/The-Need-of-Monte-Carlo/">The Applications of Monte Carlo</a>），进而采用下式进行近似</p>
+<div class="math notranslate nohighlight">
+\[
 \hat \mathrm{Pr}(x) = \int d\theta\cdot \frac{1}{m}\sum\limits_{i=1}^m\mathrm{Pr}(x, \theta^{(m)})
-\)</span>$
-但一般很难从联合分布中采样出样本来。幸好可以通过构造一个 Markov chain 来进行 Monte Carlo 近似，称为 MCMC。在 <a class="reference external" href="http://nbviewer.jupyter.org/github/szcf-weiya/MonteCarlo/blob/master/MCMC/MCMC_example.ipynb">MCMC_example.ipynb</a> 里面用一个例子说明了怎么用 MCMC 得到参数的后验分布。
+\]</div>
+<p>但一般很难从联合分布中采样出样本来。幸好可以通过构造一个 Markov chain 来进行 Monte Carlo 近似，称为 MCMC。在 <a class="reference external" href="http://nbviewer.jupyter.org/github/szcf-weiya/MonteCarlo/blob/master/MCMC/MCMC_example.ipynb">MCMC_example.ipynb</a> 里面用一个例子说明了怎么用 MCMC 得到参数的后验分布。
 更多 Monte Carlo 方法的细节可以参见 <a class="reference external" href="https://mc.hohoweiya.xyz/">Notes: Monte-Carlo</a>.</p>
-</div>
 <p>这节我们讨论用于后验采样的 <strong>马尔科夫蒙特卡洛法 (Markov chain Monte Carlo)</strong>。我们将要看到吉布斯采样（一个 MCMC 过程）与 EM 算法非常相关：主要的区别在于前者从条件分布中采样而非对它们最大化。</p>
 <p>首先考虑下面的抽象问题。我们有随机变量 <span class="math notranslate nohighlight">\(U_1,U_2,\ldots,U_K\)</span>，而且希望从他们的联合分布中采样。假设这很难实现，但是从条件分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(U_j\mid U_1,U_2,\ldots,U_{j-1},U_{j+1},\ldots,U_K),j=1,\ldots,K\)</span> 中模拟是非常简单的。吉布斯采样过程也可以从他们的每个分布来模拟，而且当这个过程稳定下来，吉布斯采样得到了需要的联合分布中的一个样本。这个过程表现在算法 8.3 中。</p>
 <p><img alt="" src="../_images/alg8.3.png" /></p>
@@ -1171,6 +1189,16 @@ $<span class="math notranslate nohighlight">\(
 <p>在指数族模型中，从后验的吉布斯采样与 EM 算法有着紧密的联系。关键在于将 EM 过程的潜在数据 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span> 看成是吉布斯采样的另一个参数。为了让高斯混合问题中这一点更明确，我们取参数为 <span class="math notranslate nohighlight">\((\theta,\mathbf Z^m)\)</span>。为了简便，我们固定方差 <span class="math notranslate nohighlight">\(\sigma_1^2,\sigma^2_2\)</span> 以及最大似然时的混合比例 <span class="math notranslate nohighlight">\(\pi\)</span>，使得 <span class="math notranslate nohighlight">\(\theta\)</span> 中未知的参数仅仅是均值 <span class="math notranslate nohighlight">\(\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\mu_2\)</span>。此混合问题的吉布斯采样在算法 8.4 中给出。我们看到第 2(a) 和 2(b) 步与 EM 过程中的 E 和 M 一样，除了这里我们是采样而非最大化。在第 2(a) 步，不是计算最大似然的 <strong>责任 (responsibilities)</strong> <span class="math notranslate nohighlight">\(\gamma_i=\mathbb{E}(\Delta_i\mid \theta,\mathbf Z)\)</span>，吉布斯采样过程从 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\Delta_i\mid \theta,\mathbf Z)\)</span> 的分布中模拟潜在数据 <span class="math notranslate nohighlight">\(\Delta_i\)</span>。在第 2(b) 步，不是计算后验  <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mu_1,\mu_2,\Delta\mid \mathbf Z)\)</span> 的最大值，而是从条件分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\mu_1,\mu_2\mid \Delta,\mathbf Z)\)</span> 中模拟（采样）。</p>
 <p><img alt="" src="../_images/alg8.4.png" /></p>
 <p>图 8.8 显示了吉布斯抽样的 200 个迭代，左图显示了均值参数 <span class="math notranslate nohighlight">\(\mu_1\)</span>（小）和 <span class="math notranslate nohighlight">\(\mu_2\)</span>（大），右图是类别 2 的观测的占比 <span class="math notranslate nohighlight">\(\sum_i\Delta_i/N\)</span>。在每个情形下画出了在最大似然估计值 <span class="math notranslate nohighlight">\(\hat\mu_1,\hat\mu_2\)</span> 和 <span class="math notranslate nohighlight">\(\sum_i\hat\gamma_i/N\)</span> 的虚线。值似乎很快就稳定下来，而且在最大似然值附近均匀地分布。</p>
+<blockquote>
+<div><p>吉布斯采样中的条件分布可以直接根据联合分布</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[&gt;L\theta,\mathbf{Z,\Delta}) = \prod\limits_{i=1}^n[(1-\pi)\phi_{\theta_1}(y_i)]^{1-\Delta_i}[\pi\phi_{\theta_2}(y_i)]^{\Delta_i}.
+&gt;
+\]</div>
+<blockquote>
+<div><p>快速写出来。</p>
+</div></blockquote>
 <p><img alt="" src="../_images/fig8.8.png" /></p>
 <blockquote>
 <div><p>图 8.8. 混合的例子。（左图：）从吉布斯采样中得到的两个均值参数的 200 个值；在最大似然估计的 <span class="math notranslate nohighlight">\(\hat\mu_1,\hat\mu_2\)</span> 画了水平直线。（右图：）对于 200 次吉布斯采样迭代中的每个迭代，<span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 的占比；在 <span class="math notranslate nohighlight">\(\sum_i\hat\gamma_i/N\)</span> 画了水平直线。</p>
@@ -1201,14 +1229,14 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="8.5-The-EM-Algorithm.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">8.5 EM 算法</p>
+            <p class="prev-next-title">8.5 <code class="docutils literal notranslate"><span class="pre">EM</span> <span class="pre">算法</span></code></p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="8.7-Bagging.html" title="next page">
@@ -1219,19 +1247,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

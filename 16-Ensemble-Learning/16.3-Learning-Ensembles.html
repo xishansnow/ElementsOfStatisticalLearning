@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1134,12 +1142,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   学习一个好的集成
+   （）学习一个好的集成
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rule-ensembles">
-   规则集成 (Rule Ensembles)
+   （）规则集成 (Rule Ensembles)
   </a>
  </li>
 </ul>
@@ -1150,7 +1158,35 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>16.3 学习集成</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （）学习一个好的集成
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rule-ensembles">
+   （）规则集成 (Rule Ensembles)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1165,17 +1201,18 @@ f(x)=\alpha_0+\sum\limits_{T_k\in \mathcal T}\alpha_kT_k(x)\tag{16.8}
 <p>Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id2">1</a> 提出混合的方式，将这个过程分解为下面两步：</p>
 <ul class="simple">
 <li><p>从训练集中导出有限的基函数字典集 <span class="math notranslate nohighlight">\(\cT_L=\\{T_1(x), T_2(x),\ldots, T_M(x)\\}\)</span>;</p></li>
-<li><p>通过在字典集中拟合 lasso 路径来构造 <span class="math notranslate nohighlight">\(f_\lambda(x)\)</span> 函数族。
-$<span class="math notranslate nohighlight">\(
-\alpha(\lambda)=\argmin_\alpha\sum_{i=1}^NL[y_i, \alpha_0+\sum_{m=1}^M\alpha_mT_m(x_i)]+\lambda\sum_{m=1}^M\vert \alpha_m\vert\tag{16.9}
-\)</span>$</p></li>
+<li><p>通过在字典集中拟合 lasso 路径来构造 <span class="math notranslate nohighlight">\(f_\lambda(x)\)</span> 函数族。</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\alpha(\lambda)=\argmin_\alpha\sum_{i=1}^NL[y_i, \alpha_0+\sum_{m=1}^M\alpha_mT_m(x_i)]+\lambda\sum_{m=1}^M\vert \alpha_m\vert\tag{16.9}
+\]</div>
 <p>在这种简单的形式里面，将 <span class="math notranslate nohighlight">\(\cT_L\)</span> 看成是由 gradient boosting 算法或者随机森林算法得到的树的集合，该模型可以看成是 boosting 或者是随机森林的某种 post-processing 方式。通过对这些树进行 lasso 路径拟合，一般我们会得到更加简化的集合，它会大大减少未来预测的计算量和存储量。在下一节，我们将讨论这种方法的变种，进而降低 <span class="math notranslate nohighlight">\(\cT_L\)</span> 的相关性，并且提高 lasso post processor 的表现。</p>
 <p>作为初步的说明，我们将这个过程应用到对 spam 数据集成的随机森林上。</p>
 <p><img alt="" src="../_images/fig16.6.png" /></p>
 <p>图 16.6 展示了 lasso post-processing 对随机森林（蓝色曲线）有了较大程度的改善，并且将森林降至了 <span class="math notranslate nohighlight">\(40\)</span> 棵树，而不是原来的 <span class="math notranslate nohighlight">\(1000\)</span> 棵。这个 post-processed 表现与 gradient boosting 相当。橘黄色曲线展示了修改版的随机森林，它是为了更大程度上降低树之间的相关性。这里训练样本 <span class="math notranslate nohighlight">\(5\%\)</span> 的子样本（无放回）用来生成每棵树，并且每棵树限制得很低（大约 6 个终止结点）。这种情形下 post-processing 有更显著的改善，而且训练花费大概降低了 <span class="math notranslate nohighlight">\(100\)</span> 倍。然而，这个 post-processed 模型的表现有点比蓝色曲线差。</p>
 <div class="section" id="id3">
-<h2>学习一个好的集成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>（）学习一个好的集成<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>并非所有的集成 <span class="math notranslate nohighlight">\(\mathcal T_L\)</span> 采用 post-processing 都表现得很好。采用基函数，我们想要一个能够覆盖所需要的空间的集合，为了保证有效性，post-processor 彼此之间应显著不同。</p>
 <p>Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id4">1</a> 从 <strong>数值积分 (numerical quadrature)</strong> 和 <strong>重要性采样 (importance sampling)</strong> 中获得启发。他们将未知的函数看成如下的积分</p>
 <div class="math notranslate nohighlight">
@@ -1183,10 +1220,9 @@ $<span class="math notranslate nohighlight">\(
 f(x)=\int\beta(\gamma)b(x;\gamma)d\gamma\tag{16.10}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\gamma\in \Gamma\)</span> 对基函数 <span class="math notranslate nohighlight">\(b(x;\gamma)\)</span> 进行了编号。举个例子，如果基函数为树，则 <span class="math notranslate nohighlight">\(\gamma\)</span> 索引了分离变量、分离点以及终止结点里面的值。<strong>数值积分 (numerical quadrature)</strong> 意味着寻找 <span class="math notranslate nohighlight">\(M\)</span> 个赋值点 <span class="math notranslate nohighlight">\(\gamma_m\in\Gamma\)</span> 的集合，以及对应的权重 <span class="math notranslate nohighlight">\(\alpha_m\)</span> 使得 <span class="math notranslate nohighlight">\(f_M(x)=\alpha_0+\sum\limits_{m=1}^M\alpha_mb(x;\gamma_m)\)</span> 在 <span class="math notranslate nohighlight">\(x\)</span> 的定义域内近似 <span class="math notranslate nohighlight">\(f(x)\)</span>。<strong>重要度采样 (Importance Sampling)</strong> 意味着随机对 <span class="math notranslate nohighlight">\(\gamma\)</span> 采样，但是对于空间 <span class="math notranslate nohighlight">\(\Gamma\)</span> 的相关区域赋予更大的权重。Friedman and Popescu (2003)<a class="footnote-reference brackets" href="#id12" id="id5">1</a> 建议采用损失函数 式（ 16.9 ） 来衡量相关性（的缺失）：</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma))\tag{16.11}
-\]</div>
+\)</span>$</p>
 <p>上式在训练数据上取值。</p>
 <p>如果选择了单个的基函数（比如，一棵树），则会有全局最小点 <span class="math notranslate nohighlight">\(\gamma^*=\text{arg min}_{\gamma\in \Gamma}Q(\gamma)\)</span>。在选择 <span class="math notranslate nohighlight">\(\gamma\)</span> 的时候引进随机性必然会得到次优值，<span class="math notranslate nohighlight">\(Q(\gamma)\ge Q(\gamma^*)\)</span>。他们提出采样模式 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 的特征长度 <span class="math notranslate nohighlight">\(\sigma\)</span> 的自然度量，</p>
 <div class="math notranslate nohighlight">
@@ -1206,10 +1242,13 @@ Q(\gamma)=\underset{c_0,c_1}{\min}\sum\limits_{i=1}^NL(y_i, c_0+c_1b(x_i;\gamma)
 <li><p>Gradient boosting，收缩为 式（ 10.41 ） 时采用 <span class="math notranslate nohighlight">\(\eta=1\)</span>，但是一般不会得到充分大的 <span class="math notranslate nohighlight">\(\sigma\)</span>。</p></li>
 <li><p>Stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id14" id="id8">3</a>) 完全遵循这个方法。</p></li>
 </ul>
-<p>!!! note “Recall”
-$<span class="math notranslate nohighlight">\(
-    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}
-    \)</span>$</p>
+<blockquote>
+<div><p>note “Recall”</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[    f_m(x)=f_{m-1}(x)+\nu\cdot \sum\limits_{j=1}^J\gamma_{jm}I(x\in R_{jm})\tag{10.41}
+    
+\]</div>
 <p>作者建议 <span class="math notranslate nohighlight">\(\nu=0.1\)</span> 且 <span class="math notranslate nohighlight">\(\eta\le \frac 12\)</span>，并且称他们的结合过程（ensemble 的产生和后处理）为 Importance sampled learning ensemble (ISLE)。</p>
 <p><img alt="" src="../_images/fig16.7.png" /></p>
 <p>图 16.7 展示了 ISLE 在垃圾短信数据上的表现。它不能提高预测表现，却能得到更简单的模型。注意到实际中后处理包括 式（ 16.9 ） 中正规参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的选取，这可以通过交叉验证来选择。这里我们仅仅简单地通过展示测试数据上整个路径来表明后处理的影响。</p>
@@ -1222,7 +1261,7 @@ f(X)=10\cdot \prod\limits_{j=1}^5e^{-2X_j^2}+\sum\limits_{j=6}^{35}X_j\tag{16.13
 <p>其中 <span class="math notranslate nohighlight">\(X\sim U[0,1]^{100}\)</span>（最后 65 个元素是噪声变量）。响应变量 <span class="math notranslate nohighlight">\(Y=f(X)+\varepsilon\)</span>，其中 <span class="math notranslate nohighlight">\(\varepsilon\sim N(0,\sigma^2)\)</span>；我们选择 <span class="math notranslate nohighlight">\(\sigma=1.3\)</span> 使得信噪比大致为 2。我们采用大小为 1000 的训练样本，并且通过在 500 个样本的测试集上平均来估计 <span class="math notranslate nohighlight">\(\mathbb{E}(\hat f(X)-f(X))^2\)</span>。子采样的 GBM 曲线（浅蓝色）是在 <span class="xref myst">10.12 节</span>讨论的 stochastic gradient boosting (Friedman, 1999<a class="footnote-reference brackets" href="#id14" id="id9">3</a>) 的例子，并且在这个例子上比 gradient boosting 要好。</p>
 </div>
 <div class="section" id="rule-ensembles">
-<h2>规则集成 (Rule Ensembles)<a class="headerlink" href="#rule-ensembles" title="Permalink to this headline">¶</a></h2>
+<h2>（）规则集成 (Rule Ensembles)<a class="headerlink" href="#rule-ensembles" title="Permalink to this headline">¶</a></h2>
 <p>这里我们描述一种对树集成 (tree-ensemble)模型的修改模型，它针对单个规则（Friedman and Popescu, 2003<a class="footnote-reference brackets" href="#id12" id="id10">1</a>）。我们在 <span class="xref myst">9.3 节</span> PRIM 方法的讨论中碰到过规则。想法是通过从集合中的每棵树构造一系列规则来集成树。</p>
 <p><img alt="" src="../_images/fig16.9.png" /></p>
 <p>图 16.9 描述了一棵小树，带编号的结点。下面的规则可以从这棵树导出：</p>
@@ -1241,8 +1280,7 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 <p>关于规则 1, 4, 5 和 6 的线性回归等价于树本身（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/189">练习 16.3</a>）；因此 式（ 16.14 ） 是这棵树 <strong>过充分 (over-complete)</strong> 的基。</p>
 <p>对于一个 ensemble <span class="math notranslate nohighlight">\(\mathcal T\)</span>，我们可以构造规则的 mini-ensemble <span class="math notranslate nohighlight">\({\mathcal T}_{RULE}^m\)</span>，并且然后结合形成更大的 ensemble</p>
 <div class="math notranslate nohighlight">
-\[
-{\mathcal T}_{RULE}=\bigcup\limits_{m=1}^M{\mathcal T}^m_{RULE}\tag{16.15}
+\[{\mathcal T}_{RULE}=\bigcup\limits_{m=1}^M{\mathcal T}^m_{RULE}\tag{16.15}
 \]</div>
 <p>然后像其它 ensemble 一样处理，并且通过 lasso 或者类似的正则化过程进行 post-processed。</p>
 <p>对于从更复杂的树导出规则的这种方式有许多优点：</p>
@@ -1293,8 +1331,8 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="16.2-Boosting-and-Regularization-Paths.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1311,19 +1349,17 @@ R_6(X) &amp;= I(X_1\ge 2.1)\cdot I(X_3\in\{S\})\cdot I(X_7\ge 4.5)
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

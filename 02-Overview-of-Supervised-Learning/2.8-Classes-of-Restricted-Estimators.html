@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,7 +1133,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -1155,7 +1163,40 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>2.8 限制性估计的种类</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   （ 1 ）粗糙度惩罚和贝叶斯方法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   （ 2 ）核方法和局部回归
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   （ 3 ）基函数和字典方法
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
@@ -1164,56 +1205,63 @@
 <p>非参回归技巧的多样性或学习方法的类型根据其限制条件的本质可以分成不同的种类。这些种类不是完全不同的，而且确实一些方法可以归为好几种不同的类别。这里我们进行一个简短的概要，因为详细的描述将在后面章节中给出。每个类都有与之对应的一个或多个参数，有时恰当地称之为 <strong>光滑化(smoothing)</strong> 参数，这些参数控制着局部邻域的有效大小。这里我们描述三个大的类别。</p>
 <div class="section" id="id2">
 <h2>（ 1 ）粗糙度惩罚和贝叶斯方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>这是由显式的惩罚 <span class="math notranslate nohighlight">\(\mathrm{RSS}(f)\)</span> 以及粗糙度惩罚控制的函数类别：
-$<span class="math notranslate nohighlight">\(
+<p>这是由显式的惩罚 <span class="math notranslate nohighlight">\(\mathrm{RSS}(f)\)</span> 以及粗糙度惩罚控制的函数类别：</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{PRSS}(f;\lambda)=\mathrm{RSS}(f)+\lambda J(f)\tag{2.38}
-\)</span><span class="math notranslate nohighlight">\(
-对于在输入空间的小邻域变换太快的函数 \)</span>f<span class="math notranslate nohighlight">\(，用户选择的函数 \)</span>J(f)<span class="math notranslate nohighlight">\( 会变大。举个例子，著名的用于一维输入的 **三次光滑样条 (cubic smoothing spline)** 的是带惩罚的最小二乘的准则的解。
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>对于在输入空间的小邻域变换太快的函数 <span class="math notranslate nohighlight">\(f\)</span>，用户选择的函数 <span class="math notranslate nohighlight">\(J(f)\)</span> 会变大。举个例子，著名的用于一维输入的 <strong>三次光滑样条 (cubic smoothing spline)</strong> 的是带惩罚的最小二乘的准则的解。</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{PRSS}(f;\lambda)=\sum\limits_{i=1}^N(y_i-f(x_i))^2+\lambda \int [f''(x)]^2dx
 \tag{2.39}
-\)</span><span class="math notranslate nohighlight">\(
-这里的粗糙惩罚控制了 \)</span>f<span class="math notranslate nohighlight">\( 的二阶微分较大的值，而且惩罚的程度由 \)</span>\lambda \ge 0<span class="math notranslate nohighlight">\( 来决定。\)</span>\lambda=0<span class="math notranslate nohighlight">\( 表示没有惩罚，则可以使用任意插值函数，而 \)</span>\lambda=\infty<span class="math notranslate nohighlight">\( 仅仅允许关于 \)</span>x$ 的线性函数。</p>
+\]</div>
+<p>这里的粗糙惩罚控制了 <span class="math notranslate nohighlight">\(f\)</span> 的二阶微分较大的值，而且惩罚的程度由 <span class="math notranslate nohighlight">\(\lambda \ge 0\)</span> 来决定。<span class="math notranslate nohighlight">\(\lambda=0\)</span> 表示没有惩罚，则可以使用任意插值函数，而 <span class="math notranslate nohighlight">\(\lambda=\infty\)</span> 仅仅允许关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性函数。</p>
 <p>可以在任意维数下构造惩罚函数 <span class="math notranslate nohighlight">\(J\)</span> ，而且一些特殊的版本可以用来插入特殊的结构。举个例子，可加性惩罚 <span class="math notranslate nohighlight">\(J(f)=\sum_{j=1}^pJ(f_j)\)</span> 与可加性函数 <span class="math notranslate nohighlight">\(f(X)=\sum_{j=1}^pf_j(X_j)\)</span> 联合使用去构造可加的光滑坐标函数的模型。类似地，<strong>投影寻踪回归 (projection pursuit regression)</strong> 模型有 <span class="math notranslate nohighlight">\(f(X)=\sum_{m=1}^Mg_m(\alpha_m^TX)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha_m\)</span> 为自适应选择的方向，每个函数 <span class="math notranslate nohighlight">\(g_m\)</span> 有对应的粗糙惩罚。</p>
 <p>惩罚函数，或者说 <strong>正则 (regularization)</strong> 方法，表达了我们的 <strong>先验信仰 (prior belief)</strong>——寻找具有一个特定类型的光滑行为函数类型，而且确实可以套进贝叶斯的模型中。惩罚 <span class="math notranslate nohighlight">\(J\)</span> 对应先验概率，<span class="math notranslate nohighlight">\(\mathrm{PRSS}(f;\lambda)\)</span> 为后验分布，最小化 <span class="math notranslate nohighlight">\(\mathrm{PRSS}(f;\lambda)\)</span> 意味着寻找后验模式。我们将在<span class="xref myst">第 5 章</span>中讨论粗糙惩罚方法并在<span class="xref myst">第 8 章</span>中讨论贝叶斯范式。</p>
 </div>
 <div class="section" id="id3">
 <h2>（ 2 ）核方法和局部回归<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>这些方法可以认为是通过确定局部邻域的本质来显式给出回归函数的估计或条件期望，并且属于局部拟合得很好的规则函数类。局部邻域由 <strong>核函数(kernel function)</strong> <span class="math notranslate nohighlight">\(K_{\lambda}(x_0,x)\)</span> 确定，它对 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的区域内的 <span class="math notranslate nohighlight">\(x\)</span> 赋予系数（见<span class="xref myst">图 6.1</span>），举个例子，高斯核有一个基于高斯密度函数的权重函数
-$<span class="math notranslate nohighlight">\(
+<p>这些方法可以认为是通过确定局部邻域的本质来显式给出回归函数的估计或条件期望，并且属于局部拟合得很好的规则函数类。局部邻域由 <strong>核函数(kernel function)</strong> <span class="math notranslate nohighlight">\(K_{\lambda}(x_0,x)\)</span> 确定，它对 <span class="math notranslate nohighlight">\(x_0\)</span> 附近的区域内的 <span class="math notranslate nohighlight">\(x\)</span> 赋予系数（见<span class="xref myst">图 6.1</span>），举个例子，高斯核有一个基于高斯密度函数的权重函数</p>
+<div class="math notranslate nohighlight">
+\[
 K_{\lambda}(x_0,x)=\frac{1}{\lambda}\exp\Big[-\frac{\mid \mid x-x_0\mid \mid ^2}{2\lambda}\Big]
 \tag{2.40}
-\)</span><span class="math notranslate nohighlight">\(
-并且对某点赋予与 \)</span>x_0<span class="math notranslate nohighlight">\( 的欧氏距离的平方呈指数衰减的权重。系数 \)</span>\lambda<span class="math notranslate nohighlight">\( 对应高斯密度的方差，并且控制着邻域的宽度。核估计的最简单形式是 Nadaraya-Watson 的系数平均
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>并且对某点赋予与 <span class="math notranslate nohighlight">\(x_0\)</span> 的欧氏距离的平方呈指数衰减的权重。系数 <span class="math notranslate nohighlight">\(\lambda\)</span> 对应高斯密度的方差，并且控制着邻域的宽度。核估计的最简单形式是 Nadaraya-Watson 的系数平均</p>
+<div class="math notranslate nohighlight">
+\[
 \hat{f}(x_0)=\dfrac{\sum_{i=1}^{N}K_{\lambda}(x_0,x_i)y_i}{\sum_{i=1}^NK_{\lambda}(x_0,x_i)}
 \tag{2.41}
-\)</span><span class="math notranslate nohighlight">\(
-一般地，我们可以定义 \)</span>f(x_0)<span class="math notranslate nohighlight">\( 的局部回归估计为 \)</span>f_{\hat{\theta}}(x_0)<span class="math notranslate nohighlight">\(，其中 \)</span>\hat{\theta}<span class="math notranslate nohighlight">\( 使下式最小化
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>一般地，我们可以定义 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 的局部回归估计为 <span class="math notranslate nohighlight">\(f_{\hat{\theta}}(x_0)\)</span>，其中 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> 使下式最小化</p>
+<div class="math notranslate nohighlight">
+\[
 \mathrm{RSS}(f_{\theta},x_0)=\sum\limits_{i=1}^NK_{\lambda}(x_0,x_i)(y_i-f_{\theta}(x_i))^2
 \tag{2.42}
-\)</span><span class="math notranslate nohighlight">\(
-并且 \)</span>f_{\theta}$ 为含参函数，比如低阶的多项式。有如下例子：</p>
+\]</div>
+<p>并且 <span class="math notranslate nohighlight">\(f_{\theta}\)</span> 为含参函数，比如低阶的多项式。有如下例子：</p>
 <ul class="simple">
 <li><p>常值函数 <span class="math notranslate nohighlight">\(f_{\theta}(x)=\theta_0\)</span>，这导出了上式 <span class="math notranslate nohighlight">\((2.41)\)</span> 中的 Nadaraya-Watson 估计。</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_{\theta}(x)=\theta_0+\theta_1x\)</span> 给出最受欢迎的局部线性回归模型</p></li>
 </ul>
-<p>最近邻方法可以看成是某个更加依赖数据的度量的核方法。确实，<span class="math notranslate nohighlight">\(k\)</span>-最近邻的度量为
-$<span class="math notranslate nohighlight">\(
+<p>最近邻方法可以看成是某个更加依赖数据的度量的核方法。确实，<span class="math notranslate nohighlight">\(k\)</span>-最近邻的度量为</p>
+<div class="math notranslate nohighlight">
+\[
 K_k(x,x_0)=I(\mid \mid x-x_0\mid \mid \le \mid \mid x_{(k)}-x_0\mid \mid )
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>x_{(k)}<span class="math notranslate nohighlight">\( 是训练观测值中离 \)</span>x_0<span class="math notranslate nohighlight">\( 的距离排名第 \)</span>k<span class="math notranslate nohighlight">\( 个的观测，而且 \)</span>I(S)<span class="math notranslate nohighlight">\( 是集合 \)</span>S$ 的指标函数。</p>
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(x_{(k)}\)</span> 是训练观测值中离 <span class="math notranslate nohighlight">\(x_0\)</span> 的距离排名第 <span class="math notranslate nohighlight">\(k\)</span> 个的观测，而且 <span class="math notranslate nohighlight">\(I(S)\)</span> 是集合 <span class="math notranslate nohighlight">\(S\)</span> 的指标函数。</p>
 <p>为了避免维数灾难，这些方法在高维情形下要做修正。将在<span class="xref myst">第 6 章</span>讨论不同的改编。</p>
 </div>
 <div class="section" id="id4">
 <h2>（ 3 ）基函数和字典方法<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>这个方法的类别包括熟悉的线性和多项式展开式，但是最重要的有多种多样的更灵活的模型。这些关于 <span class="math notranslate nohighlight">\(f\)</span> 的模型是基本函数的线性展开
-$<span class="math notranslate nohighlight">\(
+<p>这个方法的类别包括熟悉的线性和多项式展开式，但是最重要的有多种多样的更灵活的模型。这些关于 <span class="math notranslate nohighlight">\(f\)</span> 的模型是基本函数的线性展开</p>
+<div class="math notranslate nohighlight">
+\[
 f_{\theta}(x)  = \sum\limits_{m=1}^M\theta_mh_m(x)
 \tag{2.43}
-\)</span><span class="math notranslate nohighlight">\(
-其中每个 \)</span>h_m<span class="math notranslate nohighlight">\( 是输入 \)</span>x<span class="math notranslate nohighlight">\( 的函数，并且其中的线性项与参数 \)</span>\theta<span class="math notranslate nohighlight">\( 的行为有关。这个类别包括很多不同的方法。某些情形下基函数的顺序是规定的，如关于 \)</span>x<span class="math notranslate nohighlight">\( 的阶为 \)</span>M$ 的多项式基函数。</p>
+\]</div>
+<p>其中每个 <span class="math notranslate nohighlight">\(h_m\)</span> 是输入 <span class="math notranslate nohighlight">\(x\)</span> 的函数，并且其中的线性项与参数 <span class="math notranslate nohighlight">\(\theta\)</span> 的行为有关。这个类别包括很多不同的方法。某些情形下基函数的顺序是规定的，如关于 <span class="math notranslate nohighlight">\(x\)</span> 的阶为 <span class="math notranslate nohighlight">\(M\)</span> 的多项式基函数。</p>
 <p>对于一维 <span class="math notranslate nohighlight">\(x\)</span>，阶为 <span class="math notranslate nohighlight">\(K\)</span> 的多项式样条可以通过 <span class="math notranslate nohighlight">\(M\)</span> 个样条基函数合适的序列来表示，从而由 <span class="math notranslate nohighlight">\(M-K-1\)</span> 个 <strong>结点 (knots)</strong> 来确定。在结点中间产生阶为 <span class="math notranslate nohighlight">\(K\)</span> 的分段多项式函数，并且在每个结点处由 <span class="math notranslate nohighlight">\(K-1\)</span> 阶连续函数来连接。考虑线性样条的例子，或者分段线性函数。一个直观满足条件的基由函数 <span class="math notranslate nohighlight">\(b_1(x)=1,b_2(x)=x,b_{m+2}(x)=(x-t_m)\_{+},m=1,\ldots,M-2\)</span> 构成，其中 <span class="math notranslate nohighlight">\(t_m\)</span> 为第 <span class="math notranslate nohighlight">\(m\)</span> 个结点，并且 <span class="math notranslate nohighlight">\(z_{+}\)</span> 表示正值部分。样条基的张量积可以用于维数大于一的输入（见 <span class="xref myst">5.2 节</span>，第 9 章的 <span class="xref myst">CRAT</span> 和 <span class="xref myst">MARS</span> 模型）。系数 <span class="math notranslate nohighlight">\(M\)</span> 控制着多项式的阶，或者是样条情形中的结点个数。</p>
 <p><strong>径向基函数 (Radial basis functions)</strong> 是在质心处对称的 <span class="math notranslate nohighlight">\(p\)</span> 维核，</p>
 <div class="math notranslate nohighlight">
@@ -1256,8 +1304,8 @@ f_{\theta}(x)=\sum\limits_{m=1}^M\beta_m\sigma(\alpha_m^Tx+b_m)
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="2.7-Structured-Regression-Models.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1274,19 +1322,17 @@ f_{\theta}(x)=\sum\limits_{m=1}^M\beta_m\sigma(\alpha_m^Tx+b_m)
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

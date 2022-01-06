@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -183,7 +183,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../03-Linear-Methods-for-Regression/3.3-Subset-Selection.html">
-     3.3 子集的选择
+     3.3 选择预测变量的子集
     </a>
    </li>
    <li class="toctree-l2">
@@ -496,7 +496,15 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.5-The-EM-Algorithm.html">
-     8.5 EM 算法
+     8.5
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EM
+      </span>
+      <span class="pre">
+       算法
+      </span>
+     </code>
     </a>
    </li>
    <li class="toctree-l2">
@@ -511,7 +519,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../08-Model-Inference-and-Averaging/8.8-Model-Averaging-and-Stacking.html">
-     8.8 模型平均和堆栈
+     8.8 模型平均和堆叠
     </a>
    </li>
    <li class="toctree-l2">
@@ -1091,7 +1099,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -1125,39 +1133,51 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>12.6 惩罚判别分析</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>12.6 惩罚判别分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>尽管 FDA 的动机是推广最优得分，但是它也可以直接看成是正则化判别分析的形式。假设 FDA 中的回归过程意味着在基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 上的、并且系数有二次惩罚的线性回归：</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 ASR(\{\theta_\ell,\beta_\ell\}^L_{\ell=1})=\frac 1N\sum\limits_{\ell=1}^L\Big[\sum\limits_{i=1}^N(\theta_\ell(g_i)-h^T(x_i)\beta_\ell)^2+\lambda\beta_\ell^T\mathbf \Omega\beta_\ell\Big].\tag{12.57}
-\]</div>
+\)</span>$</p>
 <p><span class="math notranslate nohighlight">\(\mathbf \Omega\)</span> 的选择取决于具体问题。如果 <span class="math notranslate nohighlight">\(\eta_\ell(x)=h(x)\beta_\ell\)</span> 是样条基函数的展开，则 <span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 可能约束 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 要在 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 上光滑。在可加样条的情形下，每个坐标有 <span class="math notranslate nohighlight">\(N\)</span> 个样条基函数，则 <span class="math notranslate nohighlight">\(h(x)\)</span> 总共包含 <span class="math notranslate nohighlight">\(Np\)</span> 个基函数；在这种情形下，<span class="math notranslate nohighlight">\(\mathbf\Omega\)</span> 是 <span class="math notranslate nohighlight">\(Np\times Np\)</span> 的，并且是分块对角的。</p>
 <p>然后 FDA 中的步骤就可以看成是 LDA 的推广形式，我们称之为 <strong>带惩罚的判别分析 (penalized discriminant analysis)</strong>，或者 PDA：</p>
 <ul class="simple">
 <li><p>通过基展开 <span class="math notranslate nohighlight">\(h(X)\)</span> 扩充预测变量 <span class="math notranslate nohighlight">\(X\)</span> 的集合；</p></li>
-<li><p>在增广空间中采用（带惩罚的）LDA，其中带惩罚的 <strong>马氏距离 (Mahalanobis distance)</strong> 由下式给出
-$<span class="math notranslate nohighlight">\(
-D(x,\mu)=(h(x)-h(\mu))^T(\mathbf \Sigma_W+\lambda\Omega)^{-1}(h(x)-h(\mu))\tag{12.58}
-\)</span><span class="math notranslate nohighlight">\(
-其中 \)</span>\mathbf \Sigma_W<span class="math notranslate nohighlight">\( 是导出变量 \)</span>h(x_i)$ 的类别内协方差矩阵。</p></li>
-<li><p>采用惩罚度量分解分类子空间：
-$<span class="math notranslate nohighlight">\(
-\max\; u^T\mathbf \Sigma_{\mathrm{Bet}}u\;\text{subject to }u^T(\mathbf\Sigma_W+\lambda\mathbf\Omega)u=1
-\)</span>$
-不严谨地说，带惩罚的麦哈顿距离趋向于给“粗糙”的坐标更少的权重，而给“光滑”的坐标更多的权重；因为惩罚不是对角的，同样的方式会应用到粗糙或光滑的线性组合中。</p></li>
+<li><p>在增广空间中采用（带惩罚的）LDA，其中带惩罚的 <strong>马氏距离 (Mahalanobis distance)</strong> 由下式给出</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+d(x,\mu)=(h(x)-h(\mu))^T(\mathbf \Sigma_W+\lambda\Omega)^{-1}(h(x)-h(\mu))\tag{12.58}
+\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(\mathbf \Sigma_W\)</span> 是导出变量 <span class="math notranslate nohighlight">\(h(x_i)\)</span> 的类别内协方差矩阵。</p>
+<ul class="simple">
+<li><p>采用惩罚度量分解分类子空间：</p></li>
+</ul>
+<p>$<span class="math notranslate nohighlight">\(
+\max\; u^T\mathbf \Sigma_{\mathrm{Bet}}u\;\text{subject to }u^T(\mathbf\Sigma_W+\lambda\mathbf\Omega)u=1
+\)</span></p>
+<p>不严谨地说，带惩罚的麦哈顿距离趋向于给“粗糙”的坐标更少的权重，而给“光滑”的坐标更多的权重；因为惩罚不是对角的，同样的方式会应用到粗糙或光滑的线性组合中。</p>
 <p>对于某些类的问题，第一步的基展开不是必须的；我们已经有太多（相关的）预测变量了。一个突出的例子是当分类的对象是 <strong>数字化模拟信号 (digitized analog signals)</strong> ：</p>
 <ul class="simple">
 <li><p>语音片段的对数周期图，在 256 个频率的集合上进行采样；见图 5.5。</p></li>
@@ -1191,8 +1211,8 @@ $<span class="math notranslate nohighlight">\(
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="12.5-Flexible-Disciminant-Analysis.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1209,19 +1229,17 @@ $<span class="math notranslate nohighlight">\(
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Trevor Hastie and Robert Tibshirani and Jerome Friedman<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
