@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="第二章 监督学习概览" href="../02-Overview-of-Supervised-Learning/2.0-Overview.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <link rel="prev" title="封面" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -94,7 +94,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
-   Welcome to your Jupyter Book
+   封面
   </a>
  </li>
 </ul>
@@ -1146,22 +1146,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   例1：垃圾电子邮件
+   例 1：垃圾电子邮件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   例2：前列腺癌
+   例 2：前列腺癌
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   例3：手写数字识别
+   例 3：手写数字识别
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   例4：基因表达微阵列
+   例 4：基因表达微阵列
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1206,22 +1206,22 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   例1：垃圾电子邮件
+   例 1：垃圾电子邮件
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   例2：前列腺癌
+   例 2：前列腺癌
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   例3：手写数字识别
+   例 3：手写数字识别
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   例4：基因表达微阵列
+   例 4：基因表达微阵列
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1264,55 +1264,57 @@
 <li><p>从糖尿病患者血液中的红外光谱吸收情况来估计该患者血液中的葡萄糖含量。</p></li>
 <li><p>基于临床和人口统计学变量确定前列腺癌的致病因素</p></li>
 <li><p>在统计、数据挖掘和人工智能等领域学习扮演了重要角色，与工程和其他学科都有交互。</p></li>
-<li><p>这本书关于从数据中学习。在一个典型的情境中，我们有一个希望能够基于一系列特征（如饮食和临床表现）预测的结果，通常是数量（如股票价格）或者类别（比如有心脏病和没有心脏病）。我们有一系列训练数据，其中有我们对结果的观测数据和对一系列物体（如人类）的特征测量。利用这些数据我们建立预测模型，或者学习，这个模型或学习能够让我们预测新的未知的物体的结果。一个好的学习是能够准确预测出一个结果。</p></li>
 </ul>
-<p><img alt="" src="../_images/intro_1.png" /></p>
+<p>这本书关于从数据中学习。在一个典型的情境中，我们有一个希望能够基于一系列特征（如饮食和临床表现）预测的结果，通常是数量（如股票价格）或者类别（比如有心脏病和没有心脏病）。我们有一系列训练数据，其中有我们对结果的观测数据和对一系列物体（如人类）的特征测量。利用这些数据我们建立预测模型，或者学习，这个模型或学习能够让我们预测新的未知的物体的结果。一个好的学习是能够准确预测出一个结果。</p>
 <blockquote>
-<div><p>**表 1.1：**电子邮件信息中的指示字符等于字符的平均比例。我们选择垃圾邮件和电子邮件，表1.1显示了两者的巨大区别。</p>
+<div><p><strong>表 1.1：</strong> 电子邮件信息中的指示字符等于字符的平均比例。我们选择垃圾邮件和电子邮件，表 1.1 显示了两者的巨大区别。</p>
 </div></blockquote>
+<p><img alt="" src="../_images/intro_1.png" /></p>
 <p>上述的例子描述的是监督学习问题。之所以称之为监督学习是因为存在结果变量来引导学习的过程。在非监督学习中，我们仅仅观察特征而且没有对结果的测量。我们的任务而是描述数据是如何形成的或者成簇的。我们将本书的绝大部分致力于监督学习，非监督学习问题的进展也相对较小，我们将在最后一章讨论。</p>
 <p>下面是在本书中讨论的一些真实的学习问题。</p>
 <div class="section" id="id2">
-<h2>例1：垃圾电子邮件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>例子中的数据包含 4601 封电子邮件的信息，在一项研究中试图预测一封电子邮件是否是垃圾邮件。目标是涉及一个自动垃圾邮件检测器，该检测器可以在邮件塞进用户邮箱前过滤掉垃圾电子邮件。对于所有的4601封电子邮件，可用的真实结果是邮件或者垃圾邮件，同时还有 57 个常用词和标点符号的相对频率。这是一个监督学习的例子，其中结果变量是类别型变量 <strong>email/spam</strong>。这也被称作分类问题。</p>
+<h2>例 1：垃圾电子邮件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>例子中的数据包含 <span class="math notranslate nohighlight">\(4601\)</span> 封电子邮件的信息，在一项研究中试图预测一封电子邮件是否是垃圾邮件。目标是涉及一个自动垃圾邮件检测器，该检测器可以在邮件塞进用户邮箱前过滤掉垃圾电子邮件。对于所有 <span class="math notranslate nohighlight">\(4601\)</span> 封电子邮件，可用的真实结果是邮件或者垃圾邮件，同时还有 <span class="math notranslate nohighlight">\(57\)</span> 个常用词和标点符号的相对频率。这是一个监督学习的例子，其中结果变量是类别型变量，取值为 <code class="docutils literal notranslate"><span class="pre">email</span></code> 或  <code class="docutils literal notranslate"><span class="pre">spam</span></code>，此类问题也被称为分类问题。</p>
 <p>表 1.1 列出了垃圾邮件和普通邮件平均差异比较大的单词和字符。</p>
-<p>我们的学习方法要决定用哪个特征以及怎么使用，比如说，我们会有下述规则</p>
-<p><strong>当(%george &lt; 0.6) 且 (%you &gt; 1.5)时，为垃圾邮件，否则为普通邮件</strong></p>
-<p>另一条规则可能是</p>
-<p><strong>当(0.2 · %you − 0.3 · %george) &gt; 0时，为垃圾邮件，否则为普通邮件</strong></p>
-<p>对于这个问题不是所有的错误都相等，我们想要避免过滤掉好的电子邮件，尽管让垃圾邮件通过不是想要的但是结果不是很严重。我们将在本书中讨论一系列不同的方法来解决这个学习问题。</p>
+<p>我们的学习方法要决定用哪个特征以及怎么使用，比如说，我们会有下述规则：</p>
+<ul class="simple">
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">(%george</span> <span class="pre">&lt;</span> <span class="pre">0.6)</span></code> 且 <code class="docutils literal notranslate"><span class="pre">(%you</span> <span class="pre">&gt;</span> <span class="pre">1.5)</span></code> 时，为垃圾邮件，否则为普通邮件。</p></li>
+</ul>
+<p>另一条规则可能是：</p>
+<p>当 <code class="docutils literal notranslate"><span class="pre">(0.2</span> <span class="pre">*</span> <span class="pre">%you</span> <span class="pre">−</span> <span class="pre">0.3</span> <span class="pre">*</span> <span class="pre">%george)</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> 时，为垃圾邮件，否则为普通邮件。</p>
+<p>对于上述垃圾邮件问题，并不是所有判别错误都具有相同的后果，我们其实要尽量避免过滤掉真实的电子邮件，反之，放行部分垃圾邮件虽然并不理想，但其结果并不是很严重。我们将在本书中讨论解决此学习问题的一系列不同方法。</p>
 </div>
 <div class="section" id="id3">
-<h2>例2：前列腺癌<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>例 2：前列腺癌<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig1.1.png" /></p>
 <blockquote>
-<div><p>图 1.1 是前列腺癌数据的散点图矩阵。第一行显示了响应变量和自变量之间的关系。其中两个自变量，<em>svi</em>和<em>gleason</em>是类别型变量。</p>
+<div><p>图 1.1 是前列腺癌数据的散点图矩阵。第一行显示了响应变量和自变量之间的关系。其中两个自变量，*svi <em>和</em> gleason *是类别型变量。</p>
 </div></blockquote>
 <p>这个例子的数据如图 1.1 所示，来自 Stamey et al. (1989)<a class="footnote-reference brackets" href="#id11" id="id4">1</a> 检验 <strong>前列腺癌特定抗原水平 (PSA)</strong> 和临床措施之间相关性的研究，其中有 97 名男性接受了彻底的前列腺切除术。</p>
-<p>目标是根据癌体积的对数值（<em>lcavol</em>）、前列腺重量的对数值（<em>lweight</em>）、良性前列腺增生数量（<em>lbph</em>）、精囊浸润（<em>svi</em>）、包膜浸透的对数值（<em>lcp</em>）、Gleason得分（<em>gleason</em>）、Gleason得分为4或5的比例（<em>pgg45</em>）来预测PSA的对数值（<em>lpsa</em>）。图1.1是这些变量的散点图矩阵。一些和（<em>lpsa</em>）的值是显著的，但是一个好的预测模型是很难根据眼睛构造出来的。</p>
+<p>目标是根据癌体积的对数值（<em>lcavol</em>）、前列腺重量的对数值（<em>lweight</em>）、良性前列腺增生数量（<em>lbph</em>）、精囊浸润（<em>svi</em>）、包膜浸透的对数值（<em>lcp</em>）、Gleason 得分（<em>gleason</em>）、Gleason 得分为 4 或 5 的比例（<em>pgg45</em>）来预测 PSA 的对数值（<em>lpsa</em>）。图 1.1 是这些变量的散点图矩阵。一些和（<em>lpsa</em>）的值是显著的，但是一个好的预测模型是很难根据眼睛构造出来的。</p>
 <p>这是一个监督学习的问题，也称之为回归问题，因为结果测量是可量化的。</p>
 </div>
 <div class="section" id="id5">
-<h2>例3：手写数字识别<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2>例 3：手写数字识别<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/fig1.2.png" /></p>
 <blockquote>
-<div><p>本例的数据是来自美国邮局中信封上的手写邮政编码。每张图片是五位邮政编码的一部分，并且每个数字分隔开了。这些图片是 <span class="math notranslate nohighlight">\(16\times 16\)</span> 的8位灰度位图，每个像素点密度值为 0 到 255.一些样例图片如图1.2所示。</p>
+<div><p>本例的数据是来自美国邮局中信封上的手写邮政编码。每张图片是五位邮政编码的一部分，并且每个数字分隔开了。这些图片是 <span class="math notranslate nohighlight">\(16\times 16\)</span> 的 8 位灰度位图，每个像素点密度值为 0 到 255. 一些样例图片如图 1.2 所示。</p>
 </div></blockquote>
 <p>这些图片都已经被标准化为几乎同样尺寸同样方向的图片了。任务是从 <span class="math notranslate nohighlight">\(16\times 16\)</span> 的灰度值矩阵中快速又准确地判断每张图片上的数字（0，1，…，9）。如果结果够精确，最终的算法会用到自动整理信封的过程中。这是一个分类问题，而且要求犯错误概率要很低避免分错邮箱。为了实现低错误率，一些物品要被分到不知道这个类里面，然而人工分拣。</p>
 </div>
 <div class="section" id="id6">
-<h2>例4：基因表达微阵列<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>DNA是脱氧核糖核酸，而且是组成人类染色体的基本材料。DNA表达微阵列通过测量一个细胞某基因的mRNA的量来衡量基因的表达情况。DNA表达微阵列被当作一个生物学领域的重大突破，促进了对单个细胞内成千上万基因同时量化研究。</p>
-<p>下面介绍DNA表达微阵列如何工作。几千个基因的核苷酸序列打印在载玻片上。分别用红色和绿色染料标记目标样本和参照样本，并且每个都与载玻片上的DNA混合。通过X光透视检查，可以测量出每个位置上红色/绿色的RNA强度之比的对数值。结果是几千个数，基本上在-6到6之间，衡量每个目标样本中基因相对于参考样本中基因的表达水平。正值表示目标样本中基因表达程度更高，反之亦然。</p>
-<p>一个基因表达数据集收集了一系列DNA微阵列实验中的表达的值，每一列表示一次实验。因此几千行表示几千个不同的基因，每一列表示一个样本：在图 1.3 中有 6830 个基因（行）和 64 个样本（列），尽管为了清晰只有一个随机样本的100行显示出来。这张图是用热点图显示了该数据集，从绿色（消极）到红色（积极）。样本是从不同病人得到的64个癌症肿瘤。</p>
+<h2>例 4：基因表达微阵列<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>DNA 是脱氧核糖核酸，而且是组成人类染色体的基本材料。DNA 表达微阵列通过测量一个细胞某基因的 mRNA 的量来衡量基因的表达情况。DNA 表达微阵列被当作一个生物学领域的重大突破，促进了对单个细胞内成千上万基因同时量化研究。</p>
+<p>下面介绍 DNA 表达微阵列如何工作。几千个基因的核苷酸序列打印在载玻片上。分别用红色和绿色染料标记目标样本和参照样本，并且每个都与载玻片上的 DNA 混合。通过 X 光透视检查，可以测量出每个位置上红色/绿色的 RNA 强度之比的对数值。结果是几千个数，基本上在-6 到 6 之间，衡量每个目标样本中基因相对于参考样本中基因的表达水平。正值表示目标样本中基因表达程度更高，反之亦然。</p>
+<p>一个基因表达数据集收集了一系列 DNA 微阵列实验中的表达的值，每一列表示一次实验。因此几千行表示几千个不同的基因，每一列表示一个样本：在图 1.3 中有 6830 个基因（行）和 64 个样本（列），尽管为了清晰只有一个随机样本的 100 行显示出来。这张图是用热点图显示了该数据集，从绿色（消极）到红色（积极）。样本是从不同病人得到的 64 个癌症肿瘤。</p>
 <p>这里的挑战是理解基因和样本是怎样组织起来的。典型的问题有如下几个：</p>
 <p>(a) 根据基因的表达谱，哪些样本两两之间最相似？</p>
 <p>(b) 根据样本的表达谱，哪些基因两两之间最相似？</p>
 <p>(C) 对于特定的癌症样本，特定的基因是否有非常高或低的表达？</p>
-<p>我们可以把这个任务看成是回归问题，有两个类别型自变量——基因和样本——以及对应变量的表达水平。然而，把这个问题看成是非监督学习可能更有用。例如，对于上述的问题(a)，我们把样本看成是6830维空间中的一点，并且想通过某种方式对其进行聚类。</p>
+<p>我们可以把这个任务看成是回归问题，有两个类别型自变量——基因和样本——以及对应变量的表达水平。然而，把这个问题看成是非监督学习可能更有用。例如，对于上述的问题 (a)，我们把样本看成是 6830 维空间中的一点，并且想通过某种方式对其进行聚类。</p>
 <p><img alt="" src="../_images/fig1.3.png" /></p>
 <blockquote>
-<div><p>图1.3 DNA阵列数据：基于人类肿瘤数据的 6830 个基因（行）、64个样本（列）的基因表达矩阵。只有随机的100行显示在图中。使用热点图描述这些数据，从绿色（消极，抑制表达）到红色（积极，过表达）。缺失数据为灰色。行和列是采用随机的顺序展示。</p>
+<div><p>图 1.3 DNA 阵列数据：基于人类肿瘤数据的 6830 个基因（行）、64 个样本（列）的基因表达矩阵。只有随机的 100 行显示在图中。使用热点图描述这些数据，从绿色（消极，抑制表达）到红色（积极，过表达）。缺失数据为灰色。行和列是采用随机的顺序展示。</p>
 </div></blockquote>
 </div>
 <div class="section" id="id7">
@@ -1323,10 +1325,10 @@
 </div>
 <div class="section" id="id8">
 <h2>这本书是如何组织的<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>我们的观点是一个人在尝试掌握复杂的概念前必须理解简单的方法。因此，当在<strong>第二章</strong>对监督学习给出概要后，我们在<strong>第三和第四章</strong>讨论了回归和分类的线性方法。<strong>第五章</strong>我们描述了对单个自变量的样条，小波和正则/惩罚方法，<strong>第六章</strong>则描述了核方法和局部回归。上述两种方法都是高维学习技术的重要基石。模型评估与选择是<strong>第七章</strong>的主题，包括偏差和方差，过拟合和用于选择模型用的交互验证。<strong>第八章</strong>讨论了模型推断与平均，概要地介绍了极大似然法、贝叶斯推断、自助法、EM算法、吉布斯抽样和<code class="docutils literal notranslate"><span class="pre">bagging</span></code>。与此相关的boosting过程是<strong>第十章</strong>的重点。</p>
+<p>我们的观点是一个人在尝试掌握复杂的概念前必须理解简单的方法。因此，当在<strong>第二章</strong>对监督学习给出概要后，我们在<strong>第三和第四章</strong>讨论了回归和分类的线性方法。<strong>第五章</strong>我们描述了对单个自变量的样条，小波和正则/惩罚方法，<strong>第六章</strong>则描述了核方法和局部回归。上述两种方法都是高维学习技术的重要基石。模型评估与选择是<strong>第七章</strong>的主题，包括偏差和方差，过拟合和用于选择模型用的交互验证。<strong>第八章</strong>讨论了模型推断与平均，概要地介绍了极大似然法、贝叶斯推断、自助法、EM 算法、吉布斯抽样和<code class="docutils literal notranslate"><span class="pre">bagging</span></code>。与此相关的 boosting 过程是<strong>第十章</strong>的重点。</p>
 <p>在<strong>第九到十三章</strong>我们描述了一系列用于监督学习的结构化方法，其中<strong>第九和第十一章</strong>介绍回归以及<strong>第十二和第十三章</strong>重点在分类。<strong>第十四章</strong>描述了非监督学习的方法。两个最近提出来的技术，随机森林和集成学习将在<strong>第十五和第十六章</strong>讨论。我们在<strong>第十七章</strong>讨论无向图模型以及最后在<strong>第十八章</strong>学习高维问题。</p>
 <p>在每一张结尾我们讨论计算需要考虑的因素，这对於数据挖掘的应用是很重要的，包括计算量级随着观测值和自变量数目的变化。每一章节最后的文献注解提供了本章的背景参考资料。</p>
-<p>我们建议按顺序先阅读第1-4章，第7章也应该当作强制阅读，因为它介绍了关于所有学习方法的中心概念。有了这些概念，这本书的其他章节根据读者的兴趣可以按照顺序读，或选读。</p>
+<p>我们建议按顺序先阅读第 1-4 章，第 7 章也应该当作强制阅读，因为它介绍了关于所有学习方法的中心概念。有了这些概念，这本书的其他章节根据读者的兴趣可以按照顺序读，或选读。</p>
 <p>这个标志表明这是技术上困难的部分，读者可以跳过这部分而且不会影响后续讨论。</p>
 </div>
 <div class="section" id="id9">
@@ -1337,7 +1339,7 @@
 </div>
 <div class="section" id="id10">
 <h2>教师注意事项<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>我们成功地将这本书的第一版用做两个短学期的课程基础，如果加上第二版中的补充材料，可以用做三个短学期。练习题在每一章的最后。对学生而言，使用良好的软件处理书后的问题是很重要的。我们在自己的教学课堂上使用R和S-PLUS 编程。</p>
+<p>我们成功地将这本书的第一版用做两个短学期的课程基础，如果加上第二版中的补充材料，可以用做三个短学期。练习题在每一章的最后。对学生而言，使用良好的软件处理书后的问题是很重要的。我们在自己的教学课堂上使用 R 和 S-PLUS 编程。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
@@ -1376,7 +1378,7 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+            <p class="prev-next-title">封面</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../02-Overview-of-Supervised-Learning/2.0-Overview.html" title="next page">

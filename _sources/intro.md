@@ -1,16 +1,17 @@
-# Welcome to your Jupyter Book
+# 封面
 
-This is a small sample book to give you a feel for how book content is
-structured.
+# The Elements of Statistical Learning( 2nd Edition) <br>
 
-:::{note}
-Here is a note!
-:::
+Author： Trevor Hastie and Robert Tibshirani and Jerome Friedman (2008)<br>
 
-And here is a code block:
+Chinese Version By( 2016 ): [szcf-weiya](https://hohoweiya.xyz/)<br>
 
-```
-e = mc^2
-```
+Chinese Version Updated By( 2021 ): [Xishansnow](xishansnow.github.io)<br>
 
-Check out the content pages bundled with this sample book to see more.
+# 统计学习精要（第二版）<br>
+
+中文译者（ 2016 ）: [Lijun Wang](https://hohoweiya.xyz/)<br>
+
+中文更新（ 2021 ）: [西山晴雪](xishansnow.github.io)<br>
+
+![](https://gitee.com/XiShanSnow/imagebed/raw/master/images/stats-20220107215722-44d7.webp)
