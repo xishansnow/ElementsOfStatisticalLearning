@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,17 +1146,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   （）核密度估计
+   6.6.1 核密度估计
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   （）核密度分类
+   6.6.2 核密度分类
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   （）朴素贝叶斯分类器
+   6.6.3 朴素贝叶斯分类器
   </a>
  </li>
 </ul>
@@ -1181,17 +1181,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   （）核密度估计
+   6.6.1 核密度估计
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   （）核密度分类
+   6.6.2 核密度分类
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   （）朴素贝叶斯分类器
+   6.6.3 朴素贝叶斯分类器
   </a>
  </li>
 </ul>
@@ -1208,8 +1208,8 @@
 <style>p{text-indent:2em;2}</style>
 <p>核密度估计是非监督学习过程，在历史上先于核回归。它还自然地导出了非参分类的一系列简单的过程。</p>
 <div class="section" id="id2">
-<h2>（）核密度估计<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>假设我们从概率密度 <span class="math notranslate nohighlight">\(f_X(x)\)</span> 中取随机样本 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span>，并且希望估计 <span class="math notranslate nohighlight">\(x_0\)</span> 处的 <span class="math notranslate nohighlight">\(f_X\)</span>。为了简化，我们现在假设 <span class="math notranslate nohighlight">\(X\in \mathbb{R}\)</span>。与前面一样，一个自然的局部估计有如下形式</p>
+<h2>6.6.1 核密度估计<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>假设从概率密度 <span class="math notranslate nohighlight">\(f_X(x)\)</span> 中取随机样本 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span>，并且希望估计 <span class="math notranslate nohighlight">\(x_0\)</span> 处的 <span class="math notranslate nohighlight">\(f_X\)</span>。为了简化，我们现在假设 <span class="math notranslate nohighlight">\(X\in \mathbb{R}\)</span>。与前面一样，一个自然的局部估计有如下形式</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_X(x_0)=\frac{\#x_i\in \mathcal N(x_0)}{N\lambda}\tag{6.21}
@@ -1219,7 +1219,7 @@
 \[
 \hat f(x_0)=\frac{1}{N\lambda}\sum\limits_{i=1}^NK_\lambda(x_0,x_i)\tag{6.22}
 \]</div>
-<p>因为它考虑离 <span class="math notranslate nohighlight">\(x_0\)</span> 近的观测点，并且观测点的权重系数随着离 <span class="math notranslate nohighlight">\(x_0\)</span> 的距离增大而减小。这种情形下 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 受欢迎的选择是高斯核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x)=\phi(\vert x-x_0\vert/\lambda)\)</span>。图 6.13 显示了根据 CHD 群中 <code class="docutils literal notranslate"><span class="pre">systolic</span> <span class="pre">blood</span> <span class="pre">pressure</span></code> 的样本值来拟合高斯核密度。令 <span class="math notranslate nohighlight">\(\phi_\lambda\)</span> 是均值为 0 标准误差为 <span class="math notranslate nohighlight">\(\lambda\)</span> 的高斯密度，则 式（ 6.22 ） 有如下形式</p>
+<p>因为它考虑离 <span class="math notranslate nohighlight">\(x_0\)</span> 近的观测点，并且观测点的权重系数随着离 <span class="math notranslate nohighlight">\(x_0\)</span> 的距离增大而减小。这种情形下 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 受欢迎的选择是高斯核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,x)=\phi(\vert x-x_0\vert/\lambda)\)</span>。图 6.13 显示了根据 CHD 群中 <code class="docutils literal notranslate"><span class="pre">systolic</span> <span class="pre">blood</span> <span class="pre">pressure</span></code> 的样本值来拟合高斯核密度。令 <span class="math notranslate nohighlight">\(\phi_\lambda\)</span> 是均值为 0 标准差为 <span class="math notranslate nohighlight">\(\lambda\)</span> 的高斯密度，则 式（ 6.22 ） 有如下形式</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1255,7 +1255,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2>（）核密度分类<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.2 核密度分类<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>利用贝叶斯定理可以直接地对分类做非参数密度估计。假设对于 <span class="math notranslate nohighlight">\(J\)</span> 分类问题，我们对每个类别单独拟合非参密度估计 <span class="math notranslate nohighlight">\(\hat{f_j}(X),j=1,\ldots,J\)</span>，并且我们有类别先验概率 <span class="math notranslate nohighlight">\(\hat \pi_j\)</span> 的估计（通常是样本比例）。则</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1273,8 +1273,8 @@
 </div></blockquote>
 </div>
 <div class="section" id="id5">
-<h2>（）朴素贝叶斯分类器<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>不管它的名字（也称为“白痴的贝叶斯”！），这是这些年仍然流行的技巧。当特征空间的维数 <span class="math notranslate nohighlight">\(p\)</span> 很高，这种方式特别合适，使得密度估计不再吸引人。朴素贝叶斯模型假设给定类别 <span class="math notranslate nohighlight">\(G=j\)</span>，特征 <span class="math notranslate nohighlight">\(X_k\)</span> 是独立的:</p>
+<h2>6.6.3 朴素贝叶斯分类器<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>不管其名字如何，这是近年仍然流行的技巧。当特征空间的维数 <span class="math notranslate nohighlight">\(p\)</span> 很高时，此方法特别合适，使得密度估计不再吸引人。朴素贝叶斯模型假设给定类别 <span class="math notranslate nohighlight">\(G=j\)</span>，特征 <span class="math notranslate nohighlight">\(X_k\)</span> 是独立的：</p>
 <div class="math notranslate nohighlight">
 \[
 f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}
@@ -1297,15 +1297,7 @@ f_j(X)=\prod\limits_{k=1}^pf_{jk}(X_k)\tag{6.26}
 \tag{6.27}
 \end{split}\]</div>
 <p>这有广义加性模型的形式，更多细节将在 <span class="xref myst">第 9 章</span> 中描述。尽管模型以完全不同的方式来拟合；它们的差别将在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/188">练习 6.9 </a>中探索。</p>
-<blockquote>
-<div><p>info “weiya 注：Ex. 6.9”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/188">Issue 188: Ex. 6.9</a>，欢迎交流讨论！</p>
-</div></blockquote>
 <p>朴素贝叶斯和广义加性模型间的关系可以类比成线性判别分析和逻辑斯蒂回归（<a class="reference external" href="../04-Linear-Methods-for-Classification/4.4-Logistic-Regression/index.html#lda">4.4.5 节</a>）。</p>
-<blockquote>
-<div><p>note “weiya 注：”
-附上一个用朴素贝叶斯做文本分析的例子，<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/tree/master/code/NaiveBayes">垃圾短信分类</a>。</p>
-</div></blockquote>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>

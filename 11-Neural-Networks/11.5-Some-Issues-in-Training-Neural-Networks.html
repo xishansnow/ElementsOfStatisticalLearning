@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1239,14 +1239,14 @@
 <p><span class="math notranslate nohighlight">\(
 J(\theta)=\sum\limits_{km}\beta_{km}^2+\sum\limits_{m\ell}\alpha_{m\ell}^2\tag{11.16}
 \)</span>$</p>
-<p><span class="math notranslate nohighlight">\(\lambda\ge 0 \)</span>是一个调整参数。更大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 有将系数收缩到 0 的趋势：一般地，采用交叉验证估计 <span class="math notranslate nohighlight">\(\lambda\)</span>。惩罚项带来的影响是简单地在（11.13）的梯度表达式上分别加上 <span class="math notranslate nohighlight">\(2\beta_{km}\)</span> 和 <span class="math notranslate nohighlight">\(2\alpha_{m\ell}\)</span>。也有提出其他形式的惩罚项，举个例子，</p>
+<p><span class="math notranslate nohighlight">\(\lambda\ge 0 \)</span>是一个调整参数。更大的 <span class="math notranslate nohighlight">\(\lambda\)</span> 有将系数收缩到 0 的趋势：一般地，采用交互验证估计 <span class="math notranslate nohighlight">\(\lambda\)</span>。惩罚项带来的影响是简单地在（11.13）的梯度表达式上分别加上 <span class="math notranslate nohighlight">\(2\beta_{km}\)</span> 和 <span class="math notranslate nohighlight">\(2\alpha_{m\ell}\)</span>。也有提出其他形式的惩罚项，举个例子，</p>
 <p><span class="math notranslate nohighlight">\(
 J(\theta)=\sum\limits_{km}\frac{\beta_{km}^2}{1+\beta_{km}^2}+\sum\limits_{m\ell}\frac{\alpha_{m\ell}^2}{1+\alpha_{m\ell}^2}\tag{11.17}
 \)</span>$</p>
 <p>也称作 <strong>权重消去 (weight elimination)</strong> 惩罚。这比 <span class="math notranslate nohighlight">\(式（ 11.16 ）\)</span> 更能收缩系数。</p>
 <p><img alt="" src="../_images/fig11.4.png" /></p>
 <blockquote>
-<div><p>图 11.4. 第 2 章混合例子的神经网络模型。上图没有采用系数衰减，对训练数据有过拟合。下图用了系数衰减，而且与贝叶斯误差率（紫色虚线边界）相近。两者都是采用softmax激活函数以及交叉熵误差。</p>
+<div><p>图 11.4. 第 2 章混合例子的神经网络模型。上图没有采用系数衰减，对训练数据有过拟合。下图用了系数衰减，而且与贝叶斯误差率（紫色虚线边界）相近。两者都是采用softmax激活函数以及交互熵误差。</p>
 </div></blockquote>
 <p>图 11.4 显示了对第 2 章中混合例子训练含 10 个隐藏单元的神经网络的结果，上图没有系数衰减的情形，下图是加上权重衰减的情形。权重衰减显然提高了预测效果。图 11.5 显示了从训练及中估计的参数的热图（黑白版本的图象称为 Hinton 图）。我们看到系数衰减对两层的权重系数都有抑制：最终的权重系数在十个隐藏单元上分布相当均匀。</p>
 <p><img alt="" src="../_images/fig11.5.png" /></p>
@@ -1260,7 +1260,7 @@ J(\theta)=\sum\limits_{km}\frac{\beta_{km}^2}{1+\beta_{km}^2}+\sum\limits_{m\ell
 </div>
 <div class="section" id="id5">
 <h2>（）隐藏单元和层的个数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>一般来说，太多的隐藏单元比太少的隐藏单元要好。太少的隐藏单元，模型或许没有足够的灵活性来捕捉数据的非线性；太多的隐藏单元，如果使用了合适的正则化，额外的权重系数可以收缩到 0。一般地，隐藏单元的数量处于 5 到 100 的范围之内，而且随着输入个数、训练情形的种数的增加而增加。最常见的是放入相当大数量的单元并且进行正则化训练。一些研究者采用交叉验证来估计最优的数量，但是当交叉验证用来估计正则化系数这似乎是不必要的。隐藏层的选择由背景知识和经验来指导。每一层提取输入的特征用于回归或者分类。多重隐藏层的使用允许在不同的分解层次上构造层次特征。<a class="reference internal" href="11.6-Example-of-Simulated-Data.html"><span class="doc std std-doc">第 11.6 节</span></a>给出了多层有效使用的一个例子。</p>
+<p>一般来说，太多的隐藏单元比太少的隐藏单元要好。太少的隐藏单元，模型或许没有足够的灵活性来捕捉数据的非线性；太多的隐藏单元，如果使用了合适的正则化，额外的权重系数可以收缩到 0。一般地，隐藏单元的数量处于 5 到 100 的范围之内，而且随着输入个数、训练情形的种数的增加而增加。最常见的是放入相当大数量的单元并且进行正则化训练。一些研究者采用交互验证来估计最优的数量，但是当交互验证用来估计正则化系数这似乎是不必要的。隐藏层的选择由背景知识和经验来指导。每一层提取输入的特征用于回归或者分类。多重隐藏层的使用允许在不同的分解层次上构造层次特征。<a class="reference internal" href="11.6-Example-of-Simulated-Data.html"><span class="doc std std-doc">第 11.6 节</span></a>给出了多层有效使用的一个例子。</p>
 </div>
 <div class="section" id="id6">
 <h2>（）多重最小点<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>

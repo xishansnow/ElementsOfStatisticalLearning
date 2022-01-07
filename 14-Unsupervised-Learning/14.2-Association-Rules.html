@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1268,7 +1268,7 @@ K=\sum\limits_{j=1}^p\vert \mathcal S_j\vert\]</div>
 \[
 \Pr\Big[\bigcap_{k\in\mathcal K}(Z_k=1)\Big]=\Pr\Big[\prod\limits_{k\in\mathcal K}Z_k=1\Big]\tag{14.4}
 \]</div>
-<p>这是市场篮子问题的标准形式。集合 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 称为“<strong>项目集 (items set)</strong>”。项目集中的变量 <span class="math notranslate nohighlight">\(Z_k\)</span> 的个数称为“大小 (size)”（注意到这个大小不大于 <span class="math notranslate nohighlight">\(p\)</span>）。式（ 14.4 ） 的估计值取为在数据集中式 式（ 14.4 ） 中关联为真的观测的比例：</p>
+<p>这是市场篮子问题的标准形式。集合 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 称为“<strong>项目集 (items set)</strong>”。项目集中的变量 <span class="math notranslate nohighlight">\(Z_k\)</span> 的个数称为“大小 (size)”（注意到这个大小不大于 <span class="math notranslate nohighlight">\(p\)</span>）。式（ 14.4 ） 的估计值取为在数据集中式（ 14.4 ） 中关联为真的观测的比例：</p>
 <div class="math notranslate nohighlight">
 \[
 \widehat{\Pr}\Big[\prod\limits_{k\in\mathcal K}(Z_k=1)\Big]=\frac{1}{N}\sum\limits_{i=1}^N\prod_{k\in\mathcal K}z_{ik}\tag{14.5}
@@ -1282,7 +1282,7 @@ K=\sum\limits_{j=1}^p\vert \mathcal S_j\vert\]</div>
 </div>
 <div class="section" id="apriori">
 <h2>（）Apriori 算法<a class="headerlink" href="#apriori" title="Permalink to this headline">¶</a></h2>
-<p>如果调整阈值 <span class="math notranslate nohighlight">\(t\)</span> 使得式 式（ 14.6 ） 仅由所有 <span class="math notranslate nohighlight">\(2^K\)</span> 中可能的项集合中的一小部分构成，则对于非常大的数据集，可以通过可行的计算得到 式（ 14.6 ） 的解。“Apriori”算法（Argawal et al.，1995<a class="footnote-reference brackets" href="#id8" id="id3">1</a>）探究维数灾难的某些方面，采用小部分的数据传递求解 式（ 14.6 ）。具体地，对于给定的支撑阈值 <span class="math notranslate nohighlight">\(t\)</span>：</p>
+<p>如果调整阈值 <span class="math notranslate nohighlight">\(t\)</span> 使得式（ 14.6 ） 仅由所有 <span class="math notranslate nohighlight">\(2^K\)</span> 中可能的项集合中的一小部分构成，则对于非常大的数据集，可以通过可行的计算得到 式（ 14.6 ） 的解。“Apriori”算法（Argawal et al.，1995<a class="footnote-reference brackets" href="#id8" id="id3">1</a>）探究维数灾难的某些方面，采用小部分的数据传递求解 式（ 14.6 ）。具体地，对于给定的支撑阈值 <span class="math notranslate nohighlight">\(t\)</span>：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\\{{\mathcal K}\mid T(\mathcal K)&gt;t \\}\)</span> 的 <strong>基数(cardinality)</strong> 相对小。</p></li>
 <li><p>任意由项目集 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 中子集组成的集合 <span class="math notranslate nohighlight">\(\mathcal L\)</span> 必须有比 <span class="math notranslate nohighlight">\(\mathcal K\)</span> 大或相等的支撑，即 <span class="math notranslate nohighlight">\({\mathcal L\subseteq K}\Rightarrow T({\mathcal L})\ge T({\mathcal K})\)</span></p></li>
@@ -1393,7 +1393,7 @@ g_0(x)=\prod\limits_{j=1}^pg_j(x_j)\tag{14.15}
 <div><p>note “weiya 注：”
 <a class="reference internal" href="14.7-Independent-Component-Analysis-and-Exploratory-Projection-Pursuit.html"><span class="doc std std-doc">第 14.7 节</span></a> 介绍了互信息量，它是独立性的一个自然度量，是联合密度与其边缘密度乘积间的 Kullback-Leibler 距离。</p>
 </div></blockquote>
-<p>正如上面讨论的那样，非监督学习关心揭示数据密度 <span class="math notranslate nohighlight">\(g(x)\)</span> 的性质。每个技巧关注于特定的性质或者某些性质。尽管这种将问题转换为监督学习的方式 式（ 14.10 ）-式（ 14.14 ） 看起来在一段时间内成为<strong>统计民俗学 (statistics folklore)</strong> 的一部分，但它似乎没有太大的影响，尽管它有将已经研究透彻的监督学习方法应用到非监督学习的潜力。其中一个原因可能是这个问题必须要用蒙特卡洛技巧产生的模拟数据来扩大。因为数据集的大小至少和数据样本一样大 <span class="math notranslate nohighlight">\(N_0\ge N\)</span>，这个估计过程的计算和内存上的要求至少双倍。另外，产生蒙特卡洛样本本身可能需要大量的计算。尽管在过去这是一个限制，但是这增加的计算需求不再成为一个负担，因为增加的资源也变成了可能。我们将在下一节说明在非监督学习中监督学习方法的使用。</p>
+<p>正如上面讨论的那样，非监督学习关心揭示数据密度 <span class="math notranslate nohighlight">\(g(x)\)</span> 的性质。每个技巧关注于特定的性质或者某些性质。尽管这种将问题转换为监督学习的方式（ 14.10 ）-式（ 14.14 ） 看起来在一段时间内成为<strong>统计民俗学 (statistics folklore)</strong> 的一部分，但它似乎没有太大的影响，尽管它有将已经研究透彻的监督学习方法应用到非监督学习的潜力。其中一个原因可能是这个问题必须要用蒙特卡洛技巧产生的模拟数据来扩大。因为数据集的大小至少和数据样本一样大 <span class="math notranslate nohighlight">\(N_0\ge N\)</span>，这个估计过程的计算和内存上的要求至少双倍。另外，产生蒙特卡洛样本本身可能需要大量的计算。尽管在过去这是一个限制，但是这增加的计算需求不再成为一个负担，因为增加的资源也变成了可能。我们将在下一节说明在非监督学习中监督学习方法的使用。</p>
 </div>
 <div class="section" id="id5">
 <h2>（）广义关联规则<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -1402,8 +1402,8 @@ g_0(x)=\prod\limits_{j=1}^pg_j(x_j)\tag{14.15}
 \[
 \widehat{\Pr}\Big(\bigcap_{j\in\mathcal J}(X_j\in s_j)\Big) = \frac{1}{N}\sum\limits_{i=1}^NI\Big(\bigcap_{j\in\mathcal J}(x_{ij}\in s_j)\Big)\tag{14.16}
 \]</div>
-<p>根据关联规则的数据，<span class="math notranslate nohighlight">\(\\{(X_j\in s_j)\\}_{i\in \mathcal J}\)</span> 将被称为“广义”项目集。对于定量变量的子集 <span class="math notranslate nohighlight">\(s_j\)</span> 取为在它们值域中的邻接区间，对于类别型变量的子集可以涉及不止一个单值。这种方法的这条“野心的 (ambitious)” 性质阻碍了对所有广义项目集的全面搜索，来寻找式 式（ 14.16 ） 大于特定最小值的支撑。必须用到启发式搜索算法，而且最希望有个寻找这样广义项目集的集合。</p>
-<p>市场篮子分析 式（ 14.5 ） 和广义公式 式（ 14.16 ） 都隐式地引用均匀概率分布。如果所有的联合数据值 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span> 都是均匀分布的，则寻找比期望更频繁的项目集。这有助于寻找单个边缘组分 <span class="math notranslate nohighlight">\((X_j\in s_j)\)</span> 是频繁的项目集，也就是，下式的值大。</p>
+<p>根据关联规则的数据，<span class="math notranslate nohighlight">\(\\{(X_j\in s_j)\\}_{i\in \mathcal J}\)</span> 将被称为“广义”项目集。对于定量变量的子集 <span class="math notranslate nohighlight">\(s_j\)</span> 取为在它们值域中的邻接区间，对于类别型变量的子集可以涉及不止一个单值。这种方法的这条“野心的 (ambitious)” 性质阻碍了对所有广义项目集的全面搜索，来寻找式（ 14.16 ） 大于特定最小值的支撑。必须用到启发式搜索算法，而且最希望有个寻找这样广义项目集的集合。</p>
+<p>市场篮子分析 式（ 14.5 ） 和广义公式（ 14.16 ） 都隐式地引用均匀概率分布。如果所有的联合数据值 <span class="math notranslate nohighlight">\((x_1,x_2,\ldots,x_N)\)</span> 都是均匀分布的，则寻找比期望更频繁的项目集。这有助于寻找单个边缘组分 <span class="math notranslate nohighlight">\((X_j\in s_j)\)</span> 是频繁的项目集，也就是，下式的值大。</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{N}\sum_{i=1}^NI(x_{ij}\in s_j)\tag{14.17}

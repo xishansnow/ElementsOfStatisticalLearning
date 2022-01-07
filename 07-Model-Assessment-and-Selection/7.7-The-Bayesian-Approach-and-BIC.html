@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1177,7 +1177,7 @@ $$</p>
 \]</div>
 <p>详见 <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_information_criterion#Gaussian_special_case">Wiki: BIC</a></p>
 </div>
-<p>对于分类问题，选择交叉熵作为误差衡量，使用多项对数似然会导出与 AIC 更相似的关系。注意到误分类误差率不会出现在 BIC  中，因为它并不对应于在任何概率模型下数据的对数似然。</p>
+<p>对于分类问题，选择交互熵作为误差衡量，使用多项对数似然会导出与 AIC 更相似的关系。注意到误分类误差率不会出现在 BIC  中，因为它并不对应于在任何概率模型下数据的对数似然。</p>
 <p>尽管和 AIC 很相似，但 BIC 的来源 (motivation) 截然不同。它来源于使用贝叶斯方法来选择模型，我们现在进行讨论。</p>
 <p>假设我们有一系列预选模型 <span class="math notranslate nohighlight">\({\mathcal M_m},m=1,\ldots,M\)</span>，以及对应的模型参数 <span class="math notranslate nohighlight">\(\theta_m\)</span>，我们希望从中选择最优的模型。假设我们对每个模型 <span class="math notranslate nohighlight">\(\mathcal M_m\)</span> 的参数有先验分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\theta_m\mid\mathcal M_m)\)</span>，则模型的后验概率为：</p>
 <div class="math notranslate nohighlight">

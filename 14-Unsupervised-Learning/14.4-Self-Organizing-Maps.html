@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1193,7 +1193,7 @@
 m_k\leftarrow m_k+\alpha (x_i-m_k)\tag{14.46}
 \)</span>$</p>
 <p><span class="math notranslate nohighlight">\(m_j\)</span> 的邻居定义为使得 <span class="math notranslate nohighlight">\(\ell_j\)</span> 和 <span class="math notranslate nohighlight">\(\ell_k\)</span> 间的距离小的所有 <span class="math notranslate nohighlight">\(m_k\)</span>。最简单的方式是采用欧式距离，通过阈值 <span class="math notranslate nohighlight">\(r\)</span> 来决定“小”。邻域经常包含最近的原型 <span class="math notranslate nohighlight">\(m_j\)</span> 本身。</p>
-<p>注意到这里的距离是定义在原型的整数拓扑坐标 <span class="math notranslate nohighlight">\(\mathcal Q_1\times \mathcal Q_2\)</span> 的空间中。式 式（ 14.46 ） 的更新是将原型往数据点移动，但也是用来维持原型间的光滑的二维空间的关系。</p>
+<p>注意到这里的距离是定义在原型的整数拓扑坐标 <span class="math notranslate nohighlight">\(\mathcal Q_1\times \mathcal Q_2\)</span> 的空间中。式（ 14.46 ） 的更新是将原型往数据点移动，但也是用来维持原型间的光滑的二维空间的关系。</p>
 <blockquote>
 <div><p>note “weiya 注：”
 比如在“瑞士卷”流形上，三维中距离近的点并不意味着流形上距离近。因为最终是要得到低维表示，所以最近邻是定义在低维空间，而不是原始的高维空间，但是对点进行移动操作还是会回到高维空间本身。

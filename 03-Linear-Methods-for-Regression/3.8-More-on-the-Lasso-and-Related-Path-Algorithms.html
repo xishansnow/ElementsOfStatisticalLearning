@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1365,7 +1365,7 @@ L(y, f) = [1-yf]_+\,,
 \underset{j\in \mathcal S^c}{\mathrm{max}}\Vert \mathbf x_j^T\mathbf X_{\mathcal S}(\mathbf X_{\mathcal S}^T\mathbf X_{\mathcal S})^{-1}\Vert_1\le (1-\epsilon)\text{ for some }\epsilon\in (0, 1]\tag{3.81}
 \]</div>
 <p>这里 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 标记真实的潜在模型中非零系数特征的子集，<span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S}\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 中对应的这些特征的列。类似地，<span class="math notranslate nohighlight">\(\mathcal S^c\)</span>是真实系数为 0 的特征的集合，<span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S^c}\)</span> 是对应的列。这说明 <span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S^c}\)</span> 的列在 <span class="math notranslate nohighlight">\(\mathbf X_{\mathcal S}\)</span> 上的最小二乘系数不会太大，也就是，信号变量 <span class="math notranslate nohighlight">\(\mathcal S\)</span> 与冗余变量 <span class="math notranslate nohighlight">\(\mathcal S^c\)</span> 之间不是高度相关。</p>
-<p>考虑这些系数本身，lasso 收缩导致非零系数的估计偏向 0，并且一般地他们不是一致的。降低这种偏差的一种方式是运行 lasso 来识别非零系数的集合，接着对选出的特征进行无约束线性模型拟合。另外，也可以采用 lasso 来选择非零预测变量，接着再次运用 lasso，但是从第一步开始便只用选择出的变量。这称为 relaxed lasso (Meinshausen, 2007<a class="footnote-reference brackets" href="#id59" id="id32">19</a>)。这个想法是采用交叉验证来估计 lasso 初始的惩罚参数，然后接着对选择出的变量再用一次惩罚参数。因为第二步中的变量与噪声变量之间的竞争变小，所以交叉验证会趋向于选择较小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，因此它们的系数会比初始估计时收缩得要小。</p>
+<p>考虑这些系数本身，lasso 收缩导致非零系数的估计偏向 0，并且一般地他们不是一致的。降低这种偏差的一种方式是运行 lasso 来识别非零系数的集合，接着对选出的特征进行无约束线性模型拟合。另外，也可以采用 lasso 来选择非零预测变量，接着再次运用 lasso，但是从第一步开始便只用选择出的变量。这称为 relaxed lasso (Meinshausen, 2007<a class="footnote-reference brackets" href="#id59" id="id32">19</a>)。这个想法是采用交互验证来估计 lasso 初始的惩罚参数，然后接着对选择出的变量再用一次惩罚参数。因为第二步中的变量与噪声变量之间的竞争变小，所以交互验证会趋向于选择较小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，因此它们的系数会比初始估计时收缩得要小。</p>
 <p>另外，也可以修改 lasso 惩罚函数使得更大的系数收缩得不要太剧烈；Fan and Li (2005)<a class="footnote-reference brackets" href="#id65" id="id33">25</a>的 <strong>平稳削减绝对偏差法 (smoothly clipped absolute deviation, SCAD)</strong> 用 <span class="math notranslate nohighlight">\(J_a(\beta,\lambda)\)</span> 替换 <span class="math notranslate nohighlight">\(\lambda\vert\beta \vert\)</span>，其中对于 <span class="math notranslate nohighlight">\(a\ge 2\)</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -1376,7 +1376,7 @@ L(y, f) = [1-yf]_+\,,
 </div>
 <div class="section" id="pathwise-coordinate-optimization">
 <h2>（ 6 ）Pathwise Coordinate Optimization<a class="headerlink" href="#pathwise-coordinate-optimization" title="Permalink to this headline">¶</a></h2>
-<p>一种替代计算 lasso 的 LARS 算法是 <strong>简单坐标下降 (simple coordinate descent)</strong>。这个想法由 Fu (1998)<a class="footnote-reference brackets" href="#id67" id="id35">27</a> 和 Daubechies et al. (2004)<a class="footnote-reference brackets" href="#id68" id="id36">28</a> 提出，后来被 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id37">29</a>, Wu and Lange (2008)<a class="footnote-reference brackets" href="#id70" id="id38">30</a> 和其他人研究及推广。想法是固定 Lagrangian 形式 式（ 3.52 ） 中的惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，在控制其它参数固定不变时，相继地优化每一个参数。</p>
+<p>一种替代计算 lasso 的 LARS 算法是 <strong>简单坐标下降 (simple coordinate descent)</strong>。这个想法由 Fu (1998)<a class="footnote-reference brackets" href="#id67" id="id35">27</a> 和 Daubechies et al. (2004)<a class="footnote-reference brackets" href="#id68" id="id36">28</a> 提出，后来被 Friedman et al. (2007)<a class="footnote-reference brackets" href="#id69" id="id37">29</a>, Wu and Lange (2008)<a class="footnote-reference brackets" href="#id70" id="id38">30</a> 和其他人研究及推广。想法是固定 Lagrangian 形式（ 3.52 ） 中的惩罚参数 <span class="math notranslate nohighlight">\(\lambda\)</span>，在控制其它参数固定不变时，相继地优化每一个参数。</p>
 <blockquote>
 <div><p>note “Recall”</p>
 <div class="math notranslate nohighlight">

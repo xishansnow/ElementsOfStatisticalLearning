@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1357,7 +1357,7 @@
 &amp;=\mathbb{Ave[Model Bias]}^2+\mathbb{Ave[Estimation Bias]}^2\tag{7.14}
 \end{align*}\]</div>
 <p>右侧的第一项是 <strong>模型偏差 (model bias)</strong> 平方的平均，它是最优线性近似和真实函数之间的误差。第二项是 <strong>估计偏差 (estimation bias)</strong> 平方的平均，它是估计的平均值 <span class="math notranslate nohighlight">\(\mathbb{E}(x_0^T\hat\beta)\)</span> 与最优线性近似之间的误差。</p>
-<p>对于通过普通最小二乘拟合的线性模型，估计量的偏差为 0。对于约束的拟合，比如岭回归，它是正的，而且我们用减小方差的好处进行交易。模型偏差只可能通过将线性模型类扩大为更广的模型类才能降低，或者通过在模型中加入变量的交叉项以及变换项（通过变量的变换得到的）来降低。</p>
+<p>对于通过普通最小二乘拟合的线性模型，估计量的偏差为 0。对于约束的拟合，比如岭回归，它是正的，而且我们用减小方差的好处进行交易。模型偏差只可能通过将线性模型类扩大为更广的模型类才能降低，或者通过在模型中加入变量的交互项以及变换项（通过变量的变换得到的）来降低。</p>
 </div>
 <div class="section" id="id5">
 <h2>（）7.4.5 可视化理解偏差与方差之间的权衡<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>

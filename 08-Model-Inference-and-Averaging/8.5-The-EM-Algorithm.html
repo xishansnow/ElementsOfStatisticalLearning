@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1146,12 +1146,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   （）（ 1  ）两个组分的混合模型
+   8.5.1 两个组分的混合模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   （）EM 作为一个最大化-最大化的过程
+   8.5.2 广义 EM 算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.5.2 EM 作为一个“最大化-最大化”的过程
   </a>
  </li>
 </ul>
@@ -1176,12 +1181,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   （）（ 1  ）两个组分的混合模型
+   8.5.1 两个组分的混合模型
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   （）EM 作为一个最大化-最大化的过程
+   8.5.2 广义 EM 算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.5.2 EM 作为一个“最大化-最大化”的过程
   </a>
  </li>
 </ul>
@@ -1198,7 +1208,7 @@
 <style>p{text-indent:2em;2}</style>
 <p>EM 算法是简化复杂极大似然问题的一种很受欢迎的工具。我们首先在一个简单的混合模型中讨论它。</p>
 <div class="section" id="id1">
-<h2>（）（ 1  ）两个组分的混合模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>8.5.1 两个组分的混合模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>这一节我们描述一个密度估计的简单混合模型，以及对应的求解极大似然估计的 <code class="docutils literal notranslate"><span class="pre">EM</span> <span class="pre">算法</span></code>。这与贝叶斯推断中的 Gibbs 采样方法有着本质的联系。混合模型在本书其他部分的章节有讨论，特别是 <span class="xref myst">6.8</span>，<span class="xref myst">12.7</span> 和 <span class="xref myst">13.2.3 节</span>。</p>
 <blockquote>
 <div><p>Gibbs sampling
@@ -1229,9 +1239,10 @@ Y&amp;=(1-\Delta)\cdot Y_1 + \Delta\cdot Y_2
 \end{align*}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\Delta\in \{0,1\}\)</span>，且 <span class="math notranslate nohighlight">\(\mathrm{Pr}(\Delta =1)=\pi\)</span>。产生过程是很显然的：以概率 <span class="math notranslate nohighlight">\(\pi\)</span> 产生 <span class="math notranslate nohighlight">\(\Delta\in\{0,1\}\)</span>，然后根据输出结果，分配给 <span class="math notranslate nohighlight">\(Y_1\)</span> 或 <span class="math notranslate nohighlight">\(Y_2\)</span>。令 <span class="math notranslate nohighlight">\(\phi_{\theta}(x)\)</span> 记为参数为<span class="math notranslate nohighlight">\(\theta=(\mu,\sigma^2)\)</span> 的正态分布。则 <span class="math notranslate nohighlight">\(Y\)</span> 的密度为</p>
-<p><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
 g_Y(y)=(1-\pi)\phi_{\theta_1}(y)+\pi\phi_{\theta_2}(y)\tag{8.37}
-\)</span>$</p>
+\]</div>
 <p>现在假设我们希望通过极大似然估计来拟合图 8.5 中数据的模型。参数为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1252,20 +1263,15 @@ g_Y(y)=(1-\pi)\phi_{\theta_1}(y)+\pi\phi_{\theta_2}(y)\tag{8.37}
 \end{split}\]</div>
 <blockquote>
 <div><p><strong>注解:</strong></p>
-</div></blockquote>
 <div class="math notranslate nohighlight">
-\[&gt; L(\theta,\mathbf{Z,\Delta}) = \prod\limits_{i=1}^n[(1-\pi)\phi_{\theta_1}(y_i)]^{1-\Delta_i}[\pi\phi_{\theta_2}(y_i)]^{\Delta_i}.
-&gt; 
-\]</div>
-<blockquote>
-<div><p>假设我们已经知道 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值，设 <span class="math notranslate nohighlight">\(\Delta_i=0,i\in \mathcal I\)</span>，且<span class="math notranslate nohighlight">\( \Delta_i=1,i\in\mathcal J\)</span>。注意到 <span class="math notranslate nohighlight">\(p(\Delta_i=0)=1-\pi;p(\Delta_i=1)=\pi\)</span>，则似然函数为</p>
-</div></blockquote>
-<div class="math notranslate nohighlight">
-\[&gt; L(\theta,\mathbf{Z,\Delta}) = \prod\limits_{i\in \mathcal I} (1-\Delta_i)(1-\pi)\phi_{\theta_1}(y_i)\prod\limits_{i\in \mathcal J}\Delta_i\pi\phi_{\theta_2}(y_i)
-&gt; 
-\]</div>
-<blockquote>
-<div><p>上式 <span class="math notranslate nohighlight">\(i\in \mathcal I\)</span> 部分，乘以 <span class="math notranslate nohighlight">\((1-\Delta_i)\)</span> 也就相当于乘以 1，同理对于 <span class="math notranslate nohighlight">\(i\in \mathcal J\)</span>。这样取对数似然便有 (8.40) 式。</p>
+\[
+&gt; L(\theta,\mathbf{Z,\Delta}) = \prod\limits_{i=1}^n[(1-\pi)\phi_{\theta_1}(y_i)]^{1-\Delta_i}[\pi\phi_{\theta_2}(y_i)]^{\Delta_i}.
+&gt;\]</div>
+<p>假设我们已经知道 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值，设 <span class="math notranslate nohighlight">\(\Delta_i=0,i\in \mathcal I\)</span>，且<span class="math notranslate nohighlight">\( \Delta_i=1,i\in\mathcal J\)</span>。注意到 <span class="math notranslate nohighlight">\(p(\Delta_i=0)=1-\pi;p(\Delta_i=1)=\pi\)</span>，则似然函数为
+$<span class="math notranslate nohighlight">\(
+L(\theta,\mathbf{Z,\Delta}) = \prod\limits_{i\in \mathcal I} (1-\Delta_i)(1-\pi)\phi_{\theta_1}(y_i)\prod\limits_{i\in \mathcal J}\Delta_i\pi\phi_{\theta_2}(y_i)
+\)</span>$</p>
+<p>上式 <span class="math notranslate nohighlight">\(i\in \mathcal I\)</span> 部分，乘以 <span class="math notranslate nohighlight">\((1-\Delta_i)\)</span> 也就相当于乘以 1，同理对于 <span class="math notranslate nohighlight">\(i\in \mathcal J\)</span>。这样取对数似然便有 (8.40) 式。</p>
 </div></blockquote>
 <p>而且 <span class="math notranslate nohighlight">\(\mu_1\)</span> 和 <span class="math notranslate nohighlight">\(\sigma_1^2\)</span> 的极大似然估计为 <span class="math notranslate nohighlight">\(\Delta_i=0\)</span> 时样本均值和方差，类似地对于 <span class="math notranslate nohighlight">\(\mu_2\)</span> 和 <span class="math notranslate nohighlight">\(\sigma_2^2\)</span> 的极大似然估计为 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 时的样本均值和方差。<span class="math notranslate nohighlight">\(\pi\)</span> 的估计为 <span class="math notranslate nohighlight">\(\Delta_i=1\)</span> 的比例。</p>
 <p>因为 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 的值实际上是不知道的，我们用一种迭代方式，替换 式（ 8.40 ） 中的每个 <span class="math notranslate nohighlight">\(\Delta_i\)</span>，它的期望值</p>
@@ -1287,13 +1293,25 @@ g_Y(y)=(1-\pi)\phi_{\theta_1}(y)+\pi\phi_{\theta_2}(y)\tag{8.37}
 </div></blockquote>
 <p>最后的极大似然估计为</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
+\[\begin{split}
 \hat\mu_1=4.62\qquad \sigma^2_1=0.87\\
 \hat\mu_2=1.06\qquad \sigma^2_2=0.77\\
 \hat\pi=0.546
-$\end{split}\\图 8.5 的右图显示了从这个过程估计的混合高斯分布的密度（实心红色曲线），以及 responsibilities（绿色点曲线）。注意到混合在监督学习中也很有用；在 [6.7 节](../06-Kernel-Smoothing-Methods/6.8-Mixture-Models-for-Density-Estimation-and-Classification/index.html)我们显示了高斯混合模型怎样导出 radial 基函数的版本。\\## （）（ 2 ）广义 `EM 算法`\\上面的过程是对于特定问题的类别下最大化概率的 EM（或者 Baum-Welch）算法。这些问题的概率最大化是困难的，但是通过运用潜在数据（未观测）增大样本会变得简单。这也称作数据增广。这里潜在数据是模型成员 $\Delta_i$。在其它问题中，潜在数据是理应被观测到的实际数据但是缺失了。\\算法 8.2 给出了 `EM 算法`的一般形式。我们的观测数据是 $\mathbf Z$，其对数概率 $\ell(\theta;\mathbf Z)$ 取决于参数 $\theta$。潜在数据或者缺失数据为 $\mathbf Z^m$，因此完整数据为 $\mathbf {T=(Z,Z^m)}$，对数似然函数为 $\ell_0(\theta;\mathbf T)$，$\ell_0$ 基于完整的密度函数。在混合问题中，$(\mathbf{Z,Z^m)=(y,}\Delta)$，且 $\ell_0(\theta;\mathbf T)$ 由 式（ 8.40 ） 式给出。\\![](../img/08/alg8.2.png)\\在我们的混合例子中，$\mathbb{E}(\ell_0(\theta';\mathbf T)\mid \mathbf Z,\hat \theta^{(j)})$ 是将式 式（ 8.40 ） 中的 $\Delta_i$ 替换成了解释度 $\hat\gamma_i(\hat \theta)$。第三步的最大化仅仅是加权均值和方差。\\我们现在给出一个为什么一般情况下 `EM 算法`有用的解释。\\因为\end{aligned}\end{align} \]</div>
-<p>\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta’)=\frac{\mathrm{Pr}(\mathbf Z^m,\mathbf Z\mid \theta’)}{\mathrm{Pr}(\mathbf Z\mid \theta’)}\tag{8.44}
-$$</p>
+\end{split}\]</div>
+<p>图 8.5 的右图显示了从这个过程估计的混合高斯分布的密度（实心红色曲线），以及 responsibilities（绿色点曲线）。注意到混合在监督学习中也很有用；在 <span class="xref myst">6.7 节</span>我们显示了高斯混合模型怎样导出 radial 基函数的版本。</p>
+</div>
+<div class="section" id="id2">
+<h2>8.5.2 广义 EM 算法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>上面的过程是对于特定问题的类别下最大化概率的 EM（或者 Baum-Welch）算法。这些问题的概率最大化是困难的，但是通过运用潜在数据（未观测）增大样本会变得简单。这也称作数据增广。这里潜在数据是模型成员 <span class="math notranslate nohighlight">\(\Delta_i\)</span>。在其它问题中，潜在数据是理应被观测到的实际数据但是缺失了。</p>
+<p>算法 8.2 给出了 <code class="docutils literal notranslate"><span class="pre">EM</span> <span class="pre">算法</span></code>的一般形式。我们的观测数据是 <span class="math notranslate nohighlight">\(\mathbf Z\)</span>，其对数概率 <span class="math notranslate nohighlight">\(\ell(\theta;\mathbf Z)\)</span> 取决于参数 <span class="math notranslate nohighlight">\(\theta\)</span>。潜在数据或者缺失数据为 <span class="math notranslate nohighlight">\(\mathbf Z^m\)</span>，因此完整数据为 <span class="math notranslate nohighlight">\(\mathbf {T=(Z,Z^m)}\)</span>，对数似然函数为 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span>，<span class="math notranslate nohighlight">\(\ell_0\)</span> 基于完整的密度函数。在混合问题中，<span class="math notranslate nohighlight">\((\mathbf{Z,Z^m)=(y,}\Delta)\)</span>，且 <span class="math notranslate nohighlight">\(\ell_0(\theta;\mathbf T)\)</span> 由 式（ 8.40 ） 式给出。</p>
+<p><img alt="" src="../_images/alg8.2.png" /></p>
+<p>在我们的混合例子中，<span class="math notranslate nohighlight">\(\mathbb{E}(\ell_0(\theta';\mathbf T)\mid \mathbf Z,\hat \theta^{(j)})\)</span> 是将式（ 8.40 ） 中的 <span class="math notranslate nohighlight">\(\Delta_i\)</span> 替换成了解释度 <span class="math notranslate nohighlight">\(\hat\gamma_i(\hat \theta)\)</span>。第三步的最大化仅仅是加权均值和方差。</p>
+<p>我们现在给出一个为什么一般情况下 <code class="docutils literal notranslate"><span class="pre">EM</span> <span class="pre">算法</span></code>有用的解释。</p>
+<p>因为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Pr}(\mathbf Z^m\mid \mathbf Z,\theta')=\frac{\mathrm{Pr}(\mathbf Z^m,\mathbf Z\mid \theta')}{\mathrm{Pr}(\mathbf Z\mid \theta')}\tag{8.44}
+\]</div>
 <p>我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1319,8 +1337,8 @@ $$</p>
 <p>因此 EM 迭代不会降低对数似然值。</p>
 <p>这个论据也让我们明白在最大化那一步整体最大化不是必要的：我们仅仅需要找到一个值 <span class="math notranslate nohighlight">\(\hat\theta^{(j+1)}\)</span> 使得 <span class="math notranslate nohighlight">\(Q(\theta',\hat\theta^{(j)})\)</span> 关于第一个变量是增的，也就是 <span class="math notranslate nohighlight">\(Q(\hat\theta^{(j+1)},\hat\theta^{(j)}) &gt; Q(\hat\theta^{(j)},\hat\theta^{(j)})\)</span>。这一过程称之为 GEM（广义 EM）算法。EM 算法也可以看成是最小化的过程：见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/126">练习 8.7</a>。</p>
 </div>
-<div class="section" id="id2">
-<h2>（）EM 作为一个最大化-最大化的过程<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>8.5.2 EM 作为一个“最大化-最大化”的过程<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>这里从一个不同的角度来看 EM 过程，看成一个 <strong>联合最大化 (joint maximization)</strong> 算法。考虑函数</p>
 <div class="math notranslate nohighlight">
 \[

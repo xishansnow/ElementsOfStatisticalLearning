@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1208,7 +1208,7 @@
 <style>p{text-indent:2em;2}</style>
 <p>Ramaswamy et al. (2001)<a class="footnote-reference brackets" href="#id13" id="id2">1</a>提出一个更加困难的微阵列分类问题，涉及 144 个病人的 14 种癌症类型的训练集，以及含有 54 个病人的测试集。已知 16063 个基因的表达值。</p>
 <p><img alt="" src="../_images/table18.1.png" /></p>
-<p>表 18.1 显示了通过 <span class="math notranslate nohighlight">\(8\)</span> 个不同的分类方法得到的预测结果。每个病人的数据首先经过标准化后使得均值为 <span class="math notranslate nohighlight">\(0\)</span>，方差为 <span class="math notranslate nohighlight">\(1\)</span>；这似乎提高了整个例子的预测正确性，表明每个基因表达谱的形状是很重要的，而不是表达的绝对水平。在每种情形中，选取正则参数使得交叉验证误差最小，并且展现了每个参数值的测试误差。当有多余一个的正则参数得到最小的交叉验证误差，报告该值对应的测试误差的平均值。</p>
+<p>表 18.1 显示了通过 <span class="math notranslate nohighlight">\(8\)</span> 个不同的分类方法得到的预测结果。每个病人的数据首先经过标准化后使得均值为 <span class="math notranslate nohighlight">\(0\)</span>，方差为 <span class="math notranslate nohighlight">\(1\)</span>；这似乎提高了整个例子的预测正确性，表明每个基因表达谱的形状是很重要的，而不是表达的绝对水平。在每种情形中，选取正则参数使得交互验证误差最小，并且展现了每个参数值的测试误差。当有多余一个的正则参数得到最小的交互验证误差，报告该值对应的测试误差的平均值。</p>
 <p>RDA（正则判别分析），正则多元逻辑斯蒂回归，以及支持向量机是更复杂的方法，试图研究数据的多变量信息。我们依次描述每个方法，以及一系列正则化方法，包括 <span class="math notranslate nohighlight">\(L_1\)</span> 和 <span class="math notranslate nohighlight">\(L_2\)</span>，以及两个都有的方法。</p>
 <div class="section" id="id3">
 <h2>（）正则化判别分析<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -1236,7 +1236,7 @@
 \[    ASR(\{\theta_\ell,\beta_\ell\}^L_{\ell=1})=\frac 1N\sum\limits_{\ell=1}^L\Big[\sum\limits_{i=1}^N\theta_\ell(g_i)-h^T(x_i)\beta_\ell)^2+\lambda\beta_\ell^T\mathbf \Omega\beta_\ell\Big].\tag{12.57}
     
 \]</div>
-<p>求大型 <span class="math notranslate nohighlight">\(p\times p\)</span> 矩阵逆的计算负担通过采用 <span class="xref myst">18.3.5 节</span>的方法可以克服。<span class="math notranslate nohighlight">\(\gamma\)</span> 的值通过交叉验证取为表 18.1 中第二行的值；所有 <span class="math notranslate nohighlight">\(\gamma\in(0.002,0.550)\)</span> 给出了相同的 CV 和测试误差。RDA 进一步的发展，除了协方差矩阵还包括重心的收缩，可以在 Guo et al. (2006)<a class="footnote-reference brackets" href="#id14" id="id4">2</a>中找到。</p>
+<p>求大型 <span class="math notranslate nohighlight">\(p\times p\)</span> 矩阵逆的计算负担通过采用 <span class="xref myst">18.3.5 节</span>的方法可以克服。<span class="math notranslate nohighlight">\(\gamma\)</span> 的值通过交互验证取为表 18.1 中第二行的值；所有 <span class="math notranslate nohighlight">\(\gamma\in(0.002,0.550)\)</span> 给出了相同的 CV 和测试误差。RDA 进一步的发展，除了协方差矩阵还包括重心的收缩，可以在 Guo et al. (2006)<a class="footnote-reference brackets" href="#id14" id="id4">2</a>中找到。</p>
 </div>
 <div class="section" id="id5">
 <h2>（）二次正则的逻辑斯蒂回归<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -1282,7 +1282,7 @@
     \xi_i\ge 0,\sum\xi_i\le constant.\end{array}\right.\tag{12.7}
     
 $
-Tibshirani and Hastie (2007)[^8]提出 **边际树 (margin tree)** 分类器，这是支持向量分类器用在二叉树中，很像在 CART（[第 9 章](../09-Additive-Models-Trees-and-Related-Methods/9.0-Introduction/index.html)）中一样。类别以分层形式进行组织，举个例子，对于将病人分类成不同的癌症类型是很有用的。\end{split}\\表 18.1 的第三行显示了支持向量机采用 ova 方法的结果，Ramaswamy et al. (2001)[^1]报告了（并且我们证实了）这个方法对于这个问题表现得很好。误差与第 6 行的误差很相似，正如我们在上一节的最后做出的评论那样。对于 $C &gt; 0.001$，误差率对 $C$ 的选择不是很敏感【式 式（ 12.8 ） 的正则化参数】。因为 $p &gt; N$，支持向量超平面可以通过设置 $C=\infty$ 完美地分离训练数据。\\&gt; note &quot;weiya 注：Recall&quot;
+Tibshirani and Hastie (2007)[^8]提出 **边际树 (margin tree)** 分类器，这是支持向量分类器用在二叉树中，很像在 CART（[第 9 章](../09-Additive-Models-Trees-and-Related-Methods/9.0-Introduction/index.html)）中一样。类别以分层形式进行组织，举个例子，对于将病人分类成不同的癌症类型是很有用的。\end{split}\\表 18.1 的第三行显示了支持向量机采用 ova 方法的结果，Ramaswamy et al. (2001)[^1]报告了（并且我们证实了）这个方法对于这个问题表现得很好。误差与第 6 行的误差很相似，正如我们在上一节的最后做出的评论那样。对于 $C &gt; 0.001$，误差率对 $C$ 的选择不是很敏感【式（ 12.8 ） 的正则化参数】。因为 $p &gt; N$，支持向量超平面可以通过设置 $C=\infty$ 完美地分离训练数据。\\&gt; note &quot;weiya 注：Recall&quot;
     
 \end{aligned}\end{align} \]</div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\begin{array}{ll}
@@ -1336,7 +1336,7 @@ $$</p>
 已证。详细解答过程见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/118">Issue 118: Ex.18.6</a>。</p>
 </div></blockquote>
 <p>这也应用到有二次正则化的神经网络（<span class="xref myst">11.5.2 节</span>）。然而，注意到，这并不能应用到类似 lasso 的方法中，这些方法对系数加的是非平方惩罚（<span class="math notranslate nohighlight">\(L_1\)</span>）。</p>
-<p>一般地，我们采用交叉验证去选择参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。可以看到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/121">练习 18.12</a>）我们仅需要对原始数据构造一次 <span class="math notranslate nohighlight">\(\mathbf R\)</span>，并且用这个作为每个 CV 折的数据。</p>
+<p>一般地，我们采用交互验证去选择参数 <span class="math notranslate nohighlight">\(\lambda\)</span>。可以看到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/121">练习 18.12</a>）我们仅需要对原始数据构造一次 <span class="math notranslate nohighlight">\(\mathbf R\)</span>，并且用这个作为每个 CV 折的数据。</p>
 <blockquote>
 <div><p>info “Ex. 18.12”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/121">Issue 121: Ex. 18.12</a>.</p>

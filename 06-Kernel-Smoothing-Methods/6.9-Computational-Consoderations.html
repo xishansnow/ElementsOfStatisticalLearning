@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1162,12 +1162,8 @@
 <style>p{text-indent:2em;2}</style>
 <p>核和局部回归以及密度估计都是 <strong>基于内存的 (memory-based)</strong> 方法：模型是整个训练数据集，并且在赋值或者预测的时候完成拟合。对于许多实时的应用，这使得这类方法不可行。</p>
 <p>在单个观测点 <span class="math notranslate nohighlight">\(x_0\)</span> 处拟合的计算代价为 <span class="math notranslate nohighlight">\(O(N)\)</span> 次 flop，除了过于简单的情形（比如平方核）。通过比较，包含 <span class="math notranslate nohighlight">\(M\)</span> 个基函数的展开式一次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>，一般有 <span class="math notranslate nohighlight">\(M\sim O(\log N)\)</span>。基函数方法至少有 <span class="math notranslate nohighlight">\(O(NM^2+M^3)\)</span>的初始代价。</p>
-<p>核方法的光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 一般 <strong>线下 (off-line)</strong> 确定，举个例子，采用交叉验证，其代价为 <span class="math notranslate nohighlight">\(O(N^2)\)</span> 次 flop。</p>
-<p>局部回归的主流实现采用 <strong>三角化方案 (triangulation schemes)</strong> 来降低代价，如 S-PLUS 和 R 中的 <code class="docutils literal notranslate"><span class="pre">loess</span></code> 函数，以及 <code class="docutils literal notranslate"><span class="pre">locfit</span></code> 过程(Loader,  1999<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)。他们在认真选出的 <span class="math notranslate nohighlight">\(M\)</span> 个点处精确拟合，代价为 <span class="math notranslate nohighlight">\(O(N(M))\)</span>，然后采用 blending 技巧来插值拟合其它点（每次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>）。</p>
-<blockquote>
-<div><p>note “weiya 注：triangulation schemes”
-<a class="reference external" href="https://link.springer.com/book/10.1007/b98858">Loader (1999)</a>介绍道，在 <code class="docutils literal notranslate"><span class="pre">locfit</span></code> 中，参数 evaluation structure <code class="docutils literal notranslate"><span class="pre">ev</span> <span class="pre">=</span> <span class="pre">&quot;phull&quot;</span></code> 表示采取三角化方案，而在<a class="reference external" href="https://cran.r-project.org/web/packages/locfit/locfit.pdf">最新的 R package</a> 中，其 <code class="docutils literal notranslate"><span class="pre">ev</span></code> 可选参数不再包括 <code class="docutils literal notranslate"><span class="pre">phull</span></code>. 或许现在三角化方案不算主流实现？</p>
-</div></blockquote>
+<p>核方法的光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 一般离线确定，举个例子，采用交互验证，其代价为 <span class="math notranslate nohighlight">\(O(N^2)\)</span> 次 <code class="docutils literal notranslate"><span class="pre">flop</span></code> 。</p>
+<p>局部回归的主流实现采用 <strong>三角化方案</strong> 来降低代价，如 <code class="docutils literal notranslate"><span class="pre">S-PLUS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">R</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">loess</span> <span class="pre">函数</span></code>，以及 <code class="docutils literal notranslate"><span class="pre">locfit</span> <span class="pre">过程</span></code> (Loader,  1999<a class="footnote-reference brackets" href="#id3" id="id2">1</a>)。他们在认真选出的 <span class="math notranslate nohighlight">\(M\)</span> 个点处精确拟合，代价为 <span class="math notranslate nohighlight">\(O(N(M))\)</span>，然后采用 <code class="docutils literal notranslate"><span class="pre">blending</span> <span class="pre">技巧</span></code>来插值拟合其它点（每次赋值代价为 <span class="math notranslate nohighlight">\(O(M)\)</span>）。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

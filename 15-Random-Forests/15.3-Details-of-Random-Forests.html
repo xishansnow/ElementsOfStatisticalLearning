@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1216,7 +1216,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.3 随机森林的细节<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>我们忽略了随机森林用于分类和回归的区别。当用于分类，随机森林从每棵树中得到类别投票，接着采用多数投票来分类（见 <span class="xref myst">8.7 节</span> <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 类似的讨论）。当用于回归时，如式 式（ 15.2 ），在目标点 <span class="math notranslate nohighlight">\(x\)</span> 处每棵树的预测被简单地平均。</p>
+<p>我们忽略了随机森林用于分类和回归的区别。当用于分类，随机森林从每棵树中得到类别投票，接着采用多数投票来分类（见 <span class="xref myst">8.7 节</span> <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 类似的讨论）。当用于回归时，如式（ 15.2 ），在目标点 <span class="math notranslate nohighlight">\(x\)</span> 处每棵树的预测被简单地平均。</p>
 <blockquote>
 <div><p>note “weiya 注：Recall”</p>
 </div></blockquote>
@@ -1240,7 +1240,7 @@
 <blockquote>
 <div><p>对于每个观测 <span class="math notranslate nohighlight">\(z_i=(x_i, y_i)\)</span>，仅通过对部分树的平均来构造随机森林预测量，这部分的树是对应那些 <span class="math notranslate nohighlight">\(z_i\)</span> 不出现的自助样本。</p>
 </div></blockquote>
-<p>OOB 误差估计几乎等价于通过 <span class="math notranslate nohighlight">\(N\)</span> 折交叉验证得到的估计；见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/21">练习 15.2</a>。因此与许多其它的非线性估计量不同，随机森林可以逐步拟合，同时交叉验证也将沿着拟合进度逐步进行。一旦OOB误差稳定，训练可以终止。</p>
+<p>OOB 误差估计几乎等价于通过 <span class="math notranslate nohighlight">\(N\)</span> 折交互验证得到的估计；见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/21">练习 15.2</a>。因此与许多其它的非线性估计量不同，随机森林可以逐步拟合，同时交互验证也将沿着拟合进度逐步进行。一旦OOB误差稳定，训练可以终止。</p>
 <blockquote>
 <div><p>note “weiya 注：”
 这里我的理解是，<span class="math notranslate nohighlight">\(B\)</span> 可以逐步增大，每次都可以计算 OOB 误差，而 OOB 误差近似为 CV 误差，就相当于逐步计算 CV 误差了。而有些非线性方法需要拟合完成后才能回过头来计算 CV 误差，从这点看这是随机森林的优势。</p>
@@ -1316,7 +1316,7 @@
 </pre></div>
 </div>
 <p>根据图 15.7，与 boosting 相比，这不会损害随机森林的表现。这种鲁棒性大部分是因为误分类代价相对于每棵树中概率估计的偏差和方差的不敏感性。我们在下一节考虑用于回归的随机森林。</p>
-<p>另外一个断言是随机森林不会过拟合数据。这显然是正确的，因为增大 <span class="math notranslate nohighlight">\(B\)</span> 不会使得随机森林序列过拟合；像 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 一样，随机森林估计式 式（ 15.2 ） 在 <span class="math notranslate nohighlight">\(\Theta\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 个实现中取平均，这是对下面期望的近似</p>
+<p>另外一个断言是随机森林不会过拟合数据。这显然是正确的，因为增大 <span class="math notranslate nohighlight">\(B\)</span> 不会使得随机森林序列过拟合；像 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 一样，随机森林估计式（ 15.2 ） 在 <span class="math notranslate nohighlight">\(\Theta\)</span> 的 <span class="math notranslate nohighlight">\(B\)</span> 个实现中取平均，这是对下面期望的近似</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f_{rf}(x) = \mathbb{E}_\Theta T(x;\Theta)=\lim_{B\rightarrow \infty}\hat f(x)_{rf}^B\tag{15.3}

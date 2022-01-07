@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1184,7 +1184,7 @@ Y_\ell = f(X) + \varepsilon_\ell\,;\tag{3.66}
 \[
 \mathrm{Corr}^2(Y u_m,X v_m)\tag{3.67}
 \]</div>
-<p>相继最大化。注意到最多可以找到 <span class="math notranslate nohighlight">\(M=\min(k,p)\)</span> 个方向。第一典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 最优预测的线性组合（导出的响应变量）；相反地，最后的典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 估计最差的，并且可以考虑舍弃。CCA 的解通过对样本交叉协方差矩阵 <span class="math notranslate nohighlight">\(Y^TX/N\)</span> 进行广义的 SVD 分解得到（假设 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 均被中心化；<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">练习 3.20</a>）</p>
+<p>相继最大化。注意到最多可以找到 <span class="math notranslate nohighlight">\(M=\min(k,p)\)</span> 个方向。第一典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 最优预测的线性组合（导出的响应变量）；相反地，最后的典则响应变量是被 <span class="math notranslate nohighlight">\(x_j\)</span> 估计最差的，并且可以考虑舍弃。CCA 的解通过对样本交互协方差矩阵 <span class="math notranslate nohighlight">\(Y^TX/N\)</span> 进行广义的 SVD 分解得到（假设 <span class="math notranslate nohighlight">\(Y\)</span> 和 <span class="math notranslate nohighlight">\(X\)</span> 均被中心化；<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">练习 3.20</a>）</p>
 <blockquote>
 <div><p>info “weiya 注：Ex. 3.20”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/172">Issue 172: Ex. 3.20</a>，欢迎讨论交流！</p>
@@ -1232,7 +1232,7 @@ Y_\ell = f(X) + \varepsilon_\ell\,;\tag{3.66}
 \[
 \lambda_m = \frac{c_m^2}{c_m^2+\frac pN(1-c_m^2)}\,,\; m = 1,\ldots,M \tag{3.73}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(c_m\)</span> 是第 <span class="math notranslate nohighlight">\(m\)</span> 个典则相关系数。注意到随着输入变量个数与样本大小的比率 <span class="math notranslate nohighlight">\(p/N\)</span> 变小，收缩因子趋向于 1。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 基于训练数据和交叉验证提出了修改版本的 <span class="math notranslate nohighlight">\(\mathbf \Lambda\)</span>，但是一般形式是相同的。这里拟合响应形式为</p>
+<p>其中 <span class="math notranslate nohighlight">\(c_m\)</span> 是第 <span class="math notranslate nohighlight">\(m\)</span> 个典则相关系数。注意到随着输入变量个数与样本大小的比率 <span class="math notranslate nohighlight">\(p/N\)</span> 变小，收缩因子趋向于 1。Breiman and Friedman (1997)<a class="footnote-reference brackets" href="#id9" id="id5">3</a> 基于训练数据和交互验证提出了修改版本的 <span class="math notranslate nohighlight">\(\mathbf \Lambda\)</span>，但是一般形式是相同的。这里拟合响应形式为</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{Y}^{c+w} = HYS^{c+w} \tag{3.74}

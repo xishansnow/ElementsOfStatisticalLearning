@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1219,7 +1219,7 @@
 <p><span class="math notranslate nohighlight">\(
 p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mathbf{\Theta})\right]\text{  for  }X\in{\mathcal X}\tag{17.28}
 \)</span>$</p>
-<p>其中 <span class="math notranslate nohighlight">\({\mathcal X}=\\{0,1\\}^p\)</span>。和上一节的高斯模型一样，只对成对交叉项进行建模。Ising 模型是在统计力学中发展的，而且现在更一般地用来建立成对交叉的联合影响。<span class="math notranslate nohighlight">\(\Phi\mathbf{(\Theta)}\)</span> 为 <strong>分割函数 (partition function)</strong> 的对数，而且由下式定义</p>
+<p>其中 <span class="math notranslate nohighlight">\({\mathcal X}=\\{0,1\\}^p\)</span>。和上一节的高斯模型一样，只对成对交互项进行建模。Ising 模型是在统计力学中发展的，而且现在更一般地用来建立成对交互的联合影响。<span class="math notranslate nohighlight">\(\Phi\mathbf{(\Theta)}\)</span> 为 <strong>分割函数 (partition function)</strong> 的对数，而且由下式定义</p>
 <div class="math notranslate nohighlight">
 \[
 \Phi(\mathbf \Theta)=\log\sum\limits_{x\in\mathcal X}\left[\exp\left(\sum\limits_{(j,k)\in E}\theta_{jk}x_jx_k\right)\right]\tag{17.29}
@@ -1240,10 +1240,10 @@ p(X,\mathbf\Theta)=\exp\left[\sum\limits_{(j,k)\in E}\theta_{jk}X_jX_k-\Phi(\mat
 <div><p>note “weiya 注：Ex. 17.10”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/139">Issue 139: Ex. 17.10</a>。</p>
 </div></blockquote>
-<p>在统计领域中，这个模型等价于 <strong>多路计数表 (multiway tables of counts)</strong> 的 <strong>一阶交叉泊松对数线性模型 (first-order-interaction Poisson log-linear model)</strong>（Bishop et al.，1975<a class="footnote-reference brackets" href="#id24" id="id2">1</a> ;McCullagh and Nelder,1989<a class="footnote-reference brackets" href="#id25" id="id3">2</a>; Agresti, 2002<a class="footnote-reference brackets" href="#id26" id="id4">3</a>）。</p>
+<p>在统计领域中，这个模型等价于 <strong>多路计数表 (multiway tables of counts)</strong> 的 <strong>一阶交互泊松对数线性模型 (first-order-interaction Poisson log-linear model)</strong>（Bishop et al.，1975<a class="footnote-reference brackets" href="#id24" id="id2">1</a> ;McCullagh and Nelder,1989<a class="footnote-reference brackets" href="#id25" id="id3">2</a>; Agresti, 2002<a class="footnote-reference brackets" href="#id26" id="id4">3</a>）。</p>
 <blockquote>
 <div><p>note “weiya 注：multiway tables of counts”
-Agresti (2002) 在 p17 介绍到，如果一个 <strong>列联表 (contigency table)</strong> 对两个（类别型）变量进行交叉分类，则称为 two-way table；如果对三个变量交叉分类，则称为 three-way table，以此类推.</p>
+Agresti (2002) 在 p17 介绍到，如果一个 <strong>列联表 (contigency table)</strong> 对两个（类别型）变量进行交互分类，则称为 two-way table；如果对三个变量交互分类，则称为 three-way table，以此类推.</p>
 </div></blockquote>
 <p>Ising 模型暗示着每个结点在其它结点条件下有逻辑斯蒂形式（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/140">练习 17.11</a>）</p>
 <div class="math notranslate nohighlight">
@@ -1316,7 +1316,7 @@ Agresti (2002) 在 p17 介绍到，如果一个 <strong>列联表 (contigency ta
 <p>预测矩阵 <span class="math notranslate nohighlight">\(\mathbf Z\)</span> 有 <span class="math notranslate nohighlight">\(2^p\)</span> 个行，以及 <span class="math notranslate nohighlight">\(1+p+p^2\)</span> 个表征每个单元的列，尽管这个数字取决于图的稀疏程度。计算代价本质是该规模下回归问题的代价，即为 <span class="math notranslate nohighlight">\(O(p^42^p)\)</span> 并且对于 <span class="math notranslate nohighlight">\(p &lt; 20\)</span> 是可行的。**牛顿更新 (Newton updates)**一般通过 <strong>迭代重赋权最小二乘法 (iteratively reweighted least squares)</strong> 来计算，并且步数通常是在个位数之内。详见 Agresti (2002)<a class="footnote-reference brackets" href="#id26" id="id6">3</a> 和 McCullagh and Nelder(1989)<a class="footnote-reference brackets" href="#id25" id="id7">2</a>。标准软件（比如 <code class="docutils literal notranslate"><span class="pre">R</span></code> 语言的 <code class="docutils literal notranslate"><span class="pre">glm</span></code> 包）可以用来拟合这个模型。</p>
 <ul class="simple">
 <li><p><strong>梯度下降 (Gradient descent)</strong> 至多需要 <span class="math notranslate nohighlight">\(O(p^22^{p-2})\)</span> 的计算量来计算梯度，但是可能会比二阶牛顿法需要更多的梯度步数。然而，可以处理稍微大点的 <span class="math notranslate nohighlight">\(p\le 30\)</span> 的问题。计算量可以通过（采用 junction-tree 算法）找出稀疏图中特别的团结构来降低。这里没有给出细节。</p></li>
-<li><p><strong>迭代比例过滤 (Iterative proportional fitting, IPF)</strong> 在梯度式 式（ 17.34 ） 中采用 <strong>循环坐标下降 (cyclical coordinate descent)</strong>。每一步更新一个参数使得梯度等式正好为 0。循环进行直到所有梯度为 0。一个完整的周期与梯度赋值花费同样的计算量，但是可能更有效。Jirouśek and Přeučil (1995)<a class="footnote-reference brackets" href="#id27" id="id8">4</a> 采用 junction trees 实现了 IPF 的一个有效版本。</p></li>
+<li><p><strong>迭代比例过滤 (Iterative proportional fitting, IPF)</strong> 在梯度式（ 17.34 ） 中采用 <strong>循环坐标下降 (cyclical coordinate descent)</strong>。每一步更新一个参数使得梯度等式正好为 0。循环进行直到所有梯度为 0。一个完整的周期与梯度赋值花费同样的计算量，但是可能更有效。Jirouśek and Přeučil (1995)<a class="footnote-reference brackets" href="#id27" id="id8">4</a> 采用 junction trees 实现了 IPF 的一个有效版本。</p></li>
 </ul>
 <p>当 <span class="math notranslate nohighlight">\(p\)</span> 变大 <span class="math notranslate nohighlight">\((&gt;30)\)</span> 可以采用其它的方法来近似梯度</p>
 <ul class="simple">
@@ -1365,7 +1365,7 @@ x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal
 </div>
 <div class="section" id="id20">
 <h2>（）限制玻尔兹曼机<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
-<p>这节我们考虑受神经网络影响的一种特殊的图模型结构，该结构中，单元是按层进行组织的。<strong>限制玻尔兹曼机 (RBM)</strong> 包含一层可见单元和一层隐藏单元，单层之间没有联系。如果隐藏单元的连接被移除掉，计算条件期望变得很简单（如在式 式（ 17.37 ） 和 式（ 17.38 ））。</p>
+<p>这节我们考虑受神经网络影响的一种特殊的图模型结构，该结构中，单元是按层进行组织的。<strong>限制玻尔兹曼机 (RBM)</strong> 包含一层可见单元和一层隐藏单元，单层之间没有联系。如果隐藏单元的连接被移除掉，计算条件期望变得很简单（如在式（ 17.37 ） 和 式（ 17.38 ））。</p>
 <blockquote>
 <div><p>note “weiya 注：”
 这样 式（ 17.38 ） 式变成，对于观测 <span class="math notranslate nohighlight">\(i\)</span>，</p>
@@ -1389,9 +1389,9 @@ x_{ij}\Pr\nolimits_{\mathcal\mathbf\Theta}(X_k=1\mid X_{\mathcal V}=x_{i\mathcal
 <div><p>图 17.6. 同一层中的结点没有连接的 <strong>限制玻尔兹曼机 (RBM)</strong>。可见单元细分成了 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span>，允许 RBM 建立特征 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 和标签 <span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 之间的联合密度。</p>
 </div></blockquote>
 <p>举个例子， <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 可以是手写字体图像的二值像素，<span class="math notranslate nohighlight">\(\mathcal V_2\)</span> 可以有10个单元，每个单元是观测的类别标签 0-9 中的一个。</p>
-<p>这个模型的约束形式简化了估计 式（ 17.37 ） 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式 式（ 17.30 ） 给出的条件概率一起采样。</p>
+<p>这个模型的约束形式简化了估计 式（ 17.37 ） 中期望的吉布斯采样，因为每一层的变量在给定其它层中的变量时相互独立。因此它们可以采用由式（ 17.30 ） 给出的条件概率一起采样。</p>
 <p>虽然这样得到的最终模型没有玻尔兹曼机一般，但是仍然很有用；举个例子，可以经过学习从图像中提取有趣的特征。通过对图 17.6 中 RBM 的每一层中的变量进行交替采样，从联合密度模型中产生样本是可能的。如果可见层的 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 部分在交替采样时固定为特定的特征向量，从给定 <span class="math notranslate nohighlight">\(\mathcal V_1\)</span> 的标签分布中采样是可能的。另外测试项的分类也可以通过比较观测到的特征和每个类别标签的（未标准化）联合密度来实现。我们不需要计算分割函数因为对于所有的组合都是一样的。</p>
-<p>正如所注意到的约束玻尔兹曼机有与单层隐藏层神经网络一样的一般形式（<span class="xref myst">11.3 节</span>）。神经网络中边是有向的，隐藏单元经常是实值的，并且拟合准则不一样。神经网络在输入特征的情况下，最小化目标与模型预测之间的误差（交叉熵）。相反地，约束玻尔兹曼机最大化所有可见单元（也就是，特征和目标）的联合分布的对数似然。可以从输入特征中提取对预测标签有用的信息，但是，与监督学习方法不同，可能也使用一些隐藏单元对特征向量中的结构进行建模，而这与预测标签不是直接相关的。然而，这些特征当与从隐藏层中导出的特征结合起来会变得有用。</p>
+<p>正如所注意到的约束玻尔兹曼机有与单层隐藏层神经网络一样的一般形式（<span class="xref myst">11.3 节</span>）。神经网络中边是有向的，隐藏单元经常是实值的，并且拟合准则不一样。神经网络在输入特征的情况下，最小化目标与模型预测之间的误差（交互熵）。相反地，约束玻尔兹曼机最大化所有可见单元（也就是，特征和目标）的联合分布的对数似然。可以从输入特征中提取对预测标签有用的信息，但是，与监督学习方法不同，可能也使用一些隐藏单元对特征向量中的结构进行建模，而这与预测标签不是直接相关的。然而，这些特征当与从隐藏层中导出的特征结合起来会变得有用。</p>
 <p>不幸的是，约束玻尔兹曼机中的吉布斯采样会非常慢，因为需要花费很长时间达到稳态。当网络参数变得更大，这些链混合得更慢，并且我们需要更多的步骤来得到无条件的估计。Hinton (2002)<a class="footnote-reference brackets" href="#id34" id="id21">11</a> 根据经验注意到当我们通过在数据中启动马尔科夫链并仅仅运行几步（不是直到收敛）来估计 式（ 17.37 ） 中的第二个期望，学习仍然有用。他称这个为 <strong>对比发散 (contrastive divergence)</strong>：我们给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 采样，然后给定 <span class="math notranslate nohighlight">\(\mathcal H\)</span> 对 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 采样，最后再次给定 <span class="math notranslate nohighlight">\(\mathcal V_1,V_2\)</span> 对<span class="math notranslate nohighlight">\( \mathcal H\)</span> 采样。思想是，当参数与解相差很多，迭代吉布斯采样达到稳态是浪费的，因为仅仅一个迭代就能发现改变估计的一个好方向。</p>
 <blockquote>
 <div><p><strong>注解：</strong>

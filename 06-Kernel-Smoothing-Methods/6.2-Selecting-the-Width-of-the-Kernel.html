@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,18 +1160,18 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.2 选择核的宽度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>在每个核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 中，<span class="math notranslate nohighlight">\(\lambda\)</span> 为控制宽度的参数：</p>
+<p>在核 <span class="math notranslate nohighlight">\(K_\lambda\)</span> 中，<span class="math notranslate nohighlight">\(\lambda\)</span> 为控制核宽度的参数。下面是一些常见核的 <span class="math notranslate nohighlight">\(\lambda\)</span> 定义：</p>
 <ul class="simple">
-<li><p>对于有度量宽度的 Epanechnikov 或三次立方核，<span class="math notranslate nohighlight">\(\lambda\)</span> 为支撑域的半径。</p></li>
+<li><p>对于 <code class="docutils literal notranslate"><span class="pre">Epanechnikov</span> <span class="pre">核</span></code> 或<code class="docutils literal notranslate"><span class="pre">三次立方核</span></code>，<span class="math notranslate nohighlight">\(\lambda\)</span> 为支撑域的半径。</p></li>
 <li><p>对于高斯核，<span class="math notranslate nohighlight">\(\lambda\)</span> 为标准差。</p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> 为 <span class="math notranslate nohighlight">\(k\)</span>-最近邻中最近邻的数目 <span class="math notranslate nohighlight">\(k\)</span>，经常表达成分数或者整个训练样本的跨距 <span class="math notranslate nohighlight">\(k/N\)</span>。</p></li>
+<li><p>对于 <span class="math notranslate nohighlight">\(k\)</span>-最近邻核，<span class="math notranslate nohighlight">\(\lambda\)</span> 为最近邻数量 <span class="math notranslate nohighlight">\(k\)</span>，经常表达成分数或者整个训练样本的跨距 <span class="math notranslate nohighlight">\(k/N\)</span>。</p></li>
 </ul>
-<p>当我们改变平均窗口的宽度，存在很自然的<strong>偏差和方差之间的权衡 (bias-variance tradeoff)</strong>，对于局部平均是最显然的：</p>
+<p>很自然地，当改变平均窗口宽度的时候，会存在<strong>偏差和方差之间的权衡</strong>，这对于局部平均是非常明显的：</p>
 <ul class="simple">
-<li><p>如果窗口较窄，<span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 是离 <span class="math notranslate nohighlight">\(x_0\)</span> 近的一小部分 <span class="math notranslate nohighlight">\(y_i\)</span> 值的平均，则它的方差相对较大——与单个 <span class="math notranslate nohighlight">\(y_i\)</span> 的方差相近。偏差会趋向于较小，这是因为 <span class="math notranslate nohighlight">\(\mathbb{E}(y_i)=f(x_i)\)</span> 中的每一个应该与 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 相近。</p></li>
-<li><p>如果窗口较宽，<span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 的方差相对于任意 <span class="math notranslate nohighlight">\(y_i\)</span> 的方差较小，这是因为平均的效应。偏差会较高，因为我们现在采用的是与 <span class="math notranslate nohighlight">\(x_0\)</span> 离得较远的观测 <span class="math notranslate nohighlight">\(x_i\)</span>，而且不保证 <span class="math notranslate nohighlight">\(f(x_i)\)</span> 离 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 较近。</p></li>
+<li><p>如果窗口较窄，<span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 是离 <span class="math notranslate nohighlight">\(x_0\)</span> 近的一小部分 <span class="math notranslate nohighlight">\(y_i\)</span> 值的平均，则其方差接近于各 <span class="math notranslate nohighlight">\(y_i\)</span> 的方差；而偏差会趋向于较小，因为每一个 <span class="math notranslate nohighlight">\(f(x_i)\)</span> 都应当与 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 相近。</p></li>
+<li><p>如果窗口较宽，由于平均的效应，<span class="math notranslate nohighlight">\(\hat f(x_0)\)</span> 的方差相对于任意 <span class="math notranslate nohighlight">\(y_i\)</span> 的方差较小；但偏差会较高，因为现在采用了与 <span class="math notranslate nohighlight">\(x_0\)</span> 离得较远的观测 <span class="math notranslate nohighlight">\(x_i\)</span>，无法保证 <span class="math notranslate nohighlight">\(f(x_i)\)</span> 离 <span class="math notranslate nohighlight">\(f(x_0)\)</span> 较近。</p></li>
 </ul>
-<p>相似的结论可以应用到局部回归估计，比如局部线性：当宽度趋于 <span class="math notranslate nohighlight">\(0\)</span>，估计量则近似为对训练数据插值得到的分段线性函数；当宽度趋于无穷大，则拟合值近似为对数据的整体最小二乘拟合。</p>
+<p>相似的结论可以应用到局部回归估计，比如局部线性回归：当宽度趋于 <span class="math notranslate nohighlight">\(0\)</span> 时，拟合结果近似为 “对训练数据插值得到的分段线性函数” ；当宽度趋于 <span class="math notranslate nohighlight">\(\infty\)</span> 时，拟合结果近似为“对数据整体的最小二乘拟合”。</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[
@@ -1182,16 +1182,8 @@
 =\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
 &gt;\]</div>
 </div></blockquote>
-<p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正规化参数的讨论。局部回归光滑器是线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵由等价核 式（ 6.8 ） 构成，并且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S\_\lambda\}\_{ij}=l\_{i}(x\_{j})\)</span>。舍一法交叉验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交叉验证，<span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>），以及 <span class="math notranslate nohighlight">\(k\)</span> 折交叉验证也很简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)\)</span>，并且可以用来校准光滑的程度。</p>
-<blockquote>
-<div><p>info “weiya 注：Ex. 6.7”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">Issue 150: Ex. 6.7</a>.</p>
-</div></blockquote>
-<blockquote>
-<div><p>info “weiya 注：Ex. 6.10”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">Issue 151: Ex. 6.10</a>.</p>
-</div></blockquote>
-<p>图 6.7 比较了光滑样条和局部线性回归的等价核。局部线性光滑器有 <span class="math notranslate nohighlight">\(40\%\)</span> 的<strong>跨度 (span)</strong>，得到 <span class="math notranslate nohighlight">\(df=\mathrm{trace}(\mathbf S_\lambda)=5.86\)</span>。光滑样条进行校准后得到同样的 <span class="math notranslate nohighlight">\(df\)</span>，并且它们的等价核非常相似。</p>
+<p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正则化参数时讨论结果。局部回归光滑器是一个线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵 <span class="math notranslate nohighlight">\(S_\lambda\)</span> 由等价核（ 式 6.8 ）构成，并且其第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S_ \lambda\}_ {ij}=l_ {i}(x_ {j})\)</span>。留一法交互验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交互验证 <span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>）以及 <span class="math notranslate nohighlight">\(k\)</span> - 折交互验证也比较简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)\)</span>，并且可以用于校准光滑的程度。</p>
+<p>图 6.7 比较了光滑样条和局部线性回归的等价核。局部线性光滑器有 <span class="math notranslate nohighlight">\(40\%\)</span> 的跨度 (span)，得到有效自由度 <span class="math notranslate nohighlight">\(\mathrm{df}=\mathrm{trace}(\mathbf S_\lambda)=5.86\)</span>。光滑样条进行校准后得到同样的 <span class="math notranslate nohighlight">\(\mathrm{df}\)</span>，并且它们的等价核非常相似。</p>
 <p><img alt="" src="../_images/fig6.7.png" /></p>
 <blockquote>
 <div><p>图 6.7.相同自由度下， 局部线性回归光滑器的等价核（三次立方核；橘黄色）以及光滑样条（蓝色）。竖直的钉表示目标点。</p>

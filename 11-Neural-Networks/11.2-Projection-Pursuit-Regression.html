@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1171,7 +1171,7 @@ f(X)=\sum\limits_{m=1}^Mg_m(\omega_m^TX)\tag{11.1}
 <blockquote>
 <div><p>图 11.1. 2 个岭函数的透视图。（左图：）<span class="math notranslate nohighlight">\(g(V)=1/[1+\exp(-5(V-0.5))]\)</span> 其中 <span class="math notranslate nohighlight">\(V=(X_1+X_2)/\sqrt{2}\)</span>。（右图：）<span class="math notranslate nohighlight">\(g(V)=(V+0.1)\sin(1/(V/3+0.1))\)</span>，其中 <span class="math notranslate nohighlight">\(V=X_1\)</span>。</p>
 </div></blockquote>
-<p>式 式（ 11.1 ） 的 PPR 模型是非常一般的，因为形成线性组合的非线性函数的操作得到相当多的模型类型。举个例子，乘积 <span class="math notranslate nohighlight">\(X_1\cdot X_2\)</span> 可以写成 <span class="math notranslate nohighlight">\([(X_1+X_2)^2-(X_1-X_2)^2]/4\)</span>，高阶的乘积也可以类似地表示。</p>
+<p>式（ 11.1 ） 的 PPR 模型是非常一般的，因为形成线性组合的非线性函数的操作得到相当多的模型类型。举个例子，乘积 <span class="math notranslate nohighlight">\(X_1\cdot X_2\)</span> 可以写成 <span class="math notranslate nohighlight">\([(X_1+X_2)^2-(X_1-X_2)^2]/4\)</span>，高阶的乘积也可以类似地表示。</p>
 <p>实际上，如果 <span class="math notranslate nohighlight">\(M\)</span> 任意大，选择合适的 <span class="math notranslate nohighlight">\(g_m\)</span>，PPR 模型可以很好地近似 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 中任意的连续函数。这样的模型类别称为 <strong>通用近似 (universal approximator)</strong>。然而这种一般性需要付出代价。拟合模型的解释性通常很困难，因为每个输入变量都以复杂且多位面的方式进入模型中。结果使得 PPR 模型对于预测非常有用，但是对于产生一个可理解的模型不是很有用。<span class="math notranslate nohighlight">\(M=1\)</span> 模型是个例外，也是计量经济学中的 <strong>单指标模型 (single index model)</strong>。这比线性回归模型更加一般，也提供了一个类似（线性回归模型）的解释。</p>
 <p>给定训练点 <span class="math notranslate nohighlight">\((x_i,y_i),i=1,2,\ldots,N\)</span> 怎么拟合 PPR 模型？我们在函数 <span class="math notranslate nohighlight">\(g_m\)</span> 和方向向量 <span class="math notranslate nohighlight">\(\omega_m,m=1,2,\ldots,M\)</span> 上寻找误差函数的近似最小值</p>
 <div class="math notranslate nohighlight">
@@ -1196,7 +1196,7 @@ g(\omega^Tx_i)\approx g(\omega_{old}^Tx_i)+g'(\omega_{old}^Tx_i)(\omega-\omega_{
 <li><p>尽管原则上可以使用任意光滑的方法，但如果某方法提供微分则更加方便。局部回归和光滑样条是很方便的。</p></li>
 <li><p>每一步之后，上一步得到的 <span class="math notranslate nohighlight">\(g_m\)</span> 可以运用第 9 章描述的 backfitting 过程来重新调节。尽管这会导致最终有更少的项，但是否提高预测表现不是很清楚。</p></li>
 <li><p>通常 <span class="math notranslate nohighlight">\(\omega_m\)</span> 没有被重新调整（部分是为了避免过度的计算），尽管原则上它们也可以被调整。</p></li>
-<li><p>项数 <span class="math notranslate nohighlight">\(M\)</span> 通常被估计为向前逐步策略的一部分。当下一项不再明显地改善模型的拟合则停止模型的建立过程。交叉验证可以用来确定 <span class="math notranslate nohighlight">\(M\)</span>。</p></li>
+<li><p>项数 <span class="math notranslate nohighlight">\(M\)</span> 通常被估计为向前逐步策略的一部分。当下一项不再明显地改善模型的拟合则停止模型的建立过程。交互验证可以用来确定 <span class="math notranslate nohighlight">\(M\)</span>。</p></li>
 </ul>
 <p>有许多的应用中可以用到投影寻踪的想法，比如密度估计（Friedman et al., 1984<a class="footnote-reference brackets" href="#id4" id="id2">1</a>; Friedman, 1987<a class="footnote-reference brackets" href="#id5" id="id3">2</a>）。特别地，见 <span class="xref myst">14.7 节</span>中关于 ICA 的讨论以及它与探索型投影寻踪的关系。然而，投影寻踪回归模型在统计领域并没有被广泛地使用，或许是因为在它的提出时间（1981），计算上的需求超出大多数已有计算机的能力。但是它确实代表着重要的智力进步，它是一个在神经网络领域的转世中发展起来的，神经网络是本章接下来的内容。</p>
 <hr class="footnotes docutils" />

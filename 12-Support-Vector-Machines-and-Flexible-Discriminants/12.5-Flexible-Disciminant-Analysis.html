@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1215,13 +1215,13 @@ w_\ell = \frac{1}{r_\ell^2(1-r_\ell^2)}\tag{12.55}
 ASR(\{\theta_\ell,\eta_\ell\}_{\ell=1}^L)=\frac 1N\sum\limits_{\ell=1}^L[\sum\limits_{i=1}^N(\theta_\ell(g_i)-\eta_\ell(x_i))^2+\lambda J(\eta_\ell)]\tag{12.56}
 \)</span>$</p>
 <p>其中 <span class="math notranslate nohighlight">\(J\)</span> 是关于某种形式的非参回归的合适的正则器，比如光滑样条，可加样条以及低阶 ANOVA 样条模型。其中也包括由核生成的函数类和相关惩罚，如 <span class="xref myst">12.3.3 节</span>中一样。</p>
-<p>在我们描述泛化中的计算之前，让我们考虑一种非常简单的例子。假设我们对每个 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 采用 2 阶多项式回归。由 式（ 12.54 ） 定义的判别边界会变成二次曲面，因为每个拟合的函数是二次的，并且当比较距离时像 LDA 中一样，平方项会被抵消掉。我们会以更传统的方式达到相同的二次边界，通过用平方项及交叉项来增广我们的原始预测变量的空间。在增广空间中应用 LDA 时，增广空间中的线性边界会映射到原始空间的二次边界。一个经典的例子是中心在原点处的一对多元高斯分布，其中一个协方差阵为 <span class="math notranslate nohighlight">\(I\)</span>，另一个为 <span class="math notranslate nohighlight">\(cI\)</span>，其中 <span class="math notranslate nohighlight">\(c&gt;1\)</span>；图 12.9 图示了这个例子。贝叶斯判别边界是球 <span class="math notranslate nohighlight">\(\Vert x\Vert=\frac{pc\log c}{2(c-1)}\)</span>，这是在增广空间中的线性边界。</p>
+<p>在我们描述泛化中的计算之前，让我们考虑一种非常简单的例子。假设我们对每个 <span class="math notranslate nohighlight">\(\eta_\ell\)</span> 采用 2 阶多项式回归。由 式（ 12.54 ） 定义的判别边界会变成二次曲面，因为每个拟合的函数是二次的，并且当比较距离时像 LDA 中一样，平方项会被抵消掉。我们会以更传统的方式达到相同的二次边界，通过用平方项及交互项来增广我们的原始预测变量的空间。在增广空间中应用 LDA 时，增广空间中的线性边界会映射到原始空间的二次边界。一个经典的例子是中心在原点处的一对多元高斯分布，其中一个协方差阵为 <span class="math notranslate nohighlight">\(I\)</span>，另一个为 <span class="math notranslate nohighlight">\(cI\)</span>，其中 <span class="math notranslate nohighlight">\(c&gt;1\)</span>；图 12.9 图示了这个例子。贝叶斯判别边界是球 <span class="math notranslate nohighlight">\(\Vert x\Vert=\frac{pc\log c}{2(c-1)}\)</span>，这是在增广空间中的线性边界。</p>
 <p>许多非参回归过程通过生成衍生变量的基展开来进行，然后在增广空间中进行线性回归。MARS（<span class="xref myst">第 9 章</span>）过程正是这种形式。光滑样条和可加样条模型生成非常大的基的集合（对于可加样条有 <span class="math notranslate nohighlight">\(N\times p\)</span> 个基函数），但接着要在增广空间中进行带惩罚的回归拟合，SVM 也是如此；也可以参见 <a class="reference external" href="12.3-Support-Vector-Machines-and-Kernels/index.html#_3">12.3.7 节</a>基于核的回归的例子。在这种情形下 FDA 可以证明是在增广空间中进行带惩罚的线性判别分析。我们将在 <span class="xref myst">12.6 节</span>详细阐述。增广空间中的线性边界会映射到低维空间中的非线性边界。这正是支持向量机中采用的模式（<span class="xref myst">12.3 节</span>）。</p>
 <p>我们用<span class="xref myst">第 4 章</span>中的语音识别例子来解释 FDA，其中有 <span class="math notranslate nohighlight">\(K=11\)</span> 个类别以及 <span class="math notranslate nohighlight">\(p=10\)</span> 个预测变量。这些类别对应 11 个元音，每个是在 11 个不同的单词中。下面是这些单词，前面的符号来表示这些元音：</p>
 <p><img alt="" src="../_images/11vowel.png" /></p>
 <p>在测试集中 8 个演讲者讲每个词说 6 次，同样地，测试集中 7 个演讲者也这样做。用某种比较复杂但却是语音识别领域中的标准方式从数字语音中提取 10 个预测变量。因此得到 528 个训练观测，以及 462 个测试观测。图 12.10 展示了通过 LDA 和 FDA 得到的二维投影。</p>
 <p><img alt="" src="../_images/fig12.10.png" /></p>
-<p>FDA 模型采用自适应的可加样条回归函数来对 <span class="math notranslate nohighlight">\(\eta_\ell(x)\)</span> 建模，并且在右图中的点有坐标 <span class="math notranslate nohighlight">\(\hat\eta_1(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(\hat\eta_2(x_i)\)</span>。在 S-PLUS 用的程序叫做 <code class="docutils literal notranslate"><span class="pre">bruto</span></code>，因此有了图的标题以及表格中的名称。我们看到这种情形下灵活模型帮助分离类别。表 12.3 展示了一系列分类技巧的训练误差和测试误差。FDA/MARS 指的是 Friedman 的多元自适应回归样条；degree = 2 表明允许成对交叉项。注意到对于 FDA/MARS，最优的分类记过是在降维后的子空间中得到的。</p>
+<p>FDA 模型采用自适应的可加样条回归函数来对 <span class="math notranslate nohighlight">\(\eta_\ell(x)\)</span> 建模，并且在右图中的点有坐标 <span class="math notranslate nohighlight">\(\hat\eta_1(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(\hat\eta_2(x_i)\)</span>。在 S-PLUS 用的程序叫做 <code class="docutils literal notranslate"><span class="pre">bruto</span></code>，因此有了图的标题以及表格中的名称。我们看到这种情形下灵活模型帮助分离类别。表 12.3 展示了一系列分类技巧的训练误差和测试误差。FDA/MARS 指的是 Friedman 的多元自适应回归样条；degree = 2 表明允许成对交互项。注意到对于 FDA/MARS，最优的分类记过是在降维后的子空间中得到的。</p>
 <p><img alt="" src="../_images/tab12.3.png" /></p>
 <div class="section" id="id1">
 <h2>（）计算 FDA 估计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>

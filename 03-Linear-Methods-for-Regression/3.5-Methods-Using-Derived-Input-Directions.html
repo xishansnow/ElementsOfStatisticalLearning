@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1219,7 +1219,7 @@
 <blockquote>
 <div><p>图 3.17 岭回归运用 (3.47) 中的收缩因子 <span class="math notranslate nohighlight">\(d_j^2/(d_j^2+\lambda)\)</span> 来收缩主成分回归的系数。主成分回归截断了它们。 图中显示了图 3.7 对应的收缩和截断模式作为主成分指标的函数。</p>
 </div></blockquote>
-<p>在图 3.7 中我们看到交叉验证表明有 7 项；最终模型在表 3.3 中有最低的测试误差。</p>
+<p>在图 3.7 中我们看到交互验证表明有 7 项；最终模型在表 3.3 中有最低的测试误差。</p>
 </div>
 <div class="section" id="id3">
 <h2>（ 2 ）偏最小二乘<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -1254,7 +1254,7 @@
 3. 输出拟合向量序列$\{\hat{\mathbf y^{(m)}}\}^p_1$。因为$\{\mathbf z_\ell\}^m_1$关于原输入变量$\mathbf x_j$为线性的，所以是$\hat {\mathbf y}^{(m)}=\mathbf X \hat \beta^{pls}(m)$.这些线性系数可以通过PLS转换的序列重新得到。
 ****
 -->
-<p>在前列腺癌的例子中，交叉验证在图 3.7 中选择 <span class="math notranslate nohighlight">\(M=2\)</span> 个 PLS 方向。这得到了表 3.3 最右边的列的模型。</p>
+<p>在前列腺癌的例子中，交互验证在图 3.7 中选择 <span class="math notranslate nohighlight">\(M=2\)</span> 个 PLS 方向。这得到了表 3.3 最右边的列的模型。</p>
 <p>偏最小二乘求解的是什么优化问题呢？因为它使用响应变量 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 去构造它的方向，所以它解的路径是关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 的非线性函数。可以证明（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/103">练习 3.15</a>）偏最小二乘寻找有高方差以及和响应变量有高相关性的方向，而与之相对的主成分分析回归只重视高方差（Stone and Brooks, 1990<a class="footnote-reference brackets" href="#id6" id="id4">1</a>; Frank and Friedman, 1993<a class="footnote-reference brackets" href="#id7" id="id5">2</a>）。特别地，第 <span class="math notranslate nohighlight">\(m\)</span> 个主成分方向 <span class="math notranslate nohighlight">\(v_m\)</span> 是下面问题的解：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

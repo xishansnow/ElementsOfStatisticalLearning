@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,7 +1160,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>15.2 随机森林的定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差。树是用于 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 的理想模型，因为它们可以捕捉数据中复杂的交叉项，而且如果树长得足够深的话，会有相对较低的偏差。因为树是充满噪声的，所以通过平均可以很大程度地改善它们。而且，因为 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的。这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差。这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的。</p>
+<p>Bagging 的核心思想是对许多有噪声但近似无偏的模型进行平均，也因此降低了方差。树是用于 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 的理想模型，因为它们可以捕捉数据中复杂的交互项，而且如果树长得足够深的话，会有相对较低的偏差。因为树是充满噪声的，所以通过平均可以很大程度地改善它们。而且，因为 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 中产生的每棵树是同分布的，<span class="math notranslate nohighlight">\(B\)</span> 棵这样的树的平均的期望与它们中的任一个是相同的。这意味着经过 bagged 的树的偏差与单个(bootstrap)树的偏差是一样的，而且唯一改善的希望是通过降低方差。这与 boosting 是相反的，在 boosting 中树以一种自适应的方式减小偏差，因此不是同分布的。</p>
 <p><span class="math notranslate nohighlight">\(B\)</span> 棵独立同分布、方差为 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 的随机变量的平均方差为 <span class="math notranslate nohighlight">\(\frac{1}{B}\sigma^2\)</span>。如果变量是简单的同分布（不一定独立），有着正的成对相关系数 <span class="math notranslate nohighlight">\(\rho\)</span>，则平均的方差为（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/23">练习 15.1</a>）</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1194,7 +1194,7 @@ Bagging 可以看成是特殊的随机森林，即 <span class="math notranslate
 令人悲伤的是，Leo Breiman 逝世于 2005 年 7 月。</p>
 </div></blockquote>
 <p>这些作者们声称随机森林取得了巨大的成功：“更精确”，“更有解释性”，以及类似这样的。在我们的经验中，随机森林确实做得很好，只需要非常少的调参。随机森林在 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 测试集上取得了 4.88% 的误分类率，与其他方法相比表现得很好，没有显著性地比 gradient boosting (4.5%) 差。Bagging 达到 5.4%，显著地比其他方法要差，所以这个例子中额外的随机会有帮助。</p>
-<p>图 15.1 展示了这三个方法在 2500 棵树上测试误差的变化。在这种情形下，尽管 10 折交叉验证选择了所有的 2500 棵树，但有证据表明 gradient boosting 开始过拟合。</p>
+<p>图 15.1 展示了这三个方法在 2500 棵树上测试误差的变化。在这种情形下，尽管 10 折交互验证选择了所有的 2500 棵树，但有证据表明 gradient boosting 开始过拟合。</p>
 <p><img alt="" src="../_images/fig15.1.png" /></p>
 <p>图 15.2 展现了在 nested spheres 问题上随机森林与 gradient boosting 模拟的结果。这里 boosting 很容易地比随机森林表现要好。注意到这里较小的 <span class="math notranslate nohighlight">\(m\)</span> 会更好，尽管部分原因是因为真实的判别边界是可加的。</p>
 <blockquote>

@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1161,7 +1161,7 @@
 <h1>10.8 例子: 垃圾邮件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>在我们讨论 gradient boosting 的细节之前，首先用一个二分类的问题来说明它的能力。垃圾邮件数据在第一章以及有过介绍，并且<span class="xref myst">第 9 章</span>的很多方法都将其作为例子（第 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models/index.html#_3">9.1.2</a>，<a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.2-Tree-Based-Methods/index.html#_14">9.2.5</a>，<a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.3-PRIM/index.html#_1">9.3.1</a>，以及 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.4-MARS/index.html#_1">9.4.1</a>）。</p>
-<p>对和 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models/index.html#_3">9.1.2 节</a>一样的测试集应用 gradient boosting 会得到 4.5% 的测试误差。比较来看，可加逻辑斯蒂回归达到 5.5%，全生长并通过交叉验证剪枝 (fully grown and pruned by cross-validation) 的 CRAT 达到 8.7%，而 MARS 5.5%. 这些估计的标准差大概在 0.6%，通过 McNemar 检验，gradient boosting 显著地要比其它的好（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/214">练习 10.6</a>）。</p>
+<p>对和 <a class="reference external" href="/09-Additive-Models-Trees-and-Related-Methods/9.1-Generalized-Additive-Models/index.html#_3">9.1.2 节</a>一样的测试集应用 gradient boosting 会得到 4.5% 的测试误差。比较来看，可加逻辑斯蒂回归达到 5.5%，全生长并通过交互验证剪枝 (fully grown and pruned by cross-validation) 的 CRAT 达到 8.7%，而 MARS 5.5%. 这些估计的标准差大概在 0.6%，通过 McNemar 检验，gradient boosting 显著地要比其它的好（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/214">练习 10.6</a>）。</p>
 <blockquote>
 <div><p>info “weiya 注：Ex. 10.6”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/214">Issue 214: Ex. 10.6</a>.</p>
@@ -1182,7 +1182,7 @@ f(x) = \log \frac{\mathrm{Pr}(\text{spam}\mid x)}{\mathrm{Pr}(\text{email}\mid x
 图 9.1 展示了关于 16 个预测变量的拟合函数，有三个共同预测变量，<code class="docutils literal notranslate"><span class="pre">remove</span></code>, <code class="docutils literal notranslate"><span class="pre">edu</span></code> 和 <code class="docutils literal notranslate"><span class="pre">hp</span></code>。从趋势上看，图 9.1 中这三个变量的拟合函数确实跟图 10.7 中对应的曲线趋势相同。
 <img alt="" src="../_images/fig9.1.png" /></p>
 </div></blockquote>
-<p>在这些数据上运行 <span class="math notranslate nohighlight">\(J=2\)</span> 个终止结点的 gradient boosted 模型得到一个关于对数比率的完全可加模型（<strong>主要影响 (main effects)</strong>），对应的误差率为 4.7%，跟全 gradient boosted 模型（终止结点个数为 <span class="math notranslate nohighlight">\(J=5\)</span>）的 4.5% 相比。尽管不是显著差异，但是这略高的误差率表明在某些重要的预测变量间存在 <strong>交叉影响 (interactions)</strong>。这可以通过双变量偏相依性图来诊断。图 10.8 展示了其中一张表现出强交叉影响的图。</p>
+<p>在这些数据上运行 <span class="math notranslate nohighlight">\(J=2\)</span> 个终止结点的 gradient boosted 模型得到一个关于对数比率的完全可加模型（<strong>主要影响 (main effects)</strong>），对应的误差率为 4.7%，跟全 gradient boosted 模型（终止结点个数为 <span class="math notranslate nohighlight">\(J=5\)</span>）的 4.5% 相比。尽管不是显著差异，但是这略高的误差率表明在某些重要的预测变量间存在 <strong>交互影响 (interactions)</strong>。这可以通过双变量偏相依性图来诊断。图 10.8 展示了其中一张表现出强交互影响的图。</p>
 <p><img alt="" src="../_images/fig10.8.png" /></p>
 <p>可以看到，对于频率非常低的 <code class="docutils literal notranslate"><span class="pre">hp</span></code>，<code class="docutils literal notranslate"><span class="pre">spam</span></code> 的对数比率大幅提高。对于高频率时的 <code class="docutils literal notranslate"><span class="pre">hp</span></code>，<code class="docutils literal notranslate"><span class="pre">spam</span></code> 的对数比率趋向于非常低，而且近似是 <code class="docutils literal notranslate"><span class="pre">!</span></code> 的常数函数。当 <code class="docutils literal notranslate"><span class="pre">hp</span></code> 的频率降低时，其跟 <code class="docutils literal notranslate"><span class="pre">!</span></code> 的函数关系在增强。</p>
 </div>

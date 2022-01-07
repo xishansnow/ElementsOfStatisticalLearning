@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1160,14 +1160,10 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>6.5 局部似然和其他模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p><strong>局部回归 (local regression)</strong> 和 <strong>可变参数模型 (varying coefficient models)</strong> 的概念非常广泛：如果拟合方法适合(accommodates)观测点的权重系数，则任意参数模型可以变得局部。</p>
-<blockquote>
-<div><p>question
-怎么理解“accommodate”？</p>
-</div></blockquote>
+<p><strong>局部回归</strong> 和 <strong>可变参数模型</strong> 的概念非常广泛：如果拟合方法能够适应观测数据权重，则任何参数模型都可以变成局部的。</p>
 <p>这里有一些例子：</p>
 <ul class="simple">
-<li><p>每个观测 <span class="math notranslate nohighlight">\(y_i\)</span> 与协变量 <span class="math notranslate nohighlight">\(x_i\)</span> 成线性的参数 <span class="math notranslate nohighlight">\(\theta_i=\theta(x_i)=x_i^T\beta\)</span> 有关，并且基于对数似然 <span class="math notranslate nohighlight">\(l(\beta)=\sum_{i=1}^Nl(y_i,x_i^T\beta)\)</span> 对 <span class="math notranslate nohighlight">\(\beta\)</span> 进行推断。为了更灵活地对 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 建模，我们可以用 <span class="math notranslate nohighlight">\(x_0\)</span> 处局部的概率来推断 <span class="math notranslate nohighlight">\(\theta(x_0)=x_0^T\beta(x_0)\)</span>：</p></li>
+<li><p>每个观测 <span class="math notranslate nohighlight">\(y_i\)</span> 与预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 成线性的参数 <span class="math notranslate nohighlight">\(\theta_i=\theta(x_i)=x_i^T\beta\)</span> 有关，并且基于对数似然 <span class="math notranslate nohighlight">\(l(\beta)=\sum_{i=1}^Nl(y_i,x_i^T\beta)\)</span> 对 <span class="math notranslate nohighlight">\(\beta\)</span> 进行推断。为了更灵活地对 <span class="math notranslate nohighlight">\(\theta(X)\)</span> 建模，我们可以用 <span class="math notranslate nohighlight">\(x_0\)</span> 处局部的概率来推断 <span class="math notranslate nohighlight">\(\theta(x_0)=x_0^T\beta(x_0)\)</span>：</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1187,13 +1183,12 @@ F(\theta(z_0))=\sum\limits_{i=1}^NK_\lambda(z_0,z_i)l(y_i,\eta(x_i,\theta(z_0)))
 </ul>
 <p>为了解释局部似然，我们考虑<span class="xref myst">第 4 章</span>中<strong>多类别线性逻辑斯蒂回归模型</strong>(4.36)的局部形式。</p>
 <blockquote>
-<div><p>note “Recall”</p>
+<div><p>回顾：<br />
+$<span class="math notranslate nohighlight">\(
+ \mathrm{Pr}(G=k\mid X=x)=\dfrac{e^{\beta_{k0}+\beta_k^Tx}}{1+\sum_{\ell=1}^{K-1}e^{\beta_{\ell0}+\beta_\ell^Tx}}\tag{4.36}   
+\)</span>$</p>
 </div></blockquote>
-<div class="math notranslate nohighlight">
-\[    \mathrm{Pr}(G=k\mid X=x)=\dfrac{e^{\beta_{k0}+\beta_k^Tx}}{1+\sum_{\ell=1}^{K-1}e^{\beta_{\ell0}+\beta_\ell^Tx}}\tag{4.36}
-    
-\]</div>
-<p>数据包含特征<span class="math notranslate nohighlight">\(x_i\)</span>和相关的类别响应变量<span class="math notranslate nohighlight">\(g_i\in\\{1,2,\ldots,J\\}\)</span>，并且线性模型有如下形式</p>
+<p>数据包含特征<span class="math notranslate nohighlight">\(x_i\)</span>和相关的类别响应变量<span class="math notranslate nohighlight">\(g_i \in \{1,2,\ldots,J \}\)</span>，并且线性模型有如下形式：</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{Pr}(G=j\mid X=x)=\frac{e^{\beta_{j0}+\beta_j^Tx}}{1+\sum_{k=1}^{J-1}e^{\beta_{k0}+\beta_k^Tx}}\tag{6.18}
@@ -1217,10 +1212,10 @@ F(\theta(z_0))=\sum\limits_{i=1}^NK_\lambda(z_0,z_i)l(y_i,\eta(x_i,\theta(z_0)))
 <p>作为一个简单的说明，我们对第4章中的心脏病数据拟合两个类别的 <strong>局部线性逻辑斯蒂回归模型(local linear logistic model)</strong>。图 6.12 显示了对两个风险因子<strong>分别</strong>拟合单变量局部逻辑斯蒂回归模型。当数据本身提供很少的可视信息，这是检测非线性是很有用的筛选工具。这种情形下会发现意外的异常值，而用传统的方法可能会没注意到。</p>
 <p><img alt="" src="../_images/fig6.12.png" /></p>
 <blockquote>
-<div><p>对于南非心脏病数据，每张图显示了二值响应变量<code class="docutils literal notranslate"><span class="pre">CHD</span></code>（冠状心脏病）作为风险因子的函数。每张图我们采用局部线性逻辑斯蒂回归模型来计算拟合的<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率。<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率在横轴取值较小时意外增加是因为它们是retrospective data，并且一些个体已经接受了降低血压和减轻体重的处理方式。图中的阴影区域表明逐点估计的标准误差带。</p>
+<div><p>对于南非心脏病数据，每张图显示了二值响应变量<code class="docutils literal notranslate"><span class="pre">CHD</span></code>（冠状心脏病）作为风险因子的函数。每张图我们采用局部线性逻辑斯蒂回归模型来计算拟合的<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率。<code class="docutils literal notranslate"><span class="pre">CHD</span></code>患病率在横轴取值较小时意外增加是因为它们是retrospective data，并且一些个体已经接受了降低血压和减轻体重的处理方式。图中的阴影区域表明逐点估计的标准差带。</p>
 </div></blockquote>
 <p>因为<code class="docutils literal notranslate"><span class="pre">CHD</span></code>是二值指示变量，所以我们可以通过直接地光滑二值响应变量来估计条件患病率<span class="math notranslate nohighlight">\(\mathrm{Pr}(G=j\mid x_0)\)</span>，而不是用似然公式(likelihood formulation)。这意味着拟合局部常值逻辑斯蒂回归模型（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/84">练习6.5</a>）。为了享受局部线性拟合的偏差纠正，在无限制的逻辑斯蒂尺度上操作会更加自然。</p>
-<p>一般地，我们用逻辑斯蒂回归来计算参数估计和它们的标准差。这个也可以局部实现，因为我们可以得到如图中所示的关于我们拟合的患病率的逐点标准误差带。</p>
+<p>一般地，我们用逻辑斯蒂回归来计算参数估计和它们的标准差。这个也可以局部实现，因为我们可以得到如图中所示的关于我们拟合的患病率的逐点标准差带。</p>
 </div>
 
     <script type="text/x-thebe-config">

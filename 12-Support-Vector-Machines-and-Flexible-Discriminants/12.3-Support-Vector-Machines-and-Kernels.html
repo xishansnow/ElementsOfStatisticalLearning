@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1368,7 +1368,7 @@ K(x,x')&amp;=(1+\langle X,X' \rangle)^2\\
 <p>我们可以在总体水平上用估计量来区分这些损失函数。我们考虑最小化 <span class="math notranslate nohighlight">\(\E L(Y,f(x)\)</span>。</p>
 <p><img alt="" src="../_images/tab12.1.png" /></p>
 <p>表 12.1 总结了这些结果。然而 hinge 损失估计了分类器 <span class="math notranslate nohighlight">\(G(x)\)</span> 本身，而其他的都估计类别后验概率的某个变换。“Huberized” square hinge损失有着与逻辑斯蒂回归相同的吸引人的性质（光滑的损失函数，估计概率），以及 SVM 的 hinge 损失的良好性质（支撑点）。</p>
-<p>式 式（ 12.25 ） 将 SVM 看成正则化的函数估计问题，其中线性展开 <span class="math notranslate nohighlight">\(f(x)=\beta_0+h(x)^T\beta\)</span> 的系数向 0 收缩（除了常值）。如果 <span class="math notranslate nohighlight">\(h(x)\)</span> 表示有相同的序结构（比如按粗糙程度排序）的 <strong>分层基 (hierarchical basis)</strong>，如果在向量 <span class="math notranslate nohighlight">\(h\)</span> 中更粗糙的元素 <span class="math notranslate nohighlight">\(h_j\)</span> 有更小的范数，则均一化收缩是更有意义的。</p>
+<p>式（ 12.25 ） 将 SVM 看成正则化的函数估计问题，其中线性展开 <span class="math notranslate nohighlight">\(f(x)=\beta_0+h(x)^T\beta\)</span> 的系数向 0 收缩（除了常值）。如果 <span class="math notranslate nohighlight">\(h(x)\)</span> 表示有相同的序结构（比如按粗糙程度排序）的 <strong>分层基 (hierarchical basis)</strong>，如果在向量 <span class="math notranslate nohighlight">\(h\)</span> 中更粗糙的元素 <span class="math notranslate nohighlight">\(h_j\)</span> 有更小的范数，则均一化收缩是更有意义的。</p>
 <blockquote>
 <div><p>question
 什么是 hierarchical basis？探索过程见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/79">Issues 79: hierarchical basis</a></p>
@@ -1419,7 +1419,7 @@ K(x, x')=\sum\limits_{m=1}^{\infty}\phi_m(x)\phi_m(x')\delta_m\tag{12.26}
 \[
 f(x)=\beta_0+\sum\limits_{i=1}^N\alpha_iK(x, x_i)\tag{12.28}
 \]</div>
-<p>特别地，我们看到存在等价的优化准则【5.8.2节的式 式（ 5.67 ）；也可以参见 Wahba et al. (2000)<a class="footnote-reference brackets" href="#id23" id="id7">3</a>】</p>
+<p>特别地，我们看到存在等价的优化准则【5.8.2节的式（ 5.67 ）；也可以参见 Wahba et al. (2000)<a class="footnote-reference brackets" href="#id23" id="id7">3</a>】</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{\beta_0, \alpha}{\min}\sum\limits_{i=1}^N(1-y_if(x_i))_++\frac{\lambda}{2}\alpha^TK\alpha\tag{12.29}
@@ -1429,7 +1429,7 @@ f(x)=\beta_0+\sum\limits_{i=1}^N\alpha_iK(x, x_i)\tag{12.28}
 <div><p>info “weiya 注：Ex. 12.2”
 已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/80">Issue 80: Ex. 12.2</a>，欢迎交流讨论。</p>
 </div></blockquote>
-<p>这些模型非常一般，举个例子，包含第 5 和第 9 章中讨论的整个光滑样条族，可加和交叉样条模型，更多细节参见 Wahba (1990)<a class="footnote-reference brackets" href="#id24" id="id8">4</a> 和 Hastie and Tibshirani (1990)<a class="footnote-reference brackets" href="#id25" id="id9">5</a>。它们可以更一般地表示为</p>
+<p>这些模型非常一般，举个例子，包含第 5 和第 9 章中讨论的整个光滑样条族，可加和交互样条模型，更多细节参见 Wahba (1990)<a class="footnote-reference brackets" href="#id24" id="id8">4</a> 和 Hastie and Tibshirani (1990)<a class="footnote-reference brackets" href="#id25" id="id9">5</a>。它们可以更一般地表示为</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{f\in{\mathcal H}}{\min}\sum\limits_{i=1}^N[1-y_if(x_i)]_+ + \lambda J(f)\tag{12.30}
@@ -1453,7 +1453,7 @@ f(x)=\beta_0+\sum\limits_{i=1}^N\alpha_iK(x, x_i)\tag{12.28}
 </div>
 <div class="section" id="id11">
 <h2>（）SVM 和维数灾难<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
-<p>在这一节，我们回答“SVMs是否存在维数灾难”的问题。注意到在展开式 式（ 12.23 ） 中，我们不允许在幂和乘积的空间中有完全一般的内积。举个例子，所有形如 <span class="math notranslate nohighlight">\(2X_jX_j'\)</span> 赋予相同的权重，并且核不能自适应地集中到某子空间中。</p>
+<p>在这一节，我们回答“SVMs是否存在维数灾难”的问题。注意到在展开式（ 12.23 ） 中，我们不允许在幂和乘积的空间中有完全一般的内积。举个例子，所有形如 <span class="math notranslate nohighlight">\(2X_jX_j'\)</span> 赋予相同的权重，并且核不能自适应地集中到某子空间中。</p>
 <blockquote>
 <div><p>note
 基于下文的比较，特别是高阶多项式与低阶多项式，这里应当是指 SVM 中的核不允许退化，比如某个参数为 0，并不具有像 MARS 等方法的自适应能力。</p>
@@ -1461,7 +1461,7 @@ f(x)=\beta_0+\sum\limits_{i=1}^N\alpha_iK(x, x_i)\tag{12.28}
 <p>如果特征的数量 <span class="math notranslate nohighlight">\(p\)</span> 很大，但是类别分类仅仅发生在 <span class="math notranslate nohighlight">\(X_1\)</span> 和 <span class="math notranslate nohighlight">\(X_2\)</span> 张成的子空间，这个核不会简单地找到其结构并且需要在很多维度下搜寻。必须将子空间的信息考虑进核中，也就是，忽略 <strong>除了</strong> 前两个的输入。如果有信息能够得到先验，大多数统计学习会变得很简单。自适应方法的主要目标是发现类似的结构。</p>
 <p>我们用一个例子来支持上面的陈述。我们在两个类别中产生 100 个观测值。第一类有 4 个标准正态独立特征 <span class="math notranslate nohighlight">\(X_1,X_2,X_3,X_4\)</span>。第二类也有四个标准正态独立特征，但是条件为 <span class="math notranslate nohighlight">\(9\le \sum X_j^2\le 16\)</span>。这是个相对简单的问题。同时考虑第二个更难的问题，用 6 个标准高斯噪声特征作为增广特征。因此在四维子空间中第二类完全包围了第一类，类似橘子皮包围着橘子。该问题的贝叶斯误差率为 0.029（不考虑维数）。我们产生 1000 个测试观测量来比较不同的过程。在有无噪声特征的情况下，平均测试误差在 50 个模拟中得到，如表 12.2 所示。</p>
 <p><img alt="" src="../_images/tab12.2.png" /></p>
-<p>表中第一行在原特征空间中使用支持向量分类器。第 2 到第 4 行表示使用 2，5 和 10 维多项式核的支持向量机。对于所有的支持向量过程，我们选择代价参数 <span class="math notranslate nohighlight">\(C\)</span> 来最小化测试误差，使得对这个方法尽可能公平。第 5 行采用可加模型的 BRUTO 算法（Hastie and Tibshirani (1990)），通过最小二乘对 <span class="math notranslate nohighlight">\((-1,+1)\)</span> 响应变量拟合可加样条模型。第 6 行采用 MARS（多变量自适应回归样条）允许任意阶的交叉影响，在第 9 章中有介绍；同样地，其与 SVM/poly 10 进行比较。BRUTO 和 MARS 算法均有能力忽略冗余变量。第 5 和第 6 行并不采用测试误差来选择光滑参数。</p>
+<p>表中第一行在原特征空间中使用支持向量分类器。第 2 到第 4 行表示使用 2，5 和 10 维多项式核的支持向量机。对于所有的支持向量过程，我们选择代价参数 <span class="math notranslate nohighlight">\(C\)</span> 来最小化测试误差，使得对这个方法尽可能公平。第 5 行采用可加模型的 BRUTO 算法（Hastie and Tibshirani (1990)），通过最小二乘对 <span class="math notranslate nohighlight">\((-1,+1)\)</span> 响应变量拟合可加样条模型。第 6 行采用 MARS（多变量自适应回归样条）允许任意阶的交互影响，在第 9 章中有介绍；同样地，其与 SVM/poly 10 进行比较。BRUTO 和 MARS 算法均有能力忽略冗余变量。第 5 和第 6 行并不采用测试误差来选择光滑参数。</p>
 <blockquote>
 <div><p>info
 笔记<span class="xref myst">模拟：Tab. 12.2</span>重现了表12.2的结果。</p>
@@ -1473,7 +1473,7 @@ f(x)=\beta_0+\sum\limits_{i=1}^N\alpha_iK(x, x_i)\tag{12.28}
 <p>SVM 分类器的正则化参数是代价参数 <span class="math notranslate nohighlight">\(C\)</span>，或者 式（ 12.25 ） 中 <span class="math notranslate nohighlight">\(\lambda\)</span> 的倒数。通常用法是将 <span class="math notranslate nohighlight">\(C\)</span> 设得比较高，这通常会过拟合分类器。</p>
 <p>图 12.6 展示了混合数据的测试误差作为 <span class="math notranslate nohighlight">\(C\)</span> 的函数的变化图像，其中采用不同的径向核参数 <span class="math notranslate nohighlight">\(\gamma\)</span>。</p>
 <p><img alt="" src="../_images/fig12.6.png" /></p>
-<p>当 <span class="math notranslate nohighlight">\(\gamma=5\)</span> 时(narrow peaked kernels)，需要最重的正则化（即较小 <span class="math notranslate nohighlight">\(C\)</span>）。当 <span class="math notranslate nohighlight">\(\gamma=1\)</span>时（图 12.3 所用的值），需要中等大小的 <span class="math notranslate nohighlight">\(C\)</span>。显然在这些情形中，我们需要确定合适的 <span class="math notranslate nohighlight">\(C\)</span>，或许可以通过交叉验证实现。这里我们描述一种路径算法（受<span class="xref myst">3.8节</span>的启发），可以用来有效拟合改变 <span class="math notranslate nohighlight">\(C\)</span> 得到的 SVM 模型序列。</p>
+<p>当 <span class="math notranslate nohighlight">\(\gamma=5\)</span> 时(narrow peaked kernels)，需要最重的正则化（即较小 <span class="math notranslate nohighlight">\(C\)</span>）。当 <span class="math notranslate nohighlight">\(\gamma=1\)</span>时（图 12.3 所用的值），需要中等大小的 <span class="math notranslate nohighlight">\(C\)</span>。显然在这些情形中，我们需要确定合适的 <span class="math notranslate nohighlight">\(C\)</span>，或许可以通过交互验证实现。这里我们描述一种路径算法（受<span class="xref myst">3.8节</span>的启发），可以用来有效拟合改变 <span class="math notranslate nohighlight">\(C\)</span> 得到的 SVM 模型序列。</p>
 <p>使用 式（ 12.25 ） 的损失+惩罚的形式以及图 12.4 中的损失函数是很方便的。这可以得到在给定 <span class="math notranslate nohighlight">\(\lambda\)</span> 处 <span class="math notranslate nohighlight">\(\beta\)</span> 的解：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1560,7 +1560,7 @@ c\vert r\vert -c^2/2, &amp;\vert r\vert &gt; c
 \tag{12.41}
 \end{split}\]</div>
 <p>考虑到这些约束的本质，一般仅仅有部分的解 <span class="math notranslate nohighlight">\((\hat \alpha_i^*-\hat\alpha_i)\)</span> 非零， 并且对应的数据称为支持向量。和分类问题中的设定一样，解仅仅通过内积 <span class="math notranslate nohighlight">\(\langle x_i, x_{i'}\rangle\)</span> 来关联输入的数据。因此我们可以通过定义合适的内积将这个方法推广到高维空间，举个例子，采用 式（ 12.22 ） 中定义的任意一个。</p>
-<p>注意到参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 和 <span class="math notranslate nohighlight">\(\lambda\)</span> 与准则 式（ 12.36 ） 有关。它们似乎扮演不同的角色，<span class="math notranslate nohighlight">\(\epsilon\)</span> 是损失函数 <span class="math notranslate nohighlight">\(V_{\epsilon}\)</span> 的参数，这和 <span class="math notranslate nohighlight">\(c\)</span> 是 <span class="math notranslate nohighlight">\(V_H\)</span> 的参数一样。注意到 <span class="math notranslate nohighlight">\(V_{\epsilon}\)</span> 和 <span class="math notranslate nohighlight">\(V_H\)</span> 都依赖 <span class="math notranslate nohighlight">\(y\)</span> 的尺度，因此依赖于 <span class="math notranslate nohighlight">\(r\)</span>。如果我们对响应变量进行缩放（也因此需要用 <span class="math notranslate nohighlight">\(V_H(r/\sigma)\)</span> 和 <span class="math notranslate nohighlight">\(V_\epsilon(r/\sigma)\)</span>），则我们可能考虑采用预先设定的 <span class="math notranslate nohighlight">\(c\)</span> 和 <span class="math notranslate nohighlight">\(\epsilon\)</span>（对于高斯情形，取 <span class="math notranslate nohighlight">\(c=1.345\)</span> 能达到 <span class="math notranslate nohighlight">\(95\%\)</span> 的有效度）。<span class="math notranslate nohighlight">\(\lambda\)</span> 是更传统的正则参数，并且可以通过交叉验证来估计。</p>
+<p>注意到参数 <span class="math notranslate nohighlight">\(\epsilon\)</span> 和 <span class="math notranslate nohighlight">\(\lambda\)</span> 与准则 式（ 12.36 ） 有关。它们似乎扮演不同的角色，<span class="math notranslate nohighlight">\(\epsilon\)</span> 是损失函数 <span class="math notranslate nohighlight">\(V_{\epsilon}\)</span> 的参数，这和 <span class="math notranslate nohighlight">\(c\)</span> 是 <span class="math notranslate nohighlight">\(V_H\)</span> 的参数一样。注意到 <span class="math notranslate nohighlight">\(V_{\epsilon}\)</span> 和 <span class="math notranslate nohighlight">\(V_H\)</span> 都依赖 <span class="math notranslate nohighlight">\(y\)</span> 的尺度，因此依赖于 <span class="math notranslate nohighlight">\(r\)</span>。如果我们对响应变量进行缩放（也因此需要用 <span class="math notranslate nohighlight">\(V_H(r/\sigma)\)</span> 和 <span class="math notranslate nohighlight">\(V_\epsilon(r/\sigma)\)</span>），则我们可能考虑采用预先设定的 <span class="math notranslate nohighlight">\(c\)</span> 和 <span class="math notranslate nohighlight">\(\epsilon\)</span>（对于高斯情形，取 <span class="math notranslate nohighlight">\(c=1.345\)</span> 能达到 <span class="math notranslate nohighlight">\(95\%\)</span> 的有效度）。<span class="math notranslate nohighlight">\(\lambda\)</span> 是更传统的正则参数，并且可以通过交互验证来估计。</p>
 </div>
 <div class="section" id="id16">
 <h2>（）回归和核<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
@@ -1632,7 +1632,7 @@ h\le R^2A^2\tag{12.50}
 \mathrm{Error}_{\mathrm{Test}}\le 4\frac{h[\log(2N/h)+1]-\log(\eta/4)}{N}\tag{12.51}
 \]</div>
 <p>支持向量分类器是第一个可以得到 VC 维的有效界的实际学习过程，因此可以应用 SRM。然而，在推导的时候，计算过程依赖特征的观测值，称为“balls are put around the data points”。因此在严格意义上，类别的 VC 复杂度在知道特征之前不是预先固定的。</p>
-<p>正则参数 <span class="math notranslate nohighlight">\(C\)</span> 控制了分类器的 VC 维的上界。遵循 SRM 的范式，我们可以通过最小化测试误差 式（ 12.51 ） 的上界来选择 <span class="math notranslate nohighlight">\(C\)</span>。然而，并不清楚它与通过交叉验证来选 <span class="math notranslate nohighlight">\(C\)</span> 有什么优势。</p>
+<p>正则参数 <span class="math notranslate nohighlight">\(C\)</span> 控制了分类器的 VC 维的上界。遵循 SRM 的范式，我们可以通过最小化测试误差 式（ 12.51 ） 的上界来选择 <span class="math notranslate nohighlight">\(C\)</span>。然而，并不清楚它与通过交互验证来选 <span class="math notranslate nohighlight">\(C\)</span> 有什么优势。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id21"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>

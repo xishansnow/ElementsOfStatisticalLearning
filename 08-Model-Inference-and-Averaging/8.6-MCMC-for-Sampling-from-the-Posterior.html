@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1175,14 +1175,14 @@
 <p>有人会想到用 Monte Carlo 来近似上述的积分值（关于应用 Monte Carlo 进行积分近似，可以参见 <a class="reference external" href="https://stats.hohoweiya.xyz//montecarlo/2017/09/07/The-Need-of-Monte-Carlo/">The Applications of Monte Carlo</a>），进而采用下式进行近似</p>
 <div class="math notranslate nohighlight">
 \[
-\hat \mathrm{Pr}(x) = \int d\theta\cdot \frac{1}{m}\sum\limits_{i=1}^m\mathrm{Pr}(x, \theta^{(m)})
+\hat{\mathrm{Pr}}(x) = \int d\theta\cdot \frac{1}{m}\sum\limits_{i=1}^m\mathrm{Pr}(x, \theta^{(m)})
 \]</div>
 <p>但一般很难从联合分布中采样出样本来。幸好可以通过构造一个 Markov chain 来进行 Monte Carlo 近似，称为 MCMC。在 <a class="reference external" href="http://nbviewer.jupyter.org/github/szcf-weiya/MonteCarlo/blob/master/MCMC/MCMC_example.ipynb">MCMC_example.ipynb</a> 里面用一个例子说明了怎么用 MCMC 得到参数的后验分布。
 更多 Monte Carlo 方法的细节可以参见 <a class="reference external" href="https://mc.hohoweiya.xyz/">Notes: Monte-Carlo</a>.</p>
 <p>这节我们讨论用于后验采样的 <strong>马尔科夫蒙特卡洛法 (Markov chain Monte Carlo)</strong>。我们将要看到吉布斯采样（一个 MCMC 过程）与 EM 算法非常相关：主要的区别在于前者从条件分布中采样而非对它们最大化。</p>
 <p>首先考虑下面的抽象问题。我们有随机变量 <span class="math notranslate nohighlight">\(U_1,U_2,\ldots,U_K\)</span>，而且希望从他们的联合分布中采样。假设这很难实现，但是从条件分布 <span class="math notranslate nohighlight">\(\mathrm{Pr}(U_j\mid U_1,U_2,\ldots,U_{j-1},U_{j+1},\ldots,U_K),j=1,\ldots,K\)</span> 中模拟是非常简单的。吉布斯采样过程也可以从他们的每个分布来模拟，而且当这个过程稳定下来，吉布斯采样得到了需要的联合分布中的一个样本。这个过程表现在算法 8.3 中。</p>
 <p><img alt="" src="../_images/alg8.3.png" /></p>
-<p>在正规化条件下可以证明这一过程最终稳定，得到的随机变量实际上是从 <span class="math notranslate nohighlight">\(U_1,U_2,\ldots,U_K\)</span> 联合分布中取的一个样本。尽管对于不同的 <span class="math notranslate nohighlight">\(t\)</span>，样本 <span class="math notranslate nohighlight">\((U_1^{(t)},U_2^{(t)},\ldots,U_K^{(t)})\)</span> 显然不独立。更正式地，吉布斯采样得到一个马尔科夫链，该马尔科夫链的平稳分布是真正的联合分布，因此称之为“马尔科夫链蒙特卡洛法”。在这个过程下真实的联合分布是平稳的并不奇怪，因为连续的步骤使得 <span class="math notranslate nohighlight">\(U_k\)</span> 的边缘分布不变。</p>
+<p>在正则化条件下可以证明这一过程最终稳定，得到的随机变量实际上是从 <span class="math notranslate nohighlight">\(U_1,U_2,\ldots,U_K\)</span> 联合分布中取的一个样本。尽管对于不同的 <span class="math notranslate nohighlight">\(t\)</span>，样本 <span class="math notranslate nohighlight">\((U_1^{(t)},U_2^{(t)},\ldots,U_K^{(t)})\)</span> 显然不独立。更正式地，吉布斯采样得到一个马尔科夫链，该马尔科夫链的平稳分布是真正的联合分布，因此称之为“马尔科夫链蒙特卡洛法”。在这个过程下真实的联合分布是平稳的并不奇怪，因为连续的步骤使得 <span class="math notranslate nohighlight">\(U_k\)</span> 的边缘分布不变。</p>
 <p>注意到我们不需要知道条件密度的显式形式，但是仅仅需要能够从中采样。经过这一过程达到平稳，变量的任意子集的边缘密度可以通过应用到样本值上的密度估计来近似。然而，如果条件密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(U_k\mid U_\ell,\ell\neq k)\)</span> 的显式形式是知道的，则 <span class="math notranslate nohighlight">\(U_k\)</span> 的边缘密度的一个良好估计可以从下式得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/145">练习 8.3</a>）：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1195,13 +1195,11 @@
 <p>图 8.8 显示了吉布斯抽样的 200 个迭代，左图显示了均值参数 <span class="math notranslate nohighlight">\(\mu_1\)</span>（小）和 <span class="math notranslate nohighlight">\(\mu_2\)</span>（大），右图是类别 2 的观测的占比 <span class="math notranslate nohighlight">\(\sum_i\Delta_i/N\)</span>。在每个情形下画出了在最大似然估计值 <span class="math notranslate nohighlight">\(\hat\mu_1,\hat\mu_2\)</span> 和 <span class="math notranslate nohighlight">\(\sum_i\hat\gamma_i/N\)</span> 的虚线。值似乎很快就稳定下来，而且在最大似然值附近均匀地分布。</p>
 <blockquote>
 <div><p>吉布斯采样中的条件分布可以直接根据联合分布</p>
-</div></blockquote>
 <div class="math notranslate nohighlight">
-\[&gt;L\theta,\mathbf{Z,\Delta}) = \prod\limits_{i=1}^n[(1-\pi)\phi_{\theta_1}(y_i)]^{1-\Delta_i}[\pi\phi_{\theta_2}(y_i)]^{\Delta_i}.
-&gt;
-\]</div>
-<blockquote>
-<div><p>快速写出来。</p>
+\[
+&gt;L\theta,\mathbf{Z,\Delta}) = \prod\limits_{i=1}^n[(1-\pi)\phi_{\theta_1}(y_i)]^{1-\Delta_i}[\pi\phi_{\theta_2}(y_i)]^{\Delta_i}.
+&gt;\]</div>
+<p>快速写出来。</p>
 </div></blockquote>
 <p><img alt="" src="../_images/fig8.8.png" /></p>
 <blockquote>

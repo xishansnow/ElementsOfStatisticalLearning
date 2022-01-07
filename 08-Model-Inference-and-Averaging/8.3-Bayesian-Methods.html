@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1170,18 +1170,23 @@
 <p>后验分布提供了预测未来观测 <span class="math notranslate nohighlight">\(z^{new}\)</span> 的基础，可以通过计算预测分布 (predictive distribution) 来表达预测的不确定性，注意预测值是一个随机变量，存在概率分布：</p>
 <div class="math notranslate nohighlight">
 \[
-\mathrm{Pr}(z^{new}\mid \mathbf  Z)=\int \mathrm{Pr}(z^{new}\mid \theta)\cdot \mathrm{Pr}(\theta\mid \mathbf Z)d\theta\tag{8.24} \]</div>
+\mathrm{Pr}(z^{new}\mid \mathbf  Z)=\int \mathrm{Pr}(z^{new}\mid \theta)\cdot \mathrm{Pr}(\theta\mid \mathbf Z)d\theta\tag{8.24} 
+\]</div>
 <p>在上述贝叶斯框架内，最大似然方法会使用上式分布中概率值最大那个点的密度 <span class="math notranslate nohighlight">\(\mathrm{Pr}(z^{new}\mid \hat\theta)\)</span> 来预测未来的数据。不同于式（ 8.24 ）的预测分布，它不能说明 <span class="math notranslate nohighlight">\(\theta\)</span> 估计的不确定性。</p>
 <p>让我们在光滑化的例子中使用贝叶斯方法。</p>
 <p>首先，从由式 8.5 给出的参数模型开始，假设 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 已知。</p>
-<div class="admonition- admonition">
-<p class="admonition-title">回顾式（8.5）</p>
+<blockquote>
+<div><p>回顾
+$$</p>
+</div></blockquote>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 Y&amp;=\mu(X)+\varepsilon;\; \varepsilon\sim N(0,\sigma^2),\\
 \mu(X)&amp;=\sum\limits_{j=1}^7\beta_jh_j(x) \tag{8.5}
 \end{align*}\]</div>
-</div>
+<blockquote>
+<div><p>$$</p>
+</div></blockquote>
 <p>假设观测的特征 <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_N\)</span> 固定，因此数据的随机性仅仅来源于 <span class="math notranslate nohighlight">\(y\)</span> 与均值 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 之间的偏差。</p>
 <p>第二步，设置先验分布。为函数设置先验分布相当复杂。最常用的方式是使用高斯过程分布，需指定均值函数和协方差函数（Wahba,1990<a class="footnote-reference brackets" href="#id4" id="id2">1</a>; Neal, 1996<a class="footnote-reference brackets" href="#id5" id="id3">2</a>）。这里采取一个简单的方法：考虑 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 的有限 <span class="math notranslate nohighlight">\(B\)</span> 样条基函数，并给出系数 <span class="math notranslate nohighlight">\(\beta\)</span> 的先验分布，这隐式地定义了 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 的先验分布。我们选取中心化的先验高斯分布：</p>
 <div class="math notranslate nohighlight">
@@ -1189,36 +1194,35 @@ Y&amp;=\mu(X)+\varepsilon;\; \varepsilon\sim N(0,\sigma^2),\\
 \beta\sim N(0,\tau\mathbf \Sigma) \tag{8.25}
 \]</div>
 <p>先验协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 和方差 <span class="math notranslate nohighlight">\(\tau\)</span> 将在下面讨论。<span class="math notranslate nohighlight">\(\mu(x)\)</span> 隐式的先验过程因此是高斯的，其中协方差核为：</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-K(x,x')&amp;= \cov[\mu(x),\mu(x')]\\
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+K(x,x')&amp;= \mathrm{cov}[\mu(x),\mu(x')]\\
 &amp;=\tau\cdot h(x)^T\mathbf\Sigma h(x') \tag{8.26}
-\end{align*}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(\beta\)</span> 的后验分布也是高斯的，均值和方差分别为：</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \mathbb{E}(\beta\mid \mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
 \mathrm{Cov}(\beta\mid\mathbf Z)&amp;=(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf \Sigma^{-1})^{-1}\sigma^2 \tag{8.27}
-\end{align*}\]</div>
+\end{align*}
+\end{split}\]</div>
 <p>后验 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 对应的值为：</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
 \mathbb{E}(\mu(x)\mid\mathbf Z)&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}\mathbf{H^Ty}\\
-\cov[\mu(x),\mu(x')\mid\mathbf Z]&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}h(x')\sigma^2 \tag{8.28}
-\end{align*}\]</div>
+\mathrm{cov}[\mu(x),\mu(x')\mid\mathbf Z]&amp;=h(x)^T(\mathbf{H^TH}+\frac{\sigma^2}{\tau}\mathbf\Sigma^{-1})^{-1}h(x')\sigma^2 \tag{8.28}
+\end{align*}
+\end{split}\]</div>
 <p>我们应该怎样选取先验协方差矩阵 <span class="math notranslate nohighlight">\(\mathbf \Sigma\)</span> 呢？在某些设定下先验可以从对参数的主观感受来选择。这里我们想说函数 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 应该为光滑的，而且已经通过将 <span class="math notranslate nohighlight">\(\mu\)</span> 表示成低维度的 <span class="math notranslate nohighlight">\(B\)</span>-样条的基来保证。因此可以选取先验协方差阵为单位矩阵 <span class="math notranslate nohighlight">\(\mathbf {\Sigma=I}\)</span>。当基函数个数很多，这或许不是充分的，通过对 <span class="math notranslate nohighlight">\(\mathbf\Sigma\)</span> 上施加限制条件来保证更多的光滑；这恰巧是光滑样条的情形（ 5.8.1 节）。</p>
 <p><img alt="" src="../_images/fig8.3.png" /></p>
 <blockquote>
 <div><p>图 8.3. 光滑例子：十条函数 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 高斯先验分布的曲线。</p>
 </div></blockquote>
 <p>图 8.3 显示了 10 个 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 对应的先验分布。为了产生函数 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 后验的值，我们从后验式（ 8.27 ）得到 <span class="math notranslate nohighlight">\(\beta'\)</span>，给出对应后验的值 <span class="math notranslate nohighlight">\(\mu'(x)=\sum_1^7\beta_j'h_j(x)\)</span>。十条这样的后验曲线如图 8.4 所示。取了两个不同的先验方差 <span class="math notranslate nohighlight">\(\tau\)</span> 的值，1 和 1000。注意到右图与图 8.2 的左下图的相似度。这种相似性不是偶然的。当 <span class="math notranslate nohighlight">\(\tau\longrightarrow \infty\)</span>，后验分布式（ 8.27 ） 和自助法分布式（ 8.7 ）相同。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<div class="math notranslate nohighlight">
-\[}
-\]</div>
-<p>$$</p>
-</div>
 <p>另一方面，对于<span class="math notranslate nohighlight">\(\tau=1\)</span>，图 8.4 左图的后验曲线 <span class="math notranslate nohighlight">\(\mu(x)\)</span> 比自助法曲线更加光滑，因为在光滑性上面强加了更多先验权重。</p>
 <p><img alt="" src="../_images/fig8.4.png" /></p>
 <blockquote>

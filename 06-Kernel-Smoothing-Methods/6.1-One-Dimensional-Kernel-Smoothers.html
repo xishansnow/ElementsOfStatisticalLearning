@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1260,7 +1260,7 @@ K_\lambda(x_0,x)=D\left(\frac{\vert x-x_0\vert}{h_\lambda(x_0)}\right)\tag{6.5}
   \right.
   \tag{6.6}  
 \end{split}\]</div>
-<p>这在上面是平的（与最近邻盒子类似）并且在支撑集的边界是可导的。高斯密度函数 <span class="math notranslate nohighlight">\(D(t)=\phi(t)\)</span> 是受欢迎的非紧凑核，其中标准误差扮演了窗口大小的角色。图 6.2 比较了这三个。</p>
+<p>这在上面是平的（与最近邻盒子类似）并且在支撑集的边界是可导的。高斯密度函数 <span class="math notranslate nohighlight">\(D(t)=\phi(t)\)</span> 是受欢迎的非紧凑核，其中标准差扮演了窗口大小的角色。图 6.2 比较了这三个。</p>
 <blockquote>
 <div><p>note “weiya 注：”
 <strong>紧凑核 (compact kernel)</strong> 应该是指支撑集为紧集的核。紧集或者紧致性的直观解释可以参见 <a class="reference external" href="https://www.zhihu.com/question/31734712/answer/72390708">如何直观地解释「紧致性」？ - 包遵信的回答 - 知乎</a>.</p>
@@ -1319,7 +1319,7 @@ K_\lambda(x_0,x)=D\left(\frac{\vert x-x_0\vert}{h_\lambda(x_0)}\right)\tag{6.5}
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>有**加权最小二乘估计 (WLSE)**
 </pre></div>
 </div>
-<p>等式 式（ 6.8 ） 给出了局部线性回归估计的显式表达，式 式（ 6.9 ） 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
+<p>等式（ 6.8 ） 给出了局部线性回归估计的显式表达，式（ 6.9 ） 强调了估计关于 <span class="math notranslate nohighlight">\(y_i\)</span> 为线性的（<span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 不涉及 <span class="math notranslate nohighlight">\(\mathbf y\)</span>）。这些权重 <span class="math notranslate nohighlight">\(l_i(x_0)\)</span> 结合了核 <span class="math notranslate nohighlight">\(K_\lambda(x_0,\cdot)\)</span> 和最小二乘估计，并且有时称作 <strong>等价核 (equivalent kernel)</strong>。图 6.4 说明了局部线性回归在等价核上的影响。从历史上看，Nadaraya–Watson 和其他局部平均核方法中的偏差是通过修改核本身进行纠正。这些修改基于理论渐近的均方误差，不仅很复杂，而且只对有限样本进行近似。局部线性回归自动地修改核将偏差矫正到恰好为一阶，这是被称为 <strong>自动核作品 (automatic kernel carpentry)</strong> 的现象。</p>
 <blockquote>
 <div><p>info “weiya 注：automatic kernel carpentry”
 更多细节可以参考 <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.ss/1177011002">T. Hastie and C. Loader (1993). Local Regression: Automatic Kernel Carpentry</a></p>

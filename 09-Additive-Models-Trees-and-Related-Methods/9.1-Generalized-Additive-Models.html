@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1252,7 +1252,7 @@ g[\mu(X)]=\alpha+f_1(X_1)+\cdots+f_p(X_p)\tag{9.4}
 <p>使用基本构造块 (basic building block) 为散点图平滑器 (scatterplot smoother) 的算法来灵活地估计函数 <span class="math notranslate nohighlight">\(f_j\)</span>。估计的函数 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 然后可以揭示 <span class="math notranslate nohighlight">\(X_j\)</span> 可能的非线性影响。并不是所有的函数 <span class="math notranslate nohighlight">\(f_j\)</span> 需要是非线性。我们可以简单地将线性项和其它带非线性项的参数形式混合，当一些输入变量是定性的（或者说是因子）时这个混合是必要的。非线性项也没有约束为主要影响 (main effect)；可以存在关于两个或更多个变量的非线性成分，或者因子 <span class="math notranslate nohighlight">\(X_k\)</span> 的每个层次关于 <span class="math notranslate nohighlight">\(X_j\)</span> 的单一曲线。因此下列的每种情形都有可能：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(g(\mu)=X^T\beta+\alpha_k+f(Z)\)</span>，这是一个半参模型，其中 <span class="math notranslate nohighlight">\(X\)</span> 是需要线性建模的预测变量的向量，<span class="math notranslate nohighlight">\(\alpha_k\)</span> 是定性输入变量 <span class="math notranslate nohighlight">\(V\)</span> 的第 <span class="math notranslate nohighlight">\(k\)</span> 个层次的影响，而且非参数地建模预测变量 <span class="math notranslate nohighlight">\(Z\)</span> 的影响。</p></li>
-<li><p><span class="math notranslate nohighlight">\(g(\mu)=f(X)+g_k(Z)\)</span>，同样 <span class="math notranslate nohighlight">\(k\)</span> 表示定性输入 <span class="math notranslate nohighlight">\(V\)</span> 的层次，因此这构造出一个关于 <span class="math notranslate nohighlight">\(V\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span> 影响的交叉项 <span class="math notranslate nohighlight">\(g(V,Z)=g_k(Z)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(\mu)=f(X)+g_k(Z)\)</span>，同样 <span class="math notranslate nohighlight">\(k\)</span> 表示定性输入 <span class="math notranslate nohighlight">\(V\)</span> 的层次，因此这构造出一个关于 <span class="math notranslate nohighlight">\(V\)</span> 和 <span class="math notranslate nohighlight">\(Z\)</span> 影响的交互项 <span class="math notranslate nohighlight">\(g(V,Z)=g_k(Z)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g(\mu)=f(X)+g(Z,W)\)</span>，其中 <span class="math notranslate nohighlight">\(g\)</span> 是关于两个特征的非参数函数。</p></li>
 </ul>
 <p>可加模型可以用各种设置来替换线性模型，举个例子，时间序列的可加性分解：</p>
@@ -1271,7 +1271,7 @@ Y=\alpha + \sum_{j=1}^pf_j(X_j)+\varepsilon\tag{9.6}
 \]</div>
 <p>其中误差项 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 均值为 <span class="math notranslate nohighlight">\(0\)</span>。给定观测值 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>，类似 <span class="xref myst">5.4 节</span>中讨论的惩罚平方和 式（ 5.9 ） 准则，可以确定出下面的准则，</p>
 <blockquote>
-<div><p>note “weiya 注: Recall”</p>
+<div><p>回顾</p>
 </div></blockquote>
 <div class="math notranslate nohighlight">
 \[    \mathrm{RSS}(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
@@ -1293,7 +1293,7 @@ Y=\alpha + \sum_{j=1}^pf_j(X_j)+\varepsilon\tag{9.6}
 </ul>
 <p>如果我们仅仅在训练集点上考虑光滑器算子 <span class="math notranslate nohighlight">\(\mathcal S_j\)</span>，则可以用 <span class="math notranslate nohighlight">\(N\times N\)</span> 的算子矩阵 <span class="math notranslate nohighlight">\(\mathbf S_j\)</span> 来表示（见<span class="xref myst"> 5.4.1 节</span>）。则第 <span class="math notranslate nohighlight">\(j\)</span> 项的自由度（近似）是 <span class="math notranslate nohighlight">\(\mathrm {df}_j=\mathrm{trace}[\mathbf S_j]-1\)</span>，这与第 5 和第 6 章中讨论的光滑器的自由度是类似的。</p>
 <p>对于一个大类别的线性光滑器 <span class="math notranslate nohighlight">\(\mathbf S_j\)</span>，backfitting 等价于求解确定线性系统的 Gauss-Seidel 算法。细节在<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/68">练习 9.2</a>中给出。</p>
-<p>对于逻辑斯蒂回归和其他广义加性模型，合适的准则是带惩罚的对数似然。为了最大化它，backfitting 过程与概率最大化一起作用。在广义线性模型中最大化对数似然的 Newton-Raphson 方法可以重新改造成一个 IRLS（迭代重加权最小二乘）算法。这涉及在协变量上对工作中的响应变量重复进行加权线性回归；每个回归得到一个新的参数估计，反过来又给了新的工作相应变量和系数，而且这一过程迭代进行（见 <span class="xref myst">4.4.1 节</span>）。在广义加性模型中，加权线性回归可以简单地用加权 backfitting 算法来替换。我们将在下面讨论逻辑斯蒂回归时该算法的细节，更一般的讨论可以在 Hastie and Tibshirani(1990)<a class="footnote-reference brackets" href="#id15" id="id4">2</a>的第 6 章中找到。</p>
+<p>对于逻辑斯蒂回归和其他广义加性模型，合适的准则是带惩罚的对数似然。为了最大化它，backfitting 过程与概率最大化一起作用。在广义线性模型中最大化对数似然的 Newton-Raphson 方法可以重新改造成一个 IRLS（迭代重加权最小二乘）算法。这涉及在预测变量上对工作中的响应变量重复进行加权线性回归；每个回归得到一个新的参数估计，反过来又给了新的工作相应变量和系数，而且这一过程迭代进行（见 <span class="xref myst">4.4.1 节</span>）。在广义加性模型中，加权线性回归可以简单地用加权 backfitting 算法来替换。我们将在下面讨论逻辑斯蒂回归时该算法的细节，更一般的讨论可以在 Hastie and Tibshirani(1990)<a class="footnote-reference brackets" href="#id15" id="id4">2</a>的第 6 章中找到。</p>
 </div>
 <div class="section" id="id5">
 <h2>（）例子：可加逻辑斯蒂回归<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -1332,9 +1332,9 @@ Y=\alpha + \sum_{j=1}^pf_j(X_j)+\varepsilon\tag{9.6}
 </div></blockquote>
 <p><img alt="" src="../_images/tab9.2.png" /></p>
 <blockquote>
-<div><p>表 9.2. 对 spam 训练数据进行可加模型拟合的显著性预测变量。系数和它们的标准误差以及 Z 得分来表示 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的线性部分。非线性 p 值是对<span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 非线性的检验。</p>
+<div><p>表 9.2. 对 spam 训练数据进行可加模型拟合的显著性预测变量。系数和它们的标准差以及 Z 得分来表示 <span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 的线性部分。非线性 p 值是对<span class="math notranslate nohighlight">\(\hat{f_j}\)</span> 非线性的检验。</p>
 </div></blockquote>
-<p>为了解释的方便，表 9.2 中有每个变量分解成线性组分和剩余非线性组分的贡献。靠前的预测变量与 spam 正相关，而最后的预测变量负相关。线性组分是在预测变量上对拟合曲线的加权最小二乘线性拟合，而非线性部分是剩余部分。估计函数的线性部分是由系数、标准误差和 <span class="math notranslate nohighlight">\(Z\)</span> 得分来总结（表示）；后者（指 Z 得分）是系数除以它的标准误差，而且当它超过合适的标准正态分布的分位数认为是显著的。标签为 nonlinear P-value 的列是对估计函数非线性部分的假设检验。然而，注意到，每个预测变量的影响是根据其他变量的整体影响来调整的，而不仅仅是它们的线性部分。表中显示的预测变量通过在 <span class="math notranslate nohighlight">\(p=0.01\)</span> 水平下（双边）进行至少一个检验（线性或者非线性）来判断是否显著的。</p>
+<p>为了解释的方便，表 9.2 中有每个变量分解成线性组分和剩余非线性组分的贡献。靠前的预测变量与 spam 正相关，而最后的预测变量负相关。线性组分是在预测变量上对拟合曲线的加权最小二乘线性拟合，而非线性部分是剩余部分。估计函数的线性部分是由系数、标准差和 <span class="math notranslate nohighlight">\(Z\)</span> 得分来总结（表示）；后者（指 Z 得分）是系数除以它的标准差，而且当它超过合适的标准正态分布的分位数认为是显著的。标签为 nonlinear P-value 的列是对估计函数非线性部分的假设检验。然而，注意到，每个预测变量的影响是根据其他变量的整体影响来调整的，而不仅仅是它们的线性部分。表中显示的预测变量通过在 <span class="math notranslate nohighlight">\(p=0.01\)</span> 水平下（双边）进行至少一个检验（线性或者非线性）来判断是否显著的。</p>
 <p>图 9.1 显示了在表 9.2 中出现的显著预测变量的估计函数。许多非线性影响表明在 0 处的强不连续性。举个例子，当 <code class="docutils literal notranslate"><span class="pre">george</span></code> 的频率从 <span class="math notranslate nohighlight">\(0\)</span> 增长， <code class="docutils literal notranslate"><span class="pre">spam</span></code> 的概率显著下降，但是此后没有太大改变。这表明或许会用一个表示计数为 0 的指示变量来替换每个频率预测变量，这样回到线性逻辑斯蒂回归。这给出 <span class="math notranslate nohighlight">\(7.4\%\)</span> 的测试误差；包括频率的线性影响将测试误差降低到 <span class="math notranslate nohighlight">\(6.6\%\)</span>。看起来在可加模型中的非线性有着额外的预测力量。</p>
 <p>将真正的 <code class="docutils literal notranslate"><span class="pre">email</span></code> 分类成 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 是很严重的，因为好邮件会被过滤掉而不能到达用户手中。我们可以通过改变损失来平衡类别误差率（见 2.4 节）。如果我们对将真实的类别 0 预测成类别 1 赋予损失 <span class="math notranslate nohighlight">\(L_{01}\)</span>，<span class="math notranslate nohighlight">\(L_{10}\)</span> 为将真实的类别 1 预测成类别 0 的损失，于是如果概率大于 <span class="math notranslate nohighlight">\(L_{01}/(L_{01}+L_{10})\)</span> 则估计的贝叶斯准则预测为类别 1。举个例子，如果我们取 <span class="math notranslate nohighlight">\(L_{01}=10,L_{10}=1\)</span> 则（真实的）类别 0 和类别 1 误差率变成 <span class="math notranslate nohighlight">\(0.8\%\)</span> 和 <span class="math notranslate nohighlight">\(8.7\%\)</span>。</p>
 <p>更 ambitiously，我们通过对类别 0 的观测赋予权重 <span class="math notranslate nohighlight">\(L_{01}\)</span>，对类别 1 的观测赋予权重 <span class="math notranslate nohighlight">\(L_{10}\)</span> 使得模型更好地对类别 0 中的数据进行拟合。像上面一样，我们接着运用贝叶斯准则来预测。在类别 0 和类别 1 中误差率分别为 <span class="math notranslate nohighlight">\(1.2\%\)</span> 和 <span class="math notranslate nohighlight">\(8.0\%\)</span>。我们将在基于树的模型中讨论损失不相等的问题。</p>
@@ -1345,7 +1345,7 @@ Y=\alpha + \sum_{j=1}^pf_j(X_j)+\varepsilon\tag{9.6}
 <div class="section" id="id10">
 <h2>（）总结<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>可加模型提供一个有用的线性模型拓展，使得不仅保留着大部分的可解释性，也更加灵活。在线性模型中建模和推断熟悉的工具对于加性模型也是适用的，见表 9.2 的例子。拟合这些模型的 backfitting 过程是简单而有模式的，允许对于每个输入变量去选择合适的拟合方法。在统计领域它们越来越被广泛地应用。</p>
-<p>然而可加模型对于大的数据挖掘的应用是有限制的。backfitting 算法拟合所有的预测变量，而大部分的预测变量是不可行的也不是必需的。BRUTO 过程（Hastie and Tibshirani, 1990<a class="footnote-reference brackets" href="#id15" id="id11">2</a>，第 9 章）结合 backfitting 和输入选择，但是不是为了大规模的数据挖掘的问题。最近也有用 lasso 型惩罚来估计稀疏加性模型的工作，举个例子，Lin and Zhang (2006)<a class="footnote-reference brackets" href="#id17" id="id12">4</a> 提出的 COSSO 过程，以及 Ravikumar et al., (2008)<a class="footnote-reference brackets" href="#id18" id="id13">5</a> 提出的 SpAM。对于大型问题，向前逐步方法（比如第 10 章的 boosting）更加地有效，而且允许交叉项包含进模型中。</p>
+<p>然而可加模型对于大的数据挖掘的应用是有限制的。backfitting 算法拟合所有的预测变量，而大部分的预测变量是不可行的也不是必需的。BRUTO 过程（Hastie and Tibshirani, 1990<a class="footnote-reference brackets" href="#id15" id="id11">2</a>，第 9 章）结合 backfitting 和输入选择，但是不是为了大规模的数据挖掘的问题。最近也有用 lasso 型惩罚来估计稀疏加性模型的工作，举个例子，Lin and Zhang (2006)<a class="footnote-reference brackets" href="#id17" id="id12">4</a> 提出的 COSSO 过程，以及 Ravikumar et al., (2008)<a class="footnote-reference brackets" href="#id18" id="id13">5</a> 提出的 SpAM。对于大型问题，向前逐步方法（比如第 10 章的 boosting）更加地有效，而且允许交互项包含进模型中。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>

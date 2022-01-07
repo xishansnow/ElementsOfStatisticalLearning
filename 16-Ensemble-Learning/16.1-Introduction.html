@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1163,7 +1163,7 @@
 <p><strong>集成学习 (ensemble learning)</strong> 的思想是通过结合一系列简单基础模型的优点来建立一个预测模型。我们已经看到很多这类的例子。</p>
 <p><span class="xref myst">8.7 节</span>的 <code class="docutils literal notranslate"><span class="pre">bagging</span></code> 和<span class="xref myst">第 15 章</span>的随机森林都是用于分类的集成学习的方法，其中树的每个 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 对预测的类别都有一个投票。<span class="xref myst">第 10 章</span>中的 boosting 一开始也是以一种 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 的方法提出来的，尽管不同于随机森林，weak learners 的 <code class="docutils literal notranslate"><span class="pre">committee</span></code> 随着时间不断进化，并且成员进行带有权重的投票。Stacking（<span class="xref myst">8.8 节</span>）是结合一系列拟合模型优点的新方式。事实上，可以将任何字典方法看成集成学习，其中基函数充当 <strong>弱学习器 (weak learners)</strong>，比如回归样条。</p>
 <p>非参回归的贝叶斯方法也可以看成是集成学习的方法：关于参数设定的后验分布，对一系列大量的候选模型进行平均（比如，Neal and Zhang，2006<a class="footnote-reference brackets" href="#id6" id="id2">1</a>）。</p>
-<p>集成学习可以分成两个任务：从训练集中建立基学习器的总体，然后结合它们形成复合预测。这章中我们进一步讨论 boosting 技术；它通过在 weak learners 的高维空间中通过一个正规化和有监督的搜索来建立集成模型。</p>
+<p>集成学习可以分成两个任务：从训练集中建立基学习器的总体，然后结合它们形成复合预测。这章中我们进一步讨论 boosting 技术；它通过在 weak learners 的高维空间中通过一个正则化和有监督的搜索来建立集成模型。</p>
 <p>集成学习的一个很早的例子是使用 <strong>error-correcting output codes</strong> (Dietterich and Bakiri, 1995<a class="footnote-reference brackets" href="#id7" id="id3">2</a>, ECOC) 对多个类别进行分类。考虑 <span class="math notranslate nohighlight">\(10\)</span> 个类别的数字分类问题，编码矩阵 <span class="math notranslate nohighlight">\(\mathbf{C}\)</span> 由表 16.1 给出</p>
 <p><img alt="" src="../_images/tab16.1.png" /></p>
 <blockquote>

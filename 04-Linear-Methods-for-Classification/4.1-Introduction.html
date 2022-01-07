@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1187,7 +1187,7 @@
 <div><p>note “weiya 注：翻译”
 此处原文为，“While this entire chapter is devoted to linear decision boundaries, there is considerable scope for generalization.”</p>
 </div></blockquote>
-<p>举个例子，我们可以对变量集 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 加上他们的交叉积 <span class="math notranslate nohighlight">\(X_1^2,X_2^2,\ldots,X_1X_2,\ldots,\)</span> （因此加入了 <span class="math notranslate nohighlight">\(p(p+1)/2\)</span> 个额外的变量）进行推广。当增广空间的线性函数投影到原空间的二次函数，则线性判别边界转换为二次判别边界。图 4.1 解释了这个想法。数据集是一样的，左边是在二维空间中用线性判别函数，而右图在增广的五维空间中用线性判别函数。这种方式可以跟任意基变换 <span class="math notranslate nohighlight">\(h(X)\)</span> 一起使用，其中 <span class="math notranslate nohighlight">\(h:\mathbb{R}^p\rightarrow \mathbb{R}^q,q &gt; p\)</span>，这将在后面章节中讨论。</p>
+<p>举个例子，我们可以对变量集 <span class="math notranslate nohighlight">\(X_1,X_2,\ldots,X_p\)</span> 加上他们的交互积 <span class="math notranslate nohighlight">\(X_1^2,X_2^2,\ldots,X_1X_2,\ldots,\)</span> （因此加入了 <span class="math notranslate nohighlight">\(p(p+1)/2\)</span> 个额外的变量）进行推广。当增广空间的线性函数投影到原空间的二次函数，则线性判别边界转换为二次判别边界。图 4.1 解释了这个想法。数据集是一样的，左边是在二维空间中用线性判别函数，而右图在增广的五维空间中用线性判别函数。这种方式可以跟任意基变换 <span class="math notranslate nohighlight">\(h(X)\)</span> 一起使用，其中 <span class="math notranslate nohighlight">\(h:\mathbb{R}^p\rightarrow \mathbb{R}^q,q &gt; p\)</span>，这将在后面章节中讨论。</p>
 <p><img alt="" src="../_images/fig4.1.png" /></p>
 <blockquote>
 <div><p>图 4.1：左图显示了三个类别的一些数据，以及通过线性判别分析得到的线性判别边界。右图显示了二次判别边界。这是通过在五维空间 <span class="math notranslate nohighlight">\(X_1,X_2,X_1X_2,X_1^2,X_2^2\)</span> 找到线性边界得到。这个空间里面的线性不等式是原空间的二次不等式。</p>

@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1234,12 +1234,12 @@ f^{(3)}(x,y,z)&amp;=\frac{1}{Z}\psi(x,y,z)
 \end{align*}
 \tag{17.5}
 \end{split}\]</div>
-<p>第一个仅仅明确了二阶依赖性（并且可以用更少的参数表示）。离散数据的图模型是 loglinear models for multiway contingency tables 的一种特殊情形（如，Bishop et al., 1975<a class="footnote-reference brackets" href="#id20" id="id10">9</a>）；这种情形下 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 被称作“无二阶交叉”模型。</p>
+<p>第一个仅仅明确了二阶依赖性（并且可以用更少的参数表示）。离散数据的图模型是 loglinear models for multiway contingency tables 的一种特殊情形（如，Bishop et al., 1975<a class="footnote-reference brackets" href="#id20" id="id10">9</a>）；这种情形下 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 被称作“无二阶交互”模型。</p>
 <p><img alt="" src="../_images/fig17.3.png" /></p>
 <blockquote>
 <div><p>图 17.3. 没有唯一地指定变量的联合分布中的高阶依赖性结构的完全图。</p>
 </div></blockquote>
-<p>本章的剩余部分我们关注 <strong>成对马尔科夫图 (pairwise Markov graphs)</strong> (Koller and Friedman, 2007<a class="footnote-reference brackets" href="#id19" id="id11">8</a>)。对于每条边都有势能函数（如上面 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 的成对变量），且用至多二阶的交叉项来表示。这些在参数上是很简洁的，更容易处理，并且给出由图结构表示的最小复杂性。连续和离散数据的模型都仅仅是（关于**边集 (edge set)**中变量的）成对边缘分布的函数。</p>
+<p>本章的剩余部分我们关注 <strong>成对马尔科夫图 (pairwise Markov graphs)</strong> (Koller and Friedman, 2007<a class="footnote-reference brackets" href="#id19" id="id11">8</a>)。对于每条边都有势能函数（如上面 <span class="math notranslate nohighlight">\(f^{(2)}\)</span> 的成对变量），且用至多二阶的交互项来表示。这些在参数上是很简洁的，更容易处理，并且给出由图结构表示的最小复杂性。连续和离散数据的模型都仅仅是（关于**边集 (edge set)**中变量的）成对边缘分布的函数。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

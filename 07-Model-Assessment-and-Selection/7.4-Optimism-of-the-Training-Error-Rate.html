@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1210,7 +1210,7 @@
 \mathbb{E}_{\mathbf y}(\mathbb{Err}_{in})=\mathbb{E}_{\mathbf y}(\overline{\mathbb{err}})+2\cdot\frac{d}{N}\sigma_\varepsilon^2\tag{7.24} \]</div>
 <p>表达式（ 7.23 ） 是定义 <code class="docutils literal notranslate"><span class="pre">有效参数个数</span> <span class="pre">(effective</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">parameters)</span></code> （将在 7.6 节讨论）的基础。乐观值随着我们使用的输入或基函数的个数 <span class="math notranslate nohighlight">\(d\)</span> 线性增长，但是当训练样本大小增大时会降低。式（7.24）的其它版本对其它误差模型也近似成立，比如二值数据和熵损失。</p>
 <p>估计预测误差的一种明显方法是先估计乐观值，然后加到训练误差 <span class="math notranslate nohighlight">\(\overline{\mathbb{err}}\)</span> 上。下一节将要描述的方法（关于参数的线性估计类），如： <span class="math notranslate nohighlight">\(C_p\)</span>，<code class="docutils literal notranslate"><span class="pre">AIC</span></code>，<code class="docutils literal notranslate"><span class="pre">BIC</span></code> 以及其它方法，都是通过该方式实现的。</p>
-<p>相反地，本章后面描述的交叉验证以及自助法是对样本外（ extra-sample ）误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 直接估计的方法。此类工具可以用于任意损失函数以及非线性拟合。</p>
+<p>相反地，本章后面描述的交互验证以及自助法是对样本外（ extra-sample ）误差 <span class="math notranslate nohighlight">\(\mathbb{Err}\)</span> 直接估计的方法。此类工具可以用于任意损失函数以及非线性拟合。</p>
 <p>样本内误差通常不是直接感兴趣的，因为特征的未来值不可能与其训练值一致。但是为了模型之间的比较，样本内误差是很方便的，并且经常能够有效地进行模型选择。原因在于误差的相对而不是绝对大小才是我们真正关心的。</p>
 </div>
 

@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1241,7 +1241,7 @@ Y = X^T\beta + \varepsilon\tag{2.26}
 &amp;=\sigma^2(p/N)+\sigma^2\qquad\qquad\tag{2.28}
 \end{align*}
 \end{split}\]</div>
-<p>我们可以看到 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 的期望作为 <span class="math notranslate nohighlight">\(p\)</span> 的函数线性增长，斜率 <span class="math notranslate nohighlight">\(\sigma^2/N\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 大且/或 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 小，方差的增长可以忽略（在确定情形下为 <span class="math notranslate nohighlight">\(0\)</span>）。通过在拟合的模型的类别上插入一些强的限制，我们避免了维数的灾难。式 式（ 2.27 ） 和 式（ 2.28 ） 中部分技巧细节的推导另见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">练习 2.5</a>。</p>
+<p>我们可以看到 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 的期望作为 <span class="math notranslate nohighlight">\(p\)</span> 的函数线性增长，斜率 <span class="math notranslate nohighlight">\(\sigma^2/N\)</span>。如果 <span class="math notranslate nohighlight">\(N\)</span> 大且/或 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 小，方差的增长可以忽略（在确定情形下为 <span class="math notranslate nohighlight">\(0\)</span>）。通过在拟合的模型的类别上插入一些强的限制，我们避免了维数的灾难。式（ 2.27 ） 和 式（ 2.28 ） 中部分技巧细节的推导另见<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/160">练习 2.5</a>。</p>
 <p>图 2.9 在两种情形下比较 <span class="math notranslate nohighlight">\(1\)</span>-最近邻和最小二乘法，两种情形下形式均为 <span class="math notranslate nohighlight">\(Y=f(X)+\epsilon\)</span>，<span class="math notranslate nohighlight">\(X\)</span> 和前面一样都是均匀分布的，而且<span class="math notranslate nohighlight">\(\epsilon\sim N(0,1)\)</span>。样本规模为 <span class="math notranslate nohighlight">\(N=500\)</span>。对于橙色曲线，<span class="math notranslate nohighlight">\(f(X)\)</span> 关于第一个坐标是线性的，对于蓝色曲线，如图 2.8 中的三次函数。图中显示了相对于最小二乘而言，<span class="math notranslate nohighlight">\(1\)</span>-最近邻的相对 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 值，线性情况下大概是从 <span class="math notranslate nohighlight">\(2\)</span> 开始。在这种情况下最小二乘是无偏的，而且如上面所讨论的，<span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 略高于 <span class="math notranslate nohighlight">\(\sigma^2=1\)</span>。<span class="math notranslate nohighlight">\(1\)</span>-最近邻的 <span class="math notranslate nohighlight">\(\mathrm{EPE}\)</span> 总是大于 <span class="math notranslate nohighlight">\(2\)</span>，因为这种情形下 <span class="math notranslate nohighlight">\(\hat{f}_0\)</span> 的方差至少是 <span class="math notranslate nohighlight">\(\sigma^2\)</span>，而且随着维数增长比率增加，因为随着维数增加最近邻会远离目标点。</p>
 <blockquote>
 <div><p>对于 1NN，

@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1237,7 +1237,7 @@ s.t.&amp;\; y_i(x_i^T\beta+\beta_0)\ge 1,\; i=1,\ldots,N
 \end{array}
 \tag{12.4}
 \end{split}\]</div>
-<p>我们删掉了对于 <span class="math notranslate nohighlight">\(\beta\)</span> 模长的约束。注意到 <span class="math notranslate nohighlight">\(M=1/\Vert\beta\Vert\)</span>。表达式 式（ 12.4 ） 是稀疏数据的支持向量准则的通常形式。这是一个凸优化问题（二次准则，线性不等约束），解在 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes/index.html#452">4.5.2 节</a>已经讨论了。</p>
+<p>我们删掉了对于 <span class="math notranslate nohighlight">\(\beta\)</span> 模长的约束。注意到 <span class="math notranslate nohighlight">\(M=1/\Vert\beta\Vert\)</span>。表达式（ 12.4 ） 是稀疏数据的支持向量准则的通常形式。这是一个凸优化问题（二次准则，线性不等约束），解在 <a class="reference external" href="../04-Linear-Methods-for-Classification/4.5-Separating-Hyperplanes/index.html#452">4.5.2 节</a>已经讨论了。</p>
 <p>假设在特征空间中类别有重叠。一种处理重叠的方式仍然是最大化 <span class="math notranslate nohighlight">\(M\)</span>，但是只允许一些点在边缘空白的错误一侧。定义松弛变量 <span class="math notranslate nohighlight">\(\xi=(\xi_1,\xi_2,\ldots,\xi_N)\)</span>。有两种自然的方式去修改 式（ 12.3 ） 中的约束：</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1271,7 +1271,7 @@ Y_i(x_i^T\beta+\beta_0) \ge M(1-\xi_i)\tag{12.6}
 <p>从准则 式（ 12.7 ） 可以看出，在类别里面的点不会对边界的形成有太大的影响。这似乎是个很吸引人的性质，这与线性判别边界（<span class="xref myst">4.3 节</span>）不同。LDA 中，判别边界是由类别的分布的协方差和重心来决定。我们将在 <span class="xref myst">12.3.3 节</span> 看到逻辑斯蒂回归在这点上很像。</p>
 <div class="section" id="id2">
 <h2>（）计算支持向量分类器<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>问题 式（ 12.7 ） 是带有线性不等值约束的二次问题，因此这是一个凸优化问题。我们描述一种采用 Lagrange 乘子的二次规划解法。将式 式（ 12.7 ） 重新表达成下面的等价形式是很方便的</p>
+<p>问题 式（ 12.7 ） 是带有线性不等值约束的二次问题，因此这是一个凸优化问题。我们描述一种采用 Lagrange 乘子的二次规划解法。将式（ 12.7 ） 重新表达成下面的等价形式是很方便的</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ll}
@@ -1399,7 +1399,7 @@ y_i(x_i^T\beta+\beta_0)-(1-\xi_i)&amp;\ge 0&amp; \tag{12.16}
 <div><p>question
 怎么理解判别边界的刚性(the rigidity of a linear boundary)</p>
 </div></blockquote>
-<p>最优的 <span class="math notranslate nohighlight">\(C\)</span> 可以通过交叉验证来确定，如第 7 章中讨论的那样。有趣的是，舍一交叉验证误差可以通过数据中支持向量的点的比例来控制。原因是当舍去的不是支持向量的时候不会改变解。因此这些观测点在原始边界中正确分类的点在交叉验证中也能正确分类。然而，这个界趋向于偏高，而且一般不适用于选择 <span class="math notranslate nohighlight">\(C\)</span>(在我们的例子中分别是 62% 和 85%)。</p>
+<p>最优的 <span class="math notranslate nohighlight">\(C\)</span> 可以通过交互验证来确定，如第 7 章中讨论的那样。有趣的是，舍一交互验证误差可以通过数据中支持向量的点的比例来控制。原因是当舍去的不是支持向量的时候不会改变解。因此这些观测点在原始边界中正确分类的点在交互验证中也能正确分类。然而，这个界趋向于偏高，而且一般不适用于选择 <span class="math notranslate nohighlight">\(C\)</span>(在我们的例子中分别是 62% 和 85%)。</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>

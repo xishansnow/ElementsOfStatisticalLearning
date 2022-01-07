@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1194,7 +1194,7 @@
 <blockquote>
 <div><p>图11.8. 对于模拟数据例子的测试误差的箱线图。真实函数为两个sigmoid函数之和。对于具有所指示单元数目的单个隐藏层神经网络，显示10个不同起始权重的测量误差。</p>
 </div></blockquote>
-<p>总的来说，有两个自由参数需要选择：权重衰减参数<span class="math notranslate nohighlight">\(\lambda\)</span>和隐藏层的数目<span class="math notranslate nohighlight">\(M\)</span>。作为一个学习的策略，可以在对应的最小约束模型下固定任一个参数，来确保模型足够丰富，并且运用交叉验证来选择另一个参数。这里最少约束值为0权重衰减和10个隐藏层单元。将图11.7的左图与图11.8相比，我们可以看到测试误差对于系数衰减更不敏感，因此此参数的交叉验证会更好。</p>
+<p>总的来说，有两个自由参数需要选择：权重衰减参数<span class="math notranslate nohighlight">\(\lambda\)</span>和隐藏层的数目<span class="math notranslate nohighlight">\(M\)</span>。作为一个学习的策略，可以在对应的最小约束模型下固定任一个参数，来确保模型足够丰富，并且运用交互验证来选择另一个参数。这里最少约束值为0权重衰减和10个隐藏层单元。将图11.7的左图与图11.8相比，我们可以看到测试误差对于系数衰减更不敏感，因此此参数的交互验证会更好。</p>
 </div>
 
     <script type="text/x-thebe-config">

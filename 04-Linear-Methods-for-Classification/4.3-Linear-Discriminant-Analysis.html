@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1240,7 +1240,7 @@ f_k(x)=\frac{1}{(2\pi)^{p/2}\vert \boldsymbol\Sigma_k\vert^{1/2}}e^{-\frac{1}{2}
 a'Da-b'Db=(a+b)'D(a-b)\,.    
 &gt;\]</div>
 </div></blockquote>
-<p>这是个关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性等式。协方差矩阵相等时会消除了正规化因子，以及指数中的二次项。这个线性的 log-odds 函数表明类别 <span class="math notranslate nohighlight">\(k\)</span> 和类别 <span class="math notranslate nohighlight">\(\ell\)</span> 的判别边界为 <span class="math notranslate nohighlight">\(p\)</span> 维超平面——<span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)=\mathrm{Pr}(G=\ell\mid X=x)\)</span> 的集合，这关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的。对于任意类别对也是成立的，所以所有的判别边界都是线性的。如果我们把 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 分成不同区域，记为类别 1，类别 2 等等，这些区域会被超平面所分离。图 4.5（左图）显示了有三个类别且 <span class="math notranslate nohighlight">\(p=2\)</span> 的假想的例子。这里数据是从 3 个协方差矩阵相等的高斯分布中产生的。我们已经在图中画出了对应 95% 概率密度的等高图，以及三个类别的形心。注意到判别边界不是连接两个形心的垂直平分线。如果协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma\)</span> 是 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span>，且类别的先验概率相等。从 式（ 4.9 ） 我们可以看出线性判别函数为</p>
+<p>这是个关于 <span class="math notranslate nohighlight">\(x\)</span> 的线性等式。协方差矩阵相等时会消除了正则化因子，以及指数中的二次项。这个线性的 log-odds 函数表明类别 <span class="math notranslate nohighlight">\(k\)</span> 和类别 <span class="math notranslate nohighlight">\(\ell\)</span> 的判别边界为 <span class="math notranslate nohighlight">\(p\)</span> 维超平面——<span class="math notranslate nohighlight">\(\mathrm{Pr}(G=k\mid X=x)=\mathrm{Pr}(G=\ell\mid X=x)\)</span> 的集合，这关于 <span class="math notranslate nohighlight">\(x\)</span> 是线性的。对于任意类别对也是成立的，所以所有的判别边界都是线性的。如果我们把 <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> 分成不同区域，记为类别 1，类别 2 等等，这些区域会被超平面所分离。图 4.5（左图）显示了有三个类别且 <span class="math notranslate nohighlight">\(p=2\)</span> 的假想的例子。这里数据是从 3 个协方差矩阵相等的高斯分布中产生的。我们已经在图中画出了对应 95% 概率密度的等高图，以及三个类别的形心。注意到判别边界不是连接两个形心的垂直平分线。如果协方差矩阵 <span class="math notranslate nohighlight">\(\Sigma\)</span> 是 <span class="math notranslate nohighlight">\(\sigma^2\mathbf I\)</span>，且类别的先验概率相等。从 式（ 4.9 ） 我们可以看出线性判别函数为</p>
 <div class="math notranslate nohighlight">
 \[
 \delta_k(x)=x^T\boldsymbol\Sigma^{-1}\mu_k-\frac{1}{2}\mu_k^T\boldsymbol\Sigma^{-1}\mu_k+\log\pi_k\tag{4.10}
@@ -1306,7 +1306,7 @@ x^T\hat{\boldsymbol\Sigma}^{-1}(\hat\mu_2-\hat\mu_1)&gt;\frac{1}{2}(\hat\mu_2+\h
 \[
 \hat{\boldsymbol\Sigma}_k(\alpha)=\alpha\hat{\boldsymbol\Sigma}_k+(1-\alpha)\hat{\boldsymbol\Sigma}\tag{4.13}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\hat\Sigma\)</span> 是和 LDA 一样用的联合协方差矩阵。这里 <span class="math notranslate nohighlight">\(\alpha\in[0,1]\)</span> 允许在 LDA 和 QDA 之间连续变化的模型，而且需要指定。实际中，<span class="math notranslate nohighlight">\(\alpha\)</span> 可以基于在验证数据的表现上进行选择，或者通过交叉验证。</p>
+<p>其中，<span class="math notranslate nohighlight">\(\hat\Sigma\)</span> 是和 LDA 一样用的联合协方差矩阵。这里 <span class="math notranslate nohighlight">\(\alpha\in[0,1]\)</span> 允许在 LDA 和 QDA 之间连续变化的模型，而且需要指定。实际中，<span class="math notranslate nohighlight">\(\alpha\)</span> 可以基于在验证数据的表现上进行选择，或者通过交互验证。</p>
 <p><img alt="" src="../_images/fig4.7.png" /></p>
 <blockquote>
 <div><p>图 4.7. 对元音数据应用一系列 <span class="math notranslate nohighlight">\(\alpha\in[0,1]\)</span> 的正则化判别分析的测试和训练误差。测试数据的最优点发生在 <span class="math notranslate nohighlight">\(\alpha=0.9\)</span> 附近，离二次判别分析很相近。</p>

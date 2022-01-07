@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1215,7 +1215,7 @@ f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}
 \end{split}\]</div>
 <p>其中 <span class="math notranslate nohighlight">\(X\sim U[0,1], \varepsilon\sim N(0, 1)\)</span>。我们的训练样本包含从该模型中独立抽取的 <span class="math notranslate nohighlight">\(N=100\)</span> 个数据对 <span class="math notranslate nohighlight">\(x_i,y_i\)</span>。</p>
 <p><img alt="" src="../_images/fig5.9.png" /></p>
-<p>图中显示了 3 个不同 <span class="math notranslate nohighlight">\(\mathrm{df}_\lambda\)</span> 的拟合样条。图中黄色阴影部分表示 <span class="math notranslate nohighlight">\(\hat f_\lambda\)</span> 的逐点标准误差，也就是，我们将区域 <span class="math notranslate nohighlight">\(\hat f_\lambda(x)\pm 2\cdot se(\hat f_\lambda(x))\)</span> 画成阴影。因为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}=\mathbf S_\lambda \mathbf y\)</span>，</p>
+<p>图中显示了 3 个不同 <span class="math notranslate nohighlight">\(\mathrm{df}_\lambda\)</span> 的拟合样条。图中黄色阴影部分表示 <span class="math notranslate nohighlight">\(\hat f_\lambda\)</span> 的逐点标准差，也就是，我们将区域 <span class="math notranslate nohighlight">\(\hat f_\lambda(x)\pm 2\cdot se(\hat f_\lambda(x))\)</span> 画成阴影。因为 <span class="math notranslate nohighlight">\(\hat{\mathbf f}=\mathbf S_\lambda \mathbf y\)</span>，</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{Cov}(\hat{\mathbf f})=\mathbf S_\lambda \mathrm{Cov}(\mathbf y)\mathbf S_\lambda^T=\mathbf S_\lambda\mathbf S_\lambda^T\tag{5.23}
@@ -1228,9 +1228,9 @@ f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf f\)</span> 是真实的 <span class="math notranslate nohighlight">\(f\)</span> 在训练点 <span class="math notranslate nohighlight">\(X\)</span> 处的取值得到的向量（未知）。期望和方差是从模型 (5.22) 中重复采样得到的大小为 <span class="math notranslate nohighlight">\(N=100\)</span> 的样本。类似地，<span class="math notranslate nohighlight">\(\mathrm{Var}(\hat f_\lambda(x_0))\)</span> 和 <span class="math notranslate nohighlight">\(\mathrm{Bias}(\hat f_\lambda(x_0))\)</span> 可以在任意点 <span class="math notranslate nohighlight">\(x_0\)</span> 处计算得到（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/111">练习 5.10</a>）。</p>
 <p>图中的三个拟合直观展示了与选择平滑参数有关的<strong>偏差——方差权衡 (bias-variance tradeoff)</strong>。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(df_\lambda=5\)</span>: 样条欠拟合，并且很明显<strong>坡顶被削减波谷被充填 (trims down the hills and fills in the valleys)</strong>。这导致在高曲率的地方有更显著的偏差。标准误差带非常狭窄，所以我们估计了真实函数的一个相对稳定但偏差较大的版本。</p></li>
+<li><p><span class="math notranslate nohighlight">\(df_\lambda=5\)</span>: 样条欠拟合，并且很明显<strong>坡顶被削减波谷被充填 (trims down the hills and fills in the valleys)</strong>。这导致在高曲率的地方有更显著的偏差。标准差带非常狭窄，所以我们估计了真实函数的一个相对稳定但偏差较大的版本。</p></li>
 <li><p><span class="math notranslate nohighlight">\(df_\lambda=9\)</span>: 尽管少量的偏差看起来很明显，但这里拟合函数接近真实函数。方差没有明显地增长。</p></li>
-<li><p><span class="math notranslate nohighlight">\(df_\lambda=15\)</span>: 拟合函数有点弯曲，但是接近真实函数。这种弯曲也意味着标准误差带宽度的增长——曲线开始紧密地跟随一些个别点</p></li>
+<li><p><span class="math notranslate nohighlight">\(df_\lambda=15\)</span>: 拟合函数有点弯曲，但是接近真实函数。这种弯曲也意味着标准差带宽度的增长——曲线开始紧密地跟随一些个别点</p></li>
 </ul>
 <p>注意到在这些图中我们看到的是每种情形下数据的单个实现以及因此得到的拟合样条 <span class="math notranslate nohighlight">\(\hat f\)</span> 的实现，但偏差会涉及到期望 <span class="math notranslate nohighlight">\(\mathbb{E}(\hat f)\)</span>。我们将这留作练习( <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/111">5.10</a>) 来绘制类似的图象，其中要求画出偏差。</p>
 <p>中间的曲线似乎恰恰实现了偏差与方差之间的平衡。</p>
@@ -1245,7 +1245,7 @@ f(X)&amp;=\frac{\sin(12(X+0.2))}{X+0.2}
 \end{split}\]</div>
 <p>注意到<strong>这是在训练样本（得到 <span class="math notranslate nohighlight">\(\hat f_\lambda\)</span> ）和（独立选择的）预测点 <span class="math notranslate nohighlight">\((X,Y)\)</span> 的值中进行平均</strong>。</p>
 <p>EPE 是一个很自然的感兴趣的量，而且确实能在偏差和方差之间创造平衡。图 5.9 的左上图中的蓝点表明正好满足 <span class="math notranslate nohighlight">\(\mathrm{df}_\lambda=9\)</span> ！</p>
-<p>因为我们不知道真实函数，所以无法得到 EPE，因此需要一个估计。这个话题将在第 7 章中详细展开，以及像 <span class="math notranslate nohighlight">\(K\)</span> 折交叉验证，GCV 和 <span class="math notranslate nohighlight">\(C_p\)</span> 等广泛使用的方法。在图 5.9 中我们展示了一个 <span class="math notranslate nohighlight">\(N\)</span> 折（舍一法）交叉验证的曲线：</p>
+<p>因为我们不知道真实函数，所以无法得到 EPE，因此需要一个估计。这个话题将在第 7 章中详细展开，以及像 <span class="math notranslate nohighlight">\(K\)</span> 折交互验证，GCV 和 <span class="math notranslate nohighlight">\(C_p\)</span> 等广泛使用的方法。在图 5.9 中我们展示了一个 <span class="math notranslate nohighlight">\(N\)</span> 折（留一法）交互验证的曲线：</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{CV}(\hat f_\lambda) =\frac 1N\sum\limits_{i=1}^N(y_i-\hat f_\lambda^{(-i)}(x_i))^2\tag{5.26}

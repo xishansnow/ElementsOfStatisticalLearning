@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1204,7 +1204,7 @@
 \[
 T_j = \frac{\bar x_{2j}-\bar x_{1j}}{se_j}\tag{18.38}
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\bar x_{kj} = \sum_{i\in C_\ell}x_{ij}/N_\ell\)</span>。这里 <span class="math notranslate nohighlight">\(C_\ell\)</span> 是在群 <span class="math notranslate nohighlight">\(\ell\)</span> 中 <span class="math notranslate nohighlight">\(N_\ell\)</span> 个样本的指标集，其中 <span class="math notranslate nohighlight">\(\ell = 1\)</span> 表示正常的群体，而 <span class="math notranslate nohighlight">\(\ell=2\)</span> 表示敏感的群体。<span class="math notranslate nohighlight">\(se_j\)</span> 是基因 <span class="math notranslate nohighlight">\(j\)</span> 的混合群内标准误差：</p>
+<p>其中，<span class="math notranslate nohighlight">\(\bar x_{kj} = \sum_{i\in C_\ell}x_{ij}/N_\ell\)</span>。这里 <span class="math notranslate nohighlight">\(C_\ell\)</span> 是在群 <span class="math notranslate nohighlight">\(\ell\)</span> 中 <span class="math notranslate nohighlight">\(N_\ell\)</span> 个样本的指标集，其中 <span class="math notranslate nohighlight">\(\ell = 1\)</span> 表示正常的群体，而 <span class="math notranslate nohighlight">\(\ell=2\)</span> 表示敏感的群体。<span class="math notranslate nohighlight">\(se_j\)</span> 是基因 <span class="math notranslate nohighlight">\(j\)</span> 的混合群内标准差：</p>
 <p><span class="math notranslate nohighlight">\(
 se_j=\hat \sigma_j\sqrt{\frac{1}{N_1}+\frac{1}{N_2}};\;\hat\sigma_j^2=\frac{1}{N_1+N_2-2}(\sum\limits_{i\in C_1}(x_{ij}-\bar x_{1j})^2+\sum\limits_{i\in C_2}(x_{ij}-\bar x_{2j})^2)
 \)</span>$</p>
@@ -1303,7 +1303,7 @@ $$</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{pFDR}=\mathbb{E} \left[\frac VR\mid R&gt;0\right]\]</div>
-<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式 式（ 18.43 ））当 <span class="math notranslate nohighlight">\(\mathrm{Pr}(R=0)&gt;0\)</span> 时没有定义。</p>
+<p>多出来的“正的”表示我们只关心在有发现的条件下估计误差率。这是 FDR 的修改版本，它会有一个很简洁的贝叶斯表示。注意到通常的 FDR（式（ 18.43 ））当 <span class="math notranslate nohighlight">\(\mathrm{Pr}(R=0)&gt;0\)</span> 时没有定义。</p>
 <p>令 <span class="math notranslate nohighlight">\(\Gamma\)</span> 为单个测试的拒绝域；在上面的例子中我们采用 <span class="math notranslate nohighlight">\(\Gamma=(-\infty,-4.10)\cup (4.10,\infty)\)</span>。假设对独立同分布的统计量 <span class="math notranslate nohighlight">\(t_1,\ldots,t_M\)</span> 及拒绝域 <span class="math notranslate nohighlight">\(\Gamma\)</span> 进行了 <span class="math notranslate nohighlight">\(M\)</span> 个相同的简单假设检验。定义随机变量 <span class="math notranslate nohighlight">\(Z_j\)</span>，如果第 <span class="math notranslate nohighlight">\(j\)</span> 个假设是对的，则等于 0，否则等于 1。我们假设对于某分布 <span class="math notranslate nohighlight">\(F_0\)</span> 和 <span class="math notranslate nohighlight">\(F_1\)</span>，每对 <span class="math notranslate nohighlight">\((t_j,Z_j)\)</span> 是独立同分布的随机变量，满足</p>
 <div class="math notranslate nohighlight">
 \[

@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1173,11 +1173,11 @@
 <p><span class="math notranslate nohighlight">\(
 R(\theta)=\sum\limits_{k=1}^K\sum\limits_{i=1}^N(y_{ik}-f_k(x_i))^2\tag{11.9}
 \)</span>$</p>
-<p>对于分类，我们可以采用平方误差或者交叉熵（偏差）：</p>
+<p>对于分类，我们可以采用平方误差或者交互熵（偏差）：</p>
 <p><span class="math notranslate nohighlight">\(
 R(\theta)=-\sum\limits_{i=1}^N\sum\limits_{k=1}^Ky_{ik}\mathrm{log}\;f_k(x_i)\tag{11.10}
 \)</span>$</p>
-<p>以及对应的分类器 <span class="math notranslate nohighlight">\(G(x)=\mathrm{arg\; max}_kf_k(x)\)</span>。有了 softmax 激活函数和交叉熵误差函数，神经网络模型实际上是关于隐藏层的线性逻辑斯蒂回归模型，而且所有的参数通过极大似然来估计。</p>
+<p>以及对应的分类器 <span class="math notranslate nohighlight">\(G(x)=\mathrm{arg\; max}_kf_k(x)\)</span>。有了 softmax 激活函数和交互熵误差函数，神经网络模型实际上是关于隐藏层的线性逻辑斯蒂回归模型，而且所有的参数通过极大似然来估计。</p>
 <p>一般地，我们不想要 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的全局最小值，因为这可能会是一个过拟合解。而是需要一些正则化：这个可以通过惩罚项来直接实现，或者提前终止来间接实现。下一节中将给出详细的细节。</p>
 <p>最小化 <span class="math notranslate nohighlight">\(R(\theta)\)</span> 的一般方法是通过梯度下降，在这种情形下称作 <strong>向后传播 (back-propagation)</strong>。因为模型的组成成分，运用微分的链式法则可以很简单地得到梯度。这个可以通过对网络向前或向后遍历计算得到，仅跟踪每个单元的局部量。</p>
 <blockquote>
@@ -1249,7 +1249,7 @@ s_{mi}=\sigma'(\alpha_m^Tx_i)\sum\limits_{k=1}^K\beta_{km}\delta_{ki}\tag{11.15}
 注意图中的符号含义与 ESL 中稍有不同。
 </pre></div>
 </div>
-<p>这个 two-pass 过程称作向后传播。也被称为 delta rule (Widrow and Hoff, 1960<a class="footnote-reference brackets" href="#id4" id="id2">1</a>)。交叉熵计算的组分与平方误差函数和有同样的形式，并且在<span class="xref myst">练习 11.3</span> 中被导出来。</p>
+<p>这个 two-pass 过程称作向后传播。也被称为 delta rule (Widrow and Hoff, 1960<a class="footnote-reference brackets" href="#id4" id="id2">1</a>)。交互熵计算的组分与平方误差函数和有同样的形式，并且在<span class="xref myst">练习 11.3</span> 中被导出来。</p>
 <p>向后传播的优点在于简单，局部自然。在向后传播算法中，每个隐藏层单元仅仅向（从）有其联系的单元传递（接收）信息。因此可以在并行架构的计算机上高效地实现。</p>
 <p><span class="math notranslate nohighlight">\(式（ 11.13 ）\)</span> 式的更新是一种 batch learning，参数更新为所有训练情形的和。学习也可以 online 地进行——每次处理一个观测，每个训练情形过后更新梯度，然后对训练情形重复多次。在这种情形下，<span class="math notranslate nohighlight">\(式（ 11.13 ）\)</span> 式的和可以替换成单个被加数。训练时期 (training epoch) 指的是一次扫描整个训练集。在线 (online) 训练允许网络处理非常大的训练集，而且当新观测加入时更新权重。</p>
 <p>batch learning 的学习速率 <span class="math notranslate nohighlight">\(\gamma_r\)</span> 经常取为常数，而且可以通过在每次更新时运用线搜索最小化误差函数来优化。online 学习中，当 <span class="math notranslate nohighlight">\(r\rightarrow \infty\)</span> 时 <span class="math notranslate nohighlight">\(\gamma_r\)</span> 应当下降减为 0。这个学习是 <strong>随机近似 (stochastic approximation)</strong> 的形式 (Robbins and Munro, 1951<a class="footnote-reference brackets" href="#id5" id="id3">2</a>)；如果 <span class="math notranslate nohighlight">\(\gamma_r\rightarrow \infty,\sum_r\gamma_r=\infty\)</span>，且 <span class="math notranslate nohighlight">\(\sum_r\gamma_r^2&lt;\infty\)</span>，（举个例子，<span class="math notranslate nohighlight">\(\gamma_r=1/r\)</span> 便满足条件）则在这个领域内的结果保证收敛。</p>

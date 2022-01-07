@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1329,7 +1329,7 @@ X_p&amp;=a_{p1}S_1+a_{p2}S_2+\cdots+a_{pq}S_q+\varepsilon_p
 <p>或者写成 <span class="math notranslate nohighlight">\(X=\A S+\epsilon\)</span>。这里 <span class="math notranslate nohighlight">\(S\)</span> 是 <span class="math notranslate nohighlight">\(q &lt; p\)</span>个揭示潜变量或者因子的向量，<span class="math notranslate nohighlight">\(\A\)</span> 是 <span class="math notranslate nohighlight">\(p\times q\)</span> 的 <strong>载荷 (loadings)</strong> 矩阵， <span class="math notranslate nohighlight">\(\varepsilon_j\)</span> 是零均值不相关的扰动。想法是潜变量 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是 <span class="math notranslate nohighlight">\(X_j\)</span> 公共方差的来源，表明了它们之间的相关性结构，而 <span class="math notranslate nohighlight">\(\varepsilon_j\)</span> 对每个 <span class="math notranslate nohighlight">\(X_j\)</span> 是唯一的，并且解释了剩下的方差。一般地，<span class="math notranslate nohighlight">\(S_\ell\)</span> 和 <span class="math notranslate nohighlight">\(\varepsilon_j\)</span> 假设为高斯随机变量，并且采用极大似然法来拟合模型。参数都存在于下面的协方差阵中</p>
 <div class="math notranslate nohighlight">
 \[
-\bSigma=\A\A^T+\D_\varepsilon \tag{14.81}
+\boldsymbol{\Sigma}=\A\A^T+\D_\varepsilon \tag{14.81}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\D_\varepsilon = \mathrm{diag}[\mathrm{Var}(\varepsilon_1),\ldots, \mathrm{Var}(\varepsilon_p)]\)</span>。<span class="math notranslate nohighlight">\(S_\ell\)</span> 为高斯并且不相关，这使得它们在统计上是独立随机变量。因此一系列的教育考试成绩可以认为是有潜在独立的因子，比如 <em>智力 (intelligence)</em>，<em>动机 (drive)</em> 等等所决定的。 <span class="math notranslate nohighlight">\(\A\)</span> 的列被称为<strong>因子载荷(factor loadings)</strong>，而且用来命名因子和解释因子。</p>
 <p>不幸的是, 唯一性问题 <span class="math notranslate nohighlight">\(式（ 14.79 ）\)</span> 仍然存在, 因为在式 <span class="math notranslate nohighlight">\(式（ 14.81 ）\)</span> 中, 对于任意 <span class="math notranslate nohighlight">\(q\times q\)</span> 的正交矩阵 <span class="math notranslate nohighlight">\(\R\)</span>, <span class="math notranslate nohighlight">\(\A\)</span> 和 <span class="math notranslate nohighlight">\(\A\R^T\)</span> 是等价的。这导致了因子分析中的主观性, 因为用户可以寻找因子更易解释的旋转版本. 这点使得许多分析学家对因子分析表示怀疑, 而且这可能是它在当代统计中不受欢迎的原因。尽管我们这里不继续讨论细节，但是 SVD 分解在 式（ 14.81 ） 的估计上发挥重要作用。举个例子，假设 <span class="math notranslate nohighlight">\(\mathrm{Var}(\varepsilon_j)\)</span> 相等，SVD 的前 <span class="math notranslate nohighlight">\(q\)</span> 个成分确定了由 <span class="math notranslate nohighlight">\(\A\)</span> 张成的子空间。</p>
@@ -1365,7 +1365,7 @@ X_p&amp;=a_{p1}S_1+a_{p2}S_2+\cdots+a_{pq}S_q+\varepsilon_p
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>独立意味着不相关，但反之不对。对于二元正态随机变量，两者等价。
 </pre></div>
 </div>
-<p>直观上, 不相关确定了多元变量分布的二阶交叉矩（协方差）, 而一般地, 统计独立确定了所有的交叉矩。 这些额外的矩条件能让我们找到唯一的 <span class="math notranslate nohighlight">\(\A\)</span>。 因为多元正态分布只要二阶矩就可以确定, 所以这是一个特例, 在忽略一个旋转的情况下任意高斯独立成分可以像之前被确定。 因此如果假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立且非高斯的, 则可以避免 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的唯一性问题.</p>
+<p>直观上, 不相关确定了多元变量分布的二阶交互矩（协方差）, 而一般地, 统计独立确定了所有的交互矩。 这些额外的矩条件能让我们找到唯一的 <span class="math notranslate nohighlight">\(\A\)</span>。 因为多元正态分布只要二阶矩就可以确定, 所以这是一个特例, 在忽略一个旋转的情况下任意高斯独立成分可以像之前被确定。 因此如果假设 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立且非高斯的, 则可以避免 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 和 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的唯一性问题.</p>
 <p>这里我们将要讨论 <span class="math notranslate nohighlight">\(式（ 14.78 ）\)</span> 中全 <span class="math notranslate nohighlight">\(p\)</span> 个成分的模型, 其中 <span class="math notranslate nohighlight">\(S_\ell\)</span> 是独立的且有单位方差; 因子分析模型 <span class="math notranslate nohighlight">\(式（ 14.80 ）\)</span> 的 ICA 版本也同样存在。 我们的处理是基于 Hyvärinen and Oja (2000)<a class="footnote-reference brackets" href="#id27" id="id5">2</a> 的综述文章.</p>
 <p>我们希望恢复 <span class="math notranslate nohighlight">\(X=\A S\)</span> 中的混合矩阵 <span class="math notranslate nohighlight">\(\A\)</span>。 不失一般性, 我们假设 <span class="math notranslate nohighlight">\(X\)</span> 已经 <strong>白化 (whitened)</strong> 使得 <span class="math notranslate nohighlight">\(\mathrm{Cov}(X)=\I\)</span>; 这一般可以通过前面描述的 SVD 实现。</p>
 <blockquote>
@@ -1520,7 +1520,7 @@ J(Y_j)\approx [\E G(Y_j) - \E G(Z_j)]^2\tag{14.87}
 </div>
 <div class="section" id="id12">
 <h2>（）探索投影寻踪<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-<p>Friedman and Tukey (1974)<a class="footnote-reference brackets" href="#id29" id="id13">3</a> 提出了 <strong>探索投影寻踪 (exploratory projection pursuit)</strong>，这是可视化高维数据的图象探索技巧。他们的观点是高维数据的大多数低维（一维或二维）投影看起来是高斯分布的。 他们提出一系列 projection indices 的方法用于优化, 每个集中在与高斯分布的不同距离。自从他们最先提出该方法, 陆续有各种改进的建议 (Huber, 1985<a class="footnote-reference brackets" href="#id30" id="id14">4</a>; Friedman, 1987<a class="footnote-reference brackets" href="#id31" id="id15">5</a>)，以及交互式图形软件包 Xgobi（Swayne et al., 1991<a class="footnote-reference brackets" href="#id32" id="id16">6</a>, 现在叫做 GGobi）中实现的各种指标，包括熵。 这些投影指标与上文介绍的 <span class="math notranslate nohighlight">\(J(Y_j)\)</span> 形式一样， 其中 <span class="math notranslate nohighlight">\(Y_j=a_j^TX\)</span> 是 <span class="math notranslate nohighlight">\(X\)</span> 组分的标准化的线性组合。实际上，交叉熵的一些近似和替代与投影寻踪中提出的指标重合。一般在投影寻踪中, 方向 <span class="math notranslate nohighlight">\(a_j\)</span> 不需要限制为正交。Friedman (1987)<a class="footnote-reference brackets" href="#id31" id="id17">5</a>将数据在选定的投影上转换使之看起来像高斯分布，然后搜索接下来的方向。尽管他们的出发点不一样，但是 ICA 和探索投影寻踪非常相似，至少对于这里描述的表示形式。</p>
+<p>Friedman and Tukey (1974)<a class="footnote-reference brackets" href="#id29" id="id13">3</a> 提出了 <strong>探索投影寻踪 (exploratory projection pursuit)</strong>，这是可视化高维数据的图象探索技巧。他们的观点是高维数据的大多数低维（一维或二维）投影看起来是高斯分布的。 他们提出一系列 projection indices 的方法用于优化, 每个集中在与高斯分布的不同距离。自从他们最先提出该方法, 陆续有各种改进的建议 (Huber, 1985<a class="footnote-reference brackets" href="#id30" id="id14">4</a>; Friedman, 1987<a class="footnote-reference brackets" href="#id31" id="id15">5</a>)，以及交互式图形软件包 Xgobi（Swayne et al., 1991<a class="footnote-reference brackets" href="#id32" id="id16">6</a>, 现在叫做 GGobi）中实现的各种指标，包括熵。 这些投影指标与上文介绍的 <span class="math notranslate nohighlight">\(J(Y_j)\)</span> 形式一样， 其中 <span class="math notranslate nohighlight">\(Y_j=a_j^TX\)</span> 是 <span class="math notranslate nohighlight">\(X\)</span> 组分的标准化的线性组合。实际上，交互熵的一些近似和替代与投影寻踪中提出的指标重合。一般在投影寻踪中, 方向 <span class="math notranslate nohighlight">\(a_j\)</span> 不需要限制为正交。Friedman (1987)<a class="footnote-reference brackets" href="#id31" id="id17">5</a>将数据在选定的投影上转换使之看起来像高斯分布，然后搜索接下来的方向。尽管他们的出发点不一样，但是 ICA 和探索投影寻踪非常相似，至少对于这里描述的表示形式。</p>
 </div>
 <div class="section" id="id18">
 <h2>（）独立分量分析的一种直接方法<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>

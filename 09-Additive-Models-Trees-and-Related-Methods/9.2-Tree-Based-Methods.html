@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1334,7 +1334,7 @@
 \[
 \hat f(X)=\sum\limits_{m=1}^5c_mI\{(X_1,X_2)\in R_m\}\tag{9.9}
 \]</div>
-<p>同样的模型也可以用图 9.2 的左下图的二叉树来表示。在树的顶端标出全数据集。在每个交叉点处满足条件的观测分配到左枝上去，其他的分到右枝上去。终止结点或者树的叶子对应区域 <span class="math notranslate nohighlight">\(R_1,R_2,\ldots, R_5\)</span>。图 9.2 的右下图是该模型回归表面的透视图。为了说明，我们选择结点均值 <span class="math notranslate nohighlight">\(c_1=-5,c_2=-7,c_3=0,c_4=2,c_5=4\)</span> 来画这张图。</p>
+<p>同样的模型也可以用图 9.2 的左下图的二叉树来表示。在树的顶端标出全数据集。在每个交互点处满足条件的观测分配到左枝上去，其他的分到右枝上去。终止结点或者树的叶子对应区域 <span class="math notranslate nohighlight">\(R_1,R_2,\ldots, R_5\)</span>。图 9.2 的右下图是该模型回归表面的透视图。为了说明，我们选择结点均值 <span class="math notranslate nohighlight">\(c_1=-5,c_2=-7,c_3=0,c_4=2,c_5=4\)</span> 来画这张图。</p>
 <p>递归二叉树一个重要的优点在于它的解释性。特征空间被一棵树完全描述。当超过两个输入，类似图 9.2 的右上图的划分很难画出来，但是二叉树表示能够仍然起作用。这种表示方法在医学科学家中很流行，或许它在模仿医生的思考方式。基于病人的特征，树将总体分成了高低不同的阶层。</p>
 </div>
 <div class="section" id="id2">
@@ -1382,7 +1382,7 @@ Q_m(T)&amp;=\frac{1}{N_m}\sum\limits_{x_i\in R_m}(y_i-\hat c_m)^2
 C_\alpha(T)=\sum\limits_{m=1}^{\vert T\vert}N_mQ_m(T)+\alpha\vert T\vert\tag{9.16}
 \)</span>$</p>
 <p>想法是对于每个 <span class="math notranslate nohighlight">\(\alpha\)</span>，寻找子树 <span class="math notranslate nohighlight">\(T_\alpha\subset T_0\)</span> 使得 <span class="math notranslate nohighlight">\(C_\alpha(T)\)</span> 最小化。调整参数 <span class="math notranslate nohighlight">\(\alpha\ge 0\)</span> 可以控制树的规模和它对数据拟合的程度之间的平衡。较大的 <span class="math notranslate nohighlight">\(\alpha\)</span> 值导致小规模的树 <span class="math notranslate nohighlight">\(T_\alpha\)</span>，对于较小的 <span class="math notranslate nohighlight">\(\alpha\)</span> 情况反过来了。这种记号表明，当 <span class="math notranslate nohighlight">\(\alpha=0\)</span> 时，解为全树 <span class="math notranslate nohighlight">\(T_0\)</span>. 我们下面讨论怎么自适应地选择 <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
-<p>对于每个 <span class="math notranslate nohighlight">\(\alpha\)</span>，可以找到唯一最小的子树 <span class="math notranslate nohighlight">\(T_\alpha\)</span> 使得 <span class="math notranslate nohighlight">\(C_\alpha(T)\)</span> 最小化。为了寻找 <span class="math notranslate nohighlight">\(T_\alpha\)</span> 我们采用 <strong>最差连接剪枝 (weakest link pruning)</strong>：逐步合并在 <span class="math notranslate nohighlight">\(\sum_mN_mQ_m(T)\)</span> 中单节点增长最小的中间结点，直到我们得到单结点（根）的树。这给出了子树的（有限）序列，而且可以证明这条序列一定包含 <span class="math notranslate nohighlight">\(T_\alpha\)</span>. 更多细节见 Breiman et al. (1984)<a class="footnote-reference brackets" href="#id24" id="id3">1</a> 或者 Ripley (1996)<a class="footnote-reference brackets" href="#id25" id="id4">2</a>。<span class="math notranslate nohighlight">\(\alpha\)</span> 的估计可以通过 5 折或者 10 折交叉验证得到：我们选择 <span class="math notranslate nohighlight">\(\hat\alpha\)</span> 使得交叉验证平方和最小。我们最终的树为 <span class="math notranslate nohighlight">\(T_{\hat \alpha}\)</span>.</p>
+<p>对于每个 <span class="math notranslate nohighlight">\(\alpha\)</span>，可以找到唯一最小的子树 <span class="math notranslate nohighlight">\(T_\alpha\)</span> 使得 <span class="math notranslate nohighlight">\(C_\alpha(T)\)</span> 最小化。为了寻找 <span class="math notranslate nohighlight">\(T_\alpha\)</span> 我们采用 <strong>最差连接剪枝 (weakest link pruning)</strong>：逐步合并在 <span class="math notranslate nohighlight">\(\sum_mN_mQ_m(T)\)</span> 中单节点增长最小的中间结点，直到我们得到单结点（根）的树。这给出了子树的（有限）序列，而且可以证明这条序列一定包含 <span class="math notranslate nohighlight">\(T_\alpha\)</span>. 更多细节见 Breiman et al. (1984)<a class="footnote-reference brackets" href="#id24" id="id3">1</a> 或者 Ripley (1996)<a class="footnote-reference brackets" href="#id25" id="id4">2</a>。<span class="math notranslate nohighlight">\(\alpha\)</span> 的估计可以通过 5 折或者 10 折交互验证得到：我们选择 <span class="math notranslate nohighlight">\(\hat\alpha\)</span> 使得交互验证平方和最小。我们最终的树为 <span class="math notranslate nohighlight">\(T_{\hat \alpha}\)</span>.</p>
 </div>
 <div class="section" id="id5">
 <h2>（）分类树<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -1397,16 +1397,16 @@ C_\alpha(T)=\sum\limits_{m=1}^{\vert T\vert}N_mQ_m(T)+\alpha\vert T\vert\tag{9.1
 \begin{align*}
 \text{误分类误差：}&amp; \frac{1}{N_m}\sum_{i\in R_m}I(y_i\neq k(m))=1-\hat p_{mk(m)}\\
 \text{基尼指数：}&amp;\sum_{k\neq k'}\hat p_{mk}\hat p_{mk'}=\sum_{k=1}^K\hat p_{mk}(1-\hat p_{mk})\\
-\text{交叉熵或者偏差：}&amp;-\sum_{k=1}^K\hat p_{mk}\mathbf{log} \hat p_{mk}
+\text{交互熵或者偏差：}&amp;-\sum_{k=1}^K\hat p_{mk}\mathbf{log} \hat p_{mk}
 \end{align*}
 \tag{9.17}
 \end{split}\]</div>
-<p>对于两个类别，如果 <span class="math notranslate nohighlight">\(p\)</span> 是第二类的比例，则这三个衡量指标分别为 <span class="math notranslate nohighlight">\(1-\max(p,1-p), 2p(1-p)\)</span> 以及 <span class="math notranslate nohighlight">\(-p\mathrm{log}p-(1-p)\mathrm{log}(1-p)\)</span>. 图 9.3 画出了它们的函数曲线。这三者都类似，但是 <strong>交叉熵 (cross-entropy)</strong> 和 <strong>基尼指数 (Gini index)</strong> 是可微的，因此更加适合数值优化。比较 式（ 9.13 ） 和 式（ 9.15 ），我们看到我们需要由分离结点<span class="math notranslate nohighlight">\(m\)</span> <span class="math notranslate nohighlight">\(N_{m_L}\)</span> 和 <span class="math notranslate nohighlight">\(N_{m_R}\)</span> 来对结点纯度赋予权重。</p>
+<p>对于两个类别，如果 <span class="math notranslate nohighlight">\(p\)</span> 是第二类的比例，则这三个衡量指标分别为 <span class="math notranslate nohighlight">\(1-\max(p,1-p), 2p(1-p)\)</span> 以及 <span class="math notranslate nohighlight">\(-p\mathrm{log}p-(1-p)\mathrm{log}(1-p)\)</span>. 图 9.3 画出了它们的函数曲线。这三者都类似，但是 <strong>交互熵 (cross-entropy)</strong> 和 <strong>基尼指数 (Gini index)</strong> 是可微的，因此更加适合数值优化。比较 式（ 9.13 ） 和 式（ 9.15 ），我们看到我们需要由分离结点<span class="math notranslate nohighlight">\(m\)</span> <span class="math notranslate nohighlight">\(N_{m_L}\)</span> 和 <span class="math notranslate nohighlight">\(N_{m_R}\)</span> 来对结点纯度赋予权重。</p>
 <p><img alt="" src="../_images/fig9.3.png" /></p>
 <blockquote>
-<div><p>图 9.3 两类别分类的结点纯度关于类别 2 比例 <span class="math notranslate nohighlight">\(p\)</span> 的函数。交叉熵已被缩放使能过点 <span class="math notranslate nohighlight">\((0.5,0.5)\)</span>.</p>
+<div><p>图 9.3 两类别分类的结点纯度关于类别 2 比例 <span class="math notranslate nohighlight">\(p\)</span> 的函数。交互熵已被缩放使能过点 <span class="math notranslate nohighlight">\((0.5,0.5)\)</span>.</p>
 </div></blockquote>
-<p>另外，交叉熵和基尼指数比误分类率对结点概率的改变更加敏感。举个例子，在每个类别都有 400 个观测的二分类问题中（记为（400,400）），假设一个分割得到结点（300,100）和结点（100,300），而另外一个分割得到结点（200,400）和结点（200，0）。两个分割过程的误分类误差率都是 0.25，但是第二个分割产生一个纯结点，似乎更好一些。对于第二个分割，基尼指数和交叉熵都更低一点。基于这个原因，当生成一棵树时应该使用基尼指数或者交叉熵中的一个。为了引导成本复杂度剪枝，三种衡量指标的任意一个都可以使用，但是一般地是采用误分类误差率。</p>
+<p>另外，交互熵和基尼指数比误分类率对结点概率的改变更加敏感。举个例子，在每个类别都有 400 个观测的二分类问题中（记为（400,400）），假设一个分割得到结点（300,100）和结点（100,300），而另外一个分割得到结点（200,400）和结点（200，0）。两个分割过程的误分类误差率都是 0.25，但是第二个分割产生一个纯结点，似乎更好一些。对于第二个分割，基尼指数和交互熵都更低一点。基于这个原因，当生成一棵树时应该使用基尼指数或者交互熵中的一个。为了引导成本复杂度剪枝，三种衡量指标的任意一个都可以使用，但是一般地是采用误分类误差率。</p>
 <p>基尼指数可以用两种有趣的方式来解读。与其将观测值划分到结点的主要类别中，我们可以以一定概率 <span class="math notranslate nohighlight">\(\hat p_{mk}\)</span> 将它们划分到类别 <span class="math notranslate nohighlight">\(k\)</span>。于是该结点的这条规则的训练误差率的期望是 <span class="math notranslate nohighlight">\(\sum_{k\neq k'}\hat p_{mk}\hat p_{mk'}\)</span>——基尼指数。类似地，如果我们对类别 <span class="math notranslate nohighlight">\(k\)</span> 的观测编码为1，而对其它的观测编码为0，则该结点的 0-1 响应变量的方差为 <span class="math notranslate nohighlight">\(\hat p_{mk}(1-\hat p_{mk})\)</span>. 将 <span class="math notranslate nohighlight">\(k\)</span> 个类别的全部相加也可以得到基尼指数。</p>
 <blockquote>
 <div><p>note “weiya注”
@@ -1429,7 +1429,7 @@ rpart.plot(fit)
 <h2>（）其他的问题<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
 <h3>（）类别型预测变量<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>当对一个有着 <span class="math notranslate nohighlight">\(q\)</span> 个可能的无次序值的预测变量，则将这 <span class="math notranslate nohighlight">\(q\)</span> 个值分成两块有 <span class="math notranslate nohighlight">\(2^{q-1}-1\)</span> 种可能的划分，对于大的 <span class="math notranslate nohighlight">\(q\)</span> 值，计算变得很困难。然而，输出为 0-1时，计算可以简化。我们根据落入类别 1 的比例对预测变量的类别进行排序。然后把预测变量看成是有序预测变量进行划分。可以证明这给出了在交叉熵或者基尼指数意义下 <span class="math notranslate nohighlight">\(2^{q-1}-1\)</span> 种可能分割中的最优分割。这个结果对与定量输出和平方误差损失也一样成立——通过输出的均值对类别进行升序排列。尽管很直观，但是这些断言的证明不是很简单。二值输出变量的证明由 Breiman et al. (1984)<a class="footnote-reference brackets" href="#id24" id="id8">1</a> 和 Ripley (1996)<a class="footnote-reference brackets" href="#id25" id="id9">2</a> 给出；定量输出变量的证明可以在 Fisher (1958)<a class="footnote-reference brackets" href="#id26" id="id10">3</a> 中找到。对于多重类别的输出，没有这样的简化，尽管已经提出不同的近似（Loh and Vanichsetakul, 1988<a class="footnote-reference brackets" href="#id27" id="id11">4</a>）</p>
+<p>当对一个有着 <span class="math notranslate nohighlight">\(q\)</span> 个可能的无次序值的预测变量，则将这 <span class="math notranslate nohighlight">\(q\)</span> 个值分成两块有 <span class="math notranslate nohighlight">\(2^{q-1}-1\)</span> 种可能的划分，对于大的 <span class="math notranslate nohighlight">\(q\)</span> 值，计算变得很困难。然而，输出为 0-1时，计算可以简化。我们根据落入类别 1 的比例对预测变量的类别进行排序。然后把预测变量看成是有序预测变量进行划分。可以证明这给出了在交互熵或者基尼指数意义下 <span class="math notranslate nohighlight">\(2^{q-1}-1\)</span> 种可能分割中的最优分割。这个结果对与定量输出和平方误差损失也一样成立——通过输出的均值对类别进行升序排列。尽管很直观，但是这些断言的证明不是很简单。二值输出变量的证明由 Breiman et al. (1984)<a class="footnote-reference brackets" href="#id24" id="id8">1</a> 和 Ripley (1996)<a class="footnote-reference brackets" href="#id25" id="id9">2</a> 给出；定量输出变量的证明可以在 Fisher (1958)<a class="footnote-reference brackets" href="#id26" id="id10">3</a> 中找到。对于多重类别的输出，没有这样的简化，尽管已经提出不同的近似（Loh and Vanichsetakul, 1988<a class="footnote-reference brackets" href="#id27" id="id11">4</a>）</p>
 <p>这个划分算法趋向于偏爱有多个层次 <span class="math notranslate nohighlight">\(q\)</span> 的类别型预测变量；划分的种类随着 <span class="math notranslate nohighlight">\(q\)</span> 呈指数增长，而且我们有更多的选择，我们更有可能找到一个对于当前数据好的方法。如果 <span class="math notranslate nohighlight">\(q\)</span> 很大，这导致严重的过拟合，而且类似的变量应该被避免。</p>
 </div>
 <div class="section" id="id12">
@@ -1467,14 +1467,14 @@ rpart.plot(fit)
 </div>
 <div class="section" id="id21">
 <h2>（）垃圾邮件的例子（继续）<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
-<p>前面我们已经对 spam 例子应用了分类树的方法。我们运用偏差来建树，用误分类率来剪枝。图 9.4 显示了 10 折交叉验证误差率作为剪枝树的大小的函数，以及均值的 <span class="math notranslate nohighlight">\(\pm2\)</span> 倍标准误差。测试误差曲线用橘黄色来表示。注意到交叉验证误差率是通过 <span class="math notranslate nohighlight">\(\alpha\)</span> 的序列而非树的大小来索引的；对于不同“折”建的树，同个 <span class="math notranslate nohighlight">\(\alpha\)</span> 可能对应不同的大小。在图的底部所示的大小指的是剪枝的原始树的大小 <span class="math notranslate nohighlight">\(\vert T_\alpha\vert\)</span>.</p>
+<p>前面我们已经对 spam 例子应用了分类树的方法。我们运用偏差来建树，用误分类率来剪枝。图 9.4 显示了 10 折交互验证误差率作为剪枝树的大小的函数，以及均值的 <span class="math notranslate nohighlight">\(\pm2\)</span> 倍标准差。测试误差曲线用橘黄色来表示。注意到交互验证误差率是通过 <span class="math notranslate nohighlight">\(\alpha\)</span> 的序列而非树的大小来索引的；对于不同“折”建的树，同个 <span class="math notranslate nohighlight">\(\alpha\)</span> 可能对应不同的大小。在图的底部所示的大小指的是剪枝的原始树的大小 <span class="math notranslate nohighlight">\(\vert T_\alpha\vert\)</span>.</p>
 <p><img alt="" src="../_images/tab9.3.png" /></p>
 <blockquote>
-<div><p>表 9.3. 垃圾邮件数据：测试数据上 17 个结点（通过交叉验证选出来的）树的混淆比例。总的误差率为 9.3%。</p>
+<div><p>表 9.3. 垃圾邮件数据：测试数据上 17 个结点（通过交互验证选出来的）树的混淆比例。总的误差率为 9.3%。</p>
 </div></blockquote>
 <p><img alt="" src="../_images/fig9.4.png" /></p>
 <blockquote>
-<div><p>图 9.4. spam 例子的结果。蓝色曲线是 10 折交叉验证误分类率的估计作为树大小的函数的曲线。最小值发生在含有 17 个终止结点的树处（采用“one-standard-error”规则）。橘黄色曲线展示了测试误差，其非常接近地沿着 CV 误差。交叉验证由如上所示的 <span class="math notranslate nohighlight">\(\alpha\)</span> 值索引。下面显示的树的大小指的是由 <span class="math notranslate nohighlight">\(\alpha\)</span> 索引的原始树的大小 <span class="math notranslate nohighlight">\(\vert T_\alpha\vert\)</span>。</p>
+<div><p>图 9.4. spam 例子的结果。蓝色曲线是 10 折交互验证误分类率的估计作为树大小的函数的曲线。最小值发生在含有 17 个终止结点的树处（采用“one-standard-error”规则）。橘黄色曲线展示了测试误差，其非常接近地沿着 CV 误差。交互验证由如上所示的 <span class="math notranslate nohighlight">\(\alpha\)</span> 值索引。下面显示的树的大小指的是由 <span class="math notranslate nohighlight">\(\alpha\)</span> 索引的原始树的大小 <span class="math notranslate nohighlight">\(\vert T_\alpha\vert\)</span>。</p>
 </div></blockquote>
 <p>误差在大概 17 个终止结点处变平，给出了图 9.5 的剪枝树。在树的 13 个不同特征中，有 11 个与加性模型中 16 个显著特征重合（表 9.2）.表 9.3 显示的整体误差率比表 9.1 显示的加性模型大概高出 50%.</p>
 <p><img alt="" src="../_images/fig9.5.png" /></p>
@@ -1500,7 +1500,7 @@ rpart.plot(fit)
 <blockquote>
 <div><p>图 9.6. 对 <code class="docutils literal notranslate"><span class="pre">spam</span></code> 数据应用分类规则拟合的 ROC 曲线。越靠近东北角落的曲线表示越好的分类器。这种情形下，GAM 分类器比树模型更好。加权树比未加权树在更高特异性情况下有更好的敏感性。图例中的数字表示曲线下面的面积。</p>
 </div></blockquote>
-<p>每条曲线靠近 0.9 的标准误差近似为 <span class="math notranslate nohighlight">\(\sqrt{0.9(1-0.9)/1536}=0.008\)</span>，因此差别的标准误差大概为 0.01。我们为了实现接近 100% 的特异性，敏感性大致降低到了50%. 曲线下面的面积是通常使用的定量概述；在曲线的两端线性扩张使得它在 [0, 100] 上有定义，面积大概为 0.95. 为了比较，我们也画出了在 <span class="xref myst">9.1 节</span>对这些数据进行 GAM 模型拟合的 ROC 曲线；它给出了对于任意损失更好的分类规则，面积为 0.98.</p>
+<p>每条曲线靠近 0.9 的标准差近似为 <span class="math notranslate nohighlight">\(\sqrt{0.9(1-0.9)/1536}=0.008\)</span>，因此差别的标准差大概为 0.01。我们为了实现接近 100% 的特异性，敏感性大致降低到了50%. 曲线下面的面积是通常使用的定量概述；在曲线的两端线性扩张使得它在 [0, 100] 上有定义，面积大概为 0.95. 为了比较，我们也画出了在 <span class="xref myst">9.1 节</span>对这些数据进行 GAM 模型拟合的 ROC 曲线；它给出了对于任意损失更好的分类规则，面积为 0.98.</p>
 <p>与其仅仅修改结点处的贝叶斯规则，在建树的时候将不相等的损失进行全面考虑更好，正如我们在 9.2 节做的那样。当只有两个类别 0 和 1 时，通过对类别 <span class="math notranslate nohighlight">\(k\)</span> 的观测赋予权重 <span class="math notranslate nohighlight">\(L_{k,1-k}\)</span> 将损失考虑到建树的过程中。这里我们选择 <span class="math notranslate nohighlight">\(L_{01}=5,L_{10}=1\)</span> 而且像前面一样拟合同样大小的树（<span class="math notranslate nohighlight">\(\vert T_\alpha\vert=17\)</span>）. 这棵树在高特异度性下比原树有更高的敏感度，但是在其它极端情况下表现得更差。前几层的分割与原树是一样的，但是接着就变不同了。因为这个应用通过 <span class="math notranslate nohighlight">\(L_{01}=5\)</span> 建的树显然好于原来的树。</p>
 <p>上面使用的 ROC 曲线下的面积有时被称作 <strong><span class="math notranslate nohighlight">\(c\)</span> 统计量 (c-statistics)</strong>。有趣地是，对于两个群体中预测得分差异的中位数（Hanley and McNeil，1982<a class="footnote-reference brackets" href="#id29" id="id22">6</a>），可以证明 ROC 曲线下的面积等于 Mann-Whitney U 统计量（或者 Wilcoxon 秩和检验）. 为了衡量额外的预测变量加入到标准模型中时衡量该预测变量的贡献度，<span class="math notranslate nohighlight">\(c\)</span> 统计量或许不是一个有信息的衡量。新预测变量可以对模型偏差改变很显著，但是 <span class="math notranslate nohighlight">\(c\)</span> 统计量却只有很小的增大。举个例子，从表 9.2 中移除高显著项 <code class="docutils literal notranslate"><span class="pre">george</span></code> 会导致 <span class="math notranslate nohighlight">\(c\)</span> 统计量的增长小于 0.01. 相反地，基于个体样本基来检查额外的预测变量怎样改变分类是有用的。这点将在 Cook (2007)<a class="footnote-reference brackets" href="#id30" id="id23">7</a> 中进行充分讨论。</p>
 <hr class="footnotes docutils" />

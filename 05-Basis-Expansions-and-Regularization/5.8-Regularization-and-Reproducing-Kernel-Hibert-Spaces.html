@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1311,7 +1311,7 @@ f(x)=\sum\limits_{i=1}^\infty c_i\phi_i(x)\tag{5.46}
 <p>为 RKHS.</p>
 <p>参考 <a class="reference external" href="https://doi.org/10.1017/9781108627771">Wainwright (2019)</a> 和 <a class="reference external" href="https://people.eecs.berkeley.edu/~bartlett/courses/281b-sp08/7.pdf">Peter Bartlett’s notes</a>.</p>
 </div></blockquote>
-<p>式（ 5.42 ） 中空间 <span class="math notranslate nohighlight">\({\mathcal H}\_K\)</span> 的惩罚函数定义为二次范数 <span class="math notranslate nohighlight">\(J(f)=\Vert f\Vert_{{\mathcal H}\_K}^2\)</span>。<span class="math notranslate nohighlight">\(J(f)\)</span> 的值可以解释为广义岭惩罚，其中在展开式 式（ 5.45 ） 中，大的特征值惩罚较小，反之亦然。</p>
+<p>式（ 5.42 ） 中空间 <span class="math notranslate nohighlight">\({\mathcal H}\_K\)</span> 的惩罚函数定义为二次范数 <span class="math notranslate nohighlight">\(J(f)=\Vert f\Vert_{{\mathcal H}\_K}^2\)</span>。<span class="math notranslate nohighlight">\(J(f)\)</span> 的值可以解释为广义岭惩罚，其中在展开式（ 5.45 ） 中，大的特征值惩罚较小，反之亦然。</p>
 <p>重写 式（ 5.42 ），我们有</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1415,7 +1415,7 @@ h(x)=VD_\gamma^{\frac 12}\phi(x)\tag{5.62}
 \underset{\{\beta_m\}_1^M}{\min}\sum\limits_{i=1}^N\Big(y_i-\sum\limits_{m=1}^M\beta_mh_m(x_i)\Big)^2+\lambda \sum\limits_{m=1}^M\beta_m^2\tag{5.63}
 \]</div>
 <p>将 式（ 5.62 ） 代入 式（ 5.63 ），我们得到 式（ 5.53 ） 的展开来进行优化（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/164">练习 5.16</a>）。</p>
-<p>基函数的个数 <span class="math notranslate nohighlight">\(M=\binom{p+d}{d}\)</span> 可以非常大，通常大于 <span class="math notranslate nohighlight">\(N\)</span>。等式 式（ 5.55 ） 告诉我们如果采用解函数的核表示，我们仅仅需要对核进行 <span class="math notranslate nohighlight">\(N^2\)</span> 次赋值，而且可以以 <span class="math notranslate nohighlight">\(O(N^3)\)</span> 的计算量得到解。</p>
+<p>基函数的个数 <span class="math notranslate nohighlight">\(M=\binom{p+d}{d}\)</span> 可以非常大，通常大于 <span class="math notranslate nohighlight">\(N\)</span>。等式（ 5.55 ） 告诉我们如果采用解函数的核表示，我们仅仅需要对核进行 <span class="math notranslate nohighlight">\(N^2\)</span> 次赋值，而且可以以 <span class="math notranslate nohighlight">\(O(N^3)\)</span> 的计算量得到解。</p>
 <p>This simplicity is not without implications. 式（ 5.61 ） 中的每个多项式 <span class="math notranslate nohighlight">\(h_m\)</span> 从 <span class="math notranslate nohighlight">\(K\)</span> 的特定形式继承了缩放因子，这对 式（ 5.63 ） 的惩罚有影响。我们将在下一节详细讨论。</p>
 </div>
 <div class="section" id="id11">

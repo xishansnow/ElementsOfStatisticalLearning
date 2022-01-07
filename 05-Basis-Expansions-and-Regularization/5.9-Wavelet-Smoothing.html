@@ -463,7 +463,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../07-Model-Assessment-and-Selection/7.10-Cross-Validation.html">
-     7.10 交叉验证
+     7.10 交互验证
     </a>
    </li>
    <li class="toctree-l2">
@@ -1274,7 +1274,7 @@ Guy Nason 的 <a class="reference external" href="http://www.springer.com/gp/boo
 </ul>
 <p>更为普遍的是，平滑样条通过施加平滑度实现对原始信号的压缩，而小波则施加稀疏度。</p>
 <p><img alt="" src="../_images/fig5.19.png" /></p>
-<p>图 5.19 在两个本质不同的数据集上比较了小波拟合（ 采用 <code class="docutils literal notranslate"><span class="pre">SURE</span> <span class="pre">收缩</span></code> ） 和平滑样条拟合（ 采用交叉验证 ）。对于上图中的 NMR 数据，平滑样条处处引入细节以捕获孤立尖峰的细节；而小波则通过局部化很好地拟合了尖峰。在下图中，真实函数是平滑的，噪声相对较大。小波拟合允许一些额外的和不必要的摆动，这是为了额外的自适应性而付出的代价。</p>
+<p>图 5.19 在两个本质不同的数据集上比较了小波拟合（ 采用 <code class="docutils literal notranslate"><span class="pre">SURE</span> <span class="pre">收缩</span></code> ） 和平滑样条拟合（ 采用交互验证 ）。对于上图中的 NMR 数据，平滑样条处处引入细节以捕获孤立尖峰的细节；而小波则通过局部化很好地拟合了尖峰。在下图中，真实函数是平滑的，噪声相对较大。小波拟合允许一些额外的和不必要的摆动，这是为了额外的自适应性而付出的代价。</p>
 <p>小波变换不是通过 <span class="math notranslate nohighlight">\(\mathbf y^*=\mathbf W \mathbf y\)</span> 中的矩阵相乘来进行。事实上，采用更智能的金字塔算法, <span class="math notranslate nohighlight">\(\mathbf y^*\)</span> 会在 <span class="math notranslate nohighlight">\(O(N)\)</span> 的计算复杂度内完成，这比快速傅里叶变换的 <span class="math notranslate nohighlight">\(N\log N\)</span> 还要快。一般情形下的小波构造超出了本书范围，但可以简单证明 <code class="docutils literal notranslate"><span class="pre">Haar</span> <span class="pre">基</span></code>时的情形（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/116">练习 5.19</a>）。同样地，逆小波变换 <span class="math notranslate nohighlight">\(\mathbf W\hat{\boldsymbol \theta}\)</span> 也是 <span class="math notranslate nohighlight">\(O(N)\)</span> 的。</p>
 <p>这里只是对小波这个庞大且正在发展的领域作了非常简单的介绍。在小波基础上，有一个非常庞大的数学和计算群体。现代的图像压缩通常会采用二维小波表示来实现。</p>
 <hr class="footnotes docutils" />
