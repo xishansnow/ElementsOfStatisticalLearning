@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.3 \(\mathcal{IR}^p\)中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
-    <link rel="prev" title="6.1 一维核光滑器" href="6.1-One-Dimensional-Kernel-Smoothers.html" />
+    <link rel="next" title="6.3 \(p\) 维空间中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
+    <link rel="prev" title="6.1 一维核平滑器" href="6.1-One-Dimensional-Kernel-Smoothers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -356,18 +360,18 @@
     <a class="reference internal" href="6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.4-Structured-Local-Regression-Models-in-Rp.html">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1169,15 +1173,15 @@
 </ul>
 <p>相似的结论可以应用到局部回归估计，比如局部线性：当宽度趋于 <span class="math notranslate nohighlight">\(0\)</span>，估计量则近似为对训练数据插值得到的分段线性函数；当宽度趋于无穷大，则拟合值近似为对数据的整体最小二乘拟合。</p>
 <blockquote>
-<div><p>note “weiya 注：Recall”</p>
-</div></blockquote>
+<div><div class="math notranslate nohighlight">
+\[
+\hat f(x_0)= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}
+&gt;\]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split}    \begin{align*}
-    \hat f(x_0)&amp;= b(x_0)^T(\mathbf {B^TW}(x_0)\mathbf B)^{-1}\mathbf B^T\mathbf W(x_0)\mathbf y\tag{6.8}\\
-    &amp;=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
-    \end{align*}
-    
-\end{split}\]</div>
+\[
+=\sum\limits_{i=1}^Nl_i(x_0)y_i\tag{6.9}
+&gt;\]</div>
+</div></blockquote>
 <p>这里应用<span class="xref myst">第五章</span>中选择光滑样条的正规化参数的讨论。局部回归光滑器是线性估计器；<span class="math notranslate nohighlight">\(\mathbf{\hat f=S_\lambda y}\)</span> 中的光滑矩阵由等价核 式（ 6.8 ） 构成，并且第 <span class="math notranslate nohighlight">\(ij\)</span> 个元素值为 <span class="math notranslate nohighlight">\(\{\mathbf S\_\lambda\}\_{ij}=l\_{i}(x\_{j})\)</span>。舍一法交叉验证特别地简单（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/150">练习 6.7</a>），广义交叉验证，<span class="math notranslate nohighlight">\(C_p\)</span>（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/151">练习 6.10</a>），以及 <span class="math notranslate nohighlight">\(k\)</span> 折交叉验证也很简单。有效自由度再一次定义为 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)\)</span>，并且可以用来校准光滑的程度。</p>
 <blockquote>
 <div><p>info “weiya 注：Ex. 6.7”
@@ -1223,13 +1227,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">6.1 一维核光滑器</p>
+            <p class="prev-next-title">6.1 一维核平滑器</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="6.3-Local-Regression-in-Rp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">6.3 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中的局部回归</p>
+        <p class="prev-next-title">6.3 <span class="math notranslate nohighlight">\(p\)</span> 维空间中的局部回归</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

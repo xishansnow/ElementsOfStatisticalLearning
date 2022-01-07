@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.4 光滑样条 &#8212; 统计学习精要(中文)</title>
+    <title>5.4 平滑样条 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.5 光滑参数的自动选择" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html" />
+    <link rel="next" title="5.5 平滑参数 \(\lambda\) 的自动选择" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html" />
     <link rel="prev" title="5.3 过滤和特征提取" href="5.3-Filtering-and-Feature-Extraction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,18 +360,18 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1142,7 +1146,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.4.1 自由度和光滑矩阵
+   5.4.1 自由度和平滑矩阵
   </a>
  </li>
 </ul>
@@ -1155,7 +1159,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>5.4 光滑样条</h1>
+                <h1>5.4 平滑样条</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1167,7 +1171,7 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.4.1 自由度和光滑矩阵
+   5.4.1 自由度和平滑矩阵
   </a>
  </li>
 </ul>
@@ -1180,32 +1184,20 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>5.4 光滑样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>5.4 平滑样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>这里我们讨论使用最大结点集合的 <strong>样条基方法</strong> 来彻底避免结点选择的问题。拟合的复杂度由正则化来控制。考虑下面的问题：在所有二阶连续微分的函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 中，找到一个使得下面的惩罚残差平方和最小的函数</p>
+<p>这里我们讨论使用最大连接点集合的 <strong>样条基方法</strong> 来彻底避免连接点选择的问题。拟合的复杂度由正则化来控制。考虑下面的问题：在所有二阶连续微分的函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 中，找到一个使得下面的惩罚残差平方和最小的函数</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{RSS}(f,\lambda)=\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda\int \{f''(t)\}^2dt\tag{5.9}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(\lambda\)</span> 是固定的<strong>光滑参数 (smoothing parameter)</strong>。第一项衡量与数据的近似程度，第二项对函数的曲率进行惩罚，且 <span class="math notranslate nohighlight">\(\lambda\)</span> 建立了两者之间的一个平衡。两个特别的例子是：</p>
+<p>其中 <span class="math notranslate nohighlight">\(\lambda\)</span> 是固定的<strong>平滑参数 (smoothing parameter)</strong>。第一项衡量与数据的近似程度，第二项对函数的曲率进行惩罚，且 <span class="math notranslate nohighlight">\(\lambda\)</span> 建立了两者之间的一个平衡。两个特别的例子是：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda=0\)</span>： <span class="math notranslate nohighlight">\(f\)</span> 可以是对数据插值的任意函数</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda=\infty\)</span>： 简单的最小二乘拟合，因为不容忍任何的二次微分。</p></li>
 </ul>
-<p>这从非常粗糙变到非常光滑，而且希望 <span class="math notranslate nohighlight">\(\lambda\in(0,\infty)\)</span> 在非常粗糙与非常光滑之间表示一个对我们感兴趣的函数类。</p>
-<blockquote>
-<div><p><strong>注解：</strong>
-对于 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 曲线的曲率定义为</p>
-<div class="math notranslate nohighlight">
-\[
-\kappa = \frac{\vert y''\vert}{(1+y'^2)^{3/2}}	  
-&gt;\]</div>
-</div></blockquote>
-<p>准则 式（ 5.9 ） 定义在无限维函数空间上——实际上，是二阶导有定义的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E4%BC%AF%E5%88%97%E5%A4%AB%E7%A9%BA%E9%97%B4">Sobolev 函数空间</a>。值得注意的是，可以证明 式（ 5.9 ） 存在一个显式的有限维的唯一一个最小值点，是一个结点在不重复的 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处的自然三次样条（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">练习 5.7</a>）。表面上看，这个函数族仍然是过参量化，因为有 <span class="math notranslate nohighlight">\(N\)</span> 个结点，这意味着 <span class="math notranslate nohighlight">\(N\)</span> 个自由度。然而，惩罚项转换为对样条系数的惩罚，使得以某种方式向着线性拟合收缩。</p>
-<blockquote>
-<div><p>info “weiya 注：Ex. 5.7”
-已解决，详见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">Issue 34: Ex. 5.7</a>.</p>
-</div></blockquote>
+<p>这从非常粗糙变到非常平滑，而且希望 <span class="math notranslate nohighlight">\(\lambda\in(0,\infty)\)</span> 在非常粗糙与非常平滑之间表示一个对我们感兴趣的函数类。</p>
+<p>准则 式（ 5.9 ） 定义在无限维函数空间上——实际上，是二阶导有定义的 <a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E4%BC%AF%E5%88%97%E5%A4%AB%E7%A9%BA%E9%97%B4">Sobolev 函数空间</a>。值得注意的是，可以证明 式（ 5.9 ） 存在一个显式的有限维的唯一最小值，是一个连接点在不重复的 <span class="math notranslate nohighlight">\(x_i,i=1,2,\ldots,N\)</span> 处的自然三次样条（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/34">练习 5.7</a>）。表面上看，这个函数族仍然是过参数化，因为有 <span class="math notranslate nohighlight">\(N\)</span> 个连接点，这意味着 <span class="math notranslate nohighlight">\(N\)</span> 个自由度。然而，惩罚项转换为对样条系数的惩罚，使得以某种方式向着线性拟合收缩。</p>
 <p>因为解为自然样条，所以我们可以写成</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1222,21 +1214,21 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 \[
 \hat\theta = (\mathbf N^T\mathbf N+\lambda\Omega_N)^{-1}\mathbf N^T\mathbf y\tag{5.12}
 \]</div>
-<p>是<strong>广义岭回归</strong>。拟合后的光滑样条由下式给出</p>
+<p>是<strong>广义岭回归</strong>。拟合后的平滑样条由下式给出</p>
 <div class="math notranslate nohighlight">
 \[
 \hat f(x) = \sum\limits_{j=1}^NN_j(x)\hat\theta_j\tag{5.13}
 \]</div>
-<p>有效计算光滑样条的技巧将在本章的附录中讨论。</p>
-<p>图 5.6 显示了对青少年骨矿物质密度（BMD）部分数据的光滑样条拟合。响应变量为连续两次检查时脊髓的 BMD 的相对改变，一般相隔一年。数据点的颜色由性别来编码，得到两个独立的拟合曲线。简单总结一下，曲线证实了数据中的证据，女性增长相对于男性要早两年。两种情形下光滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 都近似为 <span class="math notranslate nohighlight">\(0.00022\)</span>；它的选择将在下一节中讨论。</p>
+<p>有效计算平滑样条的技巧将在本章的附录中讨论。</p>
+<p>图 5.6 显示了对青少年骨矿物质密度（BMD）部分数据的平滑样条拟合。响应变量为连续两次检查时脊髓的 BMD 的相对改变，一般相隔一年。数据点的颜色由性别来编码，得到两个独立的拟合曲线。简单总结一下，曲线证实了数据中的证据，女性增长相对于男性要早两年。两种情形下平滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 都近似为 <span class="math notranslate nohighlight">\(0.00022\)</span>；它的选择将在下一节中讨论。</p>
 <p><img alt="" src="../_images/fig5.6.png" /></p>
 <blockquote>
-<div><p>图5.6. 响应变量是青少年中脊髓的骨矿物质密度的相对改变，将它看成是年龄的函数。对男性和女性分别进行光滑样条拟合，其中<span class="math notranslate nohighlight">\(\lambda\approx 0.00022\)</span>。这个选择对应12个自由度。</p>
+<div><p>图5.6. 响应变量是青少年中脊髓的骨矿物质密度的相对改变，将它看成是年龄的函数。对男性和女性分别进行平滑样条拟合，其中<span class="math notranslate nohighlight">\(\lambda\approx 0.00022\)</span>。这个选择对应12个自由度。</p>
 </div></blockquote>
 <div class="section" id="id2">
-<h2>5.4.1 自由度和光滑矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>我们还没有指出光滑样条的 <span class="math notranslate nohighlight">\(\lambda\)</span> 是怎么选取的。本章的后面我们描述使用自动化方法，比如交叉验证。在这部分中我们讨论预先确定光滑度的直观方式。</p>
-<p>预先选择了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的光滑样条是 <strong>线性光滑 (linear smoother)</strong> 的一个例子（如在线性算子中一样）。这是因为 式（ 5.12 ） 的估计参数是 <span class="math notranslate nohighlight">\(y_i\)</span> 的线性组合。记 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维向量，其中的元素为在训练预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 处的拟合值 <span class="math notranslate nohighlight">\(\hat f(x_i)\)</span>。则</p>
+<h2>5.4.1 自由度和平滑矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>我们还没有指出平滑样条的 <span class="math notranslate nohighlight">\(\lambda\)</span> 是怎么选取的。本章的后面我们描述使用自动化方法，比如交叉验证。在这部分中我们讨论预先确定平滑度的直观方式。</p>
+<p>预先选择了 <span class="math notranslate nohighlight">\(\lambda\)</span> 的平滑样条是 <strong>线性平滑 (linear smoother)</strong> 的一个例子（如在线性算子中一样）。这是因为 式（ 5.12 ） 的估计参数是 <span class="math notranslate nohighlight">\(y_i\)</span> 的线性组合。记 <span class="math notranslate nohighlight">\(\hat{\mathbf f}\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维向量，其中的元素为在训练预测变量 <span class="math notranslate nohighlight">\(x_i\)</span> 处的拟合值 <span class="math notranslate nohighlight">\(\hat f(x_i)\)</span>。则</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1244,8 +1236,8 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 	            &amp;= \mathbf S_\lambda\mathbf y\qquad\qquad\qquad\tag{5.14}
 \end{align*}
 \end{split}\]</div>
-<p>再一次看到，拟合关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是线性的，并且有限线性算子 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 称作<strong>光滑矩阵 (smoother matrix)</strong>。这种线性的结果表明从 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 得到 <span class="math notranslate nohighlight">\(\hat {\mathbf f}\)</span> 的方法不依赖 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 本身；<span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span>仅仅依赖于 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(\lambda\)</span>。</p>
-<p>线性算子也出现在经典的最小二乘拟合中。假设 <span class="math notranslate nohighlight">\(\mathbf B_\xi\)</span> 是 <span class="math notranslate nohighlight">\(M\)</span> 个三次样条基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个训练点 <span class="math notranslate nohighlight">\(x_i\)</span> 处取值的 <span class="math notranslate nohighlight">\(N\times M\)</span> 矩阵，结点序列为 <span class="math notranslate nohighlight">\(\xi\)</span>，并且 <span class="math notranslate nohighlight">\(M &lt; &lt; N\)</span>。则拟合样条值向量由下式给出</p>
+<p>再一次看到，拟合关于 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 是线性的，并且有限线性算子 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 称作<strong>平滑矩阵 (smoother matrix)</strong>。这种线性的结果表明从 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 得到 <span class="math notranslate nohighlight">\(\hat {\mathbf f}\)</span> 的方法不依赖 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 本身；<span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span>仅仅依赖于 <span class="math notranslate nohighlight">\(x_i\)</span> 和 <span class="math notranslate nohighlight">\(\lambda\)</span>。</p>
+<p>线性算子也出现在经典的最小二乘拟合中。假设 <span class="math notranslate nohighlight">\(\mathbf B_\xi\)</span> 是 <span class="math notranslate nohighlight">\(M\)</span> 个三次样条基函数在 <span class="math notranslate nohighlight">\(N\)</span> 个训练点 <span class="math notranslate nohighlight">\(x_i\)</span> 处取值的 <span class="math notranslate nohighlight">\(N\times M\)</span> 矩阵，连接点序列为 <span class="math notranslate nohighlight">\(\xi\)</span>，并且 <span class="math notranslate nohighlight">\(M &lt; &lt; N\)</span>。则拟合样条值向量由下式给出</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1259,12 +1251,12 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 <li><p><span class="math notranslate nohighlight">\(\mathbf{H_\xi H_\xi=H_\xi}\)</span>（幂等矩阵），而 <span class="math notranslate nohighlight">\(\mathbf S_\lambda \mathbf S_\lambda\preceq \mathbf S_\lambda \)</span>，表示右边项比左边项多一个半正定矩阵。这是<span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 收缩本质的结果，我们将在下面进一步讨论。</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf H_\xi\)</span> 秩为 <span class="math notranslate nohighlight">\(M\)</span>，而 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 秩为 <span class="math notranslate nohighlight">\(N\)</span>。</p></li>
 </ul>
-<p>表达式 <span class="math notranslate nohighlight">\(M=\mathrm{trace}(\mathbf H_\xi)\)</span> 给出了投影空间的维度，也是基函数的个数，因此是在拟合中涉及的参数个数。类似地，我们定义光滑样条的<strong>有效自由度 (effective degrees of freedom)</strong> 为</p>
+<p>表达式 <span class="math notranslate nohighlight">\(M=\mathrm{trace}(\mathbf H_\xi)\)</span> 给出了投影空间的维度，也是基函数的个数，因此是在拟合中涉及的参数个数。类似地，我们定义平滑样条的<strong>有效自由度 (effective degrees of freedom)</strong> 为</p>
 <div class="math notranslate nohighlight">
 \[
 \mathrm{df}_\lambda = \mathrm{trace}(\mathbf{S}_\lambda)\tag{5.16}
 \]</div>
-<p>这是 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 的对角元之和。这个非常有用的定义允许我们以更加直观的方式对光滑样条进行参量化，而且许多其他的光滑器确实也是用这样一致的风格。举个例子，在图 5.6 中我们对每条曲线确定 <span class="math notranslate nohighlight">\(\mathrm{df}\_\lambda=12\)</span>，对应的<span class="math notranslate nohighlight">\(\lambda\approx 0.00022\)</span> 是通过数值求解 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)=12\)</span> 得到的。许多理论都支持自由度的定义，这里我们只介绍部分。</p>
+<p>这是 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 的对角元之和。这个非常有用的定义允许我们以更加直观的方式对平滑样条进行参数化，而且许多其他的平滑器确实也是用这样一致的风格。举个例子，在图 5.6 中我们对每条曲线确定 <span class="math notranslate nohighlight">\(\mathrm{df}\_\lambda=12\)</span>，对应的<span class="math notranslate nohighlight">\(\lambda\approx 0.00022\)</span> 是通过数值求解 <span class="math notranslate nohighlight">\(\mathrm{trace}(\mathbf S_\lambda)=12\)</span> 得到的。许多理论都支持自由度的定义，这里我们只介绍部分。</p>
 <p>因为 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 是对称的（而且半正定），所以存在实特征值分解。在我们处理之前，将 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\)</span> 改写成 Reinsch 形式是很方便的</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1286,19 +1278,19 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 \[
 \rho_k(\lambda)=\frac{1}{1+\lambda d_k}\tag{5.20}
 \]</div>
-<p>且<span class="math notranslate nohighlight">\( d_k\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 对应的特征值。图 5.7（上）显示了对部分空气污染数据（128 个观测）应用三次光滑样条的结果。给出了两个拟合：对应大的惩罚 <span class="math notranslate nohighlight">\(\lambda\)</span> 的更光滑的拟合以及一个对应小的惩罚的更粗糙的拟合。下图表示了对应光滑矩阵的特征值（左下图）和部分特征向量（右下图）。</p>
+<p>且<span class="math notranslate nohighlight">\( d_k\)</span> 是 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 对应的特征值。图 5.7（上）显示了对部分空气污染数据（128 个观测）应用三次平滑样条的结果。给出了两个拟合：对应大的惩罚 <span class="math notranslate nohighlight">\(\lambda\)</span> 的更平滑的拟合以及一个对应小的惩罚的更粗糙的拟合。下图表示了对应平滑矩阵的特征值（左下图）和部分特征向量（右下图）。</p>
 <p><img alt="" src="../_images/fig5.7.png" /></p>
 <blockquote>
-<div><p>图5.7. （上：）ozone concentration 与 Daggot pressure gradient 光滑样条拟合的对比。两个拟合对应不同的光滑参数值，选择它们达到 5 和 11 的有效自由度，有效自由度由 <span class="math notranslate nohighlight">\(df_\lambda =trace(\mathbf S_\lambda)\)</span> 定义。（左下：）两个光滑样条矩阵的前 25 个特征值。前两个特征值恰好为 1，且所有都 <span class="math notranslate nohighlight">\(\ge 0\)</span>。（右下：）光滑样条矩阵的第 3 到第 6 个特征值。在每个情形下，<span class="math notranslate nohighlight">\(\mathbf u_k\)</span>作 出关于 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 的图象，而且因此被视为 <span class="math notranslate nohighlight">\(x\)</span> 的函数。图象的横轴的须表示数据点出现的位置。阻尼函数表示这些函数的光滑版本（采用 5 个自由度的光滑器）。</p>
+<div><p>图5.7. （上：）ozone concentration 与 Daggot pressure gradient 平滑样条拟合的对比。两个拟合对应不同的平滑参数值，选择它们达到 5 和 11 的有效自由度，有效自由度由 <span class="math notranslate nohighlight">\(df_\lambda =trace(\mathbf S_\lambda)\)</span> 定义。（左下：）两个平滑样条矩阵的前 25 个特征值。前两个特征值恰好为 1，且所有都 <span class="math notranslate nohighlight">\(\ge 0\)</span>。（右下：）平滑样条矩阵的第 3 到第 6 个特征值。在每个情形下，<span class="math notranslate nohighlight">\(\mathbf u_k\)</span>作 出关于 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 的图象，而且因此被视为 <span class="math notranslate nohighlight">\(x\)</span> 的函数。图象的横轴的须表示数据点出现的位置。阻尼函数表示这些函数的平滑版本（采用 5 个自由度的平滑器）。</p>
 </div></blockquote>
 <p>特征表示的一些亮点如下：</p>
 <ul class="simple">
-<li><p>特征向量不会受 <span class="math notranslate nohighlight">\(\lambda\)</span> 变化的影响，因此由 <span class="math notranslate nohighlight">\(\lambda\)</span> 索引的整个光滑样条族（对于特定的序列 <span class="math notranslate nohighlight">\(\mathbf x\)</span>）有相同的特征向量。</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf {S_\lambda y}=\sum_{k=1}^N \mathbf u_k\rho_k(\lambda)\langle \mathbf{u_k,y}\rangle\)</span>， 因此光滑样条通过对 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 关于（全部）基 <span class="math notranslate nohighlight">\(\{\mathbf u_k\}\)</span> 分解进行操作，并且通过 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 来不同程度地收缩贡献。这与基于回归的方法相反，回归中组分要么不变，要么收缩为 0——这也就是，类似上面的投影矩阵 <span class="math notranslate nohighlight">\(\mathbf B_\xi\)</span> 有 <span class="math notranslate nohighlight">\(M\)</span> 个特征值等于 1，剩余特征值等于 0。基于这个原因光滑样条被称作<strong>收缩 (shrinking)<strong>光滑器，而回归样条被称作</strong>投影 (projection)</strong> 光滑器（图 3.17）</p></li>
-<li><p>按 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 下降排列的 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 序列的复杂度似乎在增加。确实，它们有阶数递增的多项式的<strong>穿0 (zero-crossing)</strong> 行为。因为 <span class="math notranslate nohighlight">\(\mathbf S_\lambda \mathbf u_k=\rho_k(\lambda)\mathbf u_k\)</span>，我们看到每个特征向量本身是怎样通过光滑样条来收缩：复杂度越大，收缩也就越大。如果 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 定义域为周期的，则 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 在不同频率下是正弦和余弦的。</p></li>
+<li><p>特征向量不会受 <span class="math notranslate nohighlight">\(\lambda\)</span> 变化的影响，因此由 <span class="math notranslate nohighlight">\(\lambda\)</span> 索引的整个平滑样条族（对于特定的序列 <span class="math notranslate nohighlight">\(\mathbf x\)</span>）有相同的特征向量。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf {S_\lambda y}=\sum_{k=1}^N \mathbf u_k\rho_k(\lambda)\langle \mathbf{u_k,y}\rangle\)</span>， 因此平滑样条通过对 <span class="math notranslate nohighlight">\(\mathbf y\)</span> 关于（全部）基 <span class="math notranslate nohighlight">\(\{\mathbf u_k\}\)</span> 分解进行操作，并且通过 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 来不同程度地收缩贡献。这与基于回归的方法相反，回归中组分要么不变，要么收缩为 0——这也就是，类似上面的投影矩阵 <span class="math notranslate nohighlight">\(\mathbf B_\xi\)</span> 有 <span class="math notranslate nohighlight">\(M\)</span> 个特征值等于 1，剩余特征值等于 0。基于这个原因平滑样条被称作<strong>收缩 (shrinking)<strong>平滑器，而回归样条被称作</strong>投影 (projection)</strong> 平滑器（图 3.17）</p></li>
+<li><p>按 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 下降排列的 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 序列的复杂度似乎在增加。确实，它们有阶数递增的多项式的<strong>穿0 (zero-crossing)</strong> 行为。因为 <span class="math notranslate nohighlight">\(\mathbf S_\lambda \mathbf u_k=\rho_k(\lambda)\mathbf u_k\)</span>，我们看到每个特征向量本身是怎样通过平滑样条来收缩：复杂度越大，收缩也就越大。如果 <span class="math notranslate nohighlight">\(\mathbf X\)</span> 定义域为周期的，则 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span> 在不同频率下是正弦和余弦的。</p></li>
 <li><p>前两个特征值总是 1，它们对应 <span class="math notranslate nohighlight">\(x\)</span> 的2维函数特征空间（<a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/36">练习 5.11</a>），它们从不收缩。</p></li>
 <li><p>特征值 <span class="math notranslate nohighlight">\(\rho_k(\lambda)=1/(1+\lambda d_k)\)</span> 是惩罚矩阵 <span class="math notranslate nohighlight">\(\mathbf K\)</span> 的特征值 <span class="math notranslate nohighlight">\(d_k\)</span> 的反函数，通过 <span class="math notranslate nohighlight">\(\lambda\)</span> 来调节；<span class="math notranslate nohighlight">\(\lambda\)</span> 控制 <span class="math notranslate nohighlight">\(\rho_k(\lambda)\)</span> 下降为 0 的速率。<span class="math notranslate nohighlight">\(d_1=d_2=0\)</span> 又一次表明线性函数没有被惩罚。</p></li>
-<li><p>可以通过基向量 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>（Demmler-Reinsch基）来重参量化光滑样条。在这种情形下，光滑样条求解</p></li>
+<li><p>可以通过基向量 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>（Demmler-Reinsch基）来重参数化平滑样条。在这种情形下，平滑样条求解</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -1306,12 +1298,12 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
 \]</div>
 <p>其中 <span class="math notranslate nohighlight">\(\mathbf U\)</span> 列向量为 <span class="math notranslate nohighlight">\(\mathbf u_k\)</span>，且 <span class="math notranslate nohighlight">\(\mathbf D\)</span> 为元素为 <span class="math notranslate nohighlight">\(d_k\)</span> 的对角矩阵。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mathrm{df}_\lambda = \mathrm{trace}(\mathbf S_\lambda)=\sum_{k=1}^N\rho_k(\lambda)\)</span>。对于投影光滑器，所有的特征值为 1，每个特征值对应投影子空间的一个维度。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{df}_\lambda = \mathrm{trace}(\mathbf S_\lambda)=\sum_{k=1}^N\rho_k(\lambda)\)</span>。对于投影平滑器，所有的特征值为 1，每个特征值对应投影子空间的一个维度。</p></li>
 </ul>
-<p>图 5.8 描述了一个光滑样条矩阵，行按 <span class="math notranslate nohighlight">\(x\)</span> 排序。这种表示的带表明光滑样条是局部拟合方法，很像第 6 章的局部加权回归过程。右图详细显示了所选的 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的行，我们称为 <strong>等价核 (equivalent kernels)</strong>。当 <span class="math notranslate nohighlight">\(\lambda\rightarrow 0, \mathrm{df}_\lambda\rightarrow N\)</span>，且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf I\)</span>，<span class="math notranslate nohighlight">\(\mathbf I\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维单位矩阵。当<span class="math notranslate nohighlight">\(\lambda\rightarrow \infty,\mathrm{df}_\lambda\rightarrow 2\)</span>， 且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf H\)</span>， <span class="math notranslate nohighlight">\(\mathbf H\)</span> 为在 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 上线性回归的帽子矩阵。</p>
+<p>图 5.8 描述了一个平滑样条矩阵，行按 <span class="math notranslate nohighlight">\(x\)</span> 排序。这种表示的带表明平滑样条是局部拟合方法，很像第 6 章的局部加权回归过程。右图详细显示了所选的 <span class="math notranslate nohighlight">\(\mathbf S\)</span> 的行，我们称为 <strong>等价核 (equivalent kernels)</strong>。当 <span class="math notranslate nohighlight">\(\lambda\rightarrow 0, \mathrm{df}_\lambda\rightarrow N\)</span>，且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf I\)</span>，<span class="math notranslate nohighlight">\(\mathbf I\)</span> 为 <span class="math notranslate nohighlight">\(N\)</span> 维单位矩阵。当<span class="math notranslate nohighlight">\(\lambda\rightarrow \infty,\mathrm{df}_\lambda\rightarrow 2\)</span>， 且 <span class="math notranslate nohighlight">\(\mathbf S_\lambda\rightarrow \mathbf H\)</span>， <span class="math notranslate nohighlight">\(\mathbf H\)</span> 为在 <span class="math notranslate nohighlight">\(\mathbf x\)</span> 上线性回归的帽子矩阵。</p>
 <p><img alt="" src="../_images/fig5.8.png" /></p>
 <blockquote>
-<div><p>图 5.8 光滑样条的光滑矩阵近似带状，表明局部支撑的等价核。左图将<span class="math notranslate nohighlight">\(\mathbf S\)</span>的元素表示成图象。右图详细显示了所指出的行的等价核或者加权函数。</p>
+<div><p>图 5.8 平滑样条的平滑矩阵近似带状，表明局部支撑的等价核。左图将<span class="math notranslate nohighlight">\(\mathbf S\)</span>的元素表示成图象。右图详细显示了所指出的行的等价核或者加权函数。</p>
 </div></blockquote>
 </div>
 </div>
@@ -1351,7 +1343,7 @@ f(x)=\sum\limits_{j=1}^NN_j(x)\theta_j\tag{5.10}
     <a class='right-next' id="next-link" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5.5 光滑参数的自动选择</p>
+        <p class="prev-next-title">5.5 平滑参数 <span class="math notranslate nohighlight">\(\lambda\)</span> 的自动选择</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

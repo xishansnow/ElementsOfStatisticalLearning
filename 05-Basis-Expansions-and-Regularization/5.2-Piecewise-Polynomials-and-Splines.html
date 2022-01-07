@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.4-Smoothing-Splines.html">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,18 +360,18 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1306,7 +1310,7 @@ d_k(X)=\frac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_K-\xi_k}\tag{5.5}
 <p>在这个例子中我们采用样条来降低灵活性而非增大灵活性；这个应用是属于一般的 <strong>函数型 (functional)</strong> 建模。图 5.5 的上图显示了在 256 个频率下分别 s 测量两个音素“aa”和“ao”的 15 个对数周期图。目标是应用这些数据对口语音素进行分类。选择这两个音素是因为它们很难被分开。</p>
 <p><img alt="" src="../_images/fig5.5.png" /></p>
 <blockquote>
-<div><p>图 5.5 上图显示了对数周期图作为 15 个例子中的频率的函数，例子中每个音素“aa”和“ao”从总共 695 个“aa”和 1022 个“ao”中选取。每个对数周期图在 256 个均匀的空间频率处测量。下图显示了对数据进行极大似然拟合逻辑斯蒂回归得到的系数（作为频率的函数）的图象，将 256 个对数周期图值作为输入。带约束的逻辑斯蒂回归的系数随频率变化是光滑的红色曲线，而在锯齿状灰色曲线是无约束的逻辑斯蒂回归情形下系数随频率变化的曲线。</p>
+<div><p>图 5.5 上图显示了对数周期图作为 15 个例子中的频率的函数，例子中每个音素“aa”和“ao”从总共 695 个“aa”和 1022 个“ao”中选取。每个对数周期图在 256 个均匀的空间频率处测量。下图显示了对数据进行极大似然拟合逻辑斯蒂回归得到的系数（作为频率的函数）的图象，将 256 个对数周期图值作为输入。带约束的逻辑斯蒂回归的系数随频率变化是平滑的红色曲线，而在锯齿状灰色曲线是无约束的逻辑斯蒂回归情形下系数随频率变化的曲线。</p>
 </div></blockquote>
 <blockquote>
 <div><p>note “weiya 注”
@@ -1330,12 +1334,12 @@ d_k(X)=\frac{(X-\xi_k)_+^3-(X-\xi_K)_+^3}{\xi_K-\xi_k}\tag{5.5}
 <div><p>note “weiya 注：”
 我的理解是，因为训练样本大小为 1000，而系数共有 256，所以平均下来应该是每个系数仅有四个观测值。</p>
 </div></blockquote>
-<p>类似这样的应用允许 <strong>自然的正则化 (natural regularization)</strong>。我们强制系数作为频率的函数均匀变化。图 5.5 中下图的红色曲线显示了对这些数据应用这样一个光滑参数曲线。我们看到低频率的差异性很明显。这个光滑不仅允许对它们的差异进行更简单的解读，而且得到更加精确的分类器：</p>
+<p>类似这样的应用允许 <strong>自然的正则化 (natural regularization)</strong>。我们强制系数作为频率的函数均匀变化。图 5.5 中下图的红色曲线显示了对这些数据应用这样一个平滑参数曲线。我们看到低频率的差异性很明显。这个平滑不仅允许对它们的差异进行更简单的解读，而且得到更加精确的分类器：</p>
 <p><img alt="" src="../_images/tabno1.png" /></p>
-<p>红色光滑曲线可以应用非常简单的自然三次样条得到。我们可以将系数函数表达成样条 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span> 的展开。实际中这意味着 <span class="math notranslate nohighlight">\(\beta=\mathbf H\theta\)</span>，其中，<span class="math notranslate nohighlight">\(\mathbf H\)</span> 是 <span class="math notranslate nohighlight">\(p\times M\)</span> 三次样条的基矩阵，定义在频率集上。这里我们采用 <span class="math notranslate nohighlight">\(M=12\)</span> 个基函数，其中连接点均匀分布在表示频率的整数 <span class="math notranslate nohighlight">\(1,2,\ldots,256\)</span> 上。因为 <span class="math notranslate nohighlight">\(x^T\beta=x^T\mathbf H\theta\)</span>，我们可以简单地将输入特征 <span class="math notranslate nohighlight">\(x\)</span> 替换成 <strong>滤波 (filtered)</strong> 形式、(x^*=\mathbf{H}^Tx)，并在<span class="math notranslate nohighlight">\(x^*\)</span>上通过线性逻辑斯蒂回归拟合<span class="math notranslate nohighlight">\(\theta\)</span>。因此红色曲线是<span class="math notranslate nohighlight">\(\beta(f)=h(f)^T\hat\theta\)</span>。</p>
+<p>红色平滑曲线可以应用非常简单的自然三次样条得到。我们可以将系数函数表达成样条 <span class="math notranslate nohighlight">\(\beta(f)=\sum_{m=1}^Mh_m(f)\theta_m\)</span> 的展开。实际中这意味着 <span class="math notranslate nohighlight">\(\beta=\mathbf H\theta\)</span>，其中，<span class="math notranslate nohighlight">\(\mathbf H\)</span> 是 <span class="math notranslate nohighlight">\(p\times M\)</span> 三次样条的基矩阵，定义在频率集上。这里我们采用 <span class="math notranslate nohighlight">\(M=12\)</span> 个基函数，其中连接点均匀分布在表示频率的整数 <span class="math notranslate nohighlight">\(1,2,\ldots,256\)</span> 上。因为 <span class="math notranslate nohighlight">\(x^T\beta=x^T\mathbf H\theta\)</span>，我们可以简单地将输入特征 <span class="math notranslate nohighlight">\(x\)</span> 替换成 <strong>滤波 (filtered)</strong> 形式、(x^*=\mathbf{H}^Tx)，并在<span class="math notranslate nohighlight">\(x^*\)</span>上通过线性逻辑斯蒂回归拟合<span class="math notranslate nohighlight">\(\theta\)</span>。因此红色曲线是<span class="math notranslate nohighlight">\(\beta(f)=h(f)^T\hat\theta\)</span>。</p>
 <blockquote>
 <div><p>note “weiya 注：”
-这里其实就是 <strong>函数型线性模型 (functional linear model)</strong> 的策略，为了保持光滑化，用样条基函数来表示系数函数。更多细节可以参见 Ramsay, J. O., &amp; Silverman, B. W. (2005). Functional data analysis (Second edition). Springer. 这本书的第 13 章。</p>
+这里其实就是 <strong>函数型线性模型 (functional linear model)</strong> 的策略，为了保持平滑化，用样条基函数来表示系数函数。更多细节可以参见 Ramsay, J. O., &amp; Silverman, B. W. (2005). Functional data analysis (Second edition). Springer. 这本书的第 13 章。</p>
 </div></blockquote>
 </div>
 </div>

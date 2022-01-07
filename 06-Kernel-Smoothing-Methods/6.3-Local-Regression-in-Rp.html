@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.3 \(\mathcal{IR}^p\)中的局部回归 &#8212; 统计学习精要(中文)</title>
+    <title>6.3 \(p\) 维空间中的局部回归 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.4 \(\mathcal{IR}^p\)中结构化局部回归" href="6.4-Structured-Local-Regression-Models-in-Rp.html" />
+    <link rel="next" title="6.4 \(p\) 维空间中的结构化局部回归" href="6.4-Structured-Local-Regression-Models-in-Rp.html" />
     <link rel="prev" title="6.2 选择核的宽度" href="6.2-Selecting-the-Width-of-the-Kernel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,18 +360,18 @@
     <a class="current reference internal" href="#">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="6.4-Structured-Local-Regression-Models-in-Rp.html">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1142,7 +1146,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>6.3 \mathcal{IR}^p中的局部回归</h1>
+                <h1>6.3 p 维空间中的局部回归</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1153,8 +1157,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mathcal-ir-p">
-<h1>6.3 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中的局部回归<a class="headerlink" href="#mathcal-ir-p" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="p">
+<h1>6.3 <span class="math notranslate nohighlight">\(p\)</span> 维空间中的局部回归<a class="headerlink" href="#p" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>核光滑和局部回归可以非常自然地推广到二维或更高维空间中。Nadaraya–Watson 核光滑器局部拟合常值，其中权重由 <span class="math notranslate nohighlight">\(p\)</span> 维核得到。局部线性回归通过加权最小二乘来拟合 <span class="math notranslate nohighlight">\(X\)</span> 中局部的超平面，参数由 <span class="math notranslate nohighlight">\(p\)</span> 维核给出。这可以很简单地实现，并且一般偏爱边界处有更好的表现的局部常值拟合。</p>
 <p>令 <span class="math notranslate nohighlight">\(b(X)\)</span> 为 <span class="math notranslate nohighlight">\(X\)</span> 最大 degree 为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式的向量。例如，<span class="math notranslate nohighlight">\(d=1,p=2\)</span> 时有 <span class="math notranslate nohighlight">\(b(X)=(1,X_1,X_2)\)</span>；<span class="math notranslate nohighlight">\(d=2\)</span> 时我们得到 <span class="math notranslate nohighlight">\(b(X)=(1,X_1,X_2,X_1^2,X_2^2,X_1X_2)\)</span>；并且在 <span class="math notranslate nohighlight">\(d=0\)</span> 的平凡情形下我们得到 <span class="math notranslate nohighlight">\(b(X)=1\)</span>。在每个 <span class="math notranslate nohighlight">\(x_0\in \mathbb{R}^p\)</span> 处求解</p>
@@ -1220,7 +1224,7 @@ K_\lambda(x_0,x)=D\left(\frac{\Vert x-x_0\Vert}{\lambda}\right),\tag{6.13}
     <a class='right-next' id="next-link" href="6.4-Structured-Local-Regression-Models-in-Rp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">6.4 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中结构化局部回归</p>
+        <p class="prev-next-title">6.4 <span class="math notranslate nohighlight">\(p\)</span> 维空间中的结构化局部回归</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

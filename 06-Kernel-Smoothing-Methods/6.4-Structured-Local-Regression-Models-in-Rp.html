@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6.4 \(\mathcal{IR}^p\)中结构化局部回归 &#8212; 统计学习精要(中文)</title>
+    <title>6.4 \(p\) 维空间中的结构化局部回归 &#8212; 统计学习精要(中文)</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.5 局部似然和其他模型" href="6.5-Local-Likelihood-and-Other-Models.html" />
-    <link rel="prev" title="6.3 \(\mathcal{IR}^p\)中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
+    <link rel="prev" title="6.3 \(p\) 维空间中的局部回归" href="6.3-Local-Regression-in-Rp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.4-Smoothing-Splines.html">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05-Basis-Expansions-and-Regularization/5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,18 +360,18 @@
     <a class="reference internal" href="6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1162,7 +1166,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>6.4 \mathcal{IR}^p中结构化局部回归</h1>
+                <h1>6.4 p 维空间中的结构化局部回归</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1193,8 +1197,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mathcal-ir-p">
-<h1>6.4 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中结构化局部回归<a class="headerlink" href="#mathcal-ir-p" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="p">
+<h1>6.4 <span class="math notranslate nohighlight">\(p\)</span> 维空间中的结构化局部回归<a class="headerlink" href="#p" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
 <p>当维度与样本大小的比率不是很好，则局部回归对我们没有太大帮助，除非我们想要对模型做出一些结构化的假设。这本书的很多部分是关于结构化回归和分类模型的。这里我们关注一些与核方法直接相关的方法。</p>
 <div class="section" id="id1">
@@ -1272,7 +1276,7 @@ f(X)=\alpha(Z)+\beta_1(Z)X_1+\cdots+\beta_q(Z)X_q\tag{6.16}
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">6.3 <span class="math notranslate nohighlight">\(\mathcal{IR}^p\)</span>中的局部回归</p>
+            <p class="prev-next-title">6.3 <span class="math notranslate nohighlight">\(p\)</span> 维空间中的局部回归</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="6.5-Local-Likelihood-and-Other-Models.html" title="next page">

@@ -292,12 +292,16 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.4-Smoothing-Splines.html">
-     5.4 光滑样条
+     5.4 平滑样条
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.5-Automatic-Selection-of-the-Smoothing-Parameters.html">
-     5.5 光滑参数的自动选择
+     5.5 平滑参数
+     <span class="math notranslate nohighlight">
+      \(\lambda\)
+     </span>
+     的自动选择
     </a>
    </li>
    <li class="toctree-l2">
@@ -317,7 +321,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.9-Wavelet-Smoothing.html">
-     5.9 小波光滑
+     5.9 小波平滑
     </a>
    </li>
    <li class="toctree-l2">
@@ -344,7 +348,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.1-One-Dimensional-Kernel-Smoothers.html">
-     6.1 一维核光滑器
+     6.1 一维核平滑器
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,18 +360,18 @@
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.3-Local-Regression-in-Rp.html">
      6.3
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中的局部回归
+     维空间中的局部回归
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06-Kernel-Smoothing-Methods/6.4-Structured-Local-Regression-Models-in-Rp.html">
      6.4
      <span class="math notranslate nohighlight">
-      \(\mathcal{IR}^p\)
+      \(p\)
      </span>
-     中结构化局部回归
+     维空间中的结构化局部回归
     </a>
    </li>
    <li class="toctree-l2">
@@ -1156,77 +1160,77 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.7 多维样条<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>目前为止我们集中讨论了一维样条模型。每种方法都有类似的多维情形。假设 <span class="math notranslate nohighlight">\(X\in\mathbb{R}\)</span>，并且我们有用于表示坐标 <span class="math notranslate nohighlight">\(X_1\)</span> 的函数的基函数 <span class="math notranslate nohighlight">\(h_{1k}(X_1),k=1,\ldots,M_1\)</span>，同样地，<span class="math notranslate nohighlight">\(M_2\)</span> 个表示坐标 <span class="math notranslate nohighlight">\(X_2\)</span> 的基函数 <span class="math notranslate nohighlight">\(h_{2k}(X_2)\)</span>。则 <span class="math notranslate nohighlight">\(M_1\times M_2\)</span> 维的 <strong>张量积基底 (tensor product basis)</strong> 定义如下</p>
+<p>目前为止我们集中讨论了一维样条模型。每种方法都有类似的多维情形。假设 <span class="math notranslate nohighlight">\(X\in\mathbb{R}^2\)</span>，并且我们有 <span class="math notranslate nohighlight">\(M_1\)</span> 个 <span class="math notranslate nohighlight">\(X_1\)</span> 坐标上的基函数 <span class="math notranslate nohighlight">\(h_{1k}(X_1),k = 1,\ldots,M_1\)</span>，类似地，有 <span class="math notranslate nohighlight">\(M_2\)</span> 个 <span class="math notranslate nohighlight">\(X_2\)</span> 坐标上的基函数 <span class="math notranslate nohighlight">\(h_{2k}(X_2), k = 1,\ldots,M_2\)</span>。则 <span class="math notranslate nohighlight">\(M_1\times M_2\)</span> 维的 <strong>张量积基函数 (tensor product basis)</strong> 定义为：</p>
 <div class="math notranslate nohighlight">
 \[
-F_{jk}(X)=h_{1j}(X_1)h_{2k}(X_2),j=1,\ldots, M_1, k=1,\ldots,M_2\tag{5.35}
+g_{jk}(X)=h_{1j}(X_1)h_{2k}(X_2) \ , \ j=1,\ldots, M_1 ; \ k=1,\ldots,M_2\tag{5.35}
 \]</div>
-<p>它可以用来表示二维函数：</p>
+<p>与一维基函数类似，上述张量积基可以被用来表示如下二维函数：</p>
 <div class="math notranslate nohighlight">
 \[
-F(X)=\sum\limits_{j=1}^{M_1}\sum\limits_{k=1}^{M_2}\theta_{jk}g_{jk}(X)\tag{5.36}
+g(X)=\sum\limits_{j=1}^{M_1}\sum\limits_{k=1}^{M_2}\theta_{jk}g_{jk}(X)\tag{5.36}
 \]</div>
 <p><img alt="" src="../_images/fig5.10.png" /></p>
-<p>图 5.10 展示了采用 B 样条的张量积的基底。系数和之前一样采用最小二乘来拟合。这可以推广到 <span class="math notranslate nohighlight">\(d\)</span> 维的情形，但是注意到基底的维数会指数型增长——维数灾难的另一种表现形式。第 9 章讨论的 <span class="xref myst">MARS 过程</span> 是一种通过最小二乘只将真正需要的张量积加入模型的向前贪婪算法。</p>
+<p>图 5.10 展示了采用 B 样条的二维张量积基函数。与一维张量相同，系数采用最小二乘法拟合。相同方法可以推广到 <span class="math notranslate nohighlight">\(d\)</span> 维的情况，但应注意基数量会指数型增长，这也是维数灾难的另一种表现形式。第 9 章讨论的 <span class="xref myst">MARS 过程</span> 是一种通过最小二乘只将真正需要的张量积加入模型的向前贪婪算法。</p>
 <p><img alt="" src="../_images/fig5.11.png" /></p>
-<p>图 5.11 展示了将可加样条和张量积（自然）样条应用到<span class="xref myst">第 2 章</span>中的模拟分类例子中的区别。逻辑斯蒂回归模型 <span class="math notranslate nohighlight">\(\mathrm{logit}[\mathrm{Pr}(T\mid x)]=h(x)^T\theta\)</span> 是对二值响应变量拟合的模型，并且估计出的判别边界为等高线 <span class="math notranslate nohighlight">\(h(x)^T\hat\theta=0\)</span>。在判别边界张量积的基底可以实现更多的灵活性，但同时也引入了一些 <strong>假的 (spurious)</strong> 结构。</p>
-<p>一维光滑样条（通过正则化）也可以推广到高维情形。假设我们有数据对 <span class="math notranslate nohighlight">\(y_i,x_i\)</span>，其中 <span class="math notranslate nohighlight">\(x_i\in \mathbb{R}^d\)</span>，并且寻找 <span class="math notranslate nohighlight">\(d\)</span> 维回归函数 <span class="math notranslate nohighlight">\(f(x)\)</span>。想法是求解下面问题</p>
+<p>图 5.11 展示了将可加样条和张量积（自然）样条应用到<span class="xref myst">第 2 章</span>中的模拟分类例子中的区别。逻辑斯蒂回归模型 <span class="math notranslate nohighlight">\(\mathrm{logit}[\mathrm{Pr}(T\mid x)]=h(x)^T\theta\)</span> 是对二值响应变量拟合的模型，并且估计出的决策边界为等值线 <span class="math notranslate nohighlight">\(h(x)^T\hat\theta=0\)</span>。张量积基函数在决策边界处可以实现更多的灵活性，但同时也引入了一些假的结构。</p>
+<p>第 5.4 节的一维平滑样条（ 通过正则化 ）也可以推广到高维情形。假设有数据对 <span class="math notranslate nohighlight">\(y_i,x_i\)</span>，其中 <span class="math notranslate nohighlight">\(x_i\in \mathbb{R}^d\)</span>，我们的目标是寻找 <span class="math notranslate nohighlight">\(d\)</span> 维函数 <span class="math notranslate nohighlight">\(f(x)\)</span>。想法是求解下面问题：</p>
 <div class="math notranslate nohighlight">
 \[
 \underset{f}{\min}\sum\limits_{i=1}^N\{y_i-f(x_i)\}^2+\lambda J[f]\tag{5.37}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(J\)</span> 是用于 <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> 中的函数 <span class="math notranslate nohighlight">\(f\)</span> 标准化的某个合适的惩罚函数。举个例子，<span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> 上一维光滑性惩罚 (5.9) 的自然推广为</p>
+<p>其中 <span class="math notranslate nohighlight">\(J\)</span> 是用于在 <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> 空间中稳定（或平滑） <span class="math notranslate nohighlight">\(f\)</span> 的某个惩罚函数。例如，式 （ 5.9 ）中的惩罚函数，泛化到 <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> 时为：</p>
 <div class="math notranslate nohighlight">
 \[
 F[f]=\int\int_{\mathbb{R}^2}\Big[
 \Big(\frac{\partial^2f(x)}{\partial x_1^2}\Big)^2+
 2\Big(\frac{\partial^2f(x)}{\partial x_1\partial x_2}\Big)^2+
 \Big(\frac{\partial^2f(x)}{\partial x_2^2}\Big)^2
-\Big]dx_1dx_2\tag{5.38}
+\Big]\mathrm{d}x_1\mathrm{d}x_2  \tag{5.38}
 \]</div>
-<p>采用这个惩罚去优化 (5.37) 得到光滑的二维曲面，被称为 thin-plate 样条。这与一维三次光滑样条有许多相同的性质：</p>
+<p>采用该惩罚项去优化 (5.37) ，可以得到平滑的二维曲面，即著名的 <code class="docutils literal notranslate"><span class="pre">thin-plate</span> <span class="pre">样条</span></code>。其与一维三次平滑样条有许多相同的性质：</p>
 <ul class="simple">
-<li><p>当 <span class="math notranslate nohighlight">\(\lambda\rightarrow 0\)</span>，解近似为插值函数【类似最小惩罚(5.38)】</p></li>
+<li><p>当 <span class="math notranslate nohighlight">\(\lambda\rightarrow 0\)</span>，解近似为插值函数【 类似最小惩罚 ( 5.38 ) 】</p></li>
 <li><p>当 <span class="math notranslate nohighlight">\(\lambda\rightarrow\infty\)</span>，解近似为最小二乘平面；</p></li>
 <li><p>对于中等大小的 <span class="math notranslate nohighlight">\(\lambda\)</span>，解可以表示成基函数的线性展开，其中系数可以通过广义的岭回归得到。</p></li>
 </ul>
-<p>解有如下形式</p>
+<p>解有如下形式：</p>
 <div class="math notranslate nohighlight">
 \[
 f(x)=\beta_0+\beta^Tx+\sum\limits_{j=1}^N\alpha_jh_j(x),\tag{5.39}
 \]</div>
-<p>其中 <span class="math notranslate nohighlight">\(h_j(x)=\Vert x-x_j \Vert^2\log\Vert x-x_j\Vert\)</span>。这些 <span class="math notranslate nohighlight">\(h_j\)</span> 是 <strong>径向基函数 (radial basis functions)</strong> 的例子，将在下一节中详细讨论。通过将 (5.39) 代入 (5.37) 退化为有限维带惩罚的最小二乘问题，然后可以得到系数。对于有限的惩罚，系数 <span class="math notranslate nohighlight">\(\alpha_j\)</span> 必须满足一系列的线性约束；参见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/166">练习 5.14</a>。</p>
-<p>对于任意维度的 <span class="math notranslate nohighlight">\(d\)</span>，当采用合适的更一般的 <span class="math notranslate nohighlight">\(J\)</span>，可以定义更一般的 thin-plate 样条。</p>
-<p>实际中有许多流行的 <strong>混合方法 (hybrid approaches)</strong>，都是为了计算和概念上的简单性。不像一维的光滑样条，由于一般没有稀疏结构可以利用，thin-plate 的计算复杂度为 <span class="math notranslate nohighlight">\(O(N^3)\)</span>。然而，和单变量光滑样条一样，我们可以用少于解 (5.39) 规定的 <span class="math notranslate nohighlight">\(N\)</span> 个结点。</p>
-<p>实际中，通常采用覆盖定义域的网格就足够了。这个 reduced 版本的惩罚的计算和前面一样。采用 <span class="math notranslate nohighlight">\(K\)</span> 个结点，计算量降至 <span class="math notranslate nohighlight">\(O(NK^2+K^3)\)</span>。</p>
+<p>其中 <span class="math notranslate nohighlight">\(h_j(x)=\Vert x-x_j \Vert^2\log\Vert x-x_j\Vert\)</span>。这些 <span class="math notranslate nohighlight">\(h_j\)</span> 均属于将在下一节中详细讨论的 <strong>径向基函数 (radial basis functions)</strong> 。将 ( 5.39 ) 代入 (5.37) 可以解得系数，问题退化为有限维的带惩罚最小二乘问题。对于有限的惩罚，系数 <span class="math notranslate nohighlight">\(\alpha_j\)</span> 必须满足一系列的线性约束；参见 <a class="reference external" href="https://github.com/szcf-weiya/ESL-CN/issues/166">练习 5.14</a>。</p>
+<p>对于任意维度的 <span class="math notranslate nohighlight">\(d\)</span>，当采用合适的、泛化形式的 <span class="math notranslate nohighlight">\(J\)</span>，可以定义更一般的 <code class="docutils literal notranslate"><span class="pre">thin-plate</span> <span class="pre">样条</span></code>。</p>
+<p>实际中有许多流行的 <strong>混合方法 (hybrid approaches)</strong>，都是为了计算和概念上的简单性。不像一维的平滑样条，由于一般没有稀疏结构可以利用，<code class="docutils literal notranslate"><span class="pre">thin-plate</span></code> 的计算复杂度为 <span class="math notranslate nohighlight">\(O(N^3)\)</span>。然而，和一维平滑样条一样，我们可以使用少于式 (5.39) 规定的连接点数 <span class="math notranslate nohighlight">\(N\)</span> 。</p>
+<p>实际中，通常采用覆盖定义域的网格就足够了。和前面一样，要为削减后的扩展计算惩罚。采用 <span class="math notranslate nohighlight">\(K\)</span> 个连接点，计算量降至 <span class="math notranslate nohighlight">\(O(NK^2+K^3)\)</span>。</p>
 <p><img alt="" src="../_images/fig5.12.png" /></p>
-<p>图 5.12 显示了对某些心脏病危险因子拟合 thin-plate 样条的结果，其中用等高图来表示表面。输入特征的位置已经表示出来，以及在拟合中采用的结点。注意到 <span class="math notranslate nohighlight">\(\lambda\)</span> 通过 <span class="math notranslate nohighlight">\(\mathrm{df}_\lambda=\mathrm{trace}(S_\lambda)=15\)</span> 确定。</p>
-<p>更一般地，可以将 <span class="math notranslate nohighlight">\(f\in\mathbb{R}^d\)</span> 表示成任意多基函数的展开，并且通过应用类似 (5.38) 的正则器来控制复杂度。举个例子，通过所有成对单变量光滑样条基函数 (5.35) 的张量积来构造基底，比如可以采用 <a class="reference external" href="5.9-Wavelet-Smoothing/index.html#_2">5.9.2 节</a> 推荐的单变量 B 样条基。这导致随着维数增大，基函数指数型增长，一般地我们必须相应地减少每个坐标下的函数个数。</p>
-<p><span class="xref myst">第 9 章</span>讨论的可加样条模型是多维样条的限制版本。他们也可以用这种一般的方式来表示；也就是，存在惩罚 <span class="math notranslate nohighlight">\(J[f]\)</span> 保证解的形式为 <span class="math notranslate nohighlight">\(f(X)=\alpha+f_1(X_1)+\cdots+f_d(X_d)\)</span>，并且每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是单变量样条。在这种情形下，惩罚有时候退化，而且假设 <span class="math notranslate nohighlight">\(f\)</span> 为可加的会更自然，接着简单地在每个组分函数上加上额外的惩罚</p>
+<p>图 5.12 显示了对某些心脏病危险因子拟合 <code class="docutils literal notranslate"><span class="pre">thin-plate</span> <span class="pre">样条</span></code>的结果，其中用等值图来表示表面。输入特征的位置已经表示出来，以及在拟合中采用的连接点。注意到 <span class="math notranslate nohighlight">\(\lambda\)</span> 通过 <span class="math notranslate nohighlight">\(\mathrm{df}_\lambda=\mathrm{trace}(S_\lambda)=15\)</span> 确定。</p>
+<p>更一般地，可以将 <span class="math notranslate nohighlight">\(f\in\mathbb{R}^d\)</span> 表示成任意多基函数的展开，并且通过应用类似 (5.38) 的正则化来控制复杂度。举个例子，通过所有成对单变量平滑样条基函数 (5.35) 的张量积来构造基，比如可以采用 <a class="reference external" href="5.9-Wavelet-Smoothing/index.html#_2">5.9.2 节</a> 推荐的单变量 B 样条基函数。这导致随着维数增大，基函数指数型增长，一般地我们必须相应地减少每个坐标下的基函数数量。</p>
+<p><span class="xref myst">第 9 章</span>讨论的可加样条模型是多维样条的限制版本。它们也可以用这种广义方式来表示；也就是，存在惩罚 <span class="math notranslate nohighlight">\(J[f]\)</span> 保证解的形式为 <span class="math notranslate nohighlight">\(f(X)=\alpha+f_1(X_1)+\cdots+f_d(X_d)\)</span>，并且每个函数 <span class="math notranslate nohighlight">\(f_j\)</span> 是单变量样条。在这种情形下，惩罚有时候退化，而且假设 <span class="math notranslate nohighlight">\(f\)</span> 为可加的会更自然，接着简单地在每个组分函数上加上额外的惩罚：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
 J[f] &amp;= J(f_1+f_2+\cdots+f_d)\\
-&amp;=\sum\limits_{j=1}^d\int f_j^{(2)}(t_j)^2dt_j\tag{5.40}
+&amp;=\sum\limits_{j=1}^d\int f_j^{\prime\prime}(t_j)^2 \mathrm{d}t_j\tag{5.40}
 \end{align*}
 \end{split}\]</div>
-<p>这些可以自然地推广到 ANOVA 样条分解，</p>
+<p>这些可以自然地推广到 <code class="docutils literal notranslate"><span class="pre">ANOVA</span> <span class="pre">样条</span></code>分解，</p>
 <div class="math notranslate nohighlight">
 \[
 f(X)=\alpha+\sum_jf_j(X_j)+\sum\limits_{j &lt; k}f_{jk}(X_j,X_k)+\cdots\tag{5.41}
 \]</div>
 <p>其中每个组分都是所要求维度下的样条。可以有许多选择：</p>
 <ul class="simple">
-<li><p>交叉项的最大 order —— 上文我们展示了 order 为 2 的情形</p></li>
-<li><p>包含进模型的项——不是所有的主影响和交叉项都需要</p></li>
-<li><p>采用表示方法——具体选择有：</p>
+<li><p>交互的最大阶数 —— 我们之前展示过阶数为 <span class="math notranslate nohighlight">\(2\)</span> 的情形</p></li>
+<li><p>模型中包含哪些项 —— 不是所有的主效应和交互都需要考虑</p></li>
+<li><p>采用什么表示方法 —— 具体选择有：</p>
 <ul>
-<li><p>每个坐标采用相对较少的基函数且用它们的张量积作为交叉项的回归样条</p></li>
-<li><p>和光滑样条一样采用完整的基，并且在展开式中包含每一项的合适的正则器。</p></li>
+<li><p>少量的基函数：每个坐标上采用少量的基函数，并基于其张量积构造的回归样条</p></li>
+<li><p>所有基函数：和平滑样条一样采用所有基函数，在展开式中为每一项的包含一个合适的正则器。</p></li>
 </ul>
 </li>
 </ul>
-<p>在许多情形下，当潜在维度（特征）很大，需要自动化的方法。<span class="xref myst">MARS</span> 和 <span class="xref myst">MART</span>（分别在第 9 章和第 10 章）都是这类方法。</p>
+<p>在许多情形下，当潜在维度很大时，需要自动化的方法支持。<span class="xref myst">MARS</span> 和 <span class="xref myst">MART</span>（分别在第 9 章和第 10 章）都是此类方法。</p>
 </div>
 
     <script type="text/x-thebe-config">
