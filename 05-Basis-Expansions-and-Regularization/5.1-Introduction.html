@@ -1160,35 +1160,36 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>5.1 导言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <style>p{text-indent:2em;2}</style>
-<p>我们已经对回归和分类运用了关于输入特征为线性的模型。线性回归，线性判别分析，逻辑斯蒂回归和分离超平面都依赖于线性模型。关于 <span class="math notranslate nohighlight">\(X\)</span> 的真实的函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 不太可能恰好为线性的。在回归问题中，<span class="math notranslate nohighlight">\(f(X)=\mathbb{E}(Y\mid X)\)</span> 关于 <span class="math notranslate nohighlight">\(X\)</span> 一般不是线性的，也不是可加的，但用线性模型来表示 <span class="math notranslate nohighlight">\(f(X)\)</span> 通常是方便的、有时候是必要的近似。方便是因为线性模型是可以很容易地解释，而且 <span class="math notranslate nohighlight">\(f(X)\)</span> 可被视为任意复杂函数的一阶泰勒近似。有时候必要是因为当 <span class="math notranslate nohighlight">\(N\)</span> 很小 <span class="math notranslate nohighlight">\(p\)</span> 很大时，线性模型由于参数少，因而可以不需要过拟合就达到拟合数据的目的。在分类任务中也类似，一个线性的、贝叶斯最优的判别边界表明 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的某些单调变换关于 <span class="math notranslate nohighlight">\(X\)</span> 也是线性的，无疑这也是一种近似。</p>
+<p>我们已经对回归和分类任务使用了关于预测变量的线性模型。线性回归、线性判别分析、逻辑斯蒂回归和分离超平面都依赖于线性模型。</p>
+<p>但是，关于 <span class="math notranslate nohighlight">\(X\)</span> 的真实的函数 <span class="math notranslate nohighlight">\(f(X)\)</span> 不太可能恰好是线性的。在回归问题中，<span class="math notranslate nohighlight">\(f(X)=\mathbb{E}(Y\mid X)\)</span> 关于 <span class="math notranslate nohighlight">\(X\)</span> 一般情况下都不是线性的，可能也不是可加的，不过用线性模型作为一种近似来表示 <span class="math notranslate nohighlight">\(f(X)\)</span> ，通常又是方便和必要（有时候）的。方便是因为线性模型很容易解释，而且 <span class="math notranslate nohighlight">\(f(X)\)</span> 可被视为任意可微函数的一阶泰勒近似。有时候必要是因为当 <span class="math notranslate nohighlight">\(N\)</span> 很小而 <span class="math notranslate nohighlight">\(p\)</span> 很大时，线性模型相对于其他参数模型而言，使用的参数更少，不需要过拟合就可以达到拟合数据的目的。在分类任务中也类似，一个线性的、贝叶斯最优的判别边界表明 <span class="math notranslate nohighlight">\(\mathrm{Pr}(Y=1\mid X)\)</span> 的某些单调变换关于 <span class="math notranslate nohighlight">\(X\)</span> 是线性的，无疑这种线性判别边界也是一种近似。</p>
 <p>本章和接下来各章节中，我们将讨论一些不同于或超越线性模型的流行方法。本章核心是用额外的变量来增强（或替换）输入向量 <span class="math notranslate nohighlight">\(X\)</span> ，然后在新变量的输入特征空间中运用线性模型。</p>
 <p>用 <span class="math notranslate nohighlight">\(h_m(X):\mathbb{R}^p\longmapsto \mathbb{R}\)</span> 表示 <span class="math notranslate nohighlight">\(X\)</span> 的第 <span class="math notranslate nohighlight">\(m\)</span> 个变换（ 基函数 ），<span class="math notranslate nohighlight">\(m=1,\ldots, M\)</span> 。然后可以将下式建模为 <span class="math notranslate nohighlight">\(X\)</span> 的一个<code class="docutils literal notranslate"><span class="pre">线性基展开（Linear</span> <span class="pre">Basis</span> <span class="pre">Expansion）</span></code>：</p>
 <div class="math notranslate nohighlight">
 \[
 f(X)=\sum\limits_{m=1}^M\beta_mh_m(X)\tag{5.1}
 \]</div>
-<p>线性基展开式的优雅之处在于：只要基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 被确定了，则模型关于这些基函数产生的新变量整体上是线性的，继而可以像前两章一样进行线性地拟合。</p>
-<p>下面给出了一些简单、常用的 <span class="math notranslate nohighlight">\(h_m\)</span> ：</p>
+<p>线性基展开式的优雅之处在于：只要基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 确定了，模型关于这些基函数产生的新变量整体上就是线性的，可以像前两章一样进行线性地拟合。</p>
+<p>下面给出了一些简单、常见的基函数：</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(h_m(X)=X_m,m=1,\ldots,p\)</span></p></li>
 </ul>
-<p>这其实就是原来的输入向量，只是换了一种表达形式。</p>
+<p>这其实就是原始输入向量，只是换了一种表达形式。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_j^2\)</span> 或者 <span class="math notranslate nohighlight">\(h_m(X)=X_jX_k\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_m(X)=X_j^2\)</span> 或 <span class="math notranslate nohighlight">\(h_m(X)=X_jX_k\)</span></p></li>
 </ul>
-<p>增加输入中的多项式项来达到高阶泰勒展开的目的。注意到变量的个数以多项式程度呈指数增长；含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的二次模型要求 <span class="math notranslate nohighlight">\(O(p^2)\)</span> 的平方项和交互项；或者更一般地，对于阶数为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式需要 <span class="math notranslate nohighlight">\(O(p^d)\)</span> 个变量</p>
+<p>这是对原始输入的二阶多项式项，与一阶多项式结合可以达到高阶泰勒展开的目的。注意：转化后变量的个数以多项式程度快速增长，含 <span class="math notranslate nohighlight">\(p\)</span> 个变量的二次模型要求 <span class="math notranslate nohighlight">\(O(p^2)\)</span> 的平方项和交互项；或者更一般地，对于阶数为 <span class="math notranslate nohighlight">\(d\)</span> 的多项式需要 <span class="math notranslate nohighlight">\(O(p^d)\)</span> 个变量。</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_m(x)=\log(X_j),\sqrt{X_j},\ldots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_m(X)=\log(X_j) \  或  \ \sqrt{X_j} \)</span> 等</p></li>
 </ul>
-<p>允许单输入的其它非线性变换。更一般地，可以使用含有其他输入变量的类似函数，比如说  <span class="math notranslate nohighlight">\(h_m(X)=\Vert X\Vert\)</span> 。</p>
+<p>这是对原始输入中单变量的非线性变换。更一般性地，可以使用包含原始输入中多个变量构成的类似函数，比如说  <span class="math notranslate nohighlight">\(h_m(X)=\Vert X\Vert\)</span> 。</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(h_m(X)=I(L_m\le X_k\le U_m)\)</span></p></li>
 </ul>
-<p>关于 <span class="math notranslate nohighlight">\(X_k\)</span> 区域的指示性函数。将 <span class="math notranslate nohighlight">\(X_k\)</span> 的值域分成 <span class="math notranslate nohighlight">\(M_k\)</span> 个非重叠区域，结果得到一个关于 <span class="math notranslate nohighlight">\(X_k\)</span> 分段常数的分布模型。</p>
-<p>有时候，手边的问题要求我们采用特殊的基函数 <span class="math notranslate nohighlight">\(h_m\)</span>，比如对数或者幂函数；但更多情况下，我们希望通过基展开来增加 <span class="math notranslate nohighlight">\(f(X)\)</span> 的灵活性。多项式回归就是后者的一个典型例子，尽管受到全局性质的限制（ 多项式回归在调整系数以实现某区域函数形式时，可能会导致在其他区域的疯狂扰动 ）。</p>
-<p>本章中，我们会考虑可能比多项式回归更实用的 <strong>分段多项式 (piecewise-polynimials)</strong> 族和 <strong>样条 (splines)</strong> ，这两种方法允许局部多项式表示，从而规避的全局扰动。我们还会考虑小波基，这在信号和图像处理任务中特别有用。这几类方法都会产生包含 <span class="math notranslate nohighlight">\(\vert\mathcal D\vert\)</span> 个基函数的基函数字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> ，其数量有可能远远超出能够参与拟合的数据。</p>
-<p>除了字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> 外，我们还需要一种方式来控制模型的复杂度（ 如从基函数字典中合理地选择基函数 ）。通常有三种方式：</p>
-<p><strong>（ 1 ）限制方法</strong>，事先确定限制基函数的类别。例如，可加性就是一个例子，假设模型有如下形式：</p>
+<p>关于 <span class="math notranslate nohighlight">\(X_k\)</span> 区域的指示性函数。如果将 <span class="math notranslate nohighlight">\(X_k\)</span> 分成 <span class="math notranslate nohighlight">\(M_k\)</span> 个非重叠的区间，每个区间具有一个不同的指示值，则结果可以得到一个关于 <span class="math notranslate nohighlight">\(X_k\)</span> 的分段常数模型。</p>
+<p>有时候，手边的问题要求我们必须采用特定类型的基函数，比如对数函数或者幂函数；但更多情况下，我们做基展开的目的，就是用于增加 <span class="math notranslate nohighlight">\(f(X)\)</span> 的灵活性。典型如多项式回归。不过多项式回归最大的问题在于，其多次项是面向整个输入空间的，局部的灵活性，往往会给全局带来扰动。</p>
+<p>为此，本章中会考虑比多项式回归更实用的 <strong>分段多项式</strong> 和 <strong>样条</strong> 。这两种基展开方法允许函数的局部多项式表示，从而规避了全局扰动。我们还会考虑小波基，这在信号和图像处理任务中特别有用。上述三种方法都会产生一个包含 <span class="math notranslate nohighlight">\(\vert\mathcal D\vert\)</span> 个基函数的字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> ，并且  <span class="math notranslate nohighlight">\(\vert\mathcal D\vert\)</span>  有可能远远超出参与拟合的数据量 <span class="math notranslate nohighlight">\(N\)</span>。</p>
+<p>除了字典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> 外，我们还需要一种方式从基函数字典中合理地选择基函数（ 或者控制模型的复杂度 ）。通常有三种方式：</p>
+<p><strong>（ 1 ）限制方法</strong>，事先确定和限制基函数的类别（可理解为一种静态模型）。例如，可加性就是一个例子，假设模型有如下形式：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1196,9 +1197,9 @@ f(X)=\sum\limits_{m=1}^M\beta_mh_m(X)\tag{5.1}
   &amp;=\sum\limits_{j=1}^p\sum\limits_{m=1}^{M_j}\beta_{jm}h_{jm}(X_j)\tag{5.2}
 \end{align*}  
 \end{split}\]</div>
-<p>则该模型的大小（复杂度）由 <span class="math notranslate nohighlight">\(p\)</span> 个加性组份函数 <span class="math notranslate nohighlight">\(f_j\)</span> 中的基函数个数 <span class="math notranslate nohighlight">\(M_j\)</span> 决定。</p>
-<p><strong>（ 2 ）选择方法</strong>，自适应地扫描词典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> 并保留对模型拟合有显著性作用的基函数 <span class="math notranslate nohighlight">\(h_m\)</span> 。第三章中讨论的变量选择技巧是很有用的。另外，类似 <code class="docutils literal notranslate"><span class="pre">CART</span></code>，<code class="docutils literal notranslate"><span class="pre">MARS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">boosting</span></code> 等逐步贪婪方法可以划为这一类。</p>
-<p><strong>（ 3 ）正则化方法</strong>，使用整个字典，但是对系数作出某种约束。<code class="docutils literal notranslate"><span class="pre">岭回归</span></code>是一种比较简单的正则化例子；<code class="docutils literal notranslate"><span class="pre">套索（</span> <span class="pre">Lasso</span> <span class="pre">）</span></code> 则既属于正则化方法，也属于选择方法。</p>
+<p>则该模型的大小（复杂度）由 <span class="math notranslate nohighlight">\(p\)</span> 个加性函数组份 <span class="math notranslate nohighlight">\(f_j(X_j)\)</span> 中的基函数个数 <span class="math notranslate nohighlight">\(M_j\)</span> 决定。</p>
+<p><strong>（ 2 ）选择方法</strong>，自适应地扫描词典 <span class="math notranslate nohighlight">\(\mathcal D\)</span> ，保留其中对模型拟合有显著性作用的基函数 <span class="math notranslate nohighlight">\(h_m\)</span> ，可理解为一种自适应调整基函数选择的动态模型。第三章中讨论的变量选择技巧是很有用的。另外，类似 <code class="docutils literal notranslate"><span class="pre">CART</span></code>，<code class="docutils literal notranslate"><span class="pre">MARS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">boosting</span></code> 等逐步贪婪方法也可以划为这一类。</p>
+<p><strong>（ 3 ）正则化方法</strong>，使用整个字典，但是对系数作出某种约束，可理解为一种自适应调整基函数系数的动态模型。<code class="docutils literal notranslate"><span class="pre">岭回归</span></code>是一种比较简单的正则化例子；<code class="docutils literal notranslate"><span class="pre">套索（</span> <span class="pre">Lasso</span> <span class="pre">）</span></code> 则既属于正则化方法，也属于选择方法。</p>
 <p>本章将讨论上述内容，以及更加复杂的正则化方法。</p>
 </div>
 
